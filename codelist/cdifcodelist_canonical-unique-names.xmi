@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmlns:uml="http://www.omg.org/spec/UML/20131001"
+          xmlns:xmi="http://www.omg.org/spec/XMI/20131001">
+   <uml:Model xmi:id="skos.SKOS"
+               xmi:uuid="https://example.org/cdifcodelist#SKOS"
+               xmi:type="uml:Model">
+      <ownedComment xmi:id="skos.SKOS-ownedComment"
+                     xmi:uuid="https://example.org/cdifcodelist#SKOS-ownedComment"
+                     xmi:type="uml:Comment">
+         <body>SKOS UML Model
+
+according to:
+
+D2.3: Cross-Domain Interoperability Framework (CDIF)
+(Report Synthesising Recommendations for Disciplines and Cross-Disciplinary Research Areas)
+https://doi.org/10.5281/zenodo.11236871
+Section 6.5. Controlled vocabularies, p70-74.
+</body>
+         <annotatedElement xmi:idref="skos.SKOS"/>
+      </ownedComment>
+      <name>SKOS</name>
+      <URI>https://example.org/cdifcodelist</URI>
+      <packagedElement xmi:id="skos.PackageInformation"
+                        xmi:uuid="https://example.org/cdifcodelist#PackageInformation"
+                        xmi:type="uml:DataType">
+         <ownedComment xmi:id="skos.PackageInformation-ownedComment"
+                        xmi:uuid="https://example.org/cdifcodelist#PackageInformation-ownedComment"
+                        xmi:type="uml:Comment">
+            <body>Definition
+==========
+Attributes for the model identification with constant values.</body>
+            <annotatedElement xmi:idref="skos.PackageInformation"/>
+         </ownedComment>
+         <name>ModelIdentification</name>
+         <ownedAttribute xmi:id="skos.PackageInformation-acronym"
+                          xmi:uuid="https://example.org/cdifcodelist#PackageInformation-acronym"
+                          xmi:type="uml:Property">
+            <name>acronym</name>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType"
+                   href="http://www.omg.org/spec/UML/20131001/PrimitiveTypes.xmi#String"/>
+            <defaultValue xmi:id="skos.PackageInformation-acronym-defaultValue"
+                           xmi:uuid="https://example.org/cdifcodelist#PackageInformation-acronym-defaultValue"
+                           xmi:type="uml:LiteralString">
+               <value>CDIFCodelist</value>
+            </defaultValue>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="skos.PackageInformation-language"
+                          xmi:uuid="https://example.org/cdifcodelist#PackageInformation-language"
+                          xmi:type="uml:Property">
+            <name>language</name>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType"
+                   href="http://www.omg.org/spec/UML/20131001/PrimitiveTypes.xmi#String"/>
+            <defaultValue xmi:id="skos.PackageInformation-language-defaultValue"
+                           xmi:uuid="https://example.org/cdifcodelist#PackageInformation-language-defaultValue"
+                           xmi:type="uml:LiteralString">
+               <value>en</value>
+            </defaultValue>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="skos.PackageInformation-majorVersion"
+                          xmi:uuid="https://example.org/cdifcodelist#PackageInformation-majorVersion"
+                          xmi:type="uml:Property">
+            <name>majorVersion</name>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType"
+                   href="http://www.omg.org/spec/UML/20131001/PrimitiveTypes.xmi#Integer"/>
+            <defaultValue xmi:id="skos.PackageInformation-majorVersion-defaultValue"
+                           xmi:uuid="https://example.org/cdifcodelist#PackageInformation-majorVersion-defaultValue"
+                           xmi:type="uml:LiteralInteger">
+               <value>1</value>
+            </defaultValue>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="skos.PackageInformation-minorVersion"
+                          xmi:uuid="https://example.org/cdifcodelist#PackageInformation-minorVersion"
+                          xmi:type="uml:Property">
+            <name>minorVersion</name>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType"
+                   href="http://www.omg.org/spec/UML/20131001/PrimitiveTypes.xmi#Integer"/>
+            <defaultValue xmi:id="skos.PackageInformation-minorVersion-defaultValue"
+                           xmi:uuid="https://example.org/cdifcodelist#PackageInformation-minorVersion-defaultValue"
+                           xmi:type="uml:LiteralInteger">
+               <value>0</value>
+            </defaultValue>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="skos.PackageInformation-prefix"
+                          xmi:uuid="https://example.org/cdifcodelist#PackageInformation-prefix"
+                          xmi:type="uml:Property">
+            <name>prefix</name>
+            <type xmi:type="uml:PrimitiveType"
+                   href="http://www.omg.org/spec/UML/20131001/PrimitiveTypes.xmi#String"/>
+            <defaultValue xmi:id="skos.PackageInformation-prefix-defaultValue"
+                           xmi:uuid="https://example.org/cdifcodelist#PackageInformation-prefix-defaultValue"
+                           xmi:type="uml:LiteralString">
+               <value>skos</value>
+            </defaultValue>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="skos.PackageInformation-subtitle"
+                          xmi:uuid="https://example.org/cdifcodelist#PackageInformation-subtitle"
+                          xmi:type="uml:Property">
+            <name>subtitle</name>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType"
+                   href="http://www.omg.org/spec/UML/20131001/PrimitiveTypes.xmi#String"/>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="skos.PackageInformation-title"
+                          xmi:uuid="https://example.org/cdifcodelist#PackageInformation-title"
+                          xmi:type="uml:Property">
+            <name>title</name>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType"
+                   href="http://www.omg.org/spec/UML/20131001/PrimitiveTypes.xmi#String"/>
+            <defaultValue xmi:id="skos.PackageInformation-title-defaultValue"
+                           xmi:uuid="https://example.org/cdifcodelist#PackageInformation-title-defaultValue"
+                           xmi:type="uml:LiteralString">
+               <value>CDIF Codelist Profile</value>
+            </defaultValue>
+         </ownedAttribute>
+         <ownedAttribute xmi:id="skos.PackageInformation-uri"
+                          xmi:uuid="https://example.org/cdifcodelist#PackageInformation-uri"
+                          xmi:type="uml:Property">
+            <name>uri</name>
+            <isReadOnly>true</isReadOnly>
+            <type xmi:type="uml:PrimitiveType"
+                   href="http://www.omg.org/spec/UML/20131001/PrimitiveTypes.xmi#String"/>
+         </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:id="skos.Classes"
+                        xmi:uuid="https://example.org/cdifcodelist#Classes"
+                        xmi:type="uml:Package">
+         <name>Classes</name>
+         <packagedElement xmi:id="skos.Concept_narrower_Concept"
+                           xmi:uuid="https://example.org/cdifcodelist#Concept_narrower_Concept"
+                           xmi:type="uml:Association">
+            <ownedComment xmi:id="skos.narrower-ownedComment"
+                           xmi:uuid="https://example.org/cdifcodelist#narrower-ownedComment"
+                           xmi:type="uml:Comment">
+               <body>https://www.w3.org/TR/skos-reference/#narrower</body>
+               <annotatedElement xmi:idref="skos.Concept_narrower_Concept"/>
+            </ownedComment>
+            <name>Concept_narrower_Concept</name>
+            <ownedEnd xmi:id="skos.narrower-ownedEnd-Concept"
+                       xmi:uuid="https://example.org/cdifcodelist#narrower-ownedEnd-Concept"
+                       xmi:type="uml:Property">
+               <type xmi:idref="skos.Concept"/>
+               <lowerValue xmi:id="skos.narrower-ownedEnd-Concept-lowerValue"
+                            xmi:uuid="https://example.org/cdifcodelist#narrower-ownedEnd-Concept-lowerValue"
+                            xmi:type="uml:LiteralInteger">
+                  <value>0</value>
+               </lowerValue>
+               <association xmi:idref="skos.Concept_narrower_Concept"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="skos.Concept-ownedAttribute-6"/>
+            <memberEnd xmi:idref="skos.narrower-ownedEnd-Concept"/>
+         </packagedElement>
+         <packagedElement xmi:id="skos.Concept_inScheme_ConceptScheme"
+                           xmi:uuid="https://example.org/cdifcodelist#Concept_inScheme_ConceptScheme"
+                           xmi:type="uml:Association">
+            <ownedComment xmi:id="skos.inScheme-ownedComment"
+                           xmi:uuid="https://example.org/cdifcodelist#inScheme-ownedComment"
+                           xmi:type="uml:Comment">
+               <body>https://www.w3.org/TR/skos-reference/#inScheme</body>
+               <annotatedElement xmi:idref="skos.Concept_inScheme_ConceptScheme"/>
+            </ownedComment>
+            <name>Concept_inScheme_ConceptScheme</name>
+            <ownedEnd xmi:id="skos.inScheme-ownedEnd-Concept"
+                       xmi:uuid="https://example.org/cdifcodelist#inScheme-ownedEnd-Concept"
+                       xmi:type="uml:Property">
+               <type xmi:idref="skos.Concept"/>
+               <association xmi:idref="skos.Concept_inScheme_ConceptScheme"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="skos.Concept-ownedAttribute-7"/>
+            <memberEnd xmi:idref="skos.inScheme-ownedEnd-Concept"/>
+         </packagedElement>
+         <packagedElement xmi:id="skos.Concept_topConceptOf_ConceptScheme"
+                           xmi:uuid="https://example.org/cdifcodelist#Concept_topConceptOf_ConceptScheme"
+                           xmi:type="uml:Association">
+            <ownedComment xmi:id="skos.topConceptOf-ownedComment"
+                           xmi:uuid="https://example.org/cdifcodelist#topConceptOf-ownedComment"
+                           xmi:type="uml:Comment">
+               <body>https://www.w3.org/TR/skos-reference/#topConceptOf</body>
+               <annotatedElement xmi:idref="skos.Concept_topConceptOf_ConceptScheme"/>
+            </ownedComment>
+            <name>Concept_topConceptOf_ConceptScheme</name>
+            <ownedEnd xmi:id="skos.topConceptOf-ownedEnd-Concept"
+                       xmi:uuid="https://example.org/cdifcodelist#topConceptOf-ownedEnd-Concept"
+                       xmi:type="uml:Property">
+               <type xmi:idref="skos.Concept"/>
+               <association xmi:idref="skos.Concept_topConceptOf_ConceptScheme"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="skos.Concept-ownedAttribute-8"/>
+            <memberEnd xmi:idref="skos.topConceptOf-ownedEnd-Concept"/>
+         </packagedElement>
+         <packagedElement xmi:id="skos.Concept_broader_Concept"
+                           xmi:uuid="https://example.org/cdifcodelist#Concept_broader_Concept"
+                           xmi:type="uml:Association">
+            <ownedComment xmi:id="skos.broader-ownedComment"
+                           xmi:uuid="https://example.org/cdifcodelist#broader-ownedComment"
+                           xmi:type="uml:Comment">
+               <body>https://www.w3.org/TR/skos-reference/#broader</body>
+               <annotatedElement xmi:idref="skos.Concept_broader_Concept"/>
+            </ownedComment>
+            <name>Concept_broader_Concept</name>
+            <ownedEnd xmi:id="skos.broader-ownedEnd-Concept"
+                       xmi:uuid="https://example.org/cdifcodelist#broader-ownedEnd-Concept"
+                       xmi:type="uml:Property">
+               <type xmi:idref="skos.Concept"/>
+               <lowerValue xmi:id="skos.broader-ownedEnd-Concept-lowerValue"
+                            xmi:uuid="https://example.org/cdifcodelist#broader-ownedEnd-Concept-lowerValue"
+                            xmi:type="uml:LiteralInteger">
+                  <value>0</value>
+               </lowerValue>
+               <association xmi:idref="skos.Concept_broader_Concept"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="skos.Concept-ownedAttribute-9"/>
+            <memberEnd xmi:idref="skos.broader-ownedEnd-Concept"/>
+         </packagedElement>
+         <packagedElement xmi:id="skos.ConceptScheme_hasTopConcept_Concept"
+                           xmi:uuid="https://example.org/cdifcodelist#ConceptScheme_hasTopConcept_Concept"
+                           xmi:type="uml:Association">
+            <ownedComment xmi:id="skos.hasTopConcept-ownedComment"
+                           xmi:uuid="https://example.org/cdifcodelist#hasTopConcept-ownedComment"
+                           xmi:type="uml:Comment">
+               <body>https://www.w3.org/TR/skos-reference/#hasTopConcept</body>
+               <annotatedElement xmi:idref="skos.ConceptScheme_hasTopConcept_Concept"/>
+            </ownedComment>
+            <name>ConceptScheme_hasTopConcept_Concept</name>
+            <ownedEnd xmi:id="skos.hasTopConcept-ownedEnd-ConceptScheme"
+                       xmi:uuid="https://example.org/cdifcodelist#hasTopConcept-ownedEnd-ConceptScheme"
+                       xmi:type="uml:Property">
+               <type xmi:idref="skos.ConceptScheme"/>
+               <association xmi:idref="skos.ConceptScheme_hasTopConcept_Concept"/>
+            </ownedEnd>
+            <memberEnd xmi:idref="skos.ConceptScheme-ownedAttribute-1"/>
+            <memberEnd xmi:idref="skos.hasTopConcept-ownedEnd-ConceptScheme"/>
+         </packagedElement>
+         <packagedElement xmi:id="skos.Concept"
+                           xmi:uuid="https://example.org/cdifcodelist#Concept"
+                           xmi:type="uml:Class">
+            <ownedComment xmi:id="skos.Concept-ownedComment"
+                           xmi:uuid="https://example.org/cdifcodelist#Concept-ownedComment"
+                           xmi:type="uml:Comment">
+               <body>Definition
+==========
+The class skos:Concept is the class of SKOS concepts.
+
+A SKOS concept can be viewed as an idea or notion; a unit of thought. However, what constitutes a unit of thought is subjective, and this definition is meant to be suggestive, rather than restrictive.
+
+The notion of a SKOS concept is useful when describing the conceptual or intellectual structure of a knowledge organization system, and when referring to specific ideas or meanings established within a KOS.
+
+Note that, because SKOS is designed to be a vehicle for representing semi-formal KOS, such as thesauri and classification schemes, a certain amount of flexibility has been built in to the formal definition of this class.
+
+See the SKOS primer [https://www.w3.org/TR/skos-primer/] for more examples of identifying and describing SKOS concepts.
+</body>
+               <annotatedElement xmi:idref="skos.Concept"/>
+            </ownedComment>
+            <name>Concept</name>
+            <ownedAttribute xmi:id="skos.Concept-altLabel"
+                             xmi:uuid="https://example.org/cdifcodelist#Concept-altLabel"
+                             xmi:type="uml:Property">
+               <name>altLabel</name>
+               <type xmi:idref="skos.LanguageString"/>
+               <lowerValue xmi:id="skos.Concept-altLabel-lowerValue"
+                            xmi:uuid="https://example.org/cdifcodelist#Concept-altLabel-lowerValue"
+                            xmi:type="uml:LiteralInteger">
+                  <value>0</value>
+               </lowerValue>
+               <upperValue xmi:id="skos.Concept-altLabel-upperValue"
+                            xmi:uuid="https://example.org/cdifcodelist#Concept-altLabel-upperValue"
+                            xmi:type="uml:LiteralUnlimitedNatural">
+                  <value>*</value>
+               </upperValue>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="skos.Concept-definition"
+                             xmi:uuid="https://example.org/cdifcodelist#Concept-definition"
+                             xmi:type="uml:Property">
+               <name>definition</name>
+               <type xmi:idref="skos.LanguageString"/>
+               <upperValue xmi:id="skos.Concept-definition-upperValue"
+                            xmi:uuid="https://example.org/cdifcodelist#Concept-definition-upperValue"
+                            xmi:type="uml:LiteralUnlimitedNatural">
+                  <value>*</value>
+               </upperValue>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="skos.Concept-identifier"
+                             xmi:uuid="https://example.org/cdifcodelist#Concept-identifier"
+                             xmi:type="uml:Property">
+               <name>identifier</name>
+               <type xmi:idref="skos.XsdAnyUri"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="skos.Concept-notation"
+                             xmi:uuid="https://example.org/cdifcodelist#Concept-notation"
+                             xmi:type="uml:Property">
+               <name>notation</name>
+               <type xmi:type="uml:PrimitiveType"
+                      href="http://www.omg.org/spec/UML/20131001/PrimitiveTypes.xmi#String"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="skos.Concept-prefLabel"
+                             xmi:uuid="https://example.org/cdifcodelist#Concept-prefLabel"
+                             xmi:type="uml:Property">
+               <name>prefLabel</name>
+               <type xmi:idref="skos.LanguageString"/>
+               <upperValue xmi:id="skos.Concept-prefLabel-upperValue"
+                            xmi:uuid="https://example.org/cdifcodelist#Concept-prefLabel-upperValue"
+                            xmi:type="uml:LiteralUnlimitedNatural">
+                  <value>*</value>
+               </upperValue>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="skos.Concept-ownedAttribute-6"
+                             xmi:uuid="https://example.org/cdifcodelist#Concept-ownedAttribute-6"
+                             xmi:type="uml:Property">
+               <type xmi:idref="skos.Concept"/>
+               <lowerValue xmi:id="skos.Concept-ownedAttribute-6-lowerValue"
+                            xmi:uuid="https://example.org/cdifcodelist#Concept-ownedAttribute-6-lowerValue"
+                            xmi:type="uml:LiteralInteger">
+                  <value>0</value>
+               </lowerValue>
+               <association xmi:idref="skos.Concept_narrower_Concept"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="skos.Concept-ownedAttribute-7"
+                             xmi:uuid="https://example.org/cdifcodelist#Concept-ownedAttribute-7"
+                             xmi:type="uml:Property">
+               <type xmi:idref="skos.ConceptScheme"/>
+               <association xmi:idref="skos.Concept_inScheme_ConceptScheme"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="skos.Concept-ownedAttribute-8"
+                             xmi:uuid="https://example.org/cdifcodelist#Concept-ownedAttribute-8"
+                             xmi:type="uml:Property">
+               <type xmi:idref="skos.ConceptScheme"/>
+               <association xmi:idref="skos.Concept_topConceptOf_ConceptScheme"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="skos.Concept-ownedAttribute-9"
+                             xmi:uuid="https://example.org/cdifcodelist#Concept-ownedAttribute-9"
+                             xmi:type="uml:Property">
+               <type xmi:idref="skos.Concept"/>
+               <lowerValue xmi:id="skos.Concept-ownedAttribute-9-lowerValue"
+                            xmi:uuid="https://example.org/cdifcodelist#Concept-ownedAttribute-9-lowerValue"
+                            xmi:type="uml:LiteralInteger">
+                  <value>0</value>
+               </lowerValue>
+               <association xmi:idref="skos.Concept_broader_Concept"/>
+            </ownedAttribute>
+         </packagedElement>
+         <packagedElement xmi:id="skos.ConceptScheme"
+                           xmi:uuid="https://example.org/cdifcodelist#ConceptScheme"
+                           xmi:type="uml:Class">
+            <ownedComment xmi:id="skos.ConceptScheme-ownedComment"
+                           xmi:uuid="https://example.org/cdifcodelist#ConceptScheme-ownedComment"
+                           xmi:type="uml:Comment">
+               <body>Definition
+==========
+A SKOS concept scheme can be viewed as an aggregation of one or more SKOS concepts. Semantic relationships (links) between those concepts may also be viewed as part of a concept scheme. This definition is, however, meant to be suggestive rather than restrictive, and there is some flexibility in the formal data model stated below.
+
+The notion of a concept scheme is useful when dealing with data from an unknown source, and when dealing with data that describes two or more different knowledge organization systems.
+
+See the SKOS primer [https://www.w3.org/TR/skos-primer/] for more examples of identifying and describing concept schemes.
+</body>
+               <annotatedElement xmi:idref="skos.ConceptScheme"/>
+            </ownedComment>
+            <name>ConceptScheme</name>
+            <ownedAttribute xmi:id="skos.ConceptScheme-ownedAttribute-1"
+                             xmi:uuid="https://example.org/cdifcodelist#ConceptScheme-ownedAttribute-1"
+                             xmi:type="uml:Property">
+               <type xmi:idref="skos.Concept"/>
+               <association xmi:idref="skos.ConceptScheme_hasTopConcept_Concept"/>
+            </ownedAttribute>
+         </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:id="skos.DataTypes"
+                        xmi:uuid="https://example.org/cdifcodelist#DataTypes"
+                        xmi:type="uml:Package">
+         <name>DataTypes</name>
+         <packagedElement xmi:id="skos.LanguageString"
+                           xmi:uuid="https://example.org/cdifcodelist#LanguageString"
+                           xmi:type="uml:DataType">
+            <name>LanguageString</name>
+            <ownedAttribute xmi:id="skos.LanguageString-language"
+                             xmi:uuid="https://example.org/cdifcodelist#LanguageString-language"
+                             xmi:type="uml:Property">
+               <name>language</name>
+               <type xmi:idref="skos.XsdLanguage"/>
+            </ownedAttribute>
+         </packagedElement>
+         <packagedElement xmi:id="skos.XMLSchemaDataTypes"
+                           xmi:uuid="https://example.org/cdifcodelist#XMLSchemaDataTypes"
+                           xmi:type="uml:Package">
+            <ownedComment xmi:id="skos.XMLSchemaDataTypes-ownedComment"
+                           xmi:uuid="https://example.org/cdifcodelist#XMLSchemaDataTypes-ownedComment"
+                           xmi:type="uml:Comment">
+               <body>This package contains the datatypes as defined in the W3C XML Schema specifications (https://www.w3.org/XML/Schema).</body>
+               <annotatedElement xmi:idref="skos.XMLSchemaDataTypes"/>
+            </ownedComment>
+            <name>XMLSchemaDataTypes</name>
+            <packagedElement xmi:id="skos.XsdAnyUri"
+                              xmi:uuid="https://example.org/cdifcodelist#XsdAnyUri"
+                              xmi:type="uml:PrimitiveType">
+               <ownedComment xmi:id="skos.XsdAnyUri-ownedComment"
+                              xmi:uuid="https://example.org/cdifcodelist#XsdAnyUri-ownedComment"
+                              xmi:type="uml:Comment">
+                  <body>Definition
+============
+Primitive data type "anyURI" of the XML Schema data types.
+
+Definition from XML Schema Part 2: Datatypes Second Edition:
+"anyURI" represents a Uniform Resource Identifier Reference (URI). An "anyURI" value can be absolute or relative, and may have an optional fragment identifier (i.e., it may be a URI Reference). This type should be used to specify the intention that the value fulfills the role of a URI as defined by [RFC 2396], as amended by [RFC 2732]. For details see https://www.w3.org/TR/xmlschema-2/#anyURI.</body>
+                  <annotatedElement xmi:idref="skos.XsdAnyUri"/>
+               </ownedComment>
+               <name>XsdAnyUri</name>
+            </packagedElement>
+            <packagedElement xmi:id="skos.XsdLanguage"
+                              xmi:uuid="https://example.org/cdifcodelist#XsdLanguage"
+                              xmi:type="uml:PrimitiveType">
+               <ownedComment xmi:id="skos.XsdLanguage-ownedComment"
+                              xmi:uuid="https://example.org/cdifcodelist#XsdLanguage-ownedComment"
+                              xmi:type="uml:Comment">
+                  <body>Definition
+============
+Derived data type "language" of the XML Schema data types.
+
+Definition from XML Schema Part 2: Datatypes Second Edition:
+"language" represents natural language identifiers as defined by by [RFC 3066]. The value space of "language" is the set of all strings that are valid language identifiers as defined [RFC 3066] . The lexical space of language is the set of all strings that conform to the pattern [a-zA-Z]{1,8}(-[a-zA-Z0-9]{1,8})*. The base type of "language" is token. https://www.w3.org/TR/xmlschema-2/#language.</body>
+                  <annotatedElement xmi:idref="skos.XsdLanguage"/>
+               </ownedComment>
+               <name>XsdLanguage</name>
+            </packagedElement>
+         </packagedElement>
+      </packagedElement>
+   </uml:Model>
+</xmi:XMI>
