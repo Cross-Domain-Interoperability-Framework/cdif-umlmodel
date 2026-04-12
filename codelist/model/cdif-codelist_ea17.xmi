@@ -1,0 +1,909 @@
+<?xml  version='1.0' encoding='windows-1252' ?>
+<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.omg.org/spec/UML/20131001" xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI" xmlns:dc="http://www.omg.org/spec/UML/20131001/UMLDC">
+	<xmi:Documentation exporter="Enterprise Architect" exporterVersion="6.5" exporterID="1716"/>
+	<uml:Model xmi:type="uml:Model" name="EA_Model">
+		<packagedElement xmi:type="uml:Package" xmi:id="EAPK_33D71719_6B3F_45e6_B1A8_297A7E9FD426" name="CDIFModels" URI="https://w3id.org/cdif/">
+			<packagedElement xmi:type="uml:DataType" xmi:id="EAID_9BBF531B_D702_8F3B_897A_4D65B23C00F9" name="PackageInformation">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_BB8DCFAA_2C55_4362_8318_A85FFE1E6FFE" name="prefix">
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000001_2C55_4362_8318_A85FFE1E6FFE" value="1"/>
+					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000002_2C55_4362_8318_A85FFE1E6FFE" value="1"/>
+					<defaultValue xmi:type="uml:LiteralString" xmi:id="EAID_LI000003_2C55_4362_8318_A85FFE1E6FFE" value="cdif"/>
+					<type xmi:idref="EAJava_String"/>
+				</ownedAttribute>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Package" xmi:id="EAPK_6A3F4BB5_9C84_48cd_AE51_15952D687E9E" name="CDIF">
+				<packagedElement xmi:type="uml:Package" xmi:id="EAPK_9FA04D7C_F4BC_1B05_B645_E4E2C18FAA15" name="CDIFCodelist" URI="https://w3id.org/cdif/codelist/1.0/xmi/">
+					<packagedElement xmi:type="uml:Class" xmi:id="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9" name="Concept">
+						<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_96363ED0_E412_7820_B248_752D944DA78F" name="altLabel">
+							<type xmi:idref="EAID_B0EEDE24_64A2_DBB3_A8F1_DC4A703B2C4B"/>
+							<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000003_E412_7820_B248_752D944DA78F" value="0"/>
+							<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000004_E412_7820_B248_752D944DA78F" value="*"/>
+						</ownedAttribute>
+						<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_A336D238_68F9_0E65_87F1_D98233D139DA" name="definition">
+							<type xmi:idref="EAID_B0EEDE24_64A2_DBB3_A8F1_DC4A703B2C4B"/>
+							<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000005_68F9_0E65_87F1_D98233D139DA" value="1"/>
+							<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000006_68F9_0E65_87F1_D98233D139DA" value="*"/>
+						</ownedAttribute>
+						<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_88454ADA_F8FA_5045_8185_42D9885699BE" name="identifier">
+							<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000007_F8FA_5045_8185_42D9885699BE" value="1"/>
+							<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000008_F8FA_5045_8185_42D9885699BE" value="1"/>
+						</ownedAttribute>
+						<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_A90B55D9_36BC_6972_8E67_37CCA60AB821" name="notation">
+							<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000009_36BC_6972_8E67_37CCA60AB821" value="1"/>
+							<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000010_36BC_6972_8E67_37CCA60AB821" value="1"/>
+							<type xmi:idref="EAJava_String"/>
+						</ownedAttribute>
+						<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_A48E487C_7891_4EC4_B178_C359588F017E" name="prefLabel">
+							<type xmi:idref="EAID_B0EEDE24_64A2_DBB3_A8F1_DC4A703B2C4B"/>
+							<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000011_7891_4EC4_B178_C359588F017E" value="1"/>
+							<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000012_7891_4EC4_B178_C359588F017E" value="*"/>
+						</ownedAttribute>
+						<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_dst2C11F0_069F_894F_BB19_349083334DC9" association="EAID_912C11F0_069F_894F_BB19_349083334DC9">
+							<type xmi:idref="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9"/>
+							<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000013__069F_894F_BB19_349083334DC9" value="0"/>
+							<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000014__069F_894F_BB19_349083334DC9" value="1"/>
+						</ownedAttribute>
+						<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_dst39E2E2_5EB9_FA8B_982C_0F2A66F187C1" association="EAID_9E39E2E2_5EB9_FA8B_982C_0F2A66F187C1">
+							<type xmi:idref="EAID_912A3DF4_8D6D_21FB_A1C9_75B04BF5F0D2"/>
+						</ownedAttribute>
+						<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_dstEB3BCE_4CBB_0DFB_B995_C7F69479BB53" association="EAID_A2EB3BCE_4CBB_0DFB_B995_C7F69479BB53">
+							<type xmi:idref="EAID_912A3DF4_8D6D_21FB_A1C9_75B04BF5F0D2"/>
+						</ownedAttribute>
+						<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_dst2AE366_0FBC_7F72_8192_FFD73E53F604" association="EAID_B12AE366_0FBC_7F72_8192_FFD73E53F604">
+							<type xmi:idref="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9"/>
+							<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000015__0FBC_7F72_8192_FFD73E53F604" value="0"/>
+							<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000016__0FBC_7F72_8192_FFD73E53F604" value="1"/>
+						</ownedAttribute>
+					</packagedElement>
+					<packagedElement xmi:type="uml:Dependency" xmi:id="EAID_7CADDCBD_63EE_452f_BAAB_66620EDBF6CC" name="dependsOn" supplier="EAID_81F80DB7_752B_450d_8B68_730468E3D43B" client="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9"/>
+					<packagedElement xmi:type="uml:Association" xmi:id="EAID_912C11F0_069F_894F_BB19_349083334DC9" name="narrower">
+						<memberEnd xmi:idref="EAID_dst2C11F0_069F_894F_BB19_349083334DC9"/>
+						<memberEnd xmi:idref="EAID_src2C11F0_069F_894F_BB19_349083334DC9"/>
+						<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src2C11F0_069F_894F_BB19_349083334DC9" association="EAID_912C11F0_069F_894F_BB19_349083334DC9">
+							<type xmi:idref="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9"/>
+							<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000017__069F_894F_BB19_349083334DC9" value="0"/>
+							<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000018__069F_894F_BB19_349083334DC9" value="1"/>
+						</ownedEnd>
+					</packagedElement>
+					<packagedElement xmi:type="uml:Association" xmi:id="EAID_9E39E2E2_5EB9_FA8B_982C_0F2A66F187C1" name="inScheme">
+						<memberEnd xmi:idref="EAID_dst39E2E2_5EB9_FA8B_982C_0F2A66F187C1"/>
+						<memberEnd xmi:idref="EAID_src39E2E2_5EB9_FA8B_982C_0F2A66F187C1"/>
+						<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src39E2E2_5EB9_FA8B_982C_0F2A66F187C1" association="EAID_9E39E2E2_5EB9_FA8B_982C_0F2A66F187C1">
+							<type xmi:idref="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9"/>
+						</ownedEnd>
+					</packagedElement>
+					<packagedElement xmi:type="uml:Association" xmi:id="EAID_A2EB3BCE_4CBB_0DFB_B995_C7F69479BB53" name="topConceptOf">
+						<memberEnd xmi:idref="EAID_dstEB3BCE_4CBB_0DFB_B995_C7F69479BB53"/>
+						<memberEnd xmi:idref="EAID_srcEB3BCE_4CBB_0DFB_B995_C7F69479BB53"/>
+						<ownedEnd xmi:type="uml:Property" xmi:id="EAID_srcEB3BCE_4CBB_0DFB_B995_C7F69479BB53" association="EAID_A2EB3BCE_4CBB_0DFB_B995_C7F69479BB53">
+							<type xmi:idref="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9"/>
+						</ownedEnd>
+					</packagedElement>
+					<packagedElement xmi:type="uml:Association" xmi:id="EAID_B12AE366_0FBC_7F72_8192_FFD73E53F604" name="broader">
+						<memberEnd xmi:idref="EAID_dst2AE366_0FBC_7F72_8192_FFD73E53F604"/>
+						<memberEnd xmi:idref="EAID_src2AE366_0FBC_7F72_8192_FFD73E53F604"/>
+						<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src2AE366_0FBC_7F72_8192_FFD73E53F604" association="EAID_B12AE366_0FBC_7F72_8192_FFD73E53F604">
+							<type xmi:idref="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9"/>
+							<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000019__0FBC_7F72_8192_FFD73E53F604" value="0"/>
+							<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000020__0FBC_7F72_8192_FFD73E53F604" value="1"/>
+						</ownedEnd>
+					</packagedElement>
+					<packagedElement xmi:type="uml:Association" xmi:id="EAID_977C6DBF_CECA_A94A_A9C5_DBF908C578A8" name="hasTopConcept">
+						<memberEnd xmi:idref="EAID_dst7C6DBF_CECA_A94A_A9C5_DBF908C578A8"/>
+						<memberEnd xmi:idref="EAID_src7C6DBF_CECA_A94A_A9C5_DBF908C578A8"/>
+						<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src7C6DBF_CECA_A94A_A9C5_DBF908C578A8" association="EAID_977C6DBF_CECA_A94A_A9C5_DBF908C578A8">
+							<type xmi:idref="EAID_912A3DF4_8D6D_21FB_A1C9_75B04BF5F0D2"/>
+						</ownedEnd>
+					</packagedElement>
+					<packagedElement xmi:type="uml:Class" xmi:id="EAID_912A3DF4_8D6D_21FB_A1C9_75B04BF5F0D2" name="ConceptScheme">
+						<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_dst7C6DBF_CECA_A94A_A9C5_DBF908C578A8" association="EAID_977C6DBF_CECA_A94A_A9C5_DBF908C578A8">
+							<type xmi:idref="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9"/>
+						</ownedAttribute>
+					</packagedElement>
+					<packagedElement xmi:type="uml:Dependency" xmi:id="EAID_284B1897_D2C1_4c68_AB07_82637AF8F3C8" name="dependsOn" supplier="EAID_539407A3_A221_4f35_A1FC_5C23367DDE68" client="EAID_912A3DF4_8D6D_21FB_A1C9_75B04BF5F0D2"/>
+					<packagedElement xmi:type="uml:DataType" xmi:id="EAID_B922786A_B2EA_DA2A_B565_F19CCD0674F5" name="PackageInformation">
+						<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_95986CA2_EE3C_D1FE_912D_F77454A9BF12" name="acronym" isReadOnly="true">
+							<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000021_EE3C_D1FE_912D_F77454A9BF12" value="1"/>
+							<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000022_EE3C_D1FE_912D_F77454A9BF12" value="1"/>
+							<defaultValue xmi:type="uml:LiteralString" xmi:id="EAID_LI000023_EE3C_D1FE_912D_F77454A9BF12" value="CDIFCodelist"/>
+							<type xmi:idref="EAJava_String"/>
+						</ownedAttribute>
+						<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_A75CFE9C_8BEE_9D29_BA9B_E6241D63C719" name="language" isReadOnly="true">
+							<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000023_8BEE_9D29_BA9B_E6241D63C719" value="1"/>
+							<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000024_8BEE_9D29_BA9B_E6241D63C719" value="1"/>
+							<defaultValue xmi:type="uml:LiteralString" xmi:id="EAID_LI000025_8BEE_9D29_BA9B_E6241D63C719" value="en"/>
+							<type xmi:idref="EAJava_String"/>
+						</ownedAttribute>
+						<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_BD6F2191_401A_39C1_AB19_0D43320E1C0A" name="majorVersion" isReadOnly="true">
+							<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000025_401A_39C1_AB19_0D43320E1C0A" value="1"/>
+							<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000026_401A_39C1_AB19_0D43320E1C0A" value="1"/>
+							<defaultValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000027_401A_39C1_AB19_0D43320E1C0A" value="1"/>
+							<type xmi:idref="EAJava_Integer"/>
+						</ownedAttribute>
+						<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_A33A996A_598E_98E8_9A47_D06048B6C0DC" name="minorVersion" isReadOnly="true">
+							<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000027_598E_98E8_9A47_D06048B6C0DC" value="1"/>
+							<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000028_598E_98E8_9A47_D06048B6C0DC" value="1"/>
+							<defaultValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000029_598E_98E8_9A47_D06048B6C0DC" value="0"/>
+							<type xmi:idref="EAJava_Integer"/>
+						</ownedAttribute>
+						<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_E66C01CB_235F_4ca3_BB51_79CF64ACD59C" name="prefix">
+							<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000029_235F_4ca3_BB51_79CF64ACD59C" value="1"/>
+							<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000030_235F_4ca3_BB51_79CF64ACD59C" value="1"/>
+							<defaultValue xmi:type="uml:LiteralString" xmi:id="EAID_LI000031_235F_4ca3_BB51_79CF64ACD59C" value="cdifcl"/>
+							<type xmi:idref="EAJava_String"/>
+						</ownedAttribute>
+						<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_8FC5EF97_B9A3_3466_9574_79BC8B565FBD" name="subtitle" isReadOnly="true">
+							<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000031_B9A3_3466_9574_79BC8B565FBD" value="1"/>
+							<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000032_B9A3_3466_9574_79BC8B565FBD" value="1"/>
+							<type xmi:idref="EAJava_String"/>
+						</ownedAttribute>
+						<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_AB4C3AD5_CE0F_D309_B6B7_A4E02F33ECFC" name="title" isReadOnly="true">
+							<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000033_CE0F_D309_B6B7_A4E02F33ECFC" value="1"/>
+							<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000034_CE0F_D309_B6B7_A4E02F33ECFC" value="1"/>
+							<defaultValue xmi:type="uml:LiteralString" xmi:id="EAID_LI000035_CE0F_D309_B6B7_A4E02F33ECFC" value="CDIF Codelist Profile"/>
+							<type xmi:idref="EAJava_String"/>
+						</ownedAttribute>
+						<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_B0B928C5_472F_2995_A6BB_8FD39B8310F4" name="uri" isReadOnly="true">
+							<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000035_472F_2995_A6BB_8FD39B8310F4" value="1"/>
+							<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000036_472F_2995_A6BB_8FD39B8310F4" value="1"/>
+							<type xmi:idref="EAJava_String"/>
+						</ownedAttribute>
+					</packagedElement>
+					<packagedElement xmi:type="uml:Package" xmi:id="EAPK_A602AA76_DAEE_284E_86AF_11241205C72A" name="DataTypes">
+						<packagedElement xmi:type="uml:DataType" xmi:id="EAID_B0EEDE24_64A2_DBB3_A8F1_DC4A703B2C4B" name="LanguageString">
+							<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_B14E6D6E_1874_EEE9_9497_BF9D35801C98" name="language">
+								<type xmi:idref="EAID_81E17C6E_A607_6359_B848_8300AE1DA40E"/>
+								<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000037_1874_EEE9_9497_BF9D35801C98" value="1"/>
+								<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000038_1874_EEE9_9497_BF9D35801C98" value="1"/>
+							</ownedAttribute>
+						</packagedElement>
+						<packagedElement xmi:type="uml:Package" xmi:id="EAPK_B39E0775_4363_2EC2_9776_0D7806B2A768" name="XMLSchemaDataTypes">
+							<packagedElement xmi:type="uml:PrimitiveType" xmi:id="EAID_81E17C6E_A607_6359_B848_8300AE1DA40E" name="XsdLanguage"/>
+							<packagedElement xmi:type="uml:PrimitiveType" xmi:id="EAID_8BEE040B_98F6_BE7C_B2A1_AE6FFEBBCC30" name="XsdAnyUri"/>
+						</packagedElement>
+					</packagedElement>
+				</packagedElement>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Package" xmi:id="EAPK_BC106B18_6C83_42a1_82C0_0798FE61B2DD" name="Context">
+				<packagedElement xmi:type="uml:Package" xmi:id="EAPK_54E481AB_0B7D_4159_9B9F_5B8A38438DF8" name="SKOSProxy" URI="http://www.w3.org/2004/02/skos/core#">
+					<packagedElement xmi:type="uml:Class" xmi:id="EAID_81F80DB7_752B_450d_8B68_730468E3D43B" name="http://www.w3.org/2004/02/skos/core#Concept"/>
+					<packagedElement xmi:type="uml:Class" xmi:id="EAID_539407A3_A221_4f35_A1FC_5C23367DDE68" name="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+					<packagedElement xmi:type="uml:DataType" xmi:id="EAID_B565F19C_CD06_74F5_9BBF_531BD7028F3B" name="PackageInformation">
+						<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_BB5179CF_64AC_D59C_BB8D_CFAA2C554362" name="prefix">
+							<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000039_64AC_D59C_BB8D_CFAA2C554362" value="1"/>
+							<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000040_64AC_D59C_BB8D_CFAA2C554362" value="1"/>
+							<defaultValue xmi:type="uml:LiteralString" xmi:id="EAID_LI000041_64AC_D59C_BB8D_CFAA2C554362" value="skos"/>
+							<type xmi:idref="EAJava_String"/>
+						</ownedAttribute>
+					</packagedElement>
+				</packagedElement>
+			</packagedElement>
+		</packagedElement>
+	</uml:Model>
+	<xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+		<elements>
+			<element xmi:idref="EAPK_33D71719_6B3F_45e6_B1A8_297A7E9FD426" xmi:type="uml:Package" name="CDIFModels" scope="public">
+				<model package2="EAID_33D71719_6B3F_45e6_B1A8_297A7E9FD426" package="EAPK_C014FF4D_DFA6_4b72_BE01_CE2B12F495E4" tpos="0" ea_localid="7" ea_eleType="package"/>
+				<properties isSpecification="false" sType="Package" nType="0" scope="public"/>
+				<project author="wackerow" version="1.0" phase="1.0" created="2026-04-07 19:12:00" modified="2026-04-07 19:12:00" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs value="$XREFPROP=$XID={CE56352B-0964-4229-88B0-28A13A1FE23D}$XID;$NAM=CustomProperties$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@PROP=@NAME=URI@ENDNAME;@TYPE=String@ENDTYPE;@VALU=https://w3id.org/cdif/@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={33D71719-6B3F-45e6-B1A8-297A7E9FD426}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<extendedProperties tagged="0" package_name="Model"/>
+				<packageproperties version="1.0"/>
+				<paths/>
+				<times created="2026-04-07 19:12:00" modified="2026-04-07 19:12:00"/>
+				<flags iscontrolled="0" isprotected="0" usedtd="0" logxml="0" packageFlags="isModel=1;VICON=3;"/>
+			</element>
+			<element xmi:idref="EAID_9BBF531B_D702_8F3B_897A_4D65B23C00F9" xmi:type="uml:DataType" name="PackageInformation" scope="public">
+				<model package="EAPK_33D71719_6B3F_45e6_B1A8_297A7E9FD426" tpos="0" ea_localid="27" ea_eleType="element"/>
+				<properties documentation="Definition&#xA;==========&#xA;Attributes for the model identification with constant values." isSpecification="false" sType="DataType" nType="0" scope="public" isRoot="false" isLeaf="false" isAbstract="false"/>
+				<project author="wackerow" version="1.0" phase="1.0" created="2026-04-07 20:56:09" modified="2026-04-07 20:56:09" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs/>
+				<extendedProperties tagged="0" package_name="CDIFModels"/>
+				<attributes>
+					<attribute xmi:idref="EAID_BB8DCFAA_2C55_4362_8318_A85FFE1E6FFE" name="prefix" scope="Public">
+						<initial body="cdif"/>
+						<documentation/>
+						<model ea_localid="23" ea_guid="{BB8DCFAA-2C55-4362-8318-A85FFE1E6FFE}"/>
+						<properties type="String" derived="0" precision="0" collection="false" length="0" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0" scale="0"/>
+						<containment containment="Not Specified" position="7"/>
+						<stereotype/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+				</attributes>
+			</element>
+			<element xmi:idref="EAPK_6A3F4BB5_9C84_48cd_AE51_15952D687E9E" xmi:type="uml:Package" name="CDIF" scope="public">
+				<model package2="EAID_6A3F4BB5_9C84_48cd_AE51_15952D687E9E" package="EAPK_33D71719_6B3F_45e6_B1A8_297A7E9FD426" tpos="0" ea_localid="8" ea_eleType="package"/>
+				<properties isSpecification="false" sType="Package" nType="0" scope="public"/>
+				<project author="wackerow" version="1.0" phase="1.0" created="2026-04-07 19:12:54" modified="2026-04-07 19:12:54" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs/>
+				<extendedProperties tagged="0" package_name="CDIFModels"/>
+				<packageproperties version="1.0"/>
+				<paths/>
+				<times created="2026-04-07 19:12:53" modified="2026-04-07 19:12:53"/>
+				<flags iscontrolled="0" isprotected="0" usedtd="0" logxml="0"/>
+			</element>
+			<element xmi:idref="EAPK_9FA04D7C_F4BC_1B05_B645_E4E2C18FAA15" xmi:type="uml:Package" name="CDIFCodelist" scope="public">
+				<model package2="EAID_9FA04D7C_F4BC_1B05_B645_E4E2C18FAA15" package="EAPK_6A3F4BB5_9C84_48cd_AE51_15952D687E9E" tpos="0" ea_localid="2" ea_eleType="package"/>
+				<properties documentation="SKOS UML Model&#xA;&#xA;according to:&#xA;&#xA;D2.3: Cross-Domain Interoperability Framework (CDIF)&#xA;(Report Synthesising Recommendations for Disciplines and Cross-Disciplinary Research Areas)&#xA;https://doi.org/10.5281/zenodo.11236871&#xA;Section 6.5. Controlled vocabularies, p70-74.&#xA;" isSpecification="false" sType="Package" nType="0" scope="public"/>
+				<project author="wackerow" version="1.0" phase="1.0" created="2026-03-11 16:27:40" modified="2026-04-07 19:14:02" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs value="$XREFPROP=$XID={9C7DC2F2-D7F6-12C1-8FF1-8CA57572AB94}$XID;$NAM=CustomProperties$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@PROP=@NAME=URI@ENDNAME;@TYPE=String@ENDTYPE;@VALU=https://w3id.org/cdif/codelist/1.0/xmi/@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={9FA04D7C-F4BC-1B05-B645-E4E2C18FAA15}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<extendedProperties tagged="0" package_name="CDIF"/>
+				<packageproperties version="1.0" tpos="0"/>
+				<paths/>
+				<times created="2026-03-11 16:27:40" modified="2026-04-06 17:25:51"/>
+				<flags iscontrolled="0" isprotected="0" batchsave="0" batchload="0" usedtd="0" logxml="0"/>
+			</element>
+			<element xmi:idref="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9" xmi:type="uml:Class" name="Concept" scope="public">
+				<model package="EAPK_9FA04D7C_F4BC_1B05_B645_E4E2C18FAA15" tpos="0" ea_localid="7" ea_eleType="element"/>
+				<properties documentation="Definition&#xA;==========&#xA;The class skos:Concept is the class of SKOS concepts.&#xA;&#xA;A SKOS concept can be viewed as an idea or notion; a unit of thought. However, what constitutes a unit of thought is subjective, and this definition is meant to be suggestive, rather than restrictive.&#xA;&#xA;The notion of a SKOS concept is useful when describing the conceptual or intellectual structure of a knowledge organization system, and when referring to specific ideas or meanings established within a KOS.&#xA;&#xA;Note that, because SKOS is designed to be a vehicle for representing semi-formal KOS, such as thesauri and classification schemes, a certain amount of flexibility has been built in to the formal definition of this class.&#xA;&#xA;See the SKOS primer [https://www.w3.org/TR/skos-primer/] for more examples of identifying and describing SKOS concepts.&#xA;" isSpecification="false" sType="Class" nType="0" scope="public" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
+				<project author="wackerow" version="1.0" phase="1.0" created="2026-03-11 16:29:03" modified="2026-04-07 20:55:15" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs/>
+				<extendedProperties tagged="0" package_name="CDIFCodelist"/>
+				<attributes>
+					<attribute xmi:idref="EAID_96363ED0_E412_7820_B248_752D944DA78F" name="altLabel" scope="Public">
+						<initial/>
+						<documentation value="The altLabel property makes it possible to assign an alternative lexical label to a concept. The label provides the strongest clues as to the meaning of a SKOS concept. A lexical label is a string of UNICODE characters, such as &quot;romantic love&quot;, in a given natural language, such as English. A resource has no more than one value of prefLabel per language property.&#xA;https://www.w3.org/TR/skos-reference/#altLabel"/>
+						<model ea_localid="2" ea_guid="{96363ED0-E412-7820-B248-752D944DA78F}"/>
+						<properties type="LanguageString" precision="0" collection="false" length="0" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0" scale="0"/>
+						<containment containment="Not Specified" position="1"/>
+						<stereotype/>
+						<bounds lower="0" upper="*"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;union=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_A336D238_68F9_0E65_87F1_D98233D139DA" name="definition" scope="Public">
+						<initial/>
+						<documentation value="Definition supplies a complete explanation of the intended meaning of a concept.&#xA;https://www.w3.org/TR/skos-reference/#definition"/>
+						<model ea_localid="4" ea_guid="{A336D238-68F9-0E65-87F1-D98233D139DA}"/>
+						<properties type="LanguageString" precision="0" collection="false" length="0" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0" scale="0"/>
+						<containment containment="Not Specified" position="3"/>
+						<stereotype/>
+						<bounds lower="1" upper="*"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;union=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_88454ADA_F8FA_5045_8185_42D9885699BE" name="identifier" scope="Public">
+						<initial/>
+						<documentation value="Globally unique, resolvable URI."/>
+						<model ea_localid="5" ea_guid="{88454ADA-F8FA-5045-8185-42D9885699BE}"/>
+						<properties precision="0" collection="false" length="0" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0" scale="0"/>
+						<containment containment="Not Specified" position="4"/>
+						<stereotype/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;union=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_A90B55D9_36BC_6972_8E67_37CCA60AB821" name="notation" scope="Public">
+						<initial/>
+						<documentation value="A notation is a string of characters such as &quot;T58.5&quot; or &quot;303.4833&quot; used to uniquely identify a concept within the scope of a given concept scheme. A notation is different from a lexical label in that a notation is not normally recognizable as a word or sequence of words in any natural language. This property is used to assign a notation as a typed literal.&#xA;https://www.w3.org/TR/skos-reference/#notation"/>
+						<model ea_localid="3" ea_guid="{A90B55D9-36BC-6972-8E67-37CCA60AB821}"/>
+						<properties type="String" precision="0" collection="false" length="0" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0" scale="0"/>
+						<containment containment="Not Specified" position="2"/>
+						<stereotype/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;union=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_A48E487C_7891_4EC4_B178_C359588F017E" name="prefLabel" scope="Public">
+						<initial/>
+						<documentation value="The prefLabel property makes it possible to assign a preferred lexical label to a resource. The label provides the strongest clues as to the meaning of a SKOS concept. A lexical label is a string of UNICODE characters, such as &quot;romantic love&quot;, in a given natural language, such as English. A resource has no more than one value of prefLabel per language property.&#xA;https://www.w3.org/TR/skos-reference/#prefLabel"/>
+						<model ea_localid="1" ea_guid="{A48E487C-7891-4EC4-B178-C359588F017E}"/>
+						<properties type="LanguageString" precision="0" collection="false" length="0" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0" scale="0"/>
+						<containment containment="Not Specified" position="0"/>
+						<stereotype/>
+						<bounds lower="1" upper="*"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;union=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+				</attributes>
+				<links>
+					<Dependency xmi:id="EAID_7CADDCBD_63EE_452f_BAAB_66620EDBF6CC" start="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9" end="EAID_81F80DB7_752B_450d_8B68_730468E3D43B"/>
+					<Association xmi:id="EAID_912C11F0_069F_894F_BB19_349083334DC9" start="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9" end="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9"/>
+					<Association xmi:id="EAID_9E39E2E2_5EB9_FA8B_982C_0F2A66F187C1" start="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9" end="EAID_912A3DF4_8D6D_21FB_A1C9_75B04BF5F0D2"/>
+					<Association xmi:id="EAID_A2EB3BCE_4CBB_0DFB_B995_C7F69479BB53" start="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9" end="EAID_912A3DF4_8D6D_21FB_A1C9_75B04BF5F0D2"/>
+					<Association xmi:id="EAID_B12AE366_0FBC_7F72_8192_FFD73E53F604" start="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9" end="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9"/>
+					<Association xmi:id="EAID_912C11F0_069F_894F_BB19_349083334DC9" start="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9" end="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9"/>
+					<Association xmi:id="EAID_977C6DBF_CECA_A94A_A9C5_DBF908C578A8" start="EAID_912A3DF4_8D6D_21FB_A1C9_75B04BF5F0D2" end="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9"/>
+					<Association xmi:id="EAID_B12AE366_0FBC_7F72_8192_FFD73E53F604" start="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9" end="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9"/>
+				</links>
+			</element>
+			<element xmi:idref="EAID_912A3DF4_8D6D_21FB_A1C9_75B04BF5F0D2" xmi:type="uml:Class" name="ConceptScheme" scope="public">
+				<model package="EAPK_9FA04D7C_F4BC_1B05_B645_E4E2C18FAA15" tpos="0" ea_localid="8" ea_eleType="element"/>
+				<properties documentation="Definition&#xA;==========&#xA;A SKOS concept scheme can be viewed as an aggregation of one or more SKOS concepts. Semantic relationships (links) between those concepts may also be viewed as part of a concept scheme. This definition is, however, meant to be suggestive rather than restrictive, and there is some flexibility in the formal data model stated below.&#xA;&#xA;The notion of a concept scheme is useful when dealing with data from an unknown source, and when dealing with data that describes two or more different knowledge organization systems.&#xA;&#xA;See the SKOS primer [https://www.w3.org/TR/skos-primer/] for more examples of identifying and describing concept schemes.&#xA;" isSpecification="false" sType="Class" nType="0" scope="public" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
+				<project author="wackerow" version="1.0" phase="1.0" created="2026-03-11 16:58:49" modified="2026-04-07 20:55:15" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs/>
+				<extendedProperties tagged="0" package_name="CDIFCodelist"/>
+				<links>
+					<Dependency xmi:id="EAID_284B1897_D2C1_4c68_AB07_82637AF8F3C8" start="EAID_912A3DF4_8D6D_21FB_A1C9_75B04BF5F0D2" end="EAID_539407A3_A221_4f35_A1FC_5C23367DDE68"/>
+					<Association xmi:id="EAID_977C6DBF_CECA_A94A_A9C5_DBF908C578A8" start="EAID_912A3DF4_8D6D_21FB_A1C9_75B04BF5F0D2" end="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9"/>
+					<Association xmi:id="EAID_9E39E2E2_5EB9_FA8B_982C_0F2A66F187C1" start="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9" end="EAID_912A3DF4_8D6D_21FB_A1C9_75B04BF5F0D2"/>
+					<Association xmi:id="EAID_A2EB3BCE_4CBB_0DFB_B995_C7F69479BB53" start="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9" end="EAID_912A3DF4_8D6D_21FB_A1C9_75B04BF5F0D2"/>
+				</links>
+			</element>
+			<element xmi:idref="EAID_B922786A_B2EA_DA2A_B565_F19CCD0674F5" xmi:type="uml:DataType" name="PackageInformation" scope="public">
+				<model package="EAPK_9FA04D7C_F4BC_1B05_B645_E4E2C18FAA15" tpos="0" ea_localid="15" ea_eleType="element"/>
+				<properties documentation="Definition&#xA;==========&#xA;Attributes for the model identification with constant values." isSpecification="false" sType="DataType" nType="0" scope="public" isRoot="false" isLeaf="false" isAbstract="false"/>
+				<project author="wackerow" version="1.0" phase="1.0" created="2026-04-06 16:37:45" modified="2026-04-06 16:46:45" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs/>
+				<extendedProperties tagged="0" package_name="CDIFCodelist"/>
+				<attributes>
+					<attribute xmi:idref="EAID_95986CA2_EE3C_D1FE_912D_F77454A9BF12" name="acronym" scope="Public">
+						<initial body="CDIFCodelist"/>
+						<documentation value="Acronym of the model."/>
+						<model ea_localid="7" ea_guid="{95986CA2-EE3C-D1FE-912D-F77454A9BF12}"/>
+						<properties type="String" derived="0" precision="0" collection="false" length="0" static="0" duplicates="0" changeability="frozen"/>
+						<coords ordered="0" scale="0"/>
+						<containment position="0"/>
+						<stereotype/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="IsLiteral=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_A75CFE9C_8BEE_9D29_BA9B_E6241D63C719" name="language" scope="Public">
+						<initial body="en"/>
+						<documentation value="Language of the model."/>
+						<model ea_localid="8" ea_guid="{A75CFE9C-8BEE-9D29-BA9B-E6241D63C719}"/>
+						<properties type="String" derived="0" precision="0" collection="false" length="0" static="0" duplicates="0" changeability="frozen"/>
+						<coords ordered="0" scale="0"/>
+						<containment position="1"/>
+						<stereotype/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="IsLiteral=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_BD6F2191_401A_39C1_AB19_0D43320E1C0A" name="majorVersion" scope="Public">
+						<initial body="1"/>
+						<documentation value="Major version number of the model."/>
+						<model ea_localid="9" ea_guid="{BD6F2191-401A-39C1-AB19-0D43320E1C0A}"/>
+						<properties type="Integer" derived="0" precision="0" collection="false" length="0" static="0" duplicates="0" changeability="frozen"/>
+						<coords ordered="0" scale="0"/>
+						<containment position="2"/>
+						<stereotype/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="IsLiteral=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_A33A996A_598E_98E8_9A47_D06048B6C0DC" name="minorVersion" scope="Public">
+						<initial body="0"/>
+						<documentation value="Minor version number of the model."/>
+						<model ea_localid="10" ea_guid="{A33A996A-598E-98E8-9A47-D06048B6C0DC}"/>
+						<properties type="Integer" derived="0" precision="0" collection="false" length="0" static="0" duplicates="0" changeability="frozen"/>
+						<coords ordered="0" scale="0"/>
+						<containment position="3"/>
+						<stereotype/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="IsLiteral=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_E66C01CB_235F_4ca3_BB51_79CF64ACD59C" name="prefix" scope="Public">
+						<initial body="cdifcl"/>
+						<documentation/>
+						<model ea_localid="14" ea_guid="{E66C01CB-235F-4ca3-BB51-79CF64ACD59C}"/>
+						<properties type="String" collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="7"/>
+						<stereotype/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_8FC5EF97_B9A3_3466_9574_79BC8B565FBD" name="subtitle" scope="Public">
+						<initial/>
+						<documentation value="Subtitle of the model."/>
+						<model ea_localid="11" ea_guid="{8FC5EF97-B9A3-3466-9574-79BC8B565FBD}"/>
+						<properties type="String" derived="0" precision="0" collection="false" length="0" static="0" duplicates="0" changeability="frozen"/>
+						<coords ordered="0" scale="0"/>
+						<containment position="4"/>
+						<stereotype/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="IsLiteral=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_AB4C3AD5_CE0F_D309_B6B7_A4E02F33ECFC" name="title" scope="Public">
+						<initial body="CDIF Codelist Profile"/>
+						<documentation value="Title of the model."/>
+						<model ea_localid="12" ea_guid="{AB4C3AD5-CE0F-D309-B6B7-A4E02F33ECFC}"/>
+						<properties type="String" derived="0" precision="0" collection="false" length="0" static="0" duplicates="0" changeability="frozen"/>
+						<coords ordered="0" scale="0"/>
+						<containment position="5"/>
+						<stereotype/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="IsLiteral=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_B0B928C5_472F_2995_A6BB_8FD39B8310F4" name="uri" scope="Public">
+						<initial/>
+						<documentation value="URI of the specification."/>
+						<model ea_localid="13" ea_guid="{B0B928C5-472F-2995-A6BB-8FD39B8310F4}"/>
+						<properties type="String" derived="0" precision="0" collection="false" length="0" static="0" duplicates="0" changeability="frozen"/>
+						<coords ordered="0" scale="0"/>
+						<containment position="6"/>
+						<stereotype/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="IsLiteral=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+				</attributes>
+			</element>
+			<element xmi:idref="EAPK_A602AA76_DAEE_284E_86AF_11241205C72A" xmi:type="uml:Package" name="DataTypes" scope="public">
+				<model package2="EAID_A602AA76_DAEE_284E_86AF_11241205C72A" package="EAPK_9FA04D7C_F4BC_1B05_B645_E4E2C18FAA15" tpos="0" ea_localid="3" ea_eleType="package"/>
+				<properties isSpecification="false" sType="Package" nType="0" scope="public"/>
+				<project author="wackerow" version="1.0" phase="1.0" created="2026-03-11 17:32:06" modified="2026-03-11 17:32:06" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs/>
+				<extendedProperties tagged="0" package_name="CDIFCodelist"/>
+				<packageproperties version="1.0" tpos="0"/>
+				<paths/>
+				<times created="2026-03-11 17:32:06" modified="2026-03-11 17:32:06"/>
+				<flags iscontrolled="0" isprotected="0" batchsave="0" batchload="0" usedtd="0" logxml="0"/>
+			</element>
+			<element xmi:idref="EAID_B0EEDE24_64A2_DBB3_A8F1_DC4A703B2C4B" xmi:type="uml:DataType" name="LanguageString" scope="public">
+				<model package="EAPK_A602AA76_DAEE_284E_86AF_11241205C72A" tpos="0" ea_localid="9" ea_eleType="element"/>
+				<properties isSpecification="false" sType="DataType" nType="0" scope="public" isRoot="false" isLeaf="false" isAbstract="false"/>
+				<project author="wackerow" version="1.0" phase="1.0" created="2026-03-11 17:32:39" modified="2026-03-11 17:32:39" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs/>
+				<extendedProperties tagged="0" package_name="DataTypes"/>
+				<attributes>
+					<attribute xmi:idref="EAID_B14E6D6E_1874_EEE9_9497_BF9D35801C98" name="language" scope="Public">
+						<initial/>
+						<documentation/>
+						<model ea_localid="6" ea_guid="{B14E6D6E-1874-EEE9-9497-BF9D35801C98}"/>
+						<properties type="XsdLanguage" precision="0" collection="false" length="0" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0" scale="0"/>
+						<containment containment="Not Specified" position="0"/>
+						<stereotype/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+				</attributes>
+			</element>
+			<element xmi:idref="EAPK_B39E0775_4363_2EC2_9776_0D7806B2A768" xmi:type="uml:Package" name="XMLSchemaDataTypes" scope="public">
+				<model package2="EAID_B39E0775_4363_2EC2_9776_0D7806B2A768" package="EAPK_A602AA76_DAEE_284E_86AF_11241205C72A" tpos="0" ea_localid="4" ea_eleType="package"/>
+				<properties documentation="This package contains the datatypes as defined in the W3C XML Schema specifications (https://www.w3.org/XML/Schema)." isSpecification="false" sType="Package" nType="0" scope="public"/>
+				<project author="wackerow" version="1.0" phase="1.0" created="2026-03-11 17:41:54" modified="2026-03-11 17:41:54" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs/>
+				<extendedProperties tagged="0" package_name="DataTypes"/>
+				<packageproperties version="1.0" tpos="0"/>
+				<paths/>
+				<times created="2026-03-11 17:41:54" modified="2026-03-11 17:41:54"/>
+				<flags iscontrolled="0" isprotected="0" batchsave="0" batchload="0" usedtd="0" logxml="0"/>
+			</element>
+			<element xmi:idref="EAID_81E17C6E_A607_6359_B848_8300AE1DA40E" xmi:type="uml:PrimitiveType" name="XsdLanguage" scope="public">
+				<model package="EAPK_B39E0775_4363_2EC2_9776_0D7806B2A768" tpos="0" ea_localid="13" ea_eleType="element"/>
+				<properties documentation="Definition&#xA;============&#xA;Derived data type &quot;language&quot; of the XML Schema data types.&#xA;&#xA;Definition from XML Schema Part 2: Datatypes Second Edition:&#xA;&quot;language&quot; represents natural language identifiers as defined by by [RFC 3066]. The value space of &quot;language&quot; is the set of all strings that are valid language identifiers as defined [RFC 3066] . The lexical space of language is the set of all strings that conform to the pattern [a-zA-Z]{1,8}(-[a-zA-Z0-9]{1,8})*. The base type of &quot;language&quot; is token. https://www.w3.org/TR/xmlschema-2/#language." isSpecification="false" sType="PrimitiveType" nType="0" scope="public" isRoot="false" isLeaf="false" isAbstract="false"/>
+				<project author="wackerow" version="1.0" phase="1.0" created="2026-03-11 17:41:54" modified="2026-03-11 17:41:54" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs/>
+				<extendedProperties tagged="0" package_name="XMLSchemaDataTypes"/>
+			</element>
+			<element xmi:idref="EAID_8BEE040B_98F6_BE7C_B2A1_AE6FFEBBCC30" xmi:type="uml:PrimitiveType" name="XsdAnyUri" scope="public">
+				<model package="EAPK_B39E0775_4363_2EC2_9776_0D7806B2A768" tpos="0" ea_localid="11" ea_eleType="element"/>
+				<properties documentation="Definition&#xA;============&#xA;Primitive data type &quot;anyURI&quot; of the XML Schema data types.&#xA;&#xA;Definition from XML Schema Part 2: Datatypes Second Edition:&#xA;&quot;anyURI&quot; represents a Uniform Resource Identifier Reference (URI). An &quot;anyURI&quot; value can be absolute or relative, and may have an optional fragment identifier (i.e., it may be a URI Reference). This type should be used to specify the intention that the value fulfills the role of a URI as defined by [RFC 2396], as amended by [RFC 2732]. For details see https://www.w3.org/TR/xmlschema-2/#anyURI." isSpecification="false" sType="PrimitiveType" nType="0" scope="public" isRoot="false" isLeaf="false" isAbstract="false"/>
+				<project author="wackerow" version="1.0" phase="1.0" created="2026-03-11 17:41:54" modified="2026-03-11 17:41:54" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs/>
+				<extendedProperties tagged="0" package_name="XMLSchemaDataTypes"/>
+			</element>
+			<element xmi:idref="EAPK_BC106B18_6C83_42a1_82C0_0798FE61B2DD" xmi:type="uml:Package" name="Context" scope="public">
+				<model package2="EAID_BC106B18_6C83_42a1_82C0_0798FE61B2DD" package="EAPK_33D71719_6B3F_45e6_B1A8_297A7E9FD426" tpos="0" ea_localid="9" ea_eleType="package"/>
+				<properties isSpecification="false" sType="Package" nType="0" scope="public"/>
+				<project author="wackerow" version="1.0" phase="1.0" created="2026-04-07 19:13:08" modified="2026-04-07 19:13:08" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs/>
+				<extendedProperties tagged="0" package_name="CDIFModels"/>
+				<packageproperties version="1.0"/>
+				<paths/>
+				<times created="2026-04-07 19:13:08" modified="2026-04-07 19:13:08"/>
+				<flags iscontrolled="0" isprotected="0" usedtd="0" logxml="0"/>
+			</element>
+			<element xmi:idref="EAPK_54E481AB_0B7D_4159_9B9F_5B8A38438DF8" xmi:type="uml:Package" name="SKOSProxy" scope="public">
+				<model package2="EAID_54E481AB_0B7D_4159_9B9F_5B8A38438DF8" package="EAPK_BC106B18_6C83_42a1_82C0_0798FE61B2DD" tpos="0" ea_localid="10" ea_eleType="package"/>
+				<properties isSpecification="false" sType="Package" nType="0" scope="public"/>
+				<project author="wackerow" version="1.0" phase="1.0" created="2026-04-07 19:14:17" modified="2026-04-07 19:14:17" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs value="$XREFPROP=$XID={EEEBE9C5-A8AE-4912-A632-DD4910A91AAF}$XID;$NAM=CustomProperties$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@PROP=@NAME=URI@ENDNAME;@TYPE=String@ENDTYPE;@VALU=http://www.w3.org/2004/02/skos/core#@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={54E481AB-0B7D-4159-9B9F-5B8A38438DF8}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<extendedProperties tagged="0" package_name="Context"/>
+				<packageproperties version="1.0"/>
+				<paths/>
+				<times created="2026-04-07 19:14:17" modified="2026-04-07 19:14:17"/>
+				<flags iscontrolled="0" isprotected="0" usedtd="0" logxml="0"/>
+			</element>
+			<element xmi:idref="EAID_81F80DB7_752B_450d_8B68_730468E3D43B" xmi:type="uml:Class" name="http://www.w3.org/2004/02/skos/core#Concept" scope="public">
+				<model package="EAPK_54E481AB_0B7D_4159_9B9F_5B8A38438DF8" tpos="0" ea_localid="20" ea_eleType="element"/>
+				<properties documentation="http://www.w3.org/2004/02/skos/core#Concept" isSpecification="false" sType="Class" nType="0" scope="public" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
+				<project author="wackerow" version="1.0" phase="1.0" created="2026-04-07 19:15:36" modified="2026-04-12 17:56:29" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs/>
+				<extendedProperties tagged="0" package_name="SKOSProxy"/>
+				<links>
+					<Dependency xmi:id="EAID_7CADDCBD_63EE_452f_BAAB_66620EDBF6CC" start="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9" end="EAID_81F80DB7_752B_450d_8B68_730468E3D43B"/>
+				</links>
+			</element>
+			<element xmi:idref="EAID_539407A3_A221_4f35_A1FC_5C23367DDE68" xmi:type="uml:Class" name="http://www.w3.org/2004/02/skos/core#ConceptScheme" scope="public">
+				<model package="EAPK_54E481AB_0B7D_4159_9B9F_5B8A38438DF8" tpos="0" ea_localid="21" ea_eleType="element"/>
+				<properties documentation="http://www.w3.org/2004/02/skos/core#ConceptScheme" isSpecification="false" sType="Class" nType="0" scope="public" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
+				<project author="wackerow" version="1.0" phase="1.0" created="2026-04-07 19:15:42" modified="2026-04-12 17:56:54" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs/>
+				<extendedProperties tagged="0" package_name="SKOSProxy"/>
+				<links>
+					<Dependency xmi:id="EAID_284B1897_D2C1_4c68_AB07_82637AF8F3C8" start="EAID_912A3DF4_8D6D_21FB_A1C9_75B04BF5F0D2" end="EAID_539407A3_A221_4f35_A1FC_5C23367DDE68"/>
+				</links>
+			</element>
+			<element xmi:idref="EAID_B565F19C_CD06_74F5_9BBF_531BD7028F3B" xmi:type="uml:DataType" name="PackageInformation" scope="public">
+				<model package="EAPK_54E481AB_0B7D_4159_9B9F_5B8A38438DF8" tpos="0" ea_localid="23" ea_eleType="element"/>
+				<properties documentation="Definition&#xA;==========&#xA;Attributes for the model identification with constant values." isSpecification="false" sType="DataType" nType="0" scope="public" isRoot="false" isLeaf="false" isAbstract="false"/>
+				<project author="wackerow" version="1.0" phase="1.0" created="2026-04-07 19:42:05" modified="2026-04-07 19:42:05" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs/>
+				<extendedProperties tagged="0" package_name="SKOSProxy"/>
+				<attributes>
+					<attribute xmi:idref="EAID_BB5179CF_64AC_D59C_BB8D_CFAA2C554362" name="prefix" scope="Public">
+						<initial body="skos"/>
+						<documentation/>
+						<model ea_localid="19" ea_guid="{BB5179CF-64AC-D59C-BB8D-CFAA2C554362}"/>
+						<properties type="String" derived="0" precision="0" collection="false" length="0" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0" scale="0"/>
+						<containment containment="Not Specified" position="7"/>
+						<stereotype/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+				</attributes>
+			</element>
+		</elements>
+		<connectors>
+			<connector xmi:idref="EAID_7CADDCBD_63EE_452f_BAAB_66620EDBF6CC" name="dependsOn">
+				<source xmi:idref="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9">
+					<model ea_localid="7" type="Class" name="Concept"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</source>
+				<target xmi:idref="EAID_81F80DB7_752B_450d_8B68_730468E3D43B">
+					<model ea_localid="20" type="Class" name="http://www.w3.org/2004/02/skos/core#Concept"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="true"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</target>
+				<model ea_localid="16"/>
+				<properties ea_type="Dependency" direction="Source -&gt; Destination"/>
+				<documentation/>
+				<appearance linemode="3" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
+				<labels mt="dependsOn"/>
+				<extendedProperties/>
+				<style/>
+				<xrefs/>
+				<tags/>
+			</connector>
+			<connector xmi:idref="EAID_912C11F0_069F_894F_BB19_349083334DC9" name="narrower">
+				<source xmi:idref="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9">
+					<model ea_localid="7" type="Class" name="Concept"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type multiplicity="0..1" aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</source>
+				<target xmi:idref="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9">
+					<model ea_localid="7" type="Class" name="Concept"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type multiplicity="0..1" aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="true"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</target>
+				<model ea_localid="6"/>
+				<properties ea_type="Association" direction="Source -&gt; Destination"/>
+				<modifiers isRoot="false" isLeaf="false"/>
+				<parameterSubstitutions/>
+				<documentation value="https://www.w3.org/TR/skos-reference/#narrower"/>
+				<appearance linemode="3" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
+				<labels lb="0..1" mt="narrower" rb="0..1"/>
+				<extendedProperties/>
+				<style/>
+				<xrefs/>
+				<tags/>
+			</connector>
+			<connector xmi:idref="EAID_9E39E2E2_5EB9_FA8B_982C_0F2A66F187C1" name="inScheme">
+				<source xmi:idref="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9">
+					<model ea_localid="7" type="Class" name="Concept"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</source>
+				<target xmi:idref="EAID_912A3DF4_8D6D_21FB_A1C9_75B04BF5F0D2">
+					<model ea_localid="8" type="Class" name="ConceptScheme"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="true"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</target>
+				<model ea_localid="3"/>
+				<properties ea_type="Association" direction="Source -&gt; Destination"/>
+				<modifiers isRoot="false" isLeaf="false"/>
+				<parameterSubstitutions/>
+				<documentation value="https://www.w3.org/TR/skos-reference/#inScheme"/>
+				<appearance linemode="3" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
+				<labels mt="inScheme"/>
+				<extendedProperties/>
+				<style/>
+				<xrefs/>
+				<tags/>
+			</connector>
+			<connector xmi:idref="EAID_A2EB3BCE_4CBB_0DFB_B995_C7F69479BB53" name="topConceptOf">
+				<source xmi:idref="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9">
+					<model ea_localid="7" type="Class" name="Concept"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</source>
+				<target xmi:idref="EAID_912A3DF4_8D6D_21FB_A1C9_75B04BF5F0D2">
+					<model ea_localid="8" type="Class" name="ConceptScheme"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="true"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</target>
+				<model ea_localid="4"/>
+				<properties ea_type="Association" direction="Source -&gt; Destination"/>
+				<modifiers isRoot="false" isLeaf="false"/>
+				<parameterSubstitutions/>
+				<documentation value="https://www.w3.org/TR/skos-reference/#topConceptOf"/>
+				<appearance linemode="3" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
+				<labels mt="topConceptOf"/>
+				<extendedProperties/>
+				<style/>
+				<xrefs/>
+				<tags/>
+			</connector>
+			<connector xmi:idref="EAID_B12AE366_0FBC_7F72_8192_FFD73E53F604" name="broader">
+				<source xmi:idref="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9">
+					<model ea_localid="7" type="Class" name="Concept"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type multiplicity="0..1" aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</source>
+				<target xmi:idref="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9">
+					<model ea_localid="7" type="Class" name="Concept"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type multiplicity="0..1" aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="true"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</target>
+				<model ea_localid="5"/>
+				<properties ea_type="Association" direction="Source -&gt; Destination"/>
+				<modifiers isRoot="false" isLeaf="false"/>
+				<parameterSubstitutions/>
+				<documentation value="https://www.w3.org/TR/skos-reference/#broader"/>
+				<appearance linemode="3" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
+				<labels lb="0..1" mt="broader" rb="0..1"/>
+				<extendedProperties/>
+				<style/>
+				<xrefs/>
+				<tags/>
+			</connector>
+			<connector xmi:idref="EAID_977C6DBF_CECA_A94A_A9C5_DBF908C578A8" name="hasTopConcept">
+				<source xmi:idref="EAID_912A3DF4_8D6D_21FB_A1C9_75B04BF5F0D2">
+					<model ea_localid="8" type="Class" name="ConceptScheme"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</source>
+				<target xmi:idref="EAID_99816CEE_DF49_90BE_93EF_F3FA41644CF9">
+					<model ea_localid="7" type="Class" name="Concept"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="true"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</target>
+				<model ea_localid="7"/>
+				<properties ea_type="Association" direction="Source -&gt; Destination"/>
+				<modifiers isRoot="false" isLeaf="false"/>
+				<parameterSubstitutions/>
+				<documentation value="https://www.w3.org/TR/skos-reference/#hasTopConcept"/>
+				<appearance linemode="3" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
+				<labels mt="hasTopConcept"/>
+				<extendedProperties/>
+				<style/>
+				<xrefs/>
+				<tags/>
+			</connector>
+			<connector xmi:idref="EAID_284B1897_D2C1_4c68_AB07_82637AF8F3C8" name="dependsOn">
+				<source xmi:idref="EAID_912A3DF4_8D6D_21FB_A1C9_75B04BF5F0D2">
+					<model ea_localid="8" type="Class" name="ConceptScheme"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</source>
+				<target xmi:idref="EAID_539407A3_A221_4f35_A1FC_5C23367DDE68">
+					<model ea_localid="21" type="Class" name="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="true"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</target>
+				<model ea_localid="17"/>
+				<properties ea_type="Dependency" direction="Source -&gt; Destination"/>
+				<documentation/>
+				<appearance linemode="3" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
+				<labels mt="dependsOn"/>
+				<extendedProperties/>
+				<style/>
+				<xrefs/>
+				<tags/>
+			</connector>
+		</connectors>
+		<primitivetypes>
+			<packagedElement xmi:type="uml:Package" xmi:id="EAPrimitiveTypesPackage" name="EA_PrimitiveTypes_Package">
+				<packagedElement xmi:type="uml:Package" xmi:id="EAJavaTypesPackage" name="EA_Java_Types_Package">
+					<packagedElement xmi:type="uml:PrimitiveType" xmi:id="EAJava_String" name="String"/>
+					<packagedElement xmi:type="uml:PrimitiveType" xmi:id="EAJava_Integer" name="Integer"/>
+				</packagedElement>
+			</packagedElement>
+		</primitivetypes>
+		<profiles/>
+	</xmi:Extension>
+</xmi:XMI>
