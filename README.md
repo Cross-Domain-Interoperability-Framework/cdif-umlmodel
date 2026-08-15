@@ -9,4 +9,4 @@ The generatedJSON folder contains JSON schema generated from the UML model, usef
 
 The generatedSHACL folder contains ttl-encoded SHACL rules for validating CDIF metadata instances. 
 
-The HTML folder contains html files and supporting images for the https://Cross-Domain-Interoperability-Framework/cdif.github.io/cdif-umlmodel  web pages.
+The html files and supporting images for the https://Cross-Domain-Interoperability-Framework/cdif.github.io/cdif-umlmodel web pages are on the gh-pages branch in this repository.
