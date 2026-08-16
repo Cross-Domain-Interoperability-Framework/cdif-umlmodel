@@ -1,0 +1,1 @@
+put tools for UML to JSON schema and SHACL rule generation here
