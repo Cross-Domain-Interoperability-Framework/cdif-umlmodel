@@ -172,6 +172,7 @@ tools/
 ├── FrameAndValidate.py            workflow 1 (frame + JSON Schema)
 ├── ShaclJSONLDContext.py          workflow 2 (SHACL)
 ├── ConformanceValidate.py         workflow 3 (resolve conformsTo → schema + SHACL)
+├── detect_conformance.py          content-derived conformance detection (FrameAndValidate --conformance)
 ├── CDIF-frame-2026.jsonld         JSON-LD frame (graph → tree)
 ├── CDIF-context-2026.jsonld       authoring context (prefix-free authoring)
 ├── CDIFDiscoverySchema.json       framed-tree schema: discovery
@@ -195,9 +196,19 @@ tools/
 - `FrameAndValidate.py` is the normative, sync-managed script from the `validation`
   repository (`validation/tools/FrameAndValidate.py`); edit it there and re-mirror
   rather than editing the copy here.
-- `FrameAndValidate.py --conformance` (content-derived conformance detection) is a
-  no-op in this mirror: it depends on `detect_conformance.py` and the building-block
-  `_sources` tree, which are not copied here. Use the `validation` repository for
-  that workflow.
+- `FrameAndValidate.py --conformance` (content-derived conformance detection) works
+  in this mirror. `detect_conformance.py` is included; when no local building-block
+  `_sources` tree is present it fetches the per-class validity SHACL from the
+  metadataBuildingBlocks repo on GitHub. Pin the git ref with `--bb-ref` (or env
+  `CDIF_BB_REF`, default `main`) for reproducibility, and cache fetches with
+  `--cache-dir`. Needs network access and `requests`. Example:
+
+  ```bash
+  # detect the conformsTo URIs a record should declare, from its content
+  python detect_conformance.py examples/cdifComplete-example.json -v
+
+  # frame a record and write the detected conformsTo into it
+  python FrameAndValidate.py examples/prov-ocean-temp-example.json --conformance -o out.json
+  ```
 - The schemas, shapes, frame, and local map are point-in-time copies of the
   `validation` repo artifacts. Re-copy them when the upstream profiles change.
