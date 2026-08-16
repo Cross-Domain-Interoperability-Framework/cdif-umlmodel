@@ -37,6 +37,20 @@ require framing.
 - `CDIF-context-2026.jsonld` — the authoring context, for writing CDIF documents
   with unprefixed terms (not required to run validation).
 
+## Example instances
+
+Two ready-to-validate CDIF instance documents live in `examples/`; the commands
+below use them so they run as-is:
+
+| File | Profiles declared | Notes |
+|------|-------------------|-------|
+| `examples/prov-ocean-temp-example.json` | core, discovery | Discovery-level record with inline provenance content. |
+| `examples/cdifComplete-example.json` | core, discovery, data description, data structure, provenance, manifest | Full "complete" record exercising every profile. |
+
+Both validate with **no `sh:Violation`** across all three workflows.
+(`prov-ocean-temp-example.json` does surface one `sh:Info` recommendation under
+workflow 2 — advisory only; see the severity note there.)
+
 ---
 
 ## Workflow 1 — validate against a JSON Schema
@@ -45,8 +59,8 @@ require framing.
 a JSON Schema you name with `--schema`.
 
 ```bash
-python FrameAndValidate.py path/to/instance.jsonld -v \
-    --schema CDIFDiscoverySchema.json \
+python FrameAndValidate.py examples/cdifComplete-example.json -v \
+    --schema CDIFCompleteSchema.json \
     --frame CDIF-frame-2026.jsonld
 ```
 
@@ -68,7 +82,7 @@ Pick the schema for the profile you want to check:
 
 ```bash
 # frame only, no validation (inspect the tree the schema will see)
-python FrameAndValidate.py path/to/instance.jsonld -o framed.json
+python FrameAndValidate.py examples/cdifComplete-example.json -o framed.json
 ```
 
 ---
@@ -79,13 +93,13 @@ python FrameAndValidate.py path/to/instance.jsonld -o framed.json
 provide. It reads the JSON-LD straight into an RDF graph (no framing).
 
 ```bash
-python ShaclJSONLDContext.py path/to/instance.jsonld ShaclValidation/CDIF-Discovery-Shapes.ttl
+python ShaclJSONLDContext.py examples/cdifComplete-example.json ShaclValidation/CDIF-Complete-Shapes.ttl
 ```
 
 Positional or named arguments both work; add `-v` for SPARQL-target diagnostics:
 
 ```bash
-python ShaclJSONLDContext.py -d path/to/instance.jsonld -s ShaclValidation/CDIF-Complete-Shapes.ttl -v
+python ShaclJSONLDContext.py -d examples/prov-ocean-temp-example.json -s ShaclValidation/CDIF-Discovery-Shapes.ttl -v
 ```
 
 Available shape sets in `ShaclValidation/`:
@@ -101,6 +115,9 @@ Available shape sets in `ShaclValidation/`:
 
 Exit code is `0` when the graph conforms, `1` otherwise. Per CDIF policy the CLI
 reports all severities; only `sh:Violation` results indicate non-conformance.
+(For example, `prov-ocean-temp-example.json` reports `Conforms: False` but the
+sole result is an `sh:Info` "Recommended: include dcterms:conformsTo…" — advisory,
+not a violation.)
 
 ---
 
@@ -113,10 +130,10 @@ report section per profile.
 
 ```bash
 # authoritative: resolve each profile from the w3id.org/cdif redirector (needs network)
-python ConformanceValidate.py path/to/instance.jsonld --source w3id
+python ConformanceValidate.py examples/cdifComplete-example.json --source w3id
 
 # offline: resolve from local files via conformance-schema-map.json
-python ConformanceValidate.py path/to/instance.jsonld --source local
+python ConformanceValidate.py examples/cdifComplete-example.json --source local
 ```
 
 Two resolution sources:
@@ -161,13 +178,16 @@ tools/
 ├── CDIFDataDescriptionSchema.json framed-tree schema: discovery + data description
 ├── CDIFCompleteSchema.json        framed-tree schema: complete
 ├── conformance-schema-map.json    local URI → schema/SHACL map (workflow 3 --source local)
-└── ShaclValidation/
-    ├── CDIF-Discovery-Shapes.ttl
-    ├── CDIF-DataDescription-Shapes.ttl
-    ├── CDIF-DataStructure-Shapes.ttl
-    ├── CDIF-Provenance-Shapes.ttl
-    ├── CDIF-Manifest-Shapes.ttl
-    └── CDIF-Complete-Shapes.ttl
+├── ShaclValidation/
+│   ├── CDIF-Discovery-Shapes.ttl
+│   ├── CDIF-DataDescription-Shapes.ttl
+│   ├── CDIF-DataStructure-Shapes.ttl
+│   ├── CDIF-Provenance-Shapes.ttl
+│   ├── CDIF-Manifest-Shapes.ttl
+│   └── CDIF-Complete-Shapes.ttl
+└── examples/
+    ├── prov-ocean-temp-example.json   discovery-level sample
+    └── cdifComplete-example.json      complete-profile sample
 ```
 
 ## Notes
