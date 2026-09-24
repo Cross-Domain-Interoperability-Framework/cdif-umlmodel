@@ -1,0 +1,380 @@
+Parsed XMI: 281 uniquely-named classes/datatypes
+
+## ddicdiActivity
+   models: Activity, Command, CommandCode, CommandFile, Parameter, Step
+   MISSING association roles (4):
+      - hasSubActivity -> Activity [0..*]  (from Activity)
+      - hasInternal -> ControlLogic [0..*]  (from Activity)
+      - has -> Step [0..*]  (from Activity)
+      - produces -> Parameter [0..*]  (from Step)
+
+## ddicdiAgent
+   models: Agent
+   MISSING attributes (3):
+      - identifier : Identifier [0..1]  (from Agent)
+      - image : PrivateImage [0..*]  (from Agent)
+      - purpose : InternationalString [0..1]  (from Agent)
+
+## ddicdiCodeList
+   models: AuthorizationSource, Category, CategoryPosition, CategorySet, ClassificationItem, Code, CodeList, CodePosition, Level, LevelStructure, Notation, TypedString
+   MISSING association roles (8):
+      - has -> Agent [0..*]  (from AuthorizationSource)
+      - hasRulingBy -> AuthorizationSource [0..*]  (from ClassificationItem)
+      - references -> CategorySet [0..1]  (from CodeList)
+      - excludes -> ClassificationItem [0..*]  (from ClassificationItem)
+      - uses -> Concept [0..*]  (from Category)
+      - has -> Level [0..*]  (from LevelStructure)
+      - uses -> LevelStructure [0..1]  (from CodeList)
+      - uses -> Notation [1..1]  (from ClassificationItem)
+
+## ddicdiControlledVocabularyEntry
+   models: ControlledVocabularyEntry
+
+## ddicdiDataStore
+   models: CorrespondenceDefinition, DataStore, InstanceVariableMap, LogicalRecordPosition, RecordRelation
+   !! NOT FOUND in XMI: DataStore
+   MISSING association roles (1):
+      - hasTarget -> InstanceVariable [0..*]  (from InstanceVariableMap)
+   BB-only keys (13) — renamed, CDIF-added, or structural:
+      - cdi:aboutMissing
+      - cdi:allowsDuplicates
+      - cdi:characterSet
+      - cdi:dataStoreType
+      - cdi:has
+      - cdi:indexes
+      - cdi:isDefinedBy
+      - cdi:has_LogicalRecord
+      - cdi:has_LogicalRecordPosition
+      - cdi:maps
+      - cdi:name
+      - cdi:recordCount
+      - cdi:has_RecordRelation
+
+## ddicdiDataStructure
+   models: ComponentPosition, DataStructure, DimensionGroup, DimensionalDataStructure, ForeignKey, ForeignKeyComponent, LongDataStructure, PrimaryKey, PrimaryKeyComponent, SpecializationRole, WideDataStructure
+   MISSING association roles (6):
+      - has -> DimensionComponent [1..*]  (from DimensionGroup)
+      - uses -> DimensionGroup [0..*]  (from DimensionalDataStructure)
+      - isComposedOf -> ForeignKeyComponent [1..*]  (from ForeignKey)
+      - isDefinedBy -> RepresentedVariable [0..1]  (from DataStructure)
+      - references -> PrimaryKeyComponent [1]  (from ForeignKeyComponent)
+      - isDefinedBy -> RepresentedVariable [0..1]  (from DataStructure)
+
+## ddicdiDataStructureComponent
+   models: AttributeComponent, DataStructureComponent, DimensionComponent, IdentifierComponent, MeasureComponent, SpecializationRole, VariableDescriptorComponent, VariableValueComponent
+   MISSING association roles (5):
+      - qualifies -> DataStructureComponent [0..*]  (from AttributeComponent)
+      - isDefinedBy -> DescriptorVariable [0..1]  (from VariableDescriptorComponent)
+      - isDefinedBy -> RepresentedVariable [0..1]  (from AttributeComponent)
+      - isStructuredBy -> ValueDomain [0..1]  (from DimensionComponent)
+      - refersTo -> VariableValueComponent [1..1]  (from VariableDescriptorComponent)
+
+## ddicdiDataTypes
+   models: AccessLocation, Address, AgentInRole, CatalogDetails, CombinedDate, ContactInformation, ControlledVocabularyEntry, DateRange, ElectronicMessageSystem, Email, Identifier, IndividualName, InternationalRegistrationDataIdentifier, InternationalString, LabelForDisplay, LanguageString, NonDdiIdentifier, ObjectName, OrganizationName, PairedControlledVocabularyEntry, PrivateImage, Reference, SexSpecification, Telephone, WebLink
+   MISSING attributes (40):
+      - access : AccessInformation [0..*]  (from CatalogDetails)
+      - alternativeTitle : InternationalString [0..*]  (from CatalogDetails)
+      - contributor : AgentInRole [0..*]  (from CatalogDetails)
+      - date : CombinedDate [0..*]  (from CatalogDetails)
+      - deepLink : Selector [0..1]  (from Reference)
+      - Feminine :  [1..1]  (from SexSpecification)
+      - GenderNeutral :  [1..1]  (from SexSpecification)
+      - geographicPoint : SpatialPoint [0..1]  (from Address)
+      - informationSource : InternationalString [0..*]  (from CatalogDetails)
+      - isDdiIdentifierPersistent : Boolean [0..1]  (from Identifier)
+      - isDdiIdentifierUniversallyUnique : Boolean [0..1]  (from Identifier)
+      - isTranslatable : Boolean [0..1]  (from LanguageString)
+      - isTranslated : Boolean [0..1]  (from LanguageString)
+      - languageOfObject : XsdLanguage [0..*]  (from CatalogDetails)
+      - location : InternationalString [0..1]  (from Reference)
+      - locationName : ObjectName [0..1]  (from Address)
+      - Masculine :  [1..1]  (from SexSpecification)
+      - nonDdiReference : NonDdiIdentifier [0..*]  (from Reference)
+      - nonIsoDate : NonIsoDate [0..*]  (from CombinedDate)
+      - provenance : ProvenanceInformation [0..1]  (from CatalogDetails)
+      - publisher : AgentInRole [0..*]  (from CatalogDetails)
+      - regionalCoverage : ControlledVocabularyEntry [0..1]  (from Address)
+      - relatedResource : Reference [0..*]  (from CatalogDetails)
+      - scope : String [0..1]  (from LanguageString)
+      - semantics : ControlledVocabularyEntry [0..1]  (from CombinedDate)
+      - structureUsed : ControlledVocabularyEntry [0..1]  (from LanguageString)
+      - subTitle : InternationalString [0..*]  (from CatalogDetails)
+      - timeZone : ControlledVocabularyEntry [0..1]  (from Address)
+      - translationDate : XsdDate [0..1]  (from LanguageString)
+      - translationSourceLanguage : XsdLanguage [0..*]  (from LanguageString)
+      - type : String [1..1]  (from NonDdiIdentifier)
+      - typeOfLocation : ControlledVocabularyEntry [0..1]  (from Address)
+      - typeOfResource : ControlledVocabularyEntry [0..*]  (from CatalogDetails)
+      - validDates : DateRange [0..1]  (from LabelForDisplay)
+      - validType : String [0..*]  (from Reference)
+      - value : String [1..1]  (from NonDdiIdentifier)
+      - version : String [0..1]  (from NonDdiIdentifier)
+      - versionDate : XsdDate [0..1]  (from Identifier)
+      - versionRationale : RationaleDefinition [0..1]  (from Identifier)
+      - versionResponsibility : AgentInRole [0..1]  (from Identifier)
+   BB-only keys (4) — renamed, CDIF-added, or structural:
+      - cdi:historicDate
+      - cdi:identifierContent
+      - cdi:isUri
+      - cdi:sexCode
+
+## ddicdiEnumerationDomain
+   models: AuthorizationSource, Category, CategoryPosition, CategorySet, ClassificationItem, EnumerationDomain, Level, LevelStructure, Notation, TypedString
+   MISSING association roles (8):
+      - has -> Agent [0..*]  (from AuthorizationSource)
+      - hasRulingBy -> AuthorizationSource [0..*]  (from ClassificationItem)
+      - references -> CategorySet [0..1]  (from EnumerationDomain)
+      - excludes -> ClassificationItem [0..*]  (from ClassificationItem)
+      - uses -> Concept [0..*]  (from Category)
+      - has -> Level [0..*]  (from LevelStructure)
+      - uses -> LevelStructure [0..1]  (from EnumerationDomain)
+      - uses -> Notation [1..1]  (from ClassificationItem)
+
+## ddicdiIndividual
+   models: Individual
+
+## ddicdiInstanceVariable
+   models: ConceptSystem, DataPoint, InstanceVariable, PhysicalSegmentLocation, SentinelConceptualDomain, SubstantiveConceptualDomain, TypedString, UnitType, ValueAndConceptDescription, ValueMapping
+   !! NOT FOUND in XMI: ValueMapping
+   MISSING attributes (2):
+      - function : ControlledVocabularyEntry [0..*]  (from InstanceVariable)
+      - role : ControlledVocabularyEntry [0..*]  (from InstanceVariable)
+   MISSING association roles (11):
+      - has -> Concept [0..*]  (from ConceptSystem)
+      - takesConceptsFrom -> ConceptSystem [0..1]  (from SentinelConceptualDomain)
+      - correspondsTo -> DataStructureComponent [0..*]  (from DataPoint)
+      - isDescribedBy -> InstanceVariable [1..1]  (from DataPoint)
+      - takesSentinelConceptsFrom -> SentinelConceptualDomain [0..1]  (from InstanceVariable)
+      - takesSentinelValuesFrom -> SentinelValueDomain [0..*]  (from InstanceVariable)
+      - isDescribedBy -> StatisticsCollection [0..1]  (from InstanceVariable)
+      - takesSubstantiveConceptsFrom -> SubstantiveConceptualDomain [0..1]  (from InstanceVariable)
+      - takesSubstantiveValuesFrom -> SubstantiveValueDomain [0..1]  (from InstanceVariable)
+      - measures -> UnitType [0..1]  (from InstanceVariable)
+      - isDescribedBy -> ValueAndConceptDescription [0..1]  (from SentinelConceptualDomain)
+   BB-only keys (16) — renamed, CDIF-added, or structural:
+      - cdi:decimalPositions
+      - cdi:defaultDecimalSeparator
+      - cdi:defaultDigitGroupSeparator
+      - cdi:defaultValue
+      - cdi:format
+      - cdi:formats
+      - cdi:isRequired
+      - cdi:length
+      - cdi:maximumLength
+      - cdi:minimumLength
+      - cdi:nullSequence
+      - cdi:numberPattern
+      - cdi:has_PhysicalSegmentLayout
+      - cdi:scale
+      - cdi:has_ValueMapping
+      - cdi:variableFunction
+
+## ddicdiLogicalRecord
+   models: ConceptSystem, ConceptualDomain, ConceptualValue, DataPoint, DataSet, Key, KeyDefinition, KeyDefinitionMember, KeyMember, LogicalRecord, TypedString, Unit, UnitType, Universe, ValueAndConceptDescription
+   MISSING attributes (2):
+      - fingerprint : DataFingerprint [0..1]  (from DataSet)
+      - recordCount : Integer [0..1]  (from DataSet)
+   MISSING association roles (16):
+      - has -> Concept [0..*]  (from ConceptSystem)
+      - takesConceptsFrom -> ConceptSystem [0..1]  (from ConceptualDomain)
+      - hasConceptFrom -> ConceptualDomain [1..1]  (from ConceptualValue)
+      - represents -> ConceptualValue [0..1]  (from KeyMember)
+      - organizes -> DataSet [0..*]  (from LogicalRecord)
+      - isStructuredBy -> DataStructure [0..*]  (from DataSet)
+      - correspondsTo -> DataStructureComponent [0..*]  (from DataPoint)
+      - isDescribedBy -> InstanceVariable [1..1]  (from DataPoint)
+      - represents -> KeyDefinition [0..1]  (from Key)
+      - has -> KeyDefinitionMember [0..*]  (from KeyDefinition)
+      - has -> KeyMember [0..*]  (from Key)
+      - correspondsTo -> Unit [0..1]  (from Key)
+      - has -> UnitType [0..*]  (from Unit)
+      - correspondsTo -> Universe [0..1]  (from Key)
+      - isDescribedBy -> ValueAndConceptDescription [0..1]  (from ConceptualDomain)
+      - hasValueFrom -> ValueDomain [1..1]  (from KeyMember)
+   BB-only keys (2) — renamed, CDIF-added, or structural:
+      - cdi:correspondsTo_Unit
+      - cdi:correspondsTo_Universe
+
+## ddicdiMachine
+   models: Machine
+
+## ddicdiOrganization
+   models: Organization
+
+## ddicdiPhysicalDataSet
+   models: Category, ConceptSystem, ConceptualDomain, ConceptualValue, DataPoint, DimensionalDataSet, DimensionalKeyDefinition, InstanceValue, Key, KeyDefinition, KeyDefinitionMember, KeyMember, LongDataSet, Notation, QualifiedMeasure, RevisableDatum, Revision, ScopedMeasure, SpecializationRole, TypedString, Unit, UnitType, Universe, ValueAndConceptDescription, WideDataSet
+   MISSING attributes (2):
+      - fingerprint : DataFingerprint [0..1]  (from DimensionalDataSet)
+      - recordCount : Integer [0..1]  (from DimensionalDataSet)
+   MISSING association roles (23):
+      - represents -> Category [0..*]  (from Notation)
+      - uses -> Concept [0..*]  (from Category)
+      - takesConceptsFrom -> ConceptSystem [0..1]  (from ConceptualDomain)
+      - hasConceptFrom -> ConceptualDomain [1..1]  (from ConceptualValue)
+      - represents -> ConceptualValue [0..1]  (from InstanceValue)
+      - isStructuredBy -> DataStructure [0..*]  (from DimensionalDataSet)
+      - correspondsTo -> DataStructureComponent [0..*]  (from DataPoint)
+      - circumscribes -> DimensionalKeyDefinition [0..1]  (from ScopedMeasure)
+      - isDescribedBy -> InstanceVariable [1..1]  (from DataPoint)
+      - represents -> KeyDefinition [0..1]  (from Key)
+      - has -> KeyDefinitionMember [0..*]  (from DimensionalKeyDefinition)
+      - has -> KeyMember [0..*]  (from Key)
+      - refines -> MeasureComponent [0..1]  (from QualifiedMeasure)
+      - restricts -> QualifiedMeasure [0..1]  (from ScopedMeasure)
+      - isDefinedBy -> RepresentedVariable [0..1]  (from QualifiedMeasure)
+      - generates -> RevisableDatum [1..1]  (from ScopedMeasure)
+      - correspondsTo -> Revision [0..1]  (from RevisableDatum)
+      - represents -> ScopedMeasure [0..*]  (from DimensionalDataSet)
+      - correspondsTo -> Unit [0..1]  (from DimensionalKeyDefinition)
+      - has -> UnitType [0..*]  (from Unit)
+      - correspondsTo -> Universe [0..1]  (from DimensionalKeyDefinition)
+      - isDescribedBy -> ValueAndConceptDescription [0..1]  (from ConceptualDomain)
+      - hasValueFrom -> ValueDomain [1..1]  (from InstanceValue)
+   BB-only keys (2) — renamed, CDIF-added, or structural:
+      - cdi:correspondsTo_Unit
+      - cdi:correspondsTo_Universe
+
+## ddicdiPhysicalSegmentLayout
+   models: DataPoint, PhysicalSegmentLayout, PhysicalSegmentLocation, ValueMapping, ValueMappingPosition
+   !! NOT FOUND in XMI: PhysicalSegmentLayout, ValueMapping, ValueMappingPosition
+   MISSING association roles (2):
+      - correspondsTo -> DataStructureComponent [0..*]  (from DataPoint)
+      - isDescribedBy -> InstanceVariable [1..1]  (from DataPoint)
+   BB-only keys (44) — renamed, CDIF-added, or structural:
+      - cdi:allowsDuplicates
+      - cdi:arrayBase
+      - cdi:commentPrefix
+      - cdi:decimalPositions
+      - cdi:defaultDecimalSeparator
+      - cdi:defaultDigitGroupSeparator
+      - cdi:defaultValue
+      - cdi:delimiter
+      - cdi:encoding
+      - cdi:escapeCharacter
+      - cdi:format
+      - cdi:formats
+      - cdi:hasHeader
+      - cdi:headerIsCaseSensitive
+      - cdi:headerRowCount
+      - cdi:indexes
+      - cdi:isDefinedBy
+      - cdi:isDelimited
+      - cdi:isFixedWidth
+      - cdi:isRequired
+      - cdi:length
+      - cdi:lineTerminator
+      - cdi:maximumLength
+      - cdi:minimumLength
+      - cdi:name
+      - cdi:nullSequence
+      - cdi:numberPattern
+      - cdi:overview
+      - cdi:physicalDataType
+      - cdi:purpose
+      - cdi:quoteCharacter
+      - cdi:scale
+      - cdi:skipBlankRows
+      - cdi:skipDataColumns
+      - cdi:skipInitialSpace
+      - cdi:skipRows
+      - cdi:tableDirection
+      - cdi:textDirection
+      - cdi:treatConsecutiveDelimitersAsOne
+      - cdi:trim
+      - cdi:uses
+      - cdi:value
+      - cdi:has_ValueMapping
+      - cdi:has_ValueMappingPosition
+
+## ddicdiPresentationalVariable
+   models: ConceptSystem, DataPoint, DescriptorVariable, PhysicalSegmentLocation, ReferenceValueDomain, ReferenceVariable, SentinelConceptualDomain, SubstantiveConceptualDomain, TypedString, UnitType, ValueAndConceptDescription, ValueMapping
+   !! NOT FOUND in XMI: ValueMapping
+   MISSING attributes (2):
+      - function : ControlledVocabularyEntry [0..*]  (from DescriptorVariable)
+      - role : ControlledVocabularyEntry [0..*]  (from DescriptorVariable)
+   MISSING association roles (13):
+      - has -> Concept [0..*]  (from ConceptSystem)
+      - takesConceptsFrom -> ConceptSystem [0..1]  (from SentinelConceptualDomain)
+      - correspondsTo -> DataStructureComponent [0..*]  (from DataPoint)
+      - takesSubstantiveValuesFrom -> DescriptorValueDomain [0..1]  (from DescriptorVariable)
+      - isDescribedBy -> InstanceVariable [1..1]  (from DataPoint)
+      - takesValuesFrom -> ReferenceValueDomain [0..1]  (from ReferenceVariable)
+      - takesSentinelConceptsFrom -> SentinelConceptualDomain [0..1]  (from DescriptorVariable)
+      - takesSentinelValuesFrom -> SentinelValueDomain [0..*]  (from DescriptorVariable)
+      - isDescribedBy -> StatisticsCollection [0..1]  (from DescriptorVariable)
+      - takesSubstantiveConceptsFrom -> SubstantiveConceptualDomain [0..1]  (from DescriptorVariable)
+      - takesSubstantiveValuesFrom -> SubstantiveValueDomain [0..1]  (from DescriptorVariable)
+      - measures -> UnitType [0..1]  (from DescriptorVariable)
+      - isDescribedBy -> ValueAndConceptDescription [0..1]  (from SentinelConceptualDomain)
+   BB-only keys (16) — renamed, CDIF-added, or structural:
+      - cdi:decimalPositions
+      - cdi:defaultDecimalSeparator
+      - cdi:defaultDigitGroupSeparator
+      - cdi:defaultValue
+      - cdi:format
+      - cdi:formats
+      - cdi:isRequired
+      - cdi:length
+      - cdi:maximumLength
+      - cdi:minimumLength
+      - cdi:nullSequence
+      - cdi:numberPattern
+      - cdi:has_PhysicalSegmentLayout
+      - cdi:scale
+      - cdi:has_ValueMapping
+      - cdi:variableFunction
+
+## ddicdiProcessingAgent
+   models: ProcessingAgent
+   MISSING association roles (2):
+      - performs -> Activity [0..*]  (from ProcessingAgent)
+      - operatesOn -> ProductionEnvironment [0..*]  (from ProcessingAgent)
+
+## ddicdiRepresentedVariable
+   models: ConceptSystem, RepresentedVariable, SentinelConceptualDomain, SubstantiveConceptualDomain, TypedString, UnitType, ValueAndConceptDescription
+   MISSING association roles (8):
+      - has -> Concept [0..*]  (from ConceptSystem)
+      - takesConceptsFrom -> ConceptSystem [0..1]  (from SentinelConceptualDomain)
+      - takesSentinelConceptsFrom -> SentinelConceptualDomain [0..1]  (from RepresentedVariable)
+      - takesSentinelValuesFrom -> SentinelValueDomain [0..*]  (from RepresentedVariable)
+      - takesSubstantiveConceptsFrom -> SubstantiveConceptualDomain [0..1]  (from RepresentedVariable)
+      - takesSubstantiveValuesFrom -> SubstantiveValueDomain [0..1]  (from RepresentedVariable)
+      - measures -> UnitType [0..1]  (from RepresentedVariable)
+      - isDescribedBy -> ValueAndConceptDescription [0..1]  (from SentinelConceptualDomain)
+
+## ddicdiStatisticalClassification
+   models: AuthorizationSource, Category, CategoryPosition, CategorySet, ClassificationIndex, ClassificationIndexEntry, ClassificationIndexEntryPosition, ClassificationItem, ClassificationItemPosition, Command, CommandCode, CommandFile, Level, LevelStructure, Notation, StatisticalClassification, TypedString
+   MISSING association roles (9):
+      - has -> Agent [0..*]  (from AuthorizationSource)
+      - hasRulingBy -> AuthorizationSource [0..*]  (from ClassificationItem)
+      - references -> CategorySet [0..1]  (from StatisticalClassification)
+      - isIndexedBy -> ClassificationIndex [0..*]  (from StatisticalClassification)
+      - uses -> Concept [0..*]  (from Category)
+      - has -> Level [0..*]  (from LevelStructure)
+      - uses -> Notation [1..1]  (from ClassificationItem)
+      - isMaintainedBy -> Organization [0..*]  (from StatisticalClassification)
+      - isVariantOf -> StatisticalClassification [0..1]  (from StatisticalClassification)
+
+## ddicdiValueDomain
+   models: ConceptSystem, ConceptualDomain, ConceptualValue, DataPoint, Descriptor, DescriptorValueDomain, ReferenceValue, ReferenceValueDomain, SentinelConceptualDomain, SentinelValueDomain, SubstantiveConceptualDomain, SubstantiveValueDomain, TypedString, ValueAndConceptDescription
+   MISSING association roles (17):
+      - has -> Concept [0..*]  (from ConceptSystem)
+      - takesConceptsFrom -> ConceptSystem [0..1]  (from ConceptualDomain)
+      - hasConceptFrom -> ConceptualDomain [1..1]  (from ConceptualValue)
+      - represents -> ConceptualValue [0..1]  (from Descriptor)
+      - isStoredIn -> DataPoint [0..1]  (from Descriptor)
+      - correspondsTo -> DataStructureComponent [0..*]  (from DataPoint)
+      - hasValueFrom -> DescriptorValueDomain [1..1]  (from Descriptor)
+      - takesValuesFrom -> EnumerationDomain [0..1]  (from DescriptorValueDomain)
+      - isDescribedBy -> InstanceVariable [1..1]  (from DataPoint)
+      - refersTo -> ReferenceValue [1..*]  (from Descriptor)
+      - hasValueFrom -> ReferenceValueDomain [1..1]  (from ReferenceValue)
+      - identifies -> ReferenceVariable [1..1]  (from Descriptor)
+      - takesConceptsFrom -> SentinelConceptualDomain [0..1]  (from SentinelValueDomain)
+      - takesConceptsFrom -> SubstantiveConceptualDomain [0..1]  (from DescriptorValueDomain)
+      - isDescribedBy -> ValueAndConceptDescription [0..1]  (from ConceptualDomain)
+      - hasValueFrom -> ValueDomain [1..1]  (from Descriptor)
+      - correspondsTo -> VariableValueComponent [1..1]  (from ReferenceValue)
+
+======================================================================
+Totals: 184 XMI members missing from BBs, 97 BB-only keys, 6 classes not found in XMI
