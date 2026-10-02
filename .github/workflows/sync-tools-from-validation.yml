@@ -1,0 +1,96 @@
+# Pull the CDIF instance-validation tools into tools/ from the validation repo.
+#
+# This replaces a push-based workflow that lived in Cross-Domain-Interoperability-
+# Framework/validation. That one needed a cross-repo write credential
+# (MIRROR_SYNC_TOKEN), the secret was never created, and its guard degraded to
+# "do nothing and pass": with the secret unset it emitted a ::warning::, set
+# run=false, and every later step was skipped by an `if`, so the job concluded
+# SUCCESS. It ran on every validation push for its whole life -- 7-9 seconds
+# each, just the guard -- while this mirror went stale. When the sync was finally
+# run by hand on 2026-10-02 it updated all 15 tracked files.
+#
+# Pulling needs no credential at all, which is the whole point of inverting it:
+#   - validation is PUBLIC, so checking it out needs no token;
+#   - this job writes to its OWN repo, so the built-in GITHUB_TOKEN suffices
+#     (permissions: contents: write below).
+# There is no secret to create, to rotate, or to expire silently.
+#
+# The trade is latency: a schedule rather than firing on a validation push. Use
+# the Actions tab's "Run workflow" button (workflow_dispatch) when you need the
+# mirror current immediately -- e.g. straight after changing the validation
+# tools.
+#
+# The file list and the copying itself live in the validation repo, in
+# tools/sync_mirror_tools.sh, so the source of truth for WHAT is mirrored stays
+# beside the files being mirrored. That script is also runnable by hand:
+#   bash tools/sync_mirror_tools.sh . ../cdif-umlmodel/tools
+#
+# The mirrored files MUST NOT be edited here. tools/examples/ and tools/readme.md
+# are this repo's own and are never touched by the sync.
+
+name: Sync validation tools into tools/
+
+on:
+  schedule:
+    # Daily. Off the hour, because scheduled jobs on the hour queue behind the
+    # rest of GitHub's.
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-tools-from-validation
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout this repo (the mirror)
+        uses: actions/checkout@v4
+        with:
+          path: mirror
+
+      - name: Checkout validation (the source of truth)
+        uses: actions/checkout@v4
+        with:
+          repository: Cross-Domain-Interoperability-Framework/validation
+          path: source
+
+      - name: Record the source commit
+        id: src
+        run: |
+          echo "sha=$(git -C source rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          echo "short=$(git -C source rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Copy the validation tools into the mirror
+        # No `if:` guard on this step or the next, deliberately. The failure this
+        # workflow replaces was a guard that turned a non-run into a pass, so
+        # there is nothing here that can silently opt out: if the script is
+        # missing or a copy fails, set -euo pipefail in the script fails the job.
+        run: bash source/tools/sync_mirror_tools.sh source mirror/tools
+
+      - name: Commit and push if changed
+        working-directory: mirror
+        env:
+          SRC_SHA: ${{ steps.src.outputs.sha }}
+          SRC_SHORT: ${{ steps.src.outputs.short }}
+        run: |
+          git config user.name "cdif-tools-sync"
+          git config user.email "actions@users.noreply.github.com"
+          git add tools/
+          if git diff --cached --quiet; then
+            echo "Mirror already up to date with validation@${SRC_SHORT}; nothing to push."
+            exit 0
+          fi
+          # Name the files in the run log. A sync that reports only "pushed" is
+          # how the previous arrangement hid the fact that it never copied
+          # anything -- the useful signal is WHAT changed, not that it was green.
+          echo "Updating $(git diff --cached --name-only | wc -l) file(s):"
+          git diff --cached --name-only | sed 's/^/  /'
+          git commit \
+            -m "sync: update validation tools mirror (validation@${SRC_SHORT})" \
+            -m "Automated copy of the CDIF validation tools, framing docs, framed-tree schemas and SHACL shapes from Cross-Domain-Interoperability-Framework/validation@${SRC_SHA}. Source of truth: the validation repo -- do not edit the mirrored files here."
+          git push
