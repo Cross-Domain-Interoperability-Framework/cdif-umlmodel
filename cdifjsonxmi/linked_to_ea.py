@@ -188,7 +188,8 @@ def emit_classifier(w, el, package_eaid, ctx):
 
 
 def emit_association(w, owner, end, ctx):
-    """An association end (Canonical ownedAttribute with <association>) as an EA connector:
+    """An association end (Canonical ownedAttribute with <association>) as an EA connector,
+    written inside the owner's package:
     source end at the owner, non-navigable, 0..*; target end navigable, named after the role,
     with the attribute's multiplicity, comment and GUID."""
     assoc_id = end.find("association").get(f"{XMI}idref")
@@ -209,7 +210,7 @@ def emit_association(w, owner, end, ctx):
     w.open("UML:AssociationEnd", {"visibility": "public", "multiplicity": "0..*", "aggregation": "none",
                                   "isOrdered": "false", "targetScope": "instance", "changeable": "none",
                                   "isNavigable": "false", "type": ea_id("EAID", owner_u)})
-    w.tagged([("containment", "Unspecified"), ("sourcestyle", "Union=0;Derived=0;AllowDuplicates=0;"),
+    w.tagged([("containment", "Unspecified"), ("sourcestyle", "Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"),
               ("ea_end", "source")])
     w.close("UML:AssociationEnd")
     w.open("UML:AssociationEnd", {"visibility": "public", "name": end.findtext("name"),
@@ -217,7 +218,7 @@ def emit_association(w, owner, end, ctx):
                                   "aggregation": "none", "isOrdered": "false", "targetScope": "instance",
                                   "changeable": "none", "isNavigable": "true", "type": target_eaid})
     w.tagged([("description", comment_body(end)), ("containment", "Unspecified"),
-              ("deststyle", "Union=0;Derived=0;AllowDuplicates=0;"), ("ea_end", "target"),
+              ("deststyle", "Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"), ("ea_end", "target"),
               ("ea_guid", guid(end.get(f"{XMI}uuid")))])
     w.close("UML:AssociationEnd")
     w.close("UML:Association.connection")
@@ -235,9 +236,14 @@ def emit_package(w, pkg, ctx):
               ("ea_eleType", "package"), ("version", "1.0"), ("ea_guid", guid(u))])
     w.open("UML:Namespace.ownedElement")
     children = pkg.findall("packagedElement")
+    first_end = len(ctx.assoc_ends)
     for el in children:
         if el.get(f"{XMI}type") in ("uml:Class", "uml:DataType", "uml:Enumeration"):
             emit_classifier(w, el, eaid, ctx)
+    # Associations go inside the package of the classes that own them, as in EA's own exports;
+    # EA's package import ignores associations at the model root.
+    for owner, end in ctx.assoc_ends[first_end:]:
+        emit_association(w, owner, end, ctx)
     for el in children:
         if el.get(f"{XMI}type") == "uml:Package":
             emit_package(w, el, ctx)
@@ -273,8 +279,6 @@ def convert(canonical_file):
         ET.SubElement(wrapper, "name").text = model.findtext("name")
         wrapper.extend(packages)
         emit_package(w, wrapper, ctx)
-    for owner, end in ctx.assoc_ends:
-        emit_association(w, owner, end, ctx)
     for prim in sorted(ctx.primitives):
         w.open("UML:Class", {"name": prim, "xmi.id": f"eaxmiid_{prim}", "visibility": "public",
                              "isRoot": "true", "isLeaf": "false", "isAbstract": "false"})
