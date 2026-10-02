@@ -58,18 +58,11 @@ python ../cdif-umlmodel/cdifjsonxmi/uml_to_schema.py ... --schema-only
 **Opt-in JSON-LD conventions** (schema emit only, all off by default, so existing outputs are unchanged). These were added for the JSON Schema → XMI → JSON Schema round-trip experiment in `cdif-umlmodel/cdifjsonxmi/`:
 - `--xsd-formats`: `XsdAnyUri` / `XsdDate` / `XsdDateTime` / `XsdLanguage`-typed attributes become `{type: string, format: uri|date|date-time}` (no format for `XsdLanguage`). Without the flag they become JSON-LD node `$defs`.
 - `--iri-reference-type NAME`: attributes typed by DataType `NAME` (e.g. `IriReference`) become `anyOf [string, {"@id": string}]`.
-- `--comment-directives`: reads directive lines at the end of comments and removes them from descriptions (parser: `split_comment_directives`).
-  - On a class or datatype:
-    - `:rdfType: ``p:T``` sets the `@type` const (default `prefix:ClassName`). On a datatype it also makes `@type` required.
-    - `:typeDefault: ``p:T``` (`|`-separated for several) sets the `@type` `default`, always as an array (`[p:T]`).
-    - `:allowedTypes: ``p:T | p:U``` restricts the `@type` items to `enum: [p:T, p:U]`.
-    - `:choiceConstraints:` followed by `- ``a | b & c``` lines adds `allOf: [{anyOf: [{required: [a]}, {required: [b, c]}]}]`.
-    - `:buildingBlock: ``schemaorgProperties/identifier``` means the type is defined by that BB (path under `_sources/`). References to it become a `$ref` relative to the output BB dir, taking precedence over sibling-BB discovery and local inlining.
-  - On an attribute:
-    - `:inlineOrByReference: ``inline```: a class-typed value is the embedded node only.
-    - `:inlineOrByReference: ``byReference```: an id-reference only.
-    - Absent: the default `anyOf [node, id-reference]`.
-    - `:alsoAcceptsString:` wraps the value as `anyOf [<type>, {type: string}]`.
+- `--id-reference-type NAME`: attributes typed by DataType `NAME` (e.g. `IdReference`) become the node reference `{"@id": string}` with no other keys.
+- `--comment-directives`: reads directive lines at the end of comments and removes them from descriptions. The full list, with what each becomes, is the comment above `_DIRECTIVE_NAMES` in `uml_to_schema.py`; `README.md` (Forward mapping) shows which JSON Schema construct produces each. In short:
+  - **Class / datatype:** `:rdfType:` (one, `|` any of, `&` all of), `:allowedTypes:`, `:typeDefault:`, `:typeDescription:`, `:typeOptional:`, `:typeSchema:`, `:idDescription:`, `:title:`, `:prefix:`, `:choiceConstraints:`, `:constraint:`, `:contextSchema:`, `:buildingBlock:`, and `:union:` (the datatype is an `anyOf` / `oneOf` over its attributes).
+  - **Attribute:** `:inlineOrByReference:`, `:alsoAcceptsString:`, `:jsonName:`, `:default:`, `:itemsDefault:`, `:minItems:`, `:descriptionOnItems:`, `:itemsDescription:`, `:keywords:`, `:arrayKeywords:`, `:idRefDescription:`.
+  - With the flag, `@type` and `@id` are written only as the model records them (never invented), an empty object stays `{"type": "object"}`, the title comes from `:title:` unless `--title` is given, and a class defined in the XMI is never swapped for a sibling building block of the same name.
 - `--verbatim-docs`: keep the Definition text exactly as written. Without the flag, `clean_definition` collapses whitespace.
 - `--linked`: `--xmi` is one file of a linked set written by `bblock_to_xmi.py --linked` (see `README.md`, Linked XMI).
   - The loader (`load_linked_xmi`) follows `<type href="other.xmi#id">` into the other files, transitively, and merges them into one model.

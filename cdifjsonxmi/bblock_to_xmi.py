@@ -34,10 +34,15 @@ SCALARS = {("string", None): ("prim", "String"), ("integer", None): ("prim", "In
 SUPPORT_TYPES = {"XMLSchemaDataTypes.XsdAnyUri": "XML Schema primitive datatype (XsdAnyUri).",
                  "XMLSchemaDataTypes.XsdDate": "XML Schema primitive datatype (XsdDate).",
                  "XMLSchemaDataTypes.XsdDateTime": "XML Schema primitive datatype (XsdDateTime).",
+                 "common.IdReference": "A reference to a node defined elsewhere. JSON-LD encoding: "
+                 "an object {\"@id\": string} with no other keys.",
                  "common.IriReference": "An IRI-valued property. JSON-LD encoding: either a plain "
                  "string, or a node reference object {\"@id\": string} with no other keys. URI-shape "
                  "values should use the {\"@id\"} form so they participate in RDF entailment."}
-OBJECT_KEYWORDS = {"$schema", "description", "type", "properties", "required", "allOf", "anyOf"}
+OBJECT_KEYWORDS = {"$schema", "title", "description", "type", "properties", "required", "allOf", "anyOf"}
+# Simple keywords carried through as a :keywords: / :arrayKeywords: directive (JSON object).
+EXTRA_KEYWORDS = {"title", "minLength", "maxLength", "pattern", "minimum", "maximum",
+                  "exclusiveMinimum", "exclusiveMaximum"}
 
 
 class Unmapped(Exception):
@@ -91,7 +96,21 @@ class Link:
 
 
 def directive(name, value=None):
+    """A comment directive line. Names and codes go in ``...``; free text and JSON values
+    (titles, descriptions, defaults) are JSON-encoded, so any text fits on one line."""
     return f"\n:{name}:" + (f" ``{value}``" if value is not None else "")
+
+
+def text_directive(name, value):
+    return f"\n:{name}: {json.dumps(value, ensure_ascii=False)}"
+
+
+def directive_value(directives, name):
+    """The JSON value of a text directive in a list built by text_directive(), else None."""
+    for x in directives:
+        if x.startswith(f"\n:{name}: "):
+            return json.loads(x[len(f"\n:{name}: "):])
+    return None
 
 
 # Building-block directory prefixes naming the vocabulary, as uml_to_schema.py's sibling
@@ -109,39 +128,89 @@ def split_dir_name(bdir):
     return name[:1].upper() + name[1:], None
 
 
+def type_consts(contains):
+    """RDF types an @type 'contains' accepts: {const: T}, {anyOf: [{const: T}, ...]} or
+    {enum: [T, ...]}."""
+    if set(contains) == {"const"}:
+        return [contains["const"]]
+    if set(contains) == {"anyOf"} and all(set(b) == {"const"} for b in contains["anyOf"]):
+        return [b["const"] for b in contains["anyOf"]]
+    if set(contains) == {"enum"}:
+        return list(contains["enum"])
+    return None
+
+
+def id_reference(prop):
+    """The {"@id": string} node-reference object, as (True, description of @id or None);
+    (False, None) if prop is anything else."""
+    if prop.get("type") != "object" or set(prop) != {"type", "required", "additionalProperties", "properties"} \
+            or prop["required"] != ["@id"] or prop["additionalProperties"] is not False \
+            or set(prop["properties"]) != {"@id"}:
+        return False, None
+    id_prop = dict(prop["properties"]["@id"])
+    description = id_prop.pop("description", None)
+    return id_prop == {"type": "string"}, description
+
+
 def rdf_prefix(schema):
-    """Vocabulary prefix of an object schema: from its @type const, else its first prefixed property."""
+    """Vocabulary prefix of an object schema: from its @type, else its first prefixed property."""
     props = schema.get("properties", {})
-    const = props.get("@type", {}).get("contains", {}).get("const")
-    first = const or next((p for p in props if ":" in p), None)
+    parts = rdf_type_parts(props["@type"]) if "@type" in props else None
+    first = parts[0][0] if parts else next((p for p in props if ":" in p), None)
     return first.split(":")[0] if first else None
 
 
 def rdf_type_parts(type_prop):
-    """Split an @type property schema into (const, allowed types or None, default or None).
+    """Split an @type property schema into (RDF types, " | " or " & ", allowed types or None,
+    default or None, description or None).
 
-    Accepts the plain CDIF pattern, optionally with a `default` and with items restricted
-    to an enum (bare or wrapped in a one-branch anyOf). Returns None for anything else."""
-    type_prop = dict(type_prop)
-    default = type_prop.pop("default", None)
-    items = type_prop.get("items", {})
-    if set(items) == {"anyOf"} and len(items["anyOf"]) == 1:
+    @type is an array of strings that must contain one of several types ( | ):
+    contains {const} / {anyOf: [{const}]} / {enum}, or anyOf [{contains: {const}}, ...];
+    or all of several types ( & ): allOf [{contains: {const}}, ...] with minItems = their
+    number. Optional: default, description, items restricted to an enum (bare or in a
+    one-branch anyOf). Returns None for anything else."""
+    t = dict(type_prop)
+    default = t.pop("default", None)
+    description = t.pop("description", None)
+    items = t.pop("items", None)
+    if isinstance(items, dict) and set(items) == {"anyOf"} and len(items["anyOf"]) == 1:
         items = items["anyOf"][0]
     allowed = None
-    if set(items) == {"type", "enum"} and items["type"] == "string":
+    if isinstance(items, dict) and set(items) == {"type", "enum"} and items["type"] == "string":
         allowed, items = items["enum"], {"type": "string"}
-    const = type_prop.get("contains", {}).get("const")
-    if const is None or {**type_prop, "items": items} != rdf_type_schema(const):
+    if t.pop("type", None) != "array" or items != {"type": "string"}:
         return None
-    if allowed is not None and const not in allowed:
+    min_items = t.pop("minItems", None)
+    if set(t) == {"contains"}:
+        consts, sep = type_consts(t["contains"]), " | "
+    elif set(t) == {"anyOf"} and all(set(b) == {"contains"} for b in t["anyOf"]):
+        consts, sep = sum((type_consts(b["contains"]) or [None] for b in t["anyOf"]), []), " | "
+    elif set(t) == {"allOf"} and all(set(b) == {"contains"} for b in t["allOf"]):
+        consts, sep = sum((type_consts(b["contains"]) or [None] for b in t["allOf"]), []), " & "
+    else:
         return None
-    return const, allowed, default
+    if not consts or None in consts or min_items != (len(consts) if sep == " & " else 1):
+        return None
+    if allowed is not None and not set(consts) <= set(allowed):
+        return None
+    return consts, sep, allowed, default, description
+
+
+def simple_block(block):
+    """An allOf member that is only 'required' and/or an anyOf of pure 'required' branches."""
+    return set(block) <= {"required", "anyOf"} and all(
+        isinstance(b, dict) and set(b) == {"required"} for b in block.get("anyOf", []))
+
+
+def other_constraints(schema):
+    """allOf members that are not simple (e.g. if/then/else), carried verbatim."""
+    return [b for b in schema.get("allOf", []) if not simple_block(b)]
 
 
 def choice_groups(schema):
     """Each anyOf of pure 'required' branches -> one group: a list of alternatives (lists of names)."""
     groups = []
-    for block in [schema] + schema.get("allOf", []):
+    for block in [schema] + [b for b in schema.get("allOf", []) if simple_block(b)]:
         if "anyOf" in block:
             for alt in block["anyOf"]:
                 if set(alt) != {"required"}:
@@ -152,7 +221,7 @@ def choice_groups(schema):
 
 def required_props(schema):
     req = list(schema.get("required", []))
-    for block in schema.get("allOf", []):
+    for block in [b for b in schema.get("allOf", []) if simple_block(b)]:
         req += [r for r in block.get("required", []) if r not in req]
     return req
 
@@ -170,6 +239,9 @@ class ModelBuilder:
 
     def element_id(self, pkg, name):
         return f"{self.link.bb_id}.{name}" if self.link else f"{pkg}.{name}"
+
+    def association_id(self, triple):
+        return f"{self.link.bb_id}.assoc.{triple}" if self.link else f"assoc.{triple}"
 
     def add(self, eid, elem):
         if eid in self.elements and self.elements[eid] != elem:
@@ -200,37 +272,149 @@ class ModelBuilder:
         bb_path = target.relative_to(sources).as_posix()
         if self.link:
             return ("href", f"{self.link.href_to(bb_path)}#{bb_id(bb_path)}.{name}"), kind
-        pkg = rdf_prefix(schema) or dir_pkg
+        pkg = rdf_prefix(schema) or dir_pkg or split_dir_name(target.parent)[1]
         if pkg is None:
             raise Unmapped(f"$ref {ref}: no @type, prefixed property or directory prefix to place it in a package")
         body = DEFINITION_HEADER + directive("buildingBlock", bb_path)
         eid = self.add(f"{pkg}.{name}", {"kind": kind, "pkg": pkg, "name": name, "body": body, "attrs": []})
         return ("idref", eid), kind
 
-    def element(self, schema, name, base_dir, where):
-        """uml:Class (schema declares @id) or uml:DataType for an object schema; returns its xmi id."""
+    def add_unique(self, pkg, name, elem):
+        """Add elem under name, or name2, name3, ... if name is taken by a different element."""
+        candidate, n = name, 1
+        while True:
+            eid = self.element_id(pkg, candidate)
+            if eid not in self.elements or self.elements[eid] == {**elem, "name": candidate}:
+                return self.add(eid, {**elem, "name": candidate})
+            n += 1
+            candidate = f"{name}{n}"
+
+    def attribute(self, role, prop, required, owner, base_dir, where, json_name=None):
+        """The UML attribute (dict) for property schema prop of element owner = (name, pkg)."""
+        type_ref, upper, directives, target_class, items_desc = self.attr_type(
+            prop, base_dir, where, required=required, owner=owner, role=role)
+        # minItems that the lower bound already implies (1 on a required array) is dropped.
+        if required and directive_value(directives, "minItems") == 1:
+            directives = [x for x in directives if not x.startswith("\n:minItems:")]
+        desc = prop.get("description")
+        if items_desc is not None:
+            if desc is not None:
+                directives.append(text_directive("itemsDescription", items_desc))
+            else:
+                desc = items_desc
+                directives.append(directive("descriptionOnItems"))
+        if json_name:
+            directives.append(text_directive("jsonName", json_name))
+        return {"name": role, "type": type_ref, "upper": upper, "lower": 1 if required else 0,
+                # A reference to a uml:Class is the navigable end of an association,
+                # named <Owner>_<role>_<Target> as in cdifmodels.xmi.
+                "assoc": target_class and self.association_id(f"{owner[0]}_{role}_{target_class}"),
+                "body": None if desc is None and not directives
+                else DEFINITION_HEADER + (desc or "") + "".join(directives)}
+
+    def alternative_name(self, branch, index):
+        """Attribute name for one alternative of a union, from what the alternative is."""
+        b = {k: v for k, v in branch.items() if k not in ("description", "default", *EXTRA_KEYWORDS)}
+        if b.get("type") == "array":
+            return self.alternative_name(b.get("items", {}), index) + "List"
+        if is_iri_reference(b):
+            return "iri"
+        if id_reference(b)[0]:
+            return "idReference"
+        ref = b.get("$ref", "") if set(b) == {"$ref"} else ""
+        if ref.startswith("#/$defs/"):
+            name = ref[len("#/$defs/"):]
+        elif ref:
+            name = split_dir_name((Path("x") / ref).parent)[0]
+        elif b.get("type") == "object" and "@type" in b.get("properties", {}):
+            parts = rdf_type_parts(b["properties"]["@type"])
+            name = parts[0][0].split(":")[1] if parts else f"option{index + 1}"
+        elif "enum" in b:
+            name = "enum"
+        elif set(b) in ({"anyOf"}, {"oneOf"}):
+            name = "choice"
+        elif b.get("type") in ("string", "integer", "boolean", "number"):
+            name = b["type"]
+        else:
+            name = f"option{index + 1}"
+        return name[:1].lower() + name[1:]
+
+    def union(self, branches, keyword, owner, role, base_dir, where, name=None, body=""):
+        """A union DataType (ISO 19103 «Union» style, marked :union: ``anyOf|oneOf``) with one
+        optional attribute per alternative, in order; returns its xmi id."""
+        name = name or f"{owner[0]}{role[:1].upper()}{role[1:]}Choice"
+        attrs, used = [], {}
+        for i, branch in enumerate(branches):
+            alt = self.alternative_name(branch, i)
+            used[alt] = used.get(alt, 0) + 1
+            if used[alt] > 1:
+                alt = f"{alt}{used[alt]}"
+            attrs.append(self.attribute(alt, branch, False, (name, owner[1]), base_dir, f"{where}|{i}"))
+        elem = {"kind": "uml:DataType", "pkg": owner[1], "name": name,
+                "body": DEFINITION_HEADER + body + directive("union", keyword), "attrs": attrs}
+        return self.add_unique(owner[1], name, elem)
+
+    def enumeration(self, literals, owner, role, where):
+        """A uml:Enumeration for an inline string enum, named after the property."""
+        if not all(isinstance(v, str) for v in literals):
+            raise Unmapped(f"{where}: non-string enum {literals}")
+        elem = {"kind": "uml:Enumeration", "pkg": owner[1], "name": role[:1].upper() + role[1:],
+                "body": DEFINITION_HEADER, "attrs": [], "literals": list(literals)}
+        return self.add_unique(owner[1], elem["name"], elem)
+
+    def element(self, schema, name, base_dir, where, fallback_name=None, fallback_pkg=None):
+        """uml:Class (schema declares @id) or uml:DataType for an object schema; returns its xmi id.
+        A schema that is only a union (anyOf / oneOf of alternatives) becomes a union DataType."""
+        for keyword in ("anyOf", "oneOf"):
+            if keyword in schema and "properties" not in schema \
+                    and not all(set(b) == {"required"} for b in schema[keyword]):
+                extra = set(schema) - {"$schema", "title", "description", keyword}
+                if extra:
+                    raise Unmapped(f"{where}: union with keywords {sorted(extra)}")
+                pkg = next((rdf_prefix(b) for b in schema[keyword] if isinstance(b, dict)
+                            and rdf_prefix(b)), None)
+                body = schema.get("description", "")
+                if "title" in schema:
+                    body += text_directive("title", schema["title"])
+                return self.union(schema[keyword], keyword, (name, pkg), "", base_dir, where,
+                                  name=name, body=body)
         props = schema.get("properties", {})
         extra = set(schema) - OBJECT_KEYWORDS
         if extra or schema.get("type") != "object":
             raise Unmapped(f"{where}: keywords {sorted(extra)} / type {schema.get('type')}")
-        rdf_type = allowed_types = type_default = None
+        rdf_type = allowed_types = type_default = type_description = type_schema = None
         if "@type" in props:
             parts = rdf_type_parts(props["@type"])
             if parts is None:
-                raise Unmapped(f"{where}.@type: {json.dumps(props['@type'])[:160]}")
-            rdf_type, allowed_types, type_default = parts
+                # An @type constraint in another form (JSON-LD typing): carried verbatim; a
+                # const or default in it still names the element.
+                type_schema = props["@type"]
+                found = [v for v in (json.dumps(type_schema),) for v in
+                         __import__("re").findall(r'"(?:const|default)": "([\w-]+:[\w-]+)"', v)]
+                parts = ([found[0]], " | ", None, None, None) if found else None
+            if parts is not None:
+                rdf_types, sep, allowed_types, type_default, type_description = parts
+                rdf_type = sep.join(rdf_types)
             if isinstance(type_default, str):
                 type_default = [type_default]  # @type is an array; a bare string default is wrapped
             if type_default is not None and not (
                     isinstance(type_default, list) and all(isinstance(t, str) for t in type_default)):
                 raise Unmapped(f"{where}.@type: default is not a string or list of strings: {type_default!r}")
-        if "@id" in props and props["@id"] != {"type": "string"}:
-            raise Unmapped(f"{where}.@id: {props['@id']}")
+        id_description = None
+        if "@id" in props:
+            id_prop = dict(props["@id"])
+            id_description = id_prop.pop("description", None)
+            if id_prop != {"type": "string"}:
+                raise Unmapped(f"{where}.@id: {props['@id']}")
+        named_from_type = name is None
         if name is None:
-            if not rdf_type:
+            if rdf_type:
+                name = rdf_types[0].split(":")[1]
+            elif fallback_name:
+                name = fallback_name
+            else:
                 raise Unmapped(f"{where}: inline object has no @type const to name it")
-            name = rdf_type.split(":")[1]
-        pkg = rdf_prefix(schema)
+        pkg = rdf_prefix(schema) or fallback_pkg
         required = required_props(schema)
         groups = choice_groups(schema)
         for r in (r for g in groups for alt in g for r in alt):
@@ -238,57 +422,118 @@ class ModelBuilder:
                 self.warnings.append(f"{where}: choice constraint names '{r}', which is not a declared property")
 
         body = DEFINITION_HEADER + schema.get("description", "")
-        if rdf_type:
+        if "title" in schema:
+            body += text_directive("title", schema["title"])
+        if not rdf_type and pkg:
+            # the prefix of this element's property keys (otherwise that of its @type)
+            body += directive("prefix", pkg)
+        if id_description is not None:
+            body += text_directive("idDescription", id_description)
+        if type_schema is not None:
+            body += text_directive("typeSchema", type_schema)
+            if "@type" not in required:
+                body += directive("typeOptional")
+        elif rdf_type:
             body += directive("rdfType", rdf_type)
+            if type_description is not None:
+                body += text_directive("typeDescription", type_description)
             if allowed_types:
                 body += directive("allowedTypes", " | ".join(allowed_types))
             if type_default is not None:
                 body += directive("typeDefault", " | ".join(type_default))
             if "@type" not in required:
-                self.warnings.append(f"{where}: @type is declared but not required; the XMI assumes it is required")
+                body += directive("typeOptional")
+        if "@context" in props:
+            # JSON-LD context requirements are serialization, not model: carried verbatim.
+            body += text_directive("contextSchema", props["@context"])
+        for unknown in set(props) & JSONLD_KEYWORDS - {"@type", "@id", "@context"}:
+            raise Unmapped(f"{where}.{unknown}: JSON-LD keyword property not handled")
+        for constraint in other_constraints(schema):
+            body += text_directive("constraint", constraint)
         if groups:
+            # JSON property keys, verbatim (they may be @id or carry another prefix)
             body += f"\n{CHOICE_LABEL}\n" + "\n".join(
-                "- ``" + " | ".join(" & ".join(attr_name(r, pkg) for r in alt) for alt in g) + "``"
-                for g in groups)
+                "- ``" + " | ".join(" & ".join(alt) for alt in g) + "``" for g in groups)
 
         attrs = []
         for pname, prop in props.items():
             if pname in JSONLD_KEYWORDS:
                 continue
-            type_ref, upper, directives = self.attr_type(prop, base_dir, f"{where}.{pname}")
-            desc = prop.get("description")
-            attrs.append({"name": attr_name(pname, pkg), "type": type_ref, "upper": upper,
-                          "lower": 1 if pname in required else 0,
-                          "body": None if desc is None and not directives
-                          else DEFINITION_HEADER + (desc or "") + "".join(directives)})
+            role = attr_name(pname, pkg)
+            attrs.append(self.attribute(role, prop, pname in required, (name, pkg), base_dir,
+                                        f"{where}.{pname}",
+                                        json_name=pname if f"{pkg}:{role}" != pname else None))
         kind = "uml:Class" if "@id" in props else "uml:DataType"
-        return self.add(self.element_id(pkg, name),
-                        {"kind": kind, "pkg": pkg, "name": name, "body": body, "attrs": attrs})
+        elem = {"kind": kind, "pkg": pkg, "name": name, "body": body, "attrs": attrs}
+        if named_from_type:
+            # Inline objects are named after their @type, which several may share.
+            return self.add_unique(pkg, name, elem)
+        return self.add(self.element_id(pkg, name), elem)
 
-    def attr_type(self, prop, base_dir, where):
-        """Map a property schema to (type ref, upper bound, attribute directives)."""
+    def attr_type(self, prop, base_dir, where, required=False, owner=None, role=""):
+        """Map a property schema to (type ref, upper bound, attribute directives, name of the
+        target uml:Class or None, description found on array items or None)."""
         prop = {k: v for k, v in prop.items() if k != "description"}
-        upper, directives = 1, []
+        upper, directives, items_desc = 1, [], None
+        if "default" in prop:
+            directives.append(text_directive("default", prop.pop("default")))
         if prop.get("type") == "array":
-            if set(prop) != {"type", "items"}:
-                raise Unmapped(f"{where}: array keywords {sorted(set(prop) - {'type', 'items'})}")
-            prop, upper = prop["items"], "*"
+            array_keywords = {k: prop.pop(k) for k in list(prop) if k in EXTRA_KEYWORDS}
+            if array_keywords:
+                directives.append(text_directive("arrayKeywords", array_keywords))
+            if set(prop) - {"type", "items", "minItems"}:
+                raise Unmapped(f"{where}: array keywords {sorted(set(prop) - {'type', 'items', 'minItems'})}")
+            if "minItems" in prop:
+                # uml_to_schema.py derives minItems from the lower bound; element() keeps
+                # this directive only where the two disagree.
+                directives.append(text_directive("minItems", prop["minItems"]))
+            elif required:
+                directives.append(text_directive("minItems", None))
+            prop, upper = dict(prop["items"]), "*"
+            items_desc = prop.pop("description", None)
+            if "default" in prop:
+                directives.append(text_directive("itemsDefault", prop.pop("default")))
+        prop = dict(prop)
+        keywords = {k: prop.pop(k) for k in list(prop) if k in EXTRA_KEYWORDS}
+        if keywords:
+            directives.append(text_directive("keywords", keywords))
         while set(prop) == {"$ref"} and prop["$ref"].startswith("#/$defs/"):
             name = prop["$ref"][len("#/$defs/"):]
             if name not in self.defs:
                 raise Unmapped(f"{where}: unresolved {prop['$ref']}")
             prop = self.defs[name]
         if is_iri_reference(prop):
-            return self.support("common.IriReference"), upper, directives
+            return self.support("common.IriReference"), upper, directives, None, items_desc
+        is_id_ref, id_desc = id_reference(prop)
+        if is_id_ref:
+            if id_desc is not None:
+                directives.append(text_directive("idRefDescription", id_desc))
+            return self.support("common.IdReference"), upper, directives, None, items_desc
         branches = prop.get("anyOf")
-        if set(prop) == {"anyOf"} and len(branches) == 2 and branches[1] == {"type": "string"} \
-                and set(branches[0]) == {"$ref"}:
-            directives.append(directive("alsoAcceptsString"))
-            prop = branches[0]
+        if set(prop) == {"anyOf"} and len(branches) == 2 and {"type": "string"} in branches:
+            other = branches[1 - branches.index({"type": "string"})]
+            if set(other) == {"$ref"}:
+                # anyOf [X, string] or anyOf [string, X]
+                first = branches[0] == {"type": "string"}
+                directives.append(directive("alsoAcceptsString", "first" if first else None))
+                prop = other
+                while set(prop) == {"$ref"} and prop["$ref"].startswith("#/$defs/"):
+                    name = prop["$ref"][len("#/$defs/"):]
+                    if name not in self.defs:
+                        raise Unmapped(f"{where}: unresolved {prop['$ref']}")
+                    prop = self.defs[name]
+        for keyword in ("anyOf", "oneOf"):
+            if set(prop) == {keyword}:
+                eid = self.union(prop[keyword], keyword, owner, role, base_dir, where)
+                return ("idref", eid), upper, directives, None, items_desc
+        if prop.get("type") == "string" and set(prop) == {"type", "enum"}:
+            return ("idref", self.enumeration(prop["enum"], owner, role, where)), upper, directives, None, items_desc
         if set(prop) == {"$ref"} and not prop["$ref"].startswith("#"):
             type_ref, kind = self.bblock_ref(prop["$ref"], base_dir)
         elif prop.get("type") == "object":
-            eid = self.element(prop, None, base_dir, where)
+            eid = self.element(prop, None, base_dir, where,
+                               fallback_name=f"{owner[0]}{role[:1].upper()}{role[1:]}" if owner else None,
+                               fallback_pkg=owner[1] if owner else None)
             type_ref, kind = ("idref", eid), self.elements[eid]["kind"]
         else:
             key = (prop.get("type"), prop.get("format"))
@@ -296,12 +541,13 @@ class ModelBuilder:
                 raise Unmapped(f"{where}: {json.dumps(prop)[:160]}")
             tpkg, tname = SCALARS[key]
             if tpkg == "prim":
-                return ("prim", tname), upper, directives
-            return self.support(f"{tpkg}.{tname}"), upper, directives
-        if kind == "uml:Class":
-            # The schema embeds the node; uml_to_schema.py's default would also accept {"@id"}.
-            directives.insert(0, directive("inlineOrByReference", "inline"))
-        return type_ref, upper, directives
+                return ("prim", tname), upper, directives, None, items_desc
+            return self.support(f"{tpkg}.{tname}"), upper, directives, None, items_desc
+        if kind != "uml:Class":
+            return type_ref, upper, directives, None, items_desc
+        # The schema embeds the node; uml_to_schema.py's default would also accept {"@id"}.
+        directives.insert(0, directive("inlineOrByReference", "inline"))
+        return type_ref, upper, directives, type_ref[1].rsplit(".", 1)[-1], items_desc
 
 
 class Writer:
@@ -343,10 +589,39 @@ class Writer:
                 self.add(depth + 2, f'<type xmi:idref="{ref}"/>')
             self.bound(depth + 2, aid, "lower", a["lower"])
             self.bound(depth + 2, aid, "upper", a["upper"])
+            if a.get("assoc"):
+                self.add(depth + 2, f'<association xmi:idref="{a["assoc"]}"/>')
             if a["body"] is not None:
                 self.comment(depth + 2, aid, a["body"])
             self.add(depth + 1, "</ownedAttribute>")
+        for lit in elem.get("literals", []):
+            lid = f"{eid}.{lit}"
+            self.add(depth + 1, f'<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="{escape(lid)}" '
+                                f'xmi:uuid="{self.uid(lid)}">')
+            self.add(depth + 2, f"<name>{escape(lit)}</name>")
+            self.add(depth + 1, "</ownedLiteral>")
         self.add(depth, "</packagedElement>")
+
+    def associations(self, depth, eid, elem):
+        """One uml:Association per class-typed attribute of elem, as in cdifmodels.xmi: the
+        attribute is the navigable member end; the association owns the other end, typed by
+        elem, with multiplicity 0..* (the schema says nothing about it)."""
+        for a in elem["attrs"]:
+            if not a.get("assoc"):
+                continue
+            assoc, end = a["assoc"], f'{a["assoc"]}.ownedEnd'
+            self.add(depth, f'<packagedElement xmi:type="uml:Association" xmi:id="{assoc}" '
+                            f'xmi:uuid="{self.uid(assoc)}">')
+            self.add(depth + 1, f"<name>{assoc.rsplit('.', 1)[-1]}</name>")
+            self.add(depth + 1, f'<ownedEnd xmi:type="uml:Property" xmi:id="{end}" xmi:uuid="{self.uid(end)}">')
+            self.add(depth + 2, f'<type xmi:idref="{eid}"/>')
+            self.bound(depth + 2, end, "lower", 0)
+            self.bound(depth + 2, end, "upper", "*")
+            self.add(depth + 2, f'<association xmi:idref="{assoc}"/>')
+            self.add(depth + 1, "</ownedEnd>")
+            self.add(depth + 1, f'<memberEnd xmi:idref="{end}"/>')
+            self.add(depth + 1, f'<memberEnd xmi:idref="{eid}.{a["name"]}"/>')
+            self.add(depth, "</packagedElement>")
 
 
 def build(bblock_dir):
@@ -377,6 +652,9 @@ def build(bblock_dir):
         for eid, elem in sorted(mb.elements.items()):
             if elem["pkg"] == pkg:
                 out.element(3, eid, elem)
+        for eid, elem in sorted(mb.elements.items()):
+            if elem["pkg"] == pkg:
+                out.associations(3, eid, elem)
         out.add(2, "</packagedElement>")
     out.add(1, "</uml:Model>")
     out.add(0, "</xmi:XMI>")
@@ -416,8 +694,11 @@ def build_linked(bblock_dir, out_root):
     out.add(2, f'<packagedElement xmi:type="uml:Package" xmi:id="{link.bb_id}" xmi:uuid="{link.uid(link.bb_id)}">')
     out.add(3, f"<name>{bdir.name}</name>")
     out.add(3, f"<URI>{REGISTER_URI}{bb_path}</URI>")
-    for eid in [root_id] + sorted(e for e in mb.elements if e != root_id):
+    order = [root_id] + sorted(e for e in mb.elements if e != root_id)
+    for eid in order:
         out.element(3, eid, mb.elements[eid])
+    for eid in order:
+        out.associations(3, eid, mb.elements[eid])
     out.add(2, "</packagedElement>")
     out.add(1, "</uml:Model>")
     out.add(0, "</xmi:XMI>")

@@ -78,6 +78,9 @@ converts a linked set to EA XMI 1.1, one file per block (`<linked root>-ea/…/<
 - **GUIDs:** every element, attribute and package has its Canonical `xmi:uuid` as its EA GUID.
 - **References to other blocks:** by that element's GUID, plus a `type` tagged value with
   its name.
+- **Associations:** an association end becomes an EA connector instead of an attribute. Its
+  source end is at the owner, non-navigable, `0..*`. Its target end is named after the role
+  and carries the attribute's multiplicity, comment and GUID.
 - **Comments:** kept verbatim.
 
 The files name "Enterprise Architect" 2.5 as exporter and declare each element referenced
@@ -136,55 +139,76 @@ Current findings (93 blocks):
 ## Forward mapping (bblock_to_xmi.py)
 
 The XMI has one element per object schema: the building block itself, every inline
-nested object, and a stub for every building block it `$ref`s. Facts UML has no slot
-for are written as **comment directives**, lines after the definition text, which
-`uml_to_schema.py --comment-directives` reads back.
+nested object and union, and (single-file mode) a stub for every building block it
+`$ref`s. Facts UML has no slot for are written as **comment directives**, lines after the
+definition text, which `uml_to_schema.py --comment-directives` reads back. Names and codes
+go in ` ``…`` `; free text, defaults and verbatim schema fragments are JSON.
+
+**Elements**
 
 | JSON Schema | XMI |
 |---|---|
 | object schema that declares `@id` | `uml:Class` |
-| object schema without `@id` | `uml:DataType` (a value type, which `uml_to_schema.py` gives no `@id`) |
-| `@type` = array `contains: {const: p:T}`, `minItems: 1` | class directive `:rdfType: ``p:T```; the element goes in package `p` |
-| `@type` items restricted to `enum: [p:T, p:U, ...]` (bare or in a one-branch `anyOf`) | class directive `:allowedTypes: ``p:T | p:U | ...``` |
-| `anyOf: [{required: [a]}, {required: [b, c]}]` | class directive `:choiceConstraints:` then `- ``a | b & c``` |
+| object schema without `@id` | `uml:DataType` (a value type) |
+| `anyOf` / `oneOf` of alternatives, as a property's value or as a whole block (temporalExtent) | **union DataType** (ISO 19103 «Union» style): one optional attribute per alternative, named after it (`person`, `organization`, `idReference`, `string`, …), each mapped like a property; directive `:union: ``anyOf``` or ``oneOf``. Named `<Owner><Role>Choice`, e.g. `AgentInRoleContributorChoice`. |
+| inline `{type: string, enum: [...]}` | `uml:Enumeration` named after the property, with its literals |
+| inline `type: object` | nested element named from its `@type` const (e.g. `ContactPoint`), else `<Owner><Role>`; a numeric suffix where names collide |
+| block root | element named from the directory (`cdifConceptOrTermOrString` → `ConceptOrTermOrString`) |
+
+**Properties**
+
+| JSON Schema | XMI |
+|---|---|
 | property `p:name` (same prefix as the class) | attribute `name` |
-| property `q:name` (another prefix) | attribute `q_name`, as in `cdifmodels.xmi` (e.g. `cdi_identifier`) |
+| property `q:name` (another prefix) | attribute `q_name`, as in `cdifmodels.xmi`, plus `:jsonName: "q:name"` |
 | `string` / `integer` / `boolean` / `number` | UML primitive `String` / `Integer` / `Boolean` / `Real` |
 | `string` + `format: uri` / `date` / `date-time` | `XMLSchemaDataTypes.XsdAnyUri` / `XsdDate` / `XsdDateTime` |
-| `anyOf: [string, {"@id": string}]` (the JSON-LD IRI-reference pattern) | `common.IriReference` (**new DataType**, not in `cdifmodels.xmi`) |
-| `$ref: ../X/schema.yaml` (another building block) | attribute typed by a stub element with class directive `:buildingBlock: ``<path under _sources>```. The stub is named from the directory (`cdifConceptOrTermOrString` → `ConceptOrTermOrString`). Its package comes from X's `@type` or prefixed properties, else from the directory prefix (`cdif…` → `cdif`, `ddicdi…` → `cdi`). |
-| `$ref: '#/$defs/X'` | followed to the definition, which is then mapped like any other property schema |
-| `$ref` to a building block that is a Class | attribute directive `:inlineOrByReference: ``inline```, because the schema embeds the node and doesn't accept `{"@id"}` (tag name from OGC UML-to-JSON rules) |
-| `anyOf: [{$ref: ...}, {type: string}]` | attribute directive `:alsoAcceptsString:` |
-| inline `type: object` with an `@type` const | nested element named from the const (e.g. `ContactPoint`) |
-| `type: array`, `items: X` | type of X, upper bound `*` |
+| `anyOf: [string, {"@id": string}]` (IRI reference) | `common.IriReference` (**new DataType**) |
+| `{"@id": string}` object, nothing else (node reference) | `common.IdReference` (**new DataType**); a description on its `@id` → `:idRefDescription:` |
+| `$ref: ../X/schema.yaml` (another building block) | linked mode: `href` into X's file; single-file mode: stub element with `:buildingBlock:` |
+| `$ref: '#/$defs/X'` | followed to the definition, then mapped like any property schema |
+| a property typed by a `uml:Class` | navigable end of a `uml:Association` named `<Owner>_<role>_<Target>`; the association owns the other end, `0..*`. A `$ref` to a Class is embed-only: `:inlineOrByReference: ``inline```. |
+| `anyOf: [X, string]` / `[string, X]`, X a `$ref` | type of X plus `:alsoAcceptsString:` (` ``first`` ` when string is first) |
+| `type: array`, `items: X` | type of X, upper bound `*`; `minItems` the lower bound doesn't imply → `:minItems:` |
 | in `required` | lower bound `1` (else `0`) |
-| `description` | `ownedComment` body after the `**CDIF** / Definition` header, kept verbatim |
-| `default` on `@type` (a string or a list of strings) | class directive `:typeDefault: ``p:T``` (`|`-separated for several). `uml_to_schema.py` always writes it back as an array, `default: [p:T]`, because `@type` is an array. A bare-string default in the source therefore comes back wrapped. |
+| `description` | `ownedComment` body after the `**CDIF** / Definition` header, verbatim; on `items` → `:descriptionOnItems:`, or `:itemsDescription:` if the array has one too |
+| `default` | `:default:` (on items: `:itemsDefault:`) |
+| `title`, `minLength`, `maxLength`, `pattern`, `minimum`, `maximum`, `exclusiveMinimum`, `exclusiveMaximum` | `:keywords: {...}` (on the array itself: `:arrayKeywords:`) |
 
-The building block's own element is named from its directory the same way as stubs.
+**Class-level**
+
+| JSON Schema | Class directive |
+|---|---|
+| `@type` containing one type / one of several / all of several | `:rdfType: ``p:T```, ``p:T | p:U``, ``p:T & p:U``; the element's package is `p`. "One of" may be written `contains: {const}`, `{anyOf}`, `{enum}` or `anyOf [{contains}]`. |
+| `@type` items restricted to an enum | `:allowedTypes: ``p:T | p:U``` |
+| `default` / `description` on `@type` | `:typeDefault:` (written back as an array, so a bare-string default comes back wrapped) / `:typeDescription:` |
+| `@type` declared but not required | `:typeOptional:` |
+| `@type` in any other form | `:typeSchema: {...}`, verbatim |
+| `description` on `@id` | `:idDescription:` |
+| `title` | `:title:` |
+| no `@type`: prefix of the property keys | `:prefix: ``p``` |
+| `anyOf: [{required: [a]}, {required: [b, c]}]` | `:choiceConstraints:` then `- ``a | b & c``` (JSON keys) |
+| other `allOf` members (e.g. `if` / `then` / `else`) | `:constraint: {...}`, verbatim |
+| an `@context` property | `:contextSchema: {...}`, verbatim |
+
+Anything else stops the converter with an error, rather than being dropped.
 
 ## Results
 
-All three building blocks validate the same way against the original and regenerated
-schemas. The remaining differences are annotations.
+**All 19 `schemaorgProperties` blocks round-trip** (`roundtrip.py --linked`): the only
+semantic differences are the 18 bare-string `@type` defaults, which come back wrapped as
+arrays by design. identifier, definedTerm, definedTermSet, actionResult, dataDownload,
+instrument, statisticalVariable, variableMeasured and webAPI come back identical.
 
-| | identifier | person | organization |
-|---|---|---|---|
-| exercises | scalars, URI, IRI reference, choice constraint | plus `$ref` to a DataType BB (or string), embed-only `$ref` to a Class BB, inline nested object, array of IRI references | plus `@type` restricted to a list of subtypes, local `$defs` aliasing a union-shaped BB in another folder |
-| semantic differences | `@id` added; `title` added | `@id` description added; `title` added; `contactPoint`'s `@type` default `"schema:ContactPoint"` becomes `["schema:ContactPoint"]` | `@id` description added; `title` added; `@type` default `"schema:Organization"` becomes `["schema:Organization"]` |
-| examples + edge cases validating the same | 2 + 4 | 2 + 11 | 2 + 9 |
+Earlier checks, from when the set was identifier, person and organization: the examples
+and edge cases (2 + 4, 2 + 11, 2 + 9) validate the same way against the original and
+regenerated schemas, with `$ref`s resolved from disk.
 
-- `uml_to_schema.py` adds `@id` (with a description) to every class node, and to a root
-  emitted from a DataType, such as Identifier. Neither original sets
-  `additionalProperties: false`, so this changes no validation result.
-- Person's edge cases cover: name only; identifier as a string or as a PropertyValue;
-  neither name nor identifier; affiliation as `{"@id"}` only (rejected by both) or embedded;
-  contactPoint without email or without `@type`; `sameAs` with `{"@id"}` items or not an
-  array; wrong `@type`. Organization's cover: an allowed and a non-listed subtype in
-  `@type`; a subtype without `schema:Organization`; `additionalType` as strings, as a
-  DefinedTerm, not an array, or with a number; identifier only; neither name nor
-  identifier. `$ref`s were resolved from disk, including the nested ones.
+The set converts to 20 EA XMI 1.1 files (19 blocks plus the common types) with 16
+associations and one enumeration; every reference resolves to an element or a declared
+stub. Two referenced blocks are outside the set (`cdifDataType/cdifConceptOrTermOrString`,
+`cdifDataType/objectReference`). Import order follows the references: common types, then
+each block before the blocks that reference it.
 
 Without the opt-in flags, the identifier round trip had 14 differences and rejected both
 of its own examples: XSD types and `IriReference` became JSON-LD node objects, `@type`
@@ -196,13 +220,11 @@ byte-identical before and after each change, checked on five schema runs over th
 DDI-CDI XMI and `cdifmodels.xmi` (single-class, multi-class with `--emit-uml`,
 `--strict-required --inline-datatypes`) and one `--config` run emitting canonical and EA XMI.
 
-## Not handled yet by bblock_to_xmi.py
+## Not handled yet
 
-A local `$defs` entry that defines an object inline (rather than pointing at another
-building block) is mapped as an inline nested object, which is untested. Not handled:
-`oneOf`/`anyOf` unions other than the patterns above,
-single-value-or-array unions, `enum`, `const` values, `minItems`/`maxItems` other than on
-`@type`, and `pattern`. Each building block becomes its own XMI. Referenced blocks appear
-only as stubs, so there's no merged model of several blocks yet.
-
-The generated XMI hasn't been imported into Enterprise Architect.
+- Blocks outside `schemaorgProperties` are untried; `ddiProperties` will add
+  inheritance, and composite profiles need PackageImport / PackageMerge.
+- Each building block is its own XMI file; there's no merged model of several blocks.
+- The Class / DataType split is a heuristic (does the schema declare `@id`?).
+- `:constraint:`, `:typeSchema:` and `:contextSchema:` carry JSON verbatim; a UML
+  `ownedRule` would be the formal home for constraints.

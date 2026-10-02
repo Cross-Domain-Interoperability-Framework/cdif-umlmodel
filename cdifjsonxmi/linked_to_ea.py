@@ -96,9 +96,19 @@ class Writer:
         self.close("UML:ModelElement.taggedValue")
 
 
-def type_ref(attr, primitives, stubs):
+class Context:
+    """What one file's conversion collects on the way: primitive types used, EAStubs for
+    elements of other files, association ends to emit as connectors, association uuids."""
+
+    def __init__(self, model):
+        self.primitives, self.stubs, self.assoc_ends = set(), {}, []
+        self.assoc_uuids = {e.get(f"{XMI}id"): e.get(f"{XMI}uuid") for e in model.iter("packagedElement")
+                            if e.get(f"{XMI}type") == "uml:Association"}
+
+
+def type_ref(attr, ctx):
     """(xmi.idref, type name) for an attribute's <type>. A type in another file is also
-    recorded in stubs ({EAID: (name, UML type)}) for the file's EAStub declarations."""
+    recorded in ctx.stubs ({EAID: (name, UML type)}) for the file's EAStub declarations."""
     t = attr.find("type")
     if t is None:
         return None, None
@@ -108,27 +118,55 @@ def type_ref(attr, primitives, stubs):
         href = t.get("href", "")
         file_part, _, target = href.partition("#")
         if "://" in file_part and target in UML_PRIM_NAMES:
-            primitives.add(target)
+            ctx.primitives.add(target)
             return f"eaxmiid_{target}", target
         eaid = ea_id("EAID", element_uuid(target))
-        stubs[eaid] = (target.rsplit(".", 1)[-1], ELEMENT_KINDS.get(target, "Class"))
-        return eaid, stubs[eaid][0]
+        ctx.stubs[eaid] = (target.rsplit(".", 1)[-1], ELEMENT_KINDS.get(target, "Class"))
+        return eaid, ctx.stubs[eaid][0]
     return ea_id("EAID", element_uuid(target)), target.rsplit(".", 1)[-1]
 
 
-def emit_classifier(w, el, package_eaid, primitives, stubs):
+def multiplicity(lower, upper):
+    return lower if lower == upper else f"{lower}..{upper}"
+
+
+def emit_classifier(w, el, package_eaid, ctx):
+    """A class, datatype or enumeration as an EA UML:Class. Attributes that are association ends
+    are left out here and collected in ctx.assoc_ends, to become connectors (emit_association).
+    Enumeration literals become frozen classifier-scope attributes, as in EA's own exports."""
     u = el.get(f"{XMI}uuid")
-    stype = "Class" if el.get(f"{XMI}type") == "uml:Class" else "DataType"
+    stype = el.get(f"{XMI}type")[len("uml:"):]
     w.open("UML:Class", {"name": el.findtext("name"), "xmi.id": ea_id("EAID", u), "visibility": "public",
                          "namespace": package_eaid, "isRoot": "false", "isLeaf": "false",
                          "isAbstract": "false", "isActive": "false"})
+    if stype == "Enumeration":
+        w.open("UML:ModelElement.stereotype")
+        w.open("UML:Stereotype", {"name": "enumeration"}, close=True)
+        w.close("UML:ModelElement.stereotype")
     w.tagged([("documentation", comment_body(el)), ("isSpecification", "false"), ("ea_stype", stype),
               ("ea_ntype", "0"), ("version", "1.0"), ("package", package_eaid), ("ea_guid", guid(u))])
-    attrs = el.findall("ownedAttribute")
+    literals = el.findall("ownedLiteral")
+    if literals:
+        w.open("UML:Classifier.feature")
+        for lit in literals:
+            w.open("UML:Attribute", {"name": lit.findtext("name"), "changeable": "frozen", "visibility": "public",
+                                     "ownerScope": "classifier", "targetScope": "instance"})
+            w.open("UML:Attribute.initialValue")
+            w.open("UML:Expression", close=True)
+            w.close("UML:Attribute.initialValue")
+            w.tagged([("ea_guid", guid(lit.get(f"{XMI}uuid")))])
+            w.close("UML:Attribute")
+        w.close("UML:Classifier.feature")
+    attrs = []
+    for a in el.findall("ownedAttribute"):
+        if a.find("association") is not None:
+            ctx.assoc_ends.append((el, a))
+        else:
+            attrs.append(a)
     if attrs:
         w.open("UML:Classifier.feature")
         for pos, a in enumerate(attrs):
-            idref, tname = type_ref(a, primitives, stubs)
+            idref, tname = type_ref(a, ctx)
             lower, upper = bound(a, "lower"), bound(a, "upper")
             w.open("UML:Attribute", {"name": a.findtext("name"), "changeable": "none", "visibility": "public",
                                      "ownerScope": "instance", "targetScope": "instance"})
@@ -149,7 +187,44 @@ def emit_classifier(w, el, package_eaid, primitives, stubs):
     w.close("UML:Class")
 
 
-def emit_package(w, pkg, primitives, stubs):
+def emit_association(w, owner, end, ctx):
+    """An association end (Canonical ownedAttribute with <association>) as an EA connector:
+    source end at the owner, non-navigable, 0..*; target end navigable, named after the role,
+    with the attribute's multiplicity, comment and GUID."""
+    assoc_id = end.find("association").get(f"{XMI}idref")
+    u = ctx.assoc_uuids[assoc_id]
+    owner_u = owner.get(f"{XMI}uuid")
+    target_eaid, target_name = type_ref(end, ctx)
+    target_kind = ctx.stubs.get(target_eaid, (target_name, ELEMENT_KINDS.get(
+        end.find("type").get(f"{XMI}idref", ""), "Class")))[1]
+    w.open("UML:Association", {"name": assoc_id.rsplit(".", 1)[-1], "xmi.id": ea_id("EAID", u),
+                               "visibility": "public", "isRoot": "false", "isLeaf": "false",
+                               "isAbstract": "false"})
+    w.tagged([("documentation", comment_body(end)), ("ea_type", "Association"),
+              ("direction", "Source -> Destination"), ("ea_sourceName", owner.findtext("name")),
+              ("ea_targetName", target_name),
+              ("ea_sourceType", owner.get(f"{XMI}type")[len("uml:"):]),
+              ("ea_targetType", target_kind), ("ea_guid", guid(u))])
+    w.open("UML:Association.connection")
+    w.open("UML:AssociationEnd", {"visibility": "public", "multiplicity": "0..*", "aggregation": "none",
+                                  "isOrdered": "false", "targetScope": "instance", "changeable": "none",
+                                  "isNavigable": "false", "type": ea_id("EAID", owner_u)})
+    w.tagged([("containment", "Unspecified"), ("sourcestyle", "Union=0;Derived=0;AllowDuplicates=0;"),
+              ("ea_end", "source")])
+    w.close("UML:AssociationEnd")
+    w.open("UML:AssociationEnd", {"visibility": "public", "name": end.findtext("name"),
+                                  "multiplicity": multiplicity(bound(end, "lower"), bound(end, "upper")),
+                                  "aggregation": "none", "isOrdered": "false", "targetScope": "instance",
+                                  "changeable": "none", "isNavigable": "true", "type": target_eaid})
+    w.tagged([("description", comment_body(end)), ("containment", "Unspecified"),
+              ("deststyle", "Union=0;Derived=0;AllowDuplicates=0;"), ("ea_end", "target"),
+              ("ea_guid", guid(end.get(f"{XMI}uuid")))])
+    w.close("UML:AssociationEnd")
+    w.close("UML:Association.connection")
+    w.close("UML:Association")
+
+
+def emit_package(w, pkg, ctx):
     """A uml:Package (and nested packages) as an EA UML:Package; classifiers before packages."""
     u = pkg.get(f"{XMI}uuid")
     eaid = ea_id("EAPK", u)
@@ -161,11 +236,11 @@ def emit_package(w, pkg, primitives, stubs):
     w.open("UML:Namespace.ownedElement")
     children = pkg.findall("packagedElement")
     for el in children:
-        if el.get(f"{XMI}type") in ("uml:Class", "uml:DataType"):
-            emit_classifier(w, el, eaid, primitives, stubs)
+        if el.get(f"{XMI}type") in ("uml:Class", "uml:DataType", "uml:Enumeration"):
+            emit_classifier(w, el, eaid, ctx)
     for el in children:
         if el.get(f"{XMI}type") == "uml:Package":
-            emit_package(w, el, primitives, stubs)
+            emit_package(w, el, ctx)
     w.close("UML:Namespace.ownedElement")
     w.close("UML:Package")
 
@@ -189,16 +264,18 @@ def convert(canonical_file):
     w.open("UML:Namespace.ownedElement")
     w.open("UML:Class", {"name": "EARootClass", "xmi.id": ROOT_CLASS_ID, "isRoot": "true",
                          "isLeaf": "false", "isAbstract": "false"}, close=True)
-    primitives, stubs = set(), {}
+    ctx = Context(model)
     if len(packages) == 1:
-        emit_package(w, packages[0], primitives, stubs)
+        emit_package(w, packages[0], ctx)
     else:
         # Wrap several top-level packages in one, named after the model, so EA imports one package.
         wrapper = ET.Element("packagedElement", {f"{XMI}type": "uml:Package", f"{XMI}uuid": model_u})
         ET.SubElement(wrapper, "name").text = model.findtext("name")
         wrapper.extend(packages)
-        emit_package(w, wrapper, primitives, stubs)
-    for prim in sorted(primitives):
+        emit_package(w, wrapper, ctx)
+    for owner, end in ctx.assoc_ends:
+        emit_association(w, owner, end, ctx)
+    for prim in sorted(ctx.primitives):
         w.open("UML:Class", {"name": prim, "xmi.id": f"eaxmiid_{prim}", "visibility": "public",
                              "isRoot": "true", "isLeaf": "false", "isAbstract": "false"})
         w.tagged([("isSpecification", "false"), ("ea_stype", "Primitive"), ("ea_ntype", "0")])
@@ -209,7 +286,7 @@ def convert(canonical_file):
     # Elements of other building blocks this file references, declared the way EA declares
     # references out of an exported package, so EA can match them by GUID on import.
     w.open("XMI.extensions", {"xmi.extender": "Enterprise Architect 2.5"})
-    for eaid, (name, kind) in sorted(stubs.items()):
+    for eaid, (name, kind) in sorted(ctx.stubs.items()):
         w.open("EAStub", {"xmi.id": eaid, "name": name, "UMLType": kind}, close=True)
     w.close("XMI.extensions")
     w.close("XMI")
@@ -226,7 +303,7 @@ def main():
     files = [root / COMMON_TYPES_FILE] + sorted(p for p in root.rglob("*.xmi") if p.name != COMMON_TYPES_FILE)
     for f in files:
         for el in ET.parse(f).getroot().iter("packagedElement"):
-            if el.get(f"{XMI}type") in ("uml:Class", "uml:DataType"):
+            if el.get(f"{XMI}type") in ("uml:Class", "uml:DataType", "uml:Enumeration"):
                 ELEMENT_KINDS[el.get(f"{XMI}id")] = el.get(f"{XMI}type")[len("uml:"):]
     for f in files:
         target = out_root / f.relative_to(root).with_suffix(".xml")

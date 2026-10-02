@@ -45,7 +45,11 @@ def normalize(schema, base_dir):
     - file $refs become absolute paths (resolved against base_dir), so the same
       target written from different directories compares equal;
     - local #/$defs/X refs are inlined and $defs dropped;
-    - a one-branch anyOf is replaced by its branch;
+    - a one-branch anyOf is replaced by its branch; a branch that is itself only an anyOf is
+      flattened into its parent, and anyOf / oneOf branches are sorted (both are unordered);
+    - an array's "contains one of these types" is written one way: contains {enum: [...]},
+      contains {anyOf: [{const}]} and anyOf [{contains: {const}}] all become
+      contains {anyOf: [{const}, ...]} with the consts sorted;
     - in every object schema, 'required' and choice 'anyOf's from the top level
       and from allOf members are gathered into one place."""
     defs = schema.get("$defs", {})
@@ -65,8 +69,29 @@ def normalize(schema, base_dir):
             node["$ref"] = (base_dir / ref).resolve().as_posix()
         if set(node) == {"anyOf"} and len(node["anyOf"]) == 1:
             return walk(node["anyOf"][0], depth)
+        contains = node.get("contains")
+        if isinstance(contains, dict) and set(contains) == {"enum"}:
+            node["contains"] = {"anyOf": [{"const": v} for v in contains["enum"]]}
+        if isinstance(node.get("anyOf"), list) and node["anyOf"] \
+                and all(isinstance(b, dict) and set(b) == {"contains"} for b in node["anyOf"]) \
+                and "contains" not in node:
+            consts = []
+            for b in node.pop("anyOf"):
+                c = b["contains"]
+                consts += c["anyOf"] if set(c) == {"anyOf"} else [c]
+            node["contains"] = {"anyOf": consts}
         node.pop("$defs", None)
         node = {k: walk(v, depth) for k, v in node.items()}
+        for key in ("anyOf", "oneOf"):
+            if isinstance(node.get(key), list):
+                flat = []
+                for b in node[key]:
+                    # flattening is only equivalent for anyOf
+                    flat += b[key] if key == "anyOf" and isinstance(b, dict) and set(b) == {key} else [b]
+                node[key] = sorted(flat, key=lambda b: json.dumps(b, sort_keys=True))
+        contains = node.get("contains")
+        if isinstance(contains, dict) and set(contains) == {"anyOf"} and len(contains["anyOf"]) == 1:
+            node["contains"] = contains["anyOf"][0]
         if node.get("type") == "object" and "properties" in node:
             req, anyofs = set(node.pop("required", [])), []
             if "anyOf" in node:
@@ -93,8 +118,8 @@ def regenerate_and_compare(bblock_dir, xmi, class_name, pkg, out_dir, linked=Fal
     bb_name = bblock_dir.resolve().name
     cmd = [sys.executable, str(UML_TO_SCHEMA), "--xmi", str(xmi), "--class", class_name,
            "--bb-name", "regenerated", "--out-dir", str(out_dir), "--prefix", pkg,
-           "--title", class_name, "--strict-required", "--schema-only",
-           "--xsd-formats", "--iri-reference-type", "IriReference",
+           "--strict-required", "--schema-only",
+           "--xsd-formats", "--iri-reference-type", "IriReference", "--id-reference-type", "IdReference",
            "--comment-directives", "--verbatim-docs"] + (["--linked"] if linked else [])
     run = subprocess.run(cmd, capture_output=True, text=True, cwd=HERE)
     if run.returncode:

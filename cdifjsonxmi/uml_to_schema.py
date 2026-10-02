@@ -631,7 +631,13 @@ def verbatim_definition(doc: Optional[str]) -> Optional[str]:
 # after the definition text, carrying JSON-LD facts UML has no slot for.
 # On a class / datatype:
 #   :rdfType: ``schema:PropertyValue``      -> @type const (default prefix:ClassName);
-#                                              on a datatype also makes @type required
+#                                              on a datatype also makes @type required.
+#             ``schema:A | schema:B``        -> @type contains anyOf [{const: A}, {const: B}]
+#             ``schema:A & schema:B``        -> @type allOf [{contains: {const: A}}, ...], minItems 2
+#   :typeDescription: "text"                 -> @type description
+#   :idDescription: "text"                   -> @id description (with the directives, @id
+#                                               is written as declared, never invented)
+#   :title: "text"                           -> the schema title (root class only)
 #   :allowedTypes: ``schema:A | schema:B``   -> @type items restricted to enum [A, B]
 #   :typeDefault: ``schema:A | schema:B``    -> @type default, always emitted as an array [A, B]
 #   :choiceConstraints:
@@ -644,8 +650,37 @@ def verbatim_definition(doc: Optional[str]) -> Optional[str]:
 #                         ``byReference``    -> {"@id"} reference only
 #                                               (absent: either, the default anyOf)
 #   :alsoAcceptsString:                      -> anyOf [<type>, {type: string}]
-_DIRECTIVE_NAMES = ("rdfType", "allowedTypes", "typeDefault", "choiceConstraints", "buildingBlock",
-                    "inlineOrByReference", "alsoAcceptsString")
+#                      ``first``             -> anyOf [{type: string}, <type>]
+#   :default: <JSON value>                   -> the property's default
+#   :descriptionOnItems:                     -> description goes on the array's items
+#   :minItems: <n or null>                   -> array minItems, where the lower bound doesn't
+#                                               imply it (null: none, though required)
+#   :idRefDescription: "text"                -> description of @id in an --id-reference-type value
+#   :jsonName: "dcterms:conformsTo"          -> the property key, where it isn't prefix:attribute
+#   :keywords: {...} / :arrayKeywords: {...} -> extra keywords (title, minLength, pattern, ...)
+#                                               on the value schema / on the array
+#   :itemsDefault: <JSON value>              -> default on the array's items
+#   :itemsDescription: "text"                -> description on the array's items, where the
+#                                               array has its own
+# On a class / datatype, also:
+#   :typeOptional:                           -> @type is declared but not required
+#   :prefix: ``schema``                      -> prefix of its property keys, where it has no
+#                                               :rdfType: to take it from
+#   :union: ``anyOf`` / ``oneOf``            -> a union (ISO 19103 style): the schema is that
+#                                               keyword over its attributes, one per alternative
+#   :contextSchema: {...}                    -> the @context property schema, verbatim
+#   :typeSchema: {...}                       -> the @type property schema, verbatim (an @type
+#                                               constraint in a form :rdfType: can't express)
+#   :constraint: {...}                       -> an allOf member UML has no form for (e.g.
+#                                               if/then/else), verbatim; may repeat
+# Names in :choiceConstraints: are JSON property keys when they contain ':' or start with '@'.
+# Values in ``...`` are names or codes; other values (text, defaults) are JSON.
+_DIRECTIVE_NAMES = ("rdfType", "allowedTypes", "typeDefault", "typeDescription", "idDescription",
+                    "title", "choiceConstraints", "buildingBlock", "inlineOrByReference",
+                    "alsoAcceptsString", "default", "descriptionOnItems", "minItems",
+                    "idRefDescription", "jsonName", "keywords", "arrayKeywords", "typeOptional",
+                    "itemsDefault", "prefix", "union", "contextSchema", "constraint", "typeSchema",
+                    "itemsDescription")
 _DIRECTIVE_RE = re.compile(r"\n:(" + "|".join(_DIRECTIVE_NAMES) + r"):")
 
 
@@ -662,8 +697,17 @@ def split_comment_directives(doc: Optional[str]) -> tuple[Optional[str], dict[st
     for line in doc[m.start() + 1:].splitlines():
         dm = re.match(r":(\w+):\s*(.*)$", line)
         if dm and dm.group(1) in _DIRECTIVE_NAMES:
-            value = dm.group(2).strip().strip("`")
-            directives[dm.group(1)] = [] if dm.group(1) == "choiceConstraints" else (value or True)
+            raw = dm.group(2).strip()
+            if raw.startswith("``"):
+                value: Any = raw.strip("`")
+            elif raw:
+                value = json.loads(raw)
+            else:
+                value = True
+            if dm.group(1) == "constraint":
+                directives.setdefault("constraint", []).append(value)
+            else:
+                directives[dm.group(1)] = [] if dm.group(1) == "choiceConstraints" else value
         elif line.startswith("- ``") and "choiceConstraints" in directives:
             body = line.strip().removeprefix("- ``").removesuffix("``")
             directives["choiceConstraints"].append([alt.split(" & ") for alt in body.split(" | ")])
@@ -709,6 +753,12 @@ XSD_STRING_FORMATS = {"XsdAnyUri": "uri", "XsdDate": "date", "XsdDateTime": "dat
                       "XsdLanguage": None}
 
 
+def _id_reference_value_schema() -> dict:
+    """--id-reference-type: a JSON-LD node reference {"@id": ...} and nothing else."""
+    return {"type": "object", "required": ["@id"], "additionalProperties": False,
+            "properties": {"@id": {"type": "string"}}}
+
+
 def _iri_reference_value_schema() -> dict:
     """--iri-reference-type: a plain string or a JSON-LD node reference {"@id": ...}."""
     return {
@@ -720,13 +770,50 @@ def _iri_reference_value_schema() -> dict:
     }
 
 
+def _class_prefix(cls: "UmlClass", ctx: "BuildContext") -> str:
+    """Prefix of a class's property keys: its :prefix:, else its :rdfType:'s, else --prefix."""
+    d = _directives(ctx, cls.doc)
+    if d.get("prefix"):
+        return d["prefix"]
+    if d.get("rdfType"):
+        return re.split(r" [|&] ", d["rdfType"])[0].split(":")[0]
+    return ctx.prefix
+
+
+def _declares_type(cls: "UmlClass", ctx: "BuildContext") -> bool:
+    """Whether a class/datatype def gets an @type property. Always, by default; with
+    --comment-directives only when the model records one (:rdfType: or :typeSchema:)."""
+    if not ctx.comment_directives:
+        return True
+    d = _directives(ctx, cls.doc)
+    return "rdfType" in d or "typeSchema" in d
+
+
+def _union_def(cls: "UmlClass", ctx: "BuildContext") -> dict:
+    """A :union: datatype as {description?, anyOf|oneOf: [one schema per attribute]}."""
+    keyword = _directives(ctx, cls.doc)["union"]
+    schema: dict[str, Any] = {}
+    desc = _element_description(ctx, cls.doc) if cls.doc else None
+    if desc:
+        schema["description"] = desc
+    branches = []
+    for prop in cls.properties:
+        branch = property_to_schema(prop, ctx)
+        if branch is not None:
+            branches.append(branch)
+    schema[keyword] = branches
+    return schema
+
+
 def _type_schema_and_choices(cls: "UmlClass", ctx: "BuildContext") -> tuple[dict, list[dict]]:
     """@type property schema and allOf members for a class/datatype def.
     Without --comment-directives the @type const is prefix:ClassName and there
     are no allOf members."""
     d = _directives(ctx, cls.doc)
-    choices = [{"anyOf": [{"required": [_qname(ctx.prefix, n) for n in alt]} for alt in g]}
-               for g in d.get("choiceConstraints", [])]
+    prefix = _class_prefix(cls, ctx)
+    key = lambda n: n if (":" in n or n.startswith("@")) else _qname(prefix, n)
+    choices = [{"anyOf": [{"required": [key(n) for n in alt]} for alt in g]}
+               for g in d.get("choiceConstraints", [])] + d.get("constraint", [])
     type_schema: dict[str, Any] = {}
     if d.get("typeDefault"):
         # @type is an array, so its default is one too.
@@ -735,8 +822,20 @@ def _type_schema_and_choices(cls: "UmlClass", ctx: "BuildContext") -> tuple[dict
     type_schema["items"] = {"type": "string"}
     if d.get("allowedTypes"):
         type_schema["items"]["enum"] = d["allowedTypes"].split(" | ")
-    type_schema["contains"] = {"const": d.get("rdfType") or _qname(ctx.prefix, cls.name)}
-    type_schema["minItems"] = 1
+    if "typeSchema" in d:
+        return d["typeSchema"], choices
+    rdf_type = d.get("rdfType") or _qname(ctx.prefix, cls.name)
+    if " & " in rdf_type:
+        types = rdf_type.split(" & ")
+        type_schema["allOf"] = [{"contains": {"const": t}} for t in types]
+        type_schema["minItems"] = len(types)
+    else:
+        types = rdf_type.split(" | ")
+        type_schema["contains"] = ({"const": types[0]} if len(types) == 1
+                                   else {"anyOf": [{"const": t} for t in types]})
+        type_schema["minItems"] = 1
+    if "typeDescription" in d:
+        type_schema["description"] = d["typeDescription"]
     return type_schema, choices
 
 
@@ -768,6 +867,7 @@ class BuildContext:
     # --xsd-formats, --iri-reference-type, --comment-directives, --verbatim-docs).
     xsd_formats: bool = False
     iri_reference_type: Optional[str] = None
+    id_reference_type: Optional[str] = None
     comment_directives: bool = False
     verbatim_docs: bool = False
     bb_out_dir: Optional[Path] = None   # output BB dir; base for :buildingBlock: $refs
@@ -909,6 +1009,7 @@ def _has_distinct_named_targets(group: list[Property], ctx: BuildContext) -> boo
 def _build_properties_dict(
     prop_list: list[Property], ctx: BuildContext,
     owner_class_name: Optional[str] = None,
+    owner_prefix: Optional[str] = None,
 ) -> tuple[OrderedDict, list[str]]:
     """Group UML properties by role name, then build the JSON Schema
     `properties` dict and the matching `required` list. When N>1 properties
@@ -958,7 +1059,8 @@ def _build_properties_dict(
             sub = _group_to_schema(group, ctx)
             if sub is None:
                 continue
-            key = _qname(ctx.prefix, name)
+            key = (_directives(ctx, group[0].doc).get("jsonName")
+                   or _qname(owner_prefix or ctx.prefix, name))
             properties[key] = sub
             if ctx.strict_required and any(p.lower >= 1 for p in group):
                 required.append(key)
@@ -967,21 +1069,30 @@ def _build_properties_dict(
 
 def datatype_to_def(dt: UmlClass, ctx: BuildContext) -> dict:
     """Build a $def schema body for a uml:DataType."""
+    if "union" in _directives(ctx, dt.doc):
+        return _union_def(dt, ctx)
     schema: dict[str, Any] = {"type": "object"}
+    if "title" in _directives(ctx, dt.doc):
+        schema["title"] = _directives(ctx, dt.doc)["title"]
     if dt.doc:
         desc = _element_description(ctx, dt.doc)
         if desc:
             schema["description"] = desc
     type_schema, choices = _type_schema_and_choices(dt, ctx)
     props: OrderedDict = OrderedDict()
-    props["@type"] = type_schema
+    if "contextSchema" in _directives(ctx, dt.doc):
+        props["@context"] = _directives(ctx, dt.doc)["contextSchema"]
+    if _declares_type(dt, ctx):
+        props["@type"] = type_schema
     extra, required = _build_properties_dict(
         collect_inherited_properties(dt.id, ctx.model), ctx,
-        owner_class_name=dt.name,
+        owner_class_name=dt.name, owner_prefix=_class_prefix(dt, ctx),
     )
     props.update(extra)
-    schema["properties"] = props
-    if "rdfType" in _directives(ctx, dt.doc):
+    if props or not ctx.comment_directives:  # an empty object stays {"type": "object"}
+        schema["properties"] = props
+    dt_d = _directives(ctx, dt.doc)
+    if ("rdfType" in dt_d or "typeSchema" in dt_d) and not dt_d.get("typeOptional"):
         # A datatype with a declared RDF type is a typed JSON-LD node: @type required.
         required = ["@type", *required]
     if required:
@@ -993,26 +1104,44 @@ def datatype_to_def(dt: UmlClass, ctx: BuildContext) -> dict:
 
 def class_to_node_def(cls: UmlClass, ctx: BuildContext) -> dict:
     """Build a $def schema body for a uml:Class (a JSON-LD node)."""
+    if "union" in _directives(ctx, cls.doc):
+        return _union_def(cls, ctx)
     schema: dict[str, Any] = {"type": "object"}
+    if "title" in _directives(ctx, cls.doc):
+        schema["title"] = _directives(ctx, cls.doc)["title"]
     if cls.doc:
         desc = _element_description(ctx, cls.doc)
         if desc:
             schema["description"] = desc
     type_schema, choices = _type_schema_and_choices(cls, ctx)
     props: OrderedDict = OrderedDict()
-    required: list[str] = ["@type"]
-    props["@type"] = type_schema
-    props["@id"] = {
-        "type": "string",
-        "description": f"Identifier for this {cls.name} node",
-    }
+    if "contextSchema" in _directives(ctx, cls.doc):
+        props["@context"] = _directives(ctx, cls.doc)["contextSchema"]
+    required: list[str] = [] if _directives(ctx, cls.doc).get("typeOptional") else ["@type"]
+    if _declares_type(cls, ctx):
+        props["@type"] = type_schema
+    else:
+        required = []
+    if ctx.comment_directives:
+        # @id as the model declares it: on classes only, with the recorded description.
+        d = _directives(ctx, cls.doc)
+        if cls.kind != "datatype":
+            props["@id"] = {"type": "string"}
+            if "idDescription" in d:
+                props["@id"]["description"] = d["idDescription"]
+    else:
+        props["@id"] = {
+            "type": "string",
+            "description": f"Identifier for this {cls.name} node",
+        }
     extra, extra_req = _build_properties_dict(
         collect_inherited_properties(cls.id, ctx.model), ctx,
-        owner_class_name=cls.name,
+        owner_class_name=cls.name, owner_prefix=_class_prefix(cls, ctx),
     )
     props.update(extra)
     required.extend(extra_req)
-    schema["properties"] = props
+    if props or not ctx.comment_directives:  # an empty object stays {"type": "object"}
+        schema["properties"] = props
     if required:
         schema["required"] = required
     if choices:
@@ -1048,15 +1177,41 @@ def property_to_schema(prop: Property, ctx: BuildContext) -> Optional[dict]:
     inner = _resolve_property_type(prop, ctx)
     if inner is None:
         return None
-    if _directives(ctx, prop.doc).get("alsoAcceptsString"):
+    d = _directives(ctx, prop.doc)
+    if "idRefDescription" in d and inner.get("properties", {}).get("@id"):
+        inner = {**inner, "properties": {"@id": {**inner["properties"]["@id"],
+                                                 "description": d["idRefDescription"]}}}
+    if d.get("keywords"):
+        inner = {**inner, **d["keywords"]}
+    also_string = d.get("alsoAcceptsString")
+    if also_string == "first":
+        inner = {"anyOf": [{"type": "string"}, inner]}
+    elif also_string:
         inner = {"anyOf": [inner, {"type": "string"}]}
     out = _wrap_multiplicity(inner, prop)
+    if "itemsDescription" in d and out.get("type") == "array":
+        out = {**out, "items": {**out["items"], "description": d["itemsDescription"]}}
+    if "itemsDefault" in d and out.get("type") == "array":
+        out = {**out, "items": {"default": d["itemsDefault"], **out["items"]}}
+    if d.get("arrayKeywords") and out.get("type") == "array":
+        out = {**out, **d["arrayKeywords"]}
+    if "minItems" in d and out.get("type") == "array":
+        out = dict(out)
+        if d["minItems"] is None:
+            out.pop("minItems", None)
+        else:
+            out["minItems"] = d["minItems"]
     desc = _doc_text(ctx, prop.doc) if prop.doc else None
     if desc:
         # Prefer the description on the outer (multiplicity) wrapper if array,
         # else inline it on the inner.
         out = dict(out)  # copy so we don't mutate $ref dicts shared across props
-        out["description"] = desc
+        if d.get("descriptionOnItems") and "items" in out:
+            out["items"] = {**out["items"], "description": desc}
+        else:
+            out["description"] = desc
+    if "default" in d:
+        out = {"default": d["default"], **out}
     return out
 
 
@@ -1082,6 +1237,8 @@ def _resolve_property_type(prop: Property, ctx: BuildContext) -> Optional[dict]:
 
     if ctx.iri_reference_type and target.name == ctx.iri_reference_type:
         return _iri_reference_value_schema()
+    if ctx.id_reference_type and target.name == ctx.id_reference_type:
+        return _id_reference_value_schema()
     if ctx.xsd_formats and target.name in XSD_STRING_FORMATS:
         fmt = XSD_STRING_FORMATS[target.name]
         return {"type": "string", "format": fmt} if fmt else {"type": "string"}
@@ -1115,6 +1272,10 @@ def _resolve_class_target(cls: UmlClass, ctx: BuildContext) -> dict:
     bb_ref = _building_block_ref(ctx, cls)
     if bb_ref:
         return bb_ref
+    if ctx.comment_directives:
+        # Defined in this XMI: never replaced by a sibling BB that happens to own a class
+        # of the same name (sibling-BB lookup keys on the @type's local name).
+        return _inline_class_ref(cls, ctx)
     ext = ctx.external_class_refs.get(cls.name)
     if ext:
         return {"$ref": ext}
@@ -1181,7 +1342,8 @@ def build_root_schema(
 
     root: dict[str, Any] = OrderedDict()
     root["$schema"] = "https://json-schema.org/draft/2020-12/schema"
-    root["title"] = title
+    if title:
+        root["title"] = title
     if description:
         root["description"] = description
 
@@ -1604,6 +1766,9 @@ def main(argv: Optional[list[str]] = None) -> int:
     ap.add_argument("--iri-reference-type", default=None, metavar="NAME",
                     help="DataType name whose attributes accept a plain string OR a "
                          "JSON-LD node reference {\"@id\": ...} (e.g. IriReference).")
+    ap.add_argument("--id-reference-type", default=None, metavar="NAME",
+                    help="DataType name whose attributes are a JSON-LD node reference "
+                         "{\"@id\": ...} with no other keys (e.g. IdReference).")
     ap.add_argument("--comment-directives", action="store_true",
                     help="Read JSON-LD directives from comments and drop them from "
                          "descriptions: on classes :rdfType:, :choiceConstraints:, "
@@ -1795,6 +1960,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         expanding=set(),
         xsd_formats=args.xsd_formats,
         iri_reference_type=args.iri_reference_type,
+        id_reference_type=args.id_reference_type,
         comment_directives=args.comment_directives,
         verbatim_docs=args.verbatim_docs,
         bb_out_dir=bb_out_dir,
@@ -1805,6 +1971,9 @@ def main(argv: Optional[list[str]] = None) -> int:
     # Title and description
     if args.title:
         title = args.title
+    elif args.comment_directives:
+        # The title the model records, or none.
+        title = split_comment_directives(classes[0].doc)[1].get("title")
     else:
         title = " ".join(_humanize(args.bb_name).split())
     if args.description:
