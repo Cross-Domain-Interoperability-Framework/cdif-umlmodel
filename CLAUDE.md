@@ -14,8 +14,6 @@ This repo holds the UML models that define CDIF (Cross-Domain Interoperability F
 - `docs/`: PDFs for reference.
 - The HTML model documentation is published from the `gh-pages` branch, not from `main`.
 
-The root README mentions `generatedJSON/` and `generatedSHACL/` folders and generator tools. None of these exist in the repo. The generated schemas and shapes that are actually present are the ones in `tools/`.
-
 ## tools/ is a mirror. Don't edit the mirrored files
 
 `.github/workflows/sync-tools-from-validation.yml` runs daily, and also on demand through workflow_dispatch. It copies files from the public `Cross-Domain-Interoperability-Framework/validation` repo into `tools/`. That repo is the source of truth, and the list of mirrored files is `tools/sync_mirror_tools.sh` in the validation repo. Fix scripts, schemas, SHACL shapes and the frame upstream, then re-sync. Edits made here get overwritten.

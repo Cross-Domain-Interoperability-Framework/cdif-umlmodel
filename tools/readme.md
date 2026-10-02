@@ -4,9 +4,7 @@ Code and supporting documents for validating CDIF JSON-LD instance documents.
 The validation scripts, JSON-LD framing document, framed-tree JSON Schemas, and
 SHACL shape sets in this directory are **mirrored from the CDIF
 [`validation`](https://github.com/Cross-Domain-Interoperability-Framework/validation)
-repository**, which remains the source of truth. (Tools for *generating* JSON
-Schema and SHACL rules from the UML model live alongside these and are described
-in the repository root `README`.)
+repository**, which remains the source of truth.
 
 There are three ways to validate an instance document, described below. All three
 consume the same CDIF JSON-LD instance file.
