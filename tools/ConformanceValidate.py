@@ -463,9 +463,13 @@ def frame_doc(doc, frame):
         picked = None
         for item in compacted["@graph"]:
             at = item.get("schema:additionalType") or item.get("additionalType", [])
-            if isinstance(at, str):
+            if not isinstance(at, list):
                 at = [at]
-            if "dcat:CatalogRecord" in at:
+            # additionalType may carry dcat:CatalogRecord as a string, an
+            # {"@id": ...} reference (the CDIF convention), or a full IRI.
+            types = {v.get("@id") if isinstance(v, dict) else v for v in at}
+            if types & {"dcat:CatalogRecord",
+                        "http://www.w3.org/ns/dcat#CatalogRecord"}:
                 continue
             picked = item
             break
@@ -631,6 +635,50 @@ def build_resolver(source, schema_map=None, cache_dir=None,
 # Validation engine — pure function, returns JSON-serializable results
 # ---------------------------------------------------------------------------
 
+CDIF_URI_PREFIX = "https://w3id.org/cdif/"
+
+
+def conformance_consistency(doc, declared):
+    """Compare the profiles the record DECLARES against those its content
+    actually supports, per detect_conformance.
+
+    Both halves are read from `doc`, the document as authored. Detection must
+    NOT run on the framed result: framing is lossy, and a profile whose
+    evidence sits below schema:distribution (data_structure, for one) is not
+    detected there -- which would manufacture an over-claim for a correct
+    record.
+
+    Returns None when detect_conformance (or rdflib) is unavailable, so this
+    stays optional the way the SHACL pass does. Only the CDIF-managed URI space
+    is compared: a project or domain profile claim is the record's own business
+    and apply_conformance preserves it.
+    """
+    try:
+        from detect_conformance import detect_conformance, CONFORMANCE_CLASSES
+    except Exception:
+        return None
+    try:
+        found = detect_conformance(doc) or []
+    except Exception as e:
+        return {"status": "error", "message": str(e), "detected": [],
+                "overclaimed": [], "undeclared": [], "unchecked": []}
+    # Only profiles the registry can actually produce are comparable. Declaring
+    # one it has no rule for (codelist, complexCitation, ...) would otherwise
+    # look like an over-claim every single time.
+    detectable = {c["uri"] for c in CONFORMANCE_CLASSES}
+    detected = {u for u in found if u.startswith(CDIF_URI_PREFIX)}
+    claimed = {u for u in declared if u.startswith(CDIF_URI_PREFIX)}
+    unchecked = sorted(claimed - detectable)
+    over = sorted((claimed & detectable) - detected)
+    under = sorted(detected - claimed)
+    return {"status": "consistent" if not (over or under) else "inconsistent",
+            "declared": sorted(claimed),
+            "detected": sorted(detected),
+            "overclaimed": over,
+            "undeclared": under,
+            "unchecked": unchecked}
+
+
 def run_conformance(doc, resolver, do_schema=True, do_shacl=True,
                     frame=None, verbose=False):
     """Validate one CDIF JSON-LD document against every profile it claims.
@@ -648,6 +696,12 @@ def run_conformance(doc, resolver, do_schema=True, do_shacl=True,
             ...
           ],
           "total_violations": int,
+          "conformance_check": {                # None if unavailable
+            "status": "consistent" | "inconsistent" | "error",
+            "declared": [...], "detected": [...],
+            "overclaimed": [...],   # claimed but content does not support
+            "undeclared": [...],    # supported but not claimed
+          },
         }
 
     status values: passed | failed | skipped | no_schema | no_shacl |
@@ -665,6 +719,11 @@ def run_conformance(doc, resolver, do_schema=True, do_shacl=True,
             frame_error = f"Framing error: {e}"
 
     result = {"conformsTo": uris, "profiles": [], "total_violations": 0}
+
+    # Among the tests: do the declared conformsTo URIs match what the
+    # content actually supports? Reported, not enforced -- it does not
+    # feed total_violations.
+    result["conformance_check"] = conformance_consistency(doc, uris)
 
     for uri in uris:
         if verbose:
@@ -785,16 +844,51 @@ def print_profile_section(prof):
             print(line)
 
 
+def print_conformance_check(check):
+    """Print the declared-vs-detected comparison, if one was made."""
+    if not check:
+        return
+    print(f"\n{'-'*70}")
+    print("Declared conformsTo vs detected conformance")
+    if check["status"] == "error":
+        print(f"  could not detect: {check['message']}")
+        return
+    for uri in check["overclaimed"]:
+        print(f"  DECLARED BUT NOT DETECTED: {short_uri(uri)}")
+    for uri in check["undeclared"]:
+        print(f"  DETECTED BUT NOT DECLARED: {short_uri(uri)}")
+    for uri in check.get("unchecked") or []:
+        print(f"  not checked (no detection rule): {short_uri(uri)}")
+    if check["status"] == "consistent":
+        n = len(check["declared"]) - len(check.get("unchecked") or [])
+        print(f"  CONSISTENT: {n} declared profile(s) match the detected "
+              "conformance.")
+    else:
+        print("  INCONSISTENT")
+
+
 def report_single(result):
     """Print the full per-profile report for one document; return exit code."""
     for prof in result["profiles"]:
         print_profile_section(prof)
 
+    check = result.get("conformance_check")
+    print_conformance_check(check)
+
+    overclaimed = (check or {}).get("overclaimed") or []
+
     print(f"\n{'='*70}")
     print(f"Summary: {len(result['profiles'])} profile(s) checked, "
           f"{result['total_violations']} total violation(s)")
+    if overclaimed:
+        # Fatal: the record claims a profile its content does not support, and
+        # that claim is what selected the schema and SHACL used above -- so the
+        # per-profile results for it describe a profile the record was never
+        # going to satisfy. Under-claiming is not fatal.
+        print(f"FAILED: {len(overclaimed)} over-claimed profile(s) - declared "
+              "but not supported by the content")
     print(f"{'='*70}")
-    return 0 if result["total_violations"] == 0 else 1
+    return 0 if (result["total_violations"] == 0 and not overclaimed) else 1
 
 
 # ---------------------------------------------------------------------------

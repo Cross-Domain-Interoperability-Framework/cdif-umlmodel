@@ -112,10 +112,24 @@ CONFORMANCE_CLASSES = [
     },
     {
         "uri": "https://w3id.org/cdif/data_structure/1.1",
-        # Marked by an explicit data-structure description (cdif:isStructuredBy
-        # to a DataStructure node).
+        # Marked by an explicit data-structure description: an isStructuredBy
+        # link to a DataStructure node, or a node typed as one of the DDI-CDI
+        # structure classes.
+        #
+        # cdi:, not cdif:. The property takes a canonical DDI-CDI structure
+        # (cdi:LongDataStructure and friends, carrying
+        # cdi:has_DataStructureComponent), so the namespace policy puts it in
+        # cdi:. A cdif:isStructuredBy spelling existed in one unreferenced
+        # building block and had spread to a mapping table and one record; all
+        # were migrated and the block retired, so testing it here would only
+        # keep a dead IRI alive.
+        #
+        # cdi:DataStructure sits alongside the three specialisations. It is one
+        # of the profile's four variants and was missing here, so a record
+        # using the base class went undetected.
         "presence": """ASK {
-            { ?x cdif:isStructuredBy ?s }
+            { ?x cdi:isStructuredBy ?s }
+            UNION { ?n a cdi:DataStructure }
             UNION { ?n a cdi:LongDataStructure }
             UNION { ?n a cdi:WideDataStructure }
             UNION { ?n a cdi:DimensionalDataStructure }
@@ -136,9 +150,20 @@ CONFORMANCE_CLASSES = [
     },
     {
         "uri": "https://w3id.org/cdif/manifest/1.1",
-        # Marked by an archive distribution: a DataDownload with hasPart files.
+        # Marked by schema:hasPart in either of the two places the profile
+        # declares it: on a distribution item, for archive members with no
+        # address of their own (profile 3.5); or on the Dataset, for package
+        # members that are independently accessible (3.1/3.2). Only the first
+        # was detected until 2026-09-05 -- Dataset-level hasPart did not exist
+        # in CDIF until 2026-08-06 and this rule predated it, so a record using
+        # resourcePartArray used the profile without ever declaring it.
+        # The schema:Dataset constraint is load-bearing: ?d is unbound here, and
+        # schema:hasPart also means instrument sub-components and workflow
+        # sub-workflows, which are not manifests.
         "presence": """ASK {
-            ?d schema:distribution ?dd . ?dd schema:hasPart ?p .
+            { ?d schema:distribution ?dd . ?dd schema:hasPart ?p }
+            UNION
+            { ?d a schema:Dataset ; schema:hasPart ?p }
         }""",
         "shacl": None,  # cdifArchiveDistribution has no content rules.shacl yet
     },

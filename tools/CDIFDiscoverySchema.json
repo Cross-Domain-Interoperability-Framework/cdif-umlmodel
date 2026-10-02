@@ -1,4 +1,5 @@
 {
+    "description": "JSON schema for validating framed JSON-LD documents that describe science datasets for the CDIF discovery profile. Combines cdifCore building block with discovery properties and @type enum constraint. Generated from CDIFDiscoveryProfile building block profile resolvedSchema.json (https://cross-domain-interoperability-framework.github.io/metadataBuildingBlocks/_sources/profiles/cdifCompositeProfile/CoreDiscovery/resolvedSchema.json).",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
     "properties": {},
@@ -44,6 +45,350 @@
         }
     ],
     "$defs": {
+        "Concept": {
+            "type": "object",
+            "properties": {
+                "@context": {
+                    "description": "JSON-LD context declaring the skos namespace prefix. May be a single object or an array of strings and objects.",
+                    "anyOf": [
+                        {
+                            "type": "object",
+                            "properties": {
+                                "skos": {
+                                    "const": "http://www.w3.org/2004/02/skos/core#"
+                                }
+                            },
+                            "required": [
+                                "skos"
+                            ]
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "anyOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "type": "object"
+                                    }
+                                ]
+                            },
+                            "contains": {
+                                "type": "object",
+                                "properties": {
+                                    "skos": {
+                                        "const": "http://www.w3.org/2004/02/skos/core#"
+                                    }
+                                },
+                                "required": [
+                                    "skos"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "@id": {
+                    "type": "string",
+                    "description": "URI identifier for this concept."
+                },
+                "@type": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "contains": {
+                        "const": "skos:Concept"
+                    },
+                    "minItems": 1
+                },
+                "skos:prefLabel": {
+                    "description": "Preferred lexical label for this concept. A single string, a single language-tagged value, or an array of language-tagged values. Each language should appear at most once.",
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "$ref": "#/$defs/LanguageTaggedValue"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/$defs/LanguageTaggedValue"
+                            }
+                        }
+                    ]
+                },
+                "skos:notation": {
+                    "description": "Classification code for this concept within a scheme (a single notation string, consistent with CdifCodelistConcept).",
+                    "type": "string"
+                },
+                "skos:definition": {
+                    "description": "Formal explanation of the meaning of this concept.",
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "$ref": "#/$defs/LanguageTaggedValue"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "anyOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "$ref": "#/$defs/LanguageTaggedValue"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "skos:scopeNote": {
+                    "description": "Note clarifying meaning and/or intended use.",
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "$ref": "#/$defs/LanguageTaggedValue"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "anyOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "$ref": "#/$defs/LanguageTaggedValue"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "skos:note": {
+                    "description": "General note about this concept.",
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "$ref": "#/$defs/LanguageTaggedValue"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "anyOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "$ref": "#/$defs/LanguageTaggedValue"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "skos:historyNote": {
+                    "description": "Note about past state or use.",
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "$ref": "#/$defs/LanguageTaggedValue"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "anyOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "$ref": "#/$defs/LanguageTaggedValue"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "skos:changeNote": {
+                    "description": "Note documenting a change.",
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "$ref": "#/$defs/LanguageTaggedValue"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "anyOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "$ref": "#/$defs/LanguageTaggedValue"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "skos:editorialNote": {
+                    "description": "Note for editors and maintainers.",
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "$ref": "#/$defs/LanguageTaggedValue"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "anyOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "$ref": "#/$defs/LanguageTaggedValue"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "skos:inScheme": {
+                    "description": "Concept scheme(s) this concept belongs to.",
+                    "anyOf": [
+                        {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "@id": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "@id"
+                            ]
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                    "@id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "@id"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "skos:topConceptOf": {
+                    "description": "Concept scheme(s) for which this is a top concept.",
+                    "anyOf": [
+                        {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "@id": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "@id"
+                            ]
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                    "@id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "@id"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "skos:broader": {
+                    "description": "Broader (parent) concepts in the hierarchy. Items are inline concept objects or @id references.",
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "description": "A reference to a SKOS Concept by URI.",
+                                "properties": {
+                                    "@id": {
+                                        "type": "string",
+                                        "description": "URI of the referenced concept."
+                                    }
+                                },
+                                "required": [
+                                    "@id"
+                                ]
+                            },
+                            {
+                                "$ref": "#/$defs/Concept"
+                            }
+                        ]
+                    }
+                },
+                "skos:narrower": {
+                    "description": "Narrower (child) concepts in the hierarchy. Items are inline concept objects or @id references.",
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "description": "A reference to a SKOS Concept by URI.",
+                                "properties": {
+                                    "@id": {
+                                        "type": "string",
+                                        "description": "URI of the referenced concept."
+                                    }
+                                },
+                                "required": [
+                                    "@id"
+                                ]
+                            },
+                            {
+                                "$ref": "#/$defs/Concept"
+                            }
+                        ]
+                    }
+                }
+            },
+            "required": [
+                "@type",
+                "skos:prefLabel",
+                "skos:definition",
+                "skos:inScheme"
+            ]
+        },
         "Identifier": {
             "description": "Properties for a schema.org identifier (schema:PropertyValue pattern).\n**Union-type policy:** In CDIF profile UML models an attribute typed as\nschema:Identifier / schema:PropertyValue is represented by a single attribute\nof that class type. The JSON Schema implementation permits the property value\nto be EITHER a plain string (interpreted as the bare identifier value) OR a\nfull schema:PropertyValue object (with explicit @type, propertyID, value).\nConsumers should accept either form.\n",
             "type": "object",
@@ -59,8 +404,24 @@
                     "minItems": 1
                 },
                 "schema:propertyID": {
-                    "type": "string",
-                    "description": "In this context for the schema:PropertyValue, this field is an identifier for the identifier schema, e.g. DOI, ARK.  Get values from https://registry.identifiers.org/registry/ for interoperability"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": [
+                                "@id"
+                            ],
+                            "properties": {
+                                "@id": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    ],
+                    "description": "In this context for the schema:PropertyValue, this field is an identifier for the identifier schema, e.g. DOI, ARK.  Get values from https://registry.identifiers.org/registry/ for interoperability. URI-shape values MUST be serialized as JSON-LD IRI references ({\"@id\":\"...\"}) so they participate in RDF entailment; free-label strings remain valid as strings."
                 },
                 "schema:value": {
                     "type": "string",
@@ -96,7 +457,7 @@
         },
         "LanguageTaggedValue": {
             "type": "object",
-            "description": "An RDF literal value with a language tag, serialized as a JSON-LD value object. Inlined from skosConcept (the resolver does not preserve cross-file '#/$defs/...' fragment refs).",
+            "description": "An RDF literal value with a language tag, serialized as a JSON-LD value object.",
             "properties": {
                 "@value": {
                     "type": "string",
@@ -108,7 +469,8 @@
                 }
             },
             "required": [
-                "@value"
+                "@value",
+                "@language"
             ]
         },
         "Person": {
@@ -221,6 +583,10 @@
                                     },
                                     {
                                         "type": "object",
+                                        "required": [
+                                            "@id"
+                                        ],
+                                        "additionalProperties": false,
                                         "properties": {
                                             "@id": {
                                                 "type": "string"
@@ -273,6 +639,7 @@
                         }
                     },
                     "required": [
+                        "@type",
                         "schema:email"
                     ]
                 },
@@ -286,6 +653,10 @@
                             },
                             {
                                 "type": "object",
+                                "required": [
+                                    "@id"
+                                ],
+                                "additionalProperties": false,
                                 "properties": {
                                     "@id": {
                                         "type": "string"
@@ -319,250 +690,119 @@
             ]
         },
         "Reference": {
-            "type": "object",
-            "description": "Building block to implement relations to other resources using a URL and some semantics.",
-            "allOf": [
-                {
-                    "description": "schema for a labeled link, a profile of schema.org/CreativeWork",
-                    "type": "object",
-                    "properties": {
-                        "@type": {
-                            "default": "schema:CreativeWork",
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            },
-                            "contains": {
-                                "const": "schema:CreativeWork"
-                            },
-                            "minItems": 1
-                        },
-                        "schema:name": {
-                            "type": "string"
-                        },
-                        "schema:description": {
-                            "type": "string"
-                        },
-                        "schema:url": {
-                            "type": "string",
-                            "format": "uri"
-                        }
-                    },
-                    "required": [
-                        "@type",
-                        "schema:url"
-                    ]
-                },
-                {
-                    "type": "object",
-                    "description": "DCAT Relationship surface added on top of the schema.org labeled link construct.",
-                    "properties": {
-                        "@type": {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            },
-                            "contains": {
-                                "const": "dcat:Relationship"
-                            },
-                            "minItems": 1
-                        },
-                        "dcat:hadRole": {
-                            "$ref": "#/$defs/cdifConceptOrTermOrString",
-                            "description": "Role of the related resource as a SKOS Concept (DCAT canonical role slot)."
-                        },
-                        "dcterms:relation": {
-                            "type": "string",
-                            "format": "uri",
-                            "description": "URI of the related resource (DCAT canonical pointer to what is being related to; distinct from schema:url which is the presentation URL inherited from labeledLink)."
-                        }
-                    }
-                }
-            ]
-        },
-        "cdifConcept": {
+            "description": "Schema for a labeled link, a profile of schema.org/CreativeWork: a resolvable URL with an optional name and description. Optionally carries the DCAT relation surface (dcat:hadRole, dcterms:relation) for a link that expresses a typed relationship rather than a plain reference.\nThose two properties were a separate block, cdifDataType/cdifReference, which was an allOf of this schema plus exactly those two optional properties and nothing else -- its dcat:Relationship co-type mandate had already been removed because it made every labeled link unsatisfiable and broke every schema:license example that followed schema.org's own advice. Since both are optional, folding them in here changes no document's validity while removing a block and five levels of $defs/Reference indirection. cdifReference was retired 2026-09-23.",
             "type": "object",
             "properties": {
-                "@context": {
-                    "description": "JSON-LD context declaring the skos namespace prefix. May be a single object or an array of strings and objects.",
-                    "type": "object",
-                    "properties": {
-                        "skos": {
-                            "const": "http://www.w3.org/2004/02/skos/core#"
-                        }
-                    },
-                    "required": [
-                        "skos"
-                    ]
-                },
-                "@id": {
-                    "type": "string",
-                    "description": "URI identifier for this concept."
-                },
                 "@type": {
+                    "description": "Either construct, or both. A labeled link is a schema:CreativeWork at a URL; a dcat:Relationship is DCAT's association class for a typed relation to another resource. A node may declare both -- CDIF's own relation examples do -- but NEITHER IS REQUIRED TO ACCOMPANY THE OTHER.\nThat is the whole point of the anyOf. Until 2026-09-08 this block's Relation half required contains: dcat:Relationship while the labeled-link half required contains: schema:CreativeWork, and under allOf both applied to every instance, so an ordinary labeled link was unsatisfiable. Of profile-core's licenses the 29 plain strings and 1 @id-reference passed while the 10 that followed schema.org's own recommendation -- \"use schema:CreativeWork to provide a label (name) for the license\" -- failed. 412782113 fixed that by deleting the dcat:Relationship mandate outright, which left the JSON Schema with no notion of dcat:Relationship at all while rules.shacl went on targeting it as a class. A pure DCAT relation then met a SHACL requirement with no schema counterpart. This anyOf restores the type to the schema WITHOUT restoring the conjunction.",
+                    "default": "schema:CreativeWork",
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "contains": {
-                        "const": "skos:Concept"
-                    },
-                    "minItems": 1
-                },
-                "skos:prefLabel": {
-                    "description": "Preferred lexical label for this concept. A single string, a single language-tagged value, or an array of language-tagged values. Each language should appear at most once.",
+                    "minItems": 1,
                     "anyOf": [
                         {
-                            "type": "string"
+                            "contains": {
+                                "const": "schema:CreativeWork"
+                            }
                         },
                         {
-                            "$ref": "#/$defs/LanguageTaggedValue"
-                        },
-                        {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/$defs/LanguageTaggedValue"
+                            "contains": {
+                                "const": "dcat:Relationship"
                             }
                         }
                     ]
                 },
-                "skos:notation": {
-                    "description": "Classification code for this concept within a scheme.",
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
+                "schema:name": {
+                    "type": "string"
                 },
-                "skos:definition": {
-                    "description": "Formal explanation of the meaning of this concept.",
+                "schema:description": {
+                    "type": "string"
+                },
+                "schema:url": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "dcat:hadRole": {
+                    "description": "Role of the related resource. Present only on a link that expresses a relationship; a plain labeled link such as a license omits it.\nDCAT's declared range is dcat:Role (dcat.ttl: rdfs:range dcat:Role, and dcat:Role rdfs:subClassOf skos:Concept), so the DCAT-native form is a node typed dcat:Role. That form was NOT accepted here before 2026-10-01: this property was cdifConceptOrTermOrString alone, which matches a bare string, a sealed @id reference, a schema:DefinedTerm or a skos:Concept -- none of which a dcat:Role-typed node satisfies, because JSON Schema does no subclass reasoning.\ndcat:Role is added as a branch rather than replacing the others, so the DCAT-native form becomes valid without invalidating anything already written. Note this leaves CDIF LOOSER than DCAT, deliberately: DCAT's range is dcat:Role alone, and CDIF also accepts a plain skos:Concept, a DefinedTerm, an @id reference and a string. That is the same both-forms stance taken on dcterms:relation, and it is a choice rather than an oversight -- do not read the extra branches as something not yet tightened.",
                     "anyOf": [
                         {
-                            "type": "string"
-                        },
-                        {
-                            "$ref": "#/$defs/LanguageTaggedValue"
-                        },
-                        {
-                            "type": "array",
-                            "items": {
-                                "anyOf": [
-                                    {
-                                        "type": "string"
-                                    },
-                                    {
-                                        "$ref": "#/$defs/LanguageTaggedValue"
-                                    }
-                                ]
-                            }
-                        }
-                    ]
-                },
-                "skos:note": {
-                    "description": "General note about this concept.",
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "$ref": "#/$defs/LanguageTaggedValue"
-                        },
-                        {
-                            "type": "array",
-                            "items": {
-                                "anyOf": [
-                                    {
-                                        "type": "string"
-                                    },
-                                    {
-                                        "$ref": "#/$defs/LanguageTaggedValue"
-                                    }
-                                ]
-                            }
-                        }
-                    ]
-                },
-                "skos:inScheme": {
-                    "description": "Concept scheme(s) this concept belongs to.",
-                    "anyOf": [
-                        {
+                            "description": "A dcat:Role -- DCAT's declared range for dcat:hadRole. Defined inline rather than as its own building block because nothing else in the register needs it yet; dcat:hadRole's domain is owl:unionOf [prov:Attribution, dcat:Relationship], so promote it to a block if a qualified attribution ever needs the same shape.\ndcat:Role rdfs:subClassOf skos:Concept, so the skos:prefLabel / skos:inScheme furniture of a concept is permitted alongside; it is not required here because DCAT states no cardinality constraints on the class -- dcat.ttl declares no rdfs:subClassOf and no owl:Restriction on dcat:Relationship, and the \"mandatory\" wording in the DCAT-3 document is prose in the spec tables rather than an axiom in the vocabulary.",
                             "type": "object",
                             "properties": {
                                 "@id": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "description": "IRI of the role concept, ideally from a controlled vocabulary."
+                                },
+                                "@type": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    },
+                                    "contains": {
+                                        "const": "dcat:Role"
+                                    },
+                                    "minItems": 1
+                                }
+                            },
+                            "required": [
+                                "@type"
+                            ]
+                        },
+                        {
+                            "$ref": "#/$defs/cdifConceptOrTermOrString"
+                        }
+                    ]
+                },
+                "dcterms:relation": {
+                    "description": "The related resource -- the DCAT canonical pointer to what is being related to, which is distinct from schema:url, the presentation URL of the link itself.\nAn @id reference is the RECOMMENDED form and a string is permitted, which is DCMI's own position: \"Recommended practice is to identify the related resource by means of a URI. If this is not possible or feasible, a string conforming to a formal identification system may be provided.\" DCMI declares no rdfs:range for this property, and of the 13 DCMI properties carrying an \"intended to be used with non-literal values\" restriction, this is deliberately not one. dcat.ttl does not re-declare or constrain it at all -- the only triple mentioning it in the whole DCAT vocabulary is `dcat:distribution rdfs:subPropertyOf dcterms:relation`.\nSo objectReference-only would be stricter than both DCAT and DCMI and would reject a form the specification sanctions. The anyOf matches how schema:additionalType is handled here: both forms valid, the object form used in examples and required only where a `contains` pins a specific value.\nIt was string-only until 2026-10-01, which rejected the @id form outright. Reported from outside by a PSDI validator taking a things-not-strings approach (profile-core#16): their DCAT catalogue mirrors the DCAT-3 spec examples and wrote {\"@id\": ...}, which failed both layers -- while CDIF's own documented URI serialization policy (agents.md) says URI values SHOULD be {\"@id\": ...}. The register required the one form its own policy argues against.",
+                    "anyOf": [
+                        {
+                            "title": "Object Reference",
+                            "description": "A reference to a node defined elsewhere, by its @id.",
+                            "type": "object",
+                            "properties": {
+                                "@id": {
+                                    "type": "string",
+                                    "description": "resolvable @id of the referenced node"
                                 }
                             },
                             "required": [
                                 "@id"
-                            ]
+                            ],
+                            "additionalProperties": false
                         },
                         {
-                            "type": "array",
-                            "items": {
-                                "type": "object",
-                                "properties": {
-                                    "@id": {
-                                        "type": "string"
-                                    }
-                                },
-                                "required": [
-                                    "@id"
-                                ]
-                            }
+                            "type": "string",
+                            "format": "uri"
                         }
                     ]
-                },
-                "skos:broader": {
-                    "description": "Broader (parent) concepts in the hierarchy. Items are inline concept objects or @id references.",
-                    "type": "array",
-                    "items": {
-                        "anyOf": [
-                            {
-                                "type": "object",
-                                "description": "Reference (by URI) to a skos:Concept defined elsewhere. Used inside skos:broader / skos:narrower as the @id-reference alternative to an inline Concept.",
-                                "properties": {
-                                    "@id": {
-                                        "type": "string",
-                                        "description": "URI of the referenced concept."
-                                    }
-                                },
-                                "required": [
-                                    "@id"
-                                ]
-                            },
-                            {
-                                "$ref": "#/$defs/cdifConcept"
-                            }
-                        ]
-                    }
-                },
-                "skos:narrower": {
-                    "description": "Narrower (child) concepts in the hierarchy. Items are inline concept objects or @id references.",
-                    "type": "array",
-                    "items": {
-                        "anyOf": [
-                            {
-                                "type": "object",
-                                "description": "Reference (by URI) to a skos:Concept defined elsewhere. Used inside skos:broader / skos:narrower as the @id-reference alternative to an inline Concept.",
-                                "properties": {
-                                    "@id": {
-                                        "type": "string",
-                                        "description": "URI of the referenced concept."
-                                    }
-                                },
-                                "required": [
-                                    "@id"
-                                ]
-                            },
-                            {
-                                "$ref": "#/$defs/cdifConcept"
-                            }
-                        ]
-                    }
                 }
             },
             "required": [
-                "@type",
-                "skos:prefLabel"
+                "@type"
+            ],
+            "allOf": [
+                {
+                    "if": {
+                        "required": [
+                            "@type"
+                        ],
+                        "properties": {
+                            "@type": {
+                                "contains": {
+                                    "const": "schema:CreativeWork"
+                                }
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "schema:url"
+                        ]
+                    }
+                }
             ]
         },
         "cdifConceptOrTermOrString": {
@@ -577,6 +817,10 @@
                     "anyOf": [
                         {
                             "type": "object",
+                            "required": [
+                                "@id"
+                            ],
+                            "additionalProperties": false,
                             "properties": {
                                 "@id": {
                                     "type": "string",
@@ -613,8 +857,24 @@
                                     ]
                                 },
                                 "schema:inDefinedTermSet": {
-                                    "type": "string",
-                                    "description": "Name for the controlled vocabulary responsible for this keyword."
+                                    "description": "The controlled vocabulary responsible for this keyword, as EITHER a plain URI string identifying the vocabulary, OR an object reference ({\"@id\": \"<uri>\"}) to a vocabulary defined elsewhere in the document. Both forms are already in use across CDIF profiles and downstream ADA building blocks; permitting only the string form made the object form - the natural JSON-LD spelling of a reference - invalid, while this class's own union-type policy above explicitly anticipates both.",
+                                    "anyOf": [
+                                        {
+                                            "type": "string"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "required": [
+                                                "@id"
+                                            ],
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "@id": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    ]
                                 },
                                 "schema:termCode": {
                                     "type": "string",
@@ -649,13 +909,12 @@
                             ]
                         },
                         {
-                            "$ref": "#/$defs/cdifConcept"
+                            "$ref": "#/$defs/Concept"
                         }
                     ]
                 }
             ]
         }
     },
-    "title": "CDIF Discovery metadata schema",
-    "description": "JSON schema for validating framed JSON-LD documents that describe science datasets for the CDIF discovery profile. Combines cdifCore building block with discovery properties and @type enum constraint. Generated from CDIFDiscoveryProfile building block profile resolvedSchema.json (https://cross-domain-interoperability-framework.github.io/metadataBuildingBlocks/_sources/profiles/cdifCompositeProfile/CoreDiscovery/resolvedSchema.json)."
+    "title": "CDIF Discovery metadata schema"
 }
