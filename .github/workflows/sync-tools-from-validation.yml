@@ -49,12 +49,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout this repo (the mirror)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           path: mirror
 
       - name: Checkout validation (the source of truth)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: Cross-Domain-Interoperability-Framework/validation
           path: source
