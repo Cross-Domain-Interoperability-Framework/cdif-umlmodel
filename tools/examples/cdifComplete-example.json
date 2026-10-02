@@ -1100,9 +1100,6 @@
       },
       {
         "@id": "https://w3id.org/cdif/provenance/1.1"
-      },
-      {
-        "@id": "https://w3id.org/cdif/data_structure/1.1"
       }
     ],
     "schema:maintainer": {
