@@ -3,7 +3,7 @@
 Follows the conventions of xmiModels/cdifmodels/cdifmodels.xmi (one package per
 vocabulary prefix, dotted xmi:ids, "**CDIF** / Definition" comment bodies). JSON-LD
 facts UML has no slot for are written as comment directives (:rdfType:, ...), which
-metadataBuildingBlocks/tools/uml_to_schema.py reads back with --comment-directives.
+uml_to_schema.py (in this folder) reads back with --comment-directives.
 roundtrip.py runs both halves and diffs. See README.md for the mapping table.
 
 Usage:
@@ -19,7 +19,7 @@ from xml.sax.saxutils import escape
 import yaml
 
 from mapping import (CHOICE_LABEL, DEFINITION_HEADER, JSONLD_KEYWORDS, PACKAGE_NAMES, UML_PRIM,
-                     attr_name, is_iri_reference, is_rdf_type_pattern)
+                     attr_name, is_iri_reference, rdf_type_schema)
 
 # uuid5 namespace for this generator. cdifmodels.xmi uses a namespace we could not
 # identify, so xmi:uuids here differ from it even where xmi:ids are equal.
@@ -51,15 +51,48 @@ def directive(name, value=None):
     return f"\n:{name}:" + (f" ``{value}``" if value is not None else "")
 
 
-def alnum(name):
-    return "".join(ch for ch in name if ch.isalnum())
+# Building-block directory prefixes naming the vocabulary, as uml_to_schema.py's sibling
+# lookup recognizes them (ddicdiX, cdifX, ...), mapped to the package they imply.
+DIR_PREFIXES = {"ddicdi": "cdi", "cdif": "cdif", "skos": "skos", "dcat": "dcat", "schema": "schema",
+                "prov": "prov", "xas": "xas"}
+
+
+def split_dir_name(bdir):
+    """Building-block directory name -> (element name, vocabulary prefix or None)."""
+    name = bdir.name
+    for dp, pkg in DIR_PREFIXES.items():
+        if name.startswith(dp) and name[len(dp):len(dp) + 1].isupper():
+            return name[len(dp):], pkg
+    return name[:1].upper() + name[1:], None
 
 
 def rdf_prefix(schema):
     """Vocabulary prefix of an object schema: from its @type const, else its first prefixed property."""
     props = schema.get("properties", {})
     const = props.get("@type", {}).get("contains", {}).get("const")
-    return (const or next(p for p in props if ":" in p)).split(":")[0]
+    first = const or next((p for p in props if ":" in p), None)
+    return first.split(":")[0] if first else None
+
+
+def rdf_type_parts(type_prop):
+    """Split an @type property schema into (const, allowed types or None, default or None).
+
+    Accepts the plain CDIF pattern, optionally with a `default` and with items restricted
+    to an enum (bare or wrapped in a one-branch anyOf). Returns None for anything else."""
+    type_prop = dict(type_prop)
+    default = type_prop.pop("default", None)
+    items = type_prop.get("items", {})
+    if set(items) == {"anyOf"} and len(items["anyOf"]) == 1:
+        items = items["anyOf"][0]
+    allowed = None
+    if set(items) == {"type", "enum"} and items["type"] == "string":
+        allowed, items = items["enum"], {"type": "string"}
+    const = type_prop.get("contains", {}).get("const")
+    if const is None or {**type_prop, "items": items} != rdf_type_schema(const):
+        return None
+    if allowed is not None and const not in allowed:
+        return None
+    return const, allowed, default
 
 
 def choice_groups(schema):
@@ -84,9 +117,10 @@ def required_props(schema):
 class ModelBuilder:
     """Collects UML elements (xmi id -> element dict) from a building block and what it references."""
 
-    def __init__(self):
+    def __init__(self, defs):
         self.elements = {}
         self.warnings = []
+        self.defs = defs  # the root schema's $defs, for #/$defs/ references
 
     def add(self, eid, elem):
         if eid in self.elements and self.elements[eid] != elem:
@@ -105,10 +139,12 @@ class ModelBuilder:
         sources = next((p for p in target.parents if p.name == "_sources"), None)
         if sources is None:
             raise Unmapped(f"$ref {ref} does not point into a _sources tree")
-        meta = json.loads((target / "bblock.json").read_text(encoding="utf-8"))
         schema = yaml.safe_load((target / "schema.yaml").read_text(encoding="utf-8"))
         kind = "uml:Class" if "@id" in schema.get("properties", {}) else "uml:DataType"
-        pkg, name = rdf_prefix(schema), alnum(meta["name"])
+        name, dir_pkg = split_dir_name(target)
+        pkg = rdf_prefix(schema) or dir_pkg
+        if pkg is None:
+            raise Unmapped(f"$ref {ref}: no @type, prefixed property or directory prefix to place it in a package")
         body = DEFINITION_HEADER + directive("buildingBlock", target.relative_to(sources).as_posix())
         return self.add(f"{pkg}.{name}", {"kind": kind, "pkg": pkg, "name": name, "body": body, "attrs": []})
 
@@ -118,15 +154,15 @@ class ModelBuilder:
         extra = set(schema) - OBJECT_KEYWORDS
         if extra or schema.get("type") != "object":
             raise Unmapped(f"{where}: keywords {sorted(extra)} / type {schema.get('type')}")
-        rdf_type = None
+        rdf_type = allowed_types = None
         if "@type" in props:
-            type_prop = dict(props["@type"])
-            if "default" in type_prop:
-                self.warnings.append(f"{where}.@type: dropped default {type_prop.pop('default')!r} "
-                                     "(annotation with no UML equivalent)")
-            if not is_rdf_type_pattern(type_prop):
+            parts = rdf_type_parts(props["@type"])
+            if parts is None:
                 raise Unmapped(f"{where}.@type: {json.dumps(props['@type'])[:160]}")
-            rdf_type = type_prop["contains"]["const"]
+            rdf_type, allowed_types, default = parts
+            if default is not None:
+                self.warnings.append(f"{where}.@type: dropped default {default!r} "
+                                     "(annotation with no UML equivalent)")
         if "@id" in props and props["@id"] != {"type": "string"}:
             raise Unmapped(f"{where}.@id: {props['@id']}")
         if name is None:
@@ -143,6 +179,8 @@ class ModelBuilder:
         body = DEFINITION_HEADER + schema.get("description", "")
         if rdf_type:
             body += directive("rdfType", rdf_type)
+            if allowed_types:
+                body += directive("allowedTypes", " | ".join(allowed_types))
             if "@type" not in required:
                 self.warnings.append(f"{where}: @type is declared but not required; the XMI assumes it is required")
         if groups:
@@ -171,6 +209,11 @@ class ModelBuilder:
             if set(prop) != {"type", "items"}:
                 raise Unmapped(f"{where}: array keywords {sorted(set(prop) - {'type', 'items'})}")
             prop, upper = prop["items"], "*"
+        while set(prop) == {"$ref"} and prop["$ref"].startswith("#/$defs/"):
+            name = prop["$ref"][len("#/$defs/"):]
+            if name not in self.defs:
+                raise Unmapped(f"{where}: unresolved {prop['$ref']}")
+            prop = self.defs[name]
         if is_iri_reference(prop):
             return ("idref", self.support("common.IriReference")), upper, directives
         branches = prop.get("anyOf")
@@ -243,9 +286,10 @@ def build(bblock_dir):
     bdir = Path(bblock_dir).resolve()
     meta = json.loads((bdir / "bblock.json").read_text(encoding="utf-8"))
     schema = yaml.safe_load((bdir / "schema.yaml").read_text(encoding="utf-8"))
-    class_name = alnum(meta["name"])
-    mb = ModelBuilder()
-    root_id = mb.element(schema, class_name, bdir, bdir.name)
+    class_name = split_dir_name(bdir)[0]
+    mb = ModelBuilder(schema.get("$defs", {}))
+    root = {k: v for k, v in schema.items() if k != "$defs"}
+    root_id = mb.element(root, class_name, bdir, bdir.name)
 
     out = Writer()
     out.add(0, '<?xml version="1.0" encoding="UTF-8"?>')

@@ -3,7 +3,8 @@
 UML_PRIM = "http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#"
 JSONLD_KEYWORDS = {"@type", "@id", "@context", "@reverse"}
 PACKAGE_NAMES = {"schema": "Schema", "dcat": "DCAT", "dqv": "DQV", "skos": "SKOS", "spdx": "SPDX",
-                 "time": "Time", "prov": "PROV", "common": "Common",
+                 "time": "Time", "prov": "PROV", "common": "Common", "cdi": "DDICDI", "cdif": "CDIF",
+                 "sf": "SF",
                  "XMLSchemaDataTypes": "XMLSchemaDataTypes"}
 DEFINITION_HEADER = "**CDIF**\n\nDefinition\n==========\n\n"
 CHOICE_LABEL = ":choiceConstraints:"
@@ -27,8 +28,3 @@ def is_iri_reference(prop):
 
 def rdf_type_schema(rdf_type):
     return {"type": "array", "items": {"type": "string"}, "contains": {"const": rdf_type}, "minItems": 1}
-
-
-def is_rdf_type_pattern(prop):
-    const = prop.get("contains", {}).get("const")
-    return const is not None and prop == rdf_type_schema(const)

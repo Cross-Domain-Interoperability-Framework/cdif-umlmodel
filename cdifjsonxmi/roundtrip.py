@@ -5,7 +5,7 @@ diff.txt listing every path where the regenerated schema differs from the origin
 (key order ignored). Exits 1 if there are differences.
 
 Usage:
-    python roundtrip.py <bblock dir> [--uml-to-schema PATH]
+    python roundtrip.py <bblock dir>
 """
 import argparse
 import json
@@ -18,7 +18,7 @@ import yaml
 from bblock_to_xmi import Unmapped, build
 
 HERE = Path(__file__).resolve().parent
-DEFAULT_UML_TO_SCHEMA = HERE.parent.parent / "metadataBuildingBlocks" / "tools" / "uml_to_schema.py"
+UML_TO_SCHEMA = HERE / "uml_to_schema.py"
 
 
 def diff(a, b, path="$"):
@@ -42,6 +42,7 @@ def normalize(schema, base_dir):
     - file $refs become absolute paths (resolved against base_dir), so the same
       target written from different directories compares equal;
     - local #/$defs/X refs are inlined and $defs dropped;
+    - a one-branch anyOf is replaced by its branch;
     - in every object schema, 'required' and choice 'anyOf's from the top level
       and from allOf members are gathered into one place."""
     defs = schema.get("$defs", {})
@@ -59,6 +60,8 @@ def normalize(schema, base_dir):
             return walk(node, depth + 1)
         if isinstance(ref, str) and not ref.startswith("#"):
             node["$ref"] = (base_dir / ref).resolve().as_posix()
+        if set(node) == {"anyOf"} and len(node["anyOf"]) == 1:
+            return walk(node["anyOf"][0], depth)
         node.pop("$defs", None)
         node = {k: walk(v, depth) for k, v in node.items()}
         if node.get("type") == "object" and "properties" in node:
@@ -84,7 +87,6 @@ def normalize(schema, base_dir):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("bblock_dir", type=Path)
-    ap.add_argument("--uml-to-schema", type=Path, default=DEFAULT_UML_TO_SCHEMA)
     args = ap.parse_args()
 
     bb_name = args.bblock_dir.resolve().name
@@ -99,12 +101,12 @@ def main():
     xmi = out_dir / f"{class_name}.xmi"
     xmi.write_text(xml, encoding="utf-8")
 
-    cmd = [sys.executable, str(args.uml_to_schema), "--xmi", str(xmi), "--class", class_name,
+    cmd = [sys.executable, str(UML_TO_SCHEMA), "--xmi", str(xmi), "--class", class_name,
            "--bb-name", "regenerated", "--out-dir", str(out_dir), "--prefix", pkg,
            "--title", class_name, "--strict-required", "--schema-only",
            "--xsd-formats", "--iri-reference-type", "IriReference",
            "--comment-directives", "--verbatim-docs"]
-    run = subprocess.run(cmd, capture_output=True, text=True, cwd=args.uml_to_schema.parent)
+    run = subprocess.run(cmd, capture_output=True, text=True, cwd=HERE)
     if run.returncode:
         sys.exit(f"uml_to_schema.py failed:\n{run.stderr}")
 

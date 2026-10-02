@@ -11,6 +11,7 @@ This repo holds the UML models that define CDIF (Cross-Domain Interoperability F
   - `cdifmodels/cdifmodels.xmi` is generated. **Do not hand-edit it.** Its README says changes go into the generation process, not into EA.
   - `ddi-cdi_ea15.2026.March.xml` is the DDI-CDI source model. `ddi_xmi_consistency_audit.txt` lists the attributes and association roles that each CDIF `ddicdi*` class is missing compared with that source.
 - `tools/`: Python validation tooling for CDIF JSON-LD instance documents.
+- `cdifjsonxmi/`: XMI ↔ JSON Schema tooling. `uml_to_schema.py` is the production generator from XMI to metadataBuildingBlocks building-block schemas, also used by `ucmism2m/script/build-docs.ps1` and two ucmism2m audit scripts. `bblock_to_xmi.py` and `roundtrip.py` are the JSON Schema → XMI → JSON Schema round-trip experiment. All of them assume `metadataBuildingBlocks` and `ucmism2m` are sibling checkouts. See `cdifjsonxmi/README.md` and `cdifjsonxmi/uml_to_schema.md`.
 - `docs/`: PDFs for reference.
 - The HTML model documentation is published from the `gh-pages` branch, not from `main`.
 
