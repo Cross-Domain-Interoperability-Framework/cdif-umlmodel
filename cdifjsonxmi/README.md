@@ -69,6 +69,35 @@ its `href`s point to. A type defined by another block becomes a `$ref` to that b
 each block from its own file. For identifier, organization and person the results are the
 same as single-file mode (see [Results](#results)).
 
+**Enterprise Architect.** EA's import of Canonical XMI keeps everything within a file, but
+it leaves every type that `href`s another file blank, with no warning. It also replaces our
+`xmi:uuid`s with GUIDs of its own, so re-importing a file duplicates its package. Its
+Direct Merge only accepts EA-native XMI 1.1. `linked_to_ea.py <linked root>` therefore
+converts a linked set to EA XMI 1.1, one file per block (`<linked root>-ea/…/<dir>.xml`):
+
+- **GUIDs:** every element, attribute and package has its Canonical `xmi:uuid` as its EA GUID.
+- **References to other blocks:** by that element's GUID, plus a `type` tagged value with
+  its name.
+- **Comments:** kept verbatim.
+
+The files name "Enterprise Architect" 2.5 as exporter and declare each element referenced
+from another file as an `EAStub` in `XMI.extensions`, as EA's own exports do. With a
+different exporter name, EA treated them as foreign XMI 1.1: new GUIDs, blank cross-file
+types, and Direct Merge refused.
+
+Tested in EA with common types, identifier, organization and person, imported into one
+package in that order:
+
+- Our GUIDs are kept.
+- Every cross-file type links to the element imported from the other file.
+- Direct Merge of `person.xml` updates the package in place, with no duplicate. EA's
+  baseline comparison after merging the unchanged file reported no differences.
+- A reference to a block with no file (organization's `ConceptOrTermOrString`) keeps the
+  type name, unlinked.
+
+Import in dependency order: `cdifCommonTypes.xml` first, then each block before the
+blocks that reference it.
+
 Not yet done: profile modules that refine another block's class (`cdifDiscovery` etc. on
 `schema:Dataset`, planned as UML PackageMerge); composite profiles (`allOf` of modules,
 planned as PackageImport); a block's vocabulary prefix when its root has no `@type`; and
