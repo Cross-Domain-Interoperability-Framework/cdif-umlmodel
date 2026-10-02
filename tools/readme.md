@@ -196,6 +196,15 @@ tools/
 - `FrameAndValidate.py` is the normative, sync-managed script from the `validation`
   repository (`validation/tools/FrameAndValidate.py`); edit it there and re-mirror
   rather than editing the copy here.
+- **The mirror updates itself.** `.github/workflows/sync-tools-from-validation.yml`
+  runs daily, checks out the `validation` repo and copies the files its
+  `tools/sync_mirror_tools.sh` lists. It needs no credentials: both repos are
+  public, so the checkout is unauthenticated and the push is to this repo with the
+  built-in `GITHUB_TOKEN`. To refresh immediately after changing the validation
+  tools, use **Run workflow** on that workflow in the Actions tab, or run the
+  script by hand from a validation checkout:
+  `bash tools/sync_mirror_tools.sh . ../cdif-umlmodel/tools`.
+  `examples/` and this readme are the repo's own and are never overwritten.
 - `FrameAndValidate.py --conformance` (content-derived conformance detection) works
   in this mirror. `detect_conformance.py` is included; when no local building-block
   `_sources` tree is present it fetches the per-class validity SHACL from the
