@@ -1,11 +1,14 @@
-"""Round-trip a building-block schema: schema.yaml -> bblock_to_xmi.py -> uml_to_schema.py -> schema.yaml.
+"""Round-trip building-block schemas: schema.yaml -> bblock_to_xmi.py -> uml_to_schema.py -> schema.yaml.
 
-Writes to roundtrip/<bblock name>/: the generated XMI, the regenerated schema.yaml, and
-diff.txt listing every path where the regenerated schema differs from the original
-(key order ignored). Exits 1 if there are differences.
+Single-file mode writes to roundtrip/<bblock name>/: the generated XMI (with stubs for
+referenced blocks), the regenerated schema.yaml, and diff.txt. Linked mode writes one
+linked XMI file per block under roundtrip/linked/<path under _sources>/, regenerates each
+block from its own file (following hrefs into the others), and writes regenerated/ and
+diff.txt beside each file. Exits 1 if any semantic difference remains.
 
 Usage:
     python roundtrip.py <bblock dir>
+    python roundtrip.py --linked <bblock dir> [<bblock dir> ...]
 """
 import argparse
 import json
@@ -15,7 +18,7 @@ from pathlib import Path
 
 import yaml
 
-from bblock_to_xmi import Unmapped, build
+from bblock_to_xmi import Unmapped, build, write_linked
 
 HERE = Path(__file__).resolve().parent
 UML_TO_SCHEMA = HERE / "uml_to_schema.py"
@@ -84,43 +87,65 @@ def normalize(schema, base_dir):
     return walk(schema)
 
 
-def main():
-    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("bblock_dir", type=Path)
-    args = ap.parse_args()
-
-    bb_name = args.bblock_dir.resolve().name
-    out_dir = HERE / "roundtrip" / bb_name
-    out_dir.mkdir(parents=True, exist_ok=True)
-    try:
-        class_name, pkg, xml, warnings = build(args.bblock_dir)
-    except Unmapped as e:
-        sys.exit(f"cannot map to XMI: {e}")
-    for msg in warnings:
-        print(f"warning: {msg}", file=sys.stderr)
-    xmi = out_dir / f"{class_name}.xmi"
-    xmi.write_text(xml, encoding="utf-8")
-
+def regenerate_and_compare(bblock_dir, xmi, class_name, pkg, out_dir, linked=False):
+    """Regenerate bblock_dir's schema from xmi into out_dir/regenerated/, write out_dir/diff.txt,
+    print the report, and return the number of semantic differences."""
+    bb_name = bblock_dir.resolve().name
     cmd = [sys.executable, str(UML_TO_SCHEMA), "--xmi", str(xmi), "--class", class_name,
            "--bb-name", "regenerated", "--out-dir", str(out_dir), "--prefix", pkg,
            "--title", class_name, "--strict-required", "--schema-only",
            "--xsd-formats", "--iri-reference-type", "IriReference",
-           "--comment-directives", "--verbatim-docs"]
+           "--comment-directives", "--verbatim-docs"] + (["--linked"] if linked else [])
     run = subprocess.run(cmd, capture_output=True, text=True, cwd=HERE)
     if run.returncode:
         sys.exit(f"uml_to_schema.py failed:\n{run.stderr}")
 
-    original = yaml.safe_load((args.bblock_dir / "schema.yaml").read_text(encoding="utf-8"))
+    original = yaml.safe_load((bblock_dir / "schema.yaml").read_text(encoding="utf-8"))
     regenerated = yaml.safe_load((out_dir / "regenerated" / "schema.yaml").read_text(encoding="utf-8"))
     diffs = list(diff(original, regenerated))
-    semantic = list(diff(normalize(original, args.bblock_dir.resolve()),
+    semantic = list(diff(normalize(original, bblock_dir.resolve()),
                          normalize(regenerated, (out_dir / "regenerated").resolve())))
     report = "\n".join([f"{bb_name}: {len(diffs)} exact difference(s)", *diffs, "",
                         f"{bb_name}: {len(semantic)} semantic difference(s) (file $refs resolved, "
                         "local $defs inlined, required/anyOf placement normalized)", *semantic]) + "\n"
     (out_dir / "diff.txt").write_text(report, encoding="utf-8")
     print(report, end="")
-    sys.exit(1 if semantic else 0)
+    return len(semantic)
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("bblock_dirs", type=Path, nargs="+")
+    ap.add_argument("--linked", action="store_true",
+                    help="write one linked XMI file per block and round-trip each from its own file")
+    args = ap.parse_args()
+
+    if args.linked:
+        try:
+            results = write_linked(args.bblock_dirs, HERE / "roundtrip" / "linked")
+        except Unmapped as e:
+            sys.exit(f"cannot map to XMI: {e}")
+        failures = 0
+        for d, (xmi, class_name, pkg, warnings) in results.items():
+            for msg in warnings:
+                print(f"warning: {msg}", file=sys.stderr)
+            failures += bool(regenerate_and_compare(d, xmi, class_name, pkg, xmi.parent, linked=True))
+        sys.exit(1 if failures else 0)
+
+    if len(args.bblock_dirs) != 1:
+        ap.error("single-file mode takes one building block (use --linked for several)")
+    bblock_dir = args.bblock_dirs[0]
+    out_dir = HERE / "roundtrip" / bblock_dir.resolve().name
+    out_dir.mkdir(parents=True, exist_ok=True)
+    try:
+        class_name, pkg, xml, warnings = build(bblock_dir)
+    except Unmapped as e:
+        sys.exit(f"cannot map to XMI: {e}")
+    for msg in warnings:
+        print(f"warning: {msg}", file=sys.stderr)
+    xmi = out_dir / f"{class_name}.xmi"
+    xmi.write_text(xml, encoding="utf-8")
+    sys.exit(1 if regenerate_and_compare(bblock_dir, xmi, class_name, pkg, out_dir) else 0)
 
 
 if __name__ == "__main__":

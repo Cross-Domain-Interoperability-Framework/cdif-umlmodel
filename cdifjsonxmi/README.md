@@ -11,11 +11,18 @@ XMI ↔ JSON Schema tools for CDIF building blocks.
 - `bblock_to_xmi.py` and `roundtrip.py` are an experiment: generate Canonical XMI (UML 2.5 /
   XMI 2.5.1) from building-block JSON Schemas, regenerate the schema with `uml_to_schema.py`,
   and check whether the round trip is isomorphic. The XMI follows the conventions of
-  `../xmiModels/cdifmodels/cdifmodels.xmi`.
+  `../xmiModels/cdifmodels/cdifmodels.xmi`. With `--linked` they write a set of XMI files,
+  one per building block, that reference each other like the schemas do (see
+  [Linked XMI](#linked-xmi)).
+- `reuse_report.py` finds reuse between building blocks, explicit (`$ref`) and implicit
+  (the same type or shape copied into several blocks), and writes `reuse_report.md` (see
+  [Reuse report](#reuse-report)).
 
 ```bash
 pip install pyyaml
 python roundtrip.py <metadataBuildingBlocks>/_sources/schemaorgProperties/person
+python roundtrip.py --linked <bb dir> <bb dir> ...      # linked files, see below
+python reuse_report.py
 ```
 
 `roundtrip.py` runs `bblock_to_xmi.py` (schema.yaml → XMI), then `uml_to_schema.py`
@@ -32,6 +39,70 @@ resolved to absolute paths, local `#/$defs/` references inlined, and `required` 
 
 `bblock_to_xmi.py` can also be run on its own to produce just the XMI. It fails on any
 construct outside the mapping below, instead of approximating it.
+
+## Linked XMI
+
+`bblock_to_xmi.py --linked OUT_DIR <bb dir>...` writes one Canonical XMI file per building
+block, composable the way the schemas are:
+
+- **Layout:** `OUT_DIR/<path under _sources>/<dir>.xmi`, plus `OUT_DIR/cdifCommonTypes.xmi`.
+  The shared file holds the XSD datatypes and `IriReference` once, and every block links to it.
+- **Package:** each file holds one `uml:Package` for the block. Its `xmi:id` is the block's
+  register identifier (`cdif.bbr.metadata.schemaorgProperties.person`, using the
+  `identifier-prefix` from `bblocks-config.yaml`). Its `URI` is the register URI
+  (`https://w3id.org/cdif/bbr/metadata/schemaorgProperties/person`).
+- **Element ids:** `<register id>.<Element>`, and `<register id>.<Element>.<attribute>` for
+  attributes, so they are unique across the whole set. The block's root element and its
+  inline nested objects (e.g. person's `ContactPoint`) live in the block's file.
+- **Element uuids:** `xmi:uuid` is uuid5 of `<register URI>#<id local to the block>`. It's
+  stable across regeneration and the same wherever the element is referenced from.
+- **References to other blocks:** `$ref: ../organization/schema.yaml` becomes
+  `<type href="../organization/organization.xmi#cdif.bbr.metadata.schemaorgProperties.organization.Organization"/>`.
+  No stub elements or `:buildingBlock:` directives are needed.
+
+`uml_to_schema.py --linked --xmi <one file>` loads that file and, transitively, every file
+its `href`s point to. A type defined by another block becomes a `$ref` to that block's
+`schema.yaml`. An `href` to a block whose XMI file doesn't exist yet (e.g. organization's
+`cdifConceptOrTermOrString`) still becomes that `$ref`, with a warning.
+
+`roundtrip.py --linked <bb dir>...` writes the set under `roundtrip/linked/` and regenerates
+each block from its own file. For identifier, organization and person the results are the
+same as single-file mode (see [Results](#results)).
+
+Not yet done: profile modules that refine another block's class (`cdifDiscovery` etc. on
+`schema:Dataset`, planned as UML PackageMerge); composite profiles (`allOf` of modules,
+planned as PackageImport); a block's vocabulary prefix when its root has no `@type`; and
+importing a linked set into Enterprise Architect.
+
+## Reuse report
+
+`reuse_report.py` scans every `schema.yaml` under `_sources` (archive excluded) and writes
+`reuse_report.md`:
+
+- **Explicit reuse:** `$ref`s between block files, and the most-referenced blocks.
+- **Typed definitions:** every object schema with an `@type` const defines that RDF type.
+  Types defined in more than one block are grouped by *shape*: the schema without
+  `$schema`, `description`, `title`, `$comment`, `examples` and `default`. Each type gets one
+  of these recommendations:
+  - `extract`: one shape and no owning block. Make one shared element.
+  - `link`: some block has the type as its root. Copies should link to it.
+  - `review`: several shapes, no owner. A person decides base element and restrictions.
+
+  Each shape that differs is listed with its differences from the most common shape.
+- **Untyped shapes repeated in 3 or more blocks:** for example the `{"@id"}` node reference
+  and the IRI-reference union. It notes when a block already has that exact shape as its root.
+
+Current findings (93 blocks):
+
+- **Explicit `$ref`s:** 1,387, 965 of them into `ddicdiDataTypes`.
+- **RDF types defined in more than one block:** 76 of 191.
+  - 20 to extract, e.g. `cdi:TypedString`, identical in 10 blocks.
+  - 11 to link.
+  - 45 to review. For example, five copies of `cdi:ConceptSystem` require `minItems` on
+    `has` / `isDefinedBy` / `name` and two don't, and `cdifRepresentedVariable`'s copy uses
+    `cdif:` property names.
+- **The `{"@id": string}` node reference:** copied inline 117 times in 40 blocks. It has
+  exactly the shape of `cdifDataType/objectReference`, which only 29 `$ref`s use.
 
 ## Forward mapping (bblock_to_xmi.py)
 
@@ -60,7 +131,7 @@ for are written as **comment directives**, lines after the definition text, whic
 | `type: array`, `items: X` | type of X, upper bound `*` |
 | in `required` | lower bound `1` (else `0`) |
 | `description` | `ownedComment` body after the `**CDIF** / Definition` header, kept verbatim |
-| `default` on `@type` | dropped, with a warning |
+| `default` on `@type` (a string or a list of strings) | class directive `:typeDefault: ``p:T``` (`|`-separated for several). `uml_to_schema.py` always writes it back as an array, `default: [p:T]`, because `@type` is an array. A bare-string default in the source therefore comes back wrapped. |
 
 The building block's own element is named from its directory the same way as stubs.
 
@@ -72,7 +143,7 @@ schemas. The remaining differences are annotations.
 | | identifier | person | organization |
 |---|---|---|---|
 | exercises | scalars, URI, IRI reference, choice constraint | plus `$ref` to a DataType BB (or string), embed-only `$ref` to a Class BB, inline nested object, array of IRI references | plus `@type` restricted to a list of subtypes, local `$defs` aliasing a union-shaped BB in another folder |
-| semantic differences | `@id` added; `title` added | `@id` description added; `title` added; `@type` `default` on `contactPoint` lost | `@id` description added; `title` added; `@type` `default` lost |
+| semantic differences | `@id` added; `title` added | `@id` description added; `title` added; `contactPoint`'s `@type` default `"schema:ContactPoint"` becomes `["schema:ContactPoint"]` | `@id` description added; `title` added; `@type` default `"schema:Organization"` becomes `["schema:Organization"]` |
 | examples + edge cases validating the same | 2 + 4 | 2 + 11 | 2 + 9 |
 
 - `uml_to_schema.py` adds `@id` (with a description) to every class node, and to a root

@@ -77,6 +77,7 @@ class Property:
     doc: Optional[str]
     is_assoc_end: bool          # True if <association> ref present
     aggregation: Optional[str]  # 'composite', 'shared', or None
+    type_href: Optional[str] = None  # raw <type href>, resolved across files by --linked
 
 
 @dataclass
@@ -154,6 +155,7 @@ def _parse_property(elem: ET.Element, owner_name: str = "") -> Property:
     name = _text(elem, "name") or ""
     type_id = None
     primitive = None
+    href = None
     type_el = elem.find("type")
     if type_el is not None:
         if XMI_IDREF in type_el.attrib:
@@ -184,7 +186,7 @@ def _parse_property(elem: ET.Element, owner_name: str = "") -> Property:
     return Property(
         id=pid, name=name, type_id=type_id, primitive=primitive,
         lower=lower, upper=upper, doc=doc,
-        is_assoc_end=is_assoc, aggregation=aggregation,
+        is_assoc_end=is_assoc, aggregation=aggregation, type_href=href,
     )
 
 
@@ -505,6 +507,55 @@ def parse_xmi(path: Path) -> Model:
     return _parse_canonical_xmi(root)
 
 
+# Linked XMI (--linked): one canonical XMI file per building block, written by
+# bblock_to_xmi.py --linked. Elements are identified <register id of the block>.<Name>,
+# e.g. cdif.bbr.metadata.schemaorgProperties.person.Person, and reference other
+# blocks' elements with <type href="../organization/organization.xmi#<id>"/>.
+REGISTER_PREFIX = "cdif.bbr.metadata."
+
+
+def element_bb_path(element_id: str) -> Optional[str]:
+    """Building-block path under _sources/ for a linked element id, or None if not one."""
+    if not element_id.startswith(REGISTER_PREFIX):
+        return None
+    return element_id[len(REGISTER_PREFIX):].rsplit(".", 1)[0].replace(".", "/")
+
+
+def load_linked_xmi(path: Path) -> Model:
+    """Parse a canonical XMI file and, transitively, every XMI file its <type href>s point
+    to, into one Model. An href to a file that does not exist leaves a placeholder
+    datatype, so references to building blocks without XMI still resolve to a $ref."""
+    model = Model(elements={}, name_to_id={})
+    queue, seen = [Path(path).resolve()], set()
+    while queue:
+        f = queue.pop(0)
+        if f in seen:
+            continue
+        seen.add(f)
+        if not f.exists():
+            print(f"WARN: linked XMI file not found: {f}", file=sys.stderr)
+            continue
+        part = _parse_canonical_xmi(ET.parse(f).getroot())
+        for el in part.elements.values():
+            for p in el.properties:
+                file_part, _, frag = (p.type_href or "").partition("#")
+                if file_part and "://" not in file_part:
+                    p.type_id, p.primitive = frag, None
+                    queue.append((f.parent / file_part).resolve())
+        for eid, el in part.elements.items():
+            if eid not in model.elements:
+                model.elements[eid] = el
+                model.name_to_id.setdefault(el.name, []).append(eid)
+    for el in list(model.elements.values()):
+        for p in el.properties:
+            if p.type_id and p.type_id not in model.elements and element_bb_path(p.type_id):
+                name = p.type_id.rsplit(".", 1)[1]
+                model.elements[p.type_id] = UmlClass(
+                    id=p.type_id, name=name, package="", doc=None, is_abstract=False,
+                    parents=[], properties=[], kind="datatype")
+    return model
+
+
 # ---------------------------------------------------------------------------
 # Doc cleaning
 # ---------------------------------------------------------------------------
@@ -582,6 +633,7 @@ def verbatim_definition(doc: Optional[str]) -> Optional[str]:
 #   :rdfType: ``schema:PropertyValue``      -> @type const (default prefix:ClassName);
 #                                              on a datatype also makes @type required
 #   :allowedTypes: ``schema:A | schema:B``   -> @type items restricted to enum [A, B]
+#   :typeDefault: ``schema:A | schema:B``    -> @type default, always emitted as an array [A, B]
 #   :choiceConstraints:
 #   - ``value | url & name``                 -> anyOf [{required: [value]}, {required: [url, name]}]
 #   :buildingBlock: ``schemaorgProperties/identifier``
@@ -592,7 +644,7 @@ def verbatim_definition(doc: Optional[str]) -> Optional[str]:
 #                         ``byReference``    -> {"@id"} reference only
 #                                               (absent: either, the default anyOf)
 #   :alsoAcceptsString:                      -> anyOf [<type>, {type: string}]
-_DIRECTIVE_NAMES = ("rdfType", "allowedTypes", "choiceConstraints", "buildingBlock",
+_DIRECTIVE_NAMES = ("rdfType", "allowedTypes", "typeDefault", "choiceConstraints", "buildingBlock",
                     "inlineOrByReference", "alsoAcceptsString")
 _DIRECTIVE_RE = re.compile(r"\n:(" + "|".join(_DIRECTIVE_NAMES) + r"):")
 
@@ -640,6 +692,11 @@ def _element_description(ctx: "BuildContext", doc: str) -> Optional[str]:
 def _building_block_ref(ctx: "BuildContext", cls: "UmlClass") -> Optional[dict]:
     """$ref to the BB named by a type's :buildingBlock: directive, relative to the output BB."""
     bb = _directives(ctx, cls.doc).get("buildingBlock")
+    if not bb and ctx.root_bb_path is not None:
+        # --linked: an element of another building block is that block's schema.
+        bb = element_bb_path(cls.id)
+        if bb == ctx.root_bb_path:
+            bb = None
     if not bb or ctx.bb_out_dir is None:
         return None
     target = (ctx.sources_dir / bb / "schema.yaml").resolve()
@@ -663,17 +720,24 @@ def _iri_reference_value_schema() -> dict:
     }
 
 
-def _type_const_and_choices(cls: "UmlClass", ctx: "BuildContext") -> tuple[str, dict, list[dict]]:
-    """@type const, @type items schema and allOf members for a class/datatype
-    def. Without --comment-directives this is (prefix:ClassName, {type: string}, [])."""
-    const = _qname(ctx.prefix, cls.name)
+def _type_schema_and_choices(cls: "UmlClass", ctx: "BuildContext") -> tuple[dict, list[dict]]:
+    """@type property schema and allOf members for a class/datatype def.
+    Without --comment-directives the @type const is prefix:ClassName and there
+    are no allOf members."""
     d = _directives(ctx, cls.doc)
     choices = [{"anyOf": [{"required": [_qname(ctx.prefix, n) for n in alt]} for alt in g]}
                for g in d.get("choiceConstraints", [])]
-    items: dict = {"type": "string"}
+    type_schema: dict[str, Any] = {}
+    if d.get("typeDefault"):
+        # @type is an array, so its default is one too.
+        type_schema["default"] = d["typeDefault"].split(" | ")
+    type_schema["type"] = "array"
+    type_schema["items"] = {"type": "string"}
     if d.get("allowedTypes"):
-        items = {"type": "string", "enum": d["allowedTypes"].split(" | ")}
-    return d.get("rdfType") or const, items, choices
+        type_schema["items"]["enum"] = d["allowedTypes"].split(" | ")
+    type_schema["contains"] = {"const": d.get("rdfType") or _qname(ctx.prefix, cls.name)}
+    type_schema["minItems"] = 1
+    return type_schema, choices
 
 
 # ---------------------------------------------------------------------------
@@ -708,6 +772,7 @@ class BuildContext:
     verbatim_docs: bool = False
     bb_out_dir: Optional[Path] = None   # output BB dir; base for :buildingBlock: $refs
     sources_dir: Path = DEFAULT_SOURCES_DIR  # metadataBuildingBlocks/_sources
+    root_bb_path: Optional[str] = None  # --linked: BB path of the class being emitted
 
 
 def collect_inherited_properties(class_id: str, model: Model) -> list[Property]:
@@ -907,14 +972,9 @@ def datatype_to_def(dt: UmlClass, ctx: BuildContext) -> dict:
         desc = _element_description(ctx, dt.doc)
         if desc:
             schema["description"] = desc
-    type_const, type_items, choices = _type_const_and_choices(dt, ctx)
+    type_schema, choices = _type_schema_and_choices(dt, ctx)
     props: OrderedDict = OrderedDict()
-    props["@type"] = {
-        "type": "array",
-        "items": type_items,
-        "contains": {"const": type_const},
-        "minItems": 1,
-    }
+    props["@type"] = type_schema
     extra, required = _build_properties_dict(
         collect_inherited_properties(dt.id, ctx.model), ctx,
         owner_class_name=dt.name,
@@ -938,15 +998,10 @@ def class_to_node_def(cls: UmlClass, ctx: BuildContext) -> dict:
         desc = _element_description(ctx, cls.doc)
         if desc:
             schema["description"] = desc
-    type_const, type_items, choices = _type_const_and_choices(cls, ctx)
+    type_schema, choices = _type_schema_and_choices(cls, ctx)
     props: OrderedDict = OrderedDict()
     required: list[str] = ["@type"]
-    props["@type"] = {
-        "type": "array",
-        "items": type_items,
-        "contains": {"const": type_const},
-        "minItems": 1,
-    }
+    props["@type"] = type_schema
     props["@id"] = {
         "type": "string",
         "description": f"Identifier for this {cls.name} node",
@@ -1491,6 +1546,10 @@ def main(argv: Optional[list[str]] = None) -> int:
     ap.add_argument("--out-dir", type=Path, default=None,
                     help="Parent directory; the BB folder will be created/replaced inside. "
                          "Required for schema emit.")
+    ap.add_argument("--linked", action="store_true",
+                    help="--xmi is one file of a linked set (bblock_to_xmi.py --linked): follow "
+                         "<type href>s into the other files, and emit a $ref to another building "
+                         "block's schema.yaml for any type that block defines.")
     ap.add_argument("--sources-dir", type=Path, default=DEFAULT_SOURCES_DIR,
                     help="metadataBuildingBlocks _sources directory, read for sibling-BB "
                          "class lookup and shared datatypes. Default: "
@@ -1615,7 +1674,7 @@ def main(argv: Optional[list[str]] = None) -> int:
                     help="Definition for the classes sub-package.")
     args = ap.parse_args(argv)
 
-    model = parse_xmi(args.xmi)
+    model = load_linked_xmi(args.xmi) if args.linked else parse_xmi(args.xmi)
     print(f"Parsed XMI: {len(model.elements)} elements", file=sys.stderr)
 
     # ----- Config-driven UML emit short-circuit (Phase 2 / EA / PlantUML / HTML)
@@ -1740,6 +1799,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         verbatim_docs=args.verbatim_docs,
         bb_out_dir=bb_out_dir,
         sources_dir=args.sources_dir,
+        root_bb_path=element_bb_path(classes[0].id) if args.linked else None,
     )
 
     # Title and description

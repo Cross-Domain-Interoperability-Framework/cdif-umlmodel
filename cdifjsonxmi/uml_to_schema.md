@@ -61,6 +61,7 @@ python ../cdif-umlmodel/cdifjsonxmi/uml_to_schema.py ... --schema-only
 - `--comment-directives`: reads directive lines at the end of comments and removes them from descriptions (parser: `split_comment_directives`).
   - On a class or datatype:
     - `:rdfType: ``p:T``` sets the `@type` const (default `prefix:ClassName`). On a datatype it also makes `@type` required.
+    - `:typeDefault: ``p:T``` (`|`-separated for several) sets the `@type` `default`, always as an array (`[p:T]`).
     - `:allowedTypes: ``p:T | p:U``` restricts the `@type` items to `enum: [p:T, p:U]`.
     - `:choiceConstraints:` followed by `- ``a | b & c``` lines adds `allOf: [{anyOf: [{required: [a]}, {required: [b, c]}]}]`.
     - `:buildingBlock: ``schemaorgProperties/identifier``` means the type is defined by that BB (path under `_sources/`). References to it become a `$ref` relative to the output BB dir, taking precedence over sibling-BB discovery and local inlining.
@@ -70,6 +71,11 @@ python ../cdif-umlmodel/cdifjsonxmi/uml_to_schema.py ... --schema-only
     - Absent: the default `anyOf [node, id-reference]`.
     - `:alsoAcceptsString:` wraps the value as `anyOf [<type>, {type: string}]`.
 - `--verbatim-docs`: keep the Definition text exactly as written. Without the flag, `clean_definition` collapses whitespace.
+- `--linked`: `--xmi` is one file of a linked set written by `bblock_to_xmi.py --linked` (see `README.md`, Linked XMI).
+  - The loader (`load_linked_xmi`) follows `<type href="other.xmi#id">` into the other files, transitively, and merges them into one model.
+  - A type whose id belongs to another building block (`cdif.bbr.metadata.<path>.<Name>`) becomes a `$ref` to `<sources-dir>/<path>/schema.yaml`, relative to the output BB.
+  - An `href` to a missing file leaves a placeholder datatype, so it still becomes that `$ref`, with a warning.
+  - Without `--linked`, an `href` to anything but a UML primitive still falls back to `type: string`.
 
 **Source XMI:** DDI-CDI XMI exports live outside this repo at the user's working location. Two are in use:
 - `C:/Users/smrTu/OneDrive/Documents/GithubC/CDIF/cdif-umlmodel/ddi-cdi_ea15.2026.March.xml` — Enterprise Architect native XMI 1.1 export of the 2026-03 DDI-CDI model (current source of truth).
