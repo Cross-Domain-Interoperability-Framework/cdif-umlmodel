@@ -1,0 +1,8 @@
+cdifTabularData: 3 exact difference(s)
+$.allOf: only in regenerated: [{"oneOf": [{"properties": {"cdi:isDelimited": {"const": true}, "cdi:isFixedWidth": {"const": false}}, "required": ["cdi:isDelimited"]}, {"properties": {"cdi:isDelimited": {"const": false}, "cdi:isFix
+$.oneOf: only in original: [{"properties": {"cdi:isDelimited": {"const": true}, "cdi:isFixedWidth": {"const": false}}, "required": ["cdi:isDelimited"]}, {"properties": {"cdi:isDelimited": {"const": false}, "cdi:isFixedWidth": {
+$.properties.cdif:hasPhysicalMapping.items.$ref:
+    original:    "../../cdifDataType/cdifPhysicalMapping/schema.yaml"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifPhysicalMapping/schema.yaml"
+
+cdifTabularData: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

@@ -79,7 +79,7 @@ dcat:Role is added as a branch rather than replacing the others, so the DCAT-nat
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.labeledLink.LabeledLink.dcterms_relation" xmi:uuid="dd4c36b9-451a-51ac-9b44-1250e6f5f757">
           <name>dcterms_relation</name>
-          <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.labeledLink.ObjectReferenceOrString"/>
+          <type href="../../cdifCommonTypes.xmi#XMLSchemaDataTypes.XsdAnyUri"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.labeledLink.LabeledLink.dcterms_relation.lower" xmi:uuid="2c84d7c8-1f6c-5f24-aeba-39a2aca0e2e0">
             <value>0</value>
           </lowerValue>
@@ -96,6 +96,7 @@ The related resource -- the DCAT canonical pointer to what is being related to, 
 An @id reference is the RECOMMENDED form and a string is permitted, which is DCMI's own position: "Recommended practice is to identify the related resource by means of a URI. If this is not possible or feasible, a string conforming to a formal identification system may be provided." DCMI declares no rdfs:range for this property, and of the 13 DCMI properties carrying an "intended to be used with non-literal values" restriction, this is deliberately not one. dcat.ttl does not re-declare or constrain it at all -- the only triple mentioning it in the whole DCAT vocabulary is `dcat:distribution rdfs:subPropertyOf dcterms:relation`.
 So objectReference-only would be stricter than both DCAT and DCMI and would reject a form the specification sanctions. The anyOf matches how schema:additionalType is handled here: both forms valid, the object form used in examples and required only where a `contains` pins a specific value.
 It was string-only until 2026-10-01, which rejected the @id form outright. Reported from outside by a PSDI validator taking a things-not-strings approach (profile-core#16): their DCAT catalogue mirrors the DCAT-3 spec examples and wrote {"@id": ...}, which failed both layers -- while CDIF's own documented URI serialization policy (agents.md) says URI values SHOULD be {"@id": ...}. The register required the one form its own policy argues against.
+:orReference: ["objectReference", "value"]
 :jsonName: "dcterms:relation"</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.labeledLink.LabeledLink.dcterms_relation"/>
           </ownedComment>
@@ -141,39 +142,6 @@ Definition
             <value>0</value>
           </lowerValue>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.labeledLink.DcatRoleOrConceptOrTermOrString.conceptOrTermOrString.upper" xmi:uuid="13c8aa8e-f264-5109-b0e8-13a853f8c01c">
-            <value>1</value>
-          </upperValue>
-        </ownedAttribute>
-      </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.schemaorgProperties.labeledLink.ObjectReferenceOrString" xmi:uuid="a7c8eabf-7f47-5a01-9ae9-11398a9612ee">
-        <name>ObjectReferenceOrString</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.labeledLink.ObjectReferenceOrString.comment" xmi:uuid="f43f03ac-4bb9-57ba-9a4d-bec25690cc5a">
-          <body>**CDIF**
-
-Definition
-==========
-
-
-:union: ``anyOf``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.labeledLink.ObjectReferenceOrString"/>
-        </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.labeledLink.ObjectReferenceOrString.objectReference" xmi:uuid="81db8b93-e380-5cf1-b463-4de30626b169">
-          <name>objectReference</name>
-          <type href="../../cdifDataType/objectReference/objectReference.xmi#cdif.bbr.metadata.cdifDataType.objectReference.ObjectReference"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.labeledLink.ObjectReferenceOrString.objectReference.lower" xmi:uuid="b734a794-801a-5f18-b143-ff0ad6db2497">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.labeledLink.ObjectReferenceOrString.objectReference.upper" xmi:uuid="9dbce1ee-206b-591f-927e-f8c2b355f14e">
-            <value>1</value>
-          </upperValue>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.labeledLink.ObjectReferenceOrString.string" xmi:uuid="f65bc19a-5f45-5084-a35e-389411a82c68">
-          <name>string</name>
-          <type href="../../cdifCommonTypes.xmi#XMLSchemaDataTypes.XsdAnyUri"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.labeledLink.ObjectReferenceOrString.string.lower" xmi:uuid="c977780f-3ebe-5a11-92b8-ef6779199954">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.labeledLink.ObjectReferenceOrString.string.upper" xmi:uuid="6d54de03-337d-5605-ac9a-b7544ac8554f">
             <value>1</value>
           </upperValue>
         </ownedAttribute>

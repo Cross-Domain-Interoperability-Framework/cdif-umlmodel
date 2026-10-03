@@ -76,10 +76,7 @@ properties:
             type: string
             description: >-
               a identifier for an agent defined in this metadata, or externally; must be dereferenceable
-      - '$ref': >-
-          ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/person/schema.yaml
-      - '$ref': >-
-          ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/organization/schema.yaml
+      - '$ref': '#/$defs/PersonOrOrganization'
     description: >-
       Party who maintains this particular distribution option for the dataset. Use this property
       if there are multiple distributions from different providers
@@ -121,16 +118,8 @@ allOf:
     - '@type'
     - 'spdx:algorithm'
     - 'spdx:checksumValue'
-  IdReferenceOrPersonOrOrganization:
+  PersonOrOrganization:
     anyOf:
-    - type: object
-      required:
-      - '@id'
-      additionalProperties: false
-      properties:
-        '@id':
-          type: string
-          description: IRI reference to a Person or Organization defined elsewhere
     - '$ref': >-
         ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/person/schema.yaml
     - '$ref': >-

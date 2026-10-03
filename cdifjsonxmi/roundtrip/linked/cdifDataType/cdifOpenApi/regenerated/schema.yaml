@@ -1,0 +1,398 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: CDIF OpenAPI-aligned WebAPI distribution
+description: >-
+  Documents a WebAPI distribution of a resource using property structure aligned with OpenAPI
+  Specification 3.1. Reuses CDIF schema.org-based WebAPI metadata (serviceType, termsOfService,
+  documentation) and adds OpenAPI-aligned Operation, Parameter, RequestBody, and Response
+  structure under an oas namespace. Use as an alternative to schemaorgProperties/webAPI when
+  the metadata record should inline OpenAPI-style operation, parameter, and response detail.
+type: object
+properties:
+  '@type':
+    type: array
+    items:
+      type: string
+    contains:
+      const: 'schema:WebAPI'
+    minItems: 1
+  'schema:name':
+    type: string
+    description: title of the API. Maps OpenAPI info.title.
+  'schema:description':
+    type: string
+    description: description of the API. Maps OpenAPI info.description. May use CommonMark.
+  'schema:serviceType':
+    '$ref': >-
+      ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml
+    description: >-
+      identifier for the kind of service, expected to identify the service type and version.
+      For interoperability, ideally a resolvable identifier; otherwise a string from a vocabulary
+      shared between provider and consumer. Subsumes OpenAPI info.version when the service-type
+      identifier includes versioning.
+  'schema:termsOfService':
+    oneOf:
+    - type: string
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml
+    description: >-
+      Description of access privileges required to use the API (e.g. registration, licensing,
+      payments). Maps OpenAPI info.termsOfService. Note that access constraints applying to
+      all distributions of the resource should be specified at the resource level.
+  'schema:documentation':
+    oneOf:
+    - type: string
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml
+    description: >-
+      a document that provides a machine-actionable description of this service instance,
+      typically the canonical OpenAPI document. Even when this BB inlines OAS detail, schema:documentation
+      may still link to an authoritative OAS source.
+  'spdx:license':
+    oneOf:
+    - type: string
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml
+    description: >-
+      SPDX license identifier expression for the API itself, per OpenAPI License Object. Use
+      schema:license at the resource (parent) level for licensing of the data. If only a URL
+      identifier is available rather than an SPDX id, encode as a labeled link (#/$defs/Reference).
+  'schema:potentialAction':
+    type: array
+    items:
+      '$ref': '#/$defs/Action'
+    minItems: 1
+    description: >-
+      operations exposed by the API. Each entry corresponds to an OpenAPI Operation Object
+      (one path + HTTP method).
+required:
+- '@type'
+- 'schema:serviceType'
+- 'schema:termsOfService'
+- 'schema:potentialAction'
+'$defs':
+  Action:
+    type: object
+    description: >-
+      an OpenAPI-aligned operation. Corresponds to one OpenAPI Operation Object; the path
+      component of OAS Path Item is folded into schema:target/schema:urlTemplate together
+      with the server URL.
+    properties:
+      '@type':
+        default:
+        - 'schema:Action'
+        type: array
+        items:
+          type: string
+        contains:
+          anyOf:
+          - const: 'schema:Action'
+          - const: 'schema:AssessAction'
+          - const: 'schema:ConsumeAction'
+          - const: 'schema:ControlAction'
+          - const: 'schema:CreateAction'
+          - const: 'schema:DeleteAction'
+          - const: 'schema:FindAction'
+          - const: 'schema:InteractAction'
+          - const: 'schema:MoveAction'
+          - const: 'schema:PlayAction'
+          - const: 'schema:SearchAction'
+          - const: 'schema:TransferAction'
+          - const: 'schema:UpdateAction'
+        minItems: 1
+      '@id':
+        type: string
+      'schema:name':
+        type: string
+        description: identifier for the operation. Maps OpenAPI operationId.
+      'schema:description':
+        type: string
+        description: description of the operation. Maps OpenAPI Operation.description.
+      'schema:target':
+        '$ref': '#/$defs/OpenApiEntryPoint'
+    required:
+    - 'schema:name'
+    - 'schema:target'
+  OpenApiEntryPoint:
+    type: object
+    description: >-
+      endpoint URL template, HTTP method, and the OpenAPI-shaped parameters, request body,
+      and responses for the operation.
+    properties:
+      '@type':
+        default:
+        - 'schema:EntryPoint'
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'schema:EntryPoint'
+        minItems: 1
+      'schema:urlTemplate':
+        type: string
+        description: >-
+          full URL template (RFC 6570) for invoking the operation; concatenation of the OpenAPI
+          server URL and the path. Parameters are enclosed in curly braces {..} and MUST be
+          documented in oas:parameters.
+      'schema:httpMethod':
+        default:
+        - GET
+        type: array
+        items:
+          type: string
+          enum:
+          - GET
+          - PUT
+          - POST
+          - PATCH
+          - DELETE
+          - HEAD
+          - OPTIONS
+          - TRACE
+          - QUERY
+        description: HTTP method for the operation. Default GET.
+      'oas:parameters':
+        type: array
+        items:
+          '$ref': '#/$defs/OpenApiEntryPointOas_parameters'
+        description: >-
+          query, path, header, or cookie parameters accepted by the operation. Maps OpenAPI
+          Parameter Object.
+      'oas:requestBody':
+        '$ref': '#/$defs/OpenApiEntryPointOas_requestBody'
+        description: >-
+          request body for the operation (typically POST/PUT/PATCH). Maps OpenAPI Request
+          Body Object.
+      'oas:response':
+        type: array
+        items:
+          '$ref': '#/$defs/OpenApiEntryPointOas_response'
+        minItems: 1
+        description: >-
+          possible responses returned by the operation. Maps OpenAPI Responses Object; each
+          item carries an explicit oas:code rather than using the HTTP code as a map key.
+    required:
+    - 'schema:urlTemplate'
+    - 'oas:response'
+  OpenApiEntryPointOas_parameters:
+    type: object
+    description: an OpenAPI Parameter Object; describes a single parameter of an operation.
+    properties:
+      '@id':
+        type: string
+      'oas:name':
+        type: string
+        description: >-
+          name of the parameter (case-sensitive). For path parameters, MUST match a {template}
+          expression in schema:urlTemplate.
+      'oas:in':
+        type: string
+        enum:
+        - query
+        - querystring
+        - path
+        - header
+        - cookie
+        description: location of the parameter.
+      'oas:description':
+        type: string
+        description: description of the parameter, including serialization or semantic notes.
+      'oas:required':
+        default: false
+        type: boolean
+        description: whether the parameter is mandatory. MUST be true if oas:in is "path".
+      'oas:schema':
+        '$ref': '#/$defs/OpenApiEntryPointOas_parametersSchema'
+        description: schema describing the parameter value type, format, and any pattern.
+    required:
+    - 'oas:name'
+    - 'oas:in'
+  OpenApiEntryPointOas_parametersSchema:
+    type: object
+    description: >-
+      a minimal OpenAPI Schema Object. The full OAS Schema Object is a superset of JSON Schema
+      2020-12; this BB requires only a basic type/format/pattern/enum/$ref shape sufficient
+      to describe parameter and response payload types in CDIF metadata. For richer schemas,
+      use oas:$ref to point at an external schema document.
+    properties:
+      'oas:type':
+        default: string
+        type: string
+        enum:
+        - string
+        - number
+        - integer
+        - boolean
+        - array
+        - object
+      'oas:format':
+        type: string
+        description: optional format hint (e.g. "int32", "date-time", "uri", "decimal").
+      'oas:pattern':
+        type: string
+        description: regular expression the value must match (string types).
+      'oas:enum':
+        type: array
+        items: {}
+        description: enumeration of permitted values.
+      'oas:$ref':
+        type: string
+        format: uri
+        description: >-
+          reference to an external JSON Schema or XML Schema document describing a complex
+          payload structure.
+  OpenApiEntryPointOas_requestBody:
+    type: object
+    description: an OpenAPI Request Body Object; describes the body of a write request.
+    properties:
+      'schema:description':
+        type: string
+      'oas:required':
+        default: false
+        type: boolean
+      'oas:content':
+        type: array
+        items:
+          '$ref': '#/$defs/OpenApiEntryPointOas_requestBodyOas_content'
+        minItems: 1
+        description: >-
+          representations the request body may take. Maps OpenAPI Request Body content map;
+          each item carries its own schema:encodingFormat instead of using media type as a
+          map key.
+    required:
+    - 'oas:content'
+  OpenApiEntryPointOas_requestBodyOas_content:
+    type: object
+    description: >-
+      an OpenAPI Media Type Object; describes the structure of one media-type representation
+      in a request body or response.
+    properties:
+      'schema:encodingFormat':
+        type: string
+        description: >-
+          registered MIME type for this representation (e.g. application/json, text/csv).
+          Replaces OpenAPI's media-type map key.
+      'oas:schema':
+        '$ref': '#/$defs/OpenApiEntryPointOas_requestBodyOas_contentOas_schema'
+        description: >-
+          schema describing the structure of the payload. May reference an external JSON Schema
+          or XML Schema document via oas:$ref. For tabular outputs, the referenced schema
+          may align with InstanceVariable definitions in cdifInstanceVariable.
+    required:
+    - 'schema:encodingFormat'
+  OpenApiEntryPointOas_requestBodyOas_contentOas_schema:
+    type: object
+    description: >-
+      a minimal OpenAPI Schema Object. The full OAS Schema Object is a superset of JSON Schema
+      2020-12; this BB requires only a basic type/format/pattern/enum/$ref shape sufficient
+      to describe parameter and response payload types in CDIF metadata. For richer schemas,
+      use oas:$ref to point at an external schema document.
+    properties:
+      'oas:type':
+        default: string
+        type: string
+        enum:
+        - string
+        - number
+        - integer
+        - boolean
+        - array
+        - object
+      'oas:format':
+        type: string
+        description: optional format hint (e.g. "int32", "date-time", "uri", "decimal").
+      'oas:pattern':
+        type: string
+        description: regular expression the value must match (string types).
+      'oas:enum':
+        type: array
+        items: {}
+        description: enumeration of permitted values.
+      'oas:$ref':
+        type: string
+        format: uri
+        description: >-
+          reference to an external JSON Schema or XML Schema document describing a complex
+          payload structure.
+  OpenApiEntryPointOas_response:
+    type: object
+    description: an OpenAPI Response Object describing one response from an operation.
+    properties:
+      'oas:code':
+        default: '200'
+        type: string
+        description: >-
+          HTTP status code (e.g. "200", "404", "303") this response describes. Default "200".
+      'schema:description':
+        type: string
+        description: description of the response.
+      'oas:content':
+        type: array
+        items:
+          '$ref': '#/$defs/OpenApiEntryPointOas_responseContent'
+        minItems: 1
+        description: >-
+          representations the response payload may take. Maps OpenAPI Response content map;
+          each item carries its own schema:encodingFormat instead of using media type as a
+          map key.
+    required:
+    - 'schema:description'
+    - 'oas:content'
+  OpenApiEntryPointOas_responseContent:
+    type: object
+    description: >-
+      an OpenAPI Media Type Object; describes the structure of one media-type representation
+      in a request body or response.
+    properties:
+      'schema:encodingFormat':
+        type: string
+        description: >-
+          registered MIME type for this representation (e.g. application/json, text/csv).
+          Replaces OpenAPI's media-type map key.
+      'oas:schema':
+        '$ref': '#/$defs/OpenApiEntryPointOas_responseContentOas_schema'
+        description: >-
+          schema describing the structure of the payload. May reference an external JSON Schema
+          or XML Schema document via oas:$ref. For tabular outputs, the referenced schema
+          may align with InstanceVariable definitions in cdifInstanceVariable.
+    required:
+    - 'schema:encodingFormat'
+  OpenApiEntryPointOas_responseContentOas_schema:
+    type: object
+    description: >-
+      a minimal OpenAPI Schema Object. The full OAS Schema Object is a superset of JSON Schema
+      2020-12; this BB requires only a basic type/format/pattern/enum/$ref shape sufficient
+      to describe parameter and response payload types in CDIF metadata. For richer schemas,
+      use oas:$ref to point at an external schema document.
+    properties:
+      'oas:type':
+        default: string
+        type: string
+        enum:
+        - string
+        - number
+        - integer
+        - boolean
+        - array
+        - object
+      'oas:format':
+        type: string
+        description: optional format hint (e.g. "int32", "date-time", "uri", "decimal").
+      'oas:pattern':
+        type: string
+        description: regular expression the value must match (string types).
+      'oas:enum':
+        type: array
+        items: {}
+        description: enumeration of permitted values.
+      'oas:$ref':
+        type: string
+        format: uri
+        description: >-
+          reference to an external JSON Schema or XML Schema document describing a complex
+          payload structure.
+  StringXorLabeledLink:
+    oneOf:
+    - default: not specified
+      type: string
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml

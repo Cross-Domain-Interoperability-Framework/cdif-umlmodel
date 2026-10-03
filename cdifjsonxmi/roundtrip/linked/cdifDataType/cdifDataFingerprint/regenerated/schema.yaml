@@ -1,0 +1,24 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: Data Fingerprint
+description: >-
+  A fingerprint (checksum/hash) of a physical dataset, used to verify integrity. DDI-CDI DataFingerprint
+  datatype, carried on a cdi:PhysicalDataSet (schema:DataDownload distribution) via cdi:fingerprint.
+type: object
+properties:
+  'cdi:value':
+    type: string
+    description: The fingerprint value (e.g., the hex digest). DataFingerprint.value.
+  'cdi:algorithmSpecification':
+    type: string
+    description: >-
+      Identifier or name of the algorithm specification (e.g., SHA-256, MD5). DataFingerprint.algorithmSpecification.
+  'cdi:algorithmVersion':
+    type: string
+    description: >-
+      Version of the fingerprint algorithm/specification. DataFingerprint.algorithmVersion.
+  'cdi:typeOfFingerprint':
+    type: string
+    description: >-
+      The kind of fingerprint (e.g., checksum, hash, digest). DataFingerprint.typeOfFingerprint.
+required:
+- 'cdi:value'

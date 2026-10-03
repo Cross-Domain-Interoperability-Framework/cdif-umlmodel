@@ -1,0 +1,60 @@
+cdifRepresentedVariable: 25 exact difference(s)
+$.$defs.ConceptSystem: only in original: {"type": "object", "description": "Set of concepts structured by the relations among them [GSIM 1.1].", "properties": {"@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "cd
+$.$defs.Reference: only in original: {"$ref": "../../schemaorgProperties/labeledLink/schema.yaml"}
+$.$defs.StringOrStringList: only in regenerated: {"anyOf": [{"type": "string"}, {"type": "array", "items": {"type": "string"}, "minItems": 1}]}
+$.$defs.UnitType.properties.cdif:externalDefinition.$ref:
+    original:    "#/$defs/Reference"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml"
+$.$defs.UnitType.properties.cdif:identifier.$ref:
+    original:    "../../schemaorgProperties/identifier/schema.yaml"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml"
+$.$defs.UnitType.properties.cdif:name.$ref: only in regenerated: "#/$defs/StringOrStringList"
+$.$defs.UnitType.properties.cdif:name.anyOf: only in original: [{"type": "string"}, {"type": "array", "items": {"type": "string"}, "minItems": 1}]
+$.$defs.UnitType.properties.cdif:uses_Concept.items.anyOf[0].$ref:
+    original:    "../../skosProperties/skosConcept/schema.yaml"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/skosProperties/skosConcept/schema.yaml"
+$.$defs.UnitType.properties.cdif:uses_Concept.items.anyOf[1].$ref:
+    original:    "../objectReference/schema.yaml"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/objectReference/schema.yaml"
+$.$defs.cdifConceptOrTerm: only in original: {"$ref": "../cdifConceptOrTerm/schema.yaml"}
+$.$defs.cdifConceptOrTermOrString: only in original: {"$ref": "../cdifConceptOrTermOrString/schema.yaml"}
+$.properties.cdi:measures.anyOf[1].$ref:
+    original:    "../objectReference/schema.yaml"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/objectReference/schema.yaml"
+$.properties.cdi:takesSentinelValuesFrom.items.anyOf[0].$ref:
+    original:    "../../cdifDataType/cdifValueDomain/schema.yaml#/$defs/SentinelValueDomain"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifValueDomain/schema.yaml#/$defs/SentinelValueDomain"
+$.properties.cdi:takesSentinelValuesFrom.items.anyOf[1].$ref:
+    original:    "../objectReference/schema.yaml"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/objectReference/schema.yaml"
+$.properties.cdi:takesSubstantiveValuesFrom.anyOf[0].$ref:
+    original:    "../../cdifDataType/cdifValueDomain/schema.yaml#/$defs/SubstantiveValueDomain"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifValueDomain/schema.yaml#/$defs/SubstantiveValueDomain"
+$.properties.cdi:takesSubstantiveValuesFrom.anyOf[1].$ref:
+    original:    "../objectReference/schema.yaml"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/objectReference/schema.yaml"
+$.properties.cdif:describedUnitOfMeasure.$ref:
+    original:    "#/$defs/cdifConceptOrTermOrString"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml"
+$.properties.cdif:externalDefinition.$ref:
+    original:    "#/$defs/Reference"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml"
+$.properties.cdif:hasIntendedDataType.$ref:
+    original:    "#/$defs/cdifConceptOrTermOrString"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml"
+$.properties.cdif:identifier.$ref:
+    original:    "../../schemaorgProperties/identifier/schema.yaml"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml"
+$.properties.cdif:name.$ref: only in regenerated: "#/$defs/StringOrStringList"
+$.properties.cdif:name.anyOf: only in original: [{"type": "string"}, {"type": "array", "items": {"type": "string"}, "minItems": 1}]
+$.properties.cdif:unitOfMeasureKind.$ref:
+    original:    "#/$defs/cdifConceptOrTermOrString"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml"
+$.properties.cdif:uses_Concept.items.anyOf[0].$ref:
+    original:    "../../skosProperties/skosConcept/schema.yaml"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/skosProperties/skosConcept/schema.yaml"
+$.properties.cdif:uses_Concept.items.anyOf[1].$ref:
+    original:    "../objectReference/schema.yaml"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/objectReference/schema.yaml"
+
+cdifRepresentedVariable: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

@@ -5,9 +5,9 @@
     <packagedElement xmi:type="uml:Package" xmi:id="cdif.union" xmi:uuid="7b9f3a2b-ef0c-5fc3-9471-ac4d1e84f9fa">
       <name>cdifSharedUnions</name>
       <URI>https://w3id.org/cdif/union/xmi/</URI>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.union.IdReferenceOrPersonOrOrganization" xmi:uuid="4e2177f5-6c6f-58db-8340-b396aa5782b8">
-        <name>IdReferenceOrPersonOrOrganization</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.union.IdReferenceOrPersonOrOrganization.comment" xmi:uuid="f375c7bc-a52f-50de-9626-22a2cf62fe4a">
+      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.union.PersonOrOrganization" xmi:uuid="c21abd6b-beec-5259-a866-18e4a9a02d9d">
+        <name>PersonOrOrganization</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.union.PersonOrOrganization.comment" xmi:uuid="1edb0724-e5f3-52af-84d5-1f9506d5c7d3">
           <body>**CDIF**
 
 Definition
@@ -15,39 +15,19 @@ Definition
 
 
 :union: ``anyOf``</body>
-          <annotatedElement xmi:idref="cdif.union.IdReferenceOrPersonOrOrganization"/>
+          <annotatedElement xmi:idref="cdif.union.PersonOrOrganization"/>
         </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.union.IdReferenceOrPersonOrOrganization.idReference" xmi:uuid="9a9062a7-7e6f-568a-bcbb-d51ea0ffecb8">
-          <name>idReference</name>
-          <type href="cdifCommonTypes.xmi#common.IdReference"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.union.IdReferenceOrPersonOrOrganization.idReference.lower" xmi:uuid="df26d222-0229-5eff-88bf-ea6c52a38842">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.union.IdReferenceOrPersonOrOrganization.idReference.upper" xmi:uuid="6070008d-2f71-5440-8171-80bc8e91ac31">
-            <value>1</value>
-          </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.union.IdReferenceOrPersonOrOrganization.idReference.comment" xmi:uuid="8c4771ff-41da-507b-908e-6e6a83415224">
-            <body>**CDIF**
-
-Definition
-==========
-
-
-:idRefDescription: "IRI reference to a Person or Organization defined elsewhere"</body>
-            <annotatedElement xmi:idref="cdif.union.IdReferenceOrPersonOrOrganization.idReference"/>
-          </ownedComment>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.union.IdReferenceOrPersonOrOrganization.person" xmi:uuid="9a73a96b-c281-5a8e-9869-7a460f09fa58">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.union.PersonOrOrganization.person" xmi:uuid="9a19cb25-5c0a-5769-a629-2410cd41f342">
           <name>person</name>
           <type href="schemaorgProperties/person/person.xmi#cdif.bbr.metadata.schemaorgProperties.person.Person"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.union.IdReferenceOrPersonOrOrganization.person.lower" xmi:uuid="d74600ff-3007-575f-b221-c58e783bf5dd">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.union.PersonOrOrganization.person.lower" xmi:uuid="2b696350-1652-53f6-a39e-d21c5655f3df">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.union.IdReferenceOrPersonOrOrganization.person.upper" xmi:uuid="0bef3a80-f488-56ab-a92d-5af99c6a2e29">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.union.PersonOrOrganization.person.upper" xmi:uuid="f0fc27d7-40e4-5827-bb28-2b0521c234dd">
             <value>1</value>
           </upperValue>
-          <association xmi:idref="cdif.union.assoc.IdReferenceOrPersonOrOrganization_person_Person"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.union.IdReferenceOrPersonOrOrganization.person.comment" xmi:uuid="b77f9295-7c2f-553b-9b61-194111e3f731">
+          <association xmi:idref="cdif.union.assoc.PersonOrOrganization_person_Person"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.union.PersonOrOrganization.person.comment" xmi:uuid="ae14e550-fa06-5cd4-8900-13361ce7b565">
             <body>**CDIF**
 
 Definition
@@ -55,20 +35,20 @@ Definition
 
 
 :inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.union.IdReferenceOrPersonOrOrganization.person"/>
+            <annotatedElement xmi:idref="cdif.union.PersonOrOrganization.person"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.union.IdReferenceOrPersonOrOrganization.organization" xmi:uuid="fb025a90-4cca-50c1-b2d8-ca274d366ccb">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.union.PersonOrOrganization.organization" xmi:uuid="20fcdc66-3bce-56b9-b3a4-10c88b1f056a">
           <name>organization</name>
           <type href="schemaorgProperties/organization/organization.xmi#cdif.bbr.metadata.schemaorgProperties.organization.Organization"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.union.IdReferenceOrPersonOrOrganization.organization.lower" xmi:uuid="40d761b2-c9c1-51df-a331-6cdadfb8085c">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.union.PersonOrOrganization.organization.lower" xmi:uuid="458dc2bd-4852-5c93-83f9-15ad516e2529">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.union.IdReferenceOrPersonOrOrganization.organization.upper" xmi:uuid="558b2e5a-e966-52f2-8fb9-acc5097ee391">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.union.PersonOrOrganization.organization.upper" xmi:uuid="3d93914b-31b1-56b0-8bb8-291e3feaebef">
             <value>1</value>
           </upperValue>
-          <association xmi:idref="cdif.union.assoc.IdReferenceOrPersonOrOrganization_organization_Organization"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.union.IdReferenceOrPersonOrOrganization.organization.comment" xmi:uuid="a8370e26-6bee-5ffa-9723-b9f6b38bf5a2">
+          <association xmi:idref="cdif.union.assoc.PersonOrOrganization_organization_Organization"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.union.PersonOrOrganization.organization.comment" xmi:uuid="94e31d13-6294-5ea2-9ef3-75e716a48527">
             <body>**CDIF**
 
 Definition
@@ -76,13 +56,13 @@ Definition
 
 
 :inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.union.IdReferenceOrPersonOrOrganization.organization"/>
+            <annotatedElement xmi:idref="cdif.union.PersonOrOrganization.organization"/>
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.union.StringOrIdReferenceOrDefinedTerm" xmi:uuid="279cbac8-6134-559c-b369-98e96c5e141a">
-        <name>StringOrIdReferenceOrDefinedTerm</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.union.StringOrIdReferenceOrDefinedTerm.comment" xmi:uuid="cebea76a-c4c2-5568-9033-ec9438f4e765">
+      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.union.StringOrStringList" xmi:uuid="5b597d40-b2f2-5bbd-bf03-f9154828eaba">
+        <name>StringOrStringList</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.union.StringOrStringList.comment" xmi:uuid="20084d3c-c0a2-56de-bbc7-20dced9cf26c">
           <body>**CDIF**
 
 Definition
@@ -90,94 +70,111 @@ Definition
 
 
 :union: ``anyOf``</body>
-          <annotatedElement xmi:idref="cdif.union.StringOrIdReferenceOrDefinedTerm"/>
+          <annotatedElement xmi:idref="cdif.union.StringOrStringList"/>
         </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.union.StringOrIdReferenceOrDefinedTerm.string" xmi:uuid="96d178bb-abe0-5f93-937b-42e41ead35f8">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.union.StringOrStringList.string" xmi:uuid="25c67ac7-a5fb-5fc8-83b8-4bfc3ec23ccd">
           <name>string</name>
           <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.union.StringOrIdReferenceOrDefinedTerm.string.lower" xmi:uuid="c4e87b8a-a0d8-5526-94b9-2cebb33cef7f">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.union.StringOrStringList.string.lower" xmi:uuid="63d18d5a-380f-5983-b53c-e4a288fa45ad">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.union.StringOrIdReferenceOrDefinedTerm.string.upper" xmi:uuid="bc656a0a-43ec-5e3e-b8a0-2ef8109b278a">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.union.StringOrStringList.string.upper" xmi:uuid="f26a7ec1-e874-5d33-85c7-1607a4551a4e">
             <value>1</value>
           </upperValue>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.union.StringOrIdReferenceOrDefinedTerm.idReference" xmi:uuid="ae8601b0-425e-50d2-bf2e-ede90c6aa845">
-          <name>idReference</name>
-          <type href="cdifCommonTypes.xmi#common.IdReference"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.union.StringOrIdReferenceOrDefinedTerm.idReference.lower" xmi:uuid="e538af68-9124-571b-b506-7a1b69967c10">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.union.StringOrStringList.stringList" xmi:uuid="4d8e2053-18be-5fa1-83f7-7204ed880497">
+          <name>stringList</name>
+          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.union.StringOrStringList.stringList.lower" xmi:uuid="40c7b0eb-0158-50c8-a80f-dad645651fe9">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.union.StringOrIdReferenceOrDefinedTerm.idReference.upper" xmi:uuid="81f162c2-d3e4-5bfc-82af-17d0a3511814">
-            <value>1</value>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.union.StringOrStringList.stringList.upper" xmi:uuid="67955475-8e22-534f-a09d-dbaea3640a7b">
+            <value>*</value>
           </upperValue>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.union.StringOrIdReferenceOrDefinedTerm.definedTerm" xmi:uuid="cf832ceb-cf29-5c2c-99ef-b9717fae3d02">
-          <name>definedTerm</name>
-          <type href="schemaorgProperties/definedTerm/definedTerm.xmi#cdif.bbr.metadata.schemaorgProperties.definedTerm.DefinedTerm"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.union.StringOrIdReferenceOrDefinedTerm.definedTerm.lower" xmi:uuid="daeeee2f-c2e1-5c8e-8d13-2bb7f084f885">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.union.StringOrIdReferenceOrDefinedTerm.definedTerm.upper" xmi:uuid="ab506b19-4c58-523a-b01a-c951251510b1">
-            <value>1</value>
-          </upperValue>
-          <association xmi:idref="cdif.union.assoc.StringOrIdReferenceOrDefinedTerm_definedTerm_DefinedTerm"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.union.StringOrIdReferenceOrDefinedTerm.definedTerm.comment" xmi:uuid="43e3feae-af9a-57bd-8c30-b2f774ee86c1">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.union.StringOrStringList.stringList.comment" xmi:uuid="033fa5d7-737b-5b8a-8c12-4f35612551e6">
             <body>**CDIF**
 
 Definition
 ==========
 
 
-:inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.union.StringOrIdReferenceOrDefinedTerm.definedTerm"/>
+:minItems: 1</body>
+            <annotatedElement xmi:idref="cdif.union.StringOrStringList.stringList"/>
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.union.assoc.IdReferenceOrPersonOrOrganization_person_Person" xmi:uuid="d7390666-3cb8-5849-90f0-aba94a7f7609">
-        <name>IdReferenceOrPersonOrOrganization_person_Person</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.union.assoc.IdReferenceOrPersonOrOrganization_person_Person.ownedEnd" xmi:uuid="10189b54-f656-588e-8e68-e5f8c3050d81">
-          <type xmi:idref="cdif.union.IdReferenceOrPersonOrOrganization"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.union.assoc.IdReferenceOrPersonOrOrganization_person_Person.ownedEnd.lower" xmi:uuid="6af383e4-ffed-5028-8b13-b525bad847e3">
+      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.union.StringXorLabeledLink" xmi:uuid="1afcadc5-0025-5374-b9ae-0747f4694689">
+        <name>StringXorLabeledLink</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.union.StringXorLabeledLink.comment" xmi:uuid="91b43462-e341-5e37-99c9-9cd65f7ec21c">
+          <body>**CDIF**
+
+Definition
+==========
+
+
+:union: ``oneOf``</body>
+          <annotatedElement xmi:idref="cdif.union.StringXorLabeledLink"/>
+        </ownedComment>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.union.StringXorLabeledLink.string" xmi:uuid="b69b8cbe-1c90-55e7-9464-c09634408ff3">
+          <name>string</name>
+          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.union.StringXorLabeledLink.string.lower" xmi:uuid="10a1c45e-b54c-5425-9d66-e0e28fd1ba33">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.union.assoc.IdReferenceOrPersonOrOrganization_person_Person.ownedEnd.upper" xmi:uuid="ce04fcf1-7c13-57dc-a119-c54f6c9d91c7">
-            <value>*</value>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.union.StringXorLabeledLink.string.upper" xmi:uuid="51fb165c-1333-5000-af44-99511a7c050c">
+            <value>1</value>
           </upperValue>
-          <association xmi:idref="cdif.union.assoc.IdReferenceOrPersonOrOrganization_person_Person"/>
-        </ownedEnd>
-        <memberEnd xmi:idref="cdif.union.assoc.IdReferenceOrPersonOrOrganization_person_Person.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.union.IdReferenceOrPersonOrOrganization.person"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.union.StringXorLabeledLink.string.comment" xmi:uuid="8d3657a1-0706-5e86-bf51-5d07bcc84b21">
+            <body>**CDIF**
+
+Definition
+==========
+
+
+:default: "not specified"</body>
+            <annotatedElement xmi:idref="cdif.union.StringXorLabeledLink.string"/>
+          </ownedComment>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.union.StringXorLabeledLink.labeledLink" xmi:uuid="7d21d352-015e-51bd-a3a9-c42a646ea147">
+          <name>labeledLink</name>
+          <type href="schemaorgProperties/labeledLink/labeledLink.xmi#cdif.bbr.metadata.schemaorgProperties.labeledLink.LabeledLink"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.union.StringXorLabeledLink.labeledLink.lower" xmi:uuid="384ed4c5-f932-5ce2-82fd-19dda124ba4e">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.union.StringXorLabeledLink.labeledLink.upper" xmi:uuid="aab6cc5a-9efa-570e-8da5-66f61645fdcf">
+            <value>1</value>
+          </upperValue>
+        </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.union.assoc.IdReferenceOrPersonOrOrganization_organization_Organization" xmi:uuid="88296a82-6252-527c-975e-07ea028d6152">
-        <name>IdReferenceOrPersonOrOrganization_organization_Organization</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.union.assoc.IdReferenceOrPersonOrOrganization_organization_Organization.ownedEnd" xmi:uuid="96abb7ef-8ef9-5bcb-b13e-c0e996ad83d9">
-          <type xmi:idref="cdif.union.IdReferenceOrPersonOrOrganization"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.union.assoc.IdReferenceOrPersonOrOrganization_organization_Organization.ownedEnd.lower" xmi:uuid="d23971f7-12d2-5af3-af84-476a712d6aa5">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.union.assoc.PersonOrOrganization_person_Person" xmi:uuid="2cb920fe-8afb-5658-929f-5e76c99f35db">
+        <name>PersonOrOrganization_person_Person</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.union.assoc.PersonOrOrganization_person_Person.ownedEnd" xmi:uuid="defea1f3-732f-59bd-80d2-e1e885496e49">
+          <type xmi:idref="cdif.union.PersonOrOrganization"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.union.assoc.PersonOrOrganization_person_Person.ownedEnd.lower" xmi:uuid="6200e41d-1317-59e6-ba7c-f1198c40f16b">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.union.assoc.IdReferenceOrPersonOrOrganization_organization_Organization.ownedEnd.upper" xmi:uuid="721f355c-0864-5469-aa76-5ee896c6b069">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.union.assoc.PersonOrOrganization_person_Person.ownedEnd.upper" xmi:uuid="83259b71-5b60-5acf-9bc8-1fba2d79d3f2">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.union.assoc.IdReferenceOrPersonOrOrganization_organization_Organization"/>
+          <association xmi:idref="cdif.union.assoc.PersonOrOrganization_person_Person"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.union.assoc.IdReferenceOrPersonOrOrganization_organization_Organization.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.union.IdReferenceOrPersonOrOrganization.organization"/>
+        <memberEnd xmi:idref="cdif.union.assoc.PersonOrOrganization_person_Person.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.union.PersonOrOrganization.person"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.union.assoc.StringOrIdReferenceOrDefinedTerm_definedTerm_DefinedTerm" xmi:uuid="6a317b0b-3a14-5cff-9ea5-c1b66c194e9d">
-        <name>StringOrIdReferenceOrDefinedTerm_definedTerm_DefinedTerm</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.union.assoc.StringOrIdReferenceOrDefinedTerm_definedTerm_DefinedTerm.ownedEnd" xmi:uuid="47264285-c13a-5079-8e7d-130047608dc6">
-          <type xmi:idref="cdif.union.StringOrIdReferenceOrDefinedTerm"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.union.assoc.StringOrIdReferenceOrDefinedTerm_definedTerm_DefinedTerm.ownedEnd.lower" xmi:uuid="5e93693b-b470-5f76-8ce9-5f36fc116b97">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.union.assoc.PersonOrOrganization_organization_Organization" xmi:uuid="2ec4347c-6671-522b-b0d7-6b568f7f88d3">
+        <name>PersonOrOrganization_organization_Organization</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.union.assoc.PersonOrOrganization_organization_Organization.ownedEnd" xmi:uuid="fc4f8b8d-1d7a-5fac-9437-c138f4f35945">
+          <type xmi:idref="cdif.union.PersonOrOrganization"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.union.assoc.PersonOrOrganization_organization_Organization.ownedEnd.lower" xmi:uuid="ea7e1f7b-68ad-535c-9ed2-b5fb56cba98e">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.union.assoc.StringOrIdReferenceOrDefinedTerm_definedTerm_DefinedTerm.ownedEnd.upper" xmi:uuid="9ce326f4-4ef9-54d9-93ee-c245ffcefa61">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.union.assoc.PersonOrOrganization_organization_Organization.ownedEnd.upper" xmi:uuid="7bfcbcdd-ea7c-5822-8198-d5b5104dfa7d">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.union.assoc.StringOrIdReferenceOrDefinedTerm_definedTerm_DefinedTerm"/>
+          <association xmi:idref="cdif.union.assoc.PersonOrOrganization_organization_Organization"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.union.assoc.StringOrIdReferenceOrDefinedTerm_definedTerm_DefinedTerm.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.union.StringOrIdReferenceOrDefinedTerm.definedTerm"/>
+        <memberEnd xmi:idref="cdif.union.assoc.PersonOrOrganization_organization_Organization.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.union.PersonOrOrganization.organization"/>
       </packagedElement>
     </packagedElement>
   </uml:Model>

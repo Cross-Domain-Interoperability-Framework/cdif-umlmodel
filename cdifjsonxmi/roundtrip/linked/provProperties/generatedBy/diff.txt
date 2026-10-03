@@ -1,6 +1,7 @@
-generatedBy: 3 exact difference(s)
-$.$defs: only in regenerated: {"Entity": {"type": "object", "properties": {"@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "prov:Entity"}, "minItems": 1}}, "required": ["@type"]}, "StringOrIdReference
-$.properties.prov:used.items.$ref: only in regenerated: "#/$defs/StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6"
-$.properties.prov:used.items.anyOf: only in original: [{"type": "string"}, {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "a resolvable reference to a representation of the s
+generatedBy: 2 exact difference(s)
+$.$defs: only in regenerated: {"ComputationalToolRole": {"type": "object", "allOf": [{"required": ["bios:computationalTool"]}]}, "Entity": {"type": "object", "properties": {"@type": {"type": "array", "items": {"type": "string"}, "
+$.properties.prov:used.items.anyOf:
+    original:    [{"type": "string"}, {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "a resolvable reference to a representation of the software or instrument used"}}}, {"type": "object", "description": "an inline prov:Entity used by the
+    regenerated: [{"type": "string"}, {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "a resolvable reference to a representation of the software or instrument used"}}}, {"$ref": "#/$defs/GeneratedByUsedChoice"}]
 
 generatedBy: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

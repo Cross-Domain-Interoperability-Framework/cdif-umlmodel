@@ -34,18 +34,6 @@ required:
 - 'dqv:isMeasurementOf'
 - 'dqv:value'
 '$defs':
-  StringOrIdReferenceOrDefinedTerm:
-    anyOf:
-    - type: string
-    - type: object
-      required:
-      - '@id'
-      additionalProperties: false
-      properties:
-        '@id':
-          type: string
-    - '$ref': >-
-        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml
   StringOrNumberOrDefinedTerm:
     anyOf:
     - type: string

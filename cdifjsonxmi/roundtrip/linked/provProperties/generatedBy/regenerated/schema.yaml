@@ -13,7 +13,18 @@ properties:
   'prov:used':
     type: array
     items:
-      '$ref': '#/$defs/StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6'
+      anyOf:
+      - type: string
+      - type: object
+        required:
+        - '@id'
+        additionalProperties: false
+        properties:
+          '@id':
+            type: string
+            description: a resolvable reference to a representation of the software or instrument
+              used
+      - '$ref': '#/$defs/GeneratedByUsedChoice'
     description: >-
       Entities the activity used. Per PROV-O each value denotes a prov:Entity. An item may
       be (1) a string URI or free-text reference, (2) an {@id} reference, (3) an inline entity
@@ -27,6 +38,11 @@ properties:
 required:
 - '@type'
 '$defs':
+  ComputationalToolRole:
+    type: object
+    allOf:
+    - required:
+      - 'bios:computationalTool'
   Entity:
     type: object
     properties:
@@ -39,43 +55,28 @@ required:
         minItems: 1
     required:
     - '@type'
-  StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6:
+  GeneratedByUsedChoice:
     anyOf:
-    - type: string
-    - type: object
-      required:
-      - '@id'
-      additionalProperties: false
-      properties:
-        '@id':
-          type: string
-          description: a resolvable reference to a representation of the software or instrument
-            used
     - '$ref': '#/$defs/Entity'
       description: an inline prov:Entity used by the activity (see prov:used description)
-    - '$ref': '#/$defs/StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6Option4'
+    - '$ref': '#/$defs/InstrumentRole'
       description: >-
         a role-keyed wrapper naming an instrument used by the activity; the extension layer
         pins the value to an Instrument description.
-    - '$ref': '#/$defs/StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6Option5'
+    - '$ref': '#/$defs/ComputationalToolRole'
       description: >-
         a role-keyed wrapper naming a computational tool (software) used; the extension layer
         pins the value to a ComputationalTool description.
-    - '$ref': '#/$defs/StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6Option6'
+    - '$ref': '#/$defs/ReagentRole'
       description: >-
         a role-keyed wrapper naming a reagent / material used; the extension layer pins the
         value to a Reagent description.
-  StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6Option4:
+  InstrumentRole:
     type: object
     allOf:
     - required:
       - 'schema:instrument'
-  StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6Option5:
-    type: object
-    allOf:
-    - required:
-      - 'bios:computationalTool'
-  StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6Option6:
+  ReagentRole:
     type: object
     allOf:
     - required:

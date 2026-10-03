@@ -1,4 +1,4 @@
-instrument: 37 exact difference(s)
+instrument: 35 exact difference(s)
 $.$defs.AdditionalProperty: only in original: {"$ref": "../additionalProperty/schema.yaml"}
 $.$defs.AdditionalPropertyOrAdditionalPropertySpecification: only in regenerated: {"anyOf": [{"$ref": "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/additionalProperty/schema.yaml"}, {"$ref": "#/$defs/InstrumentPropertyValueSpecification"}]}
 $.$defs.AdditionalPropertySpecification: only in original: {"type": "object", "title": "additionalProperty PropertyValueSpecification", "description": "A parameter specification (an overridable default) declared on a procedure / plan instrument, typed schema:
@@ -6,7 +6,6 @@ $.$defs.AgentInRole: only in original: {"$ref": "../agentInRole/schema.yaml"}
 $.$defs.DefinedTerm: only in original: {"$ref": "../definedTerm/schema.yaml"}
 $.$defs.Identifier: only in original: {"$ref": "../identifier/schema.yaml"}
 $.$defs.InstrumentComponent: only in original: {"type": "object", "description": "A sub-component of an instrument system. Uses the same structure as the parent instrument but without nesting (single level of hasPart).", "properties": {"@type": {"
-$.$defs.InstrumentComponentOrIdReference: only in regenerated: {"anyOf": [{"$ref": "#/$defs/InstrumentThing"}, {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "Reference to a sub-compo
 $.$defs.InstrumentProductModel: only in regenerated: {"type": "object", "properties": {"@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "schema:ProductModel"}, "minItems": 1}, "schema:name": {"type": "string", "description":
 $.$defs.InstrumentProductModel2: only in regenerated: {"type": "object", "properties": {"@type": {"type": "array", "items": {"anyOf": [{"type": "string"}, {"type": "object", "additionalProperties": false, "required": ["@id"], "properties": {"@id": {"type
 $.$defs.InstrumentPropertyValueSpecification: only in regenerated: {"type": "object", "title": "additionalProperty PropertyValueSpecification", "description": "A parameter specification (an overridable default) declared on a procedure / plan instrument, typed schema:
@@ -28,8 +27,9 @@ $.properties.schema:category.items.$ref:
 $.properties.schema:contributor.items.$ref:
     original:    "#/$defs/AgentInRole"
     regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/agentInRole/schema.yaml"
-$.properties.schema:hasPart.items.$ref: only in regenerated: "#/$defs/InstrumentComponentOrIdReference"
-$.properties.schema:hasPart.items.anyOf: only in original: [{"$ref": "#/$defs/InstrumentComponent"}, {"type": "object", "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "Reference to a sub-component defined elsewhere."}},
+$.properties.schema:hasPart.items.anyOf[0].$ref:
+    original:    "#/$defs/InstrumentComponent"
+    regenerated: "#/$defs/InstrumentThing"
 $.properties.schema:identifier.items.anyOf[1].$ref:
     original:    "#/$defs/Identifier"
     regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml"

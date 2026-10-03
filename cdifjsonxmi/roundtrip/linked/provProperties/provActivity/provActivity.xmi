@@ -71,7 +71,7 @@ Text description of what this activity did (schema.org fallback -- PROV-O has no
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.Activity.generated" xmi:uuid="2be6e471-7484-5b93-ae7e-32244a21b47b">
           <name>generated</name>
-          <type xmi:idref="cdif.bbr.metadata.provProperties.provActivity.StringOrIdReference"/>
+          <type href="../../cdifCommonTypes.xmi#common.IriReference"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.Activity.generated.lower" xmi:uuid="969d99d4-d5d7-5420-84c4-85d4ce4b1195">
             <value>0</value>
           </lowerValue>
@@ -84,13 +84,14 @@ Text description of what this activity did (schema.org fallback -- PROV-O has no
 Definition
 ==========
 
-Entities produced by this activity (inverse of prov:wasGeneratedBy)</body>
+Entities produced by this activity (inverse of prov:wasGeneratedBy)
+:idRefDescription: "reference to an entity produced by this activity"</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.Activity.generated"/>
           </ownedComment>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.Activity.wasAssociatedWith" xmi:uuid="2b4161ec-e78e-52f2-af26-19e50abf7cbf">
           <name>wasAssociatedWith</name>
-          <type xmi:idref="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference"/>
+          <type xmi:idref="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRole"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.Activity.wasAssociatedWith.lower" xmi:uuid="0a170df4-0553-5cda-a7e6-8bd860954b5c">
             <value>0</value>
           </lowerValue>
@@ -103,13 +104,15 @@ Entities produced by this activity (inverse of prov:wasGeneratedBy)</body>
 Definition
 ==========
 
-Agents responsible for this activity (PROV-O native -- maps to schema:agent in cdifProvActivity)</body>
+Agents responsible for this activity (PROV-O native -- maps to schema:agent in cdifProvActivity)
+:idRefDescription: "reference to an agent defined elsewhere"
+:orReference: ["value", "string", "idReference"]</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.Activity.wasAssociatedWith"/>
           </ownedComment>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.Activity.wasInformedBy" xmi:uuid="070e567d-a2db-500d-afe7-da5af2dad6d6">
           <name>wasInformedBy</name>
-          <type xmi:idref="cdif.bbr.metadata.provProperties.provActivity.IdReferenceOrString"/>
+          <type href="../../cdifCommonTypes.xmi#common.IriReference"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.Activity.wasInformedBy.lower" xmi:uuid="972e6718-6006-53e6-b043-b17f72fe9b49">
             <value>0</value>
           </lowerValue>
@@ -122,7 +125,9 @@ Agents responsible for this activity (PROV-O native -- maps to schema:agent in c
 Definition
 ==========
 
-Other activities that communicated information to this one (PROV-O activity-to-activity chain -- maps to schema:object in cdifProvActivity)</body>
+Other activities that communicated information to this one (PROV-O activity-to-activity chain -- maps to schema:object in cdifProvActivity)
+:idRefDescription: "reference to a prior activity"
+:referenceFirst:</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.Activity.wasInformedBy"/>
           </ownedComment>
         </ownedAttribute>
@@ -166,26 +171,30 @@ ISO8601 date-time when the activity ended (PROV-O native -- maps to schema:endTi
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.Activity.atLocation" xmi:uuid="ce99f224-aeb8-5010-abdb-e927d48de96d">
           <name>atLocation</name>
-          <type xmi:idref="cdif.bbr.metadata.provProperties.provActivity.SpatialExtentOrStringOrIdReference"/>
+          <type href="../../schemaorgProperties/spatialExtent/spatialExtent.xmi#cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtent"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.Activity.atLocation.lower" xmi:uuid="b875062c-020d-5bcb-ad11-98b1b6650726">
             <value>0</value>
           </lowerValue>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.Activity.atLocation.upper" xmi:uuid="47bdbbaa-193b-5277-ba8f-8c9fdeeae9f3">
             <value>1</value>
           </upperValue>
+          <association xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.Activity_atLocation_SpatialExtent"/>
           <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.Activity.atLocation.comment" xmi:uuid="7a3b1f50-5bde-53c7-a8fa-329da1e0b66f">
             <body>**CDIF**
 
 Definition
 ==========
 
-Location where the activity occurred (PROV-O expanded term -- maps to schema:location in cdifProvActivity)</body>
+Location where the activity occurred (PROV-O expanded term -- maps to schema:location in cdifProvActivity)
+:inlineOrByReference: ``inline``
+:idRefDescription: "reference to a place defined elsewhere"
+:orReference: ["value", "string", "idReference"]</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.Activity.atLocation"/>
           </ownedComment>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.Activity.wasStartedBy" xmi:uuid="e9b196dc-d1fb-5b14-af31-e90180aee856">
           <name>wasStartedBy</name>
-          <type xmi:idref="cdif.bbr.metadata.provProperties.provActivity.StringOrIdReference"/>
+          <type href="../../cdifCommonTypes.xmi#common.IriReference"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.Activity.wasStartedBy.lower" xmi:uuid="d337e7fa-735e-51cc-9b9c-138b25a6c314">
             <value>0</value>
           </lowerValue>
@@ -199,13 +208,13 @@ Definition
 ==========
 
 Entity that triggered the start of this activity (PROV-O expanded term)
-:alternativeOverrides: {"idReference": {"idRefDescription": "reference to a triggering entity"}}</body>
+:idRefDescription: "reference to a triggering entity"</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.Activity.wasStartedBy"/>
           </ownedComment>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.Activity.wasEndedBy" xmi:uuid="a8db71a6-b7d2-576b-8645-af91911cc122">
           <name>wasEndedBy</name>
-          <type xmi:idref="cdif.bbr.metadata.provProperties.provActivity.StringOrIdReference"/>
+          <type href="../../cdifCommonTypes.xmi#common.IriReference"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.Activity.wasEndedBy.lower" xmi:uuid="38aceae6-8b9e-5d69-b79e-d14ec5dc3138">
             <value>0</value>
           </lowerValue>
@@ -219,7 +228,7 @@ Definition
 ==========
 
 Entity that triggered the end of this activity (PROV-O expanded term)
-:alternativeOverrides: {"idReference": {"idRefDescription": "reference to an entity that ended this activity"}}</body>
+:idRefDescription: "reference to an entity that ended this activity"</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.Activity.wasEndedBy"/>
           </ownedComment>
         </ownedAttribute>
@@ -245,13 +254,14 @@ Status of this activity (schema.org fallback -- no PROV-O equivalent)
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.Activity.schema_actionProcess" xmi:uuid="d6765c0e-79ab-5324-a2e1-1bcad892bd7f">
           <name>schema_actionProcess</name>
-          <type xmi:idref="cdif.bbr.metadata.provProperties.provActivity.HowToOrStringOrIdReference"/>
+          <type xmi:idref="cdif.bbr.metadata.provProperties.provActivity.ActivityHowTo"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.Activity.schema_actionProcess.lower" xmi:uuid="9568cb5b-bfa3-547c-abea-6aadde851ef7">
             <value>0</value>
           </lowerValue>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.Activity.schema_actionProcess.upper" xmi:uuid="04801f02-a4bd-561b-bec7-7b50ae63ea14">
             <value>1</value>
           </upperValue>
+          <association xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.Activity_schema_actionProcess_ActivityHowTo"/>
           <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.Activity.schema_actionProcess.comment" xmi:uuid="65221bbc-6bd8-5e79-83e7-2d0e3bbcd83e">
             <body>**CDIF**
 
@@ -259,6 +269,9 @@ Definition
 ==========
 
 Methodology or protocol for this activity (schema.org fallback -- PROV-O has prov:hadPlan only inside qualified Association)
+:inlineOrByReference: ``inline``
+:idRefDescription: "reference to a methodology defined elsewhere"
+:orReference: ["value", "string", "idReference"]
 :jsonName: "schema:actionProcess"</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.Activity.schema_actionProcess"/>
           </ownedComment>
@@ -284,9 +297,9 @@ Error description for failed activities (schema.org fallback -- no PROV-O equiva
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowTo" xmi:uuid="0e81e2be-3e98-5254-9543-c225fc27091f">
-        <name>HowTo</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowTo.comment" xmi:uuid="c85b70e1-75f0-51da-9783-e50b3af10a7c">
+      <packagedElement xmi:type="uml:Class" xmi:id="cdif.bbr.metadata.provProperties.provActivity.ActivityHowTo" xmi:uuid="b5e46d8c-b380-5013-9df7-c2783251df63">
+        <name>ActivityHowTo</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.ActivityHowTo.comment" xmi:uuid="8020c81a-7fd8-5bcb-a1c3-781d9296cb71">
           <body>**CDIF**
 
 Definition
@@ -296,76 +309,22 @@ A methodology or protocol described as a HowTo with optional steps
 :rdfType: ``schema:HowTo``
 :choiceConstraints:
 - ``schema:name | schema:url``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.HowTo"/>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.ActivityHowTo"/>
         </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowTo.name" xmi:uuid="673926b4-f0fe-5fe6-b491-33635d1b80c9">
-          <name>name</name>
-          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowTo.name.lower" xmi:uuid="b55309e3-3f62-5ec4-8c51-1ece0a118dc0">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowTo.name.upper" xmi:uuid="53f83e42-d708-5789-bfdd-085cf96b6f50">
-            <value>1</value>
-          </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowTo.name.comment" xmi:uuid="abb45805-67c0-5fba-9b15-8ed4f45f6292">
-            <body>**CDIF**
-
-Definition
-==========
-
-Name of the methodology or protocol</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.HowTo.name"/>
-          </ownedComment>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowTo.description" xmi:uuid="5e71b8ca-460f-5d26-8f18-08f56afac132">
-          <name>description</name>
-          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowTo.description.lower" xmi:uuid="781dbb54-1f5b-510e-a824-5b4f5d77acda">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowTo.description.upper" xmi:uuid="4d4e1d39-e819-5d8f-9cb2-91581826a57b">
-            <value>1</value>
-          </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowTo.description.comment" xmi:uuid="2269a59b-7788-5500-8fbc-724fcf6b3639">
-            <body>**CDIF**
-
-Definition
-==========
-
-Description of the methodology</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.HowTo.description"/>
-          </ownedComment>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowTo.url" xmi:uuid="7c138bbf-42b1-5957-9c0b-71cf98ab27aa">
-          <name>url</name>
-          <type href="../../cdifCommonTypes.xmi#XMLSchemaDataTypes.XsdAnyUri"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowTo.url.lower" xmi:uuid="6b749a81-02c2-52a3-b781-db88c7ced7c0">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowTo.url.upper" xmi:uuid="6d85200b-dc2a-56eb-aead-7e0c24eceac3">
-            <value>1</value>
-          </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowTo.url.comment" xmi:uuid="4a6e3af6-394f-50b7-90f4-37fc6f7935e4">
-            <body>**CDIF**
-
-Definition
-==========
-
-URL to a published methodology or protocol document</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.HowTo.url"/>
-          </ownedComment>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowTo.step" xmi:uuid="29140149-986b-5fd5-ac38-c2a47f281bbd">
+        <generalization xmi:type="uml:Generalization" xmi:id="cdif.bbr.metadata.provProperties.provActivity.ActivityHowTo.generalization" xmi:uuid="daaaca80-f785-592d-865e-e00665451e15">
+          <general href="../../cdifSharedTypes.xmi#cdif.shared.HowTo"/>
+        </generalization>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.ActivityHowTo.step" xmi:uuid="07e42540-d287-5825-a338-666d5be6e61f">
           <name>step</name>
-          <type xmi:idref="cdif.bbr.metadata.provProperties.provActivity.HowToStep"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowTo.step.lower" xmi:uuid="79e7bd69-5d5a-5e4b-a0fb-b6b61fd7ba98">
+          <type xmi:idref="cdif.bbr.metadata.provProperties.provActivity.ActivityHowToStep"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.ActivityHowTo.step.lower" xmi:uuid="813a95d5-361c-5a45-90f3-1d6b7685d796">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowTo.step.upper" xmi:uuid="dd4534ff-3161-5c45-8c39-dbc9364a634c">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.ActivityHowTo.step.upper" xmi:uuid="0a5bc9ef-d5dc-5a7f-986d-a44f98e5ae9a">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.HowTo_step_HowToStep"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowTo.step.comment" xmi:uuid="e8b16ee8-5ec2-5f0e-a1c1-f8e9591f7eab">
+          <association xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.ActivityHowTo_step_ActivityHowToStep"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.ActivityHowTo.step.comment" xmi:uuid="9e2af27c-bfaa-5157-bcdd-ed07f0bac058">
             <body>**CDIF**
 
 Definition
@@ -373,77 +332,13 @@ Definition
 
 Ordered steps in this methodology
 :inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.HowTo.step"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.ActivityHowTo.step"/>
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowToOrStringOrIdReference" xmi:uuid="91db3ae1-4bb3-5c8f-b508-a8e694df561f">
-        <name>HowToOrStringOrIdReference</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowToOrStringOrIdReference.comment" xmi:uuid="3db1a2d2-fe62-5be3-adbc-16e4ec341d15">
-          <body>**CDIF**
-
-Definition
-==========
-
-
-:union: ``anyOf``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.HowToOrStringOrIdReference"/>
-        </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowToOrStringOrIdReference.howTo" xmi:uuid="b471ef4a-ab9c-5ef6-9d24-9f99f7890424">
-          <name>howTo</name>
-          <type xmi:idref="cdif.bbr.metadata.provProperties.provActivity.HowTo"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowToOrStringOrIdReference.howTo.lower" xmi:uuid="cf143998-fbc8-549a-9248-69c247c2db08">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowToOrStringOrIdReference.howTo.upper" xmi:uuid="ce37b414-52e0-550f-b7e4-7cc3d36ba6d9">
-            <value>1</value>
-          </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.HowToOrStringOrIdReference_howTo_HowTo"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowToOrStringOrIdReference.howTo.comment" xmi:uuid="17d45a30-80d3-5abc-a101-e5cd7cf34824">
-            <body>**CDIF**
-
-Definition
-==========
-
-
-:inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.HowToOrStringOrIdReference.howTo"/>
-          </ownedComment>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowToOrStringOrIdReference.string" xmi:uuid="1c80f829-64e1-57c7-9698-1f5827e48f2d">
-          <name>string</name>
-          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowToOrStringOrIdReference.string.lower" xmi:uuid="a7b22043-78d4-5987-8255-4a84f97dfa7e">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowToOrStringOrIdReference.string.upper" xmi:uuid="64488357-6b39-5695-b355-c7b926885bad">
-            <value>1</value>
-          </upperValue>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowToOrStringOrIdReference.idReference" xmi:uuid="43cb0de7-daeb-544c-94bc-2fa45d70df36">
-          <name>idReference</name>
-          <type href="../../cdifCommonTypes.xmi#common.IdReference"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowToOrStringOrIdReference.idReference.lower" xmi:uuid="68545d13-cfcf-54d7-86ac-ded6dd2282fc">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowToOrStringOrIdReference.idReference.upper" xmi:uuid="2dc5d7f5-5835-51a5-8f9b-487a42e791bd">
-            <value>1</value>
-          </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowToOrStringOrIdReference.idReference.comment" xmi:uuid="bb1cd2a1-fac2-558b-b99c-d53c743e41bd">
-            <body>**CDIF**
-
-Definition
-==========
-
-
-:idRefDescription: "reference to a methodology defined elsewhere"</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.HowToOrStringOrIdReference.idReference"/>
-          </ownedComment>
-        </ownedAttribute>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowToStep" xmi:uuid="b4f36b61-f58d-5a0f-b1ae-b60f90027241">
-        <name>HowToStep</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowToStep.comment" xmi:uuid="34029f38-2196-57ff-9264-855fd806d062">
+      <packagedElement xmi:type="uml:Class" xmi:id="cdif.bbr.metadata.provProperties.provActivity.ActivityHowToStep" xmi:uuid="6dd8365c-288c-5b79-8827-ac0863692134">
+        <name>ActivityHowToStep</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.ActivityHowToStep.comment" xmi:uuid="9b0d28c0-4ed0-50f8-b89f-5704e789c1cf">
           <body>**CDIF**
 
 Definition
@@ -452,88 +347,15 @@ Definition
 A single step in a HowTo methodology
 :rdfType: ``schema:HowToStep``
 :noId:</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.HowToStep"/>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.ActivityHowToStep"/>
         </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowToStep.name" xmi:uuid="6983d71a-75ae-58f2-a4b8-b50bf34113fc">
-          <name>name</name>
-          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowToStep.name.lower" xmi:uuid="ddd7b256-1baf-5ba9-a8bd-b6fbac717455">
-            <value>1</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowToStep.name.upper" xmi:uuid="56b5c57c-b946-54a9-b0b6-af10f98160dd">
-            <value>1</value>
-          </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowToStep.name.comment" xmi:uuid="17ee43c2-ce6d-5da4-a00e-4459c5c9fb9e">
-            <body>**CDIF**
-
-Definition
-==========
-
-Name of this step</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.HowToStep.name"/>
-          </ownedComment>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowToStep.description" xmi:uuid="2f97eaac-6604-533e-8895-50422f72c6e3">
-          <name>description</name>
-          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowToStep.description.lower" xmi:uuid="672f9b45-52cf-55cd-b9fc-15cc938c6671">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowToStep.description.upper" xmi:uuid="64ea9d5c-54c5-54f9-acb8-80f2527f8206">
-            <value>1</value>
-          </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowToStep.description.comment" xmi:uuid="ed76afe1-b8ab-53e8-8cc4-c2642048d418">
-            <body>**CDIF**
-
-Definition
-==========
-
-Description of what this step involves</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.HowToStep.description"/>
-          </ownedComment>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowToStep.url" xmi:uuid="8fe75776-339a-539d-9ae6-fe0626957117">
-          <name>url</name>
-          <type href="../../cdifCommonTypes.xmi#XMLSchemaDataTypes.XsdAnyUri"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowToStep.url.lower" xmi:uuid="6d46ad54-1809-5270-b5b5-04e233ab4da7">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowToStep.url.upper" xmi:uuid="a91fd240-e1a3-5e6d-b95d-64571f62e1cb">
-            <value>1</value>
-          </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowToStep.url.comment" xmi:uuid="1d0a78d6-d7e9-5a96-9d4c-3e0b69885009">
-            <body>**CDIF**
-
-Definition
-==========
-
-URL to documentation for this step</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.HowToStep.url"/>
-          </ownedComment>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowToStep.position" xmi:uuid="662c0a5e-e777-5ccc-b0d8-344b6684a68e">
-          <name>position</name>
-          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#Integer"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowToStep.position.lower" xmi:uuid="144da2d6-b402-5bb4-8040-80fb2147c2f5">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowToStep.position.upper" xmi:uuid="2b407e74-aa16-5b75-b4ab-2b7d0210030a">
-            <value>1</value>
-          </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.HowToStep.position.comment" xmi:uuid="3d672e3a-fce3-5301-acb6-b362d12c0390">
-            <body>**CDIF**
-
-Definition
-==========
-
-Ordinal position of this step</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.HowToStep.position"/>
-          </ownedComment>
-        </ownedAttribute>
+        <generalization xmi:type="uml:Generalization" xmi:id="cdif.bbr.metadata.provProperties.provActivity.ActivityHowToStep.generalization" xmi:uuid="6424e4a3-533f-5b89-bea1-3b541d38b03b">
+          <general href="../../cdifSharedTypes.xmi#cdif.shared.HowToStep"/>
+        </generalization>
       </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.provProperties.provActivity.IdReferenceOrString" xmi:uuid="b4fefd78-e95e-5633-8d37-7725c8b05c6e">
-        <name>IdReferenceOrString</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.IdReferenceOrString.comment" xmi:uuid="4a931ece-285d-5f11-a156-6ab64029c254">
+      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRole" xmi:uuid="1572da26-3ed2-54eb-9c4a-93a1bb52a719">
+        <name>PersonOrOrganizationOrAgentInRole</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRole.comment" xmi:uuid="81186c1e-d9cf-5b8d-8371-deee99b4071b">
           <body>**CDIF**
 
 Definition
@@ -541,62 +363,19 @@ Definition
 
 
 :union: ``anyOf``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.IdReferenceOrString"/>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRole"/>
         </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.IdReferenceOrString.idReference" xmi:uuid="c2495f5f-39b1-5d02-ba80-34d3e4aec937">
-          <name>idReference</name>
-          <type href="../../cdifCommonTypes.xmi#common.IdReference"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.IdReferenceOrString.idReference.lower" xmi:uuid="3f9f8998-6e30-5b73-b5e0-67bcda6f3f4b">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.IdReferenceOrString.idReference.upper" xmi:uuid="747a8571-ad58-5e3d-80c7-71d3981ba2e9">
-            <value>1</value>
-          </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.IdReferenceOrString.idReference.comment" xmi:uuid="d236ab0e-17a9-5f34-b02c-0bda593f1ae8">
-            <body>**CDIF**
-
-Definition
-==========
-
-
-:idRefDescription: "reference to a prior activity"</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.IdReferenceOrString.idReference"/>
-          </ownedComment>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.IdReferenceOrString.string" xmi:uuid="9ffa91e0-5382-5d77-b5a8-1d6273c550f5">
-          <name>string</name>
-          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.IdReferenceOrString.string.lower" xmi:uuid="5890058c-1f15-52e4-a0b5-90c5228b974a">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.IdReferenceOrString.string.upper" xmi:uuid="81f88fb0-e113-5dc5-8b6f-4381dd2d398a">
-            <value>1</value>
-          </upperValue>
-        </ownedAttribute>
-      </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference" xmi:uuid="ba94bbc4-b490-5fa9-83c9-8958d7c4f55d">
-        <name>PersonOrOrganizationOrAgentInRoleOrStringOrIdReference</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference.comment" xmi:uuid="4e220c94-90f3-580c-9f31-0fca15db5b77">
-          <body>**CDIF**
-
-Definition
-==========
-
-
-:union: ``anyOf``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference"/>
-        </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference.person" xmi:uuid="88f73ce8-df96-5714-9434-08214f2f1a5f">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRole.person" xmi:uuid="41c4b221-1b63-5894-9834-d39a4a3893af">
           <name>person</name>
           <type href="../../schemaorgProperties/person/person.xmi#cdif.bbr.metadata.schemaorgProperties.person.Person"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference.person.lower" xmi:uuid="f2a3eb61-cc52-59c0-90a4-9d65001d0584">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRole.person.lower" xmi:uuid="30d0f4b6-60f3-508c-ab02-3f8d10ed6437">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference.person.upper" xmi:uuid="e2a212ae-246d-53d8-aae5-cb024c9973a7">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRole.person.upper" xmi:uuid="883623bf-035c-5904-896f-2eba0a9636ea">
             <value>1</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference_person_Person"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference.person.comment" xmi:uuid="3e5713c6-cd33-598b-af65-94a2cf86fa28">
+          <association xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRole_person_Person"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRole.person.comment" xmi:uuid="d24fc39c-6c97-5245-8b42-d03aa345d707">
             <body>**CDIF**
 
 Definition
@@ -604,20 +383,20 @@ Definition
 
 
 :inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference.person"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRole.person"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference.organization" xmi:uuid="6782ffca-b723-506e-84c6-8be8be3cba04">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRole.organization" xmi:uuid="33a82aed-7590-5e9f-9e96-750af30a88ca">
           <name>organization</name>
           <type href="../../schemaorgProperties/organization/organization.xmi#cdif.bbr.metadata.schemaorgProperties.organization.Organization"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference.organization.lower" xmi:uuid="a844a57e-72eb-565f-97bb-3a5e3f13ad74">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRole.organization.lower" xmi:uuid="a945f084-239a-50e6-86ff-288bd71e112d">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference.organization.upper" xmi:uuid="0e07fcb4-98a3-5c7a-b73b-f05610983476">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRole.organization.upper" xmi:uuid="00799274-50bc-5550-9e3d-002b5088def4">
             <value>1</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference_organization_Organization"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference.organization.comment" xmi:uuid="3b803053-b28c-5d9d-bc36-9ebe743baf4d">
+          <association xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRole_organization_Organization"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRole.organization.comment" xmi:uuid="904adeef-a30a-574f-9428-d5563df140fa">
             <body>**CDIF**
 
 Definition
@@ -625,20 +404,20 @@ Definition
 
 
 :inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference.organization"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRole.organization"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference.agentInRole" xmi:uuid="467c6312-7777-5a08-bae1-da28279b1333">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRole.agentInRole" xmi:uuid="143073ce-01f2-5541-a853-d34766ab1050">
           <name>agentInRole</name>
           <type href="../../schemaorgProperties/agentInRole/agentInRole.xmi#cdif.bbr.metadata.schemaorgProperties.agentInRole.AgentInRole"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference.agentInRole.lower" xmi:uuid="771858ec-78f2-590d-8b86-f9859c976fbc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRole.agentInRole.lower" xmi:uuid="27de7527-52d0-5092-919f-d07b9393c3ff">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference.agentInRole.upper" xmi:uuid="af714fc6-e567-552a-85c2-ed084db5e068">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRole.agentInRole.upper" xmi:uuid="036ced91-8789-5760-98bd-17b61d579311">
             <value>1</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference_agentInRole_AgentInRole"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference.agentInRole.comment" xmi:uuid="a251a1a8-120b-547d-bff4-c2c8a918261b">
+          <association xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRole_agentInRole_AgentInRole"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRole.agentInRole.comment" xmi:uuid="6ba4e413-c67e-5c9a-9b8e-9d300ecc7654">
             <body>**CDIF**
 
 Definition
@@ -646,37 +425,7 @@ Definition
 
 
 :inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference.agentInRole"/>
-          </ownedComment>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference.string" xmi:uuid="c4134d5c-9f86-5ff6-984c-66759e538fe7">
-          <name>string</name>
-          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference.string.lower" xmi:uuid="1319ed94-bc78-57db-b9eb-4cea2f19bfde">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference.string.upper" xmi:uuid="6b5ea8bf-a5a5-54cb-b932-d94dbece7cf7">
-            <value>1</value>
-          </upperValue>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference.idReference" xmi:uuid="0059d09a-5aa6-5a69-9ac3-fe035fe339ab">
-          <name>idReference</name>
-          <type href="../../cdifCommonTypes.xmi#common.IdReference"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference.idReference.lower" xmi:uuid="2ba9d61c-f662-577f-b31f-da37a65e4830">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference.idReference.upper" xmi:uuid="51563edf-7417-5d39-aa2a-acfa9af565f4">
-            <value>1</value>
-          </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference.idReference.comment" xmi:uuid="7c659582-fa2b-58d1-be91-84b42fa7105a">
-            <body>**CDIF**
-
-Definition
-==========
-
-
-:idRefDescription: "reference to an agent defined elsewhere"</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference.idReference"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRole.agentInRole"/>
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
@@ -704,202 +453,95 @@ Definition
           <name>schema:FailedActionStatus</name>
         </ownedLiteral>
       </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.provProperties.provActivity.SpatialExtentOrStringOrIdReference" xmi:uuid="c55426f6-2981-55dc-b339-aa9509bc9422">
-        <name>SpatialExtentOrStringOrIdReference</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.SpatialExtentOrStringOrIdReference.comment" xmi:uuid="ebf62ee1-7735-5d49-bf53-e354385fad01">
-          <body>**CDIF**
-
-Definition
-==========
-
-
-:union: ``anyOf``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.SpatialExtentOrStringOrIdReference"/>
-        </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.SpatialExtentOrStringOrIdReference.spatialExtent" xmi:uuid="b214e47b-cdc7-5295-98a4-2caa875151a3">
-          <name>spatialExtent</name>
-          <type href="../../schemaorgProperties/spatialExtent/spatialExtent.xmi#cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtent"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.SpatialExtentOrStringOrIdReference.spatialExtent.lower" xmi:uuid="fffb8c5a-2616-5f60-9c9e-d608de918d8f">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.Activity_atLocation_SpatialExtent" xmi:uuid="ee2e20d4-d229-5bd8-a575-1c6b3034f353">
+        <name>Activity_atLocation_SpatialExtent</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.Activity_atLocation_SpatialExtent.ownedEnd" xmi:uuid="190edc8d-6070-5210-836f-dc2b86a4640d">
+          <type xmi:idref="cdif.bbr.metadata.provProperties.provActivity.Activity"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.Activity_atLocation_SpatialExtent.ownedEnd.lower" xmi:uuid="cd58cf85-6b17-50ca-9f70-4165adc43ac8">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.SpatialExtentOrStringOrIdReference.spatialExtent.upper" xmi:uuid="40babbc8-3b41-5354-b73e-4ff32490b261">
-            <value>1</value>
-          </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.SpatialExtentOrStringOrIdReference_spatialExtent_SpatialExtent"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.SpatialExtentOrStringOrIdReference.spatialExtent.comment" xmi:uuid="f8f754ac-6543-5bdc-b4a7-2f304bef01b9">
-            <body>**CDIF**
-
-Definition
-==========
-
-
-:inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.SpatialExtentOrStringOrIdReference.spatialExtent"/>
-          </ownedComment>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.SpatialExtentOrStringOrIdReference.string" xmi:uuid="02431b83-a32a-56af-83be-aaab243feaad">
-          <name>string</name>
-          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.SpatialExtentOrStringOrIdReference.string.lower" xmi:uuid="5f4f202a-3670-56aa-b875-9d406a08a789">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.SpatialExtentOrStringOrIdReference.string.upper" xmi:uuid="124b708d-acee-5604-83a6-90758ec5e587">
-            <value>1</value>
-          </upperValue>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.SpatialExtentOrStringOrIdReference.idReference" xmi:uuid="cb22c99f-c3a3-54d1-bb6e-b539fb96c87e">
-          <name>idReference</name>
-          <type href="../../cdifCommonTypes.xmi#common.IdReference"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.SpatialExtentOrStringOrIdReference.idReference.lower" xmi:uuid="0b5c88bf-e6a3-5da6-a650-a5ef9b425148">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.SpatialExtentOrStringOrIdReference.idReference.upper" xmi:uuid="b9c5dd5b-289d-50d1-83e5-bf7bc753aac5">
-            <value>1</value>
-          </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.SpatialExtentOrStringOrIdReference.idReference.comment" xmi:uuid="ff16e426-39cd-5bb5-9b0f-0f86c0ec93de">
-            <body>**CDIF**
-
-Definition
-==========
-
-
-:idRefDescription: "reference to a place defined elsewhere"</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.SpatialExtentOrStringOrIdReference.idReference"/>
-          </ownedComment>
-        </ownedAttribute>
-      </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.provProperties.provActivity.StringOrIdReference" xmi:uuid="2670b6f8-32a4-56fd-904b-c81648d10dab">
-        <name>StringOrIdReference</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.StringOrIdReference.comment" xmi:uuid="57e0972d-7eca-5043-a20a-842c7854c150">
-          <body>**CDIF**
-
-Definition
-==========
-
-
-:union: ``anyOf``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.StringOrIdReference"/>
-        </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.StringOrIdReference.string" xmi:uuid="b7edf7f1-8561-546b-9eb2-c12ed27d2095">
-          <name>string</name>
-          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.StringOrIdReference.string.lower" xmi:uuid="4f2b8a4e-8035-5f6d-8e68-852562e6cf1d">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.StringOrIdReference.string.upper" xmi:uuid="b0886c49-f7f8-59a0-9a31-8a4bfd88c0a9">
-            <value>1</value>
-          </upperValue>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.StringOrIdReference.idReference" xmi:uuid="629d21c8-9ab0-5d31-8345-3a9aceee6be9">
-          <name>idReference</name>
-          <type href="../../cdifCommonTypes.xmi#common.IdReference"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.StringOrIdReference.idReference.lower" xmi:uuid="97a73114-fa79-5de4-bcc4-84e8a6a3c05e">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.StringOrIdReference.idReference.upper" xmi:uuid="06d935ea-c042-5d60-827c-156c5818df7f">
-            <value>1</value>
-          </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.provActivity.StringOrIdReference.idReference.comment" xmi:uuid="5568e852-b77e-5858-ac8b-dc50ee195f12">
-            <body>**CDIF**
-
-Definition
-==========
-
-
-:idRefDescription: "reference to an entity produced by this activity"</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.provActivity.StringOrIdReference.idReference"/>
-          </ownedComment>
-        </ownedAttribute>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.HowTo_step_HowToStep" xmi:uuid="85c4bb62-cf4e-562a-b20a-5018a074b9b6">
-        <name>HowTo_step_HowToStep</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.HowTo_step_HowToStep.ownedEnd" xmi:uuid="19f69f88-de3f-5e06-baf6-6e3797d98076">
-          <type xmi:idref="cdif.bbr.metadata.provProperties.provActivity.HowTo"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.HowTo_step_HowToStep.ownedEnd.lower" xmi:uuid="a2d91f14-e347-5f44-afed-387a8362d027">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.HowTo_step_HowToStep.ownedEnd.upper" xmi:uuid="fd58b954-ba46-53bd-b2a1-79058407ea3a">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.Activity_atLocation_SpatialExtent.ownedEnd.upper" xmi:uuid="e4aef718-f298-5e44-84ee-8f8dad1c79c9">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.HowTo_step_HowToStep"/>
+          <association xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.Activity_atLocation_SpatialExtent"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.HowTo_step_HowToStep.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.provProperties.provActivity.HowTo.step"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.Activity_atLocation_SpatialExtent.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.provProperties.provActivity.Activity.atLocation"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.HowToOrStringOrIdReference_howTo_HowTo" xmi:uuid="c69fcefe-e772-5bbb-a8f1-fac55a962ef6">
-        <name>HowToOrStringOrIdReference_howTo_HowTo</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.HowToOrStringOrIdReference_howTo_HowTo.ownedEnd" xmi:uuid="395ecabe-0231-5406-a1e6-5f3c7a6b0cbe">
-          <type xmi:idref="cdif.bbr.metadata.provProperties.provActivity.HowToOrStringOrIdReference"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.HowToOrStringOrIdReference_howTo_HowTo.ownedEnd.lower" xmi:uuid="ba0918c9-b9ab-53f1-b988-41c0fbd68925">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.Activity_schema_actionProcess_ActivityHowTo" xmi:uuid="980ae0c6-93e6-54bb-9138-2d103900a83e">
+        <name>Activity_schema_actionProcess_ActivityHowTo</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.Activity_schema_actionProcess_ActivityHowTo.ownedEnd" xmi:uuid="1e7a74c8-594e-5bde-a84e-01b2b673a53c">
+          <type xmi:idref="cdif.bbr.metadata.provProperties.provActivity.Activity"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.Activity_schema_actionProcess_ActivityHowTo.ownedEnd.lower" xmi:uuid="de337ecd-8714-5f65-b7e0-93fff783304d">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.HowToOrStringOrIdReference_howTo_HowTo.ownedEnd.upper" xmi:uuid="3184e3b3-4c24-54a6-abfa-f46356eff572">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.Activity_schema_actionProcess_ActivityHowTo.ownedEnd.upper" xmi:uuid="ace2096d-bb1a-5624-aeb1-168a475d719f">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.HowToOrStringOrIdReference_howTo_HowTo"/>
+          <association xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.Activity_schema_actionProcess_ActivityHowTo"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.HowToOrStringOrIdReference_howTo_HowTo.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.provProperties.provActivity.HowToOrStringOrIdReference.howTo"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.Activity_schema_actionProcess_ActivityHowTo.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.provProperties.provActivity.Activity.schema_actionProcess"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference_person_Person" xmi:uuid="fca3c3d7-5eb8-5a49-aacc-71852da8b219">
-        <name>PersonOrOrganizationOrAgentInRoleOrStringOrIdReference_person_Person</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference_person_Person.ownedEnd" xmi:uuid="3a300e85-0362-5544-9001-8ef8b5ad0e1a">
-          <type xmi:idref="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference_person_Person.ownedEnd.lower" xmi:uuid="52fee97f-f82b-56bf-9c79-e48865e22739">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.ActivityHowTo_step_ActivityHowToStep" xmi:uuid="af566508-01f4-566e-aa3c-0edbe261f71d">
+        <name>ActivityHowTo_step_ActivityHowToStep</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.ActivityHowTo_step_ActivityHowToStep.ownedEnd" xmi:uuid="913a0271-5447-5a47-87fd-0005e63e8e3c">
+          <type xmi:idref="cdif.bbr.metadata.provProperties.provActivity.ActivityHowTo"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.ActivityHowTo_step_ActivityHowToStep.ownedEnd.lower" xmi:uuid="06385e02-acec-5326-b0b0-598ec8185024">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference_person_Person.ownedEnd.upper" xmi:uuid="5c44cd92-ec67-5fed-9cc3-a9ef80a3ca40">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.ActivityHowTo_step_ActivityHowToStep.ownedEnd.upper" xmi:uuid="78d31e74-e23f-595e-be93-d62da0ccb784">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference_person_Person"/>
+          <association xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.ActivityHowTo_step_ActivityHowToStep"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference_person_Person.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference.person"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.ActivityHowTo_step_ActivityHowToStep.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.provProperties.provActivity.ActivityHowTo.step"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference_organization_Organization" xmi:uuid="858e2d43-b3ff-565e-999f-8ed864eae501">
-        <name>PersonOrOrganizationOrAgentInRoleOrStringOrIdReference_organization_Organization</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference_organization_Organization.ownedEnd" xmi:uuid="7ca23396-f50b-5a32-9656-d0c66dd74b56">
-          <type xmi:idref="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference_organization_Organization.ownedEnd.lower" xmi:uuid="2cfd28e6-4714-5b79-b61e-af67f0c0a371">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRole_person_Person" xmi:uuid="0c3591be-84e9-5b2b-a5a7-f0b2ea8d0bfe">
+        <name>PersonOrOrganizationOrAgentInRole_person_Person</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRole_person_Person.ownedEnd" xmi:uuid="70d8136f-4a02-514c-bbe3-c98634669561">
+          <type xmi:idref="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRole"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRole_person_Person.ownedEnd.lower" xmi:uuid="99b874e4-fcc4-5298-adae-0ba4705873f1">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference_organization_Organization.ownedEnd.upper" xmi:uuid="32e1ea50-4027-5658-aa3f-d9c9159f46d6">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRole_person_Person.ownedEnd.upper" xmi:uuid="f157408b-a596-52aa-bc1e-d1df710ebc95">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference_organization_Organization"/>
+          <association xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRole_person_Person"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference_organization_Organization.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference.organization"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRole_person_Person.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRole.person"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference_agentInRole_AgentInRole" xmi:uuid="2d325530-4eb9-57d3-9e64-11a982fae080">
-        <name>PersonOrOrganizationOrAgentInRoleOrStringOrIdReference_agentInRole_AgentInRole</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference_agentInRole_AgentInRole.ownedEnd" xmi:uuid="d223f5ad-1262-5e61-9860-072534fff9c7">
-          <type xmi:idref="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference_agentInRole_AgentInRole.ownedEnd.lower" xmi:uuid="8c350f14-25ca-55e1-abbc-c805429352f8">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRole_organization_Organization" xmi:uuid="a4396810-a59a-5128-80b8-fab2f7e7f620">
+        <name>PersonOrOrganizationOrAgentInRole_organization_Organization</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRole_organization_Organization.ownedEnd" xmi:uuid="a9ff6397-349f-54db-a2f2-725f1ff0cebc">
+          <type xmi:idref="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRole"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRole_organization_Organization.ownedEnd.lower" xmi:uuid="a18c0e41-e30c-53f3-bd21-4fbf5dcbf668">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference_agentInRole_AgentInRole.ownedEnd.upper" xmi:uuid="229403b8-2056-5d4d-aa2d-e080c004895e">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRole_organization_Organization.ownedEnd.upper" xmi:uuid="e3a5f8f1-18af-5d37-a002-ea7619eb6772">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference_agentInRole_AgentInRole"/>
+          <association xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRole_organization_Organization"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference_agentInRole_AgentInRole.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference.agentInRole"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRole_organization_Organization.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRole.organization"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.SpatialExtentOrStringOrIdReference_spatialExtent_SpatialExtent" xmi:uuid="d1feebcd-8784-558d-8c90-70547fb2f33a">
-        <name>SpatialExtentOrStringOrIdReference_spatialExtent_SpatialExtent</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.SpatialExtentOrStringOrIdReference_spatialExtent_SpatialExtent.ownedEnd" xmi:uuid="7bd0d171-c73c-5991-ac0f-4b4e52f8c1aa">
-          <type xmi:idref="cdif.bbr.metadata.provProperties.provActivity.SpatialExtentOrStringOrIdReference"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.SpatialExtentOrStringOrIdReference_spatialExtent_SpatialExtent.ownedEnd.lower" xmi:uuid="c0279420-feec-584d-a5f4-f60f452f219b">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRole_agentInRole_AgentInRole" xmi:uuid="52cee017-0311-59fc-b496-fb086d4d21d0">
+        <name>PersonOrOrganizationOrAgentInRole_agentInRole_AgentInRole</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRole_agentInRole_AgentInRole.ownedEnd" xmi:uuid="d9a8a8f8-7dd5-5474-8c53-ae60578a1de4">
+          <type xmi:idref="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRole"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRole_agentInRole_AgentInRole.ownedEnd.lower" xmi:uuid="ea38dab9-9b8e-50f8-bd6f-8510b7778cf9">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.SpatialExtentOrStringOrIdReference_spatialExtent_SpatialExtent.ownedEnd.upper" xmi:uuid="a3f60f36-c0a3-5dc8-88c7-b32dbb8948c3">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRole_agentInRole_AgentInRole.ownedEnd.upper" xmi:uuid="00febd34-81f9-5577-aad6-22c784d9eca6">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.SpatialExtentOrStringOrIdReference_spatialExtent_SpatialExtent"/>
+          <association xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRole_agentInRole_AgentInRole"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.SpatialExtentOrStringOrIdReference_spatialExtent_SpatialExtent.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.provProperties.provActivity.SpatialExtentOrStringOrIdReference.spatialExtent"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.provProperties.provActivity.assoc.PersonOrOrganizationOrAgentInRole_agentInRole_AgentInRole.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.provProperties.provActivity.PersonOrOrganizationOrAgentInRole.agentInRole"/>
       </packagedElement>
     </packagedElement>
   </uml:Model>

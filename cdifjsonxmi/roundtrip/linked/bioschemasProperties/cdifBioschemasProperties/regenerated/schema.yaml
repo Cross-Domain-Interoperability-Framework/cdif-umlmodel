@@ -8,7 +8,16 @@ description: >-
 type: object
 properties:
   'bios:executesLabProtocol':
-    '$ref': '#/$defs/LabProtocolOrIdReference'
+    anyOf:
+    - '$ref': '#/$defs/LabProtocol'
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+          description: reference to a LabProtocol defined elsewhere
     description: >-
       The laboratory protocol executed by this process. Links a LabProcess activity to the
       LabProtocol it follows. In cdifProvActivity, also mapped to schema:actionProcess for
@@ -56,7 +65,7 @@ properties:
   'bios:reagent':
     type: array
     items:
-      '$ref': '#/$defs/StringOrOption23'
+      '$ref': '#/$defs/StringOrReagent2'
     description: Materials or chemical substances used in protocol execution.
 '$defs':
   BioschemasPropertiesPropertyValue:
@@ -98,6 +107,15 @@ properties:
     required:
     - '@type'
     - 'schema:name'
+  BioschemasPropertiesReagent:
+    type: object
+    properties:
+      '@id':
+        type: string
+      'schema:name':
+        type: string
+      'schema:description':
+        type: string
   BioschemasPropertiesThing:
     type: object
     description: >-
@@ -122,7 +140,7 @@ properties:
         type: string
         description: Description including capabilities and specifications
       'schema:identifier':
-        '$ref': '#/$defs/StringOrOption2'
+        '$ref': '#/$defs/StringOrObject'
         description: Serial number or other formal identifier
       'schema:url':
         type: string
@@ -130,27 +148,108 @@ properties:
         description: URL to manufacturer or equipment documentation
     required:
     - 'schema:name'
-  ComputationalToolOrIdReference:
-    anyOf:
-    - '$ref': '#/$defs/SoftwareApplication'
-    - type: object
-      required:
-      - '@id'
-      additionalProperties: false
-      properties:
-        '@id':
+  BioschemasPropertiesThingIdentifierObject:
+    type: object
+  LabProtocol:
+    type: object
+    description: >-
+      A Bioschemas LabProtocol describing how a lab process should be carried out. Includes
+      equipment, reagents, computational tools, and expected parameters. Maps to schema:HowTo
+      in the cdifProvActivity context.
+    properties:
+      '@type':
+        type: array
+        items:
           type: string
-  FormalParameterOrIdReference:
-    anyOf:
-    - '$ref': '#/$defs/FormalParameterOrIdReferenceFormalParameter'
-    - type: object
-      required:
-      - '@id'
-      additionalProperties: false
-      properties:
-        '@id':
-          type: string
-  FormalParameterOrIdReferenceFormalParameter:
+        contains:
+          const: 'bios:LabProtocol'
+        minItems: 1
+      '@id':
+        type: string
+      'schema:name':
+        type: string
+        description: Name of the protocol
+      'schema:description':
+        type: string
+        description: Description of the protocol
+      'schema:url':
+        type: string
+        format: uri
+        description: URL to a published protocol document
+      'bios:labEquipment':
+        type: array
+        items:
+          anyOf:
+          - '$ref': '#/$defs/BioschemasPropertiesThing'
+          - type: object
+            required:
+            - '@id'
+            additionalProperties: false
+            properties:
+              '@id':
+                type: string
+        description: Equipment used in this protocol
+      'bios:computationalTool':
+        type: array
+        items:
+          anyOf:
+          - '$ref': '#/$defs/SoftwareApplication'
+          - type: object
+            required:
+            - '@id'
+            additionalProperties: false
+            properties:
+              '@id':
+                type: string
+        description: Software tools used in this protocol
+      'bios:reagent':
+        type: array
+        items:
+          '$ref': '#/$defs/StringOrReagent'
+        description: Reagents or materials used
+      'schema:intendedUse':
+        type: string
+        description: The protocol type or intended use as an ontology term or text
+      'schema:measurementMethod':
+        type: string
+        description: The analytical method implemented by this protocol
+      'schema:object':
+        type: array
+        items:
+          anyOf:
+          - '$ref': '#/$defs/LabProtocolSchema_object'
+          - type: object
+            required:
+            - '@id'
+            additionalProperties: false
+            properties:
+              '@id':
+                type: string
+        description: Expected input parameters (FormalParameter references)
+      'schema:result':
+        type: array
+        items:
+          anyOf:
+          - '$ref': '#/$defs/LabProtocolSchema_result'
+          - type: object
+            required:
+            - '@id'
+            additionalProperties: false
+            properties:
+              '@id':
+                type: string
+        description: Expected output parameters (FormalParameter references)
+    required:
+    - '@type'
+    - 'schema:name'
+  LabProtocolReagent:
+    type: object
+    properties:
+      '@id':
+        type: string
+      'schema:name':
+        type: string
+  LabProtocolSchema_object:
     type: object
     description: >-
       A Bioschemas FormalParameter describing the shape and type of inputs and outputs of
@@ -186,87 +285,42 @@ properties:
         description: Default value for this parameter
     required:
     - 'schema:name'
-  LabEquipmentOrIdReference:
-    anyOf:
-    - '$ref': '#/$defs/BioschemasPropertiesThing'
-    - type: object
-      required:
-      - '@id'
-      additionalProperties: false
-      properties:
-        '@id':
-          type: string
-  LabProtocol:
+  LabProtocolSchema_result:
     type: object
     description: >-
-      A Bioschemas LabProtocol describing how a lab process should be carried out. Includes
-      equipment, reagents, computational tools, and expected parameters. Maps to schema:HowTo
-      in the cdifProvActivity context.
+      A Bioschemas FormalParameter describing the shape and type of inputs and outputs of
+      a workflow protocol. Values are realized in process executions through bios:parameterValue
+      PropertyValue objects. In cdifProvActivity output, mapped to schema:MediaObject with
+      additionalType bios:FormalParameter.
     properties:
       '@type':
         type: array
         items:
           type: string
-        contains:
-          const: 'bios:LabProtocol'
-        minItems: 1
+        description: Should include schema:MediaObject with additionalType bios:FormalParameter
       '@id':
         type: string
       'schema:name':
         type: string
-        description: Name of the protocol
+        description: Name matching the corresponding workflow parameter slot
       'schema:description':
         type: string
-        description: Description of the protocol
-      'schema:url':
-        type: string
-        format: uri
-        description: URL to a published protocol document
-      'bios:labEquipment':
+        description: Description of what this parameter represents
+      'schema:additionalType':
         type: array
         items:
-          '$ref': '#/$defs/LabEquipmentOrIdReference'
-        description: Equipment used in this protocol
-      'bios:computationalTool':
+          '$ref': >-
+            ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml
+        description: Further type classification (e.g. File, Dataset, PropertyValue, DataType)
+      'schema:encodingFormat':
         type: array
         items:
-          '$ref': '#/$defs/ComputationalToolOrIdReference'
-        description: Software tools used in this protocol
-      'bios:reagent':
-        type: array
-        items:
-          '$ref': '#/$defs/StringOrOption22'
-        description: Reagents or materials used
-      'schema:intendedUse':
-        type: string
-        description: The protocol type or intended use as an ontology term or text
-      'schema:measurementMethod':
-        type: string
-        description: The analytical method implemented by this protocol
-      'schema:object':
-        type: array
-        items:
-          '$ref': '#/$defs/FormalParameterOrIdReference'
-        description: Expected input parameters (FormalParameter references)
-      'schema:result':
-        type: array
-        items:
-          '$ref': '#/$defs/FormalParameterOrIdReference'
-        description: Expected output parameters (FormalParameter references)
-    required:
-    - '@type'
-    - 'schema:name'
-  LabProtocolOrIdReference:
-    anyOf:
-    - '$ref': '#/$defs/LabProtocol'
-    - type: object
-      required:
-      - '@id'
-      additionalProperties: false
-      properties:
-        '@id':
           type: string
-          description: reference to a LabProtocol defined elsewhere
+        description: MIME type or URL for expected data format
+      'schema:defaultValue':
+        description: Default value for this parameter
+    required:
+    - 'schema:name'
   SoftwareApplication:
     type: object
     description: A software application used as part of a lab protocol.
@@ -295,34 +349,16 @@ properties:
     - type: string
     - type: number
     - type: boolean
-  StringOrOption2:
+  StringOrObject:
     anyOf:
     - type: string
-    - '$ref': '#/$defs/StringOrOption2Option2'
-  StringOrOption22:
+    - '$ref': '#/$defs/BioschemasPropertiesThingIdentifierObject'
+  StringOrReagent:
     anyOf:
     - type: string
-    - '$ref': '#/$defs/StringOrOption2Option22'
-  StringOrOption23:
+    - '$ref': '#/$defs/LabProtocolReagent'
+  StringOrReagent2:
     anyOf:
     - type: string
       description: name or URI of the reagent
-    - '$ref': '#/$defs/StringOrOption2Option23'
-  StringOrOption2Option2:
-    type: object
-  StringOrOption2Option22:
-    type: object
-    properties:
-      '@id':
-        type: string
-      'schema:name':
-        type: string
-  StringOrOption2Option23:
-    type: object
-    properties:
-      '@id':
-        type: string
-      'schema:name':
-        type: string
-      'schema:description':
-        type: string
+    - '$ref': '#/$defs/BioschemasPropertiesReagent'

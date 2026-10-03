@@ -1,0 +1,51 @@
+cdifProvActivity: 32 exact difference(s)
+$.$defs.AdditionalProperty: only in original: {"$ref": "../../schemaorgProperties/additionalProperty/schema.yaml"}
+$.$defs.AgentInRole: only in original: {"$ref": "../../schemaorgProperties/agentInRole/schema.yaml"}
+$.$defs.HowTo: only in original: {"type": "object", "description": "A methodology or protocol described as a HowTo with optional steps", "properties": {"@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "sc
+$.$defs.HowToStep: only in original: {"type": "object", "description": "A single step in a HowTo methodology", "properties": {"@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "schema:HowToStep"}, "minItems": 
+$.$defs.Identifier: only in original: {"$ref": "../../schemaorgProperties/identifier/schema.yaml"}
+$.$defs.Instrument: only in original: {"$ref": "../../schemaorgProperties/instrument/schema.yaml"}
+$.$defs.Organization: only in original: {"$ref": "../../schemaorgProperties/organization/schema.yaml"}
+$.$defs.Person: only in original: {"$ref": "../../schemaorgProperties/person/schema.yaml"}
+$.$defs.PersonOrOrganizationOrAgentInRole: only in regenerated: {"anyOf": [{"$ref": "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/person/schema.yaml"}, {"$ref": "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/o
+$.$defs.ProvActivityHowTo: only in regenerated: {"type": "object", "description": "A methodology or protocol described as a HowTo with optional steps", "properties": {"@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "sc
+$.$defs.ProvActivityHowToStep: only in regenerated: {"type": "object", "description": "A single step in a HowTo methodology", "properties": {"@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "schema:HowToStep"}, "minItems": 
+$.$defs.ProvActivityObject: only in regenerated: {"type": "object", "properties": {"@type": {"type": "array", "items": {"type": "string"}, "minItems": 1}}, "required": ["@type"]}
+$.$defs.ProvActivityObjectChoice: only in regenerated: {"anyOf": [{"type": "string"}, {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "reference to an input entity"}}}, {"$ref"
+$.$defs.ProvActivityObjectChoiceChoiceListObject: only in regenerated: {"type": "object"}
+$.$defs.SpatialExtent: only in original: {"$ref": "../../schemaorgProperties/spatialExtent/schema.yaml"}
+$.$defs.StringOrObject: only in regenerated: {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/ProvActivityObjectChoiceChoiceListObject"}]}
+$.allOf[0].$ref:
+    original:    "../../provProperties/generatedBy/schema.yaml"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/provProperties/generatedBy/schema.yaml"
+$.allOf[1].properties.prov:used.items.then.properties.schema:instrument.items.$ref:
+    original:    "#/$defs/Instrument"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/instrument/schema.yaml"
+$.allOf[1].properties.schema:actionProcess.anyOf[0].$ref:
+    original:    "#/$defs/HowTo"
+    regenerated: "#/$defs/ProvActivityHowTo"
+$.allOf[1].properties.schema:additionalProperty.items.$ref:
+    original:    "#/$defs/AdditionalProperty"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/additionalProperty/schema.yaml"
+$.allOf[1].properties.schema:agent.anyOf:
+    original:    [{"$ref": "#/$defs/Person"}, {"$ref": "#/$defs/Organization"}, {"$ref": "#/$defs/AgentInRole"}, {"type": "object", "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "reference to an agent defined elsewhere"}}, "required": ["@id"]}]
+    regenerated: [{"$ref": "#/$defs/PersonOrOrganizationOrAgentInRole"}, {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "reference to an agent defined elsewhere"}}}]
+$.allOf[1].properties.schema:identifier.anyOf[0].$ref:
+    original:    "#/$defs/Identifier"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml"
+$.allOf[1].properties.schema:location.anyOf[0].$ref:
+    original:    "#/$defs/SpatialExtent"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/spatialExtent/schema.yaml"
+$.allOf[1].properties.schema:object.$ref: only in regenerated: "#/$defs/ProvActivityObjectChoice"
+$.allOf[1].properties.schema:object.anyOf: only in original: [{"type": "string"}, {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "reference to an input entity"}}}, {"type": "object"
+$.allOf[1].properties.schema:participant.items.anyOf:
+    original:    [{"$ref": "#/$defs/Person"}, {"$ref": "#/$defs/Organization"}, {"$ref": "#/$defs/AgentInRole"}, {"type": "object", "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "reference to a participant defined elsewhere"}}, "required": ["@id"]}]
+    regenerated: [{"$ref": "#/$defs/PersonOrOrganizationOrAgentInRole"}, {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "reference to a participant defined elsewhere"}}}]
+$.allOf[1].properties.schema:result.anyOf[2].$ref: only in regenerated: "#/$defs/ProvActivityObject"
+$.allOf[1].properties.schema:result.anyOf[2].properties: only in original: {"@type": {"type": "array", "items": {"type": "string"}, "minItems": 1}}
+$.allOf[1].properties.schema:result.anyOf[2].required: only in original: ["@type"]
+$.allOf[1].properties.schema:result.anyOf[2].type: only in original: "object"
+$.allOf[1].properties.schema:result.anyOf[3].items.$ref: only in regenerated: "#/$defs/StringOrObject"
+$.allOf[1].properties.schema:result.anyOf[3].items.anyOf: only in original: [{"type": "string"}, {"type": "object"}]
+
+cdifProvActivity: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

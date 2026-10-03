@@ -1,0 +1,29 @@
+cdifInstanceVariable: 10 exact difference(s)
+$.$defs: only in original: {"cdifConceptOrTermOrString": {"$ref": "../cdifConceptOrTermOrString/schema.yaml"}, "cdifConceptOrTerm": {"$ref": "../cdifConceptOrTerm/schema.yaml"}}
+$.allOf:
+    original:    [{"required": ["@type"]}, {"$ref": "../../schemaorgProperties/variableMeasured/schema.yaml"}, {"if": {"required": ["cdif:isDefinedBy_RepresentedVariable"]}, "then": {"properties": {"cdi:takesSubstantiveValuesFrom": false, "cdi:takesSentinelValuesFrom": false, "cdif:hasIntendedDataType": false, "cdif
+    regenerated: [{"$ref": "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/variableMeasured/schema.yaml"}, {"if": {"required": ["cdif:isDefinedBy_RepresentedVariable"]}, "then": {"properties": {"cdi:takesSubstantiveValuesFrom": false, "cdi:takesSentinelValuesFrom": false, "cdif:hasIntendedD
+$.properties.cdif:describedUnitOfMeasure.$ref:
+    original:    "#/$defs/cdifConceptOrTerm"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTerm/schema.yaml"
+$.properties.cdif:function.items.$ref:
+    original:    "#/$defs/cdifConceptOrTermOrString"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml"
+$.properties.cdif:isDefinedBy_RepresentedVariable.$ref:
+    original:    "../objectReference/schema.yaml"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/objectReference/schema.yaml"
+$.properties.cdif:isDescribedBy_StatisticsCollection.anyOf[0].$ref:
+    original:    "../../cdifDataType/cdifStatistics/schema.yaml#/$defs/StatisticsCollection"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifStatistics/schema.yaml#/$defs/StatisticsCollection"
+$.properties.cdif:physicalDataType.$ref:
+    original:    "#/$defs/cdifConceptOrTermOrString"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml"
+$.properties.cdif:platformType.$ref:
+    original:    "#/$defs/cdifConceptOrTermOrString"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml"
+$.properties.cdif:uses.items.$ref:
+    original:    "#/$defs/cdifConceptOrTermOrString"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml"
+$.required: only in regenerated: ["@type"]
+
+cdifInstanceVariable: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

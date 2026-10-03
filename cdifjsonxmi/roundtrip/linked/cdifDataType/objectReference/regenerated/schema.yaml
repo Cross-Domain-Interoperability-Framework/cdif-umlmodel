@@ -1,0 +1,11 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: Object Reference
+description: A reference to a node defined elsewhere, by its @id.
+type: object
+properties:
+  '@id':
+    type: string
+    description: resolvable @id of the referenced node
+required:
+- '@id'
+additionalProperties: false

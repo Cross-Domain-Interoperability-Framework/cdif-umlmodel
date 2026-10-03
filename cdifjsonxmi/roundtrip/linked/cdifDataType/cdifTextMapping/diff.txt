@@ -1,0 +1,6 @@
+cdifTextMapping: 1 exact difference(s)
+$.allOf[0].$ref:
+    original:    "../../cdifDataType/cdifPhysicalMapping/schema.yaml"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifPhysicalMapping/schema.yaml"
+
+cdifTextMapping: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

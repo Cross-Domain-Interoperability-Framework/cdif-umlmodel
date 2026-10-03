@@ -58,11 +58,11 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="EAID_4E2177F5_6C6F_58db_8340_B396AA5782B8"/>
+										<UML:Classifier xmi.idref="EAID_C21ABD6B_BEEC_5259_A866_18E4A9A02D9D"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="description" value=""/>
-										<UML:TaggedValue tag="type" value="IdReferenceOrPersonOrOrganization"/>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:idRefDescription: &quot;IRI reference to a Person or Organization defined elsewhere&quot;&#xA;:orReference: [&quot;idReference&quot;, &quot;value&quot;]"/>
+										<UML:TaggedValue tag="type" value="PersonOrOrganization"/>
 										<UML:TaggedValue tag="derived" value="0"/>
 										<UML:TaggedValue tag="containment" value="Not Specified"/>
 										<UML:TaggedValue tag="ordered" value="0"/>
@@ -83,7 +83,7 @@
 		</UML:Model>
 	</XMI.content>
 	<XMI.extensions xmi.extender="Enterprise Architect 2.5">
-		<EAStub xmi.id="EAID_4C904941_63B0_5e2d_A6AF_329608DC1F86" name="ConceptOrTermOrString" UMLType="Class"/>
-		<EAStub xmi.id="EAID_4E2177F5_6C6F_58db_8340_B396AA5782B8" name="IdReferenceOrPersonOrOrganization" UMLType="DataType"/>
+		<EAStub xmi.id="EAID_4C904941_63B0_5e2d_A6AF_329608DC1F86" name="ConceptOrTermOrString" UMLType="DataType"/>
+		<EAStub xmi.id="EAID_C21ABD6B_BEEC_5259_A866_18E4A9A02D9D" name="PersonOrOrganization" UMLType="DataType"/>
 	</XMI.extensions>
 </XMI>

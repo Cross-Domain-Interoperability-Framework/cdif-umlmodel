@@ -26,13 +26,14 @@ Definition
         </ownedComment>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.qualityProperties.qualityMeasure.QualityMeasure.isMeasurementOf" xmi:uuid="f08f70df-2a5d-5a06-aa23-1f391cb0a03b">
           <name>isMeasurementOf</name>
-          <type href="../../cdifSharedUnions.xmi#cdif.union.StringOrIdReferenceOrDefinedTerm"/>
+          <type href="../../schemaorgProperties/definedTerm/definedTerm.xmi#cdif.bbr.metadata.schemaorgProperties.definedTerm.DefinedTerm"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.qualityProperties.qualityMeasure.QualityMeasure.isMeasurementOf.lower" xmi:uuid="3cde1643-7819-588e-8c7c-e8683717d214">
             <value>1</value>
           </lowerValue>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.qualityProperties.qualityMeasure.QualityMeasure.isMeasurementOf.upper" xmi:uuid="10eaf704-7db1-5b05-b96f-cf2466e0b5a4">
             <value>1</value>
           </upperValue>
+          <association xmi:idref="cdif.bbr.metadata.qualityProperties.qualityMeasure.assoc.QualityMeasure_isMeasurementOf_DefinedTerm"/>
           <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.qualityProperties.qualityMeasure.QualityMeasure.isMeasurementOf.comment" xmi:uuid="e121d958-947e-5636-b5c2-49c27ec171a3">
             <body>**CDIF**
 
@@ -40,7 +41,9 @@ Definition
 ==========
 
 specify the quality measure that is reported, by name, with an ID ref, or as a Defined Term
-:alternativeOverrides: {"idReference": {"idRefDescription": "a resolvable reference to a representation of a quality measure"}}</body>
+:inlineOrByReference: ``inline``
+:idRefDescription: "a resolvable reference to a representation of a quality measure"
+:orReference: ["string", "idReference", "value"]</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.qualityProperties.qualityMeasure.QualityMeasure.isMeasurementOf"/>
           </ownedComment>
         </ownedAttribute>
@@ -117,6 +120,21 @@ Definition
             <annotatedElement xmi:idref="cdif.bbr.metadata.qualityProperties.qualityMeasure.StringOrNumberOrDefinedTerm.definedTerm"/>
           </ownedComment>
         </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.qualityProperties.qualityMeasure.assoc.QualityMeasure_isMeasurementOf_DefinedTerm" xmi:uuid="5b7897a8-1924-51a5-98aa-dbbe785ceaac">
+        <name>QualityMeasure_isMeasurementOf_DefinedTerm</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.qualityProperties.qualityMeasure.assoc.QualityMeasure_isMeasurementOf_DefinedTerm.ownedEnd" xmi:uuid="5228378c-6346-5182-9d89-5515ce481055">
+          <type xmi:idref="cdif.bbr.metadata.qualityProperties.qualityMeasure.QualityMeasure"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.qualityProperties.qualityMeasure.assoc.QualityMeasure_isMeasurementOf_DefinedTerm.ownedEnd.lower" xmi:uuid="978fddae-5bb2-58cb-afdd-08157e7b40f5">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.qualityProperties.qualityMeasure.assoc.QualityMeasure_isMeasurementOf_DefinedTerm.ownedEnd.upper" xmi:uuid="03a2dd26-9748-51cb-a19e-657821c2c0cd">
+            <value>*</value>
+          </upperValue>
+          <association xmi:idref="cdif.bbr.metadata.qualityProperties.qualityMeasure.assoc.QualityMeasure_isMeasurementOf_DefinedTerm"/>
+        </ownedEnd>
+        <memberEnd xmi:idref="cdif.bbr.metadata.qualityProperties.qualityMeasure.assoc.QualityMeasure_isMeasurementOf_DefinedTerm.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.qualityProperties.qualityMeasure.QualityMeasure.isMeasurementOf"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.qualityProperties.qualityMeasure.assoc.StringOrNumberOrDefinedTerm_definedTerm_DefinedTerm" xmi:uuid="15b467ad-dc38-5d94-8092-d16d1370a86d">
         <name>StringOrNumberOrDefinedTerm_definedTerm_DefinedTerm</name>

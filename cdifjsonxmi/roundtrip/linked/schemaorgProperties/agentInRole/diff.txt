@@ -1,11 +1,12 @@
-agentInRole: 6 exact difference(s)
-$.$defs.IdReferenceOrPersonOrOrganization: only in regenerated: {"anyOf": [{"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "IRI reference to a Person or Organization defined elsewhere"}
+agentInRole: 5 exact difference(s)
+$.$defs.PersonOrOrganization: only in regenerated: {"anyOf": [{"$ref": "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/person/schema.yaml"}, {"$ref": "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/o
 $.$defs.cdifConceptOrTermOrString: only in original: {"$ref": "../../cdifDataType/cdifConceptOrTermOrString/schema.yaml"}
 $.properties.@type.default:
     original:    "schema:Role"
     regenerated: ["schema:Role"]
-$.properties.schema:contributor.$ref: only in regenerated: "#/$defs/IdReferenceOrPersonOrOrganization"
-$.properties.schema:contributor.anyOf: only in original: [{"type": "object", "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "IRI reference to a Person or Organization defined elsewhere"}}, "required": ["@id"]}, {"$ref
+$.properties.schema:contributor.anyOf:
+    original:    [{"type": "object", "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "IRI reference to a Person or Organization defined elsewhere"}}, "required": ["@id"]}, {"$ref": "../person/schema.yaml"}, {"$ref": "../organization/schema.yaml"}]
+    regenerated: [{"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "IRI reference to a Person or Organization defined elsewhere"}}}, {"$ref": "#/$defs/PersonOrOrganization"}]
 $.properties.schema:roleName.$ref:
     original:    "#/$defs/cdifConceptOrTermOrString"
     regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml"

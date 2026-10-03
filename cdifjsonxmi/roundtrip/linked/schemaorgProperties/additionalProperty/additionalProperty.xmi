@@ -29,13 +29,14 @@ PropertyValue values required to define a soft-typed property with a value.
         </generalization>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.AdditionalProperty.propertyID" xmi:uuid="821e25b2-b863-5ebb-9ce6-faeb501a483e">
           <name>propertyID</name>
-          <type href="../../cdifSharedUnions.xmi#cdif.union.StringOrIdReferenceOrDefinedTerm"/>
+          <type href="../definedTerm/definedTerm.xmi#cdif.bbr.metadata.schemaorgProperties.definedTerm.DefinedTerm"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.AdditionalProperty.propertyID.lower" xmi:uuid="46606c7e-446e-5993-9a54-8eba9c0fbd1a">
             <value>0</value>
           </lowerValue>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.AdditionalProperty.propertyID.upper" xmi:uuid="3c7fe1a7-df0d-5b74-bd5c-5831cc1363e6">
             <value>*</value>
           </upperValue>
+          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.additionalProperty.assoc.AdditionalProperty_propertyID_DefinedTerm"/>
           <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.AdditionalProperty.propertyID.comment" xmi:uuid="581e8e34-7ffb-5219-a60b-da292a9d11d3">
             <body>**CDIF**
 
@@ -43,7 +44,9 @@ Definition
 ==========
 
 identifier or name for the property concept quantified by the values in this variable slot. Multiple values can specify the property at different levels of granularity.
-:minItems: 1</body>
+:inlineOrByReference: ``inline``
+:minItems: 1
+:orReference: ["string", "idReference", "value"]</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.additionalProperty.AdditionalProperty.propertyID"/>
           </ownedComment>
         </ownedAttribute>
@@ -59,7 +62,7 @@ identifier or name for the property concept quantified by the values in this var
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.AdditionalProperty.value" xmi:uuid="4febc419-0a75-5ab0-8aaf-f249f8358831">
           <name>value</name>
-          <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.additionalProperty.StringOrNumberOrBooleanOrOption4"/>
+          <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.additionalProperty.AdditionalPropertyValueChoice"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.AdditionalProperty.value.lower" xmi:uuid="ca3257e5-a942-58db-ae06-7b9d9d19cadd">
             <value>1</value>
           </lowerValue>
@@ -100,9 +103,9 @@ Definition
           </upperValue>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.StringOrNumberOrBooleanOrOption4" xmi:uuid="eef59d0b-57dd-5c06-8d7b-1d15d2d9dcaf">
-        <name>StringOrNumberOrBooleanOrOption4</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.StringOrNumberOrBooleanOrOption4.comment" xmi:uuid="b5e8a586-150d-51d4-84d1-8bce4c747b88">
+      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.AdditionalPropertyValueChoice" xmi:uuid="3d1026aa-cbd7-5643-bde3-6683740a9a33">
+        <name>AdditionalPropertyValueChoice</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.AdditionalPropertyValueChoice.comment" xmi:uuid="1e81a3c4-d419-5cab-aca3-755521ae51d1">
           <body>**CDIF**
 
 Definition
@@ -110,52 +113,52 @@ Definition
 
 
 :union: ``anyOf``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.additionalProperty.StringOrNumberOrBooleanOrOption4"/>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.additionalProperty.AdditionalPropertyValueChoice"/>
         </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.StringOrNumberOrBooleanOrOption4.string" xmi:uuid="fa930261-e273-5bb7-9e18-2482b017f77d">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.AdditionalPropertyValueChoice.string" xmi:uuid="2ce6410d-9353-5778-9e88-fafca90610dc">
           <name>string</name>
           <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.StringOrNumberOrBooleanOrOption4.string.lower" xmi:uuid="0f59b7d9-7431-52df-8028-2811775e2ba4">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.AdditionalPropertyValueChoice.string.lower" xmi:uuid="1d4d64a9-1ba4-5b7c-a716-0ef34a849097">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.StringOrNumberOrBooleanOrOption4.string.upper" xmi:uuid="6635cb09-53de-5441-a228-650b6df2f630">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.AdditionalPropertyValueChoice.string.upper" xmi:uuid="81378100-07d3-5443-ad7d-f1e4dc291bf9">
             <value>1</value>
           </upperValue>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.StringOrNumberOrBooleanOrOption4.number" xmi:uuid="70ebb094-775f-52b8-84d2-a8897dba586d">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.AdditionalPropertyValueChoice.number" xmi:uuid="bf94f79d-e5cc-557a-a321-630f9e7e0639">
           <name>number</name>
           <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#Real"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.StringOrNumberOrBooleanOrOption4.number.lower" xmi:uuid="6af65933-df57-5c76-945f-5d0fd4df557d">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.AdditionalPropertyValueChoice.number.lower" xmi:uuid="6076a2a2-8e9f-5bc4-93c7-7b013e0c34a1">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.StringOrNumberOrBooleanOrOption4.number.upper" xmi:uuid="cb6d329d-2b7a-5151-a91b-048ec02dc70d">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.AdditionalPropertyValueChoice.number.upper" xmi:uuid="bd05e3ac-b11e-50da-9561-1c24cb59f6b2">
             <value>1</value>
           </upperValue>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.StringOrNumberOrBooleanOrOption4.boolean" xmi:uuid="0ee0902c-9c1f-5f95-b1e5-ec5f305ccd3b">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.AdditionalPropertyValueChoice.boolean" xmi:uuid="b6696b61-ed24-51c7-8524-ae30323f22bf">
           <name>boolean</name>
           <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#Boolean"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.StringOrNumberOrBooleanOrOption4.boolean.lower" xmi:uuid="d2c5943f-262d-588a-af41-d25c7899606a">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.AdditionalPropertyValueChoice.boolean.lower" xmi:uuid="b8f809b7-bbe8-56f0-b1f6-a451e0dd000e">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.StringOrNumberOrBooleanOrOption4.boolean.upper" xmi:uuid="22b6de42-a1c7-518c-abc3-3a78aa0f6334">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.AdditionalPropertyValueChoice.boolean.upper" xmi:uuid="eae5b45c-b9f4-5ef1-88a6-9b3217f285ac">
             <value>1</value>
           </upperValue>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.StringOrNumberOrBooleanOrOption4.option4" xmi:uuid="4d67fe51-0f76-55d3-b3b3-415797b1b378">
-          <name>option4</name>
-          <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.additionalProperty.StringOrNumberOrBooleanOrOption4Option4"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.StringOrNumberOrBooleanOrOption4.option4.lower" xmi:uuid="f6ec3397-7d32-5d90-b700-d06b8b3a99cd">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.AdditionalPropertyValueChoice.object" xmi:uuid="fea1cb4d-42a7-511f-8c52-79d2eac7623d">
+          <name>object</name>
+          <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.additionalProperty.AdditionalPropertyValueObject"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.AdditionalPropertyValueChoice.object.lower" xmi:uuid="e84e9d63-acec-5928-b9f6-c542543deb21">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.StringOrNumberOrBooleanOrOption4.option4.upper" xmi:uuid="cc99f298-afd2-58b9-a6bd-f28e2a31cd71">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.AdditionalPropertyValueChoice.object.upper" xmi:uuid="65fa9068-ce4e-58ab-aa53-095b232129aa">
             <value>1</value>
           </upperValue>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.StringOrNumberOrBooleanOrOption4Option4" xmi:uuid="8b2d1b93-d80e-538e-83f3-bf111ac8fd55">
-        <name>StringOrNumberOrBooleanOrOption4Option4</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.StringOrNumberOrBooleanOrOption4Option4.comment" xmi:uuid="8df089c5-adb4-56be-851e-74954e7a778d">
+      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.AdditionalPropertyValueObject" xmi:uuid="c956accf-b334-5f09-a43c-963333e8026d">
+        <name>AdditionalPropertyValueObject</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.AdditionalPropertyValueObject.comment" xmi:uuid="13cb96d6-b694-5b5d-9ff6-52d1869ba328">
           <body>**CDIF**
 
 Definition
@@ -163,8 +166,23 @@ Definition
 
 
 :prefix: ``schema``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.additionalProperty.StringOrNumberOrBooleanOrOption4Option4"/>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.additionalProperty.AdditionalPropertyValueObject"/>
         </ownedComment>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.assoc.AdditionalProperty_propertyID_DefinedTerm" xmi:uuid="315db36b-babc-5748-9151-4c2a4cade20a">
+        <name>AdditionalProperty_propertyID_DefinedTerm</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.assoc.AdditionalProperty_propertyID_DefinedTerm.ownedEnd" xmi:uuid="0eb3fe1d-4c5e-501e-9dfa-cdf2f3c6fd05">
+          <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.additionalProperty.AdditionalProperty"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.assoc.AdditionalProperty_propertyID_DefinedTerm.ownedEnd.lower" xmi:uuid="fc81e7f8-bbbb-5784-81c5-015cb7ca931e">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.assoc.AdditionalProperty_propertyID_DefinedTerm.ownedEnd.upper" xmi:uuid="ac0743d1-4b64-5ffb-9fb6-cc42151beadd">
+            <value>*</value>
+          </upperValue>
+          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.additionalProperty.assoc.AdditionalProperty_propertyID_DefinedTerm"/>
+        </ownedEnd>
+        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.additionalProperty.assoc.AdditionalProperty_propertyID_DefinedTerm.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.additionalProperty.AdditionalProperty.propertyID"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.schemaorgProperties.additionalProperty.assoc.AdditionalProperty_unitCode_DefinedTerm" xmi:uuid="cdd938ec-7ed1-54b4-b4e4-15fda1b1543e">
         <name>AdditionalProperty_unitCode_DefinedTerm</name>

@@ -1,15 +1,16 @@
-variableMeasured: 11 exact difference(s)
+variableMeasured: 8 exact difference(s)
 $.$defs.DefinedTerm: only in original: {"$ref": "../definedTerm/schema.yaml"}
 $.$defs.Reference: only in original: {"$ref": "../labeledLink/schema.yaml"}
-$.$defs.StringOrIdReferenceOrDefinedTerm: only in regenerated: {"anyOf": [{"type": "string"}, {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string"}}}, {"$ref": "../../../../../../../metadataBuildingBlocks/
 $.$defs.StringOrLabeledLink: only in regenerated: {"anyOf": [{"type": "string", "format": "uri", "description": "link to a web page useful for interpreting the variable"}, {"$ref": "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProper
 $.properties.schema:measurementTechnique.anyOf[2].$ref:
     original:    "#/$defs/DefinedTerm"
     regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml"
-$.properties.schema:propertyID.items.$ref: only in regenerated: "#/$defs/StringOrIdReferenceOrDefinedTerm"
-$.properties.schema:propertyID.items.anyOf: only in original: [{"type": "string"}, {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string"}}}, {"$ref": "#/$defs/DefinedTerm"}]
-$.properties.schema:unitCode.$ref: only in regenerated: "#/$defs/StringOrIdReferenceOrDefinedTerm"
-$.properties.schema:unitCode.anyOf: only in original: [{"type": "string"}, {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string"}}}, {"$ref": "#/$defs/DefinedTerm"}]
+$.properties.schema:propertyID.items.anyOf[2].$ref:
+    original:    "#/$defs/DefinedTerm"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml"
+$.properties.schema:unitCode.anyOf[2].$ref:
+    original:    "#/$defs/DefinedTerm"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml"
 $.properties.schema:url.$ref: only in regenerated: "#/$defs/StringOrLabeledLink"
 $.properties.schema:url.anyOf: only in original: [{"type": "string", "format": "uri", "description": "link to a web page useful for interpreting the variable"}, {"$ref": "#/$defs/Reference"}]
 

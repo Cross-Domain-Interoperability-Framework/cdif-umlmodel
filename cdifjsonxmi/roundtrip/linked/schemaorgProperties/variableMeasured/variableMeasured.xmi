@@ -83,13 +83,14 @@ human intelligible name for variable that conveys semantics
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.variableMeasured.VariableMeasured.measurementTechnique" xmi:uuid="a2bde1de-fbee-552c-88f0-d2d0fd313629">
           <name>measurementTechnique</name>
-          <type href="../../cdifSharedUnions.xmi#cdif.union.StringOrIdReferenceOrDefinedTerm"/>
+          <type href="../definedTerm/definedTerm.xmi#cdif.bbr.metadata.schemaorgProperties.definedTerm.DefinedTerm"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.variableMeasured.VariableMeasured.measurementTechnique.lower" xmi:uuid="6d9d14e3-a8dd-56fb-955a-75b7c1e2bb1f">
             <value>0</value>
           </lowerValue>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.variableMeasured.VariableMeasured.measurementTechnique.upper" xmi:uuid="95a41ac6-4852-5f6c-91aa-2383803e1d01">
             <value>1</value>
           </upperValue>
+          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.variableMeasured.assoc.VariableMeasured_measurementTechnique_DefinedTerm"/>
           <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.variableMeasured.VariableMeasured.measurementTechnique.comment" xmi:uuid="7478b1bd-201d-51c4-9e2b-012c0c92c888">
             <body>**CDIF**
 
@@ -97,26 +98,31 @@ Definition
 ==========
 
 Text description or URI specifying how values for the variable were obtained.
-:alternativeOverrides: {"idReference": {"idRefDescription": "reference to a skos concept"}}</body>
+:inlineOrByReference: ``inline``
+:idRefDescription: "reference to a skos concept"
+:orReference: ["string", "idReference", "value"]</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.variableMeasured.VariableMeasured.measurementTechnique"/>
           </ownedComment>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.variableMeasured.VariableMeasured.propertyID" xmi:uuid="5d67f2a7-4d7e-5285-9984-d8766bc5731b">
           <name>propertyID</name>
-          <type href="../../cdifSharedUnions.xmi#cdif.union.StringOrIdReferenceOrDefinedTerm"/>
+          <type href="../definedTerm/definedTerm.xmi#cdif.bbr.metadata.schemaorgProperties.definedTerm.DefinedTerm"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.variableMeasured.VariableMeasured.propertyID.lower" xmi:uuid="7b86dd2e-2904-5b89-89a4-27fef03c22b5">
             <value>0</value>
           </lowerValue>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.variableMeasured.VariableMeasured.propertyID.upper" xmi:uuid="74153914-312b-5994-935f-9cf972ac123d">
             <value>*</value>
           </upperValue>
+          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.variableMeasured.assoc.VariableMeasured_propertyID_DefinedTerm"/>
           <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.variableMeasured.VariableMeasured.propertyID.comment" xmi:uuid="e5ff30c1-dd41-57d0-8e49-60357d6351b6">
             <body>**CDIF**
 
 Definition
 ==========
 
-identifier or name for the property concept</body>
+identifier or name for the property concept
+:inlineOrByReference: ``inline``
+:orReference: ["string", "idReference", "value"]</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.variableMeasured.VariableMeasured.propertyID"/>
           </ownedComment>
         </ownedAttribute>
@@ -141,20 +147,23 @@ unit of measurement as text</body>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.variableMeasured.VariableMeasured.unitCode" xmi:uuid="c9fdf577-98d2-53ca-bcb5-bb5ee93c8423">
           <name>unitCode</name>
-          <type href="../../cdifSharedUnions.xmi#cdif.union.StringOrIdReferenceOrDefinedTerm"/>
+          <type href="../definedTerm/definedTerm.xmi#cdif.bbr.metadata.schemaorgProperties.definedTerm.DefinedTerm"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.variableMeasured.VariableMeasured.unitCode.lower" xmi:uuid="6f7da9bd-60f6-5dd4-a0bb-e35734f19652">
             <value>0</value>
           </lowerValue>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.variableMeasured.VariableMeasured.unitCode.upper" xmi:uuid="08d40080-3615-59a3-ba05-41d26ee7e05f">
             <value>1</value>
           </upperValue>
+          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.variableMeasured.assoc.VariableMeasured_unitCode_DefinedTerm"/>
           <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.variableMeasured.VariableMeasured.unitCode.comment" xmi:uuid="46413238-fc46-5bea-92bd-711c8656e39c">
             <body>**CDIF**
 
 Definition
 ==========
 
-URI or code identifying the unit of measure</body>
+URI or code identifying the unit of measure
+:inlineOrByReference: ``inline``
+:orReference: ["string", "idReference", "value"]</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.variableMeasured.VariableMeasured.unitCode"/>
           </ownedComment>
         </ownedAttribute>
@@ -248,6 +257,51 @@ link to a web page useful for interpreting the variable</body>
             <value>1</value>
           </upperValue>
         </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.schemaorgProperties.variableMeasured.assoc.VariableMeasured_measurementTechnique_DefinedTerm" xmi:uuid="3d11aaeb-b5ae-5cd1-adc9-7cb19af6b368">
+        <name>VariableMeasured_measurementTechnique_DefinedTerm</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.variableMeasured.assoc.VariableMeasured_measurementTechnique_DefinedTerm.ownedEnd" xmi:uuid="5f0c1b4f-3e6b-5c30-b174-0a906903378c">
+          <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.variableMeasured.VariableMeasured"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.variableMeasured.assoc.VariableMeasured_measurementTechnique_DefinedTerm.ownedEnd.lower" xmi:uuid="391a647d-373c-5f79-a9cb-6b436c4b40cf">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.variableMeasured.assoc.VariableMeasured_measurementTechnique_DefinedTerm.ownedEnd.upper" xmi:uuid="f1e3bbcf-f890-5937-a306-c0c15e37d964">
+            <value>*</value>
+          </upperValue>
+          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.variableMeasured.assoc.VariableMeasured_measurementTechnique_DefinedTerm"/>
+        </ownedEnd>
+        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.variableMeasured.assoc.VariableMeasured_measurementTechnique_DefinedTerm.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.variableMeasured.VariableMeasured.measurementTechnique"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.schemaorgProperties.variableMeasured.assoc.VariableMeasured_propertyID_DefinedTerm" xmi:uuid="ab24533d-4d08-5cc1-aeb1-d5701dec64d4">
+        <name>VariableMeasured_propertyID_DefinedTerm</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.variableMeasured.assoc.VariableMeasured_propertyID_DefinedTerm.ownedEnd" xmi:uuid="34700dd6-a9c2-5f55-bc3c-458f012d2b51">
+          <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.variableMeasured.VariableMeasured"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.variableMeasured.assoc.VariableMeasured_propertyID_DefinedTerm.ownedEnd.lower" xmi:uuid="0d948f87-734d-5328-80f8-4deabb3c82e7">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.variableMeasured.assoc.VariableMeasured_propertyID_DefinedTerm.ownedEnd.upper" xmi:uuid="76b5ccd6-b460-5b74-bb41-533995d11a3e">
+            <value>*</value>
+          </upperValue>
+          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.variableMeasured.assoc.VariableMeasured_propertyID_DefinedTerm"/>
+        </ownedEnd>
+        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.variableMeasured.assoc.VariableMeasured_propertyID_DefinedTerm.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.variableMeasured.VariableMeasured.propertyID"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.schemaorgProperties.variableMeasured.assoc.VariableMeasured_unitCode_DefinedTerm" xmi:uuid="31508908-e560-5af4-b73b-b85f5aafc0cf">
+        <name>VariableMeasured_unitCode_DefinedTerm</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.variableMeasured.assoc.VariableMeasured_unitCode_DefinedTerm.ownedEnd" xmi:uuid="b7b8329c-f2fb-5b1b-9bdb-e8c436a7d12f">
+          <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.variableMeasured.VariableMeasured"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.variableMeasured.assoc.VariableMeasured_unitCode_DefinedTerm.ownedEnd.lower" xmi:uuid="4e587cbc-6348-5cbb-ba3b-cfa5cb77b28a">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.variableMeasured.assoc.VariableMeasured_unitCode_DefinedTerm.ownedEnd.upper" xmi:uuid="15e3f36c-6a0d-557c-b325-4a15fc470fd2">
+            <value>*</value>
+          </upperValue>
+          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.variableMeasured.assoc.VariableMeasured_unitCode_DefinedTerm"/>
+        </ownedEnd>
+        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.variableMeasured.assoc.VariableMeasured_unitCode_DefinedTerm.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.variableMeasured.VariableMeasured.unitCode"/>
       </packagedElement>
     </packagedElement>
   </uml:Model>

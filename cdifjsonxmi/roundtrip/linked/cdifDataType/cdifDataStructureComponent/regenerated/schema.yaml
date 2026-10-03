@@ -1,0 +1,298 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: DDI-CDI Data Structure Component
+description: >-
+  Role given to a represented variable in the context of a long or wide data structure to
+  identify the units associated to data points, and in dimensional and key value data structures
+  to provide identifying fields for the instance values.
+anyOf:
+- '$ref': '#/$defs/IdentifierComponent'
+- '$ref': '#/$defs/MeasureComponent'
+- '$ref': '#/$defs/AttributeComponent'
+- '$ref': '#/$defs/DimensionComponent'
+- '$ref': '#/$defs/VariableValueComponent'
+- '$ref': '#/$defs/VariableDescriptorComponent'
+'$defs':
+  AttributeComponent:
+    type: object
+    description: >-
+      Role given to a represented variable in the context of a data structure to qualify observations
+      or provide other types of supplementary information.
+    properties:
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'cdi:AttributeComponent'
+        minItems: 1
+      '@id':
+        type: string
+        description: Identifier for this AttributeComponent node
+      'cdif:qualifies':
+        type: array
+        items:
+          anyOf:
+          - '$ref': '#/$defs/DataStructureComponent'
+          - '$ref': >-
+              ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/objectReference/schema.yaml
+        minItems: 1
+      'cdif:identifier':
+        '$ref': >-
+          ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml
+        description: >-
+          Identifier for objects requiring short- or long-lasting referencing and management.
+      'cdif:isDefinedBy_Variable':
+        anyOf:
+        - '$ref': '#/$defs/RepresentedVariableOrInstanceVariable'
+        - '$ref': >-
+            ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/objectReference/schema.yaml
+        description: >-
+          The variable this component is a role of -- a RepresentedVariable or an InstanceVariable,
+          inline or by @id reference. See the note above $defs.
+      'cdif:semantic':
+        type: array
+        items:
+          '$ref': >-
+            ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml
+        minItems: 1
+        description: >-
+          Qualifies the purpose or use expressed as a paired external controlled vocabulary.
+    required:
+    - '@type'
+  DataStructureComponent:
+    type: object
+    description: Role given to a represented variable in the context of a data structure.
+    properties:
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'cdi:DataStructureComponent'
+        minItems: 1
+      '@id':
+        type: string
+        description: Identifier for this DataStructureComponent node
+      'cdif:identifier':
+        '$ref': >-
+          ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml
+        description: >-
+          Identifier for objects requiring short- or long-lasting referencing and management.
+      'cdif:isDefinedBy_Variable':
+        anyOf:
+        - '$ref': '#/$defs/RepresentedVariableOrInstanceVariable'
+        - '$ref': >-
+            ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/objectReference/schema.yaml
+        description: >-
+          The variable this component is a role of -- a RepresentedVariable or an InstanceVariable,
+          inline or by @id reference. See the note above $defs.
+      'cdif:semantic':
+        type: array
+        items:
+          '$ref': >-
+            ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml
+        minItems: 1
+        description: >-
+          Qualifies the purpose or use expressed as a paired external controlled vocabulary.
+    required:
+    - '@type'
+  DimensionComponent:
+    type: object
+    description: >-
+      Role given to a represented variable in the context of a dimensional data structure
+      to identify the universes associated with data points. The variable acts as a field
+      in the compound identifier (the key structure) to disambiguate the cells in the multi-dimensional
+      "cube".  AG: references to the variables which are the components of a compound identifier,
+      in which each variable is a single field - an axis - in a coordinate system addressing
+      a location in a matrix. These variables are often categorical, but also commonly include
+      time. Unlike other Components, they may be ordered using instances of cdi:ComponentPosition.
+    properties:
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'cdi:DimensionComponent'
+        minItems: 1
+      '@id':
+        type: string
+        description: Identifier for this DimensionComponent node
+      'cdif:isDefinedBy_Variable':
+        anyOf:
+        - '$ref': '#/$defs/RepresentedVariableOrInstanceVariable'
+        - '$ref': >-
+            ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/objectReference/schema.yaml
+        description: >-
+          The variable this component is a role of -- a RepresentedVariable or an InstanceVariable,
+          inline or by @id reference. See the note above $defs.
+    required:
+    - '@type'
+    - 'cdif:isDefinedBy_Variable'
+  IdentifierComponent:
+    type: object
+    description: >-
+      Role given to a represented variable in the context of a long or wide data structure
+      to identify the units associated to data points, and in dimensional and key value data
+      structures to provide identifying fields for the instance values.
+    properties:
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'cdi:IdentifierComponent'
+        minItems: 1
+      '@id':
+        type: string
+        description: Identifier for this IdentifierComponent node
+      'cdif:isDefinedBy_Variable':
+        anyOf:
+        - '$ref': '#/$defs/RepresentedVariableOrInstanceVariable'
+        - '$ref': >-
+            ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/objectReference/schema.yaml
+        description: >-
+          The variable this component is a role of -- a RepresentedVariable or an InstanceVariable,
+          inline or by @id reference. See the note above $defs.
+    required:
+    - '@type'
+    - 'cdif:isDefinedBy_Variable'
+  MeasureComponent:
+    type: object
+    description: >-
+      Role given to a represented variable in the context of a data structure to hold the
+      observed/derived values.
+    properties:
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'cdi:MeasureComponent'
+        minItems: 1
+      '@id':
+        type: string
+        description: Identifier for this MeasureComponent node
+      'cdif:name':
+        '$ref': '#/$defs/StringOrStringList'
+        description: >-
+          Human understandable name (linguistic signifier, word, phrase, or mnemonic). May
+          follow ISO/IEC 11179-5 naming principles, and have context provided to specify usage.
+      'cdif:identifier':
+        '$ref': >-
+          ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml
+        description: >-
+          Identifier for objects requiring short- or long-lasting referencing and management.
+      'cdif:isDefinedBy_Variable':
+        anyOf:
+        - '$ref': '#/$defs/RepresentedVariableOrInstanceVariable'
+        - '$ref': >-
+            ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/objectReference/schema.yaml
+        description: >-
+          The variable this component is a role of -- a RepresentedVariable or an InstanceVariable,
+          inline or by @id reference. See the note above $defs.
+      'cdif:semantic':
+        type: array
+        items:
+          '$ref': >-
+            ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml
+        minItems: 1
+        description: >-
+          Qualifies the purpose or use expressed as a paired external controlled vocabulary.
+    required:
+    - '@type'
+  RepresentedVariableOrInstanceVariable:
+    anyOf:
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifRepresentedVariable/schema.yaml
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifInstanceVariable/schema.yaml
+  StringOrStringList:
+    anyOf:
+    - type: string
+    - type: array
+      items:
+        type: string
+      minItems: 1
+  VariableDescriptorComponent:
+    type: object
+    description: >-
+      Role given to a represented variable in the context of a data structure to provide codes
+      for variable identification.
+    properties:
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'cdi:VariableDescriptorComponent'
+        minItems: 1
+      '@id':
+        type: string
+        description: Identifier for this VariableDescriptorComponent node
+      'cdif:isDefinedBy_DescriptorVariable':
+        '$ref': >-
+          ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifDescriptorVariable/schema.yaml
+        description: >-
+          Variable that provides codes for variable identification in the context of a data
+          structure. Descriptor Variables hold values which reference the logical variables
+          in the data set, indicating which one the associated value in the corresponding
+          Reference Variable is a measure/value for. Descriptor Variables are presentational
+          variables found only in Long Data Sets.
+      'cdi:refersTo':
+        '$ref': >-
+          ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/objectReference/schema.yaml
+      'cdif:identifier':
+        '$ref': >-
+          ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml
+        description: >-
+          Identifier for objects requiring short- or long-lasting referencing and management.
+      'cdif:semantic':
+        type: array
+        items:
+          '$ref': >-
+            ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml
+        minItems: 1
+        description: >-
+          Qualifies the purpose or use expressed as a paired external controlled vocabulary.
+    required:
+    - '@type'
+    - 'cdif:isDefinedBy_DescriptorVariable'
+  VariableValueComponent:
+    type: object
+    description: >-
+      Role given to a represented variable in the context of a data structure to record values
+      of multiple variables.
+    properties:
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'cdi:VariableValueComponent'
+        minItems: 1
+      '@id':
+        type: string
+        description: Identifier for this VariableValueComponent node
+      'cdif:identifier':
+        '$ref': >-
+          ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml
+        description: >-
+          Identifier for objects requiring short- or long-lasting referencing and management.
+      'cdif:isDefinedBy_Variable':
+        anyOf:
+        - '$ref': '#/$defs/RepresentedVariableOrInstanceVariable'
+        - '$ref': >-
+            ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/objectReference/schema.yaml
+        description: >-
+          The variable this component is a role of -- a RepresentedVariable or an InstanceVariable,
+          inline or by @id reference. See the note above $defs.
+      'cdif:semantic':
+        type: array
+        items:
+          '$ref': >-
+            ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml
+        minItems: 1
+        description: >-
+          Qualifies the purpose or use expressed as a paired external controlled vocabulary.
+    required:
+    - '@type'

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<XMI xmi.version="1.1" xmlns:UML="omg.org/UML1.3">
+	<XMI.header>
+		<XMI.documentation>
+			<XMI.exporter>Enterprise Architect</XMI.exporter>
+			<XMI.exporterVersion>2.5</XMI.exporterVersion>
+		</XMI.documentation>
+	</XMI.header>
+	<XMI.content>
+		<UML:Model name="objectReference" xmi.id="MX_EAID_5DAA2124_BBAA_5f80_8403_901BA19AC5AD">
+			<UML:Namespace.ownedElement>
+				<UML:Class name="EARootClass" xmi.id="EAID_11111111_5487_4080_A7F4_41526CB0AA00" isRoot="true" isLeaf="false" isAbstract="false"/>
+				<UML:Package name="objectReference" xmi.id="EAPK_DAA54F3B_13EF_5ffe_AC21_FA0FB2D3F2AB" isRoot="false" isLeaf="false" isAbstract="false" visibility="public">
+					<UML:ModelElement.taggedValue>
+						<UML:TaggedValue tag="documentation" value="https://w3id.org/cdif/bbr/metadata/cdifDataType/objectReference"/>
+						<UML:TaggedValue tag="isSpecification" value="false"/>
+						<UML:TaggedValue tag="ea_stype" value="Public"/>
+						<UML:TaggedValue tag="ea_eleType" value="package"/>
+						<UML:TaggedValue tag="version" value="1.0"/>
+						<UML:TaggedValue tag="ea_guid" value="{DAA54F3B-13EF-5ffe-AC21-FA0FB2D3F2AB}"/>
+					</UML:ModelElement.taggedValue>
+					<UML:Namespace.ownedElement>
+						<UML:Class name="ObjectReference" xmi.id="EAID_F8271D36_A3C3_56e8_8F10_27DB8F3C41CE" visibility="public" namespace="EAPK_DAA54F3B_13EF_5ffe_AC21_FA0FB2D3F2AB" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;A reference to a node defined elsewhere, by its @id.&#xA;:title: &quot;Object Reference&quot;&#xA;:prefix: ``cdif``&#xA;:hasId:&#xA;:idRequired:&#xA;:idDescription: &quot;resolvable @id of the referenced node&quot;&#xA;:closed:"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="DataType"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_DAA54F3B_13EF_5ffe_AC21_FA0FB2D3F2AB"/>
+								<UML:TaggedValue tag="ea_guid" value="{F8271D36-A3C3-56e8-8F10-27DB8F3C41CE}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Class>
+					</UML:Namespace.ownedElement>
+				</UML:Package>
+			</UML:Namespace.ownedElement>
+		</UML:Model>
+	</XMI.content>
+	<XMI.extensions xmi.extender="Enterprise Architect 2.5">
+	</XMI.extensions>
+</XMI>

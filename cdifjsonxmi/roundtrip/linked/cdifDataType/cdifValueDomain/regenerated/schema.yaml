@@ -1,0 +1,294 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: CDIF Value Domain
+description: >-
+  Value domain for substantive or sentinel values for a variable. Typically a description
+  and/or enumeration of allowed values of interest. CDIF profile of the DDI-CDI ValueDomain
+  — a single node is either a cdif:SubstantiveValueDomain (subject-matter values) or a cdif:SentinelValueDomain
+  (processing/missing-value codes).
+oneOf:
+- '$ref': '#/$defs/SubstantiveValueDomain'
+- '$ref': '#/$defs/SentinelValueDomain'
+'$defs':
+  SentinelValueDomain:
+    type: object
+    description: >-
+      Specification of possible sentinel values used by a variable. Sentinel values are special
+      values used to indicate various invalid conditions for a variable, e.g. below detection,
+      missing value.
+    properties:
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'cdif:SentinelValueDomain'
+        minItems: 1
+      '@id':
+        type: string
+        description: Identifier for this SentinelValueDomain node
+      'cdif:takesValuesFrom':
+        anyOf:
+        - '$ref': >-
+            ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifEnumerationDomain/schema.yaml
+        - type: object
+          required:
+          - '@id'
+          additionalProperties: false
+          properties:
+            '@id':
+              type: string
+              description: IRI or blank node identifier of the referenced node
+          description: JSON-LD @id reference to a node defined elsewhere in the graph
+      'cdif:displayLabel':
+        type: string
+        description: >-
+          A human-readable display label for the object. Supports the use of multiple languages.
+          Repeat for labels with different content, for example, labels with differing length
+          limitations.
+      'cdif:recommendedDataType':
+        type: array
+        items:
+          type: string
+          enum:
+          - 'xsd:anyURI'
+          - 'xsd:base64Binary'
+          - 'xsd:boolean'
+          - 'xsd:byte'
+          - 'xsd:date'
+          - 'xsd:dateTime'
+          - 'xsd:decimal'
+          - 'xsd:double'
+          - 'xsd:float'
+          - 'xsd:gDay'
+          - 'xsd:gMonth'
+          - 'xsd:gMonthDay'
+          - 'xsd:gYear'
+          - 'xsd:gYearMonth'
+          - 'xsd:hexBinary'
+          - 'xsd:int'
+          - 'xsd:integer'
+          - 'xsd:language'
+          - 'xsd:long'
+          - 'xsd:Name'
+          - 'xsd:NCName'
+          - 'xsd:NMTOKEN'
+          - 'xsd:negativeInteger'
+          - 'xsd:nonNegativeInteger'
+          - 'xsd:nonPositiveInteger'
+          - 'xsd:normalizedString'
+          - 'xsd:positiveInteger'
+          - 'xsd:short'
+          - 'xsd:string'
+          - 'xsd:time'
+          - 'xsd:token'
+          - 'xsd:unsignedByte'
+          - 'xsd:unsignedInt'
+          - 'xsd:unsignedLong'
+          - 'xsd:unsignedShort'
+        minItems: 1
+        description: The data types that are recommended for use with this domain.
+      'cdi:isDescribedBy':
+        anyOf:
+        - '$ref': '#/$defs/ValueAndConceptDescription'
+        - type: object
+          required:
+          - '@id'
+          additionalProperties: false
+          properties:
+            '@id':
+              type: string
+              description: IRI or blank node identifier of the referenced node
+          description: JSON-LD @id reference to a node defined elsewhere in the graph
+        description: >-
+          A ValueAndConceptDescription giving the formal description (ranges, patterns, classification
+          level, expressions) of the values this domain admits.
+    required:
+    - '@type'
+    allOf:
+    - anyOf:
+      - required:
+        - 'cdif:takesValuesFrom'
+      - required:
+        - 'cdif:recommendedDataType'
+  SubstantiveValueDomain:
+    type: object
+    description: >-
+      Value domain for a substantive conceptual domain. Typically a description and/or enumeration
+      of allowed values of interest.
+    properties:
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'cdif:SubstantiveValueDomain'
+        minItems: 1
+      '@id':
+        type: string
+        description: Identifier for this SubstantiveValueDomain node
+      'cdif:takesValuesFrom':
+        anyOf:
+        - '$ref': >-
+            ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifEnumerationDomain/schema.yaml
+        - type: object
+          required:
+          - '@id'
+          additionalProperties: false
+          properties:
+            '@id':
+              type: string
+              description: IRI or blank node identifier of the referenced node
+          description: JSON-LD @id reference to a node defined elsewhere in the graph
+      'cdif:displayLabel':
+        type: string
+        description: 'A human-readable display label for the object. '
+      'cdif:recommendedDataType':
+        type: array
+        items:
+          type: string
+          enum:
+          - 'xsd:anyURI'
+          - 'xsd:base64Binary'
+          - 'xsd:boolean'
+          - 'xsd:byte'
+          - 'xsd:date'
+          - 'xsd:dateTime'
+          - 'xsd:decimal'
+          - 'xsd:double'
+          - 'xsd:float'
+          - 'xsd:gDay'
+          - 'xsd:gMonth'
+          - 'xsd:gMonthDay'
+          - 'xsd:gYear'
+          - 'xsd:gYearMonth'
+          - 'xsd:hexBinary'
+          - 'xsd:int'
+          - 'xsd:integer'
+          - 'xsd:language'
+          - 'xsd:long'
+          - 'xsd:Name'
+          - 'xsd:NCName'
+          - 'xsd:NMTOKEN'
+          - 'xsd:negativeInteger'
+          - 'xsd:nonNegativeInteger'
+          - 'xsd:nonPositiveInteger'
+          - 'xsd:normalizedString'
+          - 'xsd:positiveInteger'
+          - 'xsd:short'
+          - 'xsd:string'
+          - 'xsd:time'
+          - 'xsd:token'
+          - 'xsd:unsignedByte'
+          - 'xsd:unsignedInt'
+          - 'xsd:unsignedLong'
+          - 'xsd:unsignedShort'
+        minItems: 1
+        description: The data types that are recommended for use with this domain.
+      'cdi:isDescribedBy':
+        anyOf:
+        - '$ref': '#/$defs/ValueAndConceptDescription'
+        - type: object
+          required:
+          - '@id'
+          additionalProperties: false
+          properties:
+            '@id':
+              type: string
+              description: IRI or blank node identifier of the referenced node
+          description: JSON-LD @id reference to a node defined elsewhere in the graph
+        description: >-
+          A ValueAndConceptDescription giving the formal description (ranges, patterns, classification
+          level, expressions) of the values this domain admits.
+    required:
+    - '@type'
+    allOf:
+    - anyOf:
+      - required:
+        - 'cdif:takesValuesFrom'
+      - required:
+        - 'cdif:recommendedDataType'
+  ValueAndConceptDescription:
+    type: object
+    description: Formal description of a set of values.
+    properties:
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'cdi:ValueAndConceptDescription'
+        minItems: 1
+      '@id':
+        type: string
+        description: Identifier for this ValueAndConceptDescription node
+      'cdi:classificationLevel':
+        type: string
+        enum:
+        - Continuous
+        - Interval
+        - Nominal
+        - Ordinal
+        - Ratio
+        description: >-
+          Indicates the type of relationship, nominal, ordinal, interval, ratio, or continuous.
+          Use where appropriate for the representation type.
+      'cdi:description':
+        type: string
+        description: A formal description of the set of values in human-readable language.
+      'cdif:formatPattern':
+        type: string
+        description: >-
+          A pattern for a number as described in Unicode Locale Data Markup Language (LDML)
+          (http://www.unicode.org/reports/tr35/tr35.html) Part 3: Numbers (http://www.unicode.org/reports/tr35/tr35-numbers.html#Number_Format_Patterns)
+          and Part 4. Dates (http://www.unicode.org/reports/tr35/tr35-dates.html#Date_Format_Patterns)
+          . Examples would be #,##0.### to describe the pattern for a decimal number, or yyyy.MM.dd
+          G 'at' HH:mm:ss zzz for a datetime pattern.
+      'cdif:logicalExpression':
+        type: string
+        description: >-
+          A logical expression where the values of "x" making the expression true are the
+          members of the set of valid values. For example, "(all reals x such that x > 0)"
+          describes the real numbers greater than 0.
+      'cdi:maximumValueExclusive':
+        type: string
+        description: >-
+          A string denoting the maximum possible value (excluding this value). From the W3C
+          Recommendation "Metadata Vocabulary for Tabular Data" (https://www.w3.org/TR/tabular-metadata/)
+          5.11.2: "maxExclusive: An atomic property that contains a single number or string
+          that is the maximum valid value (exclusive). The value of this property becomes
+          the maximum exclusive annotation for the described datatype. See Value Constraints
+          in [tabular-data-model] for details."
+      'cdi:maximumValueInclusive':
+        type: string
+        description: >-
+          A string denoting the maximum possible value. From the W3C Recommendation "Metadata
+          Vocabulary for Tabular Data" (https://www.w3.org/TR/tabular-metadata/) 5.11.2: "maximum:
+          An atomic property that contains a single number or string that is the maximum valid
+          value (inclusive); equivalent to maxInclusive. The value of this property becomes
+          the maximum annotation for the described datatype. See Value Constraints in [tabular-data-model]
+          for details."
+      'cdi:minimumValueExclusive':
+        type: string
+        description: >-
+          A string denoting the minimum possible value (excluding this value). From the W3C
+          Recommendation "Metadata Vocabulary for Tabular Data" (https://www.w3.org/TR/tabular-metadata/)
+          5.11.2: "minExclusive: An atomic property that contains a single number or string
+          that is the minimum valid value (exclusive). The value of this property becomes
+          the minimum exclusive annotation for the described datatype. See Value Constraints
+          in [tabular-data-model] for details."
+      'cdi:minimumValueInclusive':
+        type: string
+        description: >-
+          A string denoting the minimum possible value. From the W3C Recommendation "Metadata
+          Vocabulary for Tabular Data" (https://www.w3.org/TR/tabular-metadata/) 5.11.2: "minimum:
+          An atomic property that contains a single number or string that is the minimum valid
+          value (inclusive); equivalent to minInclusive. The value of this property becomes
+          the minimum annotation for the described datatype. See Value Constraints in [tabular-data-model]
+          for details."
+      'cdif:regularExpression':
+        type: string
+        description: >-
+          A regular expression where strings matching the expression belong to the set of
+          valid values.
+    required:
+    - '@type'

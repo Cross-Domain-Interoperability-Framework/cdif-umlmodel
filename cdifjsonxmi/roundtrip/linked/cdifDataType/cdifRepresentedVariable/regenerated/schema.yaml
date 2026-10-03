@@ -1,0 +1,185 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: DDI-CDI Represented Variable
+description: Conceptual variable with a substantive value domain specified.
+type: object
+properties:
+  '@type':
+    type: array
+    items:
+      type: string
+    contains:
+      const: 'cdi:RepresentedVariable'
+    minItems: 1
+  '@id':
+    type: string
+    description: Identifier for this RepresentedVariable node
+  'cdif:describedUnitOfMeasure':
+    '$ref': >-
+      ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml
+    description: >-
+      The unit in which the data values are measured (kg, pound, euro), expressed as a value
+      from a controlled system of entries (i.e., QDT). Supports the provision of an identifier
+      for the entry in the authoritative source (a URI, etc.), and the specific vocabulary.
+  'cdif:hasIntendedDataType':
+    '$ref': >-
+      ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml
+    description: >-
+      The data type intended to be used by this variable. Supports the optional use of an
+      external controlled vocabulary.
+  'cdi:takesSentinelValuesFrom':
+    type: array
+    items:
+      anyOf:
+      - '$ref': '../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifValueDomain/schema.yaml#/$defs/SentinelValueDomain'
+      - '$ref': >-
+          ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/objectReference/schema.yaml
+    minItems: 1
+    description: >-
+      Sentinel (missing / not-applicable) value domain(s) for this RepresentedVariable (RepresentedVariable.takesSentinelValuesFrom).
+  'cdi:takesSubstantiveValuesFrom':
+    anyOf:
+    - '$ref': '../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifValueDomain/schema.yaml#/$defs/SubstantiveValueDomain'
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/objectReference/schema.yaml
+    description: >-
+      The substantive value domain for this RepresentedVariable - the set of valid, meaningful
+      values (RepresentedVariable.takesSubstantiveValuesFrom).
+  'cdi:simpleUnitOfMeasure':
+    type: string
+    description: >-
+      The unit in which the data values are measured (kg, pound, euro), expressed as a simple
+      string, in cases where no additional information is available (in the legacy system)
+      or needed (as in the case of broad agreement within the community of use [i.e., ISO
+      country codes, currencies, etc. in SDMX])
+  'cdif:descriptiveText':
+    type: string
+    description: A short natural language account of the characteristics of the object.
+  'cdi:measures':
+    anyOf:
+    - '$ref': '#/$defs/UnitType'
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/objectReference/schema.yaml
+  'cdif:unitOfMeasureKind':
+    '$ref': >-
+      ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml
+    description: >-
+      Kind of unit of measure, so that it may be prone to translation to equivalent UOMs.
+      Example values include "acceleration," "temperature," "salinity", etc. This description
+      exists at the conceptual level, indicating a limitation on the type of representations
+      which may be used for the variable as it is made more concrete.
+  'cdif:definition':
+    type: string
+    description: >-
+      Natural language statement conveying the meaning of a concept, differentiating it from
+      other concepts. Supports the use of multiple languages and structured text. 'externalDefinition'
+      can't be used if 'definition' is used.
+  'cdif:displayLabel':
+    type: array
+    items:
+      type: string
+    minItems: 1
+    description: >-
+      A human-readable display label for the object. Supports the use of multiple languages.
+      Repeat for labels with different content, for example, labels with differing length
+      limitations.
+  'cdif:externalDefinition':
+    '$ref': >-
+      ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml
+    description: >-
+      A reference to an external definition of a concept (that is, a concept which is described
+      outside the content of the DDI-CDI metadata description). An example is a SKOS concept.
+      The definition property is assumed to duplicate the external one referenced if externalDefinition
+      is used. Other corresponding properties are assumed to be included unchanged if used.
+  'cdif:identifier':
+    '$ref': >-
+      ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml
+    description: >-
+      Identifier for objects requiring short- or long-lasting referencing and management.
+  'cdif:name':
+    '$ref': '#/$defs/StringOrStringList'
+    description: >-
+      Human understandable name (linguistic signifier, word, phrase, or mnemonic). May follow
+      ISO/IEC 11179-5 naming principles, and have context provided to specify usage.
+  'cdif:uses_Concept':
+    type: array
+    items:
+      anyOf:
+      - '$ref': >-
+          ../../../../../../../metadataBuildingBlocks/_sources/skosProperties/skosConcept/schema.yaml
+      - '$ref': >-
+          ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/objectReference/schema.yaml
+    minItems: 1
+    description: Specifies the concept(s) that this variable expresses or aligns with.
+required:
+- '@type'
+'$defs':
+  StringOrStringList:
+    anyOf:
+    - type: string
+    - type: array
+      items:
+        type: string
+      minItems: 1
+  UnitType:
+    type: object
+    description: Unit type is a type or class of objects of interest (units).
+    properties:
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'cdi:UnitType'
+        minItems: 1
+      '@id':
+        type: string
+        description: Identifier for this UnitType node
+      'cdif:descriptiveText':
+        type: string
+        description: A short natural language account of the characteristics of the object.
+      'cdif:definition':
+        type: string
+        description: >-
+          Natural language statement conveying the meaning of a concept, differentiating it
+          from other concepts. Supports the use of multiple languages and structured text.
+          'externalDefinition' can't be used if 'definition' is used.
+      'cdif:displayLabel':
+        type: array
+        items:
+          type: string
+        minItems: 1
+        description: >-
+          A human-readable display label for the object. Supports the use of multiple languages.
+          Repeat for labels with different content, for example, labels with differing length
+          limitations.
+      'cdif:externalDefinition':
+        '$ref': >-
+          ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml
+        description: >-
+          A reference to an external definition of a concept (that is, a concept which is
+          described outside the content of the DDI-CDI metadata description). An example is
+          a SKOS concept. The definition property is assumed to duplicate the external one
+          referenced if externalDefinition is used. Other corresponding properties are assumed
+          to be included unchanged if used.
+      'cdif:identifier':
+        '$ref': >-
+          ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml
+        description: >-
+          Identifier for objects requiring short- or long-lasting referencing and management.
+      'cdif:name':
+        '$ref': '#/$defs/StringOrStringList'
+        description: >-
+          Human understandable name (linguistic signifier, word, phrase, or mnemonic). May
+          follow ISO/IEC 11179-5 naming principles, and have context provided to specify usage.
+      'cdif:uses_Concept':
+        type: array
+        items:
+          anyOf:
+          - '$ref': >-
+              ../../../../../../../metadataBuildingBlocks/_sources/skosProperties/skosConcept/schema.yaml
+          - '$ref': >-
+              ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/objectReference/schema.yaml
+        minItems: 1
+        description: Specifies the concept(s) that this variable expresses or aligns with.
+    required:
+    - '@type'

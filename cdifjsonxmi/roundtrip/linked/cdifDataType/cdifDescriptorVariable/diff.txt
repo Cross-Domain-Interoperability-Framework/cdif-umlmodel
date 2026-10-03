@@ -1,0 +1,11 @@
+cdifDescriptorVariable: 8 exact difference(s)
+$.$defs.DescriptorValueDomain.properties.cdif:takesValuesFrom.items.$ref: only in regenerated: "#/$defs/DescriptorValueDomainCdif_takesValuesFrom"
+$.$defs.DescriptorValueDomain.properties.cdif:takesValuesFrom.items.properties: only in original: {"cdif:value": {"type": "string", "description": "The code value as it appears in the descriptor column."}, "cdif:isDefinedBy": {"anyOf": [{"$ref": "../../cdifDataType/cdifRepresentedVariable/schema.y
+$.$defs.DescriptorValueDomain.properties.cdif:takesValuesFrom.items.required: only in original: ["cdif:value", "cdif:isDefinedBy"]
+$.$defs.DescriptorValueDomain.properties.cdif:takesValuesFrom.items.type: only in original: "object"
+$.$defs.DescriptorValueDomainCdif_takesValuesFrom: only in regenerated: {"type": "object", "properties": {"cdif:value": {"type": "string", "description": "The code value as it appears in the descriptor column."}, "cdif:isDefinedBy": {"anyOf": [{"$ref": "../../../../../../
+$.$defs.StringOrStringList: only in regenerated: {"anyOf": [{"type": "string"}, {"type": "array", "items": {"type": "string"}, "minItems": 1}]}
+$.properties.cdif:name.$ref: only in regenerated: "#/$defs/StringOrStringList"
+$.properties.cdif:name.anyOf: only in original: [{"type": "string"}, {"type": "array", "items": {"type": "string"}, "minItems": 1}]
+
+cdifDescriptorVariable: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

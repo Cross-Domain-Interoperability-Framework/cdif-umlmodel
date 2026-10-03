@@ -1,30 +1,27 @@
-provActivity: 25 exact difference(s)
+provActivity: 16 exact difference(s)
+$.$defs.ActivityHowTo: only in regenerated: {"type": "object", "description": "A methodology or protocol described as a HowTo with optional steps", "properties": {"@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "sc
+$.$defs.ActivityHowToStep: only in regenerated: {"type": "object", "description": "A single step in a HowTo methodology", "properties": {"@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "schema:HowToStep"}, "minItems": 
 $.$defs.AgentInRole: only in original: {"$ref": "../../schemaorgProperties/agentInRole/schema.yaml"}
 $.$defs.DefinedTerm: only in original: {"$ref": "../../schemaorgProperties/definedTerm/schema.yaml"}
-$.$defs.HowTo.allOf: only in regenerated: [{"anyOf": [{"required": ["schema:name"]}, {"required": ["schema:url"]}]}]
-$.$defs.HowTo.anyOf: only in original: [{"required": ["schema:name"]}, {"required": ["schema:url"]}]
-$.$defs.HowToOrStringOrIdReference: only in regenerated: {"anyOf": [{"$ref": "#/$defs/HowTo"}, {"type": "string"}, {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "reference to a
-$.$defs.IdReferenceOrString: only in regenerated: {"anyOf": [{"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "reference to a prior activity"}}}, {"type": "string"}]}
+$.$defs.HowTo: only in original: {"type": "object", "description": "A methodology or protocol described as a HowTo with optional steps", "properties": {"@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "sc
+$.$defs.HowToStep: only in original: {"type": "object", "description": "A single step in a HowTo methodology", "properties": {"@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "schema:HowToStep"}, "minItems": 
 $.$defs.Instrument: only in original: {"$ref": "../../schemaorgProperties/instrument/schema.yaml"}
 $.$defs.Organization: only in original: {"$ref": "../../schemaorgProperties/organization/schema.yaml"}
 $.$defs.Person: only in original: {"$ref": "../../schemaorgProperties/person/schema.yaml"}
-$.$defs.PersonOrOrganizationOrAgentInRoleOrStringOrIdReference: only in regenerated: {"anyOf": [{"$ref": "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/person/schema.yaml"}, {"$ref": "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/o
+$.$defs.PersonOrOrganizationOrAgentInRole: only in regenerated: {"anyOf": [{"$ref": "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/person/schema.yaml"}, {"$ref": "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/o
 $.$defs.Reference: only in original: {"$ref": "../../schemaorgProperties/labeledLink/schema.yaml"}
 $.$defs.SpatialExtent: only in original: {"$ref": "../../schemaorgProperties/spatialExtent/schema.yaml"}
-$.$defs.SpatialExtentOrStringOrIdReference: only in regenerated: {"anyOf": [{"$ref": "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/spatialExtent/schema.yaml"}, {"type": "string"}, {"type": "object", "required": ["@id"], "additionalProper
-$.$defs.StringOrIdReference: only in regenerated: {"anyOf": [{"type": "string"}, {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "reference to an entity produced by this a
 $.allOf[0].$ref:
     original:    "../generatedBy/schema.yaml"
     regenerated: "../../../../../../../metadataBuildingBlocks/_sources/provProperties/generatedBy/schema.yaml"
-$.allOf[1].properties.prov:atLocation.$ref: only in regenerated: "#/$defs/SpatialExtentOrStringOrIdReference"
-$.allOf[1].properties.prov:atLocation.anyOf: only in original: [{"$ref": "#/$defs/SpatialExtent"}, {"type": "string"}, {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "reference to a p
-$.allOf[1].properties.prov:generated.items.$ref: only in regenerated: "#/$defs/StringOrIdReference"
-$.allOf[1].properties.prov:generated.items.anyOf: only in original: [{"type": "string"}, {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "reference to an entity produced by this activity"}}
-$.allOf[1].properties.prov:wasAssociatedWith.items.$ref: only in regenerated: "#/$defs/PersonOrOrganizationOrAgentInRoleOrStringOrIdReference"
-$.allOf[1].properties.prov:wasAssociatedWith.items.anyOf: only in original: [{"$ref": "#/$defs/Person"}, {"$ref": "#/$defs/Organization"}, {"$ref": "#/$defs/AgentInRole"}, {"type": "string"}, {"type": "object", "required": ["@id"], "additionalProperties": false, "properties":
-$.allOf[1].properties.prov:wasInformedBy.items.$ref: only in regenerated: "#/$defs/IdReferenceOrString"
-$.allOf[1].properties.prov:wasInformedBy.items.anyOf: only in original: [{"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "reference to a prior activity"}}}, {"type": "string"}]
-$.allOf[1].properties.schema:actionProcess.$ref: only in regenerated: "#/$defs/HowToOrStringOrIdReference"
-$.allOf[1].properties.schema:actionProcess.anyOf: only in original: [{"$ref": "#/$defs/HowTo"}, {"type": "string"}, {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "reference to a methodolo
+$.allOf[1].properties.prov:atLocation.anyOf[0].$ref:
+    original:    "#/$defs/SpatialExtent"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/spatialExtent/schema.yaml"
+$.allOf[1].properties.prov:wasAssociatedWith.items.anyOf:
+    original:    [{"$ref": "#/$defs/Person"}, {"$ref": "#/$defs/Organization"}, {"$ref": "#/$defs/AgentInRole"}, {"type": "string"}, {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "reference to an agent defined elsewhere"}}}]
+    regenerated: [{"$ref": "#/$defs/PersonOrOrganizationOrAgentInRole"}, {"type": "string"}, {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "reference to an agent defined elsewhere"}}}]
+$.allOf[1].properties.schema:actionProcess.anyOf[0].$ref:
+    original:    "#/$defs/HowTo"
+    regenerated: "#/$defs/ActivityHowTo"
 
 provActivity: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

@@ -19,13 +19,6 @@ properties:
     '$ref': >-
       ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml
   'schema:contributor':
-    '$ref': '#/$defs/IdReferenceOrPersonOrOrganization'
-required:
-- '@type'
-- 'schema:roleName'
-- 'schema:contributor'
-'$defs':
-  IdReferenceOrPersonOrOrganization:
     anyOf:
     - type: object
       required:
@@ -35,6 +28,14 @@ required:
         '@id':
           type: string
           description: IRI reference to a Person or Organization defined elsewhere
+    - '$ref': '#/$defs/PersonOrOrganization'
+required:
+- '@type'
+- 'schema:roleName'
+- 'schema:contributor'
+'$defs':
+  PersonOrOrganization:
+    anyOf:
     - '$ref': >-
         ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/person/schema.yaml
     - '$ref': >-

@@ -166,7 +166,7 @@ An identifier for a standard or specification that the distribution conforms to.
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.dataDownload.DataDownload.provider" xmi:uuid="064355c1-bc23-5b08-a54e-a2d5ef7358bd">
           <name>provider</name>
-          <type href="../../cdifSharedUnions.xmi#cdif.union.IdReferenceOrPersonOrOrganization"/>
+          <type href="../../cdifSharedUnions.xmi#cdif.union.PersonOrOrganization"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.dataDownload.DataDownload.provider.lower" xmi:uuid="e8cccada-44e3-5680-ba8c-b7a39ca74a58">
             <value>0</value>
           </lowerValue>
@@ -180,7 +180,8 @@ Definition
 ==========
 
 Party who maintains this particular distribution option for the dataset. Use this property if there are multiple distributions from different providers
-:alternativeOverrides: {"idReference": {"idRefDescription": "a identifier for an agent defined in this metadata, or externally; must be dereferenceable"}}</body>
+:idRefDescription: "a identifier for an agent defined in this metadata, or externally; must be dereferenceable"
+:orReference: ["idReference", "value"]</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.dataDownload.DataDownload.provider"/>
           </ownedComment>
         </ownedAttribute>

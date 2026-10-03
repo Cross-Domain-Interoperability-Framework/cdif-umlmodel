@@ -1,0 +1,111 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+description: >-
+  see https://github.com/Cross-Domain-Interoperability-Framework/Discovery/issues/13 for discussion
+  on how to make assertion about the sample registration and metadata distinct from statements
+  about the physical object
+type: object
+properties:
+  '@type':
+    type: array
+    items:
+      type: string
+    contains:
+      const: 'schema:Dataset'
+    minItems: 1
+  '@id':
+    type: string
+    description: identifier for the metadata record
+  'schema:additionalType':
+    type: array
+    items:
+      '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml
+    minItems: 1
+    contains:
+      type: object
+      additionalProperties: false
+      required:
+      - '@id'
+      properties:
+        '@id':
+          const: 'dcat:CatalogRecord'
+    description: >-
+      additional type assertions for the catalog record node. dcat:CatalogRecord is required.
+  'schema:about':
+    type: object
+    required:
+    - '@id'
+    additionalProperties: false
+    properties:
+      '@id':
+        type: string
+        description: >-
+          this must be the @id value of the node containing the resource description metadata
+  'dcterms:conformsTo':
+    type: array
+    items:
+      type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+          description: uri for specifications that this metadata record conforms to
+    minItems: 1
+    description: >-
+      uri for specifications that this metadata record conforms to. Minimimally should specify
+      uri for CDIF discovery profile.
+  'schema:maintainer':
+    '$ref': '#/$defs/PersonOrOrganization'
+    description: >-
+      Identification of the agent that maintains the metadata, with contact information. Should
+      include person name and affiliation, or position name and affiliation, or just organization
+      name. e-mail address is preferred contact information.
+  'schema:sdDatePublished':
+    type: string
+    format: date
+    description: date of most recent update to the metadata content
+  'schema:includedInDataCatalog':
+    '$ref': '#/$defs/DataCatalog'
+    description: identify the source for the origin the metadata record.
+required:
+- '@id'
+- '@type'
+- 'schema:additionalType'
+- 'schema:about'
+- 'dcterms:conformsTo'
+'$defs':
+  DataCatalog:
+    type: object
+    properties:
+      '@type':
+        default:
+        - 'schema:DataCatalog'
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'schema:DataCatalog'
+        minItems: 1
+      '@id':
+        type: string
+        description: identifier for the graph node.
+      'schema:name':
+        type: string
+      'schema:url':
+        type: string
+        format: uri
+        description: locator to access a landing page for the collection or catalog
+      'schema:identifier':
+        '$ref': >-
+          ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml
+        description: >-
+          identifier for the collection or catalog; use identifier_type to provide information
+          on identifier scheme and context for identifier
+  PersonOrOrganization:
+    anyOf:
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/person/schema.yaml
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/organization/schema.yaml

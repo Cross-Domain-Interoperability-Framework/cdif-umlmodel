@@ -1,0 +1,32 @@
+cdifCatalogRecord: 16 exact difference(s)
+$.$defs.DataCatalog: only in regenerated: {"type": "object", "properties": {"@type": {"default": ["schema:DataCatalog"], "type": "array", "items": {"type": "string"}, "contains": {"const": "schema:DataCatalog"}, "minItems": 1}, "@id": {"type"
+$.$defs.Identifier: only in original: {"$ref": "../../schemaorgProperties/identifier/schema.yaml"}
+$.$defs.Organization: only in original: {"$ref": "../../schemaorgProperties/organization/schema.yaml"}
+$.$defs.Person: only in original: {"$ref": "../../schemaorgProperties/person/schema.yaml"}
+$.$defs.PersonOrOrganization: only in regenerated: {"anyOf": [{"$ref": "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/person/schema.yaml"}, {"$ref": "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/o
+$.$defs.cdifConceptOrTermOrString: only in original: {"$ref": "../cdifConceptOrTermOrString/schema.yaml"}
+$.properties.schema:additionalType.items.$ref:
+    original:    "#/$defs/cdifConceptOrTermOrString"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml"
+$.properties.schema:includedInDataCatalog.$ref: only in regenerated: "#/$defs/DataCatalog"
+$.properties.schema:includedInDataCatalog.properties: only in original: {"@id": {"type": "string", "description": "identifier for the graph node."}, "@type": {"default": "schema:DataCatalog", "type": "array", "items": {"type": "string"}, "contains": {"const": "schema:Data
+$.properties.schema:includedInDataCatalog.type: only in original: "object"
+$.properties.schema:maintainer.$ref: only in regenerated: "#/$defs/PersonOrOrganization"
+$.properties.schema:maintainer.anyOf: only in original: [{"$ref": "#/$defs/Person"}, {"$ref": "#/$defs/Organization"}]
+$.required[0]:
+    original:    "schema:about"
+    regenerated: "@id"
+$.required[1]:
+    original:    "dcterms:conformsTo"
+    regenerated: "@type"
+$.required[3]:
+    original:    "@type"
+    regenerated: "schema:about"
+$.required[4]:
+    original:    "@id"
+    regenerated: "dcterms:conformsTo"
+
+cdifCatalogRecord: 1 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)
+$.properties.schema:includedInDataCatalog.properties.@type.default:
+    original:    "schema:DataCatalog"
+    regenerated: ["schema:DataCatalog"]

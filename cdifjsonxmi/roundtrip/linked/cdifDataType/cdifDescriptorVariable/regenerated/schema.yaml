@@ -1,0 +1,94 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: DDI-CDI Descriptor Variable
+description: >-
+  Variable that provides codes for variable identification in the context of a data structure.
+  Descriptor Variables hold values which reference the logical variables in the data set,
+  indicating which one the associated value in the corresponding Reference Variable is a measure/value
+  for. Descriptor Variables are presentational variables found only in Long Data Sets.
+type: object
+properties:
+  '@type':
+    type: array
+    items:
+      type: string
+    contains:
+      const: 'cdi:DescriptorVariable'
+    minItems: 1
+  '@id':
+    type: string
+    description: Identifier for this DescriptorVariable node
+  'cdif:hasValuesFrom':
+    '$ref': '#/$defs/DescriptorValueDomain'
+    description: >-
+      A cdi:DescriptorValueDomain enumerating the codes that can appear in the descriptor
+      column, each paired (via cdif:isDefinedBy) with the RepresentedVariable that the code
+      names.
+  'cdif:name':
+    '$ref': '#/$defs/StringOrStringList'
+    description: >-
+      Human understandable name (linguistic signifier, word, phrase, or mnemonic). May follow
+      ISO/IEC 11179-5 naming principles, and have context provided to specify usage.
+required:
+- '@type'
+- 'cdif:hasValuesFrom'
+- 'cdif:name'
+'$defs':
+  DescriptorValueDomain:
+    type: object
+    description: >-
+      Set of permissible values for a variable playing the role of a variable descriptor component.
+      Each entry pairs a code (cdif:value) with the RepresentedVariable that the code identifies
+      (cdif:isDefinedBy).
+    properties:
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'cdi:DescriptorValueDomain'
+        minItems: 1
+      '@id':
+        type: string
+        description: Identifier for this DescriptorValueDomain node
+      'cdif:takesValuesFrom':
+        type: array
+        items:
+          '$ref': '#/$defs/DescriptorValueDomainCdif_takesValuesFrom'
+        minItems: 1
+        description: >-
+          Ordered list of descriptor entries. Each entry has a cdif:value (the code as it
+          appears in the descriptor column) and a cdif:isDefinedBy pointer to the RepresentedVariable
+          that the code names.
+    required:
+    - '@type'
+    - 'cdif:takesValuesFrom'
+  DescriptorValueDomainCdif_takesValuesFrom:
+    type: object
+    properties:
+      'cdif:value':
+        type: string
+        description: The code value as it appears in the descriptor column.
+      'cdif:isDefinedBy':
+        anyOf:
+        - '$ref': >-
+            ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifRepresentedVariable/schema.yaml
+        - type: object
+          required:
+          - '@id'
+          additionalProperties: false
+          properties:
+            '@id':
+              type: string
+          description: >-
+            object reference via URI or URI fragment to a RepresentedVariable defined elsewhere
+            in the document
+    required:
+    - 'cdif:value'
+    - 'cdif:isDefinedBy'
+  StringOrStringList:
+    anyOf:
+    - type: string
+    - type: array
+      items:
+        type: string
+      minItems: 1

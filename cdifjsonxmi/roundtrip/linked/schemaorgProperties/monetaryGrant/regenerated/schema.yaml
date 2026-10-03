@@ -35,10 +35,7 @@ properties:
           type: string
           description: >-
             a identifier for an agent defined in this metadata, or externally; must be dereferenceable
-    - '$ref': >-
-        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/person/schema.yaml
-    - '$ref': >-
-        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/organization/schema.yaml
+    - '$ref': '#/$defs/PersonOrOrganization'
 allOf:
 - anyOf:
   - required:
@@ -48,16 +45,8 @@ allOf:
   - required:
     - 'schema:name'
 '$defs':
-  IdReferenceOrPersonOrOrganization:
+  PersonOrOrganization:
     anyOf:
-    - type: object
-      required:
-      - '@id'
-      additionalProperties: false
-      properties:
-        '@id':
-          type: string
-          description: IRI reference to a Person or Organization defined elsewhere
     - '$ref': >-
         ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/person/schema.yaml
     - '$ref': >-

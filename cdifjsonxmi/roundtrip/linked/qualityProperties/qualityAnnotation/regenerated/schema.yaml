@@ -15,7 +15,18 @@ properties:
       const: 'dqv:QualityAnnotation'
     minItems: 1
   'oa:hasBody':
-    '$ref': '#/$defs/StringOrDefinedTermOrIdReference'
+    anyOf:
+    - type: string
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+          description: a resolvable reference to the annotation body
     description: >-
       the content of the quality annotation -- a free-text statement, a categorical outcome
       as a Defined Term (e.g. a certification level or a pass/fail rating), or a reference
@@ -53,29 +64,3 @@ properties:
     description: optional short human-readable label for the annotation
 required:
 - 'oa:hasBody'
-'$defs':
-  StringOrDefinedTermOrIdReference:
-    anyOf:
-    - type: string
-    - '$ref': >-
-        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml
-    - type: object
-      required:
-      - '@id'
-      additionalProperties: false
-      properties:
-        '@id':
-          type: string
-          description: a resolvable reference to the annotation body
-  StringOrIdReferenceOrDefinedTerm:
-    anyOf:
-    - type: string
-    - type: object
-      required:
-      - '@id'
-      additionalProperties: false
-      properties:
-        '@id':
-          type: string
-    - '$ref': >-
-        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml

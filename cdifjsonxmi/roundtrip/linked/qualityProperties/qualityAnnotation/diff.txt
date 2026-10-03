@@ -1,9 +1,8 @@
-qualityAnnotation: 6 exact difference(s)
-$.$defs.DefinedTerm: only in original: {"$ref": "../../schemaorgProperties/definedTerm/schema.yaml"}
-$.$defs.StringOrDefinedTermOrIdReference: only in regenerated: {"anyOf": [{"type": "string"}, {"$ref": "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml"}, {"type": "object", "required": ["@id"], "additionalProperti
-$.$defs.StringOrIdReferenceOrDefinedTerm: only in regenerated: {"anyOf": [{"type": "string"}, {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string"}}}, {"$ref": "../../../../../../../metadataBuildingBlocks/
-$.properties.oa:hasBody.$ref: only in regenerated: "#/$defs/StringOrDefinedTermOrIdReference"
-$.properties.oa:hasBody.anyOf: only in original: [{"type": "string"}, {"$ref": "#/$defs/DefinedTerm"}, {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "a resolvable refer
+qualityAnnotation: 3 exact difference(s)
+$.$defs: only in original: {"DefinedTerm": {"$ref": "../../schemaorgProperties/definedTerm/schema.yaml"}}
+$.properties.oa:hasBody.anyOf[1].$ref:
+    original:    "#/$defs/DefinedTerm"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml"
 $.properties.oa:motivatedBy.anyOf[2].$ref:
     original:    "#/$defs/DefinedTerm"
     regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml"

@@ -21,6 +21,7 @@ Definition
 :idDescription: "URI identifier for this concept."
 :rdfType: ``skos:Concept``
 :contextSchema: {"description": "JSON-LD context declaring the skos namespace prefix. May be a single object or an array of strings and objects.", "anyOf": [{"type": "object", "properties": {"skos": {"const": "http://www.w3.org/2004/02/skos/core#"}}, "required": ["skos"]}, {"type": "array", "items": {"anyOf": [{"type": "string"}, {"type": "object"}]}, "contains": {"type": "object", "properties": {"skos": {"const": "http://www.w3.org/2004/02/skos/core#"}}, "required": ["skos"]}}]}
+:exportedDef:
 :rootAlias:
 :title: "SKOS Concept"
 :rootDescription: "JSON Schema for a SKOS Concept in JSON-LD form. A unit of thought within a concept scheme. Supports labels (prefLabel, altLabel, hiddenLabel), notations, hierarchical relations (broader/narrower), associative relations (related), cross-scheme mapping properties, scheme membership, and documentary notes. Based on the W3C SKOS Reference (https://www.w3.org/TR/skos-reference/)."</body>
@@ -255,6 +256,59 @@ Narrower (child) concepts in the hierarchy. Items are inline concept objects or 
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
+      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.skosProperties.skosConcept.ConceptDefinition" xmi:uuid="726a3ddf-b126-59af-b627-a73290e4b36c">
+        <name>ConceptDefinition</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.skosProperties.skosConcept.ConceptDefinition.comment" xmi:uuid="1fc5dd75-757c-518b-aaed-c1155412bc7e">
+          <body>**CDIF**
+
+Definition
+==========
+
+An RDF literal value with a language tag, serialized as a JSON-LD value object.
+:prefix: ``skos``</body>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.skosProperties.skosConcept.ConceptDefinition"/>
+        </ownedComment>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosConcept.ConceptDefinition.@value_" xmi:uuid="419e6f9f-2244-57a9-8096-8c815a27b59d">
+          <name>@value_</name>
+          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosConcept.ConceptDefinition.@value_.lower" xmi:uuid="9b4068a1-d533-5ab5-9908-ceb7526e0936">
+            <value>1</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.skosProperties.skosConcept.ConceptDefinition.@value_.upper" xmi:uuid="4f14bb77-2f94-5847-acf3-9e2da3bc9a5c">
+            <value>1</value>
+          </upperValue>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.skosProperties.skosConcept.ConceptDefinition.@value_.comment" xmi:uuid="2969483f-c03a-5977-884b-c9c114e92053">
+            <body>**CDIF**
+
+Definition
+==========
+
+The text content.
+:jsonName: "@value"</body>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.skosProperties.skosConcept.ConceptDefinition.@value_"/>
+          </ownedComment>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosConcept.ConceptDefinition.@language_" xmi:uuid="7a5a695a-d872-5ec0-9f95-66451d2a55db">
+          <name>@language_</name>
+          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosConcept.ConceptDefinition.@language_.lower" xmi:uuid="1e61d34a-cb4b-5423-9015-55b693926509">
+            <value>1</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.skosProperties.skosConcept.ConceptDefinition.@language_.upper" xmi:uuid="ecf91914-9c8b-5fee-bf95-2c3856cd8c2a">
+            <value>1</value>
+          </upperValue>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.skosProperties.skosConcept.ConceptDefinition.@language_.comment" xmi:uuid="b8ea4c08-7d01-517d-b57a-4b458df2a377">
+            <body>**CDIF**
+
+Definition
+==========
+
+BCP 47 language tag (e.g. en, fr, de).
+:jsonName: "@language"</body>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.skosProperties.skosConcept.ConceptDefinition.@language_"/>
+          </ownedComment>
+        </ownedAttribute>
+      </packagedElement>
       <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.skosProperties.skosConcept.ConceptRefOrConcept" xmi:uuid="cd7e47e6-e1b6-5952-8e59-036b68dc2da0">
         <name>ConceptRefOrConcept</name>
         <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.skosProperties.skosConcept.ConceptRefOrConcept.comment" xmi:uuid="89193faa-d551-5f02-809d-ec88b277a925">
@@ -431,7 +485,7 @@ Definition
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosConcept.StringOrLanguageTaggedValueOrChoiceList.choiceList" xmi:uuid="ceda5c5d-413f-55c6-8358-66775a225a4f">
           <name>choiceList</name>
-          <type xmi:idref="cdif.bbr.metadata.skosProperties.skosConcept.StringOrLanguageTaggedValueOrChoiceListChoiceList"/>
+          <type xmi:idref="cdif.bbr.metadata.skosProperties.skosConcept.ConceptDefinition"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosConcept.StringOrLanguageTaggedValueOrChoiceList.choiceList.lower" xmi:uuid="0282853c-862f-5bbd-b2c8-fbfd1afafd89">
             <value>0</value>
           </lowerValue>
@@ -447,59 +501,6 @@ Definition
 
 :alsoAcceptsString: ``first``</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.skosProperties.skosConcept.StringOrLanguageTaggedValueOrChoiceList.choiceList"/>
-          </ownedComment>
-        </ownedAttribute>
-      </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.skosProperties.skosConcept.StringOrLanguageTaggedValueOrChoiceListChoiceList" xmi:uuid="9a0056f7-9ff3-564e-a635-185bd19eedad">
-        <name>StringOrLanguageTaggedValueOrChoiceListChoiceList</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.skosProperties.skosConcept.StringOrLanguageTaggedValueOrChoiceListChoiceList.comment" xmi:uuid="a2df2218-e1cc-577c-a982-6e9087e8bafd">
-          <body>**CDIF**
-
-Definition
-==========
-
-An RDF literal value with a language tag, serialized as a JSON-LD value object.
-:prefix: ``skos``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.skosProperties.skosConcept.StringOrLanguageTaggedValueOrChoiceListChoiceList"/>
-        </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosConcept.StringOrLanguageTaggedValueOrChoiceListChoiceList.@value_" xmi:uuid="06e98200-6570-56e3-89ce-b5fb69559883">
-          <name>@value_</name>
-          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosConcept.StringOrLanguageTaggedValueOrChoiceListChoiceList.@value_.lower" xmi:uuid="5743abc5-94cd-53d7-8c66-a80069d77203">
-            <value>1</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.skosProperties.skosConcept.StringOrLanguageTaggedValueOrChoiceListChoiceList.@value_.upper" xmi:uuid="a051c382-4dcb-58d1-9ca1-0221a552f829">
-            <value>1</value>
-          </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.skosProperties.skosConcept.StringOrLanguageTaggedValueOrChoiceListChoiceList.@value_.comment" xmi:uuid="826a097c-9b28-5175-8f1c-778f670db49b">
-            <body>**CDIF**
-
-Definition
-==========
-
-The text content.
-:jsonName: "@value"</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.skosProperties.skosConcept.StringOrLanguageTaggedValueOrChoiceListChoiceList.@value_"/>
-          </ownedComment>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosConcept.StringOrLanguageTaggedValueOrChoiceListChoiceList.@language_" xmi:uuid="6ee37c53-3ca5-530c-9d01-57a51db49d5e">
-          <name>@language_</name>
-          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosConcept.StringOrLanguageTaggedValueOrChoiceListChoiceList.@language_.lower" xmi:uuid="cc4eaa81-fdba-55b7-b3ac-9e65aa27d189">
-            <value>1</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.skosProperties.skosConcept.StringOrLanguageTaggedValueOrChoiceListChoiceList.@language_.upper" xmi:uuid="fe1057ff-924e-59ea-9732-35968f0f6a59">
-            <value>1</value>
-          </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.skosProperties.skosConcept.StringOrLanguageTaggedValueOrChoiceListChoiceList.@language_.comment" xmi:uuid="1a72a422-c805-5e06-9739-9b11dce93c21">
-            <body>**CDIF**
-
-Definition
-==========
-
-BCP 47 language tag (e.g. en, fr, de).
-:jsonName: "@language"</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.skosProperties.skosConcept.StringOrLanguageTaggedValueOrChoiceListChoiceList.@language_"/>
           </ownedComment>
         </ownedAttribute>
       </packagedElement>

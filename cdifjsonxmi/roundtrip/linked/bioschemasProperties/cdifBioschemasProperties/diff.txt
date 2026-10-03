@@ -1,48 +1,47 @@
-cdifBioschemasProperties: 39 exact difference(s)
+cdifBioschemasProperties: 30 exact difference(s)
 $.$defs.BioschemasPropertiesPropertyValue: only in regenerated: {"type": "object", "description": "A schema:PropertyValue recording an actual parameter setting used during a lab process execution. Contains the measured or configured value, units, and optionally a 
+$.$defs.BioschemasPropertiesReagent: only in regenerated: {"type": "object", "properties": {"@id": {"type": "string"}, "schema:name": {"type": "string"}, "schema:description": {"type": "string"}}}
 $.$defs.BioschemasPropertiesThing: only in regenerated: {"type": "object", "description": "Laboratory equipment or instrument described as a schema:DefinedTerm. Physical instruments that don't have software versions \u2014 pyrolysis ovens, chromatographs, 
+$.$defs.BioschemasPropertiesThingIdentifierObject: only in regenerated: {"type": "object"}
 $.$defs.ComputationalTool: only in original: {"type": "object", "description": "A software application used as part of a lab protocol.", "properties": {"@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "schema:Softwar
-$.$defs.ComputationalToolOrIdReference: only in regenerated: {"anyOf": [{"$ref": "#/$defs/SoftwareApplication"}, {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string"}}}]}
 $.$defs.ComputationalWorkflow: only in original: {"type": "object", "description": "A Bioschemas ComputationalWorkflow representing the prospective provenance of a computational or hybrid lab-computational workflow. Combined with LabProtocol in ARC 
 $.$defs.FormalParameter: only in original: {"type": "object", "description": "A Bioschemas FormalParameter describing the shape and type of inputs and outputs of a workflow protocol. Values are realized in process executions through bios:param
-$.$defs.FormalParameterOrIdReference: only in regenerated: {"anyOf": [{"$ref": "#/$defs/FormalParameterOrIdReferenceFormalParameter"}, {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string"}}}]}
-$.$defs.FormalParameterOrIdReferenceFormalParameter: only in regenerated: {"type": "object", "description": "A Bioschemas FormalParameter describing the shape and type of inputs and outputs of a workflow protocol. Values are realized in process executions through bios:param
 $.$defs.LabEquipment: only in original: {"type": "object", "description": "Laboratory equipment or instrument described as a schema:DefinedTerm. Physical instruments that don't have software versions \u2014 pyrolysis ovens, chromatographs, 
-$.$defs.LabEquipmentOrIdReference: only in regenerated: {"anyOf": [{"$ref": "#/$defs/BioschemasPropertiesThing"}, {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string"}}}]}
 $.$defs.LabProcess: only in original: {"type": "object", "description": "A Bioschemas LabProcess \u2014 a laboratory process execution. Used as an additionalType on a cdifProvActivity activity ([\"schema:Action\", \"prov:Activity\"]) to i
-$.$defs.LabProtocol.properties.bios:computationalTool.items.$ref: only in regenerated: "#/$defs/ComputationalToolOrIdReference"
-$.$defs.LabProtocol.properties.bios:computationalTool.items.anyOf: only in original: [{"$ref": "#/$defs/ComputationalTool"}, {"type": "object", "additionalProperties": false, "properties": {"@id": {"type": "string"}}, "required": ["@id"]}]
-$.$defs.LabProtocol.properties.bios:labEquipment.items.$ref: only in regenerated: "#/$defs/LabEquipmentOrIdReference"
-$.$defs.LabProtocol.properties.bios:labEquipment.items.anyOf: only in original: [{"$ref": "#/$defs/LabEquipment"}, {"type": "object", "additionalProperties": false, "properties": {"@id": {"type": "string"}}, "required": ["@id"]}]
-$.$defs.LabProtocol.properties.bios:reagent.items.$ref: only in regenerated: "#/$defs/StringOrOption22"
+$.$defs.LabProtocol.properties.bios:computationalTool.items.anyOf[0].$ref:
+    original:    "#/$defs/ComputationalTool"
+    regenerated: "#/$defs/SoftwareApplication"
+$.$defs.LabProtocol.properties.bios:labEquipment.items.anyOf[0].$ref:
+    original:    "#/$defs/LabEquipment"
+    regenerated: "#/$defs/BioschemasPropertiesThing"
+$.$defs.LabProtocol.properties.bios:reagent.items.$ref: only in regenerated: "#/$defs/StringOrReagent"
 $.$defs.LabProtocol.properties.bios:reagent.items.anyOf: only in original: [{"type": "string"}, {"type": "object", "properties": {"@id": {"type": "string"}, "schema:name": {"type": "string"}}}]
-$.$defs.LabProtocol.properties.schema:object.items.$ref: only in regenerated: "#/$defs/FormalParameterOrIdReference"
-$.$defs.LabProtocol.properties.schema:object.items.anyOf: only in original: [{"$ref": "#/$defs/FormalParameter"}, {"type": "object", "additionalProperties": false, "properties": {"@id": {"type": "string"}}, "required": ["@id"]}]
-$.$defs.LabProtocol.properties.schema:result.items.$ref: only in regenerated: "#/$defs/FormalParameterOrIdReference"
-$.$defs.LabProtocol.properties.schema:result.items.anyOf: only in original: [{"$ref": "#/$defs/FormalParameter"}, {"type": "object", "additionalProperties": false, "properties": {"@id": {"type": "string"}}, "required": ["@id"]}]
-$.$defs.LabProtocolOrIdReference: only in regenerated: {"anyOf": [{"$ref": "#/$defs/LabProtocol"}, {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "reference to a LabProtocol d
+$.$defs.LabProtocol.properties.schema:object.items.anyOf[0].$ref:
+    original:    "#/$defs/FormalParameter"
+    regenerated: "#/$defs/LabProtocolSchema_object"
+$.$defs.LabProtocol.properties.schema:result.items.anyOf[0].$ref:
+    original:    "#/$defs/FormalParameter"
+    regenerated: "#/$defs/LabProtocolSchema_result"
+$.$defs.LabProtocolReagent: only in regenerated: {"type": "object", "properties": {"@id": {"type": "string"}, "schema:name": {"type": "string"}}}
+$.$defs.LabProtocolSchema_object: only in regenerated: {"type": "object", "description": "A Bioschemas FormalParameter describing the shape and type of inputs and outputs of a workflow protocol. Values are realized in process executions through bios:param
+$.$defs.LabProtocolSchema_result: only in regenerated: {"type": "object", "description": "A Bioschemas FormalParameter describing the shape and type of inputs and outputs of a workflow protocol. Values are realized in process executions through bios:param
 $.$defs.ParameterValue: only in original: {"type": "object", "description": "A schema:PropertyValue recording an actual parameter setting used during a lab process execution. Contains the measured or configured value, units, and optionally a 
 $.$defs.Sample: only in original: {"type": "object", "description": "A Bioschemas Sample representing a physical or material entity used or produced by lab processes. In cdifProvActivity output, typed as schema:Thing with schema:addit
 $.$defs.SoftwareApplication: only in regenerated: {"type": "object", "description": "A software application used as part of a lab protocol.", "properties": {"@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "schema:Softwar
 $.$defs.StringOrNumberOrBoolean: only in regenerated: {"anyOf": [{"type": "string"}, {"type": "number"}, {"type": "boolean"}]}
-$.$defs.StringOrOption2: only in regenerated: {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/StringOrOption2Option2"}]}
-$.$defs.StringOrOption22: only in regenerated: {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/StringOrOption2Option22"}]}
-$.$defs.StringOrOption23: only in regenerated: {"anyOf": [{"type": "string", "description": "name or URI of the reagent"}, {"$ref": "#/$defs/StringOrOption2Option23"}]}
-$.$defs.StringOrOption2Option2: only in regenerated: {"type": "object"}
-$.$defs.StringOrOption2Option22: only in regenerated: {"type": "object", "properties": {"@id": {"type": "string"}, "schema:name": {"type": "string"}}}
-$.$defs.StringOrOption2Option23: only in regenerated: {"type": "object", "properties": {"@id": {"type": "string"}, "schema:name": {"type": "string"}, "schema:description": {"type": "string"}}}
+$.$defs.StringOrObject: only in regenerated: {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/BioschemasPropertiesThingIdentifierObject"}]}
+$.$defs.StringOrReagent: only in regenerated: {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/LabProtocolReagent"}]}
+$.$defs.StringOrReagent2: only in regenerated: {"anyOf": [{"type": "string", "description": "name or URI of the reagent"}, {"$ref": "#/$defs/BioschemasPropertiesReagent"}]}
 $.properties.bios:computationalTool.items.anyOf[0].$ref:
     original:    "#/$defs/ComputationalTool"
     regenerated: "#/$defs/SoftwareApplication"
-$.properties.bios:executesLabProtocol.$ref: only in regenerated: "#/$defs/LabProtocolOrIdReference"
-$.properties.bios:executesLabProtocol.anyOf: only in original: [{"$ref": "#/$defs/LabProtocol"}, {"type": "object", "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "reference to a LabProtocol defined elsewhere"}}, "required"
 $.properties.bios:labEquipment.items.anyOf[0].$ref:
     original:    "#/$defs/LabEquipment"
     regenerated: "#/$defs/BioschemasPropertiesThing"
 $.properties.bios:parameterValue.items.$ref:
     original:    "#/$defs/ParameterValue"
     regenerated: "#/$defs/BioschemasPropertiesPropertyValue"
-$.properties.bios:reagent.items.$ref: only in regenerated: "#/$defs/StringOrOption23"
+$.properties.bios:reagent.items.$ref: only in regenerated: "#/$defs/StringOrReagent2"
 $.properties.bios:reagent.items.anyOf: only in original: [{"type": "string", "description": "name or URI of the reagent"}, {"type": "object", "properties": {"@id": {"type": "string"}, "schema:name": {"type": "string"}, "schema:description": {"type": "string
 
 cdifBioschemasProperties: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

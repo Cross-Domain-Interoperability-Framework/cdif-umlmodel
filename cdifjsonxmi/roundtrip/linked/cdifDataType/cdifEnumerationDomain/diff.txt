@@ -1,0 +1,12 @@
+cdifEnumerationDomain: 5 exact difference(s)
+$.allOf: only in regenerated: [{"if": {"not": {"required": ["cdif:references"]}}, "then": {"required": ["schema:description"]}}]
+$.if: only in original: {"not": {"required": ["cdif:references"]}}
+$.properties.cdif:identifier.$ref:
+    original:    "../../schemaorgProperties/identifier/schema.yaml"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml"
+$.properties.cdif:references.anyOf[0].$ref:
+    original:    "../../profiles/cdifProfile/cdifCodelist/schema.yaml"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifCodelist/schema.yaml"
+$.then: only in original: {"required": ["schema:description"]}
+
+cdifEnumerationDomain: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

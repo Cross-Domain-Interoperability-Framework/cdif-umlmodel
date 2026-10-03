@@ -229,28 +229,6 @@
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
-								<UML:Attribute name="hasPart" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
-									<UML:Attribute.initialValue>
-										<UML:Expression/>
-									</UML:Attribute.initialValue>
-									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="EAID_205E270C_3F22_5e29_A8C7_71C23039D8DF"/>
-									</UML:StructuralFeature.type>
-									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Sub-components of this instrument system. Each item is either an inline instrument description or an @id reference."/>
-										<UML:TaggedValue tag="type" value="InstrumentComponentOrIdReference"/>
-										<UML:TaggedValue tag="derived" value="0"/>
-										<UML:TaggedValue tag="containment" value="Not Specified"/>
-										<UML:TaggedValue tag="ordered" value="0"/>
-										<UML:TaggedValue tag="collection" value="true"/>
-										<UML:TaggedValue tag="position" value="9"/>
-										<UML:TaggedValue tag="lowerBound" value="0"/>
-										<UML:TaggedValue tag="upperBound" value="*"/>
-										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{EFD1989C-4E5F-5a4f-9FC2-F8692001108E}"/>
-										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
-									</UML:ModelElement.taggedValue>
-								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
 						<UML:Class name="AdditionalPropertyOrAdditionalPropertySpecification" xmi.id="EAID_DC0D8806_0E0C_5214_8164_6555C6190CD2" visibility="public" namespace="EAPK_B0C1AF86_3B80_54fd_B628_68E4AC10DA65" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
@@ -263,41 +241,6 @@
 								<UML:TaggedValue tag="package" value="EAPK_B0C1AF86_3B80_54fd_B628_68E4AC10DA65"/>
 								<UML:TaggedValue tag="ea_guid" value="{DC0D8806-0E0C-5214-8164-6555C6190CD2}"/>
 							</UML:ModelElement.taggedValue>
-						</UML:Class>
-						<UML:Class name="InstrumentComponentOrIdReference" xmi.id="EAID_205E270C_3F22_5e29_A8C7_71C23039D8DF" visibility="public" namespace="EAPK_B0C1AF86_3B80_54fd_B628_68E4AC10DA65" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
-							<UML:ModelElement.taggedValue>
-								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:union: ``anyOf``"/>
-								<UML:TaggedValue tag="isSpecification" value="false"/>
-								<UML:TaggedValue tag="ea_stype" value="DataType"/>
-								<UML:TaggedValue tag="ea_ntype" value="0"/>
-								<UML:TaggedValue tag="version" value="1.0"/>
-								<UML:TaggedValue tag="package" value="EAPK_B0C1AF86_3B80_54fd_B628_68E4AC10DA65"/>
-								<UML:TaggedValue tag="ea_guid" value="{205E270C-3F22-5e29-A8C7-71C23039D8DF}"/>
-							</UML:ModelElement.taggedValue>
-							<UML:Classifier.feature>
-								<UML:Attribute name="idReference" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
-									<UML:Attribute.initialValue>
-										<UML:Expression/>
-									</UML:Attribute.initialValue>
-									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="EAID_8706B14E_5B51_5aeb_AEBF_F3E363919845"/>
-									</UML:StructuralFeature.type>
-									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:idRefDescription: &quot;Reference to a sub-component defined elsewhere.&quot;"/>
-										<UML:TaggedValue tag="type" value="IdReference"/>
-										<UML:TaggedValue tag="derived" value="0"/>
-										<UML:TaggedValue tag="containment" value="Not Specified"/>
-										<UML:TaggedValue tag="ordered" value="0"/>
-										<UML:TaggedValue tag="collection" value="false"/>
-										<UML:TaggedValue tag="position" value="0"/>
-										<UML:TaggedValue tag="lowerBound" value="0"/>
-										<UML:TaggedValue tag="upperBound" value="1"/>
-										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{5DE486AD-FC6D-57db-9499-A5176EB3346E}"/>
-										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
-									</UML:ModelElement.taggedValue>
-								</UML:Attribute>
-							</UML:Classifier.feature>
 						</UML:Class>
 						<UML:Class name="InstrumentProductModel" xmi.id="EAID_6B98DF91_0303_508e_A2B2_5A2373C96AE4" visibility="public" namespace="EAPK_B0C1AF86_3B80_54fd_B628_68E4AC10DA65" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 							<UML:ModelElement.taggedValue>
@@ -822,6 +765,36 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
+						<UML:Association xmi.id="EAID_E3D8DC54_206D_5717_81B7_F93F5E9DD64B" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Sub-components of this instrument system. Each item is either an inline instrument description or an @id reference.&#xA;:inlineOrByReference: ``inline``&#xA;:idRefDescription: &quot;Reference to a sub-component defined elsewhere.&quot;&#xA;:orReference: [&quot;value&quot;, &quot;idReference&quot;]"/>
+								<UML:TaggedValue tag="ea_type" value="Association"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="Instrument"/>
+								<UML:TaggedValue tag="ea_targetName" value="InstrumentThing"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{E3D8DC54-206D-5717-81B7-F93F5E9DD64B}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Association.connection>
+								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_A8557578_9B14_5a34_A506_E5A9EB364D64">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="source"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+								<UML:AssociationEnd visibility="public" name="hasPart" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_8DE160F6_40E4_5fea_81D4_DCFFB0720CBE">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Sub-components of this instrument system. Each item is either an inline instrument description or an @id reference.&#xA;:inlineOrByReference: ``inline``&#xA;:idRefDescription: &quot;Reference to a sub-component defined elsewhere.&quot;&#xA;:orReference: [&quot;value&quot;, &quot;idReference&quot;]"/>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="deststyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="target"/>
+										<UML:TaggedValue tag="ea_guid" value="{EFD1989C-4E5F-5a4f-9FC2-F8692001108E}"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+							</UML:Association.connection>
+						</UML:Association>
 						<UML:Association xmi.id="EAID_FD1D05A4_BFC3_5595_8E46_C184E07A7C53" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Links to related resources (manuals, datasheets, calibration records, related instruments), each naming how the target relates to the instrument. Uses the same linkRole block as cdifCore; before 2026-09-23 this property was a labeled link here and a LinkRole there.&#xA;:inlineOrByReference: ``inline``"/>
@@ -938,36 +911,6 @@
 										<UML:TaggedValue tag="deststyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
 										<UML:TaggedValue tag="ea_end" value="target"/>
 										<UML:TaggedValue tag="ea_guid" value="{045DF4C4-972B-57f0-9B48-B31C2CACA475}"/>
-									</UML:ModelElement.taggedValue>
-								</UML:AssociationEnd>
-							</UML:Association.connection>
-						</UML:Association>
-						<UML:Association xmi.id="EAID_A1F30A3A_E1A1_5ef7_A9DC_A32B96F6E177" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
-							<UML:ModelElement.taggedValue>
-								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
-								<UML:TaggedValue tag="ea_type" value="Association"/>
-								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
-								<UML:TaggedValue tag="ea_sourceName" value="InstrumentComponentOrIdReference"/>
-								<UML:TaggedValue tag="ea_targetName" value="InstrumentThing"/>
-								<UML:TaggedValue tag="ea_sourceType" value="DataType"/>
-								<UML:TaggedValue tag="ea_targetType" value="Class"/>
-								<UML:TaggedValue tag="ea_guid" value="{A1F30A3A-E1A1-5ef7-A9DC-A32B96F6E177}"/>
-							</UML:ModelElement.taggedValue>
-							<UML:Association.connection>
-								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_205E270C_3F22_5e29_A8C7_71C23039D8DF">
-									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="containment" value="Unspecified"/>
-										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
-										<UML:TaggedValue tag="ea_end" value="source"/>
-									</UML:ModelElement.taggedValue>
-								</UML:AssociationEnd>
-								<UML:AssociationEnd visibility="public" name="instrumentComponent" multiplicity="0..1" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_8DE160F6_40E4_5fea_81D4_DCFFB0720CBE">
-									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
-										<UML:TaggedValue tag="containment" value="Unspecified"/>
-										<UML:TaggedValue tag="deststyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
-										<UML:TaggedValue tag="ea_end" value="target"/>
-										<UML:TaggedValue tag="ea_guid" value="{596A2F02-46A1-5c60-82D1-57BBEBD62F62}"/>
 									</UML:ModelElement.taggedValue>
 								</UML:AssociationEnd>
 							</UML:Association.connection>
@@ -1092,7 +1035,7 @@
 		<EAStub xmi.id="EAID_19A84FDD_C3B2_5615_AA61_7F8BC65D9000" name="XsdAnyUri" UMLType="DataType"/>
 		<EAStub xmi.id="EAID_2DB61F44_7333_577b_A6B1_4637CAA17142" name="Organization" UMLType="Class"/>
 		<EAStub xmi.id="EAID_43A8D84B_186E_5db4_9B20_AFCF529DD220" name="Thing" UMLType="Class"/>
-		<EAStub xmi.id="EAID_4C904941_63B0_5e2d_A6AF_329608DC1F86" name="ConceptOrTermOrString" UMLType="Class"/>
+		<EAStub xmi.id="EAID_4C904941_63B0_5e2d_A6AF_329608DC1F86" name="ConceptOrTermOrString" UMLType="DataType"/>
 		<EAStub xmi.id="EAID_504C91FE_8377_5649_9719_308C129EBFB1" name="IriReference" UMLType="DataType"/>
 		<EAStub xmi.id="EAID_6B31E454_1B08_59b9_A8BA_FAE8AFE2B0AF" name="PropertyValueSpecification" UMLType="Class"/>
 		<EAStub xmi.id="EAID_7234FA84_5062_59cd_A552_DFF5173CC4BC" name="LinkRole" UMLType="Class"/>

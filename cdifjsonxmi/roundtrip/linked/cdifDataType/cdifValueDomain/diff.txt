@@ -1,0 +1,20 @@
+cdifValueDomain: 13 exact difference(s)
+$.$defs.SentinelValueDomain.allOf: only in regenerated: [{"anyOf": [{"required": ["cdif:takesValuesFrom"]}, {"required": ["cdif:recommendedDataType"]}]}]
+$.$defs.SentinelValueDomain.anyOf: only in original: [{"required": ["cdif:takesValuesFrom"]}, {"required": ["cdif:recommendedDataType"]}]
+$.$defs.SentinelValueDomain.properties.cdif:recommendedDataType.items.$ref: only in original: "#/$defs/xsdDataType"
+$.$defs.SentinelValueDomain.properties.cdif:recommendedDataType.items.enum: only in regenerated: ["xsd:anyURI", "xsd:base64Binary", "xsd:boolean", "xsd:byte", "xsd:date", "xsd:dateTime", "xsd:decimal", "xsd:double", "xsd:float", "xsd:gDay", "xsd:gMonth", "xsd:gMonthDay", "xsd:gYear", "xsd:gYearMo
+$.$defs.SentinelValueDomain.properties.cdif:recommendedDataType.items.type: only in regenerated: "string"
+$.$defs.SentinelValueDomain.properties.cdif:takesValuesFrom.anyOf[0].$ref:
+    original:    "../../cdifDataType/cdifEnumerationDomain/schema.yaml"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifEnumerationDomain/schema.yaml"
+$.$defs.SubstantiveValueDomain.allOf: only in regenerated: [{"anyOf": [{"required": ["cdif:takesValuesFrom"]}, {"required": ["cdif:recommendedDataType"]}]}]
+$.$defs.SubstantiveValueDomain.anyOf: only in original: [{"required": ["cdif:takesValuesFrom"]}, {"required": ["cdif:recommendedDataType"]}]
+$.$defs.SubstantiveValueDomain.properties.cdif:recommendedDataType.items.$ref: only in original: "#/$defs/xsdDataType"
+$.$defs.SubstantiveValueDomain.properties.cdif:recommendedDataType.items.enum: only in regenerated: ["xsd:anyURI", "xsd:base64Binary", "xsd:boolean", "xsd:byte", "xsd:date", "xsd:dateTime", "xsd:decimal", "xsd:double", "xsd:float", "xsd:gDay", "xsd:gMonth", "xsd:gMonthDay", "xsd:gYear", "xsd:gYearMo
+$.$defs.SubstantiveValueDomain.properties.cdif:recommendedDataType.items.type: only in regenerated: "string"
+$.$defs.SubstantiveValueDomain.properties.cdif:takesValuesFrom.anyOf[0].$ref:
+    original:    "../../cdifDataType/cdifEnumerationDomain/schema.yaml"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifEnumerationDomain/schema.yaml"
+$.$defs.xsdDataType: only in original: {"type": "string", "enum": ["xsd:anyURI", "xsd:base64Binary", "xsd:boolean", "xsd:byte", "xsd:date", "xsd:dateTime", "xsd:decimal", "xsd:double", "xsd:float", "xsd:gDay", "xsd:gMonth", "xsd:gMonthDay"
+
+cdifValueDomain: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

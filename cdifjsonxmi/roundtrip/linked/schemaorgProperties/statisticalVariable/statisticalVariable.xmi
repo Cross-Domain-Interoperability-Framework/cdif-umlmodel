@@ -72,13 +72,14 @@ human intelligible name for variable that conveys semantics
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.StatisticalVariable.measurementTechnique" xmi:uuid="4404fa63-eb75-577c-9c24-5701f8b0a841">
           <name>measurementTechnique</name>
-          <type href="../../cdifSharedUnions.xmi#cdif.union.StringOrIdReferenceOrDefinedTerm"/>
+          <type href="../definedTerm/definedTerm.xmi#cdif.bbr.metadata.schemaorgProperties.definedTerm.DefinedTerm"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.StatisticalVariable.measurementTechnique.lower" xmi:uuid="43b68bfe-c4ff-5c36-8eba-6d5a28ddd99c">
             <value>0</value>
           </lowerValue>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.StatisticalVariable.measurementTechnique.upper" xmi:uuid="3b8801c4-3e79-5861-8867-31835e7a098f">
             <value>1</value>
           </upperValue>
+          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.assoc.StatisticalVariable_measurementTechnique_DefinedTerm"/>
           <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.StatisticalVariable.measurementTechnique.comment" xmi:uuid="f33cc449-230e-5ff9-b396-055dbabfb494">
             <body>**CDIF**
 
@@ -86,19 +87,33 @@ Definition
 ==========
 
 Text description or URI identifying the measurement method.
-:alternativeOverrides: {"idReference": {"idRefDescription": "reference to a skos concept"}}</body>
+:inlineOrByReference: ``inline``
+:idRefDescription: "reference to a skos concept"
+:orReference: ["string", "idReference", "value"]</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.StatisticalVariable.measurementTechnique"/>
           </ownedComment>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.StatisticalVariable.statType" xmi:uuid="d23ce2d7-3b19-51a3-9da0-89f584d32454">
           <name>statType</name>
-          <type href="../../cdifSharedUnions.xmi#cdif.union.StringOrIdReferenceOrDefinedTerm"/>
+          <type href="../definedTerm/definedTerm.xmi#cdif.bbr.metadata.schemaorgProperties.definedTerm.DefinedTerm"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.StatisticalVariable.statType.lower" xmi:uuid="88855572-5950-5a93-9126-15ffb76cda57">
             <value>0</value>
           </lowerValue>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.StatisticalVariable.statType.upper" xmi:uuid="77cea660-d1a6-527b-a3dd-9a0b2c794c3b">
             <value>1</value>
           </upperValue>
+          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.assoc.StatisticalVariable_statType_DefinedTerm"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.StatisticalVariable.statType.comment" xmi:uuid="2d8df057-730d-538a-a739-0ae711e897b3">
+            <body>**CDIF**
+
+Definition
+==========
+
+
+:inlineOrByReference: ``inline``
+:orReference: ["string", "idReference", "value"]</body>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.StatisticalVariable.statType"/>
+          </ownedComment>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.StatisticalVariable.measuredProperty" xmi:uuid="5ac032c1-95bc-523d-8441-23cadf79e671">
           <name>measuredProperty</name>
@@ -138,14 +153,56 @@ Definition
         </ownedComment>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.Property.name" xmi:uuid="ecc38aec-482d-5d86-8c64-acb6d4df9e99">
           <name>name</name>
-          <type href="../../cdifSharedUnions.xmi#cdif.union.StringOrIdReferenceOrDefinedTerm"/>
+          <type href="../definedTerm/definedTerm.xmi#cdif.bbr.metadata.schemaorgProperties.definedTerm.DefinedTerm"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.Property.name.lower" xmi:uuid="5e4cc572-5817-5b54-b2df-22e7ab8d0354">
             <value>0</value>
           </lowerValue>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.Property.name.upper" xmi:uuid="5a3872f1-3971-5f86-b808-f6674c8c29c0">
             <value>1</value>
           </upperValue>
+          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.assoc.Property_name_DefinedTerm"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.Property.name.comment" xmi:uuid="e649a3d6-9e0c-5eb3-8183-e8f0fd0b8db5">
+            <body>**CDIF**
+
+Definition
+==========
+
+
+:inlineOrByReference: ``inline``
+:orReference: ["string", "idReference", "value"]</body>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.Property.name"/>
+          </ownedComment>
         </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.assoc.StatisticalVariable_measurementTechnique_DefinedTerm" xmi:uuid="ee295e2b-9683-5eb2-ab1e-e325719c3d66">
+        <name>StatisticalVariable_measurementTechnique_DefinedTerm</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.assoc.StatisticalVariable_measurementTechnique_DefinedTerm.ownedEnd" xmi:uuid="de3b61a5-ecf5-52e4-ba91-3d238f6a41a8">
+          <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.StatisticalVariable"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.assoc.StatisticalVariable_measurementTechnique_DefinedTerm.ownedEnd.lower" xmi:uuid="1a8b3048-d97b-5fd2-8e52-babfb3e3fe2f">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.assoc.StatisticalVariable_measurementTechnique_DefinedTerm.ownedEnd.upper" xmi:uuid="65edf8e6-5af9-5c50-a153-8ddb924ba984">
+            <value>*</value>
+          </upperValue>
+          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.assoc.StatisticalVariable_measurementTechnique_DefinedTerm"/>
+        </ownedEnd>
+        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.assoc.StatisticalVariable_measurementTechnique_DefinedTerm.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.StatisticalVariable.measurementTechnique"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.assoc.StatisticalVariable_statType_DefinedTerm" xmi:uuid="7407124b-972d-53f4-bfa7-67bfc55a87d5">
+        <name>StatisticalVariable_statType_DefinedTerm</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.assoc.StatisticalVariable_statType_DefinedTerm.ownedEnd" xmi:uuid="89955994-7675-5a92-a264-3dbecee08c7c">
+          <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.StatisticalVariable"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.assoc.StatisticalVariable_statType_DefinedTerm.ownedEnd.lower" xmi:uuid="1d5f52fd-3fd5-5402-9ab3-19f0a456c932">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.assoc.StatisticalVariable_statType_DefinedTerm.ownedEnd.upper" xmi:uuid="c8e28bb0-7c90-5df3-ab38-fe50ebcf560b">
+            <value>*</value>
+          </upperValue>
+          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.assoc.StatisticalVariable_statType_DefinedTerm"/>
+        </ownedEnd>
+        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.assoc.StatisticalVariable_statType_DefinedTerm.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.StatisticalVariable.statType"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.assoc.StatisticalVariable_measuredProperty_Property" xmi:uuid="07c1bea6-67d7-530a-8106-c6d1c809458a">
         <name>StatisticalVariable_measuredProperty_Property</name>
@@ -161,6 +218,21 @@ Definition
         </ownedEnd>
         <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.assoc.StatisticalVariable_measuredProperty_Property.ownedEnd"/>
         <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.StatisticalVariable.measuredProperty"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.assoc.Property_name_DefinedTerm" xmi:uuid="678087f6-938c-50ad-8a71-c1a5f558e378">
+        <name>Property_name_DefinedTerm</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.assoc.Property_name_DefinedTerm.ownedEnd" xmi:uuid="7599bf1a-93d3-51f5-a44f-8701b5d08818">
+          <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.Property"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.assoc.Property_name_DefinedTerm.ownedEnd.lower" xmi:uuid="1c5d2b14-c2a4-5b52-9723-a21eac8057a8">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.assoc.Property_name_DefinedTerm.ownedEnd.upper" xmi:uuid="ca673e0a-3ab1-56e5-98d1-73199c59d517">
+            <value>*</value>
+          </upperValue>
+          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.assoc.Property_name_DefinedTerm"/>
+        </ownedEnd>
+        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.assoc.Property_name_DefinedTerm.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.statisticalVariable.Property.name"/>
       </packagedElement>
     </packagedElement>
   </uml:Model>

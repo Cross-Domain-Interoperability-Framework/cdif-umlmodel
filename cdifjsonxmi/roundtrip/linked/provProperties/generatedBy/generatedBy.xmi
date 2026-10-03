@@ -25,7 +25,7 @@ Definition
         </ownedComment>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.GeneratedBy.used" xmi:uuid="c5756546-a8e3-5d85-a894-1eeb847e1608">
           <name>used</name>
-          <type xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6"/>
+          <type xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.GeneratedByUsedChoice"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.GeneratedBy.used.lower" xmi:uuid="0ebe5cd1-41d6-506e-80be-8677d1a52bca">
             <value>0</value>
           </lowerValue>
@@ -38,10 +38,26 @@ Definition
 Definition
 ==========
 
-Entities the activity used. Per PROV-O each value denotes a prov:Entity. An item may be (1) a string URI or free-text reference, (2) an {@id} reference, (3) an inline entity object carrying an @type that includes prov:Entity plus a schema.org type for the kind of thing used, e.g. ["prov:Entity","schema:Thing"] (instrument), ["prov:Entity","schema:CreativeWork"] (method/protocol), or ["prov:Entity","schema:SoftwareApplication"] (software), or (4) a role-keyed wrapper naming what was used through one of the recognized "used" relations (schema:instrument, bios:computationalTool, prov:reagent). Base leaves the wrapped value loose; profiles/extensions (e.g. cdifProvActivity, adaProduct) pin its shape (Instrument, ComputationalTool, Reagent, ...).</body>
+Entities the activity used. Per PROV-O each value denotes a prov:Entity. An item may be (1) a string URI or free-text reference, (2) an {@id} reference, (3) an inline entity object carrying an @type that includes prov:Entity plus a schema.org type for the kind of thing used, e.g. ["prov:Entity","schema:Thing"] (instrument), ["prov:Entity","schema:CreativeWork"] (method/protocol), or ["prov:Entity","schema:SoftwareApplication"] (software), or (4) a role-keyed wrapper naming what was used through one of the recognized "used" relations (schema:instrument, bios:computationalTool, prov:reagent). Base leaves the wrapped value loose; profiles/extensions (e.g. cdifProvActivity, adaProduct) pin its shape (Instrument, ComputationalTool, Reagent, ...).
+:idRefDescription: "a resolvable reference to a representation of the software or instrument used"
+:orReference: ["string", "idReference", "value"]</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.GeneratedBy.used"/>
           </ownedComment>
         </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.ComputationalToolRole" xmi:uuid="f3093f7e-9882-5b1f-a4e8-e7f5d1b03fd0">
+        <name>ComputationalToolRole</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.ComputationalToolRole.comment" xmi:uuid="354423bd-6bfe-577a-a966-2a5bd158bb91">
+          <body>**CDIF**
+
+Definition
+==========
+
+
+:prefix: ``prov``
+:constraint: {"required": ["bios:computationalTool"]}</body>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.ComputationalToolRole"/>
+        </ownedComment>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.Entity" xmi:uuid="523c0fd4-b58f-5bef-8913-8297dd19f222">
         <name>Entity</name>
@@ -57,9 +73,9 @@ Definition
           <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.Entity"/>
         </ownedComment>
       </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6" xmi:uuid="928ee299-39d7-5864-a54d-a5bc831f6278">
-        <name>StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6.comment" xmi:uuid="9d653bdd-b2b3-5121-be6d-a47734f4a99c">
+      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.GeneratedByUsedChoice" xmi:uuid="a15ac63e-271e-5860-84c5-cf6ffc76b633">
+        <name>GeneratedByUsedChoice</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.GeneratedByUsedChoice.comment" xmi:uuid="9a9f5ab4-448e-5813-ba0d-2d662bfe6b29">
           <body>**CDIF**
 
 Definition
@@ -67,49 +83,19 @@ Definition
 
 
 :union: ``anyOf``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6"/>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.GeneratedByUsedChoice"/>
         </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6.string" xmi:uuid="11474949-63c8-59ca-86fc-0d638852ceed">
-          <name>string</name>
-          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6.string.lower" xmi:uuid="f1f91e10-3ac7-5b4a-bb32-febb505045f3">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6.string.upper" xmi:uuid="6be6a717-f9d7-5cca-8d9d-2f11b6b8dbc9">
-            <value>1</value>
-          </upperValue>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6.idReference" xmi:uuid="95fc0334-0cc9-54b9-b862-b4924ac9b952">
-          <name>idReference</name>
-          <type href="../../cdifCommonTypes.xmi#common.IdReference"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6.idReference.lower" xmi:uuid="2add4991-be10-5874-8c7e-b94dddb5a2df">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6.idReference.upper" xmi:uuid="6dc0171f-6733-5bd5-8143-6adfdb6bc18b">
-            <value>1</value>
-          </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6.idReference.comment" xmi:uuid="990b51f1-6a06-57ac-bd46-ea04020dfe1f">
-            <body>**CDIF**
-
-Definition
-==========
-
-
-:idRefDescription: "a resolvable reference to a representation of the software or instrument used"</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6.idReference"/>
-          </ownedComment>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6.entity" xmi:uuid="8ce3b969-3505-5a31-b594-d68e2a774a9e">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.GeneratedByUsedChoice.entity" xmi:uuid="19257e96-f075-5351-b75e-6747427526e7">
           <name>entity</name>
           <type xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.Entity"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6.entity.lower" xmi:uuid="fbb23e0c-ed45-5b58-a056-3aa7016b5e40">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.GeneratedByUsedChoice.entity.lower" xmi:uuid="8a703454-2388-596d-ab99-bc0b6da681c2">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6.entity.upper" xmi:uuid="79e609b8-f912-5e2b-977c-da8ff5d7b4a6">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.GeneratedByUsedChoice.entity.upper" xmi:uuid="b0385a6e-dc3c-5154-a5bc-f18b61535e42">
             <value>1</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.assoc.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6_entity_Entity"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6.entity.comment" xmi:uuid="a8011dbe-b3dc-5d52-9360-4b576c72da5c">
+          <association xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.assoc.GeneratedByUsedChoice_entity_Entity"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.GeneratedByUsedChoice.entity.comment" xmi:uuid="cf2fc525-1c4b-585d-8450-47286c9ad2b0">
             <body>**CDIF**
 
 Definition
@@ -117,70 +103,70 @@ Definition
 
 an inline prov:Entity used by the activity (see prov:used description)
 :inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6.entity"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.GeneratedByUsedChoice.entity"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6.option4" xmi:uuid="37c804f8-0c21-5ccf-aa09-6fe9480334b4">
-          <name>option4</name>
-          <type xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6Option4"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6.option4.lower" xmi:uuid="d2c3d8ae-6d0d-55d4-b9cc-fc11a2ab8ef4">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.GeneratedByUsedChoice.instrumentRole" xmi:uuid="e9958e96-b774-5b47-b537-acfdeab50c98">
+          <name>instrumentRole</name>
+          <type xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.InstrumentRole"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.GeneratedByUsedChoice.instrumentRole.lower" xmi:uuid="206c98c3-e0fa-5dcd-8fbf-934af6e82493">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6.option4.upper" xmi:uuid="18bfc1e8-edcb-5d2f-9741-4d2ba0685979">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.GeneratedByUsedChoice.instrumentRole.upper" xmi:uuid="c3f5bb2d-277a-546a-bf5f-d336706db674">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6.option4.comment" xmi:uuid="ac677241-6caa-5c29-9cd1-d731ad2259ff">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.GeneratedByUsedChoice.instrumentRole.comment" xmi:uuid="12ab7788-b254-5ced-9fdb-954396c307e7">
             <body>**CDIF**
 
 Definition
 ==========
 
 a role-keyed wrapper naming an instrument used by the activity; the extension layer pins the value to an Instrument description.</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6.option4"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.GeneratedByUsedChoice.instrumentRole"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6.option5" xmi:uuid="47fd0d4a-7b89-5024-85f1-8011e9f91eda">
-          <name>option5</name>
-          <type xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6Option5"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6.option5.lower" xmi:uuid="d4fd21e0-7b09-5702-a7b0-8a06324060cc">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.GeneratedByUsedChoice.computationalToolRole" xmi:uuid="bf8e9bce-7fd9-5e0a-be1b-810682070864">
+          <name>computationalToolRole</name>
+          <type xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.ComputationalToolRole"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.GeneratedByUsedChoice.computationalToolRole.lower" xmi:uuid="5f4e6790-c77a-5488-8ee7-736024c4c993">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6.option5.upper" xmi:uuid="43e01301-0042-55f4-a463-5d7d78921fab">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.GeneratedByUsedChoice.computationalToolRole.upper" xmi:uuid="bba6080c-f31c-57e0-8393-f9023dd4852a">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6.option5.comment" xmi:uuid="bc8d33f3-bf20-54ea-ab79-e309cb69300d">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.GeneratedByUsedChoice.computationalToolRole.comment" xmi:uuid="08761e99-9029-5a55-97eb-37f510f9ea98">
             <body>**CDIF**
 
 Definition
 ==========
 
 a role-keyed wrapper naming a computational tool (software) used; the extension layer pins the value to a ComputationalTool description.</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6.option5"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.GeneratedByUsedChoice.computationalToolRole"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6.option6" xmi:uuid="17898555-836d-54b1-b1a1-ba752ce966f6">
-          <name>option6</name>
-          <type xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6Option6"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6.option6.lower" xmi:uuid="77b5354d-e884-58a8-98e9-d59ff716acb1">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.GeneratedByUsedChoice.reagentRole" xmi:uuid="bc616cb1-c31b-58b6-95c0-efe46ec55c5b">
+          <name>reagentRole</name>
+          <type xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.ReagentRole"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.GeneratedByUsedChoice.reagentRole.lower" xmi:uuid="af217661-9ea8-546a-add2-5b6df1e1dbb1">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6.option6.upper" xmi:uuid="141489a5-2104-57de-817b-4f27ee99ac56">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.GeneratedByUsedChoice.reagentRole.upper" xmi:uuid="7cb291f2-29f8-5f87-ab3c-512f152576fc">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6.option6.comment" xmi:uuid="87c29ff8-91b0-52f8-a7ef-0799c8069854">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.GeneratedByUsedChoice.reagentRole.comment" xmi:uuid="e2592c70-2cbc-54cd-9ae4-424d3df691e3">
             <body>**CDIF**
 
 Definition
 ==========
 
 a role-keyed wrapper naming a reagent / material used; the extension layer pins the value to a Reagent description.</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6.option6"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.GeneratedByUsedChoice.reagentRole"/>
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6Option4" xmi:uuid="ee45ed28-6e0c-52c1-8f7a-5b818fb0b402">
-        <name>StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6Option4</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6Option4.comment" xmi:uuid="43eaba15-5749-57e8-865e-d5298608a1e6">
+      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.InstrumentRole" xmi:uuid="5d7fd354-911e-5abc-a126-4ae16c9eecf0">
+        <name>InstrumentRole</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.InstrumentRole.comment" xmi:uuid="b6ab3294-c693-5d5f-9a00-046409092577">
           <body>**CDIF**
 
 Definition
@@ -189,26 +175,12 @@ Definition
 
 :prefix: ``prov``
 :constraint: {"required": ["schema:instrument"]}</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6Option4"/>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.InstrumentRole"/>
         </ownedComment>
       </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6Option5" xmi:uuid="b4d0787e-6c79-5dba-b28d-c34e7536e00b">
-        <name>StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6Option5</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6Option5.comment" xmi:uuid="4d951561-9544-570b-8178-2522d97e25c9">
-          <body>**CDIF**
-
-Definition
-==========
-
-
-:prefix: ``prov``
-:constraint: {"required": ["bios:computationalTool"]}</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6Option5"/>
-        </ownedComment>
-      </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6Option6" xmi:uuid="06ffed34-66f4-5b6f-a653-5efed78b01eb">
-        <name>StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6Option6</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6Option6.comment" xmi:uuid="1ad2e7be-7fac-5ec3-b6c5-cbd3b144f1af">
+      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.ReagentRole" xmi:uuid="2fbce1b1-fd34-513a-98b4-a789be491698">
+        <name>ReagentRole</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.ReagentRole.comment" xmi:uuid="9f305814-db04-58cf-95bc-639de8f50d21">
           <body>**CDIF**
 
 Definition
@@ -217,23 +189,23 @@ Definition
 
 :prefix: ``prov``
 :constraint: {"required": ["prov:reagent"]}</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6Option6"/>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.ReagentRole"/>
         </ownedComment>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.assoc.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6_entity_Entity" xmi:uuid="ad43fcfb-88c8-521c-905f-68fdbc10ee4c">
-        <name>StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6_entity_Entity</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.assoc.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6_entity_Entity.ownedEnd" xmi:uuid="c2f46674-76cf-5965-8e25-aba0ced651b7">
-          <type xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.assoc.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6_entity_Entity.ownedEnd.lower" xmi:uuid="11f74999-4d4c-51b6-89e0-a7b5149dbab1">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.assoc.GeneratedByUsedChoice_entity_Entity" xmi:uuid="c452e367-7425-5822-8800-4778e8255555">
+        <name>GeneratedByUsedChoice_entity_Entity</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.assoc.GeneratedByUsedChoice_entity_Entity.ownedEnd" xmi:uuid="b4fe691b-d86d-5d00-80fb-5d3eff16945b">
+          <type xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.GeneratedByUsedChoice"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.assoc.GeneratedByUsedChoice_entity_Entity.ownedEnd.lower" xmi:uuid="bc9457bc-a243-5ed5-ab3d-3c72dd09a839">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.assoc.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6_entity_Entity.ownedEnd.upper" xmi:uuid="c563c9f8-c65a-50c7-beae-348887e62c59">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.provProperties.generatedBy.assoc.GeneratedByUsedChoice_entity_Entity.ownedEnd.upper" xmi:uuid="6c7cf3a0-48ae-58a5-84f1-667a88fa3ba1">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.assoc.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6_entity_Entity"/>
+          <association xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.assoc.GeneratedByUsedChoice_entity_Entity"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.assoc.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6_entity_Entity.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.StringOrIdReferenceOrEntityOrOption4OrOption5OrOption6.entity"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.assoc.GeneratedByUsedChoice_entity_Entity.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.provProperties.generatedBy.GeneratedByUsedChoice.entity"/>
       </packagedElement>
     </packagedElement>
   </uml:Model>

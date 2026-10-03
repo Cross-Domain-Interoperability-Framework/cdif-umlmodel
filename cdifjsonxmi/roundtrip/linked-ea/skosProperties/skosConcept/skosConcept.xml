@@ -22,7 +22,7 @@
 					<UML:Namespace.ownedElement>
 						<UML:Class name="Concept" xmi.id="EAID_B17658B3_082E_5564_9763_0D9209A39AA5" visibility="public" namespace="EAPK_FD863CFA_E1E5_564d_8FFD_35664800A245" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 							<UML:ModelElement.taggedValue>
-								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:idDescription: &quot;URI identifier for this concept.&quot;&#xA;:rdfType: ``skos:Concept``&#xA;:contextSchema: {&quot;description&quot;: &quot;JSON-LD context declaring the skos namespace prefix. May be a single object or an array of strings and objects.&quot;, &quot;anyOf&quot;: [{&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;skos&quot;: {&quot;const&quot;: &quot;http://www.w3.org/2004/02/skos/core#&quot;}}, &quot;required&quot;: [&quot;skos&quot;]}, {&quot;type&quot;: &quot;array&quot;, &quot;items&quot;: {&quot;anyOf&quot;: [{&quot;type&quot;: &quot;string&quot;}, {&quot;type&quot;: &quot;object&quot;}]}, &quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;skos&quot;: {&quot;const&quot;: &quot;http://www.w3.org/2004/02/skos/core#&quot;}}, &quot;required&quot;: [&quot;skos&quot;]}}]}&#xA;:rootAlias:&#xA;:title: &quot;SKOS Concept&quot;&#xA;:rootDescription: &quot;JSON Schema for a SKOS Concept in JSON-LD form. A unit of thought within a concept scheme. Supports labels (prefLabel, altLabel, hiddenLabel), notations, hierarchical relations (broader/narrower), associative relations (related), cross-scheme mapping properties, scheme membership, and documentary notes. Based on the W3C SKOS Reference (https://www.w3.org/TR/skos-reference/).&quot;"/>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:idDescription: &quot;URI identifier for this concept.&quot;&#xA;:rdfType: ``skos:Concept``&#xA;:contextSchema: {&quot;description&quot;: &quot;JSON-LD context declaring the skos namespace prefix. May be a single object or an array of strings and objects.&quot;, &quot;anyOf&quot;: [{&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;skos&quot;: {&quot;const&quot;: &quot;http://www.w3.org/2004/02/skos/core#&quot;}}, &quot;required&quot;: [&quot;skos&quot;]}, {&quot;type&quot;: &quot;array&quot;, &quot;items&quot;: {&quot;anyOf&quot;: [{&quot;type&quot;: &quot;string&quot;}, {&quot;type&quot;: &quot;object&quot;}]}, &quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;skos&quot;: {&quot;const&quot;: &quot;http://www.w3.org/2004/02/skos/core#&quot;}}, &quot;required&quot;: [&quot;skos&quot;]}}]}&#xA;:exportedDef:&#xA;:rootAlias:&#xA;:title: &quot;SKOS Concept&quot;&#xA;:rootDescription: &quot;JSON Schema for a SKOS Concept in JSON-LD form. A unit of thought within a concept scheme. Supports labels (prefLabel, altLabel, hiddenLabel), notations, hierarchical relations (broader/narrower), associative relations (related), cross-scheme mapping properties, scheme membership, and documentary notes. Based on the W3C SKOS Reference (https://www.w3.org/TR/skos-reference/).&quot;"/>
 								<UML:TaggedValue tag="isSpecification" value="false"/>
 								<UML:TaggedValue tag="ea_stype" value="Class"/>
 								<UML:TaggedValue tag="ea_ntype" value="0"/>
@@ -297,6 +297,63 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
+						<UML:Class name="ConceptDefinition" xmi.id="EAID_726A3DDF_B126_59af_B627_A73290E4B36C" visibility="public" namespace="EAPK_FD863CFA_E1E5_564d_8FFD_35664800A245" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;An RDF literal value with a language tag, serialized as a JSON-LD value object.&#xA;:prefix: ``skos``"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="DataType"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_FD863CFA_E1E5_564d_8FFD_35664800A245"/>
+								<UML:TaggedValue tag="ea_guid" value="{726A3DDF-B126-59af-B627-A73290E4B36C}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Classifier.feature>
+								<UML:Attribute name="@value_" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:StructuralFeature.type>
+										<UML:Classifier xmi.idref="eaxmiid_String"/>
+									</UML:StructuralFeature.type>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;The text content.&#xA;:jsonName: &quot;@value&quot;"/>
+										<UML:TaggedValue tag="type" value="String"/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="false"/>
+										<UML:TaggedValue tag="position" value="0"/>
+										<UML:TaggedValue tag="lowerBound" value="1"/>
+										<UML:TaggedValue tag="upperBound" value="1"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{419E6F9F-2244-57a9-8096-8C815A27B59D}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+								<UML:Attribute name="@language_" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:StructuralFeature.type>
+										<UML:Classifier xmi.idref="eaxmiid_String"/>
+									</UML:StructuralFeature.type>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;BCP 47 language tag (e.g. en, fr, de).&#xA;:jsonName: &quot;@language&quot;"/>
+										<UML:TaggedValue tag="type" value="String"/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="false"/>
+										<UML:TaggedValue tag="position" value="1"/>
+										<UML:TaggedValue tag="lowerBound" value="1"/>
+										<UML:TaggedValue tag="upperBound" value="1"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{7A5A695A-D872-5ec0-9F95-66451D2A55DB}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+							</UML:Classifier.feature>
+						</UML:Class>
 						<UML:Class name="ConceptRefOrConcept" xmi.id="EAID_CD7E47E6_E1B6_5952_8E59_036B68DC2DA0" visibility="public" namespace="EAPK_FD863CFA_E1E5_564d_8FFD_35664800A245" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:union: ``anyOf``"/>
@@ -506,11 +563,11 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="EAID_9A0056F7_9FF3_564e_A635_185BD19EEDAD"/>
+										<UML:Classifier xmi.idref="EAID_726A3DDF_B126_59af_B627_A73290E4B36C"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:alsoAcceptsString: ``first``"/>
-										<UML:TaggedValue tag="type" value="StringOrLanguageTaggedValueOrChoiceListChoiceList"/>
+										<UML:TaggedValue tag="type" value="ConceptDefinition"/>
 										<UML:TaggedValue tag="derived" value="0"/>
 										<UML:TaggedValue tag="containment" value="Not Specified"/>
 										<UML:TaggedValue tag="ordered" value="0"/>
@@ -520,63 +577,6 @@
 										<UML:TaggedValue tag="upperBound" value="*"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
 										<UML:TaggedValue tag="ea_guid" value="{CEDA5C5D-413F-55c6-8358-66775A225A4F}"/>
-										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
-									</UML:ModelElement.taggedValue>
-								</UML:Attribute>
-							</UML:Classifier.feature>
-						</UML:Class>
-						<UML:Class name="StringOrLanguageTaggedValueOrChoiceListChoiceList" xmi.id="EAID_9A0056F7_9FF3_564e_A635_185BD19EEDAD" visibility="public" namespace="EAPK_FD863CFA_E1E5_564d_8FFD_35664800A245" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
-							<UML:ModelElement.taggedValue>
-								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;An RDF literal value with a language tag, serialized as a JSON-LD value object.&#xA;:prefix: ``skos``"/>
-								<UML:TaggedValue tag="isSpecification" value="false"/>
-								<UML:TaggedValue tag="ea_stype" value="DataType"/>
-								<UML:TaggedValue tag="ea_ntype" value="0"/>
-								<UML:TaggedValue tag="version" value="1.0"/>
-								<UML:TaggedValue tag="package" value="EAPK_FD863CFA_E1E5_564d_8FFD_35664800A245"/>
-								<UML:TaggedValue tag="ea_guid" value="{9A0056F7-9FF3-564e-A635-185BD19EEDAD}"/>
-							</UML:ModelElement.taggedValue>
-							<UML:Classifier.feature>
-								<UML:Attribute name="@value_" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
-									<UML:Attribute.initialValue>
-										<UML:Expression/>
-									</UML:Attribute.initialValue>
-									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="eaxmiid_String"/>
-									</UML:StructuralFeature.type>
-									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;The text content.&#xA;:jsonName: &quot;@value&quot;"/>
-										<UML:TaggedValue tag="type" value="String"/>
-										<UML:TaggedValue tag="derived" value="0"/>
-										<UML:TaggedValue tag="containment" value="Not Specified"/>
-										<UML:TaggedValue tag="ordered" value="0"/>
-										<UML:TaggedValue tag="collection" value="false"/>
-										<UML:TaggedValue tag="position" value="0"/>
-										<UML:TaggedValue tag="lowerBound" value="1"/>
-										<UML:TaggedValue tag="upperBound" value="1"/>
-										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{06E98200-6570-56e3-89CE-B5FB69559883}"/>
-										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
-									</UML:ModelElement.taggedValue>
-								</UML:Attribute>
-								<UML:Attribute name="@language_" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
-									<UML:Attribute.initialValue>
-										<UML:Expression/>
-									</UML:Attribute.initialValue>
-									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="eaxmiid_String"/>
-									</UML:StructuralFeature.type>
-									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;BCP 47 language tag (e.g. en, fr, de).&#xA;:jsonName: &quot;@language&quot;"/>
-										<UML:TaggedValue tag="type" value="String"/>
-										<UML:TaggedValue tag="derived" value="0"/>
-										<UML:TaggedValue tag="containment" value="Not Specified"/>
-										<UML:TaggedValue tag="ordered" value="0"/>
-										<UML:TaggedValue tag="collection" value="false"/>
-										<UML:TaggedValue tag="position" value="1"/>
-										<UML:TaggedValue tag="lowerBound" value="1"/>
-										<UML:TaggedValue tag="upperBound" value="1"/>
-										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{6EE37C53-3CA5-530c-9D01-57A51DB49D5E}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>

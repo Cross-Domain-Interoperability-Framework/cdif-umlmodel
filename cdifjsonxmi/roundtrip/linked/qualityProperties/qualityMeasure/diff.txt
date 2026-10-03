@@ -1,6 +1,5 @@
-qualityMeasure: 6 exact difference(s)
+qualityMeasure: 5 exact difference(s)
 $.$defs.DefinedTerm: only in original: {"$ref": "../../schemaorgProperties/definedTerm/schema.yaml"}
-$.$defs.StringOrIdReferenceOrDefinedTerm: only in regenerated: {"anyOf": [{"type": "string"}, {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string"}}}, {"$ref": "../../../../../../../metadataBuildingBlocks/
 $.$defs.StringOrNumberOrDefinedTerm: only in regenerated: {"anyOf": [{"type": "string"}, {"type": "number"}, {"$ref": "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml"}]}
 $.properties.dqv:isMeasurementOf.anyOf[2].$ref:
     original:    "#/$defs/DefinedTerm"

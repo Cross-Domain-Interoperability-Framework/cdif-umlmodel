@@ -102,11 +102,11 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="EAID_4E2177F5_6C6F_58db_8340_B396AA5782B8"/>
+										<UML:Classifier xmi.idref="EAID_C21ABD6B_BEEC_5259_A866_18E4A9A02D9D"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:alternativeOverrides: {&quot;idReference&quot;: {&quot;idRefDescription&quot;: &quot;a identifier for an agent defined in this metadata, or externally; must be dereferenceable&quot;}}"/>
-										<UML:TaggedValue tag="type" value="IdReferenceOrPersonOrOrganization"/>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:idRefDescription: &quot;a identifier for an agent defined in this metadata, or externally; must be dereferenceable&quot;&#xA;:orReference: [&quot;idReference&quot;, &quot;value&quot;]"/>
+										<UML:TaggedValue tag="type" value="PersonOrOrganization"/>
 										<UML:TaggedValue tag="derived" value="0"/>
 										<UML:TaggedValue tag="containment" value="Not Specified"/>
 										<UML:TaggedValue tag="ordered" value="0"/>
@@ -134,7 +134,7 @@
 		</UML:Model>
 	</XMI.content>
 	<XMI.extensions xmi.extender="Enterprise Architect 2.5">
-		<EAStub xmi.id="EAID_4E2177F5_6C6F_58db_8340_B396AA5782B8" name="IdReferenceOrPersonOrOrganization" UMLType="DataType"/>
+		<EAStub xmi.id="EAID_C21ABD6B_BEEC_5259_A866_18E4A9A02D9D" name="PersonOrOrganization" UMLType="DataType"/>
 		<EAStub xmi.id="EAID_DC41695B_BD4E_53b3_90AA_D198F447FECB" name="Identifier" UMLType="DataType"/>
 	</XMI.extensions>
 </XMI>

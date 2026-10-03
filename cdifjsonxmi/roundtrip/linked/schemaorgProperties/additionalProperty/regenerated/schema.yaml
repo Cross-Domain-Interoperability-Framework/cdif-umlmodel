@@ -13,7 +13,17 @@ properties:
   'schema:propertyID':
     type: array
     items:
-      '$ref': '#/$defs/StringOrIdReferenceOrDefinedTerm'
+      anyOf:
+      - type: string
+      - type: object
+        required:
+        - '@id'
+        additionalProperties: false
+        properties:
+          '@id':
+            type: string
+      - '$ref': >-
+          ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml
     minItems: 1
     description: >-
       identifier or name for the property concept quantified by the values in this variable
@@ -21,7 +31,7 @@ properties:
   'schema:name':
     type: string
   'schema:value':
-    '$ref': '#/$defs/StringOrNumberOrBooleanOrOption4'
+    '$ref': '#/$defs/AdditionalPropertyValueChoice'
   'schema:unitCode':
     anyOf:
     - type: string
@@ -33,23 +43,11 @@ required:
 - 'schema:name'
 - 'schema:value'
 '$defs':
-  StringOrIdReferenceOrDefinedTerm:
-    anyOf:
-    - type: string
-    - type: object
-      required:
-      - '@id'
-      additionalProperties: false
-      properties:
-        '@id':
-          type: string
-    - '$ref': >-
-        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml
-  StringOrNumberOrBooleanOrOption4:
+  AdditionalPropertyValueChoice:
     anyOf:
     - type: string
     - type: number
     - type: boolean
-    - '$ref': '#/$defs/StringOrNumberOrBooleanOrOption4Option4'
-  StringOrNumberOrBooleanOrOption4Option4:
+    - '$ref': '#/$defs/AdditionalPropertyValueObject'
+  AdditionalPropertyValueObject:
     type: object

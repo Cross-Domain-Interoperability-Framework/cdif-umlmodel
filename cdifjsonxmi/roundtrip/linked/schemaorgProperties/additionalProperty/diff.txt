@@ -1,16 +1,14 @@
 additionalProperty: 9 exact difference(s)
+$.$defs.AdditionalPropertyValueChoice: only in regenerated: {"anyOf": [{"type": "string"}, {"type": "number"}, {"type": "boolean"}, {"$ref": "#/$defs/AdditionalPropertyValueObject"}]}
+$.$defs.AdditionalPropertyValueObject: only in regenerated: {"type": "object"}
 $.$defs.DefinedTerm: only in original: {"$ref": "../definedTerm/schema.yaml"}
-$.$defs.StringOrIdReferenceOrDefinedTerm: only in regenerated: {"anyOf": [{"type": "string"}, {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string"}}}, {"$ref": "../../../../../../../metadataBuildingBlocks/
-$.$defs.StringOrNumberOrBooleanOrOption4: only in regenerated: {"anyOf": [{"type": "string"}, {"type": "number"}, {"type": "boolean"}, {"$ref": "#/$defs/StringOrNumberOrBooleanOrOption4Option4"}]}
-$.$defs.StringOrNumberOrBooleanOrOption4Option4: only in regenerated: {"type": "object"}
 $.$defs.propertyID_item: only in original: {"anyOf": [{"type": "string"}, {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string"}}}, {"$ref": "#/$defs/DefinedTerm"}]}
-$.properties.schema:propertyID.items.$ref:
-    original:    "#/$defs/propertyID_item"
-    regenerated: "#/$defs/StringOrIdReferenceOrDefinedTerm"
+$.properties.schema:propertyID.items.$ref: only in original: "#/$defs/propertyID_item"
+$.properties.schema:propertyID.items.anyOf: only in regenerated: [{"type": "string"}, {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string"}}}, {"$ref": "../../../../../../../metadataBuildingBlocks/_sources/s
 $.properties.schema:unitCode.anyOf[1].$ref:
     original:    "#/$defs/DefinedTerm"
     regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml"
-$.properties.schema:value.$ref: only in regenerated: "#/$defs/StringOrNumberOrBooleanOrOption4"
+$.properties.schema:value.$ref: only in regenerated: "#/$defs/AdditionalPropertyValueChoice"
 $.properties.schema:value.anyOf: only in original: [{"type": "string"}, {"type": "number"}, {"type": "boolean"}, {"type": "object"}]
 
 additionalProperty: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

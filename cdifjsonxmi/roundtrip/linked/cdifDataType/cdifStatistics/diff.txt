@@ -1,0 +1,39 @@
+cdifStatistics: 18 exact difference(s)
+$.$defs.Category.properties.cdif:name.$ref: only in regenerated: "#/$defs/StringOrStringList"
+$.$defs.Category.properties.cdif:name.anyOf: only in original: [{"type": "string"}, {"type": "array", "items": {"type": "string"}, "minItems": 1}]
+$.$defs.CategoryStatistics.properties.cdi:hasWeight.anyOf[0].$ref:
+    original:    "../../cdifDataType/cdifInstanceVariable/schema.yaml"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifInstanceVariable/schema.yaml"
+$.$defs.CategoryStatistics.properties.cdi:statistic.items.$ref:
+    original:    "#/$defs/Statistic"
+    regenerated: "#/$defs/CategoryStatisticsStatistic"
+$.$defs.CategoryStatistics.properties.cdif:typeOfStatistic.$ref:
+    original:    "#/$defs/cdifConceptOrTermOrString"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml"
+$.$defs.CategoryStatisticsStatistic: only in regenerated: {"type": "object", "title": "Statistic", "description": "DDI-CDI Statistic dataType \u2014 a single computed value (mean, count, median, etc.). A value object with no identity; appears inline inside a
+$.$defs.SkosConcept: only in original: {"title": "SKOS Concept (CDIF vocabulary-bound term reference)", "description": "Vocabulary-bound term reference. CDIF policy implements the DDI-CDI ControlledVocabularyEntry / PairedControlledVocabul
+$.$defs.Statistic: only in original: {"title": "Statistic", "description": "DDI-CDI Statistic dataType \u2014 a single computed value (mean, count, median, etc.). A value object with no identity; appears inline inside a cdi:statistic arr
+$.$defs.Statistics.properties.cdi:hasWeight.anyOf[0].$ref:
+    original:    "../../cdifDataType/cdifInstanceVariable/schema.yaml"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifInstanceVariable/schema.yaml"
+$.$defs.Statistics.properties.cdi:statistic.items.$ref:
+    original:    "#/$defs/Statistic"
+    regenerated: "#/$defs/StatisticsStatistic"
+$.$defs.Statistics.properties.cdif:appliesTo.items.anyOf[0].$ref:
+    original:    "../../cdifDataType/cdifInstanceVariable/schema.yaml"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifInstanceVariable/schema.yaml"
+$.$defs.Statistics.properties.cdif:typeOfStatistic.$ref:
+    original:    "#/$defs/cdifConceptOrTermOrString"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml"
+$.$defs.StatisticsCollection.properties.cdi:hasWeight.anyOf[0].$ref:
+    original:    "../../cdifDataType/cdifInstanceVariable/schema.yaml"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifInstanceVariable/schema.yaml"
+$.$defs.StatisticsCollection.properties.cdif:indexedBy.items.anyOf[0].$ref:
+    original:    "../../cdifDataType/cdifInstanceVariable/schema.yaml"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifInstanceVariable/schema.yaml"
+$.$defs.StatisticsStatistic: only in regenerated: {"type": "object", "title": "Statistic", "description": "DDI-CDI Statistic dataType \u2014 a single computed value (mean, count, median, etc.). A value object with no identity; appears inline inside a
+$.$defs.StringOrStringList: only in regenerated: {"anyOf": [{"type": "string"}, {"type": "array", "items": {"type": "string"}, "minItems": 1}]}
+$.$defs.cdifConceptOrTerm: only in original: {"$ref": "../cdifConceptOrTerm/schema.yaml"}
+$.$defs.cdifConceptOrTermOrString: only in original: {"$ref": "../cdifConceptOrTermOrString/schema.yaml"}
+
+cdifStatistics: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

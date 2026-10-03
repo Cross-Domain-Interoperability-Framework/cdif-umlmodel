@@ -1,0 +1,17 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+description: >-
+  A SKOS concept identified by URI, a schema:DefinedTerm, or an inline cdif:Concept. Shared
+  shape used wherever a CDIF property carries either a controlled-vocabulary reference or
+  an inline concept definition.
+anyOf:
+- type: object
+  required:
+  - '@id'
+  additionalProperties: false
+  properties:
+    '@id':
+      type: string
+      description: reference to a skos concept for the data type
+- '$ref': >-
+    ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml
+- '$ref': '../../../../../../../metadataBuildingBlocks/_sources/skosProperties/skosConcept/schema.yaml#/$defs/Concept'

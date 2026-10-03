@@ -31,50 +31,6 @@
 								<UML:TaggedValue tag="ea_guid" value="{D72B24A6-D513-5b8a-91C2-229966A94009}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Classifier.feature>
-								<UML:Attribute name="oa_hasBody" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
-									<UML:Attribute.initialValue>
-										<UML:Expression/>
-									</UML:Attribute.initialValue>
-									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="EAID_2E9A29E8_264C_5e41_A312_0AAB9C82101F"/>
-									</UML:StructuralFeature.type>
-									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;the content of the quality annotation -- a free-text statement, a categorical outcome as a Defined Term (e.g. a certification level or a pass/fail rating), or a reference to a separate body resource&#xA;:jsonName: &quot;oa:hasBody&quot;"/>
-										<UML:TaggedValue tag="type" value="StringOrDefinedTermOrIdReference"/>
-										<UML:TaggedValue tag="derived" value="0"/>
-										<UML:TaggedValue tag="containment" value="Not Specified"/>
-										<UML:TaggedValue tag="ordered" value="0"/>
-										<UML:TaggedValue tag="collection" value="false"/>
-										<UML:TaggedValue tag="position" value="0"/>
-										<UML:TaggedValue tag="lowerBound" value="1"/>
-										<UML:TaggedValue tag="upperBound" value="1"/>
-										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{680B4AEB-5F41-5c0f-9954-B17F2D389734}"/>
-										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
-									</UML:ModelElement.taggedValue>
-								</UML:Attribute>
-								<UML:Attribute name="oa_motivatedBy" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
-									<UML:Attribute.initialValue>
-										<UML:Expression/>
-									</UML:Attribute.initialValue>
-									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="EAID_279CBAC8_6134_559c_B369_98E96C5E141A"/>
-									</UML:StructuralFeature.type>
-									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;why the annotation was made; for quality annotations this is normally the instance dqv:qualityAssessment, but any motivation IRI or Defined Term is allowed&#xA;:alternativeOverrides: {&quot;idReference&quot;: {&quot;idRefDescription&quot;: &quot;a resolvable reference to an oa:Motivation&quot;}}&#xA;:jsonName: &quot;oa:motivatedBy&quot;"/>
-										<UML:TaggedValue tag="type" value="StringOrIdReferenceOrDefinedTerm"/>
-										<UML:TaggedValue tag="derived" value="0"/>
-										<UML:TaggedValue tag="containment" value="Not Specified"/>
-										<UML:TaggedValue tag="ordered" value="0"/>
-										<UML:TaggedValue tag="collection" value="false"/>
-										<UML:TaggedValue tag="position" value="1"/>
-										<UML:TaggedValue tag="lowerBound" value="0"/>
-										<UML:TaggedValue tag="upperBound" value="1"/>
-										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{A29E34BB-39A3-5aa9-820D-DA28D75A0254}"/>
-										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
-									</UML:ModelElement.taggedValue>
-								</UML:Attribute>
 								<UML:Attribute name="oa_hasTarget" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
 									<UML:Attribute.initialValue>
 										<UML:Expression/>
@@ -89,7 +45,7 @@
 										<UML:TaggedValue tag="containment" value="Not Specified"/>
 										<UML:TaggedValue tag="ordered" value="0"/>
 										<UML:TaggedValue tag="collection" value="false"/>
-										<UML:TaggedValue tag="position" value="2"/>
+										<UML:TaggedValue tag="position" value="0"/>
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
@@ -111,7 +67,7 @@
 										<UML:TaggedValue tag="containment" value="Not Specified"/>
 										<UML:TaggedValue tag="ordered" value="0"/>
 										<UML:TaggedValue tag="collection" value="false"/>
-										<UML:TaggedValue tag="position" value="3"/>
+										<UML:TaggedValue tag="position" value="1"/>
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
@@ -121,89 +77,62 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Class name="StringOrDefinedTermOrIdReference" xmi.id="EAID_2E9A29E8_264C_5e41_A312_0AAB9C82101F" visibility="public" namespace="EAPK_5EAB3DC1_B51C_5f52_B130_79142A70A1A1" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+						<UML:Association xmi.id="EAID_54D2AAFE_2B83_5e09_88F8_83538321AD8A" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
-								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:union: ``anyOf``"/>
-								<UML:TaggedValue tag="isSpecification" value="false"/>
-								<UML:TaggedValue tag="ea_stype" value="DataType"/>
-								<UML:TaggedValue tag="ea_ntype" value="0"/>
-								<UML:TaggedValue tag="version" value="1.0"/>
-								<UML:TaggedValue tag="package" value="EAPK_5EAB3DC1_B51C_5f52_B130_79142A70A1A1"/>
-								<UML:TaggedValue tag="ea_guid" value="{2E9A29E8-264C-5e41-A312-0AAB9C82101F}"/>
-							</UML:ModelElement.taggedValue>
-							<UML:Classifier.feature>
-								<UML:Attribute name="string" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
-									<UML:Attribute.initialValue>
-										<UML:Expression/>
-									</UML:Attribute.initialValue>
-									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="eaxmiid_String"/>
-									</UML:StructuralFeature.type>
-									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="description" value=""/>
-										<UML:TaggedValue tag="type" value="String"/>
-										<UML:TaggedValue tag="derived" value="0"/>
-										<UML:TaggedValue tag="containment" value="Not Specified"/>
-										<UML:TaggedValue tag="ordered" value="0"/>
-										<UML:TaggedValue tag="collection" value="false"/>
-										<UML:TaggedValue tag="position" value="0"/>
-										<UML:TaggedValue tag="lowerBound" value="0"/>
-										<UML:TaggedValue tag="upperBound" value="1"/>
-										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{9CAA2393-6660-5d03-89D0-D60B6BBB1A3B}"/>
-										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
-									</UML:ModelElement.taggedValue>
-								</UML:Attribute>
-								<UML:Attribute name="idReference" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
-									<UML:Attribute.initialValue>
-										<UML:Expression/>
-									</UML:Attribute.initialValue>
-									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="EAID_8706B14E_5B51_5aeb_AEBF_F3E363919845"/>
-									</UML:StructuralFeature.type>
-									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:idRefDescription: &quot;a resolvable reference to the annotation body&quot;"/>
-										<UML:TaggedValue tag="type" value="IdReference"/>
-										<UML:TaggedValue tag="derived" value="0"/>
-										<UML:TaggedValue tag="containment" value="Not Specified"/>
-										<UML:TaggedValue tag="ordered" value="0"/>
-										<UML:TaggedValue tag="collection" value="false"/>
-										<UML:TaggedValue tag="position" value="1"/>
-										<UML:TaggedValue tag="lowerBound" value="0"/>
-										<UML:TaggedValue tag="upperBound" value="1"/>
-										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{4F6B5BF4-90DE-5a5a-9A2F-DC39F8176EDF}"/>
-										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
-									</UML:ModelElement.taggedValue>
-								</UML:Attribute>
-							</UML:Classifier.feature>
-						</UML:Class>
-						<UML:Association xmi.id="EAID_F4B535FB_541E_534e_979F_63EA94C9C518" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
-							<UML:ModelElement.taggedValue>
-								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;the content of the quality annotation -- a free-text statement, a categorical outcome as a Defined Term (e.g. a certification level or a pass/fail rating), or a reference to a separate body resource&#xA;:inlineOrByReference: ``inline``&#xA;:idRefDescription: &quot;a resolvable reference to the annotation body&quot;&#xA;:orReference: [&quot;string&quot;, &quot;value&quot;, &quot;idReference&quot;]&#xA;:jsonName: &quot;oa:hasBody&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
 								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
-								<UML:TaggedValue tag="ea_sourceName" value="StringOrDefinedTermOrIdReference"/>
+								<UML:TaggedValue tag="ea_sourceName" value="QualityAnnotation"/>
 								<UML:TaggedValue tag="ea_targetName" value="DefinedTerm"/>
-								<UML:TaggedValue tag="ea_sourceType" value="DataType"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
 								<UML:TaggedValue tag="ea_targetType" value="Class"/>
-								<UML:TaggedValue tag="ea_guid" value="{F4B535FB-541E-534e-979F-63EA94C9C518}"/>
+								<UML:TaggedValue tag="ea_guid" value="{54D2AAFE-2B83-5e09-88F8-83538321AD8A}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Association.connection>
-								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_2E9A29E8_264C_5e41_A312_0AAB9C82101F">
+								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_D72B24A6_D513_5b8a_91C2_229966A94009">
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="containment" value="Unspecified"/>
 										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
 										<UML:TaggedValue tag="ea_end" value="source"/>
 									</UML:ModelElement.taggedValue>
 								</UML:AssociationEnd>
-								<UML:AssociationEnd visibility="public" name="definedTerm" multiplicity="0..1" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_758FF594_94AB_5d77_84E6_004AA8CC4AB4">
+								<UML:AssociationEnd visibility="public" name="oa_hasBody" multiplicity="1" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_758FF594_94AB_5d77_84E6_004AA8CC4AB4">
 									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;the content of the quality annotation -- a free-text statement, a categorical outcome as a Defined Term (e.g. a certification level or a pass/fail rating), or a reference to a separate body resource&#xA;:inlineOrByReference: ``inline``&#xA;:idRefDescription: &quot;a resolvable reference to the annotation body&quot;&#xA;:orReference: [&quot;string&quot;, &quot;value&quot;, &quot;idReference&quot;]&#xA;:jsonName: &quot;oa:hasBody&quot;"/>
 										<UML:TaggedValue tag="containment" value="Unspecified"/>
 										<UML:TaggedValue tag="deststyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
 										<UML:TaggedValue tag="ea_end" value="target"/>
-										<UML:TaggedValue tag="ea_guid" value="{527DE383-98CF-5f56-BEB4-0253AA0B2F64}"/>
+										<UML:TaggedValue tag="ea_guid" value="{680B4AEB-5F41-5c0f-9954-B17F2D389734}"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+							</UML:Association.connection>
+						</UML:Association>
+						<UML:Association xmi.id="EAID_83CBA88D_4D05_5442_AD02_ED3818393F2C" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;why the annotation was made; for quality annotations this is normally the instance dqv:qualityAssessment, but any motivation IRI or Defined Term is allowed&#xA;:inlineOrByReference: ``inline``&#xA;:idRefDescription: &quot;a resolvable reference to an oa:Motivation&quot;&#xA;:orReference: [&quot;string&quot;, &quot;idReference&quot;, &quot;value&quot;]&#xA;:jsonName: &quot;oa:motivatedBy&quot;"/>
+								<UML:TaggedValue tag="ea_type" value="Association"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="QualityAnnotation"/>
+								<UML:TaggedValue tag="ea_targetName" value="DefinedTerm"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{83CBA88D-4D05-5442-AD02-ED3818393F2C}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Association.connection>
+								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_D72B24A6_D513_5b8a_91C2_229966A94009">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="source"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+								<UML:AssociationEnd visibility="public" name="oa_motivatedBy" multiplicity="0..1" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_758FF594_94AB_5d77_84E6_004AA8CC4AB4">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;why the annotation was made; for quality annotations this is normally the instance dqv:qualityAssessment, but any motivation IRI or Defined Term is allowed&#xA;:inlineOrByReference: ``inline``&#xA;:idRefDescription: &quot;a resolvable reference to an oa:Motivation&quot;&#xA;:orReference: [&quot;string&quot;, &quot;idReference&quot;, &quot;value&quot;]&#xA;:jsonName: &quot;oa:motivatedBy&quot;"/>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="deststyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="target"/>
+										<UML:TaggedValue tag="ea_guid" value="{A29E34BB-39A3-5aa9-820D-DA28D75A0254}"/>
 									</UML:ModelElement.taggedValue>
 								</UML:AssociationEnd>
 							</UML:Association.connection>
@@ -221,7 +150,6 @@
 		</UML:Model>
 	</XMI.content>
 	<XMI.extensions xmi.extender="Enterprise Architect 2.5">
-		<EAStub xmi.id="EAID_279CBAC8_6134_559c_B369_98E96C5E141A" name="StringOrIdReferenceOrDefinedTerm" UMLType="DataType"/>
 		<EAStub xmi.id="EAID_758FF594_94AB_5d77_84E6_004AA8CC4AB4" name="DefinedTerm" UMLType="Class"/>
 		<EAStub xmi.id="EAID_8706B14E_5B51_5aeb_AEBF_F3E363919845" name="IdReference" UMLType="DataType"/>
 	</XMI.extensions>

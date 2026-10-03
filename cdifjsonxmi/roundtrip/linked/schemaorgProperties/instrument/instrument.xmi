@@ -306,20 +306,24 @@ Date the instrument was decommissioned (ISO 8601). Absent if still operational.<
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.instrument.Instrument.hasPart" xmi:uuid="efd1989c-4e5f-5a4f-9fc2-f8692001108e">
           <name>hasPart</name>
-          <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.instrument.InstrumentComponentOrIdReference"/>
+          <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.instrument.InstrumentThing"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.instrument.Instrument.hasPart.lower" xmi:uuid="de674c41-2e8c-5fb1-8ce3-5e357f00925a">
             <value>0</value>
           </lowerValue>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.instrument.Instrument.hasPart.upper" xmi:uuid="d7c9326b-f353-5472-a757-088f13bed6a8">
             <value>*</value>
           </upperValue>
+          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.instrument.assoc.Instrument_hasPart_InstrumentThing"/>
           <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.instrument.Instrument.hasPart.comment" xmi:uuid="6d1dde0f-0af8-5980-9320-4eccc976171c">
             <body>**CDIF**
 
 Definition
 ==========
 
-Sub-components of this instrument system. Each item is either an inline instrument description or an @id reference.</body>
+Sub-components of this instrument system. Each item is either an inline instrument description or an @id reference.
+:inlineOrByReference: ``inline``
+:idRefDescription: "Reference to a sub-component defined elsewhere."
+:orReference: ["value", "idReference"]</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.instrument.Instrument.hasPart"/>
           </ownedComment>
         </ownedAttribute>
@@ -418,60 +422,6 @@ Definition
 
 :inlineOrByReference: ``inline``</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.instrument.AdditionalPropertyOrAdditionalPropertySpecification.additionalPropertySpecification"/>
-          </ownedComment>
-        </ownedAttribute>
-      </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.schemaorgProperties.instrument.InstrumentComponentOrIdReference" xmi:uuid="205e270c-3f22-5e29-a8c7-71c23039d8df">
-        <name>InstrumentComponentOrIdReference</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.instrument.InstrumentComponentOrIdReference.comment" xmi:uuid="5c23a039-8b51-59d0-8fc4-0df2b6075f31">
-          <body>**CDIF**
-
-Definition
-==========
-
-
-:union: ``anyOf``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.instrument.InstrumentComponentOrIdReference"/>
-        </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.instrument.InstrumentComponentOrIdReference.instrumentComponent" xmi:uuid="596a2f02-46a1-5c60-82d1-57bbebd62f62">
-          <name>instrumentComponent</name>
-          <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.instrument.InstrumentThing"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.instrument.InstrumentComponentOrIdReference.instrumentComponent.lower" xmi:uuid="8e882474-c332-5e09-9c9d-0c3990a7f8e2">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.instrument.InstrumentComponentOrIdReference.instrumentComponent.upper" xmi:uuid="ecc79b31-596e-56de-9e74-5a04df510a39">
-            <value>1</value>
-          </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.instrument.assoc.InstrumentComponentOrIdReference_instrumentComponent_InstrumentThing"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.instrument.InstrumentComponentOrIdReference.instrumentComponent.comment" xmi:uuid="e7935440-579f-5540-ba8a-94b45a1a040b">
-            <body>**CDIF**
-
-Definition
-==========
-
-
-:inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.instrument.InstrumentComponentOrIdReference.instrumentComponent"/>
-          </ownedComment>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.instrument.InstrumentComponentOrIdReference.idReference" xmi:uuid="5de486ad-fc6d-57db-9499-a5176eb3346e">
-          <name>idReference</name>
-          <type href="../../cdifCommonTypes.xmi#common.IdReference"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.instrument.InstrumentComponentOrIdReference.idReference.lower" xmi:uuid="556cb044-600b-5005-b28a-08ad43c500d9">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.instrument.InstrumentComponentOrIdReference.idReference.upper" xmi:uuid="fa920f69-5bf0-5148-a7bf-4be7e541b8b4">
-            <value>1</value>
-          </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.instrument.InstrumentComponentOrIdReference.idReference.comment" xmi:uuid="ce2f5654-c7dd-5f56-90ea-c5b45d5bee7a">
-            <body>**CDIF**
-
-Definition
-==========
-
-
-:idRefDescription: "Reference to a sub-component defined elsewhere."</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.instrument.InstrumentComponentOrIdReference.idReference"/>
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
@@ -902,6 +852,21 @@ Definition
         <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.instrument.assoc.Instrument_contributor_AgentInRole.ownedEnd"/>
         <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.instrument.Instrument.contributor"/>
       </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.schemaorgProperties.instrument.assoc.Instrument_hasPart_InstrumentThing" xmi:uuid="e3d8dc54-206d-5717-81b7-f93f5e9dd64b">
+        <name>Instrument_hasPart_InstrumentThing</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.instrument.assoc.Instrument_hasPart_InstrumentThing.ownedEnd" xmi:uuid="4bc04260-fae4-5915-9194-87213d889ebc">
+          <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.instrument.Instrument"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.instrument.assoc.Instrument_hasPart_InstrumentThing.ownedEnd.lower" xmi:uuid="35d87bd6-3b46-5eed-aed4-829ec7c4c040">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.instrument.assoc.Instrument_hasPart_InstrumentThing.ownedEnd.upper" xmi:uuid="5c4f95c8-bfaa-57c6-8630-f4a2cf29dc15">
+            <value>*</value>
+          </upperValue>
+          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.instrument.assoc.Instrument_hasPart_InstrumentThing"/>
+        </ownedEnd>
+        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.instrument.assoc.Instrument_hasPart_InstrumentThing.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.instrument.Instrument.hasPart"/>
+      </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.schemaorgProperties.instrument.assoc.Instrument_relatedLink_LinkRole" xmi:uuid="fd1d05a4-bfc3-5595-8e46-c184e07a7c53">
         <name>Instrument_relatedLink_LinkRole</name>
         <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.instrument.assoc.Instrument_relatedLink_LinkRole.ownedEnd" xmi:uuid="84a23503-7c28-5e61-a8b6-f72351962175">
@@ -961,21 +926,6 @@ Definition
         </ownedEnd>
         <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.instrument.assoc.AdditionalPropertyOrAdditionalPropertySpecification_additionalPropertySpecification_InstrumentPropertyValueSpecification.ownedEnd"/>
         <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.instrument.AdditionalPropertyOrAdditionalPropertySpecification.additionalPropertySpecification"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.schemaorgProperties.instrument.assoc.InstrumentComponentOrIdReference_instrumentComponent_InstrumentThing" xmi:uuid="a1f30a3a-e1a1-5ef7-a9dc-a32b96f6e177">
-        <name>InstrumentComponentOrIdReference_instrumentComponent_InstrumentThing</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.instrument.assoc.InstrumentComponentOrIdReference_instrumentComponent_InstrumentThing.ownedEnd" xmi:uuid="0e3afe59-472e-550d-a849-99360a2a5a76">
-          <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.instrument.InstrumentComponentOrIdReference"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.instrument.assoc.InstrumentComponentOrIdReference_instrumentComponent_InstrumentThing.ownedEnd.lower" xmi:uuid="9f8228da-fc85-5d91-98db-265161ea9f6f">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.instrument.assoc.InstrumentComponentOrIdReference_instrumentComponent_InstrumentThing.ownedEnd.upper" xmi:uuid="9a9e1b7d-f13a-563a-936e-cc6d0f12d5ca">
-            <value>*</value>
-          </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.instrument.assoc.InstrumentComponentOrIdReference_instrumentComponent_InstrumentThing"/>
-        </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.instrument.assoc.InstrumentComponentOrIdReference_instrumentComponent_InstrumentThing.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.instrument.InstrumentComponentOrIdReference.instrumentComponent"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.schemaorgProperties.instrument.assoc.InstrumentThing_manufacturer_Organization" xmi:uuid="b973eabb-aa1e-5259-9402-639cb67f9cff">
         <name>InstrumentThing_manufacturer_Organization</name>

@@ -81,7 +81,7 @@ A SKOS Collection -- a meaningful grouping of concepts. Disjoint with Concept an
         </ownedComment>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.Collection.prefLabel" xmi:uuid="f33f4f54-d387-5bf8-b430-e60d051754ff">
           <name>prefLabel</name>
-          <type xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.StringOr$defsList"/>
+          <type xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.StringOrLanguageTaggedValueList"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.Collection.prefLabel.lower" xmi:uuid="ca2b70dc-e6b3-5880-93c0-f5eeb9ab2fa2">
             <value>1</value>
           </lowerValue>
@@ -176,7 +176,7 @@ General note about this collection.</body>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.Collection.member" xmi:uuid="f979b5e3-d1b7-5003-89a8-9a09a3097939">
           <name>member</name>
-          <type xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConceptOrCollection"/>
+          <type xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.ConceptOrCollection"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.Collection.member.lower" xmi:uuid="26cd1eb1-bb5e-5b37-9bfc-3a8523965be4">
             <value>1</value>
           </lowerValue>
@@ -189,14 +189,15 @@ General note about this collection.</body>
 Definition
 ==========
 
-Members of this collection (concepts or nested collections, inline or by @id reference).</body>
+Members of this collection (concepts or nested collections, inline or by @id reference).
+:orReference: ["idReference", "value"]</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.Collection.member"/>
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConcept" xmi:uuid="ff7487dc-43c9-5e95-b323-b9eb888267ef">
-        <name>IdReferenceOrConcept</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConcept.comment" xmi:uuid="8d91104e-c6c1-576a-80f6-aa8b04588929">
+      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.ConceptOrCollection" xmi:uuid="8ec75874-57c4-540c-950b-0660352796be">
+        <name>ConceptOrCollection</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.ConceptOrCollection.comment" xmi:uuid="d5bf1af8-37b3-5c46-a047-a67c66dbca29">
           <body>**CDIF**
 
 Definition
@@ -204,29 +205,19 @@ Definition
 
 
 :union: ``anyOf``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConcept"/>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.ConceptOrCollection"/>
         </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConcept.idReference" xmi:uuid="beba7c01-6b9f-560a-a37a-79c7f196bed5">
-          <name>idReference</name>
-          <type href="../../cdifCommonTypes.xmi#common.IdReference"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConcept.idReference.lower" xmi:uuid="2c4903cc-8042-5baa-9d14-b8c3a7fa8f62">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConcept.idReference.upper" xmi:uuid="482c841e-d909-5b6d-839d-2215965b5798">
-            <value>1</value>
-          </upperValue>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConcept.concept" xmi:uuid="e9b70063-1485-5b22-aa43-751378a35fbc">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.ConceptOrCollection.concept" xmi:uuid="72c61194-25e5-5716-b92b-8531f50ab9b4">
           <name>concept</name>
           <type href="../skosConcept/skosConcept.xmi#cdif.bbr.metadata.skosProperties.skosConcept.Concept"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConcept.concept.lower" xmi:uuid="3648460d-d23d-5a17-8241-630562efb9a0">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.ConceptOrCollection.concept.lower" xmi:uuid="8527427b-1030-5ce1-ba8b-86bb61a7a7f4">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConcept.concept.upper" xmi:uuid="2c08502a-fe91-510f-a915-11d12ed05d11">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.ConceptOrCollection.concept.upper" xmi:uuid="712ed6d8-efaa-5211-97b0-77318d5dbad8">
             <value>1</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.assoc.IdReferenceOrConcept_concept_Concept"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConcept.concept.comment" xmi:uuid="77632fc4-192b-50fe-9803-01436de5d78f">
+          <association xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.assoc.ConceptOrCollection_concept_Concept"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.ConceptOrCollection.concept.comment" xmi:uuid="a1ee52e4-a72d-5f02-98d7-532790652312">
             <body>**CDIF**
 
 Definition
@@ -234,64 +225,20 @@ Definition
 
 
 :inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConcept.concept"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.ConceptOrCollection.concept"/>
           </ownedComment>
         </ownedAttribute>
-      </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConceptOrCollection" xmi:uuid="5fe44706-2a85-54fb-85bb-6287a020597a">
-        <name>IdReferenceOrConceptOrCollection</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConceptOrCollection.comment" xmi:uuid="91d84f73-b611-5d8d-b620-19fafc41447e">
-          <body>**CDIF**
-
-Definition
-==========
-
-
-:union: ``anyOf``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConceptOrCollection"/>
-        </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConceptOrCollection.idReference" xmi:uuid="321cb3df-f420-5d1d-a6f2-db064d22289f">
-          <name>idReference</name>
-          <type href="../../cdifCommonTypes.xmi#common.IdReference"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConceptOrCollection.idReference.lower" xmi:uuid="134c477a-58ed-5bd5-bdc5-0e39ba26ff2c">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConceptOrCollection.idReference.upper" xmi:uuid="4793a4eb-d175-52a8-b6c2-db73a425ad07">
-            <value>1</value>
-          </upperValue>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConceptOrCollection.concept" xmi:uuid="71c806e3-1ab8-5dbd-8109-c9a6f77620a9">
-          <name>concept</name>
-          <type href="../skosConcept/skosConcept.xmi#cdif.bbr.metadata.skosProperties.skosConcept.Concept"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConceptOrCollection.concept.lower" xmi:uuid="a33f98ba-f6c6-5c13-a2f4-3229b998d05d">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConceptOrCollection.concept.upper" xmi:uuid="13801190-e235-5649-9d87-af10292f733e">
-            <value>1</value>
-          </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.assoc.IdReferenceOrConceptOrCollection_concept_Concept"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConceptOrCollection.concept.comment" xmi:uuid="d4ad5d78-5a7f-52d4-9142-2a65c4074bdc">
-            <body>**CDIF**
-
-Definition
-==========
-
-
-:inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConceptOrCollection.concept"/>
-          </ownedComment>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConceptOrCollection.collection" xmi:uuid="f1070b57-9a4a-55d2-8e70-c48fab91f212">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.ConceptOrCollection.collection" xmi:uuid="a83e1ba6-bf74-55ad-a447-84570aacd114">
           <name>collection</name>
           <type xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.Collection"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConceptOrCollection.collection.lower" xmi:uuid="76f353ae-d2ca-59c9-b72f-212436b5f4b1">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.ConceptOrCollection.collection.lower" xmi:uuid="e97c8696-f135-56dc-bd10-905ac25c3af1">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConceptOrCollection.collection.upper" xmi:uuid="2700fd4f-333c-553f-8366-b1276ee9243f">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.ConceptOrCollection.collection.upper" xmi:uuid="eb2ee6ff-83ee-5b58-8f67-1e8b7fa8c9f3">
             <value>1</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.assoc.IdReferenceOrConceptOrCollection_collection_Collection"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConceptOrCollection.collection.comment" xmi:uuid="3d631093-62d8-53e1-931a-c1be866e9022">
+          <association xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.assoc.ConceptOrCollection_collection_Collection"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.ConceptOrCollection.collection.comment" xmi:uuid="d80e0e0c-d2fa-557c-b397-23e62bf6d22e">
             <body>**CDIF**
 
 Definition
@@ -299,7 +246,7 @@ Definition
 
 
 :inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConceptOrCollection.collection"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.ConceptOrCollection.collection"/>
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
@@ -319,7 +266,7 @@ A SKOS OrderedCollection -- concepts where both grouping and ordering are meanin
         </ownedComment>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.OrderedCollection.prefLabel" xmi:uuid="2747d493-5815-57fa-a60d-235b28c2c604">
           <name>prefLabel</name>
-          <type xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.StringOr$defsList"/>
+          <type xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.StringOrLanguageTaggedValueList"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.OrderedCollection.prefLabel.lower" xmi:uuid="7b4f6250-a050-5fa4-a8ce-4937e268db3e">
             <value>1</value>
           </lowerValue>
@@ -408,13 +355,14 @@ Definition
         </ownedComment>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.OrderedCollectionMemberList.@list_" xmi:uuid="8dfbae7d-8dcf-522f-be15-799c0258cbf1">
           <name>@list_</name>
-          <type xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConcept"/>
+          <type href="../skosConcept/skosConcept.xmi#cdif.bbr.metadata.skosProperties.skosConcept.Concept"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.OrderedCollectionMemberList.@list_.lower" xmi:uuid="26e30666-7c80-5ecb-9bed-6121e4be2bc4">
             <value>0</value>
           </lowerValue>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.OrderedCollectionMemberList.@list_.upper" xmi:uuid="0e36a6ee-dbd3-5992-b69e-c56b7c67a8ac">
             <value>*</value>
           </upperValue>
+          <association xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.assoc.OrderedCollectionMemberList_@list__Concept"/>
           <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.OrderedCollectionMemberList.@list_.comment" xmi:uuid="c0975e2f-28b5-5e31-9323-7c5dac6cf28e">
             <body>**CDIF**
 
@@ -422,52 +370,11 @@ Definition
 ==========
 
 
+:inlineOrByReference: ``inline``
 :minItems: 1
+:orReference: ["idReference", "value"]
 :jsonName: "@list"</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.OrderedCollectionMemberList.@list_"/>
-          </ownedComment>
-        </ownedAttribute>
-      </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.StringOr$defsList" xmi:uuid="05004f7b-b9ad-5b67-9b4a-ad8ab426ae41">
-        <name>StringOr$defsList</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.StringOr$defsList.comment" xmi:uuid="0c17dbf4-b4af-55bb-8964-4b0862b24ebf">
-          <body>**CDIF**
-
-Definition
-==========
-
-
-:union: ``anyOf``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.StringOr$defsList"/>
-        </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.StringOr$defsList.string" xmi:uuid="7f2f6334-111c-5e78-ab0d-0a608f3f538a">
-          <name>string</name>
-          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.StringOr$defsList.string.lower" xmi:uuid="e3fd2c27-f8ce-50ff-92c3-cfdd77c50d33">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.StringOr$defsList.string.upper" xmi:uuid="99d5b41a-2c8e-55da-9543-1f361350a0d5">
-            <value>1</value>
-          </upperValue>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.StringOr$defsList.$defsList" xmi:uuid="91715102-c953-5e58-9736-cb889428ac11">
-          <name>$defsList</name>
-          <type href="../skosConcept/skosConcept.xmi#cdif.bbr.metadata.skosProperties.skosConcept.LanguageTaggedValue"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.StringOr$defsList.$defsList.lower" xmi:uuid="0668fbca-8766-5ff5-a90c-d195ebf07854">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.StringOr$defsList.$defsList.upper" xmi:uuid="6111a32f-2bd3-56cd-b677-71bcc0c4ab22">
-            <value>*</value>
-          </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.StringOr$defsList.$defsList.comment" xmi:uuid="0f983622-dda1-5c93-9f25-ecb5f5e881d1">
-            <body>**CDIF**
-
-Definition
-==========
-
-
-:schemaRef: "skosProperties/skosConcept#/$defs/LanguageTaggedValue"</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.StringOr$defsList.$defsList"/>
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
@@ -512,6 +419,49 @@ Definition
 :alsoAcceptsString: ``first``
 :schemaRef: "skosProperties/skosConcept#/$defs/LanguageTaggedValue"</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.StringOrChoiceList.choiceList"/>
+          </ownedComment>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.StringOrLanguageTaggedValueList" xmi:uuid="36340d90-3b3c-53a8-a8d1-c9a7f592da97">
+        <name>StringOrLanguageTaggedValueList</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.StringOrLanguageTaggedValueList.comment" xmi:uuid="7a4766f7-c156-54fe-a862-21ca585af1e3">
+          <body>**CDIF**
+
+Definition
+==========
+
+
+:union: ``anyOf``</body>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.StringOrLanguageTaggedValueList"/>
+        </ownedComment>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.StringOrLanguageTaggedValueList.string" xmi:uuid="e3ab4ccf-e5c9-5a9f-9260-b87637777d89">
+          <name>string</name>
+          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.StringOrLanguageTaggedValueList.string.lower" xmi:uuid="2fdbf2c5-e398-5dc7-b4a0-cf93cf780e4f">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.StringOrLanguageTaggedValueList.string.upper" xmi:uuid="a8f27575-78b1-510f-8b1f-1aef5d24fe0e">
+            <value>1</value>
+          </upperValue>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.StringOrLanguageTaggedValueList.languageTaggedValueList" xmi:uuid="fc4c92dd-f5b7-5f58-8758-190bbcbf7d74">
+          <name>languageTaggedValueList</name>
+          <type href="../skosConcept/skosConcept.xmi#cdif.bbr.metadata.skosProperties.skosConcept.LanguageTaggedValue"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.StringOrLanguageTaggedValueList.languageTaggedValueList.lower" xmi:uuid="debc2918-65ee-5300-b6ce-6740e95497e3">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.StringOrLanguageTaggedValueList.languageTaggedValueList.upper" xmi:uuid="6e08fa7e-72ae-5293-9190-8fb298933161">
+            <value>*</value>
+          </upperValue>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.StringOrLanguageTaggedValueList.languageTaggedValueList.comment" xmi:uuid="82e817fb-354e-5b83-8baa-1509aef22935">
+            <body>**CDIF**
+
+Definition
+==========
+
+
+:schemaRef: "skosProperties/skosConcept#/$defs/LanguageTaggedValue"</body>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.StringOrLanguageTaggedValueList.languageTaggedValueList"/>
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
@@ -578,50 +528,50 @@ Definition
         <memberEnd xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.assoc.Collection_orderedCollection_OrderedCollection.ownedEnd"/>
         <memberEnd xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.Collection2.orderedCollection"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.IdReferenceOrConcept_concept_Concept" xmi:uuid="6ddddaf3-f285-5080-95c2-33d077d5b4e2">
-        <name>IdReferenceOrConcept_concept_Concept</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.IdReferenceOrConcept_concept_Concept.ownedEnd" xmi:uuid="571c8ebd-df84-58d5-87cd-150148697db2">
-          <type xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConcept"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.IdReferenceOrConcept_concept_Concept.ownedEnd.lower" xmi:uuid="940aabe8-a8e8-53c9-b51f-0bfb7cb431ee">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.ConceptOrCollection_concept_Concept" xmi:uuid="063afd7b-3f2a-5370-ae90-268fbf69189f">
+        <name>ConceptOrCollection_concept_Concept</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.ConceptOrCollection_concept_Concept.ownedEnd" xmi:uuid="5b7129fe-290a-561a-9966-90aa55d8118e">
+          <type xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.ConceptOrCollection"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.ConceptOrCollection_concept_Concept.ownedEnd.lower" xmi:uuid="8985c08e-3e41-5a3f-8933-ecd5de407c13">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.IdReferenceOrConcept_concept_Concept.ownedEnd.upper" xmi:uuid="c7c04e83-2c70-5b69-b6a9-9e78db9fdb0f">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.ConceptOrCollection_concept_Concept.ownedEnd.upper" xmi:uuid="f631dd97-68b6-57fb-94c1-10d6a7295a2a">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.assoc.IdReferenceOrConcept_concept_Concept"/>
+          <association xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.assoc.ConceptOrCollection_concept_Concept"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.assoc.IdReferenceOrConcept_concept_Concept.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConcept.concept"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.assoc.ConceptOrCollection_concept_Concept.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.ConceptOrCollection.concept"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.IdReferenceOrConceptOrCollection_concept_Concept" xmi:uuid="aaefbcc9-de48-51ad-9434-c6abd35cfffb">
-        <name>IdReferenceOrConceptOrCollection_concept_Concept</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.IdReferenceOrConceptOrCollection_concept_Concept.ownedEnd" xmi:uuid="421cae4d-85d5-501a-959f-c581b8a756b2">
-          <type xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConceptOrCollection"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.IdReferenceOrConceptOrCollection_concept_Concept.ownedEnd.lower" xmi:uuid="a293bc7c-2559-58ba-adae-92cb2a35a1fe">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.ConceptOrCollection_collection_Collection" xmi:uuid="ae1b5ae3-779c-5789-8974-517e53696860">
+        <name>ConceptOrCollection_collection_Collection</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.ConceptOrCollection_collection_Collection.ownedEnd" xmi:uuid="3035a0fb-cb3a-5156-ac1e-8fc9090bccdb">
+          <type xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.ConceptOrCollection"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.ConceptOrCollection_collection_Collection.ownedEnd.lower" xmi:uuid="fdc48ccd-b063-528b-8f33-83771e9e264d">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.IdReferenceOrConceptOrCollection_concept_Concept.ownedEnd.upper" xmi:uuid="7a486172-42d3-56bd-8440-8ac42263db42">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.ConceptOrCollection_collection_Collection.ownedEnd.upper" xmi:uuid="13f0e260-5106-50ff-9bdb-e25d29fe5d49">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.assoc.IdReferenceOrConceptOrCollection_concept_Concept"/>
+          <association xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.assoc.ConceptOrCollection_collection_Collection"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.assoc.IdReferenceOrConceptOrCollection_concept_Concept.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConceptOrCollection.concept"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.assoc.ConceptOrCollection_collection_Collection.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.ConceptOrCollection.collection"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.IdReferenceOrConceptOrCollection_collection_Collection" xmi:uuid="27207a71-05cf-5fc7-9869-20b50c04031b">
-        <name>IdReferenceOrConceptOrCollection_collection_Collection</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.IdReferenceOrConceptOrCollection_collection_Collection.ownedEnd" xmi:uuid="84271b8b-b4d4-532a-a0dd-c4e257258290">
-          <type xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConceptOrCollection"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.IdReferenceOrConceptOrCollection_collection_Collection.ownedEnd.lower" xmi:uuid="cca6ad8a-c6e3-57cf-914a-3e98376e2228">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.OrderedCollectionMemberList_@list__Concept" xmi:uuid="5f1add62-48b9-557a-b304-500627756553">
+        <name>OrderedCollectionMemberList_@list__Concept</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.OrderedCollectionMemberList_@list__Concept.ownedEnd" xmi:uuid="5099b914-1d5a-55f2-a0b5-677ba259c72a">
+          <type xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.OrderedCollectionMemberList"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.OrderedCollectionMemberList_@list__Concept.ownedEnd.lower" xmi:uuid="276d84c9-c4d1-5561-bae2-0fa32df748d5">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.IdReferenceOrConceptOrCollection_collection_Collection.ownedEnd.upper" xmi:uuid="58ac4c38-db8c-5536-b6ad-fb00481d482c">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.OrderedCollectionMemberList_@list__Concept.ownedEnd.upper" xmi:uuid="934a8927-c11b-5591-87be-a0f78f9f6c76">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.assoc.IdReferenceOrConceptOrCollection_collection_Collection"/>
+          <association xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.assoc.OrderedCollectionMemberList_@list__Concept"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.assoc.IdReferenceOrConceptOrCollection_collection_Collection.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.IdReferenceOrConceptOrCollection.collection"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.assoc.OrderedCollectionMemberList_@list__Concept.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.OrderedCollectionMemberList.@list_"/>
       </packagedElement>
     </packagedElement>
   </uml:Model>

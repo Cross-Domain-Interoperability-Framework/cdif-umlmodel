@@ -26,13 +26,14 @@ A dqv:QualityAnnotation (a subclass of oa:Annotation) attaches a narrative or ca
         </ownedComment>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.QualityAnnotation.oa_hasBody" xmi:uuid="680b4aeb-5f41-5c0f-9954-b17f2d389734">
           <name>oa_hasBody</name>
-          <type xmi:idref="cdif.bbr.metadata.qualityProperties.qualityAnnotation.StringOrDefinedTermOrIdReference"/>
+          <type href="../../schemaorgProperties/definedTerm/definedTerm.xmi#cdif.bbr.metadata.schemaorgProperties.definedTerm.DefinedTerm"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.QualityAnnotation.oa_hasBody.lower" xmi:uuid="a114eafd-9d7b-5c5e-b625-47834b4f3e97">
             <value>1</value>
           </lowerValue>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.QualityAnnotation.oa_hasBody.upper" xmi:uuid="cfcee9f3-04f6-5a55-83cd-0c685aa27800">
             <value>1</value>
           </upperValue>
+          <association xmi:idref="cdif.bbr.metadata.qualityProperties.qualityAnnotation.assoc.QualityAnnotation_oa_hasBody_DefinedTerm"/>
           <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.QualityAnnotation.oa_hasBody.comment" xmi:uuid="c6fd84ef-2d68-5dc5-8f7e-c3c8ab822635">
             <body>**CDIF**
 
@@ -40,19 +41,23 @@ Definition
 ==========
 
 the content of the quality annotation -- a free-text statement, a categorical outcome as a Defined Term (e.g. a certification level or a pass/fail rating), or a reference to a separate body resource
+:inlineOrByReference: ``inline``
+:idRefDescription: "a resolvable reference to the annotation body"
+:orReference: ["string", "value", "idReference"]
 :jsonName: "oa:hasBody"</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.qualityProperties.qualityAnnotation.QualityAnnotation.oa_hasBody"/>
           </ownedComment>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.QualityAnnotation.oa_motivatedBy" xmi:uuid="a29e34bb-39a3-5aa9-820d-da28d75a0254">
           <name>oa_motivatedBy</name>
-          <type href="../../cdifSharedUnions.xmi#cdif.union.StringOrIdReferenceOrDefinedTerm"/>
+          <type href="../../schemaorgProperties/definedTerm/definedTerm.xmi#cdif.bbr.metadata.schemaorgProperties.definedTerm.DefinedTerm"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.QualityAnnotation.oa_motivatedBy.lower" xmi:uuid="97e5ef46-949c-5091-993e-74ca4b173758">
             <value>0</value>
           </lowerValue>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.QualityAnnotation.oa_motivatedBy.upper" xmi:uuid="e48c18f6-7a19-5e81-ac47-2c511b4eb461">
             <value>1</value>
           </upperValue>
+          <association xmi:idref="cdif.bbr.metadata.qualityProperties.qualityAnnotation.assoc.QualityAnnotation_oa_motivatedBy_DefinedTerm"/>
           <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.QualityAnnotation.oa_motivatedBy.comment" xmi:uuid="fb3fa2ec-e9a1-5286-8909-c3c90a3cc68a">
             <body>**CDIF**
 
@@ -60,7 +65,9 @@ Definition
 ==========
 
 why the annotation was made; for quality annotations this is normally the instance dqv:qualityAssessment, but any motivation IRI or Defined Term is allowed
-:alternativeOverrides: {"idReference": {"idRefDescription": "a resolvable reference to an oa:Motivation"}}
+:inlineOrByReference: ``inline``
+:idRefDescription: "a resolvable reference to an oa:Motivation"
+:orReference: ["string", "idReference", "value"]
 :jsonName: "oa:motivatedBy"</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.qualityProperties.qualityAnnotation.QualityAnnotation.oa_motivatedBy"/>
           </ownedComment>
@@ -107,84 +114,35 @@ optional short human-readable label for the annotation
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.StringOrDefinedTermOrIdReference" xmi:uuid="2e9a29e8-264c-5e41-a312-0aab9c82101f">
-        <name>StringOrDefinedTermOrIdReference</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.StringOrDefinedTermOrIdReference.comment" xmi:uuid="38a3fbaf-552e-517d-bc06-365876abdb84">
-          <body>**CDIF**
-
-Definition
-==========
-
-
-:union: ``anyOf``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.qualityProperties.qualityAnnotation.StringOrDefinedTermOrIdReference"/>
-        </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.StringOrDefinedTermOrIdReference.string" xmi:uuid="9caa2393-6660-5d03-89d0-d60b6bbb1a3b">
-          <name>string</name>
-          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.StringOrDefinedTermOrIdReference.string.lower" xmi:uuid="7aefc131-ade5-59c0-9e4c-398b56284106">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.assoc.QualityAnnotation_oa_hasBody_DefinedTerm" xmi:uuid="54d2aafe-2b83-5e09-88f8-83538321ad8a">
+        <name>QualityAnnotation_oa_hasBody_DefinedTerm</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.assoc.QualityAnnotation_oa_hasBody_DefinedTerm.ownedEnd" xmi:uuid="77f4cc47-5310-5c02-a41b-aa6eabefd4cd">
+          <type xmi:idref="cdif.bbr.metadata.qualityProperties.qualityAnnotation.QualityAnnotation"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.assoc.QualityAnnotation_oa_hasBody_DefinedTerm.ownedEnd.lower" xmi:uuid="c4fbbeb2-7390-5723-9c2e-70582ae89818">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.StringOrDefinedTermOrIdReference.string.upper" xmi:uuid="54d9fedd-6d68-5e2d-be6d-f0c9263e7816">
-            <value>1</value>
-          </upperValue>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.StringOrDefinedTermOrIdReference.definedTerm" xmi:uuid="527de383-98cf-5f56-beb4-0253aa0b2f64">
-          <name>definedTerm</name>
-          <type href="../../schemaorgProperties/definedTerm/definedTerm.xmi#cdif.bbr.metadata.schemaorgProperties.definedTerm.DefinedTerm"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.StringOrDefinedTermOrIdReference.definedTerm.lower" xmi:uuid="dcd63b4c-a327-5be1-950f-9ded5821b68b">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.StringOrDefinedTermOrIdReference.definedTerm.upper" xmi:uuid="3935af89-0889-592e-a0ca-ebc2aca9dacd">
-            <value>1</value>
-          </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.qualityProperties.qualityAnnotation.assoc.StringOrDefinedTermOrIdReference_definedTerm_DefinedTerm"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.StringOrDefinedTermOrIdReference.definedTerm.comment" xmi:uuid="0b9f68a7-787b-5ccb-a022-776417583d5b">
-            <body>**CDIF**
-
-Definition
-==========
-
-
-:inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.qualityProperties.qualityAnnotation.StringOrDefinedTermOrIdReference.definedTerm"/>
-          </ownedComment>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.StringOrDefinedTermOrIdReference.idReference" xmi:uuid="4f6b5bf4-90de-5a5a-9a2f-dc39f8176edf">
-          <name>idReference</name>
-          <type href="../../cdifCommonTypes.xmi#common.IdReference"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.StringOrDefinedTermOrIdReference.idReference.lower" xmi:uuid="4026b107-75d4-5e8b-94f4-167150e7547e">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.StringOrDefinedTermOrIdReference.idReference.upper" xmi:uuid="5533c89f-a044-56c2-9854-dcd2de7a2a36">
-            <value>1</value>
-          </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.StringOrDefinedTermOrIdReference.idReference.comment" xmi:uuid="7413f309-cb23-5d13-9def-35926edbca82">
-            <body>**CDIF**
-
-Definition
-==========
-
-
-:idRefDescription: "a resolvable reference to the annotation body"</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.qualityProperties.qualityAnnotation.StringOrDefinedTermOrIdReference.idReference"/>
-          </ownedComment>
-        </ownedAttribute>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.assoc.StringOrDefinedTermOrIdReference_definedTerm_DefinedTerm" xmi:uuid="f4b535fb-541e-534e-979f-63ea94c9c518">
-        <name>StringOrDefinedTermOrIdReference_definedTerm_DefinedTerm</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.assoc.StringOrDefinedTermOrIdReference_definedTerm_DefinedTerm.ownedEnd" xmi:uuid="b240dbf4-0b7e-5bea-b9a7-f91bcb54b737">
-          <type xmi:idref="cdif.bbr.metadata.qualityProperties.qualityAnnotation.StringOrDefinedTermOrIdReference"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.assoc.StringOrDefinedTermOrIdReference_definedTerm_DefinedTerm.ownedEnd.lower" xmi:uuid="c1248364-77aa-5f9e-885d-b298681f573a">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.assoc.StringOrDefinedTermOrIdReference_definedTerm_DefinedTerm.ownedEnd.upper" xmi:uuid="ae7c21fe-9cd7-50b0-9ccd-4347b915d766">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.assoc.QualityAnnotation_oa_hasBody_DefinedTerm.ownedEnd.upper" xmi:uuid="69a70dbe-3dac-51d0-a2ea-07f700bbd99d">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.qualityProperties.qualityAnnotation.assoc.StringOrDefinedTermOrIdReference_definedTerm_DefinedTerm"/>
+          <association xmi:idref="cdif.bbr.metadata.qualityProperties.qualityAnnotation.assoc.QualityAnnotation_oa_hasBody_DefinedTerm"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.qualityProperties.qualityAnnotation.assoc.StringOrDefinedTermOrIdReference_definedTerm_DefinedTerm.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.qualityProperties.qualityAnnotation.StringOrDefinedTermOrIdReference.definedTerm"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.qualityProperties.qualityAnnotation.assoc.QualityAnnotation_oa_hasBody_DefinedTerm.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.qualityProperties.qualityAnnotation.QualityAnnotation.oa_hasBody"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.assoc.QualityAnnotation_oa_motivatedBy_DefinedTerm" xmi:uuid="83cba88d-4d05-5442-ad02-ed3818393f2c">
+        <name>QualityAnnotation_oa_motivatedBy_DefinedTerm</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.assoc.QualityAnnotation_oa_motivatedBy_DefinedTerm.ownedEnd" xmi:uuid="c378b80f-69f5-5af0-a576-0c34825bfc1a">
+          <type xmi:idref="cdif.bbr.metadata.qualityProperties.qualityAnnotation.QualityAnnotation"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.assoc.QualityAnnotation_oa_motivatedBy_DefinedTerm.ownedEnd.lower" xmi:uuid="a3b80887-f2b5-5011-ad60-3bfc2ea55327">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.qualityProperties.qualityAnnotation.assoc.QualityAnnotation_oa_motivatedBy_DefinedTerm.ownedEnd.upper" xmi:uuid="82bd484e-276e-5944-a781-1a0cde8911a5">
+            <value>*</value>
+          </upperValue>
+          <association xmi:idref="cdif.bbr.metadata.qualityProperties.qualityAnnotation.assoc.QualityAnnotation_oa_motivatedBy_DefinedTerm"/>
+        </ownedEnd>
+        <memberEnd xmi:idref="cdif.bbr.metadata.qualityProperties.qualityAnnotation.assoc.QualityAnnotation_oa_motivatedBy_DefinedTerm.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.qualityProperties.qualityAnnotation.QualityAnnotation.oa_motivatedBy"/>
       </packagedElement>
     </packagedElement>
   </uml:Model>

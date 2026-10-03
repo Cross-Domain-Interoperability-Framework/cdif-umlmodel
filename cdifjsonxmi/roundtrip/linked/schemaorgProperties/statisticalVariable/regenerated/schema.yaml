@@ -38,7 +38,17 @@ properties:
         ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml
     description: Text description or URI identifying the measurement method.
   'schema:statType':
-    '$ref': '#/$defs/StringOrIdReferenceOrDefinedTerm'
+    anyOf:
+    - type: string
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml
   'schema:measuredProperty':
     '$ref': '#/$defs/Property'
 required:
@@ -60,16 +70,14 @@ required:
         type: string
         description: reference to a skos concept for the property
       'schema:name':
-        '$ref': '#/$defs/StringOrIdReferenceOrDefinedTerm'
-  StringOrIdReferenceOrDefinedTerm:
-    anyOf:
-    - type: string
-    - type: object
-      required:
-      - '@id'
-      additionalProperties: false
-      properties:
-        '@id':
-          type: string
-    - '$ref': >-
-        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml
+        anyOf:
+        - type: string
+        - type: object
+          required:
+          - '@id'
+          additionalProperties: false
+          properties:
+            '@id':
+              type: string
+        - '$ref': >-
+            ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml

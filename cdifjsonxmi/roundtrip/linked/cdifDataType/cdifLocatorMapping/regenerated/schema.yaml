@@ -1,0 +1,27 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: Locator Mapping Type
+description: >-
+  Locates a variable's value(s) within a structured (hierarchical) dataset such as XML or
+  JSON, via a locator expression (e.g., XPath or JSONPath). DDI-CDI LocatorMapping. Used in
+  place of column-index/text mappings for cdi:StructuredDataSet distributions.
+allOf:
+- '$ref': >-
+    ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifPhysicalMapping/schema.yaml
+- type: object
+  properties:
+    '@type':
+      type: array
+      items:
+        type: string
+      contains:
+        const: 'cdif:LocatorMapping'
+      minItems: 1
+      description: >-
+        A cdifLocatorMapping instance must be typed cdif:LocatorMapping (not cdif:PhysicalMapping).
+    'cdi:locator':
+      type: string
+      description: >-
+        Expression locating the variable's value(s) in the structured document (XPath, JSONPath,
+        pointer, etc.). LocatorMapping.locator.
+  required:
+  - 'cdi:locator'

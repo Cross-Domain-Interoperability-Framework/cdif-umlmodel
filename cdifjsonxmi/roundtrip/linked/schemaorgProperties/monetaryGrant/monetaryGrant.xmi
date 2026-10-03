@@ -85,7 +85,7 @@ title of the grant</body>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.MonetaryGrant.funder" xmi:uuid="167262a4-7b09-5a5e-bcfc-9da74276f1fa">
           <name>funder</name>
-          <type href="../../cdifSharedUnions.xmi#cdif.union.IdReferenceOrPersonOrOrganization"/>
+          <type href="../../cdifSharedUnions.xmi#cdif.union.PersonOrOrganization"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.MonetaryGrant.funder.lower" xmi:uuid="c0ba14b8-ec9c-5fa8-9e5f-96924841723a">
             <value>0</value>
           </lowerValue>
@@ -99,7 +99,8 @@ Definition
 ==========
 
 
-:alternativeOverrides: {"idReference": {"idRefDescription": "a identifier for an agent defined in this metadata, or externally; must be dereferenceable"}}</body>
+:idRefDescription: "a identifier for an agent defined in this metadata, or externally; must be dereferenceable"
+:orReference: ["idReference", "value"]</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.MonetaryGrant.funder"/>
           </ownedComment>
         </ownedAttribute>

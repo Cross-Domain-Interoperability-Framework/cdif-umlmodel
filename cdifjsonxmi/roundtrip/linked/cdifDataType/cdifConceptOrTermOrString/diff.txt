@@ -1,0 +1,6 @@
+cdifConceptOrTermOrString: 1 exact difference(s)
+$.anyOf[1].$ref:
+    original:    "../cdifConceptOrTerm/schema.yaml"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTerm/schema.yaml"
+
+cdifConceptOrTermOrString: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

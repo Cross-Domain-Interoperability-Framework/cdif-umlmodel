@@ -1,0 +1,39 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: Text Mapping Type
+description: >-
+  Physical mapping for a variable in a delimited or fixed-width text dataset. Extends cdifPhysicalMapping
+  with text-format properties (column width and number formatting). DDI-CDI TextMapping.
+allOf:
+- '$ref': >-
+    ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifPhysicalMapping/schema.yaml
+- type: object
+  properties:
+    '@type':
+      type: array
+      items:
+        type: string
+      contains:
+        const: 'cdif:TextMapping'
+      minItems: 1
+      description: >-
+        A cdifTextMapping instance must be typed cdif:TextMapping (not the base cdif:PhysicalMapping).
+        It composes cdifPhysicalMapping via allOf for its properties; the base @type accepts
+        the physical-mapping family.
+    'cdi:length':
+      type: integer
+      description: The column width if the tabular text is fixed width (TextMapping.length).
+    'cdi:defaultDecimalSeparator':
+      type: string
+      description: >-
+        Decimal separator used when not otherwise specified (TextMapping.defaultDecimalSeparator).
+    'cdi:defaultDigitGroupSeparator':
+      type: string
+      description: Digit-group (thousands) separator (TextMapping.defaultDigitGroupSeparator).
+    'cdif:displayLabel':
+      type: array
+      items:
+        type: string
+      description: >-
+        Human-readable label(s) for display. CDIF simplification (plain string) of DDI-CDI
+        TextMapping.displayLabel, whose model type is LabelForDisplay. Per the cdi/cdif namespace
+        policy a structured-string type simplified to a plain string is in the cdif namespace.

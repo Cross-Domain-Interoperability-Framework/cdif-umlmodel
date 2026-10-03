@@ -32,7 +32,11 @@ properties:
       DCAT's declared range is dcat:Role (dcat.ttl: rdfs:range dcat:Role, and dcat:Role rdfs:subClassOf skos:Concept), so the DCAT-native form is a node typed dcat:Role. That form was NOT accepted here before 2026-10-01: this property was cdifConceptOrTermOrString alone, which matches a bare string, a sealed @id reference, a schema:DefinedTerm or a skos:Concept -- none of which a dcat:Role-typed node satisfies, because JSON Schema does no subclass reasoning.
       dcat:Role is added as a branch rather than replacing the others, so the DCAT-native form becomes valid without invalidating anything already written. Note this leaves CDIF LOOSER than DCAT, deliberately: DCAT's range is dcat:Role alone, and CDIF also accepts a plain skos:Concept, a DefinedTerm, an @id reference and a string. That is the same both-forms stance taken on dcterms:relation, and it is a choice rather than an oversight -- do not read the extra branches as something not yet tightened.
   'dcterms:relation':
-    '$ref': '#/$defs/ObjectReferenceOrString'
+    anyOf:
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/objectReference/schema.yaml
+    - type: string
+      format: uri
     description: |-
       The related resource -- the DCAT canonical pointer to what is being related to, which is distinct from schema:url, the presentation URL of the link itself.
       An @id reference is the RECOMMENDED form and a string is permitted, which is DCMI's own position: "Recommended practice is to identify the related resource by means of a URI. If this is not possible or feasible, a string conforming to a formal identification system may be provided." DCMI declares no rdfs:range for this property, and of the 13 DCMI properties carrying an "intended to be used with non-literal values" restriction, this is deliberately not one. dcat.ttl does not re-declare or constrain it at all -- the only triple mentioning it in the whole DCAT vocabulary is `dcat:distribution rdfs:subPropertyOf dcterms:relation`.
@@ -57,12 +61,6 @@ allOf:
     - '$ref': '#/$defs/Role'
     - '$ref': >-
         ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml
-  ObjectReferenceOrString:
-    anyOf:
-    - '$ref': >-
-        ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/objectReference/schema.yaml
-    - type: string
-      format: uri
   Role:
     type: object
     description: |-

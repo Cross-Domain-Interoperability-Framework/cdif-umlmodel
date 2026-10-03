@@ -33,18 +33,46 @@ allOf:
     'prov:generated':
       type: array
       items:
-        '$ref': '#/$defs/StringOrIdReference'
+        anyOf:
+        - type: string
+        - type: object
+          additionalProperties: false
+          required:
+          - '@id'
+          properties:
+            '@id':
+              type: string
+              description: reference to an entity produced by this activity
       description: Entities produced by this activity (inverse of prov:wasGeneratedBy)
     'prov:wasAssociatedWith':
       type: array
       items:
-        '$ref': '#/$defs/PersonOrOrganizationOrAgentInRoleOrStringOrIdReference'
+        anyOf:
+        - '$ref': '#/$defs/PersonOrOrganizationOrAgentInRole'
+        - type: string
+        - type: object
+          required:
+          - '@id'
+          additionalProperties: false
+          properties:
+            '@id':
+              type: string
+              description: reference to an agent defined elsewhere
       description: >-
         Agents responsible for this activity (PROV-O native -- maps to schema:agent in cdifProvActivity)
     'prov:wasInformedBy':
       type: array
       items:
-        '$ref': '#/$defs/IdReferenceOrString'
+        anyOf:
+        - type: object
+          additionalProperties: false
+          required:
+          - '@id'
+          properties:
+            '@id':
+              type: string
+              description: reference to a prior activity
+        - type: string
       description: >-
         Other activities that communicated information to this one (PROV-O activity-to-activity
         chain -- maps to schema:object in cdifProvActivity)
@@ -59,7 +87,18 @@ allOf:
         ISO8601 date-time when the activity ended (PROV-O native -- maps to schema:endTime
         in cdifProvActivity)
     'prov:atLocation':
-      '$ref': '#/$defs/SpatialExtentOrStringOrIdReference'
+      anyOf:
+      - '$ref': >-
+          ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/spatialExtent/schema.yaml
+      - type: string
+      - type: object
+        required:
+        - '@id'
+        additionalProperties: false
+        properties:
+          '@id':
+            type: string
+            description: reference to a place defined elsewhere
       description: >-
         Location where the activity occurred (PROV-O expanded term -- maps to schema:location
         in cdifProvActivity)
@@ -67,9 +106,9 @@ allOf:
       anyOf:
       - type: string
       - type: object
+        additionalProperties: false
         required:
         - '@id'
-        additionalProperties: false
         properties:
           '@id':
             type: string
@@ -79,9 +118,9 @@ allOf:
       anyOf:
       - type: string
       - type: object
+        additionalProperties: false
         required:
         - '@id'
-        additionalProperties: false
         properties:
           '@id':
             type: string
@@ -96,7 +135,17 @@ allOf:
       - 'schema:FailedActionStatus'
       description: Status of this activity (schema.org fallback -- no PROV-O equivalent)
     'schema:actionProcess':
-      '$ref': '#/$defs/HowToOrStringOrIdReference'
+      anyOf:
+      - '$ref': '#/$defs/ActivityHowTo'
+      - type: string
+      - type: object
+        required:
+        - '@id'
+        additionalProperties: false
+        properties:
+          '@id':
+            type: string
+            description: reference to a methodology defined elsewhere
       description: >-
         Methodology or protocol for this activity (schema.org fallback -- PROV-O has prov:hadPlan
         only inside qualified Association)
@@ -105,7 +154,7 @@ allOf:
       description: >-
         Error description for failed activities (schema.org fallback -- no PROV-O equivalent)
 '$defs':
-  HowTo:
+  ActivityHowTo:
     type: object
     description: A methodology or protocol described as a HowTo with optional steps
     properties:
@@ -118,6 +167,11 @@ allOf:
         minItems: 1
       '@id':
         type: string
+      'schema:step':
+        type: array
+        items:
+          '$ref': '#/$defs/ActivityHowToStep'
+        description: Ordered steps in this methodology
       'schema:name':
         type: string
         description: Name of the methodology or protocol
@@ -128,11 +182,6 @@ allOf:
         type: string
         format: uri
         description: URL to a published methodology or protocol document
-      'schema:step':
-        type: array
-        items:
-          '$ref': '#/$defs/HowToStep'
-        description: Ordered steps in this methodology
     required:
     - '@type'
     allOf:
@@ -141,19 +190,7 @@ allOf:
         - 'schema:name'
       - required:
         - 'schema:url'
-  HowToOrStringOrIdReference:
-    anyOf:
-    - '$ref': '#/$defs/HowTo'
-    - type: string
-    - type: object
-      required:
-      - '@id'
-      additionalProperties: false
-      properties:
-        '@id':
-          type: string
-          description: reference to a methodology defined elsewhere
-  HowToStep:
+  ActivityHowToStep:
     type: object
     description: A single step in a HowTo methodology
     properties:
@@ -180,18 +217,7 @@ allOf:
     required:
     - '@type'
     - 'schema:name'
-  IdReferenceOrString:
-    anyOf:
-    - type: object
-      required:
-      - '@id'
-      additionalProperties: false
-      properties:
-        '@id':
-          type: string
-          description: reference to a prior activity
-    - type: string
-  PersonOrOrganizationOrAgentInRoleOrStringOrIdReference:
+  PersonOrOrganizationOrAgentInRole:
     anyOf:
     - '$ref': >-
         ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/person/schema.yaml
@@ -199,36 +225,3 @@ allOf:
         ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/organization/schema.yaml
     - '$ref': >-
         ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/agentInRole/schema.yaml
-    - type: string
-    - type: object
-      required:
-      - '@id'
-      additionalProperties: false
-      properties:
-        '@id':
-          type: string
-          description: reference to an agent defined elsewhere
-  SpatialExtentOrStringOrIdReference:
-    anyOf:
-    - '$ref': >-
-        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/spatialExtent/schema.yaml
-    - type: string
-    - type: object
-      required:
-      - '@id'
-      additionalProperties: false
-      properties:
-        '@id':
-          type: string
-          description: reference to a place defined elsewhere
-  StringOrIdReference:
-    anyOf:
-    - type: string
-    - type: object
-      required:
-      - '@id'
-      additionalProperties: false
-      properties:
-        '@id':
-          type: string
-          description: reference to an entity produced by this activity

@@ -98,6 +98,19 @@ allOf:
     - 'skos:prefLabel'
     - 'skos:definition'
     - 'skos:inScheme'
+  ConceptDefinition:
+    type: object
+    description: An RDF literal value with a language tag, serialized as a JSON-LD value object.
+    properties:
+      '@value':
+        type: string
+        description: The text content.
+      '@language':
+        type: string
+        description: BCP 47 language tag (e.g. en, fr, de).
+    required:
+    - '@value'
+    - '@language'
   ConceptRefOrConcept:
     anyOf:
     - type: object
@@ -149,20 +162,7 @@ allOf:
       items:
         anyOf:
         - type: string
-        - '$ref': '#/$defs/StringOrLanguageTaggedValueOrChoiceListChoiceList'
-  StringOrLanguageTaggedValueOrChoiceListChoiceList:
-    type: object
-    description: An RDF literal value with a language tag, serialized as a JSON-LD value object.
-    properties:
-      '@value':
-        type: string
-        description: The text content.
-      '@language':
-        type: string
-        description: BCP 47 language tag (e.g. en, fr, de).
-    required:
-    - '@value'
-    - '@language'
+        - '$ref': '#/$defs/ConceptDefinition'
   StringOrLanguageTaggedValueOrLanguageTaggedValueList:
     anyOf:
     - type: string

@@ -1,0 +1,6 @@
+cdifDataCube: 3 exact difference(s)
+$.$defs: only in regenerated: {"DataCubeHasPhysicalMapping": {"allOf": [{"$ref": "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifPhysicalMapping/schema.yaml"}, {"type": "object", "properties": {"cdi:locator"
+$.properties.cdif:hasPhysicalMapping.items.$ref: only in regenerated: "#/$defs/DataCubeHasPhysicalMapping"
+$.properties.cdif:hasPhysicalMapping.items.allOf: only in original: [{"$ref": "../../cdifDataType/cdifPhysicalMapping/schema.yaml"}, {"type": "object", "properties": {"cdi:locator": {"type": "string", "description": "String that can be used by software to locate value
+
+cdifDataCube: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

@@ -119,7 +119,16 @@ properties:
   'schema:hasPart':
     type: array
     items:
-      '$ref': '#/$defs/InstrumentComponentOrIdReference'
+      anyOf:
+      - '$ref': '#/$defs/InstrumentThing'
+      - type: object
+        required:
+        - '@id'
+        additionalProperties: false
+        properties:
+          '@id':
+            type: string
+            description: Reference to a sub-component defined elsewhere.
     description: >-
       Sub-components of this instrument system. Each item is either an inline instrument description
       or an @id reference.
@@ -144,17 +153,6 @@ required:
     - '$ref': >-
         ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/additionalProperty/schema.yaml
     - '$ref': '#/$defs/InstrumentPropertyValueSpecification'
-  InstrumentComponentOrIdReference:
-    anyOf:
-    - '$ref': '#/$defs/InstrumentThing'
-    - type: object
-      required:
-      - '@id'
-      additionalProperties: false
-      properties:
-        '@id':
-          type: string
-          description: Reference to a sub-component defined elsewhere.
   InstrumentProductModel:
     type: object
     properties:

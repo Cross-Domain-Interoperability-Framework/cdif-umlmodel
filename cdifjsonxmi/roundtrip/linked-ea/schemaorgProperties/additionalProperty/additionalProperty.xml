@@ -31,28 +31,6 @@
 								<UML:TaggedValue tag="ea_guid" value="{7D94D7A4-BEF4-5c8f-8C4D-171051B83A03}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Classifier.feature>
-								<UML:Attribute name="propertyID" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
-									<UML:Attribute.initialValue>
-										<UML:Expression/>
-									</UML:Attribute.initialValue>
-									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="EAID_279CBAC8_6134_559c_B369_98E96C5E141A"/>
-									</UML:StructuralFeature.type>
-									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;identifier or name for the property concept quantified by the values in this variable slot. Multiple values can specify the property at different levels of granularity.&#xA;:minItems: 1"/>
-										<UML:TaggedValue tag="type" value="StringOrIdReferenceOrDefinedTerm"/>
-										<UML:TaggedValue tag="derived" value="0"/>
-										<UML:TaggedValue tag="containment" value="Not Specified"/>
-										<UML:TaggedValue tag="ordered" value="0"/>
-										<UML:TaggedValue tag="collection" value="true"/>
-										<UML:TaggedValue tag="position" value="0"/>
-										<UML:TaggedValue tag="lowerBound" value="0"/>
-										<UML:TaggedValue tag="upperBound" value="*"/>
-										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{821E25B2-B863-5ebb-9CE6-FAEB501A483E}"/>
-										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
-									</UML:ModelElement.taggedValue>
-								</UML:Attribute>
 								<UML:Attribute name="name" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
 									<UML:Attribute.initialValue>
 										<UML:Expression/>
@@ -67,7 +45,7 @@
 										<UML:TaggedValue tag="containment" value="Not Specified"/>
 										<UML:TaggedValue tag="ordered" value="0"/>
 										<UML:TaggedValue tag="collection" value="false"/>
-										<UML:TaggedValue tag="position" value="1"/>
+										<UML:TaggedValue tag="position" value="0"/>
 										<UML:TaggedValue tag="lowerBound" value="1"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
@@ -80,16 +58,16 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="EAID_EEF59D0B_57DD_5c06_8D7B_1D15D2D9DCAF"/>
+										<UML:Classifier xmi.idref="EAID_3D1026AA_CBD7_5643_BDE3_6683740A9A33"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="description" value=""/>
-										<UML:TaggedValue tag="type" value="StringOrNumberOrBooleanOrOption4"/>
+										<UML:TaggedValue tag="type" value="AdditionalPropertyValueChoice"/>
 										<UML:TaggedValue tag="derived" value="0"/>
 										<UML:TaggedValue tag="containment" value="Not Specified"/>
 										<UML:TaggedValue tag="ordered" value="0"/>
 										<UML:TaggedValue tag="collection" value="false"/>
-										<UML:TaggedValue tag="position" value="2"/>
+										<UML:TaggedValue tag="position" value="1"/>
 										<UML:TaggedValue tag="lowerBound" value="1"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
@@ -111,7 +89,7 @@
 										<UML:TaggedValue tag="containment" value="Not Specified"/>
 										<UML:TaggedValue tag="ordered" value="0"/>
 										<UML:TaggedValue tag="collection" value="false"/>
-										<UML:TaggedValue tag="position" value="3"/>
+										<UML:TaggedValue tag="position" value="2"/>
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
@@ -121,7 +99,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Class name="StringOrNumberOrBooleanOrOption4" xmi.id="EAID_EEF59D0B_57DD_5c06_8D7B_1D15D2D9DCAF" visibility="public" namespace="EAPK_C266100E_F3F8_5906_B45B_647B10301F12" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+						<UML:Class name="AdditionalPropertyValueChoice" xmi.id="EAID_3D1026AA_CBD7_5643_BDE3_6683740A9A33" visibility="public" namespace="EAPK_C266100E_F3F8_5906_B45B_647B10301F12" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:union: ``anyOf``"/>
 								<UML:TaggedValue tag="isSpecification" value="false"/>
@@ -129,7 +107,7 @@
 								<UML:TaggedValue tag="ea_ntype" value="0"/>
 								<UML:TaggedValue tag="version" value="1.0"/>
 								<UML:TaggedValue tag="package" value="EAPK_C266100E_F3F8_5906_B45B_647B10301F12"/>
-								<UML:TaggedValue tag="ea_guid" value="{EEF59D0B-57DD-5c06-8D7B-1D15D2D9DCAF}"/>
+								<UML:TaggedValue tag="ea_guid" value="{3D1026AA-CBD7-5643-BDE3-6683740A9A33}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Classifier.feature>
 								<UML:Attribute name="string" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
@@ -150,7 +128,7 @@
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{FA930261-E273-5bb7-9E18-2482B017F77D}"/>
+										<UML:TaggedValue tag="ea_guid" value="{2CE6410D-9353-5778-9E88-FAFCA90610DC}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -172,7 +150,7 @@
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{70EBB094-775F-52b8-84D2-A8897DBA586D}"/>
+										<UML:TaggedValue tag="ea_guid" value="{BF94F79D-E5CC-557a-A321-630F9E7E0639}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -194,20 +172,20 @@
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{0EE0902C-9C1F-5f95-B1E5-EC5F305CCD3B}"/>
+										<UML:TaggedValue tag="ea_guid" value="{B6696B61-ED24-51c7-8524-AE30323F22BF}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
-								<UML:Attribute name="option4" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+								<UML:Attribute name="object" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
 									<UML:Attribute.initialValue>
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="EAID_8B2D1B93_D80E_538e_83F3_BF111AC8FD55"/>
+										<UML:Classifier xmi.idref="EAID_C956ACCF_B334_5f09_A43C_963333E8026D"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="description" value=""/>
-										<UML:TaggedValue tag="type" value="StringOrNumberOrBooleanOrOption4Option4"/>
+										<UML:TaggedValue tag="type" value="AdditionalPropertyValueObject"/>
 										<UML:TaggedValue tag="derived" value="0"/>
 										<UML:TaggedValue tag="containment" value="Not Specified"/>
 										<UML:TaggedValue tag="ordered" value="0"/>
@@ -216,13 +194,13 @@
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{4D67FE51-0F76-55d3-B3B3-415797B1B378}"/>
+										<UML:TaggedValue tag="ea_guid" value="{FEA1CB4D-42A7-511f-8C52-79D2EAC7623D}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Class name="StringOrNumberOrBooleanOrOption4Option4" xmi.id="EAID_8B2D1B93_D80E_538e_83F3_BF111AC8FD55" visibility="public" namespace="EAPK_C266100E_F3F8_5906_B45B_647B10301F12" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+						<UML:Class name="AdditionalPropertyValueObject" xmi.id="EAID_C956ACCF_B334_5f09_A43C_963333E8026D" visibility="public" namespace="EAPK_C266100E_F3F8_5906_B45B_647B10301F12" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:prefix: ``schema``"/>
 								<UML:TaggedValue tag="isSpecification" value="false"/>
@@ -230,9 +208,39 @@
 								<UML:TaggedValue tag="ea_ntype" value="0"/>
 								<UML:TaggedValue tag="version" value="1.0"/>
 								<UML:TaggedValue tag="package" value="EAPK_C266100E_F3F8_5906_B45B_647B10301F12"/>
-								<UML:TaggedValue tag="ea_guid" value="{8B2D1B93-D80E-538e-83F3-BF111AC8FD55}"/>
+								<UML:TaggedValue tag="ea_guid" value="{C956ACCF-B334-5f09-A43C-963333E8026D}"/>
 							</UML:ModelElement.taggedValue>
 						</UML:Class>
+						<UML:Association xmi.id="EAID_315DB36B_BABC_5748_9151_4C2A4CADE20A" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;identifier or name for the property concept quantified by the values in this variable slot. Multiple values can specify the property at different levels of granularity.&#xA;:inlineOrByReference: ``inline``&#xA;:minItems: 1&#xA;:orReference: [&quot;string&quot;, &quot;idReference&quot;, &quot;value&quot;]"/>
+								<UML:TaggedValue tag="ea_type" value="Association"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="AdditionalProperty"/>
+								<UML:TaggedValue tag="ea_targetName" value="DefinedTerm"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{315DB36B-BABC-5748-9151-4C2A4CADE20A}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Association.connection>
+								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_7D94D7A4_BEF4_5c8f_8C4D_171051B83A03">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="source"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+								<UML:AssociationEnd visibility="public" name="propertyID" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_758FF594_94AB_5d77_84E6_004AA8CC4AB4">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;identifier or name for the property concept quantified by the values in this variable slot. Multiple values can specify the property at different levels of granularity.&#xA;:inlineOrByReference: ``inline``&#xA;:minItems: 1&#xA;:orReference: [&quot;string&quot;, &quot;idReference&quot;, &quot;value&quot;]"/>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="deststyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="target"/>
+										<UML:TaggedValue tag="ea_guid" value="{821E25B2-B863-5ebb-9CE6-FAEB501A483E}"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+							</UML:Association.connection>
+						</UML:Association>
 						<UML:Association xmi.id="EAID_CDD938EC_7ED1_54b4_B4E4_15FDA1B1543E" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``&#xA;:alsoAcceptsString: ``first``"/>
@@ -301,7 +309,6 @@
 		</UML:Model>
 	</XMI.content>
 	<XMI.extensions xmi.extender="Enterprise Architect 2.5">
-		<EAStub xmi.id="EAID_279CBAC8_6134_559c_B369_98E96C5E141A" name="StringOrIdReferenceOrDefinedTerm" UMLType="DataType"/>
 		<EAStub xmi.id="EAID_758FF594_94AB_5d77_84E6_004AA8CC4AB4" name="DefinedTerm" UMLType="Class"/>
 		<EAStub xmi.id="EAID_BFC2535A_3D50_5350_B457_CFC692BD42A0" name="PropertyValue" UMLType="Class"/>
 	</XMI.extensions>

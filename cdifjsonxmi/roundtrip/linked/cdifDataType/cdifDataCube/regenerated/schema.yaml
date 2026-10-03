@@ -1,0 +1,31 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: Data Cube Type
+description: >-
+  Multi-dimensional data cube structure using DDI-CDI. Typed as ada:dataCube and cdi:StructuredDataSet
+  per CDIF 2026 alignment.
+type: object
+properties:
+  '@type':
+    type: array
+    items:
+      type: string
+    allOf:
+    - contains:
+        const: 'cdi:StructuredDataSet'
+  'cdif:hasPhysicalMapping':
+    type: array
+    items:
+      '$ref': '#/$defs/DataCubeHasPhysicalMapping'
+    description: Links variables to their physical representation in this dataset.
+'$defs':
+  DataCubeHasPhysicalMapping:
+    allOf:
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifPhysicalMapping/schema.yaml
+    - type: object
+      properties:
+        'cdi:locator':
+          type: string
+          description: >-
+            String that can be used by software to locate values of the variable in this physical
+            dataset (DDI-CDI LocatorMapping.locator).

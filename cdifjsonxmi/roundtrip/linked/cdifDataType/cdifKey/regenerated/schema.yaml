@@ -1,0 +1,71 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: CDIF Key
+description: >-
+  Profile of ddi-cdi Key/PrimaryKey: a CDIF Key is the role of an ordered set of cdi:InstanceVariables
+  (referenced via cdifInstanceVariable) that uniquely identify a data instance. Each variable's
+  position in the key is recorded with an explicit cdi:ComponentPosition wrapper carrying
+  cdi:indexes (the variable) and cdi:value (the integer position), matching the canonical
+  DDI-CDI PrimaryKey structure in ddicdiDataStructure.
+type: object
+properties:
+  '@type':
+    type: array
+    items:
+      type: string
+    contains:
+      const: 'cdif:Key'
+    minItems: 1
+  '@id':
+    type: string
+    description: Identifier for this Key node.
+  'cdif:isComposedOf':
+    type: array
+    items:
+      '$ref': '#/$defs/ComponentPosition'
+      description: ComponentPosition wrapper indexing one variable's position in the key.
+    minItems: 1
+    description: >-
+      Ordered list of cdi:ComponentPosition wrappers. Each wrapper carries cdi:indexes (an
+      @id-reference to a cdi:InstanceVariable declared elsewhere in the dataset) and cdi:value
+      (the 1-based integer position in the key).
+required:
+- '@type'
+- 'cdif:isComposedOf'
+'$defs':
+  ComponentPosition:
+    type: object
+    properties:
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'cdi:ComponentPosition'
+        minItems: 1
+      '@id':
+        type: string
+        description: Identifier for this ComponentPosition node.
+      'cdi:indexes':
+        '$ref': >-
+          ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/objectReference/schema.yaml
+        description: >-
+          The variable this position indexes -- an @id-reference to one declared elsewhere
+          in the document. At dataset level (cdif:hasPrimaryKey) that is a cdi:InstanceVariable
+          in schema:variableMeasured; at data-structure level (cdif:has_PrimaryKey, cdif:has_ForeignKey)
+          it is a cdi:RepresentedVariable in the structure. The value is a bare objectReference
+          either way: a key names variables that are defined once and referenced from the
+          key, so an inline variable here would be a second copy of a node that already exists.
+      'cdi:value':
+        default: 1
+        type: integer
+        minimum: 1
+        description: >-
+          1-based position of this variable in the ordered key. Pinned to a minimum of 1 because
+          a key that might be 0- or 1-based has ambiguous ordering, which defeats the purpose
+          of recording a position at all -- and because both structure-level key definitions
+          already rejected 0, so the latitude this description used to advertise was never
+          honoured anywhere.
+    required:
+    - '@type'
+    - 'cdi:indexes'
+    - 'cdi:value'

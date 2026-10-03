@@ -1,0 +1,150 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: Tabular Data Type
+description: >-
+  Tabular data type aligned with CDIF 2026 schema using DDI-CDI and CSVW properties. Typed
+  as cdi:TabularTextDataSet.
+type: object
+properties:
+  '@type':
+    type: array
+    items:
+      type: string
+    minItems: 2
+    allOf:
+    - contains:
+        const: 'cdi:TabularTextDataSet'
+  'cdi:arrayBase':
+    type: integer
+  'csvw:commentPrefix':
+    type: string
+    description: >-
+      An atomic property that sets the comment prefix flag to the single provided value, which
+      MUST be a string. The default is '#'.
+  'csvw:delimiter':
+    type: string
+    description: >-
+      Sets the delimiter flag to the single provided value, which MUST be a string. The default
+      is ','.
+  'csvw:header':
+    type: boolean
+    description: >-
+      If true, sets the header row count flag to 1, and if false to 0, unless headerRowCount
+      is provided, in which case the value provided for the header property is ignored. The
+      default is true.
+  'csvw:headerRowCount':
+    default: 1
+    type: integer
+    minimum: 0
+    description: >-
+      A numeric atomic property that sets the header row count flag to the single provided
+      value, which MUST be a non-negative integer.
+  'cdi:isDelimited':
+    type: boolean
+    description: >-
+      Schema constraint is that one of {'isDelimited','isFixedWidth'} must be present with
+      a True value; the other one may be present or omitted, but if present must have a false
+      value.
+  'cdi:isFixedWidth':
+    type: boolean
+  'csvw:lineTerminators':
+    type: string
+    enum:
+    - CRLF
+    - LF
+    - "\r\n"
+    - |2+
+
+  'csvw:quoteChar':
+    default: '"'
+    type: string
+    description: Same as DDI-CDI quoteCharacter. The string that is used around escaped cells.
+  'csvw:skipBlankRows':
+    default: false
+    type: boolean
+  'csvw:skipColumns':
+    default: 0
+    type: integer
+    description: The number of columns to skip at the beginning of each row.
+  'csvw:skipInitialSpace':
+    default: true
+    type: boolean
+  'csvw:skipRows':
+    default: 0
+    type: integer
+    description: >-
+      The number of rows to skip at the beginning of the file, before a header row or tabular
+      data.
+  'cdi:escapeCharacter':
+    type: string
+    description: >-
+      The character used to escape special characters in the data. From DDI-CDI PhysicalSegmentLayout.escapeCharacter.
+  'cdi:headerIsCaseSensitive':
+    default: false
+    type: boolean
+    description: >-
+      Whether column header names are case-sensitive. From DDI-CDI PhysicalSegmentLayout.headerIsCaseSensitive.
+  'cdi:treatConsecutiveDelimitersAsOne':
+    default: false
+    type: boolean
+    description: >-
+      Whether consecutive delimiters should be treated as a single delimiter. From DDI-CDI
+      PhysicalSegmentLayout.treatConsecutiveDelimitersAsOne.
+  'csvw:tableDirection':
+    default: Ltr
+    type: string
+    enum:
+    - Ltr
+    - Rtl
+    description: >-
+      Indicates the direction of the table layout (left-to-right or right-to-left). From DDI-CDI
+      PhysicalSegmentLayout.tableDirection.
+  'csvw:textDirection':
+    default: Auto
+    type: string
+    enum:
+    - Auto
+    - Inherit
+    - Ltr
+    - Rtl
+    description: >-
+      Indicates whether the text within cells should be displayed as left-to-right, right-to-left,
+      according to content, or inherited from the table direction. From DDI-CDI PhysicalSegmentLayout.textDirection.
+  'csvw:trim':
+    type: string
+    enum:
+    - 'true'
+    - end
+    - 'false'
+    - start
+    description: >-
+      Indicates whether to trim whitespace around cells. 'true' corresponds to DDI-CDI 'both'
+      value, 'false' corresponds to DDI-CDI 'neither' value.
+  'cdif:hasPhysicalMapping':
+    type: array
+    items:
+      '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifPhysicalMapping/schema.yaml
+    description: Links variables to their physical representation in this dataset.
+  countRows:
+    type: integer
+  countColumns:
+    type: integer
+required:
+- '@type'
+- 'cdif:hasPhysicalMapping'
+allOf:
+- oneOf:
+  - properties:
+      'cdi:isDelimited':
+        const: true
+      'cdi:isFixedWidth':
+        const: false
+    required:
+    - 'cdi:isDelimited'
+  - properties:
+      'cdi:isDelimited':
+        const: false
+      'cdi:isFixedWidth':
+        const: true
+    required:
+    - 'cdi:isFixedWidth'

@@ -49,13 +49,33 @@ properties:
   'schema:propertyID':
     type: array
     items:
-      '$ref': '#/$defs/StringOrIdReferenceOrDefinedTerm'
+      anyOf:
+      - type: string
+      - type: object
+        required:
+        - '@id'
+        additionalProperties: false
+        properties:
+          '@id':
+            type: string
+      - '$ref': >-
+          ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml
     description: identifier or name for the property concept
   'schema:unitText':
     type: string
     description: unit of measurement as text
   'schema:unitCode':
-    '$ref': '#/$defs/StringOrIdReferenceOrDefinedTerm'
+    anyOf:
+    - type: string
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml
     description: URI or code identifying the unit of measure
   'schema:minValue':
     type: number
@@ -69,18 +89,6 @@ required:
 - '@type'
 - 'schema:name'
 '$defs':
-  StringOrIdReferenceOrDefinedTerm:
-    anyOf:
-    - type: string
-    - type: object
-      required:
-      - '@id'
-      additionalProperties: false
-      properties:
-        '@id':
-          type: string
-    - '$ref': >-
-        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml
   StringOrLabeledLink:
     anyOf:
     - type: string

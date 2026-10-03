@@ -1,0 +1,58 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: CDIF Enumeration Domain
+description: >-
+  A base class acting as an extension point to allow a codification vocabulary to be documented
+  as enumerated value domain.
+type: object
+properties:
+  '@type':
+    type: array
+    items:
+      type: string
+    contains:
+      const: 'cdif:EnumerationDomain'
+    minItems: 1
+  '@id':
+    type: string
+    description: Identifier for this EnumerationDomain node
+  'cdif:identifier':
+    '$ref': >-
+      ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml
+    description: Identifier for this enumerated (categorical) domain.
+  'schema:name':
+    type: string
+    description: Human understandable name (linguistic signifier, word, phrase, or mnemonic).
+  'cdif:references':
+    anyOf:
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifCodelist/schema.yaml
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+      description: object reference via URI or URI fragment referencing an @id in the same
+        document
+    description: >-
+      CDIF codelist (skos:ConceptScheme) whose concepts define the allowed values of this
+      enumeration domain.
+  'cdif:purpose':
+    type: string
+    description: Intent or reason for the object/the description of the object.
+  'schema:description':
+    type: string
+    description: >-
+      Prose statement of the values this domain admits. Required when cdif:references is absent,
+      so that a domain naming no codelist still says what it enumerates.
+required:
+- '@type'
+allOf:
+- if:
+    not:
+      required:
+      - 'cdif:references'
+  then:
+    required:
+    - 'schema:description'

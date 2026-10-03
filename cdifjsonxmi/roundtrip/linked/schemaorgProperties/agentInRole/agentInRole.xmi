@@ -35,13 +35,24 @@ For more granularity on how a person contributed to a Dataset, use schema:Role. 
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.agentInRole.AgentInRole.contributor" xmi:uuid="e573e0aa-9b9b-5f97-b664-c85b3f12397f">
           <name>contributor</name>
-          <type href="../../cdifSharedUnions.xmi#cdif.union.IdReferenceOrPersonOrOrganization"/>
+          <type href="../../cdifSharedUnions.xmi#cdif.union.PersonOrOrganization"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.agentInRole.AgentInRole.contributor.lower" xmi:uuid="7dedf3fb-f7a9-5b9a-a252-8625b4b3e532">
             <value>1</value>
           </lowerValue>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.agentInRole.AgentInRole.contributor.upper" xmi:uuid="961617f7-f978-527b-aa66-8267dfe8e435">
             <value>1</value>
           </upperValue>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.agentInRole.AgentInRole.contributor.comment" xmi:uuid="68d39fec-ccea-5f80-81d7-c87211dc9488">
+            <body>**CDIF**
+
+Definition
+==========
+
+
+:idRefDescription: "IRI reference to a Person or Organization defined elsewhere"
+:orReference: ["idReference", "value"]</body>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.agentInRole.AgentInRole.contributor"/>
+          </ownedComment>
         </ownedAttribute>
       </packagedElement>
     </packagedElement>

@@ -26,7 +26,7 @@ Abstract base of the 2 schema:DataDownload profiles in schemaorgProperties/actio
 Definition
 ==========
 
-Abstract base of the 2 schema:EntryPoint profiles in schemaorgProperties/action, schemaorgProperties/linkRole. Each specializes it; this holds the attributes identical in all of them.
+Abstract base of the 3 schema:EntryPoint profiles in cdifDataType/cdifOpenApi, schemaorgProperties/action, schemaorgProperties/linkRole. Each specializes it; this holds the attributes identical in all of them.
 :rdfType: ``schema:EntryPoint``</body>
           <annotatedElement xmi:idref="cdif.shared.EntryPoint"/>
         </ownedComment>
@@ -43,6 +43,165 @@ Abstract base of the 2 schema:GeoShape profiles in schemaorgProperties/spatialEx
 :rdfType: ``schema:GeoShape``</body>
           <annotatedElement xmi:idref="cdif.shared.GeoShape"/>
         </ownedComment>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="cdif.shared.HowTo" xmi:uuid="46393a5f-79b9-5a97-8228-4585e51beedf" isAbstract="true">
+        <name>HowTo</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.shared.HowTo.comment" xmi:uuid="bce83f0d-b470-5c22-9b30-742ffdc0578d">
+          <body>**CDIF**
+
+Definition
+==========
+
+Abstract base of the 2 schema:HowTo profiles in cdifDataType/cdifProvActivity, provProperties/provActivity. Each specializes it; this holds the attributes identical in all of them.
+:rdfType: ``schema:HowTo``</body>
+          <annotatedElement xmi:idref="cdif.shared.HowTo"/>
+        </ownedComment>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.shared.HowTo.name" xmi:uuid="07423ecf-9439-5121-9c83-41a867aed007">
+          <name>name</name>
+          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.shared.HowTo.name.lower" xmi:uuid="91299e40-42e2-53ac-a0c8-61296801ff09">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.shared.HowTo.name.upper" xmi:uuid="6d6ccc83-3e7a-5f53-bc3d-1c9cba3593c9">
+            <value>1</value>
+          </upperValue>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.shared.HowTo.name.comment" xmi:uuid="dea85502-8102-538b-bf0d-8adb74f29569">
+            <body>**CDIF**
+
+Definition
+==========
+
+Name of the methodology or protocol</body>
+            <annotatedElement xmi:idref="cdif.shared.HowTo.name"/>
+          </ownedComment>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.shared.HowTo.description" xmi:uuid="74f9c940-9693-55d1-a753-abbc418b0bbe">
+          <name>description</name>
+          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.shared.HowTo.description.lower" xmi:uuid="ab63d150-b6a3-5bbc-9ce6-fb226800cb57">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.shared.HowTo.description.upper" xmi:uuid="ef7c231f-cf2b-559f-8181-372b643fbac8">
+            <value>1</value>
+          </upperValue>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.shared.HowTo.description.comment" xmi:uuid="982159cc-11eb-5696-9e90-c96ff47ebc14">
+            <body>**CDIF**
+
+Definition
+==========
+
+Description of the methodology</body>
+            <annotatedElement xmi:idref="cdif.shared.HowTo.description"/>
+          </ownedComment>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.shared.HowTo.url" xmi:uuid="f78dda9f-9503-5384-962a-d1c092ec05d8">
+          <name>url</name>
+          <type href="cdifCommonTypes.xmi#XMLSchemaDataTypes.XsdAnyUri"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.shared.HowTo.url.lower" xmi:uuid="ff76dd50-33de-5816-b767-f55135be2cdf">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.shared.HowTo.url.upper" xmi:uuid="fa6fe205-c493-5d8c-ac81-bf51e3f25d1e">
+            <value>1</value>
+          </upperValue>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.shared.HowTo.url.comment" xmi:uuid="7b264fe5-0895-5853-8808-10f6ad84c08f">
+            <body>**CDIF**
+
+Definition
+==========
+
+URL to a published methodology or protocol document</body>
+            <annotatedElement xmi:idref="cdif.shared.HowTo.url"/>
+          </ownedComment>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="cdif.shared.HowToStep" xmi:uuid="79f0f633-aae6-5e1d-82b9-722dc9e50965" isAbstract="true">
+        <name>HowToStep</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.shared.HowToStep.comment" xmi:uuid="e3a99a24-ea51-56ba-b6d2-d227413a338b">
+          <body>**CDIF**
+
+Definition
+==========
+
+Abstract base of the 2 schema:HowToStep profiles in cdifDataType/cdifProvActivity, provProperties/provActivity. Each specializes it; this holds the attributes identical in all of them.
+:rdfType: ``schema:HowToStep``</body>
+          <annotatedElement xmi:idref="cdif.shared.HowToStep"/>
+        </ownedComment>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.shared.HowToStep.name" xmi:uuid="0824788f-8aa5-5cc1-b987-5270b57b2c7e">
+          <name>name</name>
+          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.shared.HowToStep.name.lower" xmi:uuid="2fc674d8-b4cc-5dc3-83dc-eacdec7c863a">
+            <value>1</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.shared.HowToStep.name.upper" xmi:uuid="eea26a22-ba62-5a7d-b26d-e2255f4912b2">
+            <value>1</value>
+          </upperValue>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.shared.HowToStep.name.comment" xmi:uuid="8b141860-73a5-58f9-a18b-91d7ef9c8706">
+            <body>**CDIF**
+
+Definition
+==========
+
+Name of this step</body>
+            <annotatedElement xmi:idref="cdif.shared.HowToStep.name"/>
+          </ownedComment>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.shared.HowToStep.description" xmi:uuid="b0d3680a-487c-50cc-bfbc-335fa660dc1c">
+          <name>description</name>
+          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.shared.HowToStep.description.lower" xmi:uuid="e40bbc8a-f581-50dd-b102-c1b1dd16df3c">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.shared.HowToStep.description.upper" xmi:uuid="18d38db3-6dbb-5e24-bc3d-9f1c4d7f0604">
+            <value>1</value>
+          </upperValue>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.shared.HowToStep.description.comment" xmi:uuid="748b29cd-23a1-591a-bfdc-170b132276ea">
+            <body>**CDIF**
+
+Definition
+==========
+
+Description of what this step involves</body>
+            <annotatedElement xmi:idref="cdif.shared.HowToStep.description"/>
+          </ownedComment>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.shared.HowToStep.url" xmi:uuid="21f919bc-1a1d-5afc-aef9-fa54bfbd1b8e">
+          <name>url</name>
+          <type href="cdifCommonTypes.xmi#XMLSchemaDataTypes.XsdAnyUri"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.shared.HowToStep.url.lower" xmi:uuid="c9f60dc6-bf14-5fb2-a16f-e686ead6eafc">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.shared.HowToStep.url.upper" xmi:uuid="8dd40874-7514-56d3-a426-ada844365cb7">
+            <value>1</value>
+          </upperValue>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.shared.HowToStep.url.comment" xmi:uuid="05e8264c-c8c9-530c-9a09-e4321b4cfe82">
+            <body>**CDIF**
+
+Definition
+==========
+
+URL to documentation for this step</body>
+            <annotatedElement xmi:idref="cdif.shared.HowToStep.url"/>
+          </ownedComment>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.shared.HowToStep.position" xmi:uuid="4c8af49e-e181-5f37-ba5f-fa7eb602704f">
+          <name>position</name>
+          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#Integer"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.shared.HowToStep.position.lower" xmi:uuid="38c2cca4-aa3f-5088-aac2-c45974f1d8f4">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.shared.HowToStep.position.upper" xmi:uuid="f39bf00d-83f5-53dc-8394-3486bcd412e1">
+            <value>1</value>
+          </upperValue>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.shared.HowToStep.position.comment" xmi:uuid="452c7a14-58db-52e9-af84-5d3cea2cd46b">
+            <body>**CDIF**
+
+Definition
+==========
+
+Ordinal position of this step</body>
+            <annotatedElement xmi:idref="cdif.shared.HowToStep.position"/>
+          </ownedComment>
+        </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="cdif.shared.ProductModel" xmi:uuid="a9517249-ff8f-5f9c-8a65-ec1f2d19b0a8" isAbstract="true">
         <name>ProductModel</name>
@@ -127,6 +286,19 @@ Definition
 Abstract base of the 3 schema:Thing profiles in bioschemasProperties/cdifBioschemasProperties, schemaorgProperties/action, schemaorgProperties/instrument. Each specializes it; this holds the attributes identical in all of them.
 :rdfType: ``schema:Thing``</body>
           <annotatedElement xmi:idref="cdif.shared.Thing"/>
+        </ownedComment>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="cdif.shared.WebAPI" xmi:uuid="e7db57da-068e-52c3-860f-0f9fb2da207b" isAbstract="true">
+        <name>WebAPI</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.shared.WebAPI.comment" xmi:uuid="cfcc41d3-f744-573f-b47f-75f4db66a4fd">
+          <body>**CDIF**
+
+Definition
+==========
+
+Abstract base of the 2 schema:WebAPI profiles in cdifDataType/cdifOpenApi, schemaorgProperties/webAPI. Each specializes it; this holds the attributes identical in all of them.
+:rdfType: ``schema:WebAPI``</body>
+          <annotatedElement xmi:idref="cdif.shared.WebAPI"/>
         </ownedComment>
       </packagedElement>
     </packagedElement>

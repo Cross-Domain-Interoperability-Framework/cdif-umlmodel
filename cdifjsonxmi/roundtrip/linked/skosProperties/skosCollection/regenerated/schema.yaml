@@ -45,7 +45,7 @@ anyOf:
         type: string
         description: URI identifier for this collection.
       'skos:prefLabel':
-        '$ref': '#/$defs/StringOr$defsList'
+        '$ref': '#/$defs/StringOrLanguageTaggedValueList'
         description: Preferred lexical label for this collection.
       'skos:altLabel':
         '$ref': '#/$defs/StringOrChoiceList'
@@ -64,7 +64,15 @@ anyOf:
       'skos:member':
         type: array
         items:
-          '$ref': '#/$defs/IdReferenceOrConceptOrCollection'
+          anyOf:
+          - type: object
+            required:
+            - '@id'
+            additionalProperties: false
+            properties:
+              '@id':
+                type: string
+          - '$ref': '#/$defs/ConceptOrCollection'
         minItems: 1
         description: >-
           Members of this collection (concepts or nested collections, inline or by @id reference).
@@ -72,26 +80,8 @@ anyOf:
     - '@type'
     - 'skos:prefLabel'
     - 'skos:member'
-  IdReferenceOrConcept:
+  ConceptOrCollection:
     anyOf:
-    - type: object
-      required:
-      - '@id'
-      additionalProperties: false
-      properties:
-        '@id':
-          type: string
-    - '$ref': >-
-        ../../../../../../../metadataBuildingBlocks/_sources/skosProperties/skosConcept/schema.yaml
-  IdReferenceOrConceptOrCollection:
-    anyOf:
-    - type: object
-      required:
-      - '@id'
-      additionalProperties: false
-      properties:
-        '@id':
-          type: string
     - '$ref': >-
         ../../../../../../../metadataBuildingBlocks/_sources/skosProperties/skosConcept/schema.yaml
     - '$ref': '#/$defs/Collection'
@@ -133,7 +123,7 @@ anyOf:
         type: string
         description: URI identifier for this ordered collection.
       'skos:prefLabel':
-        '$ref': '#/$defs/StringOr$defsList'
+        '$ref': '#/$defs/StringOrLanguageTaggedValueList'
         description: Preferred lexical label for this ordered collection.
       'skos:altLabel':
         '$ref': '#/$defs/StringOrChoiceList'
@@ -154,14 +144,17 @@ anyOf:
       '@list':
         type: array
         items:
-          '$ref': '#/$defs/IdReferenceOrConcept'
+          anyOf:
+          - type: object
+            required:
+            - '@id'
+            additionalProperties: false
+            properties:
+              '@id':
+                type: string
+          - '$ref': >-
+              ../../../../../../../metadataBuildingBlocks/_sources/skosProperties/skosConcept/schema.yaml
         minItems: 1
-  StringOr$defsList:
-    anyOf:
-    - type: string
-    - type: array
-      items:
-        '$ref': '../../../../../../../metadataBuildingBlocks/_sources/skosProperties/skosConcept/schema.yaml#/$defs/LanguageTaggedValue'
   StringOrChoiceList:
     anyOf:
     - type: string
@@ -170,6 +163,12 @@ anyOf:
         anyOf:
         - type: string
         - '$ref': '../../../../../../../metadataBuildingBlocks/_sources/skosProperties/skosConcept/schema.yaml#/$defs/LanguageTaggedValue'
+  StringOrLanguageTaggedValueList:
+    anyOf:
+    - type: string
+    - type: array
+      items:
+        '$ref': '../../../../../../../metadataBuildingBlocks/_sources/skosProperties/skosConcept/schema.yaml#/$defs/LanguageTaggedValue'
   StringOrStringList:
     anyOf:
     - type: string

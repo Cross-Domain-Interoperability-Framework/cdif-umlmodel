@@ -1,0 +1,9 @@
+cdifPhysicalMapping: 4 exact difference(s)
+$.$defs: only in original: {"cdifConceptOrTermOrString": {"$ref": "../cdifConceptOrTermOrString/schema.yaml"}, "cdifConceptOrTerm": {"$ref": "../cdifConceptOrTerm/schema.yaml"}}
+$.properties.@type.contains.anyOf: only in regenerated: [{"const": "cdif:PhysicalMapping"}, {"const": "cdif:TextMapping"}, {"const": "cdif:LocatorMapping"}]
+$.properties.@type.contains.enum: only in original: ["cdif:PhysicalMapping", "cdif:TextMapping", "cdif:LocatorMapping"]
+$.properties.cdif:physicalDataType.$ref:
+    original:    "#/$defs/cdifConceptOrTermOrString"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml"
+
+cdifPhysicalMapping: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)
