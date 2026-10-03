@@ -52,7 +52,8 @@ def normalize(schema, base_dir):
       contains {anyOf: [{const}]} and anyOf [{contains: {const}}] all become
       contains {anyOf: [{const}, ...]} with the consts sorted;
     - in every object schema, 'required' and choice 'anyOf's from the top level
-      and from allOf members are gathered into one place."""
+      and from allOf members are gathered into one place, and a top-level if / then / else,
+      not or oneOf (beside properties) becomes an allOf member; allOf members are sorted."""
     defs = schema.get("$defs", {})
 
     def walk(node, expanding=()):
@@ -96,6 +97,11 @@ def normalize(schema, base_dir):
         contains = node.get("contains")
         if isinstance(contains, dict) and set(contains) == {"anyOf"} and len(contains["anyOf"]) == 1:
             node["contains"] = contains["anyOf"][0]
+        if node.get("type") == "object" and "properties" in node:
+            # a top-level conditional / exclusive choice means the same as an allOf member
+            lifted = {k: node.pop(k) for k in ("if", "then", "else", "not", "oneOf") if k in node}
+            if lifted:
+                node["allOf"] = node.get("allOf", []) + [lifted]
         if node.get("type") == "object":
             req, anyofs = set(node.pop("required", [])), []
             if "anyOf" in node:
@@ -111,6 +117,8 @@ def normalize(schema, base_dir):
                 node["required"] = sorted(req)
             if anyofs:
                 node["anyOf"] = sorted(json.dumps(a, sort_keys=True) for a in anyofs)
+            if "allOf" in node:
+                node["allOf"] = sorted(node["allOf"], key=lambda b: json.dumps(b, sort_keys=True))
         return node
 
     return walk(schema)

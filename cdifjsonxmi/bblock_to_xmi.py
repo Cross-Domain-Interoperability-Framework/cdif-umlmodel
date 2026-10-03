@@ -12,6 +12,7 @@ Usage:
 import argparse
 import json
 import os
+import re
 import sys
 import uuid
 from pathlib import Path
@@ -76,6 +77,16 @@ OBJECT_KEYWORDS = {"$schema", "title", "description", "type", "properties", "req
 # Simple keywords carried through as a :keywords: / :arrayKeywords: directive (JSON object).
 EXTRA_KEYWORDS = {"title", "minLength", "maxLength", "pattern", "minimum", "maximum",
                   "exclusiveMinimum", "exclusiveMaximum"}
+# Array keywords carried verbatim in :arrayKeywords: (contains may hold a schema).
+ARRAY_KEYWORDS = {"contains", "minContains", "maxContains", "maxItems", "uniqueItems"}
+# Object keywords UML has no form for, carried as one :constraint: (an allOf member).
+CONSTRAINT_KEYWORDS = ("if", "then", "else", "not", "oneOf")
+
+
+# The building block that is the {"@id"} node reference: a reference alternative like {"@id"}.
+OBJECT_REFERENCE_BLOCK = "cdifDataType/objectReference"
+# characters XML parsing would normalize or strip, written as character references
+CHAR_REFS = {"\r": "&#13;", "\n": "&#10;", "\t": "&#9;"}
 
 
 class Unmapped(Exception):
@@ -208,6 +219,26 @@ def id_reference(prop):
     return id_prop == {"type": "string"}, description
 
 
+def local_role(role):
+    """An attribute name without another vocabulary's prefix, for naming elements after it
+    (dcterms_creator -> creator; isDefinedBy_RepresentedVariable is kept)."""
+    head, sep, tail = role.partition("_")
+    return tail if sep and head.islower() and head.isalpha() and tail else role
+
+
+def cap(name):
+    return name[:1].upper() + name[1:]
+
+
+def role_key(prop):
+    """The key of a role-keyed wrapper, an object that only requires one key it doesn't declare
+    (generatedBy's {required: [schema:instrument]}), else None."""
+    p = {k: v for k, v in prop.items() if k != "description"}
+    if p.get("type") == "object" and set(p) == {"type", "required"} and len(p["required"]) == 1:
+        return p["required"][0]
+    return None
+
+
 def rdf_prefix(schema):
     """Vocabulary prefix of an object schema: from its @type, else its first prefixed property."""
     props = schema.get("properties", {})
@@ -329,6 +360,9 @@ class ModelBuilder:
         self.def_stack = []          # $defs keys being expanded inline (recursion guard)
         self.exports_needed = set()  # (bb path, K) this block references in other blocks, for pass 1
         self.default_pkg = default_pkg
+        # (owner name, role) of the property whose union is being built, and that context
+        # handed to one alternative's inline object (union -> map_value), for naming them
+        self.use, self.alt_use = None, None
 
     def element_id(self, pkg, name):
         return f"{self.link.bb_id}.{name}" if self.link else f"{pkg}.{name}"
@@ -503,17 +537,26 @@ class ModelBuilder:
             return "iri"
         if id_reference(b)[0]:
             return "idReference"
+        if role_key(b):
+            return role_key(b).split(":")[-1] + "Role"
         ref = b.get("$ref", "") if set(b) == {"$ref"} else ""
         while ref.startswith("#/$defs/") and isinstance(self.defs.get(ref[len("#/$defs/"):]), dict) \
                 and set(self.defs[ref[len("#/$defs/"):]]) == {"$ref"}:
             ref = self.defs[ref[len("#/$defs/"):]]["$ref"]  # an alias of another reference
         if ref.startswith("#/$defs/"):
             name = ref[len("#/$defs/"):]
+        elif "#/$defs/" in ref:
+            name = ref.rsplit("/", 1)[-1]  # another block's $defs entry: named by its key
         elif ref:
             name = split_dir_name((Path("x") / ref).parent)[0]
-        elif b.get("type") == "object" and "@type" in b.get("properties", {}):
-            parts = rdf_type_parts(b["properties"]["@type"])
-            name = parts[0][0].split(":")[1] if parts else f"option{index + 1}"
+        elif b.get("type") == "object" and "@type" in b.get("properties", {}) \
+                and rdf_type_parts(b["properties"]["@type"]):
+            name = rdf_type_parts(b["properties"]["@type"])[0][0].split(":")[1]
+        elif b == {"type": "object"}:
+            name = "object"  # any object
+        elif b.get("type") == "object" and self.use:
+            # an object with no RDF type to name it: named after the property using the union
+            name = local_role(self.use[1])
         elif "enum" in b:
             name = "enum"
         elif set(b) in ({"anyOf"}, {"oneOf"}):
@@ -540,10 +583,34 @@ class ModelBuilder:
             if key is not None:
                 return node
             if not ref.startswith("#"):
-                target = (base_dir / ref).resolve().parent
+                path, _, frag = ref.partition("#")
+                target = (base_dir / path).resolve().parent
                 sources = next((p for p in target.parents if p.name == "_sources"), None)
-                return {"$ref": "bb:" + (target.relative_to(sources).as_posix() if sources else str(target))}
+                return {"$ref": "bb:" + (target.relative_to(sources).as_posix() if sources else str(target))
+                        + (f"#{frag}" if frag else "")}
         return {k: self.canonical(v, base_dir, expanding) for k, v in node.items()}
+
+    def verbatim(self, node, base_dir, where):
+        """A schema fragment for a verbatim directive: local $refs to aliases of a block followed,
+        file $refs written as bb:<path under _sources>/<file>[#fragment], for uml_to_schema.py
+        to make relative to wherever it writes the schema."""
+        if isinstance(node, list):
+            return [self.verbatim(x, base_dir, where) for x in node]
+        if not isinstance(node, dict):
+            return node
+        ref = node.get("$ref")
+        if isinstance(ref, str):
+            while ref.startswith("#/$defs/") and set(self.defs.get(ref[len("#/$defs/"):], {})) == {"$ref"}:
+                ref = self.defs[ref[len("#/$defs/"):]]["$ref"]
+            if ref.startswith("#"):
+                raise Unmapped(f"{where}: local {ref} in a verbatim schema")
+            path, _, frag = ref.partition("#")
+            target = (base_dir / path).resolve()
+            sources = next((p for p in target.parents if p.name == "_sources"), None)
+            if sources is None:
+                raise Unmapped(f"{where}: {ref} is outside _sources")
+            node = {**node, "$ref": "bb:" + target.relative_to(sources).as_posix() + (f"#{frag}" if frag else "")}
+        return {k: (v if k == "$ref" else self.verbatim(v, base_dir, where)) for k, v in node.items()}
 
     def shareable(self, stripped):
         """Whether a union's alternatives are all references, scalars or @id / IRI references (no
@@ -558,7 +625,7 @@ class ModelBuilder:
                 return False
         return True
 
-    def union_ref(self, branches, keyword, owner, base_dir, where):
+    def union_ref(self, branches, keyword, owner, base_dir, where, role=None):
         """A union property's type: the union DataType for this content, created on its first use
         (or taken from the shared unions file), plus overrides of the per-use annotations that
         differ from the defining occurrence's ({alternative name: {key: value or None}})."""
@@ -573,10 +640,15 @@ class ModelBuilder:
         elif key in self.unions:
             type_ref, base_notes, alts = self.unions[key]
         else:
+            outer_use, self.use = self.use, ((owner[0], role) if role else None)
             alts = self.alternative_names(branches)
-            # anyOf (at least one) joins with Or, oneOf (exactly one) with Xor
+            # anyOf (at least one) joins with Or, oneOf (exactly one) with Xor; a union of more
+            # than three alternatives in one block is named by its first use, <Owner><Role>Choice
             name = ("Xor" if keyword == "oneOf" else "Or").join(a[:1].upper() + a[1:] for a in alts)
+            if len(alts) > 3 and role:
+                name = f"{owner[0]}{cap(local_role(role))}Choice"
             eid = self.union(branches, keyword, owner, "", base_dir, where, name=name)
+            self.use = outer_use
             type_ref, base_notes = ("idref", eid), notes
             self.unions[key] = (type_ref, base_notes, alts)
         overrides = {}
@@ -604,7 +676,11 @@ class ModelBuilder:
             used[alt] = used.get(alt, 0) + 1
             if used[alt] > 1:
                 alt = f"{alt}{used[alt]}"
-            attrs.append(self.attribute(alt, branch, False, (name, owner[1]), base_dir, f"{where}|{i}"))
+            self.alt_use = self.use
+            try:
+                attrs.append(self.attribute(alt, branch, False, (name, owner[1]), base_dir, f"{where}|{i}"))
+            finally:
+                self.alt_use = None
         elem = {"kind": "uml:DataType", "pkg": owner[1], "name": name,
                 "body": DEFINITION_HEADER + body + directive("union", keyword), "attrs": attrs}
         return self.add_unique(owner[1], name, elem)
@@ -617,20 +693,23 @@ class ModelBuilder:
                 "body": DEFINITION_HEADER, "attrs": [], "literals": list(literals)}
         return self.add_unique(owner[1], elem["name"], elem)
 
-    def element(self, schema, name, base_dir, where, fallback_name=None, fallback_pkg=None, extends=None):
+    def element(self, schema, name, base_dir, where, fallback_name=None, fallback_pkg=None, extends=None,
+                extends_kind=None):
         """uml:Class (schema declares @id) or uml:DataType for an object schema; returns its xmi id.
         A schema that is only a union (anyOf / oneOf of alternatives) becomes a union DataType."""
         for keyword in ("anyOf", "oneOf"):
             if keyword in schema and "properties" not in schema \
                     and not all(set(b) == {"required"} for b in schema[keyword]):
-                extra = set(schema) - {"$schema", "title", "description", keyword}
-                if extra:
-                    raise Unmapped(f"{where}: union with keywords {sorted(extra)}")
+                extra = set(schema) - {"$schema", "title", "description", "type", keyword}
+                if extra or schema.get("type", "object") != "object":
+                    raise Unmapped(f"{where}: union with keywords {sorted(extra)} / type {schema.get('type')}")
                 pkg = next((rdf_prefix(b) for b in schema[keyword] if isinstance(b, dict)
                             and rdf_prefix(b)), None) or self.default_pkg
                 body = schema.get("description", "")
                 if "title" in schema:
                     body += text_directive("title", schema["title"])
+                if "type" in schema:
+                    body += directive("objectUnion")  # the union also declares type: object
                 return self.union(schema[keyword], keyword, (name, pkg), "", base_dir, where,
                                   name=name, body=body)
         if name is not None and set(schema) <= {"$schema", "title", "description", "allOf"} \
@@ -648,7 +727,7 @@ class ModelBuilder:
                 body += text_directive("rootDescription", schema["description"])
             self.elements[eid]["body"] += body
             return eid
-        if name is not None and extends is None and "properties" not in schema \
+        if (name is not None or fallback_name) and extends is None and "properties" not in schema \
                 and set(schema) <= {"$schema", "title", "description", "type", "allOf", "$defs"} \
                 and len(schema.get("allOf", [])) == 2 and set(schema["allOf"][0]) == {"$ref"} \
                 and "#" not in schema["allOf"][0]["$ref"] and schema["allOf"][1].get("type") == "object":
@@ -656,10 +735,18 @@ class ModelBuilder:
             ext = schema["allOf"][1]
             if {"title", "description"} & set(ext):
                 raise Unmapped(f"{where}: extension object with its own title / description")
-            parent, _ = self.bblock_ref(schema["allOf"][0]["$ref"], base_dir)
+            parent, parent_kind = self.bblock_ref(schema["allOf"][0]["$ref"], base_dir)
             merged = {**ext, **{k: schema[k] for k in ("title", "description") if k in schema}}
-            return self.element(merged, name, base_dir, where, extends=parent)
+            eid = self.element(merged, name, base_dir, where, fallback_name=fallback_name,
+                               fallback_pkg=fallback_pkg, extends=parent, extends_kind=parent_kind)
+            if name is not None and "type" not in schema:
+                self.elements[eid]["body"] += directive("untypedRoot")  # no type: object beside allOf
+            return eid
         props = schema.get("properties", {})
+        top_constraint = {k: schema[k] for k in CONSTRAINT_KEYWORDS if k in schema}
+        closed = schema.get("additionalProperties") is False
+        schema = {k: v for k, v in schema.items() if k not in top_constraint
+                  and not (k == "additionalProperties" and closed)}
         extra = set(schema) - OBJECT_KEYWORDS
         if extra or schema.get("type") != "object":
             raise Unmapped(f"{where}: keywords {sorted(extra)} / type {schema.get('type')}")
@@ -695,12 +782,13 @@ class ModelBuilder:
                 name = fallback_name
             else:
                 raise Unmapped(f"{where}: inline object has no @type const to name it")
-        kind = classify(name, schema)
+        # a specialization has its general's kind (a DataType can't specialize a Class)
+        kind = extends_kind or classify(name, schema)
         group = self.plan.get((rdf_type, kind)) if rdf_type and extends is None else None
         if group and named_from_type:
             # one of several profiles of this RDF type: named by its block
             name = f"{self.block_name}{name}"
-        pkg = rdf_prefix(schema) or fallback_pkg
+        pkg = rdf_prefix(schema) or fallback_pkg or self.default_pkg
         required = required_props(schema)
         groups = choice_groups(schema)
         for r in (r for g in groups for alt in g for r in alt):
@@ -713,6 +801,10 @@ class ModelBuilder:
         if (not rdf_type or type_schema is not None) and pkg:
             # the prefix of this element's property keys (otherwise that of its @type)
             body += directive("prefix", pkg)
+        if "@id" in props and kind == "uml:DataType":
+            body += directive("hasId")  # a DataType (by classification) that declares @id
+        if "@id" in required:
+            body += directive("idRequired")
         if id_description is not None:
             body += text_directive("idDescription", id_description)
         if type_schema is not None:
@@ -735,7 +827,12 @@ class ModelBuilder:
         for unknown in set(props) & JSONLD_KEYWORDS - {"@type", "@id", "@context"}:
             raise Unmapped(f"{where}.{unknown}: JSON-LD keyword property not handled")
         for constraint in other_constraints(schema):
-            body += text_directive("constraint", constraint)
+            body += text_directive("constraint", self.verbatim(constraint, base_dir, where))
+        if top_constraint:
+            # at the top level in the source; written back as an allOf member, which means the same
+            body += text_directive("constraint", self.verbatim(top_constraint, base_dir, where))
+        if closed:
+            body += directive("closed")
         undeclared = [r for r in schema.get("required", []) if r not in props]
         if undeclared:
             # required keys with no property schema: no attribute to carry them
@@ -778,7 +875,7 @@ class ModelBuilder:
         if "default" in prop:
             directives.append(text_directive("default", prop.pop("default")))
         if prop.get("type") == "array":
-            array_keywords = {k: prop.pop(k) for k in list(prop) if k in EXTRA_KEYWORDS}
+            array_keywords = {k: prop.pop(k) for k in list(prop) if k in EXTRA_KEYWORDS | ARRAY_KEYWORDS}
             if array_keywords:
                 directives.append(text_directive("arrayKeywords", array_keywords))
             if set(prop) - {"type", "items", "minItems"}:
@@ -797,6 +894,10 @@ class ModelBuilder:
         keywords = {k: prop.pop(k) for k in list(prop) if k in EXTRA_KEYWORDS}
         if keywords:
             directives.append(text_directive("keywords", keywords))
+        return self.resolve_value(prop, base_dir, where, owner, role, upper, directives, items_desc)
+
+    def resolve_value(self, prop, base_dir, where, owner, role, upper, directives, items_desc):
+        """A value schema to a type: local $defs followed, then map_value."""
         resolved, def_key = self.resolve_local(prop, where)
         if def_key and (def_key in self.export_defs or def_key in self.def_stack or def_key in self.def_elements):
             # a definition other blocks also reference, or one that refers back to itself: the
@@ -843,14 +944,23 @@ class ModelBuilder:
             type_ref, kind, schema_ref = self.fragment_ref(prop["$ref"], base_dir, where)
             directives.append(text_directive("schemaRef", schema_ref))
             return self.typed(type_ref, kind, upper, directives, items_desc)
+        if set(prop) == {"anyOf"}:
+            mapped = self.value_or_reference(prop["anyOf"], base_dir, where, owner, role, upper,
+                                             directives, items_desc)
+            if mapped:
+                return mapped
         for keyword in ("anyOf", "oneOf"):
             if set(prop) == {keyword}:
-                type_ref, overrides = self.union_ref(prop[keyword], keyword, owner, base_dir, where)
+                type_ref, overrides = self.union_ref(prop[keyword], keyword, owner, base_dir, where, role)
                 if overrides:
                     directives.append(text_directive("alternativeOverrides", overrides))
                 return type_ref, upper, directives, None, items_desc
         if prop == {}:
             # any JSON value: an attribute with no type
+            return (None, None), upper, directives, None, items_desc
+        if set(prop) <= {"if", "then", "else"}:
+            # a conditional value (cdifProvActivity's prov:used items): untyped, schema verbatim
+            directives.append(text_directive("valueSchema", self.verbatim(prop, base_dir, where)))
             return (None, None), upper, directives, None, items_desc
         if isinstance(prop.get("type"), list):
             types = prop["type"]
@@ -863,9 +973,18 @@ class ModelBuilder:
             return ("idref", self.enumeration(prop["enum"], owner, role, where)), upper, directives, None, items_desc
         if set(prop) == {"$ref"} and not prop["$ref"].startswith("#"):
             type_ref, kind = self.bblock_ref(prop["$ref"], base_dir)
-        elif prop.get("type") == "object":
-            eid = self.element(prop, None, base_dir, where,
-                               fallback_name=f"{owner[0]}{role[:1].upper()}{role[1:]}" if owner else None,
+        elif prop.get("type") == "object" or (set(prop) == {"allOf"} and len(prop["allOf"]) == 2
+                                              and set(prop["allOf"][0]) == {"$ref"}):
+            wrapper = role_key(prop)
+            use, self.alt_use = self.alt_use, None
+            if wrapper:
+                fallback = wrapper.split(":")[-1][:1].upper() + wrapper.split(":")[-1][1:] + "Role"
+            elif use:
+                # a union alternative: named after the property using the union, not the union
+                fallback = f"{use[0]}{cap(local_role(use[1]))}" + ("Object" if prop == {"type": "object"} else "")
+            else:
+                fallback = f"{owner[0]}{role[:1].upper()}{role[1:]}" if owner else None
+            eid = self.element(prop, None, base_dir, where, fallback_name=fallback,
                                fallback_pkg=owner[1] if owner else None)
             type_ref, kind = ("idref", eid), self.elements[eid]["kind"]
         else:
@@ -877,6 +996,58 @@ class ModelBuilder:
                 return ("prim", tname), upper, directives, None, items_desc
             return self.support(f"{tpkg}.{tname}"), upper, directives, None, items_desc
         return self.typed(type_ref, kind, upper, directives, items_desc)
+
+    def value_or_reference(self, branches, base_dir, where, owner, role, upper, directives, items_desc):
+        """anyOf alternatives that are a value or a reference to one: a plain string and/or an
+        {"@id"} node reference beside the value's own alternatives. The attribute is typed by the
+        value (an association, for a Class; a union of the values, if several), and
+        :orReference: lists the alternatives in order ("value" where the value goes). With no
+        value, [string, {"@id"}] is common.IriReference (:referenceFirst: when {"@id"} comes
+        first). The {"@id"}'s description goes in :idRefDescription:. None if not this pattern."""
+        tokens, values, id_desc = [], [], None
+        for b in branches:
+            bare = {k: v for k, v in b.items() if k != "description"}
+            # a description on the alternative itself: {"string": {"description": ...}} in the list
+            token = ("string" if bare == {"type": "string"} else "idReference" if id_reference(bare)[0]
+                     else "objectReference" if self.is_object_reference(bare, base_dir) else None)
+            if token:
+                tokens.append({token: {"description": b["description"]}} if "description" in b else token)
+                if token == "idReference":
+                    id_desc = id_reference(bare)[1]
+            else:
+                values.append(b)
+                if "value" not in tokens:
+                    tokens.append("value")
+        kinds = [t if isinstance(t, str) else next(iter(t)) for t in tokens]
+        has_reference = bool({"idReference", "objectReference"} & set(kinds))
+        if not values and "objectReference" in tokens:  # (one with its own description stays a token)
+            # objectReference and nothing but scalars beside it: it is the value
+            i = kinds.index("objectReference")
+            values, tokens[i], kinds[i] = [branches[i]], "value", "value"
+        if not has_reference or any(kinds.count(k) > 1 for k in ("string", "idReference", "objectReference")) \
+                or any(v.get("type") == "array" for v in values):
+            return None  # (an array alternative needs a union: the attribute's bound is fixed)
+        if id_desc is not None:
+            directives.append(text_directive("idRefDescription", id_desc))
+        if not values and tokens == kinds and sorted(kinds) == ["idReference", "string"]:  # a bare string and {"@id"}: IriReference
+            if tokens[0] == "idReference":
+                directives.append(directive("referenceFirst"))
+            return self.support("common.IriReference"), upper, directives, None, items_desc
+        directives.append(text_directive("orReference", tokens))
+        if not values:  # string and {"@id"} with their own descriptions
+            return (None, None), upper, directives, None, items_desc
+        value = values[0] if len(values) == 1 else {"anyOf": values}
+        return self.resolve_value(value, base_dir, where, owner, role, upper, directives, items_desc)
+
+    def is_object_reference(self, b, base_dir):
+        """Whether b is a $ref (perhaps through a local alias) to the cdifDataType/objectReference
+        block, which is the {"@id"} node reference as a building block."""
+        ref = b.get("$ref", "") if set(b) == {"$ref"} else ""
+        while ref.startswith("#/$defs/") and set(self.defs.get(ref[len("#/$defs/"):], {})) == {"$ref"}:
+            ref = self.defs[ref[len("#/$defs/"):]]["$ref"]
+        if not ref or ref.startswith("#") or "#" in ref:
+            return False
+        return (base_dir / ref).resolve().as_posix().endswith(OBJECT_REFERENCE_BLOCK + "/schema.yaml")
 
     def typed(self, type_ref, kind, upper, directives, items_desc):
         """attr_type's result for a type of the given kind; a Class makes it an association end."""
@@ -940,10 +1111,12 @@ class Writer:
                 self.comment(depth + 2, aid, a["body"])
             self.add(depth + 1, "</ownedAttribute>")
         for lit in elem.get("literals", []):
-            lid = f"{eid}.{lit}"
+            # a literal with whitespace or control characters (csvw:lineTerminators "\r\n") gets
+            # its JSON escape in the id and character references in the name, which XML keeps
+            lid = f"{eid}.{lit}" if lit.isprintable() and lit.strip() == lit else f"{eid}.{json.dumps(lit)[1:-1]}"
             self.add(depth + 1, f'<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="{escape(lid)}" '
                                 f'xmi:uuid="{self.uid(lid)}">')
-            self.add(depth + 2, f"<name>{escape(lit)}</name>")
+            self.add(depth + 2, f"<name>{escape(lit, CHAR_REFS)}</name>")
             self.add(depth + 1, "</ownedLiteral>")
         self.add(depth, "</packagedElement>")
 
@@ -975,7 +1148,8 @@ def build(bblock_dir):
     meta = json.loads((bdir / "bblock.json").read_text(encoding="utf-8"))
     schema = yaml.safe_load((bdir / "schema.yaml").read_text(encoding="utf-8"))
     class_name = split_dir_name(bdir)[0]
-    mb = ModelBuilder(schema.get("$defs", {}))
+    mb = ModelBuilder(schema.get("$defs", {}), default_pkg=rdf_prefix(schema) or split_dir_name(bdir)[1]
+                      or split_dir_name(bdir.parent)[1])
     root = {k: v for k, v in schema.items() if k != "$defs"}
     root_id = mb.element(root, class_name, bdir, bdir.name)
 
@@ -1109,6 +1283,14 @@ def shared_unions(builds, out_root):
                 blocks_by_key.setdefault(key, set()).add(link.bb_path)
                 first.setdefault(key, (branches, keyword, base_dir, defs))
     keys = [k for k in sorted(blocks_by_key) if len(blocks_by_key[k]) > 1]
+    # The shared file must be imported after the blocks its unions reference and before the
+    # blocks that use them: a union referencing a block that uses a shared union stays local.
+    while True:
+        users = set().union(*(blocks_by_key[k] for k in keys))
+        local = [k for k in keys if set(re.findall(r'"bb:([^"#]+)', k)) & users]
+        if not local:
+            break
+        keys = [k for k in keys if k not in local]
     if not keys:
         return {}, None
     link = SharedLink(SHARED_UNIONS_FILE, UNION_NS, Path(out_root).resolve())

@@ -100,10 +100,14 @@ class Context:
     """What one file's conversion collects on the way: primitive types used, EAStubs for
     elements of other files, association ends to emit as connectors, association uuids."""
 
-    def __init__(self, model):
+    def __init__(self, model, skip=(), moved_in=()):
         self.primitives, self.stubs, self.assoc_ends, self.generalizations = set(), {}, [], []
+        # association ends written in another file (skip, by xmi:id) or written here although
+        # their owner is in another file (moved_in: (owner element, end) pairs), see main()
+        self.skip, self.moved_in = set(skip), list(moved_in)
         self.assoc_uuids = {e.get(f"{XMI}id"): e.get(f"{XMI}uuid") for e in model.iter("packagedElement")
                             if e.get(f"{XMI}type") == "uml:Association"}
+        self.assoc_uuids.update({end.find("association").get(f"{XMI}idref"): u for _, end, u in self.moved_in})
 
 
 def type_ref(attr, ctx):
@@ -162,7 +166,8 @@ def emit_classifier(w, el, package_eaid, ctx):
     attrs = []
     for a in el.findall("ownedAttribute"):
         if a.find("association") is not None:
-            ctx.assoc_ends.append((el, a))
+            if a.get(f"{XMI}id") not in ctx.skip:
+                ctx.assoc_ends.append((el, a))
         else:
             attrs.append(a)
     if attrs:
@@ -266,6 +271,11 @@ def emit_package(w, pkg, ctx):
     # in EA's own exports; EA's package import ignores them at the model root.
     for owner, end in ctx.assoc_ends[first_end:]:
         emit_association(w, owner, end, ctx)
+    for owner, end, _ in ctx.moved_in:
+        ctx.stubs[ea_id("EAID", owner.get(f"{XMI}uuid"))] = (owner.findtext("name"),
+                                                             owner.get(f"{XMI}type")[len("uml:"):])
+        emit_association(w, owner, end, ctx)
+    ctx.moved_in = []
     for sub, gen in ctx.generalizations[first_gen:]:
         emit_generalization(w, sub, gen, ctx)
     for el in children:
@@ -275,10 +285,11 @@ def emit_package(w, pkg, ctx):
     w.close("UML:Package")
 
 
-def convert(canonical_file):
+def convert(canonical_file, skip=(), moved_in=()):
     """EA XMI 1.1 text for one linked Canonical XMI file. Its uml:Model becomes one EA package
     (a building block's model holds one package; the common-types model holds two, nested)."""
     model = ET.parse(canonical_file).getroot().find("{http://www.omg.org/spec/UML/20161101}Model")
+    own = {ea_id("EAID", e.get(f"{XMI}uuid")) for e in model.iter("packagedElement")}
     packages = [p for p in model.findall("packagedElement") if p.get(f"{XMI}type") == "uml:Package"]
     w = Writer()
     w.open("XMI", {"xmi.version": "1.1", "xmlns:UML": "omg.org/UML1.3"})
@@ -294,7 +305,7 @@ def convert(canonical_file):
     w.open("UML:Namespace.ownedElement")
     w.open("UML:Class", {"name": "EARootClass", "xmi.id": ROOT_CLASS_ID, "isRoot": "true",
                          "isLeaf": "false", "isAbstract": "false"}, close=True)
-    ctx = Context(model)
+    ctx = Context(model, skip, moved_in)
     if len(packages) == 1:
         emit_package(w, packages[0], ctx)
     else:
@@ -315,7 +326,8 @@ def convert(canonical_file):
     # references out of an exported package, so EA can match them by GUID on import.
     w.open("XMI.extensions", {"xmi.extender": "Enterprise Architect 2.5"})
     for eaid, (name, kind) in sorted(ctx.stubs.items()):
-        w.open("EAStub", {"xmi.id": eaid, "name": name, "UMLType": kind}, close=True)
+        if eaid not in own:  # a moved-in connector's target is defined in this file
+            w.open("EAStub", {"xmi.id": eaid, "name": name, "UMLType": kind}, close=True)
     w.close("XMI.extensions")
     w.close("XMI")
     return "\n".join(w.lines) + "\n"
@@ -334,10 +346,12 @@ def main():
         for el in ET.parse(f).getroot().iter("packagedElement"):
             if el.get(f"{XMI}type") in ("uml:Class", "uml:DataType", "uml:Enumeration"):
                 ELEMENT_KINDS[el.get(f"{XMI}id")] = el.get(f"{XMI}type")[len("uml:"):]
+    skip, moved_in = moved_associations(files)
     for f in files:
         target = out_root / f.relative_to(root).with_suffix(".xml")
         target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_text(convert(f), encoding="utf-8")
+        target.write_text(convert(f, skip.get(f.resolve(), ()), moved_in.get(f.resolve(), ())),
+                          encoding="utf-8")
         print(f"wrote {target}")
     # The order EA needs them in (referenced files first), for import_to_ea.ps1.
     order = out_root / "import_order.txt"
@@ -346,8 +360,37 @@ def main():
     print(f"wrote {order}")
 
 
+def moved_associations(files):
+    """EA drops a connector whose other end isn't in the project yet, and it won't import a
+    package twice. Blocks that reference each other (cdifInstanceVariable <-> cdifStatistics)
+    can't both come first, so an association whose target is in a file imported later is
+    written in that file instead. Returns ({file: xmi:ids of association ends to leave out},
+    {file: [(owner element, end, association uuid)] to write there})."""
+    position = {f.resolve(): i for i, f in enumerate(files)}
+    skip, moved_in = {}, {}
+    for f in files:
+        model = ET.parse(f).getroot()
+        assoc_uuids = {e.get(f"{XMI}id"): e.get(f"{XMI}uuid") for e in model.iter("packagedElement")
+                       if e.get(f"{XMI}type") == "uml:Association"}
+        for owner in model.iter("packagedElement"):
+            for end in owner.findall("ownedAttribute"):
+                t, a = end.find("type"), end.find("association")
+                path = (t.get("href", "") if t is not None else "").partition("#")[0]
+                if a is None or not path or "://" in path:
+                    continue
+                target = (f.parent / path).resolve()
+                if position.get(target, -1) > position[f.resolve()]:
+                    skip.setdefault(f.resolve(), set()).add(end.get(f"{XMI}id"))
+                    moved_in.setdefault(target, []).append(
+                        (owner, end, assoc_uuids[a.get(f"{XMI}idref")]))
+                    print(f"{f.name}: association {owner.findtext('name')}.{end.findtext('name')} "
+                          f"written in {target.name}, which is imported later")
+    return skip, moved_in
+
+
 def import_order(files):
-    """Files ordered so each comes after every file its hrefs (types, generalizations) point to."""
+    """Files ordered so each comes after every file its hrefs (types, generalizations) point to,
+    as far as cycles allow (see moved_associations)."""
     deps = {}
     for f in files:
         targets = set()
@@ -362,10 +405,10 @@ def import_order(files):
     def visit(f, stack=()):
         if f in done:
             return
-        if f in stack:
-            raise SystemExit(f"cyclic references: {' -> '.join(p.name for p in stack + (f,))}")
         for t in sorted(deps[f]):
-            if t in deps:  # files outside the set (or the common/shared files) impose no order here
+            if t in stack + (f,):
+                print(f"cyclic references: {' -> '.join(p.name for p in stack + (f, t))}")
+            elif t in deps:  # files outside the set (or the common/shared files) impose no order here
                 visit(t, stack + (f,))
         done.add(f)
         ordered.append(f)
