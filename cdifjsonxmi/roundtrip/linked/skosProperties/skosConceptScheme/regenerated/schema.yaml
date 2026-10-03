@@ -106,14 +106,14 @@ properties:
   'dcterms:title':
     anyOf:
     - type: string
-    - '$ref': '#/$defs/ConceptSchemeDcterms_title'
+    - '$ref': '#/$defs/ConceptSchemeTitle'
     description: >-
       Title of the concept scheme (Dublin Core). Prefer skos:prefLabel for the SKOS label;
       dcterms:title may be used for additional metadata.
   'dcterms:description':
     anyOf:
     - type: string
-    - '$ref': '#/$defs/ConceptSchemeDcterms_description'
+    - '$ref': '#/$defs/ConceptSchemeDescription'
     description: Description of the concept scheme (Dublin Core).
   'dcterms:license':
     anyOf:
@@ -159,21 +159,7 @@ required:
         type: string
       'schema:name':
         type: string
-  ConceptSchemeDcterms_description:
-    type: object
-    description: >-
-      An RDF literal value with a language tag, serialized as a JSON-LD value object. Inlined
-      from skosConcept (the resolver does not preserve cross-file '#/$defs/...' fragment refs).
-    properties:
-      '@value':
-        type: string
-        description: The text content.
-      '@language':
-        type: string
-        description: BCP 47 language tag (e.g. en, fr, de).
-    required:
-    - '@value'
-  ConceptSchemeDcterms_title:
+  ConceptSchemeDescription:
     type: object
     description: >-
       An RDF literal value with a language tag, serialized as a JSON-LD value object. Inlined
@@ -188,6 +174,20 @@ required:
     required:
     - '@value'
   ConceptSchemePrefLabel:
+    type: object
+    description: >-
+      An RDF literal value with a language tag, serialized as a JSON-LD value object. Inlined
+      from skosConcept (the resolver does not preserve cross-file '#/$defs/...' fragment refs).
+    properties:
+      '@value':
+        type: string
+        description: The text content.
+      '@language':
+        type: string
+        description: BCP 47 language tag (e.g. en, fr, de).
+    required:
+    - '@value'
+  ConceptSchemeTitle:
     type: object
     description: >-
       An RDF literal value with a language tag, serialized as a JSON-LD value object. Inlined

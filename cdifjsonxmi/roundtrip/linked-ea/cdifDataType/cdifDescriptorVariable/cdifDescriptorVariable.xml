@@ -71,11 +71,11 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="EAID_B9670325_4290_5c61_BCFB_2B6D66D9609A"/>
+										<UML:Classifier xmi.idref="EAID_EED4BE64_0AC2_5c2e_B18B_D88351D8D9CF"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Ordered list of descriptor entries. Each entry has a cdif:value (the code as it appears in the descriptor column) and a cdif:isDefinedBy pointer to the RepresentedVariable that the code names.&#xA;:jsonName: &quot;cdif:takesValuesFrom&quot;"/>
-										<UML:TaggedValue tag="type" value="DescriptorValueDomainCdif_takesValuesFrom"/>
+										<UML:TaggedValue tag="type" value="DescriptorValueDomainTakesValuesFrom"/>
 										<UML:TaggedValue tag="derived" value="0"/>
 										<UML:TaggedValue tag="containment" value="Not Specified"/>
 										<UML:TaggedValue tag="ordered" value="0"/>
@@ -90,7 +90,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Class name="DescriptorValueDomainCdif_takesValuesFrom" xmi.id="EAID_B9670325_4290_5c61_BCFB_2B6D66D9609A" visibility="public" namespace="EAPK_CABC6A9E_8F6B_52df_AC61_E3894409C855" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+						<UML:Class name="DescriptorValueDomainTakesValuesFrom" xmi.id="EAID_EED4BE64_0AC2_5c2e_B18B_D88351D8D9CF" visibility="public" namespace="EAPK_CABC6A9E_8F6B_52df_AC61_E3894409C855" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:prefix: ``cdif``"/>
 								<UML:TaggedValue tag="isSpecification" value="false"/>
@@ -98,7 +98,7 @@
 								<UML:TaggedValue tag="ea_ntype" value="0"/>
 								<UML:TaggedValue tag="version" value="1.0"/>
 								<UML:TaggedValue tag="package" value="EAPK_CABC6A9E_8F6B_52df_AC61_E3894409C855"/>
-								<UML:TaggedValue tag="ea_guid" value="{B9670325-4290-5c61-BCFB-2B6D66D9609A}"/>
+								<UML:TaggedValue tag="ea_guid" value="{EED4BE64-0AC2-5c2e-B18B-D88351D8D9CF}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Classifier.feature>
 								<UML:Attribute name="value" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
@@ -119,7 +119,7 @@
 										<UML:TaggedValue tag="lowerBound" value="1"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{C432C011-6751-5077-A016-C91B03A94888}"/>
+										<UML:TaggedValue tag="ea_guid" value="{736660DD-562B-51d7-8BA7-04680FE9FC3C}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -155,19 +155,19 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_336562C4_E4ED_5fc6_8638_109F4389198C" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_8E43F9F4_A182_5484_BB8A_18DC77C11127" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;value&quot;, {&quot;idReference&quot;: {&quot;description&quot;: &quot;object reference via URI or URI fragment to a RepresentedVariable defined elsewhere in the document&quot;}}]"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
 								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
-								<UML:TaggedValue tag="ea_sourceName" value="DescriptorValueDomainCdif_takesValuesFrom"/>
+								<UML:TaggedValue tag="ea_sourceName" value="DescriptorValueDomainTakesValuesFrom"/>
 								<UML:TaggedValue tag="ea_targetName" value="RepresentedVariable"/>
 								<UML:TaggedValue tag="ea_sourceType" value="DataType"/>
 								<UML:TaggedValue tag="ea_targetType" value="Class"/>
-								<UML:TaggedValue tag="ea_guid" value="{336562C4-E4ED-5fc6-8638-109F4389198C}"/>
+								<UML:TaggedValue tag="ea_guid" value="{8E43F9F4-A182-5484-BB8A-18DC77C11127}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Association.connection>
-								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_B9670325_4290_5c61_BCFB_2B6D66D9609A">
+								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_EED4BE64_0AC2_5c2e_B18B_D88351D8D9CF">
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="containment" value="Unspecified"/>
 										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
@@ -180,7 +180,7 @@
 										<UML:TaggedValue tag="containment" value="Unspecified"/>
 										<UML:TaggedValue tag="deststyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
 										<UML:TaggedValue tag="ea_end" value="target"/>
-										<UML:TaggedValue tag="ea_guid" value="{38CE12AB-79B1-5de3-A28D-EAD06F2F855A}"/>
+										<UML:TaggedValue tag="ea_guid" value="{954F20E7-CFBD-5fcf-B0CE-AA04661D5881}"/>
 									</UML:ModelElement.taggedValue>
 								</UML:AssociationEnd>
 							</UML:Association.connection>

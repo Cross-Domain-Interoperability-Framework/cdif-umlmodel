@@ -1,0 +1,273 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: CDIF Concept Scheme
+description: >-
+  Profile module for SKOS concept schemes used as controlled vocabularies in CDIF metadata.
+  Thin wrapper around skosConceptScheme.
+type: object
+properties:
+  '@context':
+    description: >-
+      JSON-LD context declaring the skos namespace prefix and any additional prefixes used
+      in concept URIs. May be a single object or an array of strings and objects.
+    type: object
+    properties:
+      skos:
+        const: 'http://www.w3.org/2004/02/skos/core#'
+    required:
+    - skos
+  '@type':
+    type: array
+    items:
+      type: string
+    contains:
+      const: 'skos:ConceptScheme'
+    minItems: 1
+  '@id':
+    type: string
+    description: URI identifier for this concept scheme.
+  'skos:prefLabel':
+    '$ref': '#/$defs/StringOrLanguageTaggedValueOrLanguageTaggedValueList'
+    description: >-
+      Preferred lexical label for the concept scheme. A single string, a single language-tagged
+      value, or an array of language-tagged values. Each language should appear at most once.
+  'skos:altLabel':
+    '$ref': '#/$defs/StringOrLanguageTaggedValueOrChoiceList'
+    description: Alternative lexical labels (acronyms, abbreviations, spelling variants).
+  'skos:definition':
+    '$ref': '#/$defs/StringOrLanguageTaggedValueOrChoiceList'
+    description: Formal explanation of the meaning or purpose of this concept scheme.
+  'skos:notation':
+    type: array
+    items:
+      type: string
+    description: Classification code or notation for this concept scheme.
+  'skos:note':
+    '$ref': '#/$defs/StringOrLanguageTaggedValueOrChoiceList'
+    description: General note about the concept scheme.
+  'skos:hasTopConcept':
+    type: array
+    items:
+      anyOf:
+      - '$ref': '#/$defs/cdifConcept'
+      - type: object
+        required:
+        - '@id'
+        additionalProperties: false
+        properties:
+          '@id':
+            type: string
+            description: URI reference to a concept defined elsewhere
+    minItems: 1
+    description: >-
+      Top-level concepts in this scheme. Each item is a skos:Concept (inline or @id reference).
+  'schema:version':
+    type:
+    - string
+    - number
+    description: Version identifier for the concept scheme.
+  'schema:subjectOf':
+    '$ref': '#/$defs/ConceptSchemeDataset'
+    description: >-
+      Catalog record describing this concept scheme as CDIF-conformant metadata. Must declare
+      conformance to the cdifConceptScheme profile via dcterms:conformsTo and be typed as
+      schema:Dataset with schema:additionalType including dcat:CatalogRecord.
+required:
+- '@type'
+- 'skos:prefLabel'
+- 'skos:definition'
+- 'skos:hasTopConcept'
+'$defs':
+  ConceptRefOrCdifConcept:
+    anyOf:
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+          description: URI of the referenced concept.
+      description: >-
+        Reference (by URI) to a skos:Concept defined elsewhere. Used inside skos:broader /
+        skos:narrower as the @id-reference alternative to an inline Concept.
+    - '$ref': '#/$defs/cdifConcept'
+  ConceptSchemeAltLabel:
+    type: object
+    description: >-
+      An RDF literal value with a language tag, serialized as a JSON-LD value object. Inlined
+      from skosConcept (the resolver does not preserve cross-file '#/$defs/...' fragment refs).
+    properties:
+      '@value':
+        type: string
+        description: The text content.
+      '@language':
+        type: string
+        description: BCP 47 language tag (e.g. en, fr, de).
+    required:
+    - '@value'
+  ConceptSchemeDataset:
+    type: object
+    properties:
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'schema:Dataset'
+        minItems: 1
+      '@id':
+        type: string
+        description: Identifier for the catalog record.
+      'schema:additionalType':
+        type: array
+        items:
+          '$ref': >-
+            ../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml
+        minItems: 1
+        contains:
+          type: object
+          additionalProperties: false
+          required:
+          - '@id'
+          properties:
+            '@id':
+              const: 'dcat:CatalogRecord'
+      'dcterms:conformsTo':
+        type: array
+        items:
+          type: object
+          required:
+          - '@id'
+          additionalProperties: false
+          properties:
+            '@id':
+              type: string
+        minItems: 1
+        contains:
+          type: object
+          required:
+          - '@id'
+          additionalProperties: false
+          properties:
+            '@id':
+              const: 'https://w3id.org/cdif/conceptscheme/1.1'
+      'schema:about':
+        type: object
+        required:
+        - '@id'
+        additionalProperties: false
+        properties:
+          '@id':
+            type: string
+    required:
+    - '@type'
+    - 'schema:additionalType'
+    - 'dcterms:conformsTo'
+  ConceptSchemePrefLabel:
+    type: object
+    description: >-
+      An RDF literal value with a language tag, serialized as a JSON-LD value object. Inlined
+      from skosConcept (the resolver does not preserve cross-file '#/$defs/...' fragment refs).
+    properties:
+      '@value':
+        type: string
+        description: The text content.
+      '@language':
+        type: string
+        description: BCP 47 language tag (e.g. en, fr, de).
+    required:
+    - '@value'
+  IdReferenceOrIdReferenceList:
+    anyOf:
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+    - type: array
+      items:
+        type: object
+        required:
+        - '@id'
+        additionalProperties: false
+        properties:
+          '@id':
+            type: string
+  StringOrLanguageTaggedValueOrChoiceList:
+    anyOf:
+    - type: string
+    - '$ref': '#/$defs/ConceptSchemeAltLabel'
+    - type: array
+      items:
+        anyOf:
+        - type: string
+        - '$ref': '#/$defs/ConceptSchemeAltLabel'
+  StringOrLanguageTaggedValueOrLanguageTaggedValueList:
+    anyOf:
+    - type: string
+    - '$ref': '#/$defs/ConceptSchemePrefLabel'
+    - type: array
+      items:
+        '$ref': '#/$defs/ConceptSchemePrefLabel'
+  cdifConcept:
+    type: object
+    properties:
+      '@context':
+        description: >-
+          JSON-LD context declaring the skos namespace prefix. May be a single object or an
+          array of strings and objects.
+        type: object
+        properties:
+          skos:
+            const: 'http://www.w3.org/2004/02/skos/core#'
+        required:
+        - skos
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'skos:Concept'
+        minItems: 1
+      '@id':
+        type: string
+        description: URI identifier for this concept.
+      'skos:prefLabel':
+        '$ref': '#/$defs/StringOrLanguageTaggedValueOrLanguageTaggedValueList'
+        description: >-
+          Preferred lexical label for this concept. A single string, a single language-tagged
+          value, or an array of language-tagged values. Each language should appear at most
+          once.
+      'skos:definition':
+        '$ref': '#/$defs/StringOrLanguageTaggedValueOrChoiceList'
+        description: Formal explanation of the meaning of this concept.
+      'skos:note':
+        '$ref': '#/$defs/StringOrLanguageTaggedValueOrChoiceList'
+        description: General note about this concept.
+      'skos:inScheme':
+        '$ref': '#/$defs/IdReferenceOrIdReferenceList'
+        description: Concept scheme(s) this concept belongs to.
+      'skos:broader':
+        type: array
+        items:
+          '$ref': '#/$defs/ConceptRefOrCdifConcept'
+        description: >-
+          Broader (parent) concepts in the hierarchy. Items are inline concept objects or
+          @id references.
+      'skos:narrower':
+        type: array
+        items:
+          '$ref': '#/$defs/ConceptRefOrCdifConcept'
+        description: >-
+          Narrower (child) concepts in the hierarchy. Items are inline concept objects or
+          @id references.
+      'skos:notation':
+        type: string
+        description: >-
+          Classification code for this concept within a scheme (a single notation string,
+          consistent with CdifCodelistConcept).
+    required:
+    - '@type'
+    - 'skos:prefLabel'

@@ -541,14 +541,14 @@ The analytical method implemented by this protocol
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocol.schema_object" xmi:uuid="a82d7e9d-fac8-5ec3-9b41-5f9e1e03cbce">
           <name>schema_object</name>
-          <type xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_object"/>
+          <type xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolObject"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocol.schema_object.lower" xmi:uuid="883333a7-126e-52c2-951f-95fb17e230e0">
             <value>0</value>
           </lowerValue>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocol.schema_object.upper" xmi:uuid="7829ae57-d86f-5a90-8dac-8867d2d3e4fd">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.LabProtocol_schema_object_LabProtocolSchema_object"/>
+          <association xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.LabProtocol_schema_object_LabProtocolObject"/>
           <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocol.schema_object.comment" xmi:uuid="cf7d5f27-ecdf-5008-a44f-da815c787bb2">
             <body>**CDIF**
 
@@ -564,14 +564,14 @@ Expected input parameters (FormalParameter references)
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocol.schema_result" xmi:uuid="d247193c-b689-57a7-8e72-aa6b863dcccc">
           <name>schema_result</name>
-          <type xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_result"/>
+          <type xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolResult"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocol.schema_result.lower" xmi:uuid="1d0dac16-28c6-507e-b6c5-a1af6bacba7b">
             <value>0</value>
           </lowerValue>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocol.schema_result.upper" xmi:uuid="0f054995-76e9-5faa-8571-730bd2e3f839">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.LabProtocol_schema_result_LabProtocolSchema_result"/>
+          <association xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.LabProtocol_schema_result_LabProtocolResult"/>
           <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocol.schema_result.comment" xmi:uuid="ca4874a2-ffc5-56cf-be4c-cfcc5dfc28c6">
             <body>**CDIF**
 
@@ -583,6 +583,115 @@ Expected output parameters (FormalParameter references)
 :orReference: ["value", "idReference"]
 :jsonName: "schema:result"</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocol.schema_result"/>
+          </ownedComment>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolObject" xmi:uuid="2ce2e726-cbbf-5ce9-b278-571c567feaa4">
+        <name>LabProtocolObject</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolObject.comment" xmi:uuid="58ec1b4e-92e1-5210-a496-8e882b7fe9c5">
+          <body>**CDIF**
+
+Definition
+==========
+
+A Bioschemas FormalParameter describing the shape and type of inputs and outputs of a workflow protocol. Values are realized in process executions through bios:parameterValue PropertyValue objects. In cdifProvActivity output, mapped to schema:MediaObject with additionalType bios:FormalParameter.
+:prefix: ``schema``
+:typeSchema: {"type": "array", "items": {"type": "string"}, "description": "Should include schema:MediaObject with additionalType bios:FormalParameter"}
+:typeOptional:</body>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolObject"/>
+        </ownedComment>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolObject.name" xmi:uuid="1ab09576-235f-5927-942e-072c8c91b640">
+          <name>name</name>
+          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolObject.name.lower" xmi:uuid="12c4c0b3-5010-5b90-821d-ddb41c8a54e4">
+            <value>1</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolObject.name.upper" xmi:uuid="3b2840ba-9cbd-5e66-91a9-bf9bc51e7df8">
+            <value>1</value>
+          </upperValue>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolObject.name.comment" xmi:uuid="4ee9c71c-1ec7-570f-922d-f7a2d49a2eef">
+            <body>**CDIF**
+
+Definition
+==========
+
+Name matching the corresponding workflow parameter slot</body>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolObject.name"/>
+          </ownedComment>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolObject.description" xmi:uuid="a8cf2c20-ee76-5a0c-afe1-5c1559a90919">
+          <name>description</name>
+          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolObject.description.lower" xmi:uuid="0c920614-ddd1-512f-970e-9adf11b658e4">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolObject.description.upper" xmi:uuid="f6dc7e52-53f5-5c9a-aa65-6d6066723e96">
+            <value>1</value>
+          </upperValue>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolObject.description.comment" xmi:uuid="b223ae99-2ec8-5039-a531-d3e83101176a">
+            <body>**CDIF**
+
+Definition
+==========
+
+Description of what this parameter represents</body>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolObject.description"/>
+          </ownedComment>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolObject.additionalType" xmi:uuid="e7f05a18-8d69-50b6-8292-91c59d6d35aa">
+          <name>additionalType</name>
+          <type href="../../cdifDataType/cdifConceptOrTermOrString/cdifConceptOrTermOrString.xmi#cdif.bbr.metadata.cdifDataType.cdifConceptOrTermOrString.ConceptOrTermOrString"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolObject.additionalType.lower" xmi:uuid="0249b852-0093-5c1c-9ff2-5ab66e7db72a">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolObject.additionalType.upper" xmi:uuid="ed7cbaa8-1dd6-5255-bfe9-261cec759db0">
+            <value>*</value>
+          </upperValue>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolObject.additionalType.comment" xmi:uuid="0675ad1e-1bf9-5a5a-b733-b4d1934ade09">
+            <body>**CDIF**
+
+Definition
+==========
+
+Further type classification (e.g. File, Dataset, PropertyValue, DataType)</body>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolObject.additionalType"/>
+          </ownedComment>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolObject.encodingFormat" xmi:uuid="929f0693-3996-5bd7-8303-40ba0315d818">
+          <name>encodingFormat</name>
+          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolObject.encodingFormat.lower" xmi:uuid="66e984ac-1df8-5787-a9ed-07bb8f054374">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolObject.encodingFormat.upper" xmi:uuid="03a6a5fe-be2f-5b95-87e0-740c5e72c030">
+            <value>*</value>
+          </upperValue>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolObject.encodingFormat.comment" xmi:uuid="86ac9c83-033c-57bd-8a03-0c3086147e14">
+            <body>**CDIF**
+
+Definition
+==========
+
+MIME type or URL for expected data format</body>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolObject.encodingFormat"/>
+          </ownedComment>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolObject.defaultValue" xmi:uuid="fc3a42e9-cceb-5e22-8aca-7143f1986b0b">
+          <name>defaultValue</name>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolObject.defaultValue.lower" xmi:uuid="95251e40-bb7d-5df6-86b4-6a3037227d02">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolObject.defaultValue.upper" xmi:uuid="1077090a-1717-5959-b293-c882d817c7a7">
+            <value>1</value>
+          </upperValue>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolObject.defaultValue.comment" xmi:uuid="4f0534e0-b354-5f30-b789-3722424f72e6">
+            <body>**CDIF**
+
+Definition
+==========
+
+Default value for this parameter</body>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolObject.defaultValue"/>
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
@@ -609,9 +718,9 @@ Definition
           </upperValue>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_object" xmi:uuid="b43a4561-117d-52a0-aeff-8778f4f0a688">
-        <name>LabProtocolSchema_object</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_object.comment" xmi:uuid="5c0c8fd5-dc21-56d8-8b53-d66b45fa81d4">
+      <packagedElement xmi:type="uml:Class" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolResult" xmi:uuid="f2096919-f8c9-5d02-a0ba-c0821b1a9fa6">
+        <name>LabProtocolResult</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolResult.comment" xmi:uuid="28240bdd-5ad7-51e3-9b88-4ef2505db519">
           <body>**CDIF**
 
 Definition
@@ -621,209 +730,100 @@ A Bioschemas FormalParameter describing the shape and type of inputs and outputs
 :prefix: ``schema``
 :typeSchema: {"type": "array", "items": {"type": "string"}, "description": "Should include schema:MediaObject with additionalType bios:FormalParameter"}
 :typeOptional:</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_object"/>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolResult"/>
         </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_object.name" xmi:uuid="acaa7f88-4f40-5540-bb84-aec422c7780c">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolResult.name" xmi:uuid="f226e42c-3258-5d6a-969e-93c2436d2be7">
           <name>name</name>
           <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_object.name.lower" xmi:uuid="5a065dbf-99fb-5bc2-ace9-064259341026">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolResult.name.lower" xmi:uuid="c3848d15-073b-500c-9695-27d5be91e82e">
             <value>1</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_object.name.upper" xmi:uuid="3f29370e-0e49-54b8-b866-aab4872dd613">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolResult.name.upper" xmi:uuid="ab8469e4-e610-5844-b3fb-647892965554">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_object.name.comment" xmi:uuid="f3498df9-adb5-5c3a-9bc2-ad238acab046">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolResult.name.comment" xmi:uuid="e3c867f8-77cd-5d4e-9552-cfa0810b5119">
             <body>**CDIF**
 
 Definition
 ==========
 
 Name matching the corresponding workflow parameter slot</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_object.name"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolResult.name"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_object.description" xmi:uuid="cc596a1b-847e-51cc-84cf-aa07fdad1150">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolResult.description" xmi:uuid="16624e93-e7a7-5160-8c09-eb51ea6e3c6f">
           <name>description</name>
           <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_object.description.lower" xmi:uuid="e58ec49c-6e69-5c92-8f6e-bf3000c2932b">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolResult.description.lower" xmi:uuid="5be24862-98d8-573b-8e49-eb0d12835624">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_object.description.upper" xmi:uuid="5693a35e-652e-57b1-8b60-e395d740c58e">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolResult.description.upper" xmi:uuid="39f3328e-db1d-541b-a297-7353878c1031">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_object.description.comment" xmi:uuid="06bd2202-19e5-53f8-b41a-38a4f5037f98">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolResult.description.comment" xmi:uuid="d52b819c-4b23-56c7-88ff-70cf070fd1c7">
             <body>**CDIF**
 
 Definition
 ==========
 
 Description of what this parameter represents</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_object.description"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolResult.description"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_object.additionalType" xmi:uuid="b870b25a-e5cf-54f4-8e9c-99d25e6c67a0">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolResult.additionalType" xmi:uuid="e6f56d50-a490-5a27-b16b-0e9ccce4d93a">
           <name>additionalType</name>
           <type href="../../cdifDataType/cdifConceptOrTermOrString/cdifConceptOrTermOrString.xmi#cdif.bbr.metadata.cdifDataType.cdifConceptOrTermOrString.ConceptOrTermOrString"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_object.additionalType.lower" xmi:uuid="b7cc6a4e-6677-55bb-8e88-ed25962ea4eb">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolResult.additionalType.lower" xmi:uuid="6e22e20a-6720-5e53-94dd-27a3234a0f5e">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_object.additionalType.upper" xmi:uuid="2dd118e0-a348-5147-a053-3dce915adf60">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolResult.additionalType.upper" xmi:uuid="ce40acf2-6fab-580f-b8a0-36e8f2b67650">
             <value>*</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_object.additionalType.comment" xmi:uuid="80ad991b-7f27-5163-9a73-cf826d8726f3">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolResult.additionalType.comment" xmi:uuid="5485b2f8-0b7a-55dc-add4-bb1888d5e967">
             <body>**CDIF**
 
 Definition
 ==========
 
 Further type classification (e.g. File, Dataset, PropertyValue, DataType)</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_object.additionalType"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolResult.additionalType"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_object.encodingFormat" xmi:uuid="ac424a0b-14ab-5de2-8f3d-cde4aba634dd">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolResult.encodingFormat" xmi:uuid="86b44338-a662-584c-805c-4fe9c21b4c83">
           <name>encodingFormat</name>
           <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_object.encodingFormat.lower" xmi:uuid="c9f3cefe-4873-5b2c-b578-d7a80f00165d">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolResult.encodingFormat.lower" xmi:uuid="99ab05f2-b92a-5ab7-a675-d07a12df40f3">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_object.encodingFormat.upper" xmi:uuid="0909ec71-428f-506e-9ba5-75761bf2f89d">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolResult.encodingFormat.upper" xmi:uuid="81058c1b-c27d-506b-b4f5-92a8d2c148a5">
             <value>*</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_object.encodingFormat.comment" xmi:uuid="eb321cc3-7025-5439-8ff5-fcc26067a932">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolResult.encodingFormat.comment" xmi:uuid="c1c03add-7212-5d84-97f3-677392ecadd2">
             <body>**CDIF**
 
 Definition
 ==========
 
 MIME type or URL for expected data format</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_object.encodingFormat"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolResult.encodingFormat"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_object.defaultValue" xmi:uuid="53b7ab76-0659-5356-8eb8-366baab216ea">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolResult.defaultValue" xmi:uuid="43453a61-a6a4-5872-af0a-4c5b6855e315">
           <name>defaultValue</name>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_object.defaultValue.lower" xmi:uuid="0b8910f4-a466-5f49-b4c3-cc428642b222">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolResult.defaultValue.lower" xmi:uuid="ac9feb79-b793-5afa-8345-65f5a69251a7">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_object.defaultValue.upper" xmi:uuid="6f98c0c6-c436-5a56-aede-097502dcd325">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolResult.defaultValue.upper" xmi:uuid="2684ccd6-e757-54de-9073-49487faa8824">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_object.defaultValue.comment" xmi:uuid="bad3a6ea-7c35-58cb-a3e4-c773cb0a0f7d">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolResult.defaultValue.comment" xmi:uuid="75fcde51-7c72-5838-95c9-bfd7315b1310">
             <body>**CDIF**
 
 Definition
 ==========
 
 Default value for this parameter</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_object.defaultValue"/>
-          </ownedComment>
-        </ownedAttribute>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_result" xmi:uuid="de4f4392-fbf7-5d32-803d-92b1e805a4ab">
-        <name>LabProtocolSchema_result</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_result.comment" xmi:uuid="301ad9b2-3831-5e21-8750-78672adbb89f">
-          <body>**CDIF**
-
-Definition
-==========
-
-A Bioschemas FormalParameter describing the shape and type of inputs and outputs of a workflow protocol. Values are realized in process executions through bios:parameterValue PropertyValue objects. In cdifProvActivity output, mapped to schema:MediaObject with additionalType bios:FormalParameter.
-:prefix: ``schema``
-:typeSchema: {"type": "array", "items": {"type": "string"}, "description": "Should include schema:MediaObject with additionalType bios:FormalParameter"}
-:typeOptional:</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_result"/>
-        </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_result.name" xmi:uuid="f698be57-bea3-543f-afda-c613f7642051">
-          <name>name</name>
-          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_result.name.lower" xmi:uuid="1a2c6277-7a87-52e0-bdc3-563810c77a74">
-            <value>1</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_result.name.upper" xmi:uuid="8fbfaecc-67eb-5538-abdc-d954ce6caf94">
-            <value>1</value>
-          </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_result.name.comment" xmi:uuid="eb49f21d-66c1-559f-9340-a7453492058b">
-            <body>**CDIF**
-
-Definition
-==========
-
-Name matching the corresponding workflow parameter slot</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_result.name"/>
-          </ownedComment>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_result.description" xmi:uuid="ef9d1125-2d84-5db3-b8ae-b3052734c66c">
-          <name>description</name>
-          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_result.description.lower" xmi:uuid="31f73940-4dd6-56fb-905c-e0d0d171d088">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_result.description.upper" xmi:uuid="79b6a882-d6ac-5cee-8335-ba392a01e1f8">
-            <value>1</value>
-          </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_result.description.comment" xmi:uuid="0a0266a7-04c7-5724-a939-03c5cc4a86c2">
-            <body>**CDIF**
-
-Definition
-==========
-
-Description of what this parameter represents</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_result.description"/>
-          </ownedComment>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_result.additionalType" xmi:uuid="ed752049-d600-5f36-8a27-18aec9e9bf71">
-          <name>additionalType</name>
-          <type href="../../cdifDataType/cdifConceptOrTermOrString/cdifConceptOrTermOrString.xmi#cdif.bbr.metadata.cdifDataType.cdifConceptOrTermOrString.ConceptOrTermOrString"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_result.additionalType.lower" xmi:uuid="45637802-4d2a-508f-872e-53129c76cb85">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_result.additionalType.upper" xmi:uuid="3fe5de13-986c-59b0-ae23-a0219fa0f87a">
-            <value>*</value>
-          </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_result.additionalType.comment" xmi:uuid="60cd990f-1657-586c-ba22-93a5b421858f">
-            <body>**CDIF**
-
-Definition
-==========
-
-Further type classification (e.g. File, Dataset, PropertyValue, DataType)</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_result.additionalType"/>
-          </ownedComment>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_result.encodingFormat" xmi:uuid="7edb416c-4d82-570f-9435-2c0239a28e28">
-          <name>encodingFormat</name>
-          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_result.encodingFormat.lower" xmi:uuid="b70c16d2-933c-52fd-8e98-e247fb3afe80">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_result.encodingFormat.upper" xmi:uuid="3add8b68-d50b-5fe0-863b-645471c5b147">
-            <value>*</value>
-          </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_result.encodingFormat.comment" xmi:uuid="ff50bf32-af53-56e1-997f-fab0b4498cef">
-            <body>**CDIF**
-
-Definition
-==========
-
-MIME type or URL for expected data format</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_result.encodingFormat"/>
-          </ownedComment>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_result.defaultValue" xmi:uuid="f225cae4-e290-5211-bcb2-42b680cdf9dd">
-          <name>defaultValue</name>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_result.defaultValue.lower" xmi:uuid="732c00c4-5986-52ba-ade2-cf4343056ba4">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_result.defaultValue.upper" xmi:uuid="7ea6dec0-ff81-5095-b3a2-dd15f682a80a">
-            <value>1</value>
-          </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_result.defaultValue.comment" xmi:uuid="5f9c3609-0505-5097-8878-d330668b5cbd">
-            <body>**CDIF**
-
-Definition
-==========
-
-Default value for this parameter</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolSchema_result.defaultValue"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocolResult.defaultValue"/>
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
@@ -1145,34 +1145,34 @@ Definition
         <memberEnd xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.LabProtocol_computationalTool_SoftwareApplication.ownedEnd"/>
         <memberEnd xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocol.computationalTool"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.LabProtocol_schema_object_LabProtocolSchema_object" xmi:uuid="c69b1d7e-9368-5280-9e2b-b2b49763e06d">
-        <name>LabProtocol_schema_object_LabProtocolSchema_object</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.LabProtocol_schema_object_LabProtocolSchema_object.ownedEnd" xmi:uuid="9b3a8789-42ee-5f76-9d44-5ac39baf0ca8">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.LabProtocol_schema_object_LabProtocolObject" xmi:uuid="776978ca-c8c3-5839-95c8-5180c6386a79">
+        <name>LabProtocol_schema_object_LabProtocolObject</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.LabProtocol_schema_object_LabProtocolObject.ownedEnd" xmi:uuid="ce9aa80a-0eed-5b0c-8530-fe06ce38c781">
           <type xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocol"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.LabProtocol_schema_object_LabProtocolSchema_object.ownedEnd.lower" xmi:uuid="b7932b38-288c-5f2f-a5dc-46ea12749e8e">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.LabProtocol_schema_object_LabProtocolObject.ownedEnd.lower" xmi:uuid="c020bc67-de64-5b8d-92e7-dd755fae2dec">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.LabProtocol_schema_object_LabProtocolSchema_object.ownedEnd.upper" xmi:uuid="e21f8f97-cc75-55a3-91a8-7bd4c8097c88">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.LabProtocol_schema_object_LabProtocolObject.ownedEnd.upper" xmi:uuid="8d9675c5-0860-54d3-9497-5050809fd609">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.LabProtocol_schema_object_LabProtocolSchema_object"/>
+          <association xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.LabProtocol_schema_object_LabProtocolObject"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.LabProtocol_schema_object_LabProtocolSchema_object.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.LabProtocol_schema_object_LabProtocolObject.ownedEnd"/>
         <memberEnd xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocol.schema_object"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.LabProtocol_schema_result_LabProtocolSchema_result" xmi:uuid="dd2bfa8d-f734-5deb-8d1c-ff22a6ab830e">
-        <name>LabProtocol_schema_result_LabProtocolSchema_result</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.LabProtocol_schema_result_LabProtocolSchema_result.ownedEnd" xmi:uuid="fc97536e-2fb2-57b0-aa31-163e89372521">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.LabProtocol_schema_result_LabProtocolResult" xmi:uuid="61cd4ffc-906d-5b8b-ab3f-03e1d29099ba">
+        <name>LabProtocol_schema_result_LabProtocolResult</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.LabProtocol_schema_result_LabProtocolResult.ownedEnd" xmi:uuid="32f34ef6-e081-5ef4-8807-c92d6f00d67d">
           <type xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocol"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.LabProtocol_schema_result_LabProtocolSchema_result.ownedEnd.lower" xmi:uuid="a216ff47-351f-532d-9566-25b3c8cf85cf">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.LabProtocol_schema_result_LabProtocolResult.ownedEnd.lower" xmi:uuid="446a9557-c598-5466-93aa-5c635901b00a">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.LabProtocol_schema_result_LabProtocolSchema_result.ownedEnd.upper" xmi:uuid="1666db59-3637-5ede-8400-eb2b97fd2476">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.LabProtocol_schema_result_LabProtocolResult.ownedEnd.upper" xmi:uuid="49e401c8-b717-54f8-b5a7-45a6ea7b610b">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.LabProtocol_schema_result_LabProtocolSchema_result"/>
+          <association xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.LabProtocol_schema_result_LabProtocolResult"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.LabProtocol_schema_result_LabProtocolSchema_result.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.LabProtocol_schema_result_LabProtocolResult.ownedEnd"/>
         <memberEnd xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.LabProtocol.schema_result"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.StringOrReagent_reagent_LabProtocolReagent" xmi:uuid="be600337-e296-5219-81db-b47c5d1b1bda">

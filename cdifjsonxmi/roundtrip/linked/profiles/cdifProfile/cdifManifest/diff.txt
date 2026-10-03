@@ -1,0 +1,17 @@
+cdifManifest: 14 exact difference(s)
+$.$defs.ManifestHasPart: only in regenerated: {"type": "object", "description": "One independently accessible member of a package. Type it for what it is: schema:Dataset for data, schema:CreativeWork for a codebook, methods document or quality re
+$.$defs.archivePartArray: only in original: {"type": "array", "description": "Array describing the files contained in the archive. Each item represents a component file that is part of the archive and is not independently accessible.", "items":
+$.$defs.archivePartItem: only in original: {"allOf": [{"type": "object", "properties": {"@id": {"type": "string", "description": "Identifier for this file, typically a hash-based anchor (e.g. '#abc123'). Used for cross-references from schema:a
+$.$defs.cdifConceptOrTermOrString: only in original: {"$ref": "../../../cdifDataType/cdifConceptOrTermOrString/schema.yaml"}
+$.$defs.resourcePartArray: only in original: {"type": "array", "description": "Array of the resources that make up a package. Each part is independently retrievable, so unlike an archive part it may carry its own schema:distribution and may be t
+$.$defs.resourcePartItem: only in original: {"type": "object", "description": "One independently accessible member of a package. Type it for what it is: schema:Dataset for data, schema:CreativeWork for a codebook, methods document or quality re
+$.allOf: only in regenerated: [{"properties": {"schema:subjectOf": {"properties": {"dcterms:conformsTo": {"type": "array", "items": {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"typ
+$.properties.schema:distribution.items.allOf[0].properties.schema:hasPart.$ref: only in original: "#/$defs/archivePartArray"
+$.properties.schema:distribution.items.allOf[0].properties.schema:hasPart.items: only in regenerated: {"allOf": [{"type": "object", "properties": {"@id": {"type": "string", "description": "Identifier for this file, typically a hash-based anchor (e.g. '#abc123'). Used for cross-references from schema:a
+$.properties.schema:distribution.items.allOf[0].properties.schema:hasPart.type: only in regenerated: "array"
+$.properties.schema:hasPart.$ref: only in original: "#/$defs/resourcePartArray"
+$.properties.schema:hasPart.items: only in regenerated: {"$ref": "#/$defs/ManifestHasPart"}
+$.properties.schema:hasPart.type: only in regenerated: "array"
+$.properties.schema:subjectOf: only in original: {"properties": {"dcterms:conformsTo": {"type": "array", "items": {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "uri for
+
+cdifManifest: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

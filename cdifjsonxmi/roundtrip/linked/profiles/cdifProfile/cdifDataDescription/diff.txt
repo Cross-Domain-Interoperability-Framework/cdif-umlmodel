@@ -1,0 +1,43 @@
+cdifDataDescription: 18 exact difference(s)
+$.$defs: only in regenerated: {"DataDescriptionVariableMeasured": {"allOf": [{"$ref": "../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/variableMeasured/schema.yaml"}, {"$ref": "../../../../../../../../m
+$.allOf: only in regenerated: [{"properties": {"schema:subjectOf": {"properties": {"dcterms:conformsTo": {"type": "array", "items": {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"typ
+$.if: only in original: {"required": ["schema:variableMeasured"], "properties": {"schema:variableMeasured": {"type": "array", "minItems": 1}}}
+$.properties.cdif:hasPrimaryKey.anyOf[0].$ref:
+    original:    "../../../cdifDataType/cdifKey/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifKey/schema.yaml"
+$.properties.cdif:statistics.items.anyOf[0].$ref:
+    original:    "../../../cdifDataType/cdifStatistics/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifStatistics/schema.yaml"
+$.properties.schema:distribution.items.allOf[0].then.properties.cdi:fingerprint.$ref:
+    original:    "../../../cdifDataType/cdifDataFingerprint/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifDataFingerprint/schema.yaml"
+$.properties.schema:distribution.items.allOf[0].then.properties.cdif:hasPhysicalMapping.items.anyOf[0].$ref:
+    original:    "../../../cdifDataType/cdifPhysicalMapping/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifPhysicalMapping/schema.yaml"
+$.properties.schema:distribution.items.allOf[0].then.properties.cdif:hasPhysicalMapping.items.anyOf[1].$ref:
+    original:    "../../../cdifDataType/cdifTextMapping/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifTextMapping/schema.yaml"
+$.properties.schema:distribution.items.allOf[0].then.properties.cdif:hasPhysicalMapping.items.anyOf[2].$ref:
+    original:    "../../../cdifDataType/cdifLocatorMapping/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifLocatorMapping/schema.yaml"
+$.properties.schema:distribution.items.allOf[1].then.$ref:
+    original:    "../../../cdifDataType/cdifTabularTextDataSet/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifTabularTextDataSet/schema.yaml"
+$.properties.schema:distribution.items.allOf[2].then.$ref:
+    original:    "../../../cdifDataType/cdifStructuredDataSet/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifStructuredDataSet/schema.yaml"
+$.properties.schema:distribution.items.allOf[3].then.properties.schema:potentialAction.items.properties.schema:result.properties.cdif:hasPhysicalMapping.items.anyOf[0].$ref:
+    original:    "../../../cdifDataType/cdifPhysicalMapping/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifPhysicalMapping/schema.yaml"
+$.properties.schema:distribution.items.allOf[3].then.properties.schema:potentialAction.items.properties.schema:result.properties.cdif:hasPhysicalMapping.items.anyOf[1].$ref:
+    original:    "../../../cdifDataType/cdifTextMapping/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifTextMapping/schema.yaml"
+$.properties.schema:distribution.items.allOf[3].then.properties.schema:potentialAction.items.properties.schema:result.properties.cdif:hasPhysicalMapping.items.anyOf[2].$ref:
+    original:    "../../../cdifDataType/cdifLocatorMapping/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifLocatorMapping/schema.yaml"
+$.properties.schema:subjectOf: only in original: {"properties": {"dcterms:conformsTo": {"type": "array", "items": {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "uri for
+$.properties.schema:variableMeasured.items.$ref: only in regenerated: "#/$defs/DataDescriptionVariableMeasured"
+$.properties.schema:variableMeasured.items.allOf: only in original: [{"type": "object", "description": "All variableMeasured items at data description level must have an @id and cdif:physicalDataType so physical mappings can reference them.", "properties": {"@id": {"t
+$.then: only in original: {"required": ["schema:subjectOf"], "properties": {"schema:subjectOf": {"required": ["dcterms:conformsTo"], "properties": {"dcterms:conformsTo": {"contains": {"type": "object", "required": ["@id"], "ad
+
+cdifDataDescription: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

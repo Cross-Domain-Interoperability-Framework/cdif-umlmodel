@@ -18,13 +18,13 @@ $.$defs.LabProtocol.properties.bios:reagent.items.$ref: only in regenerated: "#/
 $.$defs.LabProtocol.properties.bios:reagent.items.anyOf: only in original: [{"type": "string"}, {"type": "object", "properties": {"@id": {"type": "string"}, "schema:name": {"type": "string"}}}]
 $.$defs.LabProtocol.properties.schema:object.items.anyOf[0].$ref:
     original:    "#/$defs/FormalParameter"
-    regenerated: "#/$defs/LabProtocolSchema_object"
+    regenerated: "#/$defs/LabProtocolObject"
 $.$defs.LabProtocol.properties.schema:result.items.anyOf[0].$ref:
     original:    "#/$defs/FormalParameter"
-    regenerated: "#/$defs/LabProtocolSchema_result"
+    regenerated: "#/$defs/LabProtocolResult"
+$.$defs.LabProtocolObject: only in regenerated: {"type": "object", "description": "A Bioschemas FormalParameter describing the shape and type of inputs and outputs of a workflow protocol. Values are realized in process executions through bios:param
 $.$defs.LabProtocolReagent: only in regenerated: {"type": "object", "properties": {"@id": {"type": "string"}, "schema:name": {"type": "string"}}}
-$.$defs.LabProtocolSchema_object: only in regenerated: {"type": "object", "description": "A Bioschemas FormalParameter describing the shape and type of inputs and outputs of a workflow protocol. Values are realized in process executions through bios:param
-$.$defs.LabProtocolSchema_result: only in regenerated: {"type": "object", "description": "A Bioschemas FormalParameter describing the shape and type of inputs and outputs of a workflow protocol. Values are realized in process executions through bios:param
+$.$defs.LabProtocolResult: only in regenerated: {"type": "object", "description": "A Bioschemas FormalParameter describing the shape and type of inputs and outputs of a workflow protocol. Values are realized in process executions through bios:param
 $.$defs.ParameterValue: only in original: {"type": "object", "description": "A schema:PropertyValue recording an actual parameter setting used during a lab process execution. Contains the measured or configured value, units, and optionally a 
 $.$defs.Sample: only in original: {"type": "object", "description": "A Bioschemas Sample representing a physical or material entity used or produced by lab processes. In cdifProvActivity output, typed as schema:Thing with schema:addit
 $.$defs.SoftwareApplication: only in regenerated: {"type": "object", "description": "A software application used as part of a lab protocol.", "properties": {"@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "schema:Softwar

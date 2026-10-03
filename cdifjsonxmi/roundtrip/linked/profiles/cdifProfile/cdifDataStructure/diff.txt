@@ -1,0 +1,76 @@
+cdifDataStructure: 37 exact difference(s)
+$.$defs.DataStructure.allOf: only in regenerated: [{"anyOf": [{"required": ["cdi:has_DataStructureComponent"]}, {"required": ["cdif:has_ForeignKey"]}, {"required": ["cdif:has_PrimaryKey"]}]}]
+$.$defs.DataStructure.anyOf: only in original: [{"required": ["cdi:has_DataStructureComponent"]}, {"required": ["cdif:has_ForeignKey"]}, {"required": ["cdif:has_PrimaryKey"]}]
+$.$defs.DataStructure.properties.cdi:has_DataStructureComponent.items.anyOf[0].$ref:
+    original:    "../../../cdifDataType/cdifDataStructureComponent/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifDataStructureComponent/schema.yaml"
+$.$defs.DataStructure.properties.cdi:has_DataStructureComponent.items.anyOf[1].$ref:
+    original:    "../../../cdifDataType/objectReference/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/objectReference/schema.yaml"
+$.$defs.DataStructure.properties.cdif:has_ForeignKey.items.anyOf[1].$ref:
+    original:    "../../../cdifDataType/objectReference/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/objectReference/schema.yaml"
+$.$defs.DataStructure.properties.cdif:has_PrimaryKey.$ref:
+    original:    "#/$defs/PrimaryKey"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifKey/schema.yaml"
+$.$defs.DataStructureProfileComponentPosition: only in regenerated: {"type": "object", "properties": {"@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "cdi:ComponentPosition"}, "minItems": 1}, "@id": {"type": "string", "description": "Iden
+$.$defs.DimensionGroup: only in original: {"type": "object", "description": "Collection of dimensions that can be reused across multiple dimensional structures.", "properties": {"@type": {"type": "array", "items": {"type": "string"}, "contain
+$.$defs.DimensionalDataStructure.properties.cdi:has_DataStructureComponent.items.anyOf:
+    original:    [{"$ref": "../../../cdifDataType/cdifDataStructureComponent/schema.yaml#/$defs/IdentifierComponent"}, {"$ref": "../../../cdifDataType/cdifDataStructureComponent/schema.yaml#/$defs/MeasureComponent"}, {"$ref": "../../../cdifDataType/cdifDataStructureComponent/schema.yaml#/$defs/AttributeComponent"}, 
+    regenerated: [{"$ref": "#/$defs/DimensionalDataStructureDataStructureComponentChoice"}, {"$ref": "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/objectReference/schema.yaml"}]
+$.$defs.DimensionalDataStructure.properties.cdif:has_ForeignKey.items.anyOf[1].$ref:
+    original:    "../../../cdifDataType/objectReference/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/objectReference/schema.yaml"
+$.$defs.DimensionalDataStructure.properties.cdif:has_PrimaryKey.$ref:
+    original:    "#/$defs/PrimaryKey"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifKey/schema.yaml"
+$.$defs.DimensionalDataStructureDataStructureComponentChoice: only in regenerated: {"anyOf": [{"$ref": "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifDataStructureComponent/schema.yaml#/$defs/IdentifierComponent"}, {"$ref": "../../../../../../../../metadat
+$.$defs.DistributionWithStructuredParts.properties.schema:hasPart.items: only in regenerated: {}
+$.$defs.ForeignKey.properties.cdif:isComposedOf.items.$ref: only in regenerated: "#/$defs/DataStructureProfileComponentPosition"
+$.$defs.ForeignKey.properties.cdif:isComposedOf.items.properties: only in original: {"@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "cdi:ComponentPosition"}, "minItems": 1}, "@id": {"type": "string", "description": "Identifier for this ComponentPosition
+$.$defs.ForeignKey.properties.cdif:isComposedOf.items.required: only in original: ["@type", "cdi:indexes", "cdi:value"]
+$.$defs.ForeignKey.properties.cdif:isComposedOf.items.type: only in original: "object"
+$.$defs.ForeignKey.properties.cdif:references_PrimaryKey.$ref:
+    original:    "../../../cdifDataType/objectReference/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/objectReference/schema.yaml"
+$.$defs.IdentifierComponentOrMeasureComponentOrAttributeComponent: only in regenerated: {"anyOf": [{"$ref": "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifDataStructureComponent/schema.yaml#/$defs/IdentifierComponent"}, {"$ref": "../../../../../../../../metadat
+$.$defs.IsStructuredByValue.anyOf[4].$ref:
+    original:    "../../../cdifDataType/objectReference/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/objectReference/schema.yaml"
+$.$defs.LongDataStructure.properties.cdi:has_DataStructureComponent.allOf[0].contains.$ref:
+    original:    "../../../cdifDataType/cdifDataStructureComponent/schema.yaml#/$defs/IdentifierComponent"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifDataStructureComponent/schema.yaml#/$defs/IdentifierComponent"
+$.$defs.LongDataStructure.properties.cdi:has_DataStructureComponent.allOf[1].contains.$ref:
+    original:    "../../../cdifDataType/cdifDataStructureComponent/schema.yaml#/$defs/VariableDescriptorComponent"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifDataStructureComponent/schema.yaml#/$defs/VariableDescriptorComponent"
+$.$defs.LongDataStructure.properties.cdi:has_DataStructureComponent.allOf[2].contains.$ref:
+    original:    "../../../cdifDataType/cdifDataStructureComponent/schema.yaml#/$defs/VariableValueComponent"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifDataStructureComponent/schema.yaml#/$defs/VariableValueComponent"
+$.$defs.LongDataStructure.properties.cdi:has_DataStructureComponent.items.anyOf:
+    original:    [{"$ref": "../../../cdifDataType/cdifDataStructureComponent/schema.yaml#/$defs/IdentifierComponent"}, {"$ref": "../../../cdifDataType/cdifDataStructureComponent/schema.yaml#/$defs/VariableDescriptorComponent"}, {"$ref": "../../../cdifDataType/cdifDataStructureComponent/schema.yaml#/$defs/VariableVal
+    regenerated: [{"$ref": "#/$defs/LongDataStructureDataStructureComponentChoice"}, {"$ref": "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/objectReference/schema.yaml"}]
+$.$defs.LongDataStructure.properties.cdif:has_PrimaryKey.$ref:
+    original:    "#/$defs/PrimaryKey"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifKey/schema.yaml"
+$.$defs.LongDataStructureDataStructureComponentChoice: only in regenerated: {"anyOf": [{"$ref": "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifDataStructureComponent/schema.yaml#/$defs/IdentifierComponent"}, {"$ref": "../../../../../../../../metadat
+$.$defs.PrimaryKey: only in original: {"description": "Set of variables that uniquely identify a data instance. The same cdif:Key as cdif:hasPrimaryKey takes at dataset level, so a structure-level key and a dataset-level key can be one no
+$.$defs.StructuredDataDownload.allOf: only in regenerated: [{"required": ["cdi:isStructuredBy"]}]
+$.$defs.StructuredDataDownload.required:
+    original:    ["@type", "cdi:isStructuredBy"]
+    regenerated: ["@type"]
+$.$defs.WebAPIWithStructuredResult.properties.schema:potentialAction.items: only in regenerated: {}
+$.$defs.WideDataStructure.properties.cdi:has_DataStructureComponent.items.anyOf:
+    original:    [{"$ref": "../../../cdifDataType/cdifDataStructureComponent/schema.yaml#/$defs/IdentifierComponent"}, {"$ref": "../../../cdifDataType/cdifDataStructureComponent/schema.yaml#/$defs/MeasureComponent"}, {"$ref": "../../../cdifDataType/cdifDataStructureComponent/schema.yaml#/$defs/AttributeComponent"}, 
+    regenerated: [{"$ref": "#/$defs/IdentifierComponentOrMeasureComponentOrAttributeComponent"}, {"$ref": "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/objectReference/schema.yaml"}]
+$.$defs.WideDataStructure.properties.cdif:has_ForeignKey.items.anyOf[1].$ref:
+    original:    "../../../cdifDataType/objectReference/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/objectReference/schema.yaml"
+$.$defs.WideDataStructure.properties.cdif:has_PrimaryKey.$ref:
+    original:    "#/$defs/PrimaryKey"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifKey/schema.yaml"
+$.allOf: only in regenerated: [{"if": {"required": ["@type"], "properties": {"@type": {"type": "array", "contains": {"enum": ["cdi:DataStructure", "cdi:DimensionalDataStructure", "cdi:LongDataStructure", "cdi:WideDataStructure"]}}
+$.else: only in original: {"description": "A CDIF dataset described by a data structure. Must declare conformance to data_structure/1.1 and attach the structure to a distribution.", "required": ["schema:subjectOf", "schema:dis
+$.if: only in original: {"required": ["@type"], "properties": {"@type": {"type": "array", "contains": {"enum": ["cdi:DataStructure", "cdi:DimensionalDataStructure", "cdi:LongDataStructure", "cdi:WideDataStructure"]}}}}
+$.then: only in original: {"description": "Standalone data-structure object (one of the four variants). The structure is the subject of the record, not something attached to downloadable data, so no schema:DataDownload appears
+
+cdifDataStructure: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

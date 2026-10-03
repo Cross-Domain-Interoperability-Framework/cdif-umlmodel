@@ -20,15 +20,83 @@
 						<UML:TaggedValue tag="ea_guid" value="{2E10CBF3-328D-5ae0-9F7F-16265F98612D}"/>
 					</UML:ModelElement.taggedValue>
 					<UML:Namespace.ownedElement>
+						<UML:Class name="ComponentPosition" xmi.id="EAID_21101511_F140_5be5_88DE_B104FA6D9E69" visibility="public" namespace="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D" isRoot="false" isLeaf="false" isAbstract="true" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Abstract base of the 2 cdi:ComponentPosition profiles in cdifDataType/cdifKey, profiles/cdifProfile/cdifDataStructure. Each specializes it; this holds the attributes identical in all of them.&#xA;:rdfType: ``cdi:ComponentPosition``"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="Class"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D"/>
+								<UML:TaggedValue tag="ea_guid" value="{21101511-F140-5be5-88DE-B104FA6D9E69}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Class>
+						<UML:Class name="Concept" xmi.id="EAID_BD85E227_9516_5134_97AE_E50FCE147F9A" visibility="public" namespace="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D" isRoot="false" isLeaf="false" isAbstract="true" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Abstract base of the 2 skos:Concept profiles in profiles/cdifProfile/cdifConceptScheme, skosProperties/skosConcept. Each specializes it; this holds the attributes identical in all of them.&#xA;:rdfType: ``skos:Concept``"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="Class"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D"/>
+								<UML:TaggedValue tag="ea_guid" value="{BD85E227-9516-5134-97AE-E50FCE147F9A}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Classifier.feature>
+								<UML:Attribute name="notation" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:StructuralFeature.type>
+										<UML:Classifier xmi.idref="eaxmiid_String"/>
+									</UML:StructuralFeature.type>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Classification code for this concept within a scheme (a single notation string, consistent with CdifCodelistConcept)."/>
+										<UML:TaggedValue tag="type" value="String"/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="false"/>
+										<UML:TaggedValue tag="position" value="0"/>
+										<UML:TaggedValue tag="lowerBound" value="0"/>
+										<UML:TaggedValue tag="upperBound" value="1"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{E8008512-3458-56ef-8F77-4956281C2023}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+							</UML:Classifier.feature>
+						</UML:Class>
+						<UML:Class name="ConceptScheme" xmi.id="EAID_56963727_52A6_5b7d_85F0_F2A225D4D134" visibility="public" namespace="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D" isRoot="false" isLeaf="false" isAbstract="true" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Abstract base of the 3 skos:ConceptScheme profiles in profiles/cdifProfile/cdifCodelist, profiles/cdifProfile/cdifConceptScheme, skosProperties/skosConceptScheme. Each specializes it; this holds the attributes identical in all of them.&#xA;:rdfType: ``skos:ConceptScheme``"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="Class"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D"/>
+								<UML:TaggedValue tag="ea_guid" value="{56963727-52A6-5b7d-85F0-F2A225D4D134}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Class>
 						<UML:Class name="DataDownload" xmi.id="EAID_6E8E7C0A_EE5B_59ee_B87A_6AD25480A8F9" visibility="public" namespace="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D" isRoot="false" isLeaf="false" isAbstract="true" isActive="false">
 							<UML:ModelElement.taggedValue>
-								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Abstract base of the 2 schema:DataDownload profiles in schemaorgProperties/actionResult, schemaorgProperties/dataDownload. Each specializes it; this holds the attributes identical in all of them.&#xA;:rdfType: ``schema:DataDownload``"/>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Abstract base of the 3 schema:DataDownload profiles in profiles/cdifProfile/cdifDataStructure, schemaorgProperties/actionResult, schemaorgProperties/dataDownload. Each specializes it; this holds the attributes identical in all of them.&#xA;:rdfType: ``schema:DataDownload``"/>
 								<UML:TaggedValue tag="isSpecification" value="false"/>
 								<UML:TaggedValue tag="ea_stype" value="Class"/>
 								<UML:TaggedValue tag="ea_ntype" value="0"/>
 								<UML:TaggedValue tag="version" value="1.0"/>
 								<UML:TaggedValue tag="package" value="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D"/>
 								<UML:TaggedValue tag="ea_guid" value="{6E8E7C0A-EE5B-59ee-B87A-6AD25480A8F9}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Class>
+						<UML:Class name="Dataset" xmi.id="EAID_920B79F5_6711_55c1_A420_99418ECBCB78" visibility="public" namespace="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D" isRoot="false" isLeaf="false" isAbstract="true" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Abstract base of the 4 schema:Dataset profiles in cdifDataType/cdifCatalogRecord, profiles/cdifProfile/cdifCodelist, profiles/cdifProfile/cdifConceptScheme, profiles/cdifProfile/cdifCore. Each specializes it; this holds the attributes identical in all of them.&#xA;:rdfType: ``schema:Dataset``"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="Class"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D"/>
+								<UML:TaggedValue tag="ea_guid" value="{920B79F5-6711-55c1-A420-99418ECBCB78}"/>
 							</UML:ModelElement.taggedValue>
 						</UML:Class>
 						<UML:Class name="EntryPoint" xmi.id="EAID_FA02B167_F1AF_5d87_B09B_EF73E2FF578C" visibility="public" namespace="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D" isRoot="false" isLeaf="false" isAbstract="true" isActive="false">
@@ -281,7 +349,7 @@
 						</UML:Class>
 						<UML:Class name="PropertyValue" xmi.id="EAID_BFC2535A_3D50_5350_B457_CFC692BD42A0" visibility="public" namespace="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D" isRoot="false" isLeaf="false" isAbstract="true" isActive="false">
 							<UML:ModelElement.taggedValue>
-								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Abstract base of the 2 schema:PropertyValue profiles in bioschemasProperties/cdifBioschemasProperties, schemaorgProperties/additionalProperty. Each specializes it; this holds the attributes identical in all of them.&#xA;:rdfType: ``schema:PropertyValue``"/>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Abstract base of the 3 schema:PropertyValue profiles in bioschemasProperties/cdifBioschemasProperties, profiles/cdifProfile/cdifCodelist, schemaorgProperties/additionalProperty. Each specializes it; this holds the attributes identical in all of them.&#xA;:rdfType: ``schema:PropertyValue``"/>
 								<UML:TaggedValue tag="isSpecification" value="false"/>
 								<UML:TaggedValue tag="ea_stype" value="Class"/>
 								<UML:TaggedValue tag="ea_ntype" value="0"/>

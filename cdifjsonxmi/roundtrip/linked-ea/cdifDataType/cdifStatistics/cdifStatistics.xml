@@ -20,7 +20,7 @@
 						<UML:TaggedValue tag="ea_guid" value="{39AD41F3-0566-577c-8A48-3C64ECD0F019}"/>
 					</UML:ModelElement.taggedValue>
 					<UML:Namespace.ownedElement>
-						<UML:Class name="Statistics2" xmi.id="EAID_9D17810A_8CFE_5b04_BA4E_2F74FFCFBAD5" visibility="public" namespace="EAPK_39AD41F3_0566_577c_8A48_3C64ECD0F019" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+						<UML:Class name="StatisticsProfile" xmi.id="EAID_4CD42EBD_5C4E_5e81_BBDF_4497E1D40223" visibility="public" namespace="EAPK_39AD41F3_0566_577c_8A48_3C64ECD0F019" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;CDIF profile of the DDI-CDI Statistics / CategoryStatistics / StatisticsCollection classes (2026-03 model). A Statistics node carries one or more Statistic value objects; CategoryStatistics carries per-category results; a StatisticsCollection groups Statistics nodes. The root validates any of the three. CDIF divergences from canonical DDI-CDI: properties valued by InternationalString / LabelForDisplay / ObjectName are simplified to plain strings and carried under the cdif: namespace (cdif:name, cdif:descriptiveText, cdif:definition, cdif:displayLabel); the polymorphic cdi:has association is split into target-specific cdif:has_* keys; cdif:appliesTo and cdif:indexedBy are CDIF additions (not present in the canonical model) that link statistics to the InstanceVariable(s) they describe.&#xA;:title: &quot;CDIF Statistics&quot;&#xA;:objectUnion:&#xA;:union: ``anyOf``"/>
 								<UML:TaggedValue tag="isSpecification" value="false"/>
@@ -28,7 +28,7 @@
 								<UML:TaggedValue tag="ea_ntype" value="0"/>
 								<UML:TaggedValue tag="version" value="1.0"/>
 								<UML:TaggedValue tag="package" value="EAPK_39AD41F3_0566_577c_8A48_3C64ECD0F019"/>
-								<UML:TaggedValue tag="ea_guid" value="{9D17810A-8CFE-5b04-BA4E-2F74FFCFBAD5}"/>
+								<UML:TaggedValue tag="ea_guid" value="{4CD42EBD-5C4E-5e81-BBDF-4497E1D40223}"/>
 							</UML:ModelElement.taggedValue>
 						</UML:Class>
 						<UML:Class name="Category" xmi.id="EAID_DE43432F_9BC5_533d_AB5A_1E9749E08E71" visibility="public" namespace="EAPK_39AD41F3_0566_577c_8A48_3C64ECD0F019" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
@@ -499,19 +499,19 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Association xmi.id="EAID_01D385B5_BC9B_52bc_B75B_D18054A1FC53" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_D6B5E504_1DC4_5cbc_A5A3_AEEF9405917F" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
 								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
-								<UML:TaggedValue tag="ea_sourceName" value="Statistics2"/>
+								<UML:TaggedValue tag="ea_sourceName" value="StatisticsProfile"/>
 								<UML:TaggedValue tag="ea_targetName" value="Statistics"/>
 								<UML:TaggedValue tag="ea_sourceType" value="DataType"/>
 								<UML:TaggedValue tag="ea_targetType" value="Class"/>
-								<UML:TaggedValue tag="ea_guid" value="{01D385B5-BC9B-52bc-B75B-D18054A1FC53}"/>
+								<UML:TaggedValue tag="ea_guid" value="{D6B5E504-1DC4-5cbc-A5A3-AEEF9405917F}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Association.connection>
-								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_9D17810A_8CFE_5b04_BA4E_2F74FFCFBAD5">
+								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_4CD42EBD_5C4E_5e81_BBDF_4497E1D40223">
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="containment" value="Unspecified"/>
 										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
@@ -524,24 +524,24 @@
 										<UML:TaggedValue tag="containment" value="Unspecified"/>
 										<UML:TaggedValue tag="deststyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
 										<UML:TaggedValue tag="ea_end" value="target"/>
-										<UML:TaggedValue tag="ea_guid" value="{A02BAD43-75AE-5f61-B805-D9245784953D}"/>
+										<UML:TaggedValue tag="ea_guid" value="{CD8FD9DF-B509-5bde-8901-C386DD5E834E}"/>
 									</UML:ModelElement.taggedValue>
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_34B748F8_2FA2_5a05_8FBA_652ABC19C637" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_44D7B5E2_2898_576c_BEA9_D6631B6774A8" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
 								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
-								<UML:TaggedValue tag="ea_sourceName" value="Statistics2"/>
+								<UML:TaggedValue tag="ea_sourceName" value="StatisticsProfile"/>
 								<UML:TaggedValue tag="ea_targetName" value="CategoryStatistics"/>
 								<UML:TaggedValue tag="ea_sourceType" value="DataType"/>
 								<UML:TaggedValue tag="ea_targetType" value="Class"/>
-								<UML:TaggedValue tag="ea_guid" value="{34B748F8-2FA2-5a05-8FBA-652ABC19C637}"/>
+								<UML:TaggedValue tag="ea_guid" value="{44D7B5E2-2898-576c-BEA9-D6631B6774A8}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Association.connection>
-								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_9D17810A_8CFE_5b04_BA4E_2F74FFCFBAD5">
+								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_4CD42EBD_5C4E_5e81_BBDF_4497E1D40223">
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="containment" value="Unspecified"/>
 										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
@@ -554,24 +554,24 @@
 										<UML:TaggedValue tag="containment" value="Unspecified"/>
 										<UML:TaggedValue tag="deststyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
 										<UML:TaggedValue tag="ea_end" value="target"/>
-										<UML:TaggedValue tag="ea_guid" value="{348C75FB-B156-56ca-BC12-EE6D15B24E2C}"/>
+										<UML:TaggedValue tag="ea_guid" value="{5EB9DE05-8AC1-5a27-AE71-A4515C869478}"/>
 									</UML:ModelElement.taggedValue>
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_89D71839_93A3_5862_9E01_50FF42B5D5BE" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_D25AFCD6_0266_5ee6_86AC_5A68FDFBB47C" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
 								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
-								<UML:TaggedValue tag="ea_sourceName" value="Statistics2"/>
+								<UML:TaggedValue tag="ea_sourceName" value="StatisticsProfile"/>
 								<UML:TaggedValue tag="ea_targetName" value="StatisticsCollection"/>
 								<UML:TaggedValue tag="ea_sourceType" value="DataType"/>
 								<UML:TaggedValue tag="ea_targetType" value="Class"/>
-								<UML:TaggedValue tag="ea_guid" value="{89D71839-93A3-5862-9E01-50FF42B5D5BE}"/>
+								<UML:TaggedValue tag="ea_guid" value="{D25AFCD6-0266-5ee6-86AC-5A68FDFBB47C}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Association.connection>
-								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_9D17810A_8CFE_5b04_BA4E_2F74FFCFBAD5">
+								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_4CD42EBD_5C4E_5e81_BBDF_4497E1D40223">
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="containment" value="Unspecified"/>
 										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
@@ -584,7 +584,7 @@
 										<UML:TaggedValue tag="containment" value="Unspecified"/>
 										<UML:TaggedValue tag="deststyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
 										<UML:TaggedValue tag="ea_end" value="target"/>
-										<UML:TaggedValue tag="ea_guid" value="{35D11667-9CEA-515a-8F0D-4F027A329296}"/>
+										<UML:TaggedValue tag="ea_guid" value="{9B2A981A-F9A5-575b-BC50-9DE8A91FC81D}"/>
 									</UML:ModelElement.taggedValue>
 								</UML:AssociationEnd>
 							</UML:Association.connection>

@@ -1,6 +1,6 @@
 cdifKey: 5 exact difference(s)
-$.$defs: only in regenerated: {"ComponentPosition": {"type": "object", "properties": {"@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "cdi:ComponentPosition"}, "minItems": 1}, "@id": {"type": "string"
-$.properties.cdif:isComposedOf.items.$ref: only in regenerated: "#/$defs/ComponentPosition"
+$.$defs: only in regenerated: {"KeyComponentPosition": {"type": "object", "properties": {"@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "cdi:ComponentPosition"}, "minItems": 1}, "@id": {"type": "stri
+$.properties.cdif:isComposedOf.items.$ref: only in regenerated: "#/$defs/KeyComponentPosition"
 $.properties.cdif:isComposedOf.items.properties: only in original: {"@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "cdi:ComponentPosition"}, "minItems": 1}, "@id": {"type": "string", "description": "Identifier for this ComponentPosition
 $.properties.cdif:isComposedOf.items.required: only in original: ["@type", "cdi:indexes", "cdi:value"]
 $.properties.cdif:isComposedOf.items.type: only in original: "object"

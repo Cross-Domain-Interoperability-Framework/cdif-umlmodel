@@ -1,0 +1,392 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: 'Core properties for CDIF metadata schema, with schema: prefixes'
+description: >-
+  Building block specifies core properties for CDIF schema.org metadata record, applicable
+  to any resource type.
+type: object
+properties:
+  '@context':
+    type: object
+    description: JSON-LD context declaring namespace prefixes used in the metadata record.
+    properties:
+      schema:
+        const: 'http://schema.org/'
+      dcterms:
+        const: 'http://purl.org/dc/terms/'
+      spdx:
+        const: 'http://spdx.org/rdf/terms#'
+      dcat:
+        const: 'http://www.w3.org/ns/dcat#'
+      prov:
+        const: 'http://www.w3.org/ns/prov#'
+    required:
+    - schema
+    - dcterms
+    - dcat
+    - prov
+  '@type':
+    default:
+    - 'schema:Dataset'
+    type: array
+    items:
+      type: string
+      enum:
+      - 'schema:CreativeWork'
+      - 'schema:SoftwareApplication'
+      - 'schema:SoftwareSourceCode'
+      - 'schema:Product'
+      - 'schema:WebAPI'
+      - 'schema:Dataset'
+      - 'schema:DigitalDocument'
+      - 'schema:Collection'
+      - 'schema:ImageObject'
+      - 'schema:DataCatalog'
+      - 'schema:DefinedTermSet'
+      - 'schema:MediaObject'
+    contains:
+      const: 'schema:Dataset'
+    minItems: 1
+    description: >-
+      a schema.org Class that specifies the expected information content for the metadata
+      record. The array must include at least one schema.org type value. Default is schema:Dataset.
+  '@id':
+    type: string
+    description: >-
+      The URI for the resource should be the @id value for the root of the JSON instance document
+      tree. Must be an IRI (e.g. https://doi.org/..., urn:..., or a relative URI like #localid).
+      Note that this identifier can be interpreted to identify the resource that is the subject
+      of this metadata record, or the JSON-LD object that is the digital object containing
+      the metadata information.
+  'schema:name':
+    type: string
+    description: >-
+      A descriptive name of a dataset (e.g., 'Snow depth in Northern Hemisphere'). The name
+      should uniquely identify the described resource for human use, in the scope of the metadata
+      catalog containing this metadata record.
+  'schema:description':
+    type: string
+    description: >-
+      A short summary describing a dataset. This text will be indexed by search applications,
+      so the more information here, the better.
+  'schema:identifier':
+    anyOf:
+    - '$ref': >-
+        ../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml
+    - type: string
+    description: >-
+      The primary identifier for the dataset; other identifiers should be listed in the sameAs
+      field. Schema.org has three ways of encoding identifiers-- a text description, a URL,
+      or by using the schema:PropertyValue field. The Science on Schema.org guidance strongly
+      recommends using the PropertyValue approach. see https://github.com/ESIPFed/science-on-schema.org   ....
+      Dataset.md#identifier.  Ideally, for any given data provided they would provide identifiers
+      either all as strings or all as identifier_type.
+  'schema:additionalType':
+    type: array
+    items:
+      '$ref': >-
+        ../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml
+    minItems: 0
+    description: >-
+      identifiers for datatypes from other vocabularies (not schema.org) that apply to this
+      metadata.
+  'schema:sameAs':
+    type: array
+    items:
+      anyOf:
+      - type: string
+      - type: object
+        required:
+        - '@id'
+        additionalProperties: false
+        properties:
+          '@id':
+            type: string
+            description: IRI for an equivalent resource or alternate identifier
+      - '$ref': >-
+          ../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml
+    minItems: 1
+    description: >-
+      Other identifiers for the dataset, as IRI references, literal strings, or structured
+      identifiers using schema:PropertyValue.
+  'schema:version':
+    type:
+    - string
+    - number
+    description: >-
+      The version number or identifier for this dataset (text or numeric). The values should
+      sort from oldest to newest using an alphanumeric sort on version strings
+  'schema:inLanguage':
+    type: string
+    description: the language of the dataset content
+  'schema:dateModified':
+    type: string
+    description: >-
+      ISO8601 formatted date (and optional time if relevant) when Dataset was last updated
+  'schema:datePublished':
+    type: string
+    description: >-
+      ISO8601 formatted date (and optional time if relevant) when Dataset was made public.
+  'schema:conditionsOfAccess':
+    type: array
+    items:
+      anyOf:
+      - type: string
+      - type: object
+        required:
+        - '@id'
+        additionalProperties: false
+        properties:
+          '@id':
+            type: string
+            description: a reference to a resource defining conditions of Access
+      - '$ref': >-
+          ../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml
+    minItems: 0
+    description: "text statement of conditions for use and access; if an online resource documents\
+      \ the restrictions or a URI is used to identify the conditions, recommend using schema:CreativeWork\
+      \ to provide a label (name) and an identifier (URI or URL). "
+  'schema:license':
+    type: array
+    items:
+      anyOf:
+      - type: string
+      - type: object
+        required:
+        - '@id'
+        additionalProperties: false
+        properties:
+          '@id':
+            type: string
+            description: a reference to a license defintion
+      - '$ref': >-
+          ../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml
+    minItems: 0
+    description: >-
+      legal statement of conditions for use and access; recommend using schema:CreativeWork
+      to provide a label (name) for the license, and an identifier. Sources of license identifiers:
+      https://opensource.org/licenses/, https://creativecommons.org/about/cclicenses/, https://spdx.org/licenses/,
+      http://cor.esipfed.org/ont/earthcube/swl. If only a string is provided, it should be
+      an identifier for the license, ideally a resolvable URI
+  'schema:url':
+    type: string
+    format: uri
+    description: >-
+      Web Location of a page describing the dataset (landing page), typically providing links
+      or instructions to get the actual resource content; analogous to dcat:accessURL. If
+      a direct link is available to get the data, put in distribution/contentUrl
+  'schema:distribution':
+    type: array
+    items:
+      '$ref': '#/$defs/DataDownloadOrWebAPI'
+    description: >-
+      specifies how to download the data in a specific format or access via a web API. This
+      property describes where to get the data and in what format by using the schema:DataDownload
+      type. If user must access data through a landing page, provide link to landing page
+      in the 'url' property for the dataset
+  'schema:relatedLink':
+    type: array
+    items:
+      '$ref': >-
+        ../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/linkRole/schema.yaml
+    description: >-
+      Links to related resources. schema:linkRelationship says how the target relates to this
+      resource. Defined by schemaorgProperties/linkRole since 2026-09-23; it was inline here,
+      which is why schemaorgProperties/instrument could not reuse it and defined the same
+      property as a labeled link instead.
+  'schema:publishingPrinciples':
+    type: array
+    items:
+      anyOf:
+      - type: string
+      - type: object
+        required:
+        - '@id'
+        additionalProperties: false
+        properties:
+          '@id':
+            type: string
+            description: a reference to a publishing principles statement
+      - '$ref': >-
+          ../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml
+    minItems: 0
+    description: >-
+      FDOF digitalObjectMutability, RDA digitalObjectPolicy, FDOF PersistencyPolicy. Policies
+      related to maintenance, update, expected time to live. If an online resource documents
+      the policies or a URI is used to identify the conditions, recommend using schema:CreativeWork
+      to provide a label (name) and an identifier (URI or URL).
+  'schema:keywords':
+    type: array
+    items:
+      '$ref': >-
+        ../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml
+    description: >-
+      Keywords are an array of strings, an array of schema:DefinedTerms, or some combination
+      of these. If you have information about a controlled vocabulary from which keywords
+      come from, use schema:DefinedTerm to descibe that keyword. This allowed variability
+      makes parsing metadata hard; recommend using DefinedTerm for all keywords if any of
+      them are from a known vocabulary, otherwise an array of strings.
+  'schema:creator':
+    '$ref': '#/$defs/CoreCreator'
+    description: >-
+      author or orginator of intellectual content of dataset. Uset the JSON-LD @list construct
+      to preserve author order. Use contributor with the Role property to specify other roles
+      related to creation or stewardship of the resource.
+  'schema:contributor':
+    type: array
+    items:
+      anyOf:
+      - type: object
+        required:
+        - '@id'
+        additionalProperties: false
+        properties:
+          '@id':
+            type: string
+            description: >-
+              a identifier for an agent defined in this metadata, or externally; must be dereferenceable
+      - '$ref': '#/$defs/PersonOrOrganizationOrAgentInRole'
+    description: other parties who played a role in production of dataset
+  'schema:publisher':
+    anyOf:
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+          description: >-
+            a identifier for an agent defined in this metadata, or externally; must be dereferenceable
+    - '$ref': '#/$defs/PersonOrOrganization'
+    description: Party who made the dataset publicly available
+  'schema:provider':
+    type: array
+    items:
+      anyOf:
+      - type: object
+        required:
+        - '@id'
+        additionalProperties: false
+        properties:
+          '@id':
+            type: string
+            description: >-
+              a identifier for an agent defined in this metadata, or externally; must be dereferenceable
+      - '$ref': '#/$defs/PersonOrOrganization'
+    description: >-
+      Party who maintains the distribution options for the dataset. If there are multiple
+      distributions from different providers, use the provider property on distribution/DataDownload
+  'schema:funding':
+    type: array
+    items:
+      '$ref': >-
+        ../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/monetaryGrant/schema.yaml
+  'prov:wasGeneratedBy':
+    type: array
+    items:
+      '$ref': >-
+        ../../../../../../../../metadataBuildingBlocks/_sources/provProperties/generatedBy/schema.yaml
+    description: Brief information about instruments, software or experimental protocols used
+  'prov:wasDerivedFrom':
+    type: array
+    items:
+      '$ref': >-
+        ../../../../../../../../metadataBuildingBlocks/_sources/provProperties/derivedFrom/schema.yaml
+    description: Brief information about sources of data used in aggregate datasets
+  'schema:subjectOf':
+    '$ref': >-
+      ../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifCatalogRecord/schema.yaml
+required:
+- '@context'
+- '@id'
+- '@type'
+- 'schema:name'
+- 'schema:identifier'
+- 'schema:dateModified'
+- 'schema:subjectOf'
+allOf:
+- anyOf:
+  - required:
+    - 'schema:license'
+  - required:
+    - 'schema:conditionsOfAccess'
+- anyOf:
+  - required:
+    - 'schema:url'
+  - required:
+    - 'schema:distribution'
+- properties:
+    'schema:subjectOf':
+      properties:
+        'dcterms:conformsTo':
+          contains:
+            type: object
+            required:
+            - '@id'
+            additionalProperties: false
+            properties:
+              '@id':
+                const: 'https://w3id.org/cdif/core/1.1'
+- description: >-
+    a bundle distribution with no schema:contentUrl obliges the dataset to publish a landing
+    page in schema:url, so that the record still states a way to reach the data
+  if:
+    required:
+    - 'schema:distribution'
+    properties:
+      'schema:distribution':
+        type: array
+        contains:
+          type: object
+          required:
+          - '@type'
+          properties:
+            '@type':
+              type: array
+              contains:
+                const: 'schema:Collection'
+          not:
+            required:
+            - 'schema:contentUrl'
+  then:
+    required:
+    - 'schema:url'
+'$defs':
+  CoreCreator:
+    type: object
+    properties:
+      '@list':
+        type: array
+        items:
+          anyOf:
+          - type: object
+            required:
+            - '@id'
+            additionalProperties: false
+            properties:
+              '@id':
+                type: string
+                description: >-
+                  a identifier for an agent defined in this metadata, or externally; must
+                  be dereferenceable
+          - '$ref': '#/$defs/PersonOrOrganization'
+  DataDownloadOrWebAPI:
+    anyOf:
+    - '$ref': >-
+        ../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/dataDownload/schema.yaml
+    - '$ref': >-
+        ../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/webAPI/schema.yaml
+  PersonOrOrganization:
+    anyOf:
+    - '$ref': >-
+        ../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/person/schema.yaml
+    - '$ref': >-
+        ../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/organization/schema.yaml
+  PersonOrOrganizationOrAgentInRole:
+    anyOf:
+    - '$ref': >-
+        ../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/person/schema.yaml
+    - '$ref': >-
+        ../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/organization/schema.yaml
+    - '$ref': >-
+        ../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/agentInRole/schema.yaml

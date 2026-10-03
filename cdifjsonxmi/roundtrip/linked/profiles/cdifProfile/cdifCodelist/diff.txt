@@ -1,0 +1,24 @@
+cdifCodelist: 15 exact difference(s)
+$.$defs.CodelistDataset: only in regenerated: {"type": "object", "properties": {"@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "schema:Dataset"}, "minItems": 1}, "@id": {"type": "string", "description": "Identifier 
+$.$defs.CodelistPropertyValue: only in regenerated: {"type": "object", "properties": {"@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "schema:PropertyValue"}}, "schema:propertyID": {"anyOf": [{"type": "string"}, {"type": "
+$.$defs.StringOrIdentifier: only in regenerated: {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/CodelistPropertyValue"}]}
+$.$defs.cdifConceptOrTermOrString: only in original: {"$ref": "../../../cdifDataType/cdifConceptOrTermOrString/schema.yaml"}
+$.allOf: only in regenerated: [{"anyOf": [{"required": ["schema:license"]}, {"required": ["schema:conditionsOfAccess"]}]}]
+$.anyOf: only in original: [{"required": ["schema:license"]}, {"required": ["schema:conditionsOfAccess"]}]
+$.properties.schema:identifier.$ref: only in regenerated: "#/$defs/StringOrIdentifier"
+$.properties.schema:identifier.anyOf: only in original: [{"type": "string"}, {"type": "object", "properties": {"@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "schema:PropertyValue"}}, "schema:propertyID": {"anyOf": [{"type": 
+$.properties.schema:subjectOf.$ref: only in regenerated: "#/$defs/CodelistDataset"
+$.properties.schema:subjectOf.properties: only in original: {"@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "schema:Dataset"}, "minItems": 1}, "schema:additionalType": {"type": "array", "items": {"$ref": "#/$defs/cdifConceptOrTer
+$.properties.schema:subjectOf.required: only in original: ["@type", "schema:additionalType", "dcterms:conformsTo"]
+$.properties.schema:subjectOf.type: only in original: "object"
+$.required[1]:
+    original:    "skos:prefLabel"
+    regenerated: "schema:identifier"
+$.required[2]:
+    original:    "schema:identifier"
+    regenerated: "schema:dateModified"
+$.required[3]:
+    original:    "schema:dateModified"
+    regenerated: "skos:prefLabel"
+
+cdifCodelist: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

@@ -1,0 +1,283 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: CDIF Codelist
+description: >-
+  A controlled-vocabulary codelist implemented as a skos:ConceptScheme constrained for CDIF
+  use. The scheme must have a resolvable @id and identify its top concepts via skos:hasTopConcept;
+  each concept (CdifCodelistConcept) must have a resolvable @id, skos:inScheme, skos:prefLabel,
+  and skos:notation. Hierarchical concepts must declare both skos:narrower (for JSON tree
+  traversal) and skos:broader (for upward navigation) where hierarchy exists. CDIF metadata
+  properties (schema:identifier, schema:dateModified, schema:license or schema:conditionsOfAccess)
+  take precedence over the equivalent dcterms properties from the base skos:ConceptScheme.
+type: object
+properties:
+  '@context':
+    description: >-
+      JSON-LD context (an object) declaring the skos namespace prefix and any additional prefixes
+      used in concept URIs.
+    type: object
+    properties:
+      skos:
+        const: 'http://www.w3.org/2004/02/skos/core#'
+    required:
+    - skos
+  '@type':
+    type: array
+    items:
+      type: string
+    contains:
+      const: 'skos:ConceptScheme'
+    minItems: 1
+  '@id':
+    type: string
+    description: URI identifier for this concept scheme.
+  'schema:identifier':
+    '$ref': '#/$defs/StringOrIdentifier'
+    description: >-
+      Primary identifier for the codelist. May be a string URI or a structured PropertyValue.
+  'schema:dateModified':
+    type: string
+    description: ISO 8601 date when the codelist was last modified.
+  'schema:url':
+    default: missing
+    type: string
+    format: uri
+    description: Web location of a page describing the codelist.
+  'schema:license':
+    type: array
+    items:
+      anyOf:
+      - type: string
+      - type: object
+        additionalProperties: false
+        required:
+        - '@id'
+        properties:
+          '@id':
+            type: string
+    description: License for the codelist.
+  'schema:conditionsOfAccess':
+    type: array
+    items:
+      type: string
+    description: Text statement of access conditions for the codelist.
+  'skos:prefLabel':
+    type: string
+    description: |
+      Preferred lexical label for the concept scheme. Required. A single
+      string, a single language-tagged value, or an array of language-tagged
+      values.
+
+      **Uniqueness rule.** Each language should appear at most once in the
+      set of prefLabel values. Two prefLabel values with duplicate `@language`
+      tags are non-conformant. Consumers may reject or arbitrarily pick one.
+
+      **Multilinguality.** For codelists intended for multilingual use,
+      supply an array of language-tagged values — one per supported locale.
+      When a bare string is supplied (no `@language` tag), consumers treat
+      it as untagged and MAY infer the language from the enclosing document's
+      `@context` or from `schema:inLanguage` on the codelist itself.
+
+      **Relationship to skos:altLabel.** Alternate labels (acronyms,
+      spelling variants, obsolete names) go on `skos:altLabel`, NOT on
+      `prefLabel`. A concept scheme has exactly one preferred label per
+      language.
+  'skos:definition':
+    type: string
+    description: Formal explanation of the meaning or purpose of this concept scheme.
+  'skos:note':
+    type: string
+    description: General note about the concept scheme.
+  'skos:hasTopConcept':
+    type: array
+    items:
+      '$ref': '#/$defs/CdifCodelistConcept'
+    minItems: 1
+    description: >-
+      Top-level concepts that have no skos:broader in this scheme. Required for hierarchical
+      codelists.
+  'schema:subjectOf':
+    '$ref': '#/$defs/CodelistDataset'
+    description: >-
+      Catalog record describing this codelist as CDIF-conformant metadata. Must declare conformance
+      to the cdifCodelist profile via dcterms:conformsTo and be typed as schema:Dataset with
+      schema:additionalType including dcat:CatalogRecord.
+required:
+- '@id'
+- 'schema:identifier'
+- 'schema:dateModified'
+- 'skos:prefLabel'
+- 'skos:hasTopConcept'
+allOf:
+- anyOf:
+  - required:
+    - 'schema:license'
+  - required:
+    - 'schema:conditionsOfAccess'
+'$defs':
+  CdifCodelistConcept:
+    type: object
+    description: >-
+      A SKOS Concept constrained for CDIF codelist use. Must have a resolvable @id, skos:inScheme,
+      skos:notation, and skos:prefLabel. Becasue JSON-LD is an open-world implementation,
+      any other skos properties may be included.
+    properties:
+      '@id':
+        type: string
+        description: Globally unique, resolvable URI for this concept.
+      'skos:inScheme':
+        type: array
+        items:
+          type: object
+          required:
+          - '@id'
+          additionalProperties: false
+          properties:
+            '@id':
+              type: string
+        description: The concept scheme this concept belongs to. Required for CDIF codelist
+          concepts.
+      'skos:prefLabel':
+        type: string
+        description: |
+          Preferred lexical label for this concept. A single string,
+          a single language-tagged value, or an array of language-tagged values.
+          Each language should appear at most once.
+
+          **Uniqueness rule.** Each language should appear at most once in the
+          set of prefLabel values. Two prefLabel values with duplicate `@language`
+          tags are non-conformant. Consumers may reject or arbitrarily pick one.
+
+          **Relationship to skos:altLabel.** Alternate labels (acronyms,
+          spelling variants, obsolete names) go on `skos:altLabel`, NOT on
+          `prefLabel`. A concept has exactly one preferred label per language.
+      'skos:notation':
+        type: string
+        description: Classification code for this concept within a scheme.
+      'skos:definition':
+        type: string
+        description: >-
+          Formal definition of this concept. Optional for CDIF codelist concepts. A plain
+          string.
+      'skos:narrower':
+        type: array
+        items:
+          anyOf:
+          - type: object
+            required:
+            - '@id'
+            additionalProperties: false
+            properties:
+              '@id':
+                type: string
+          - allOf:
+            - '$ref': '#/$defs/CdifCodelistConcept'
+            - required:
+              - 'skos:broader'
+        description: >-
+          Narrower (child) concepts. If present, each inline concept must also declare skos:broader
+          pointing back to the parent concept. Both skos:narrower and skos:broader must be
+          explicit in CDIF codelists.
+      'skos:broader':
+        type: array
+        items:
+          type: object
+          required:
+          - '@id'
+          additionalProperties: false
+          properties:
+            '@id':
+              type: string
+        description: >-
+          Broader (parent) concepts. Required on any concept that appears as a skos:narrower
+          value of another concept. CDIF requires both directions to be explicit for hierarchy
+          traversal.
+    required:
+    - '@id'
+    - 'skos:inScheme'
+    - 'skos:prefLabel'
+    - 'skos:notation'
+  CodelistDataset:
+    type: object
+    properties:
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'schema:Dataset'
+        minItems: 1
+      '@id':
+        type: string
+        description: Identifier for the catalog record.
+      'schema:additionalType':
+        type: array
+        items:
+          '$ref': >-
+            ../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml
+        minItems: 1
+        contains:
+          type: object
+          additionalProperties: false
+          required:
+          - '@id'
+          properties:
+            '@id':
+              const: 'dcat:CatalogRecord'
+      'dcterms:conformsTo':
+        type: array
+        items:
+          type: object
+          required:
+          - '@id'
+          additionalProperties: false
+          properties:
+            '@id':
+              type: string
+        minItems: 1
+        contains:
+          type: object
+          required:
+          - '@id'
+          additionalProperties: false
+          properties:
+            '@id':
+              const: 'https://w3id.org/cdif/codelist/1.1'
+      'schema:about':
+        type: object
+        required:
+        - '@id'
+        additionalProperties: false
+        properties:
+          '@id':
+            type: string
+    required:
+    - '@type'
+    - 'schema:additionalType'
+    - 'dcterms:conformsTo'
+  CodelistPropertyValue:
+    type: object
+    properties:
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'schema:PropertyValue'
+      'schema:propertyID':
+        anyOf:
+        - type: string
+        - type: object
+          additionalProperties: false
+          required:
+          - '@id'
+          properties:
+            '@id':
+              type: string
+      'schema:value':
+        type: string
+      'schema:url':
+        type: string
+  StringOrIdentifier:
+    anyOf:
+    - type: string
+    - '$ref': '#/$defs/CodelistPropertyValue'

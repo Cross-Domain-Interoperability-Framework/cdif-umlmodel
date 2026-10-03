@@ -130,14 +130,14 @@ Either a bounding box or a point location.</body>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtent.geosparql_hasGeometry" xmi:uuid="3d56b965-f5f6-5127-9940-5f33139f62d6">
           <name>geosparql_hasGeometry</name>
-          <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtentGeosparql_hasGeometry"/>
+          <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtentHasGeometry"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtent.geosparql_hasGeometry.lower" xmi:uuid="0de11bc9-a50c-500e-9f89-3c6fd04f1940">
             <value>0</value>
           </lowerValue>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtent.geosparql_hasGeometry.upper" xmi:uuid="1778b9c8-a191-5a43-bebd-8630e0b58cdb">
             <value>1</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.spatialExtent.assoc.SpatialExtent_geosparql_hasGeometry_SpatialExtentGeosparql_hasGeometry"/>
+          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.spatialExtent.assoc.SpatialExtent_geosparql_hasGeometry_SpatialExtentHasGeometry"/>
           <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtent.geosparql_hasGeometry.comment" xmi:uuid="8fa8bfc4-f5a7-518c-9ee7-e98f5bde4e55">
             <body>**CDIF**
 
@@ -347,9 +347,9 @@ A GeoShape box defines a curvilinear geometry as a string of latitude-longitude 
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtentGeosparql_hasGeometry" xmi:uuid="a2bc0208-ee4f-5bad-ab0c-4c84e6a8effd">
-        <name>SpatialExtentGeosparql_hasGeometry</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtentGeosparql_hasGeometry.comment" xmi:uuid="775413b7-69c2-5122-ad06-661d1f0c419e">
+      <packagedElement xmi:type="uml:Class" xmi:id="cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtentHasGeometry" xmi:uuid="43c094c5-eef1-54df-956f-88d00f1ebed7">
+        <name>SpatialExtentHasGeometry</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtentHasGeometry.comment" xmi:uuid="53454640-5316-5798-850d-399d7e6d07f2">
           <body>**CDIF**
 
 Definition
@@ -360,28 +360,28 @@ Definition
 :typeSchema: {"type": "array", "items": {"type": "string"}, "minItems": 1, "description": "MUST be sf: (&lt;http://www.opengis.net/ont/sf#&gt;) SimpleFeature geometry type. See https://opengeospatial.github.io/ogc-geosparql/geosparql11/sf_geometries.ttl"}
 :typeOptional:
 :noId:</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtentGeosparql_hasGeometry"/>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtentHasGeometry"/>
         </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtentGeosparql_hasGeometry.asWKT" xmi:uuid="0e632e23-ed47-571c-874d-1ea132fc5106">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtentHasGeometry.asWKT" xmi:uuid="58f9f6dc-5a98-5a99-ab66-21ba69a40dd8">
           <name>asWKT</name>
           <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.spatialExtent.wktLiteral"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtentGeosparql_hasGeometry.asWKT.lower" xmi:uuid="762d0e81-45d0-50bc-8c6c-edff97aa2757">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtentHasGeometry.asWKT.lower" xmi:uuid="a34a9cbd-cb0d-5a15-84cf-85a40ce4811e">
             <value>1</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtentGeosparql_hasGeometry.asWKT.upper" xmi:uuid="ff4ef119-0309-5d49-98bf-4e463cc4defb">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtentHasGeometry.asWKT.upper" xmi:uuid="04312039-9842-51b4-8441-c1ad9a4130ae">
             <value>1</value>
           </upperValue>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtentGeosparql_hasGeometry.crs" xmi:uuid="477af767-44bd-59ac-9403-23263e41c210">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtentHasGeometry.crs" xmi:uuid="a2058a7c-5bc9-534f-8d95-757756cc651b">
           <name>crs</name>
           <type href="../../cdifCommonTypes.xmi#common.IdReference"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtentGeosparql_hasGeometry.crs.lower" xmi:uuid="b003a167-11a9-5357-b0a9-68d55d190d29">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtentHasGeometry.crs.lower" xmi:uuid="5fcfd2da-708f-5d71-aab3-63f42ab00ac8">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtentGeosparql_hasGeometry.crs.upper" xmi:uuid="f739b61e-4143-57ee-bd65-ccc06d22120d">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtentHasGeometry.crs.upper" xmi:uuid="9fa094a5-a6cc-5049-9a92-53e075dfdf00">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtentGeosparql_hasGeometry.crs.comment" xmi:uuid="e36247f2-0a93-5823-b588-f50ebd977914">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtentHasGeometry.crs.comment" xmi:uuid="7843fce3-5b47-5ced-be95-5eca9c72d0da">
             <body>**CDIF**
 
 Definition
@@ -389,7 +389,7 @@ Definition
 
 
 :idRefDescription: "identifier string for coordinate reference system, e.g., 'CRS84'"</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtentGeosparql_hasGeometry.crs"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtentHasGeometry.crs"/>
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
@@ -457,19 +457,19 @@ a WKT geometry description string, e.g. 'POINT(-76 -18)'
         <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.spatialExtent.assoc.SpatialExtent_alternateName_DefinedTerm.ownedEnd"/>
         <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtent.alternateName"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.schemaorgProperties.spatialExtent.assoc.SpatialExtent_geosparql_hasGeometry_SpatialExtentGeosparql_hasGeometry" xmi:uuid="12436186-24f7-533c-84ab-3c24bf72ac92">
-        <name>SpatialExtent_geosparql_hasGeometry_SpatialExtentGeosparql_hasGeometry</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.spatialExtent.assoc.SpatialExtent_geosparql_hasGeometry_SpatialExtentGeosparql_hasGeometry.ownedEnd" xmi:uuid="45f82ff7-2395-571c-8cb5-903f2b953ac6">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.schemaorgProperties.spatialExtent.assoc.SpatialExtent_geosparql_hasGeometry_SpatialExtentHasGeometry" xmi:uuid="b37717ba-bd62-5e42-9303-3b98ce01cb31">
+        <name>SpatialExtent_geosparql_hasGeometry_SpatialExtentHasGeometry</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.spatialExtent.assoc.SpatialExtent_geosparql_hasGeometry_SpatialExtentHasGeometry.ownedEnd" xmi:uuid="c08142f1-6f0d-540a-931b-6925ac11bf6b">
           <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtent"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.spatialExtent.assoc.SpatialExtent_geosparql_hasGeometry_SpatialExtentGeosparql_hasGeometry.ownedEnd.lower" xmi:uuid="2f815fa7-028c-5dd9-b16a-1fd5ccdd92ad">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.spatialExtent.assoc.SpatialExtent_geosparql_hasGeometry_SpatialExtentHasGeometry.ownedEnd.lower" xmi:uuid="43b074dd-2a7a-5ac4-b677-ba963942920e">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.spatialExtent.assoc.SpatialExtent_geosparql_hasGeometry_SpatialExtentGeosparql_hasGeometry.ownedEnd.upper" xmi:uuid="b83e54bf-d21d-5015-95e5-5367673299c0">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.spatialExtent.assoc.SpatialExtent_geosparql_hasGeometry_SpatialExtentHasGeometry.ownedEnd.upper" xmi:uuid="b0c4a372-4076-5986-8d4c-d8d0eb32c547">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.spatialExtent.assoc.SpatialExtent_geosparql_hasGeometry_SpatialExtentGeosparql_hasGeometry"/>
+          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.spatialExtent.assoc.SpatialExtent_geosparql_hasGeometry_SpatialExtentHasGeometry"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.spatialExtent.assoc.SpatialExtent_geosparql_hasGeometry_SpatialExtentGeosparql_hasGeometry.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.spatialExtent.assoc.SpatialExtent_geosparql_hasGeometry_SpatialExtentHasGeometry.ownedEnd"/>
         <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.spatialExtent.SpatialExtent.geosparql_hasGeometry"/>
       </packagedElement>
     </packagedElement>

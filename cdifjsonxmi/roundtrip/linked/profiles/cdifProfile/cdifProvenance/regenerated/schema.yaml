@@ -1,0 +1,40 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: CDIF Provenance
+description: >-
+  Building block that defines the prov:wasGeneratedBy property for CDIF metadata records.
+  Wraps the cdifProvActivity building block as an array of provenance activities that describe
+  how the described resource was generated.
+type: object
+properties:
+  'prov:wasGeneratedBy':
+    type: array
+    items:
+      '$ref': >-
+        ../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifProvActivity/schema.yaml
+    description: >-
+      Provenance activities describing how the resource was generated, including agents, instruments,
+      methodology, temporal bounds, and action chaining.
+allOf:
+- properties:
+    'schema:subjectOf':
+      properties:
+        'dcterms:conformsTo':
+          type: array
+          items:
+            type: object
+            required:
+            - '@id'
+            additionalProperties: false
+            properties:
+              '@id':
+                type: string
+                description: uri for specifications that this metadata record conforms to
+          minItems: 1
+          contains:
+            type: object
+            required:
+            - '@id'
+            additionalProperties: false
+            properties:
+              '@id':
+                const: 'https://w3id.org/cdif/provenance/1.1'

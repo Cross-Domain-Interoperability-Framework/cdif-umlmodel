@@ -20,7 +20,7 @@
 						<UML:TaggedValue tag="ea_guid" value="{5D592908-74CD-5161-8976-BE2BB38FCA31}"/>
 					</UML:ModelElement.taggedValue>
 					<UML:Namespace.ownedElement>
-						<UML:Class name="Collection2" xmi.id="EAID_43D5C6D0_91B9_551c_B899_5041217252C1" visibility="public" namespace="EAPK_5D592908_74CD_5161_8976_BE2BB38FCA31" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+						<UML:Class name="CollectionProfile" xmi.id="EAID_AD59C487_2992_5dae_BB84_ADE1080D9BC3" visibility="public" namespace="EAPK_5D592908_74CD_5161_8976_BE2BB38FCA31" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;JSON Schema for SKOS Collection and OrderedCollection in JSON-LD form. A Collection is a meaningful grouping of concepts; an OrderedCollection preserves member ordering via the JSON-LD @list construct. Based on the W3C SKOS Reference (https://www.w3.org/TR/skos-reference/).&#xA;:title: &quot;SKOS Collection&quot;&#xA;:union: ``anyOf``"/>
 								<UML:TaggedValue tag="isSpecification" value="false"/>
@@ -28,7 +28,7 @@
 								<UML:TaggedValue tag="ea_ntype" value="0"/>
 								<UML:TaggedValue tag="version" value="1.0"/>
 								<UML:TaggedValue tag="package" value="EAPK_5D592908_74CD_5161_8976_BE2BB38FCA31"/>
-								<UML:TaggedValue tag="ea_guid" value="{43D5C6D0-91B9-551c-B899-5041217252C1}"/>
+								<UML:TaggedValue tag="ea_guid" value="{AD59C487-2992-5dae-BB84-ADE1080D9BC3}"/>
 							</UML:ModelElement.taggedValue>
 						</UML:Class>
 						<UML:Class name="Collection" xmi.id="EAID_2C9ECC84_A767_5ead_8C0B_32D1409200CD" visibility="public" namespace="EAPK_5D592908_74CD_5161_8976_BE2BB38FCA31" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
@@ -470,19 +470,19 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Association xmi.id="EAID_4B700A8D_A6E4_5acc_87DE_054ED830F17A" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_3C7D536B_457E_5ae4_816E_4B19404A8FFE" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
 								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
-								<UML:TaggedValue tag="ea_sourceName" value="Collection2"/>
+								<UML:TaggedValue tag="ea_sourceName" value="CollectionProfile"/>
 								<UML:TaggedValue tag="ea_targetName" value="Collection"/>
 								<UML:TaggedValue tag="ea_sourceType" value="DataType"/>
 								<UML:TaggedValue tag="ea_targetType" value="Class"/>
-								<UML:TaggedValue tag="ea_guid" value="{4B700A8D-A6E4-5acc-87DE-054ED830F17A}"/>
+								<UML:TaggedValue tag="ea_guid" value="{3C7D536B-457E-5ae4-816E-4B19404A8FFE}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Association.connection>
-								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_43D5C6D0_91B9_551c_B899_5041217252C1">
+								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_AD59C487_2992_5dae_BB84_ADE1080D9BC3">
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="containment" value="Unspecified"/>
 										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
@@ -495,24 +495,24 @@
 										<UML:TaggedValue tag="containment" value="Unspecified"/>
 										<UML:TaggedValue tag="deststyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
 										<UML:TaggedValue tag="ea_end" value="target"/>
-										<UML:TaggedValue tag="ea_guid" value="{346AAF0F-DB26-59f2-AFD5-BA777D21F3F6}"/>
+										<UML:TaggedValue tag="ea_guid" value="{4E47B220-577F-5d13-BB7F-BC9FB7DBEBA2}"/>
 									</UML:ModelElement.taggedValue>
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_00AB75DB_2A01_568f_B943_ECCB485D1D09" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_8B1AC5FA_48A8_5dc7_A404_9F6F4E6D8BCD" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
 								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
-								<UML:TaggedValue tag="ea_sourceName" value="Collection2"/>
+								<UML:TaggedValue tag="ea_sourceName" value="CollectionProfile"/>
 								<UML:TaggedValue tag="ea_targetName" value="OrderedCollection"/>
 								<UML:TaggedValue tag="ea_sourceType" value="DataType"/>
 								<UML:TaggedValue tag="ea_targetType" value="Class"/>
-								<UML:TaggedValue tag="ea_guid" value="{00AB75DB-2A01-568f-B943-ECCB485D1D09}"/>
+								<UML:TaggedValue tag="ea_guid" value="{8B1AC5FA-48A8-5dc7-A404-9F6F4E6D8BCD}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Association.connection>
-								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_43D5C6D0_91B9_551c_B899_5041217252C1">
+								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_AD59C487_2992_5dae_BB84_ADE1080D9BC3">
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="containment" value="Unspecified"/>
 										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
@@ -525,7 +525,7 @@
 										<UML:TaggedValue tag="containment" value="Unspecified"/>
 										<UML:TaggedValue tag="deststyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
 										<UML:TaggedValue tag="ea_end" value="target"/>
-										<UML:TaggedValue tag="ea_guid" value="{559875DB-FEBB-5868-8366-2C561B1F58B1}"/>
+										<UML:TaggedValue tag="ea_guid" value="{C276547D-5BF3-5c28-9C58-11B09900AA5F}"/>
 									</UML:ModelElement.taggedValue>
 								</UML:AssociationEnd>
 							</UML:Association.connection>

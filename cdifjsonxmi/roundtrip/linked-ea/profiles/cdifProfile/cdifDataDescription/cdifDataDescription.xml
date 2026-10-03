@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<XMI xmi.version="1.1" xmlns:UML="omg.org/UML1.3">
+	<XMI.header>
+		<XMI.documentation>
+			<XMI.exporter>Enterprise Architect</XMI.exporter>
+			<XMI.exporterVersion>2.5</XMI.exporterVersion>
+		</XMI.documentation>
+	</XMI.header>
+	<XMI.content>
+		<UML:Model name="cdifDataDescription" xmi.id="MX_EAID_2E42BE5C_BD5D_5ac1_9396_545D80A8246E">
+			<UML:Namespace.ownedElement>
+				<UML:Class name="EARootClass" xmi.id="EAID_11111111_5487_4080_A7F4_41526CB0AA00" isRoot="true" isLeaf="false" isAbstract="false"/>
+				<UML:Package name="cdifDataDescription" xmi.id="EAPK_5DED6FD0_119C_54b9_96C0_A7E2F16CE842" isRoot="false" isLeaf="false" isAbstract="false" visibility="public">
+					<UML:ModelElement.taggedValue>
+						<UML:TaggedValue tag="documentation" value="https://w3id.org/cdif/bbr/metadata/profiles/cdifProfile/cdifDataDescription"/>
+						<UML:TaggedValue tag="isSpecification" value="false"/>
+						<UML:TaggedValue tag="ea_stype" value="Public"/>
+						<UML:TaggedValue tag="ea_eleType" value="package"/>
+						<UML:TaggedValue tag="version" value="1.0"/>
+						<UML:TaggedValue tag="ea_guid" value="{5DED6FD0-119C-54b9-96C0-A7E2F16CE842}"/>
+					</UML:ModelElement.taggedValue>
+					<UML:Namespace.ownedElement>
+						<UML:Class name="DataDescription" xmi.id="EAID_163A204F_7867_5686_A483_0C3C37ABF08A" visibility="public" namespace="EAPK_5DED6FD0_119C_54b9_96C0_A7E2F16CE842" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Additional constraints for CDIF data description level. Adds cdif:physicalDataType requirement on variableMeasured items and distribution-level cdi properties for file characterization (characterSet, fileSize, fileSizeUofM).&#xA;:title: &quot;CDIF Data Description properties&quot;&#xA;:prefix: ``cdif``&#xA;:contextSchema: {&quot;type&quot;: &quot;object&quot;, &quot;description&quot;: &quot;Additional JSON-LD namespace prefixes for discovery and data description.&quot;, &quot;properties&quot;: {&quot;geosparql&quot;: {&quot;const&quot;: &quot;http://www.opengis.net/ont/geosparql#&quot;}, &quot;dqv&quot;: {&quot;const&quot;: &quot;http://www.w3.org/ns/dqv#&quot;}, &quot;cdi&quot;: {&quot;const&quot;: &quot;http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/&quot;}}}&#xA;:constraint: {&quot;properties&quot;: {&quot;schema:subjectOf&quot;: {&quot;properties&quot;: {&quot;dcterms:conformsTo&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;items&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;required&quot;: [&quot;@id&quot;], &quot;additionalProperties&quot;: false, &quot;properties&quot;: {&quot;@id&quot;: {&quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;uri for specifications that this metadata record conforms to&quot;}}}, &quot;minItems&quot;: 1}}}}}&#xA;:constraint: {&quot;if&quot;: {&quot;required&quot;: [&quot;schema:variableMeasured&quot;], &quot;properties&quot;: {&quot;schema:variableMeasured&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;minItems&quot;: 1}}}, &quot;then&quot;: {&quot;required&quot;: [&quot;schema:subjectOf&quot;], &quot;properties&quot;: {&quot;schema:subjectOf&quot;: {&quot;required&quot;: [&quot;dcterms:conformsTo&quot;], &quot;properties&quot;: {&quot;dcterms:conformsTo&quot;: {&quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;required&quot;: [&quot;@id&quot;], &quot;additionalProperties&quot;: false, &quot;properties&quot;: {&quot;@id&quot;: {&quot;const&quot;: &quot;https://w3id.org/cdif/data_description/1.1&quot;}}}}}}}}}&#xA;:noId:"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="Class"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_5DED6FD0_119C_54b9_96C0_A7E2F16CE842"/>
+								<UML:TaggedValue tag="ea_guid" value="{163A204F-7867-5686-A483-0C3C37ABF08A}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Classifier.feature>
+								<UML:Attribute name="statistics" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:StructuralFeature.type>
+										<UML:Classifier xmi.idref="EAID_4CD42EBD_5C4E_5e81_BBDF_4497E1D40223"/>
+									</UML:StructuralFeature.type>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;**Dataset-scope** summary statistics — statistics that describe the dataset as a whole rather than any single variable (e.g. row count, dataset-wide totals, table-level checksums). Each entry is a cdi:Statistics bundle (one or more Statistic value objects) or a cdi:StatisticsCollection; inline or @id-reference to one declared elsewhere. cdif: namespaced — DDI-CDI has no `statistics` association from a dataset; this is a CDIF attachment property reserved for genuinely dataset-scope aggregates.&#xA;Per-variable statistics MUST NOT appear here — they belong under `schema:variableMeasured[i].cdif:isDescribedBy_StatisticsCollection`, which is the direct JSON mapping of the DDI-CDI `InstanceVariable → isDescribedBy → StatisticsCollection` association. As a consequence, entries under `cdif:statistics` MUST NOT carry `cdif:appliesTo` (Statistics) or `cdif:indexedBy` (StatisticsCollection); those properties are the marker of a per-variable stat and require the variable-anchored path.&#xA;:orReference: [&quot;value&quot;, &quot;idReference&quot;]"/>
+										<UML:TaggedValue tag="type" value="StatisticsProfile"/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="true"/>
+										<UML:TaggedValue tag="position" value="0"/>
+										<UML:TaggedValue tag="lowerBound" value="0"/>
+										<UML:TaggedValue tag="upperBound" value="*"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{D3D99862-7E55-5b06-A853-0EDB1F9E4775}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+								<UML:Attribute name="schema_distribution" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Each schema:DataDownload distribution item SHOULD additionally be typed as cdi:PhysicalDataSet or one of its subclasses (cdi:TabularTextDataSet, cdi:StructuredDataSet). schema:WebAPI distribution items do not require a cdi: dataset type. Not enforced at schema level (the merge with cdifCore and cdifManifest drops the @type constraint at profile resolution); consider a SHACL rule if runtime enforcement is needed.&#xA;:valueSchema: {&quot;allOf&quot;: [{&quot;if&quot;: {&quot;properties&quot;: {&quot;@type&quot;: {&quot;contains&quot;: {&quot;const&quot;: &quot;schema:DataDownload&quot;}}}}, &quot;then&quot;: {&quot;properties&quot;: {&quot;cdif:hasPhysicalMapping&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;description&quot;: &quot;Per-field physical mappings linking the variables measured by this DataDownload distribution to their physical representation in the file - column index, format, physical data type, null sequence, etc. Each item is a cdifPhysicalMapping or one of its specializations (cdifTextMapping for tabular text, cdifLocatorMapping for structured data); the dataset-type branches below tighten the item type.&quot;, &quot;items&quot;: {&quot;anyOf&quot;: [{&quot;$ref&quot;: &quot;bb:cdifDataType/cdifPhysicalMapping/schema.yaml&quot;}, {&quot;$ref&quot;: &quot;bb:cdifDataType/cdifTextMapping/schema.yaml&quot;}, {&quot;$ref&quot;: &quot;bb:cdifDataType/cdifLocatorMapping/schema.yaml&quot;}]}}, &quot;cdi:characterSet&quot;: {&quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;The character set used in the distribution (e.g., UTF-8, ASCII).&quot;}, &quot;cdi:fingerprint&quot;: {&quot;description&quot;: &quot;Integrity fingerprint (checksum/hash) of this distribution's bytes (DDI-CDI DataFingerprint).&quot;, &quot;$ref&quot;: &quot;bb:cdifDataType/cdifDataFingerprint/schema.yaml&quot;}}}}, {&quot;if&quot;: {&quot;properties&quot;: {&quot;@type&quot;: {&quot;contains&quot;: {&quot;const&quot;: &quot;cdi:TabularTextDataSet&quot;}}}}, &quot;then&quot;: {&quot;$ref&quot;: &quot;bb:cdifDataType/cdifTabularTextDataSet/schema.yaml&quot;}}, {&quot;if&quot;: {&quot;properties&quot;: {&quot;@type&quot;: {&quot;contains&quot;: {&quot;const&quot;: &quot;cdi:StructuredDataSet&quot;}}}}, &quot;then&quot;: {&quot;$ref&quot;: &quot;bb:cdifDataType/cdifStructuredDataSet/schema.yaml&quot;}}, {&quot;if&quot;: {&quot;properties&quot;: {&quot;@type&quot;: {&quot;contains&quot;: {&quot;const&quot;: &quot;schema:WebAPI&quot;}}}}, &quot;then&quot;: {&quot;properties&quot;: {&quot;schema:potentialAction&quot;: {&quot;items&quot;: {&quot;properties&quot;: {&quot;schema:result&quot;: {&quot;properties&quot;: {&quot;cdif:hasPhysicalMapping&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;description&quot;: &quot;Per-field physical mappings for the API response - the response is another physical realization of the dataset's variables. Each item is a cdifPhysicalMapping or one of its specializations (cdifTextMapping / cdifLocatorMapping).&quot;, &quot;items&quot;: {&quot;anyOf&quot;: [{&quot;$ref&quot;: &quot;bb:cdifDataType/cdifPhysicalMapping/schema.yaml&quot;}, {&quot;$ref&quot;: &quot;bb:cdifDataType/cdifTextMapping/schema.yaml&quot;}, {&quot;$ref&quot;: &quot;bb:cdifDataType/cdifLocatorMapping/schema.yaml&quot;}]}}, &quot;cdi:characterSet&quot;: {&quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;The character set used in the API response (e.g., UTF-8).&quot;}}}}}}}}}]}&#xA;:jsonName: &quot;schema:distribution&quot;"/>
+										<UML:TaggedValue tag="type" value=""/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="true"/>
+										<UML:TaggedValue tag="position" value="1"/>
+										<UML:TaggedValue tag="lowerBound" value="0"/>
+										<UML:TaggedValue tag="upperBound" value="*"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{5E95D3DB-6F97-52c8-A38D-E44B140C4681}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+							</UML:Classifier.feature>
+						</UML:Class>
+						<UML:Class name="DataDescriptionVariableMeasured" xmi.id="EAID_CEF481A5_608E_52e1_97DE_12E6161B3237" visibility="public" namespace="EAPK_5DED6FD0_119C_54b9_96C0_A7E2F16CE842" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;At the Data Description profile level, InstanceVariables may also carry substantive and sentinel value domains directly (in profiles that introduce a RepresentedVariable - e.g., CDIFDataStructureProfile - these properties live on the RepresentedVariable instead and are disallowed here).&#xA;:prefix: ``cdi``&#xA;:noId:&#xA;:extends:&#xA;:constraint: {&quot;type&quot;: &quot;object&quot;, &quot;description&quot;: &quot;All variableMeasured items at data description level must have an @id and cdif:physicalDataType so physical mappings can reference them.&quot;, &quot;properties&quot;: {&quot;@id&quot;: {&quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;URI identifier for this variable, used as the target of cdif:formats_InstanceVariable references in physical mappings.&quot;}}, &quot;required&quot;: [&quot;@id&quot;]}"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="Class"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_5DED6FD0_119C_54b9_96C0_A7E2F16CE842"/>
+								<UML:TaggedValue tag="ea_guid" value="{CEF481A5-608E-52e1-97DE-12E6161B3237}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Class>
+						<UML:Association xmi.id="EAID_EBFFC3CE_9EAC_53bb_A393_A52A7D639ADA" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Primary key of the dataset: a cdif:Key whose cdif:isComposedOf is an ordered list of cdi:InstanceVariables (from schema:variableMeasured) that uniquely identify each data instance.&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;value&quot;, {&quot;idReference&quot;: {&quot;description&quot;: &quot;object reference via URI or URI fragment to a cdif:Key defined elsewhere in the same document&quot;}}]"/>
+								<UML:TaggedValue tag="ea_type" value="Association"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="DataDescription"/>
+								<UML:TaggedValue tag="ea_targetName" value="Key"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{EBFFC3CE-9EAC-53bb-A393-A52A7D639ADA}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Association.connection>
+								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_163A204F_7867_5686_A483_0C3C37ABF08A">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="source"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+								<UML:AssociationEnd visibility="public" name="hasPrimaryKey" multiplicity="0..1" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_4051F7C9_07F2_53da_A11F_8BCD945D7E0D">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Primary key of the dataset: a cdif:Key whose cdif:isComposedOf is an ordered list of cdi:InstanceVariables (from schema:variableMeasured) that uniquely identify each data instance.&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;value&quot;, {&quot;idReference&quot;: {&quot;description&quot;: &quot;object reference via URI or URI fragment to a cdif:Key defined elsewhere in the same document&quot;}}]"/>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="deststyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="target"/>
+										<UML:TaggedValue tag="ea_guid" value="{6AEA00AC-1C1E-573b-A2D5-D6283AAEA2A9}"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+							</UML:Association.connection>
+						</UML:Association>
+						<UML:Association xmi.id="EAID_90208F01_8941_5c1f_B8B6_FB6F2290FAAF" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``&#xA;:minItems: null&#xA;:jsonName: &quot;schema:variableMeasured&quot;"/>
+								<UML:TaggedValue tag="ea_type" value="Association"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="DataDescription"/>
+								<UML:TaggedValue tag="ea_targetName" value="DataDescriptionVariableMeasured"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{90208F01-8941-5c1f-B8B6-FB6F2290FAAF}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Association.connection>
+								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_163A204F_7867_5686_A483_0C3C37ABF08A">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="source"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+								<UML:AssociationEnd visibility="public" name="schema_variableMeasured" multiplicity="1..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_CEF481A5_608E_52e1_97DE_12E6161B3237">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``&#xA;:minItems: null&#xA;:jsonName: &quot;schema:variableMeasured&quot;"/>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="deststyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="target"/>
+										<UML:TaggedValue tag="ea_guid" value="{419D7B4F-270F-5cd4-B701-5CB2CB14292C}"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+							</UML:Association.connection>
+						</UML:Association>
+						<UML:Association xmi.id="EAID_B1CE223F_FCA0_58a2_9353_86D7D9A35791" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Sentinel (missing / not-applicable) value domain(s) for this variable (RepresentedVariable.takesSentinelValuesFrom).&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;value&quot;, &quot;idReference&quot;]&#xA;:schemaRef: &quot;cdifDataType/cdifValueDomain#/$defs/SentinelValueDomain&quot;"/>
+								<UML:TaggedValue tag="ea_type" value="Association"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="DataDescriptionVariableMeasured"/>
+								<UML:TaggedValue tag="ea_targetName" value="SentinelValueDomain"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{B1CE223F-FCA0-58a2-9353-86D7D9A35791}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Association.connection>
+								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_CEF481A5_608E_52e1_97DE_12E6161B3237">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="source"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+								<UML:AssociationEnd visibility="public" name="takesSentinelValuesFrom" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_5B0681B3_EC79_5fd3_961D_180AC0FE7D6A">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Sentinel (missing / not-applicable) value domain(s) for this variable (RepresentedVariable.takesSentinelValuesFrom).&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;value&quot;, &quot;idReference&quot;]&#xA;:schemaRef: &quot;cdifDataType/cdifValueDomain#/$defs/SentinelValueDomain&quot;"/>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="deststyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="target"/>
+										<UML:TaggedValue tag="ea_guid" value="{70E173AA-C0F6-53fb-9880-DDE776B9EEBC}"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+							</UML:Association.connection>
+						</UML:Association>
+						<UML:Association xmi.id="EAID_55BF9787_6078_5f39_BBDA_9880BF4265BD" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;The substantive value domain for this variable - the set of valid, meaningful values (RepresentedVariable.takesSubstantiveValuesFrom).&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;value&quot;, &quot;idReference&quot;]&#xA;:schemaRef: &quot;cdifDataType/cdifValueDomain#/$defs/SubstantiveValueDomain&quot;"/>
+								<UML:TaggedValue tag="ea_type" value="Association"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="DataDescriptionVariableMeasured"/>
+								<UML:TaggedValue tag="ea_targetName" value="SubstantiveValueDomain"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{55BF9787-6078-5f39-BBDA-9880BF4265BD}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Association.connection>
+								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_CEF481A5_608E_52e1_97DE_12E6161B3237">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="source"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+								<UML:AssociationEnd visibility="public" name="takesSubstantiveValuesFrom" multiplicity="0..1" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_B755FDA2_D09A_5b94_B8EB_99600754BD89">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;The substantive value domain for this variable - the set of valid, meaningful values (RepresentedVariable.takesSubstantiveValuesFrom).&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;value&quot;, &quot;idReference&quot;]&#xA;:schemaRef: &quot;cdifDataType/cdifValueDomain#/$defs/SubstantiveValueDomain&quot;"/>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="deststyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="target"/>
+										<UML:TaggedValue tag="ea_guid" value="{F721EBF1-397E-5339-AF3A-E8A3E6EF2AB0}"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+							</UML:Association.connection>
+						</UML:Association>
+						<UML:Generalization subtype="EAID_CEF481A5_608E_52e1_97DE_12E6161B3237" supertype="EAID_DBABAF96_7AF8_50b1_978E_3C5CEB86B455" xmi.id="EAID_815A324F_A674_5efe_8936_AE6E9D24A0DA" visibility="public">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="ea_type" value="Generalization"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="DataDescriptionVariableMeasured"/>
+								<UML:TaggedValue tag="ea_targetName" value="VariableMeasured"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{815A324F-A674-5efe-8936-AE6E9D24A0DA}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Generalization>
+						<UML:Generalization subtype="EAID_CEF481A5_608E_52e1_97DE_12E6161B3237" supertype="EAID_6AC4ED47_7975_5748_B693_7C83ED45B649" xmi.id="EAID_24268D23_4CA8_5b6e_8B13_7C9CA838EBCA" visibility="public">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="ea_type" value="Generalization"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="DataDescriptionVariableMeasured"/>
+								<UML:TaggedValue tag="ea_targetName" value="InstanceVariable"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{24268D23-4CA8-5b6e-8B13-7C9CA838EBCA}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Generalization>
+					</UML:Namespace.ownedElement>
+				</UML:Package>
+			</UML:Namespace.ownedElement>
+		</UML:Model>
+	</XMI.content>
+	<XMI.extensions xmi.extender="Enterprise Architect 2.5">
+		<EAStub xmi.id="EAID_4051F7C9_07F2_53da_A11F_8BCD945D7E0D" name="Key" UMLType="Class"/>
+		<EAStub xmi.id="EAID_4CD42EBD_5C4E_5e81_BBDF_4497E1D40223" name="StatisticsProfile" UMLType="DataType"/>
+		<EAStub xmi.id="EAID_5B0681B3_EC79_5fd3_961D_180AC0FE7D6A" name="SentinelValueDomain" UMLType="Class"/>
+		<EAStub xmi.id="EAID_6AC4ED47_7975_5748_B693_7C83ED45B649" name="InstanceVariable" UMLType="Class"/>
+		<EAStub xmi.id="EAID_B755FDA2_D09A_5b94_B8EB_99600754BD89" name="SubstantiveValueDomain" UMLType="Class"/>
+		<EAStub xmi.id="EAID_DBABAF96_7AF8_50b1_978E_3C5CEB86B455" name="VariableMeasured" UMLType="Class"/>
+	</XMI.extensions>
+</XMI>

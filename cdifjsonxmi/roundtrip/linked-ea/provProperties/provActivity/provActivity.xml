@@ -234,11 +234,11 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="EAID_C019851B_BC9B_5d0d_AE8C_D29FF8B4CCDD"/>
+										<UML:Classifier xmi.idref="EAID_E2F9039C_980B_5ba6_AAC0_5008F7B622C8"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Status of this activity (schema.org fallback -- no PROV-O equivalent)&#xA;:jsonName: &quot;schema:actionStatus&quot;"/>
-										<UML:TaggedValue tag="type" value="Schema_actionStatus"/>
+										<UML:TaggedValue tag="type" value="ActionStatus"/>
 										<UML:TaggedValue tag="derived" value="0"/>
 										<UML:TaggedValue tag="containment" value="Not Specified"/>
 										<UML:TaggedValue tag="ordered" value="0"/>
@@ -275,6 +275,54 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
+						<UML:Class name="ActionStatus" xmi.id="EAID_E2F9039C_980B_5ba6_AAC0_5008F7B622C8" visibility="public" namespace="EAPK_C9401947_112A_539c_98DE_6FBDFCD6BC5E" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+							<UML:ModelElement.stereotype>
+								<UML:Stereotype name="enumeration"/>
+							</UML:ModelElement.stereotype>
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="Enumeration"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_C9401947_112A_539c_98DE_6FBDFCD6BC5E"/>
+								<UML:TaggedValue tag="ea_guid" value="{E2F9039C-980B-5ba6-AAC0-5008F7B622C8}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Classifier.feature>
+								<UML:Attribute name="schema:CompletedActionStatus" changeable="frozen" visibility="public" ownerScope="classifier" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="ea_guid" value="{83E17B62-E1BB-5386-8B6D-CF06399302B5}"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+								<UML:Attribute name="schema:ActiveActionStatus" changeable="frozen" visibility="public" ownerScope="classifier" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="ea_guid" value="{4F2E5BF8-FE24-5178-BF84-659E2A618676}"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+								<UML:Attribute name="schema:PotentialActionStatus" changeable="frozen" visibility="public" ownerScope="classifier" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="ea_guid" value="{DE5B8B9F-D4D7-567b-8C67-67F9FF4C9CA6}"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+								<UML:Attribute name="schema:FailedActionStatus" changeable="frozen" visibility="public" ownerScope="classifier" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="ea_guid" value="{707923C6-6344-5edf-8B6C-9C5D41735BC8}"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+							</UML:Classifier.feature>
+						</UML:Class>
 						<UML:Class name="ActivityHowTo" xmi.id="EAID_B5E46D8C_B380_5013_9DF7_C2783251DF63" visibility="public" namespace="EAPK_C9401947_112A_539c_98DE_6FBDFCD6BC5E" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;A methodology or protocol described as a HowTo with optional steps&#xA;:rdfType: ``schema:HowTo``&#xA;:choiceConstraints:&#xA;- ``schema:name | schema:url``"/>
@@ -307,54 +355,6 @@
 								<UML:TaggedValue tag="package" value="EAPK_C9401947_112A_539c_98DE_6FBDFCD6BC5E"/>
 								<UML:TaggedValue tag="ea_guid" value="{1572DA26-3ED2-54eb-9C4A-93A1BB52A719}"/>
 							</UML:ModelElement.taggedValue>
-						</UML:Class>
-						<UML:Class name="Schema_actionStatus" xmi.id="EAID_C019851B_BC9B_5d0d_AE8C_D29FF8B4CCDD" visibility="public" namespace="EAPK_C9401947_112A_539c_98DE_6FBDFCD6BC5E" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
-							<UML:ModelElement.stereotype>
-								<UML:Stereotype name="enumeration"/>
-							</UML:ModelElement.stereotype>
-							<UML:ModelElement.taggedValue>
-								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;"/>
-								<UML:TaggedValue tag="isSpecification" value="false"/>
-								<UML:TaggedValue tag="ea_stype" value="Enumeration"/>
-								<UML:TaggedValue tag="ea_ntype" value="0"/>
-								<UML:TaggedValue tag="version" value="1.0"/>
-								<UML:TaggedValue tag="package" value="EAPK_C9401947_112A_539c_98DE_6FBDFCD6BC5E"/>
-								<UML:TaggedValue tag="ea_guid" value="{C019851B-BC9B-5d0d-AE8C-D29FF8B4CCDD}"/>
-							</UML:ModelElement.taggedValue>
-							<UML:Classifier.feature>
-								<UML:Attribute name="schema:CompletedActionStatus" changeable="frozen" visibility="public" ownerScope="classifier" targetScope="instance">
-									<UML:Attribute.initialValue>
-										<UML:Expression/>
-									</UML:Attribute.initialValue>
-									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="ea_guid" value="{D6EF7CFC-9631-5a59-84FF-0E784246F767}"/>
-									</UML:ModelElement.taggedValue>
-								</UML:Attribute>
-								<UML:Attribute name="schema:ActiveActionStatus" changeable="frozen" visibility="public" ownerScope="classifier" targetScope="instance">
-									<UML:Attribute.initialValue>
-										<UML:Expression/>
-									</UML:Attribute.initialValue>
-									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="ea_guid" value="{D586EC73-F3B1-5fcc-9585-FE8C2DFC3143}"/>
-									</UML:ModelElement.taggedValue>
-								</UML:Attribute>
-								<UML:Attribute name="schema:PotentialActionStatus" changeable="frozen" visibility="public" ownerScope="classifier" targetScope="instance">
-									<UML:Attribute.initialValue>
-										<UML:Expression/>
-									</UML:Attribute.initialValue>
-									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="ea_guid" value="{9BDC5063-1CDE-5625-BD96-4867E5D31756}"/>
-									</UML:ModelElement.taggedValue>
-								</UML:Attribute>
-								<UML:Attribute name="schema:FailedActionStatus" changeable="frozen" visibility="public" ownerScope="classifier" targetScope="instance">
-									<UML:Attribute.initialValue>
-										<UML:Expression/>
-									</UML:Attribute.initialValue>
-									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="ea_guid" value="{067BA779-D9F0-5b10-AC3D-7EC744DAB6FB}"/>
-									</UML:ModelElement.taggedValue>
-								</UML:Attribute>
-							</UML:Classifier.feature>
 						</UML:Class>
 						<UML:Association xmi.id="EAID_EE2E20D4_D229_5bd8_A575_1C6B3034F353" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>

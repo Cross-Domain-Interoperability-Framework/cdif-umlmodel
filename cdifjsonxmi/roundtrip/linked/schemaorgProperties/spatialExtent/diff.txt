@@ -5,12 +5,12 @@ $.$defs.GeoCoordinatesOrGeoShapeOrGeoShape2: only in regenerated: {"anyOf": [{"$
 $.$defs.Identifier: only in original: {"$ref": "../identifier/schema.yaml"}
 $.$defs.SpatialExtentGeoShape: only in regenerated: {"type": "object", "properties": {"@type": {"default": ["schema:GeoShape"], "type": "array", "items": {"type": "string"}, "contains": {"const": "schema:GeoShape"}, "minItems": 1}, "schema:box": {"type
 $.$defs.SpatialExtentGeoShape2: only in regenerated: {"type": "object", "properties": {"@type": {"default": ["schema:GeoShape"], "type": "array", "items": {"type": "string"}, "contains": {"const": "schema:GeoShape"}, "minItems": 1}, "schema:line": {"typ
-$.$defs.SpatialExtentGeosparql_hasGeometry: only in regenerated: {"type": "object", "properties": {"@type": {"type": "array", "items": {"type": "string"}, "minItems": 1, "description": "MUST be sf: (<http://www.opengis.net/ont/sf#>) SimpleFeature geometry type. See
+$.$defs.SpatialExtentHasGeometry: only in regenerated: {"type": "object", "properties": {"@type": {"type": "array", "items": {"type": "string"}, "minItems": 1, "description": "MUST be sf: (<http://www.opengis.net/ont/sf#>) SimpleFeature geometry type. See
 $.$defs.cdifConceptOrTermOrString: only in original: {"$ref": "../../cdifDataType/cdifConceptOrTermOrString/schema.yaml"}
 $.$defs.wktLiteral: only in regenerated: {"type": "object", "properties": {"@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "geosparql:wktLiteral"}, "minItems": 1}, "@value": {"type": "string", "description": "a 
 $.allOf: only in regenerated: [{"anyOf": [{"required": ["schema:name"]}, {"required": ["schema:identifier"]}, {"required": ["schema:geo"]}, {"required": ["geosparql:hasGeometry"]}]}]
 $.anyOf: only in original: [{"required": ["schema:name"]}, {"required": ["schema:identifier"]}, {"required": ["schema:geo"]}, {"required": ["geosparql:hasGeometry"]}]
-$.properties.geosparql:hasGeometry.$ref: only in regenerated: "#/$defs/SpatialExtentGeosparql_hasGeometry"
+$.properties.geosparql:hasGeometry.$ref: only in regenerated: "#/$defs/SpatialExtentHasGeometry"
 $.properties.geosparql:hasGeometry.properties: only in original: {"@type": {"type": "array", "items": {"type": "string"}, "minItems": 1, "description": "MUST be sf: (<http://www.opengis.net/ont/sf#>) SimpleFeature geometry type. See https://opengeospatial.github.io
 $.properties.geosparql:hasGeometry.required: only in original: ["geosparql:asWKT"]
 $.properties.geosparql:hasGeometry.type: only in original: "object"

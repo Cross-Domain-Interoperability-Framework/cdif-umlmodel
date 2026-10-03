@@ -46,7 +46,7 @@ properties:
     '$ref': '#/$defs/GeoCoordinatesOrGeoShapeOrGeoShape2'
     description: Either a bounding box or a point location.
   'geosparql:hasGeometry':
-    '$ref': '#/$defs/SpatialExtentGeosparql_hasGeometry'
+    '$ref': '#/$defs/SpatialExtentHasGeometry'
     description: >-
       Optional geographic extent using wkt geometry, see Ocean InfoHub (https://book.oceaninfohub.org/thematics/spatial/README.html#simple-geosparql-wkt).
       Other geometry schemes might be specified in a specific domain profile, e.g. for atmospheric,
@@ -152,7 +152,7 @@ allOf:
     required:
     - '@type'
     - 'schema:line'
-  SpatialExtentGeosparql_hasGeometry:
+  SpatialExtentHasGeometry:
     type: object
     properties:
       '@type':

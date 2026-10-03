@@ -217,7 +217,7 @@ properties:
         type: array
         items:
           anyOf:
-          - '$ref': '#/$defs/LabProtocolSchema_object'
+          - '$ref': '#/$defs/LabProtocolObject'
           - type: object
             required:
             - '@id'
@@ -230,7 +230,7 @@ properties:
         type: array
         items:
           anyOf:
-          - '$ref': '#/$defs/LabProtocolSchema_result'
+          - '$ref': '#/$defs/LabProtocolResult'
           - type: object
             required:
             - '@id'
@@ -242,14 +242,7 @@ properties:
     required:
     - '@type'
     - 'schema:name'
-  LabProtocolReagent:
-    type: object
-    properties:
-      '@id':
-        type: string
-      'schema:name':
-        type: string
-  LabProtocolSchema_object:
+  LabProtocolObject:
     type: object
     description: >-
       A Bioschemas FormalParameter describing the shape and type of inputs and outputs of
@@ -285,7 +278,14 @@ properties:
         description: Default value for this parameter
     required:
     - 'schema:name'
-  LabProtocolSchema_result:
+  LabProtocolReagent:
+    type: object
+    properties:
+      '@id':
+        type: string
+      'schema:name':
+        type: string
+  LabProtocolResult:
     type: object
     description: >-
       A Bioschemas FormalParameter describing the shape and type of inputs and outputs of

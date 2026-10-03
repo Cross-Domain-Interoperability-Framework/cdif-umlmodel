@@ -1,0 +1,37 @@
+cdifConceptScheme: 34 exact difference(s)
+$.$defs.ConceptRef: only in original: {"type": "object", "additionalProperties": false, "description": "Reference (by URI) to a skos:Concept defined elsewhere. Used inside skos:broader / skos:narrower as the @id-reference alternative to a
+$.$defs.ConceptRefOrCdifConcept: only in regenerated: {"anyOf": [{"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "URI of the referenced concept."}}, "description": "Reference 
+$.$defs.ConceptSchemeAltLabel: only in regenerated: {"type": "object", "description": "An RDF literal value with a language tag, serialized as a JSON-LD value object. Inlined from skosConcept (the resolver does not preserve cross-file '#/$defs/...' fra
+$.$defs.ConceptSchemeDataset: only in regenerated: {"type": "object", "properties": {"@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "schema:Dataset"}, "minItems": 1}, "@id": {"type": "string", "description": "Identifier 
+$.$defs.ConceptSchemePrefLabel: only in regenerated: {"type": "object", "description": "An RDF literal value with a language tag, serialized as a JSON-LD value object. Inlined from skosConcept (the resolver does not preserve cross-file '#/$defs/...' fra
+$.$defs.IdReferenceOrIdReferenceList: only in regenerated: {"anyOf": [{"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string"}}}, {"type": "array", "items": {"type": "object", "required": ["@id"], "additi
+$.$defs.LanguageTaggedValue: only in original: {"type": "object", "description": "An RDF literal value with a language tag, serialized as a JSON-LD value object. Inlined from skosConcept (the resolver does not preserve cross-file '#/$defs/...' fra
+$.$defs.StringOrLanguageTaggedValueOrChoiceList: only in regenerated: {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/ConceptSchemeAltLabel"}, {"type": "array", "items": {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/ConceptSchemeAltLabel"}]}}]}
+$.$defs.StringOrLanguageTaggedValueOrLanguageTaggedValueList: only in regenerated: {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/ConceptSchemePrefLabel"}, {"type": "array", "items": {"$ref": "#/$defs/ConceptSchemePrefLabel"}}]}
+$.$defs.cdifConcept.properties.skos:broader.items.$ref: only in regenerated: "#/$defs/ConceptRefOrCdifConcept"
+$.$defs.cdifConcept.properties.skos:broader.items.anyOf: only in original: [{"$ref": "#/$defs/ConceptRef"}, {"$ref": "#/$defs/cdifConcept"}]
+$.$defs.cdifConcept.properties.skos:definition.$ref: only in regenerated: "#/$defs/StringOrLanguageTaggedValueOrChoiceList"
+$.$defs.cdifConcept.properties.skos:definition.anyOf: only in original: [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}, {"type": "array", "items": {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}]}}]
+$.$defs.cdifConcept.properties.skos:inScheme.$ref: only in regenerated: "#/$defs/IdReferenceOrIdReferenceList"
+$.$defs.cdifConcept.properties.skos:inScheme.anyOf: only in original: [{"type": "object", "additionalProperties": false, "properties": {"@id": {"type": "string"}}, "required": ["@id"]}, {"type": "array", "items": {"type": "object", "additionalProperties": false, "proper
+$.$defs.cdifConcept.properties.skos:narrower.items.$ref: only in regenerated: "#/$defs/ConceptRefOrCdifConcept"
+$.$defs.cdifConcept.properties.skos:narrower.items.anyOf: only in original: [{"$ref": "#/$defs/ConceptRef"}, {"$ref": "#/$defs/cdifConcept"}]
+$.$defs.cdifConcept.properties.skos:note.$ref: only in regenerated: "#/$defs/StringOrLanguageTaggedValueOrChoiceList"
+$.$defs.cdifConcept.properties.skos:note.anyOf: only in original: [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}, {"type": "array", "items": {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}]}}]
+$.$defs.cdifConcept.properties.skos:prefLabel.$ref: only in regenerated: "#/$defs/StringOrLanguageTaggedValueOrLanguageTaggedValueList"
+$.$defs.cdifConcept.properties.skos:prefLabel.anyOf: only in original: [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}, {"type": "array", "items": {"$ref": "#/$defs/LanguageTaggedValue"}}]
+$.$defs.cdifConceptOrTermOrString: only in original: {"$ref": "../../../cdifDataType/cdifConceptOrTermOrString/schema.yaml"}
+$.properties.schema:subjectOf.$ref: only in regenerated: "#/$defs/ConceptSchemeDataset"
+$.properties.schema:subjectOf.properties: only in original: {"@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "schema:Dataset"}, "minItems": 1}, "schema:additionalType": {"type": "array", "items": {"$ref": "#/$defs/cdifConceptOrTer
+$.properties.schema:subjectOf.required: only in original: ["@type", "schema:additionalType", "dcterms:conformsTo"]
+$.properties.schema:subjectOf.type: only in original: "object"
+$.properties.skos:altLabel.$ref: only in regenerated: "#/$defs/StringOrLanguageTaggedValueOrChoiceList"
+$.properties.skos:altLabel.anyOf: only in original: [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}, {"type": "array", "items": {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}]}}]
+$.properties.skos:definition.$ref: only in regenerated: "#/$defs/StringOrLanguageTaggedValueOrChoiceList"
+$.properties.skos:definition.anyOf: only in original: [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}, {"type": "array", "items": {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}]}}]
+$.properties.skos:note.$ref: only in regenerated: "#/$defs/StringOrLanguageTaggedValueOrChoiceList"
+$.properties.skos:note.anyOf: only in original: [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}, {"type": "array", "items": {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}]}}]
+$.properties.skos:prefLabel.$ref: only in regenerated: "#/$defs/StringOrLanguageTaggedValueOrLanguageTaggedValueList"
+$.properties.skos:prefLabel.anyOf: only in original: [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}, {"type": "array", "items": {"$ref": "#/$defs/LanguageTaggedValue"}}]
+
+cdifConceptScheme: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

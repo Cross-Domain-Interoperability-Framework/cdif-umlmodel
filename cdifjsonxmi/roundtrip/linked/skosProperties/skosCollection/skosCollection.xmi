@@ -9,9 +9,9 @@
     <packagedElement xmi:type="uml:Package" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection" xmi:uuid="5d592908-74cd-5161-8976-be2bb38fca31">
       <name>skosCollection</name>
       <URI>https://w3id.org/cdif/bbr/metadata/skosProperties/skosCollection</URI>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.Collection2" xmi:uuid="43d5c6d0-91b9-551c-b899-5041217252c1">
-        <name>Collection2</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.Collection2.comment" xmi:uuid="dc699722-4d5a-50e2-b664-378df10ba35e">
+      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.CollectionProfile" xmi:uuid="ad59c487-2992-5dae-bb84-ade1080d9bc3">
+        <name>CollectionProfile</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.CollectionProfile.comment" xmi:uuid="c69ec05e-45b2-5c72-a740-b150f4682799">
           <body>**CDIF**
 
 Definition
@@ -20,19 +20,19 @@ Definition
 JSON Schema for SKOS Collection and OrderedCollection in JSON-LD form. A Collection is a meaningful grouping of concepts; an OrderedCollection preserves member ordering via the JSON-LD @list construct. Based on the W3C SKOS Reference (https://www.w3.org/TR/skos-reference/).
 :title: "SKOS Collection"
 :union: ``anyOf``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.Collection2"/>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.CollectionProfile"/>
         </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.Collection2.collection" xmi:uuid="346aaf0f-db26-59f2-afd5-ba777d21f3f6">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.CollectionProfile.collection" xmi:uuid="4e47b220-577f-5d13-bb7f-bc9fb7dbeba2">
           <name>collection</name>
           <type xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.Collection"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.Collection2.collection.lower" xmi:uuid="ea7efbdc-c26b-5156-b74e-6f93ef14147c">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.CollectionProfile.collection.lower" xmi:uuid="fb36d768-c71c-51f3-8ca0-33e64fc3ac02">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.Collection2.collection.upper" xmi:uuid="c5e17cdb-5f7e-5a95-983b-616757fddcff">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.CollectionProfile.collection.upper" xmi:uuid="f6dedc63-ae8f-5851-9542-d87cac15b771">
             <value>1</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.assoc.Collection_collection_Collection"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.Collection2.collection.comment" xmi:uuid="ea128f5a-8fc1-5fff-a015-ae7f5777a596">
+          <association xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.assoc.CollectionProfile_collection_Collection"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.CollectionProfile.collection.comment" xmi:uuid="c8a75b81-3069-5726-87da-8c0ec17383a3">
             <body>**CDIF**
 
 Definition
@@ -40,20 +40,20 @@ Definition
 
 
 :inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.Collection2.collection"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.CollectionProfile.collection"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.Collection2.orderedCollection" xmi:uuid="559875db-febb-5868-8366-2c561b1f58b1">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.CollectionProfile.orderedCollection" xmi:uuid="c276547d-5bf3-5c28-9c58-11b09900aa5f">
           <name>orderedCollection</name>
           <type xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.OrderedCollection"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.Collection2.orderedCollection.lower" xmi:uuid="646d8f0a-5281-5d56-b678-6ae522a5b97a">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.CollectionProfile.orderedCollection.lower" xmi:uuid="10d54507-11e3-5b47-ba60-2f2c97dd0e4a">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.Collection2.orderedCollection.upper" xmi:uuid="0d7a2d21-67af-5a6a-ad13-60fe5e3abafe">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.CollectionProfile.orderedCollection.upper" xmi:uuid="0b4b00ea-b7fb-5910-b25d-f65af404239a">
             <value>1</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.assoc.Collection_orderedCollection_OrderedCollection"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.Collection2.orderedCollection.comment" xmi:uuid="d4066543-0830-5b57-a2c2-1a2dcbbbc79c">
+          <association xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.assoc.CollectionProfile_orderedCollection_OrderedCollection"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.CollectionProfile.orderedCollection.comment" xmi:uuid="aca81ce6-c366-582e-a576-404c9b815889">
             <body>**CDIF**
 
 Definition
@@ -61,7 +61,7 @@ Definition
 
 
 :inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.Collection2.orderedCollection"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.CollectionProfile.orderedCollection"/>
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
@@ -498,35 +498,35 @@ Definition
           </upperValue>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.Collection_collection_Collection" xmi:uuid="4b700a8d-a6e4-5acc-87de-054ed830f17a">
-        <name>Collection_collection_Collection</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.Collection_collection_Collection.ownedEnd" xmi:uuid="c114f60b-9c4f-5ac1-961c-673fb146cb6b">
-          <type xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.Collection2"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.Collection_collection_Collection.ownedEnd.lower" xmi:uuid="76bdf4af-2947-5d32-8ce9-5d353cf3027e">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.CollectionProfile_collection_Collection" xmi:uuid="3c7d536b-457e-5ae4-816e-4b19404a8ffe">
+        <name>CollectionProfile_collection_Collection</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.CollectionProfile_collection_Collection.ownedEnd" xmi:uuid="cc4ed03b-72df-5c53-86cd-c1c0ef209d3a">
+          <type xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.CollectionProfile"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.CollectionProfile_collection_Collection.ownedEnd.lower" xmi:uuid="580c2082-6c75-5618-ad4b-5ab98de88bcd">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.Collection_collection_Collection.ownedEnd.upper" xmi:uuid="8a3a3152-9567-5fcc-a845-0382f7b755f6">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.CollectionProfile_collection_Collection.ownedEnd.upper" xmi:uuid="efd44375-f311-5ecb-8645-9cb5df503f96">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.assoc.Collection_collection_Collection"/>
+          <association xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.assoc.CollectionProfile_collection_Collection"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.assoc.Collection_collection_Collection.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.Collection2.collection"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.assoc.CollectionProfile_collection_Collection.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.CollectionProfile.collection"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.Collection_orderedCollection_OrderedCollection" xmi:uuid="00ab75db-2a01-568f-b943-eccb485d1d09">
-        <name>Collection_orderedCollection_OrderedCollection</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.Collection_orderedCollection_OrderedCollection.ownedEnd" xmi:uuid="ef73cffc-7044-599d-b19c-3923ea6f7d46">
-          <type xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.Collection2"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.Collection_orderedCollection_OrderedCollection.ownedEnd.lower" xmi:uuid="d54b0001-6cd4-5dd3-bc1f-2ccb4ba8244f">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.CollectionProfile_orderedCollection_OrderedCollection" xmi:uuid="8b1ac5fa-48a8-5dc7-a404-9f6f4e6d8bcd">
+        <name>CollectionProfile_orderedCollection_OrderedCollection</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.CollectionProfile_orderedCollection_OrderedCollection.ownedEnd" xmi:uuid="bf6604af-ccf4-53c5-b127-9862f0899ebc">
+          <type xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.CollectionProfile"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.CollectionProfile_orderedCollection_OrderedCollection.ownedEnd.lower" xmi:uuid="8cd9fe36-1df4-505a-b543-cff07b44ebf4">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.Collection_orderedCollection_OrderedCollection.ownedEnd.upper" xmi:uuid="ac820e0a-e3f1-5875-ad04-38627e51fb55">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.CollectionProfile_orderedCollection_OrderedCollection.ownedEnd.upper" xmi:uuid="4e199a3a-d1e4-504f-8792-82c594e2e3ed">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.assoc.Collection_orderedCollection_OrderedCollection"/>
+          <association xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.assoc.CollectionProfile_orderedCollection_OrderedCollection"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.assoc.Collection_orderedCollection_OrderedCollection.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.Collection2.orderedCollection"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.assoc.CollectionProfile_orderedCollection_OrderedCollection.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.skosProperties.skosCollection.CollectionProfile.orderedCollection"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.skosProperties.skosCollection.assoc.ConceptOrCollection_concept_Concept" xmi:uuid="063afd7b-3f2a-5370-ae90-268fbf69189f">
         <name>ConceptOrCollection_concept_Concept</name>

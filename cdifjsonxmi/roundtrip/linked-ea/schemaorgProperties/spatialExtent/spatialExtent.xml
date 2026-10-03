@@ -305,7 +305,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Class name="SpatialExtentGeosparql_hasGeometry" xmi.id="EAID_A2BC0208_EE4F_5bad_AB0C_4C84E6A8EFFD" visibility="public" namespace="EAPK_55440569_70E2_51a7_A529_85F79595E0D8" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+						<UML:Class name="SpatialExtentHasGeometry" xmi.id="EAID_43C094C5_EEF1_54df_956F_88D00F1EBED7" visibility="public" namespace="EAPK_55440569_70E2_51a7_A529_85F79595E0D8" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:prefix: ``geosparql``&#xA;:typeSchema: {&quot;type&quot;: &quot;array&quot;, &quot;items&quot;: {&quot;type&quot;: &quot;string&quot;}, &quot;minItems&quot;: 1, &quot;description&quot;: &quot;MUST be sf: (&lt;http://www.opengis.net/ont/sf#&gt;) SimpleFeature geometry type. See https://opengeospatial.github.io/ogc-geosparql/geosparql11/sf_geometries.ttl&quot;}&#xA;:typeOptional:&#xA;:noId:"/>
 								<UML:TaggedValue tag="isSpecification" value="false"/>
@@ -313,7 +313,7 @@
 								<UML:TaggedValue tag="ea_ntype" value="0"/>
 								<UML:TaggedValue tag="version" value="1.0"/>
 								<UML:TaggedValue tag="package" value="EAPK_55440569_70E2_51a7_A529_85F79595E0D8"/>
-								<UML:TaggedValue tag="ea_guid" value="{A2BC0208-EE4F-5bad-AB0C-4C84E6A8EFFD}"/>
+								<UML:TaggedValue tag="ea_guid" value="{43C094C5-EEF1-54df-956F-88D00F1EBED7}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Classifier.feature>
 								<UML:Attribute name="asWKT" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
@@ -334,7 +334,7 @@
 										<UML:TaggedValue tag="lowerBound" value="1"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{0E632E23-ED47-571c-874D-1EA132FC5106}"/>
+										<UML:TaggedValue tag="ea_guid" value="{58F9F6DC-5A98-5a99-AB66-21BA69A40DD8}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -356,7 +356,7 @@
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{477AF767-44BD-59ac-9403-23263E41C210}"/>
+										<UML:TaggedValue tag="ea_guid" value="{A2058A7C-5BC9-534f-8D95-757756CC651B}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -457,16 +457,16 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_12436186_24F7_533c_84AB_3C24BF72AC92" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_B37717BA_BD62_5e42_9303_3B98CE01CB31" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Optional geographic extent using wkt geometry, see Ocean InfoHub (https://book.oceaninfohub.org/thematics/spatial/README.html#simple-geosparql-wkt). Other geometry schemes might be specified in a specific domain profile, e.g. for atmospheric, subsurface data, or local coordinate systems. NOTE that the location specified here should be the same as the schema.org point or contained within the specified bounding box.&#xA;:inlineOrByReference: ``inline``&#xA;:jsonName: &quot;geosparql:hasGeometry&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
 								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
 								<UML:TaggedValue tag="ea_sourceName" value="SpatialExtent"/>
-								<UML:TaggedValue tag="ea_targetName" value="SpatialExtentGeosparql_hasGeometry"/>
+								<UML:TaggedValue tag="ea_targetName" value="SpatialExtentHasGeometry"/>
 								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
 								<UML:TaggedValue tag="ea_targetType" value="Class"/>
-								<UML:TaggedValue tag="ea_guid" value="{12436186-24F7-533c-84AB-3C24BF72AC92}"/>
+								<UML:TaggedValue tag="ea_guid" value="{B37717BA-BD62-5e42-9303-3B98CE01CB31}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Association.connection>
 								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_A372246D_054E_5875_8DE8_082D93DDA478">
@@ -476,7 +476,7 @@
 										<UML:TaggedValue tag="ea_end" value="source"/>
 									</UML:ModelElement.taggedValue>
 								</UML:AssociationEnd>
-								<UML:AssociationEnd visibility="public" name="geosparql_hasGeometry" multiplicity="0..1" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_A2BC0208_EE4F_5bad_AB0C_4C84E6A8EFFD">
+								<UML:AssociationEnd visibility="public" name="geosparql_hasGeometry" multiplicity="0..1" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_43C094C5_EEF1_54df_956F_88D00F1EBED7">
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Optional geographic extent using wkt geometry, see Ocean InfoHub (https://book.oceaninfohub.org/thematics/spatial/README.html#simple-geosparql-wkt). Other geometry schemes might be specified in a specific domain profile, e.g. for atmospheric, subsurface data, or local coordinate systems. NOTE that the location specified here should be the same as the schema.org point or contained within the specified bounding box.&#xA;:inlineOrByReference: ``inline``&#xA;:jsonName: &quot;geosparql:hasGeometry&quot;"/>
 										<UML:TaggedValue tag="containment" value="Unspecified"/>

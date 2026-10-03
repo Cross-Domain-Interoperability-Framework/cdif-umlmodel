@@ -81,7 +81,7 @@ Set of permissible values for a variable playing the role of a variable descript
         </ownedComment>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomain.cdif_takesValuesFrom" xmi:uuid="59f132b7-cdf8-5f33-b840-f67a859e090d">
           <name>cdif_takesValuesFrom</name>
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomainCdif_takesValuesFrom"/>
+          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomainTakesValuesFrom"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomain.cdif_takesValuesFrom.lower" xmi:uuid="da7e2ab1-6999-546f-a2b1-cb84baf6758a">
             <value>1</value>
           </lowerValue>
@@ -100,9 +100,9 @@ Ordered list of descriptor entries. Each entry has a cdif:value (the code as it 
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomainCdif_takesValuesFrom" xmi:uuid="b9670325-4290-5c61-bcfb-2b6d66d9609a">
-        <name>DescriptorValueDomainCdif_takesValuesFrom</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomainCdif_takesValuesFrom.comment" xmi:uuid="34291268-453d-5920-8d11-0d67dc96e012">
+      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomainTakesValuesFrom" xmi:uuid="eed4be64-0ac2-5c2e-b18b-d88351d8d9cf">
+        <name>DescriptorValueDomainTakesValuesFrom</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomainTakesValuesFrom.comment" xmi:uuid="d5ef1dc0-cb25-5a8e-b03c-7f39be85b186">
           <body>**CDIF**
 
 Definition
@@ -110,38 +110,38 @@ Definition
 
 
 :prefix: ``cdif``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomainCdif_takesValuesFrom"/>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomainTakesValuesFrom"/>
         </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomainCdif_takesValuesFrom.value" xmi:uuid="c432c011-6751-5077-a016-c91b03a94888">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomainTakesValuesFrom.value" xmi:uuid="736660dd-562b-51d7-8ba7-04680fe9fc3c">
           <name>value</name>
           <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomainCdif_takesValuesFrom.value.lower" xmi:uuid="37058618-aa9c-5fc9-9fad-8f63746d5c85">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomainTakesValuesFrom.value.lower" xmi:uuid="7c929afa-b206-511b-94e2-581002dc7f9f">
             <value>1</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomainCdif_takesValuesFrom.value.upper" xmi:uuid="dacf5596-b0c8-57b4-b62c-938594f47702">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomainTakesValuesFrom.value.upper" xmi:uuid="20935b94-622e-542a-a2d8-c1553d3eb9f7">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomainCdif_takesValuesFrom.value.comment" xmi:uuid="9c5ba4ce-c37a-5b41-86c6-7ce01ea259f9">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomainTakesValuesFrom.value.comment" xmi:uuid="9be7d979-1ff1-578d-b455-7c20509e251c">
             <body>**CDIF**
 
 Definition
 ==========
 
 The code value as it appears in the descriptor column.</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomainCdif_takesValuesFrom.value"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomainTakesValuesFrom.value"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomainCdif_takesValuesFrom.isDefinedBy" xmi:uuid="38ce12ab-79b1-5de3-a28d-ead06f2f855a">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomainTakesValuesFrom.isDefinedBy" xmi:uuid="954f20e7-cfbd-5fcf-b0ce-aa04661d5881">
           <name>isDefinedBy</name>
           <type href="../cdifRepresentedVariable/cdifRepresentedVariable.xmi#cdif.bbr.metadata.cdifDataType.cdifRepresentedVariable.RepresentedVariable"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomainCdif_takesValuesFrom.isDefinedBy.lower" xmi:uuid="4af60989-d4f9-503f-870f-ffced3e1b41d">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomainTakesValuesFrom.isDefinedBy.lower" xmi:uuid="c6741127-da0f-5a10-b689-87b3a7242cf6">
             <value>1</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomainCdif_takesValuesFrom.isDefinedBy.upper" xmi:uuid="ce1fe220-fa0e-5e0f-875e-35392bbe5fe2">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomainTakesValuesFrom.isDefinedBy.upper" xmi:uuid="4003bb5e-218f-5224-af76-c3f997caba8a">
             <value>1</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.assoc.DescriptorValueDomainCdif_takesValuesFrom_isDefinedBy_RepresentedVariable"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomainCdif_takesValuesFrom.isDefinedBy.comment" xmi:uuid="846b726c-e932-5e44-b7c1-f2168a6fc3f0">
+          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.assoc.DescriptorValueDomainTakesValuesFrom_isDefinedBy_RepresentedVariable"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomainTakesValuesFrom.isDefinedBy.comment" xmi:uuid="d9d6e58d-f933-55ad-8686-85ddd9440b00">
             <body>**CDIF**
 
 Definition
@@ -150,7 +150,7 @@ Definition
 
 :inlineOrByReference: ``inline``
 :orReference: ["value", {"idReference": {"description": "object reference via URI or URI fragment to a RepresentedVariable defined elsewhere in the document"}}]</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomainCdif_takesValuesFrom.isDefinedBy"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomainTakesValuesFrom.isDefinedBy"/>
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
@@ -169,20 +169,20 @@ Definition
         <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.assoc.DescriptorVariable_cdif_hasValuesFrom_DescriptorValueDomain.ownedEnd"/>
         <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorVariable.cdif_hasValuesFrom"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.assoc.DescriptorValueDomainCdif_takesValuesFrom_isDefinedBy_RepresentedVariable" xmi:uuid="336562c4-e4ed-5fc6-8638-109f4389198c">
-        <name>DescriptorValueDomainCdif_takesValuesFrom_isDefinedBy_RepresentedVariable</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.assoc.DescriptorValueDomainCdif_takesValuesFrom_isDefinedBy_RepresentedVariable.ownedEnd" xmi:uuid="deb31c02-4cd1-5dd7-a42b-5251b54c0adf">
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomainCdif_takesValuesFrom"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.assoc.DescriptorValueDomainCdif_takesValuesFrom_isDefinedBy_RepresentedVariable.ownedEnd.lower" xmi:uuid="709692dd-b295-5214-83b4-2e2cc6248ac4">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.assoc.DescriptorValueDomainTakesValuesFrom_isDefinedBy_RepresentedVariable" xmi:uuid="8e43f9f4-a182-5484-bb8a-18dc77c11127">
+        <name>DescriptorValueDomainTakesValuesFrom_isDefinedBy_RepresentedVariable</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.assoc.DescriptorValueDomainTakesValuesFrom_isDefinedBy_RepresentedVariable.ownedEnd" xmi:uuid="de489364-24ec-5eb1-b3e5-ba4497fb5be1">
+          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomainTakesValuesFrom"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.assoc.DescriptorValueDomainTakesValuesFrom_isDefinedBy_RepresentedVariable.ownedEnd.lower" xmi:uuid="1351d533-2a4b-5af1-be60-bdee1d656895">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.assoc.DescriptorValueDomainCdif_takesValuesFrom_isDefinedBy_RepresentedVariable.ownedEnd.upper" xmi:uuid="8eae802e-d702-5e99-b5f2-6af0ad7cebe4">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.assoc.DescriptorValueDomainTakesValuesFrom_isDefinedBy_RepresentedVariable.ownedEnd.upper" xmi:uuid="e557366f-c850-52b5-9624-b66e7feaf6e1">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.assoc.DescriptorValueDomainCdif_takesValuesFrom_isDefinedBy_RepresentedVariable"/>
+          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.assoc.DescriptorValueDomainTakesValuesFrom_isDefinedBy_RepresentedVariable"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.assoc.DescriptorValueDomainCdif_takesValuesFrom_isDefinedBy_RepresentedVariable.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomainCdif_takesValuesFrom.isDefinedBy"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.assoc.DescriptorValueDomainTakesValuesFrom_isDefinedBy_RepresentedVariable.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorValueDomainTakesValuesFrom.isDefinedBy"/>
       </packagedElement>
     </packagedElement>
   </uml:Model>

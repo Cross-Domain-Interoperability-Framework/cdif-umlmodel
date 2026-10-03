@@ -196,7 +196,7 @@ Output entity (or entities) produced by this activity. Per schema.org, the range
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.ProvActivity.schema_actionStatus" xmi:uuid="e2f486c4-785c-5799-81ae-b80e0f108f6f">
           <name>schema_actionStatus</name>
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifProvActivity.Schema_actionStatus"/>
+          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifProvActivity.ActionStatus"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.ProvActivity.schema_actionStatus.lower" xmi:uuid="e472fc11-c94d-5275-9cf2-919cae144dd7">
             <value>0</value>
           </lowerValue>
@@ -344,6 +344,30 @@ Domain-specific extension properties
             <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifProvActivity.ProvActivity.schema_additionalProperty"/>
           </ownedComment>
         </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Enumeration" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.ActionStatus" xmi:uuid="f577442d-6952-533f-a403-72002b1f2524">
+        <name>ActionStatus</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.ActionStatus.comment" xmi:uuid="6101caf9-d60d-5d2e-8f44-abd1f2c45720">
+          <body>**CDIF**
+
+Definition
+==========
+
+</body>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifProvActivity.ActionStatus"/>
+        </ownedComment>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.ActionStatus.schema:CompletedActionStatus" xmi:uuid="48f924dc-23ce-513c-ac2b-73a214d3224e">
+          <name>schema:CompletedActionStatus</name>
+        </ownedLiteral>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.ActionStatus.schema:ActiveActionStatus" xmi:uuid="cd815bfd-107e-5542-841b-ef376452e521">
+          <name>schema:ActiveActionStatus</name>
+        </ownedLiteral>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.ActionStatus.schema:PotentialActionStatus" xmi:uuid="7208eb0b-b9a5-5225-b360-a613743f439a">
+          <name>schema:PotentialActionStatus</name>
+        </ownedLiteral>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.ActionStatus.schema:FailedActionStatus" xmi:uuid="6697770a-9468-56ad-85d4-735f098f54d5">
+          <name>schema:FailedActionStatus</name>
+        </ownedLiteral>
       </packagedElement>
       <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.PersonOrOrganizationOrAgentInRole" xmi:uuid="b1610864-4ff8-5eaa-8407-1280ca44e5a5">
         <name>PersonOrOrganizationOrAgentInRole</name>
@@ -587,30 +611,6 @@ Definition
 :prefix: ``prov``</body>
           <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifProvActivity.ProvActivityObjectChoiceChoiceListObject"/>
         </ownedComment>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Enumeration" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.Schema_actionStatus" xmi:uuid="0255adb0-ff56-5c13-9e29-6eb501f569a8">
-        <name>Schema_actionStatus</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.Schema_actionStatus.comment" xmi:uuid="dc427286-b898-535d-a668-9255a3348b56">
-          <body>**CDIF**
-
-Definition
-==========
-
-</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifProvActivity.Schema_actionStatus"/>
-        </ownedComment>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.Schema_actionStatus.schema:CompletedActionStatus" xmi:uuid="5e8c94da-db52-5f6b-827f-8dfe17d6f4b4">
-          <name>schema:CompletedActionStatus</name>
-        </ownedLiteral>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.Schema_actionStatus.schema:ActiveActionStatus" xmi:uuid="c2c4fe61-c0ca-5446-82ef-52af117f350e">
-          <name>schema:ActiveActionStatus</name>
-        </ownedLiteral>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.Schema_actionStatus.schema:PotentialActionStatus" xmi:uuid="046c8c38-d84c-5c14-a934-3ec1bdaf4270">
-          <name>schema:PotentialActionStatus</name>
-        </ownedLiteral>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.Schema_actionStatus.schema:FailedActionStatus" xmi:uuid="c060226b-ff92-5f8d-933d-3a13ad524904">
-          <name>schema:FailedActionStatus</name>
-        </ownedLiteral>
       </packagedElement>
       <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.StringOrObject" xmi:uuid="73b3d94f-e2f9-58e4-a1d8-4dded74ea35c">
         <name>StringOrObject</name>

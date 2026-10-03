@@ -1,0 +1,233 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: CDIF Manifest
+description: >-
+  Profile module for packages: the resources that make up a dataset and where to retrieve
+  each of them. Marks the catalog record as conformant to the CDIF manifest spec (https://w3id.org/cdif/manifest/1.1)
+  and declares schema:hasPart in the two places a package needs it — on the Dataset, for parts
+  that are independently accessible at their own addresses, and on a schema:distribution item,
+  for component files inside an archive (ZIP, etc.) that have no address of their own. Both
+  part shapes carry schema:about, so a part that describes another — a codebook, a data dictionary,
+  a metadata sidecar — can say which one. The base schema:distribution anyOf [DataDownload,
+  WebAPI] contributed by cdifCore is preserved — this BB only adds property constraints, no
+  new anyOf branch. (Merged from the previous cdifProfile/cdifArchive BB, which held only
+  the $defs for ArchivePart; everything now lives here.)
+type: object
+properties:
+  'schema:hasPart':
+    type: array
+    items:
+      '$ref': '#/$defs/ManifestHasPart'
+    description: >-
+      Component resources of a package whose parts are independently accessible, each with
+      its own distribution. Parts may differ in content type, format and data structure. For
+      component files inside an archive, which have no address of their own, use schema:hasPart
+      on the distribution instead.
+  'schema:distribution':
+    type: array
+    items:
+      allOf:
+      - properties:
+          'schema:hasPart':
+            type: array
+            description: >-
+              For bundle/archive distributions (positively typed with schema:Collection in
+              @type), describes the component files. Each component is typed as schema:MediaObject
+              and may include CDIF data description extensions (cdifTabularData, cdifDataCube)
+              to describe its internal structure.
+            items:
+              allOf:
+              - type: object
+                properties:
+                  '@id':
+                    type: string
+                    description: >-
+                      Identifier for this file, typically a hash-based anchor (e.g. '#abc123').
+                      Used for cross-references from schema:about in metadata sidecar files.
+                  '@type':
+                    type: array
+                    description: >-
+                      Must include schema:MediaObject. Must NOT include schema:DataDownload
+                      since this file is not independently accessible. May include additional
+                      types for categorization.
+                    items:
+                      type: string
+                    contains:
+                      const: 'schema:MediaObject'
+                    not:
+                      contains:
+                        const: 'schema:DataDownload'
+                    minItems: 1
+                  'schema:name':
+                    type: string
+                    description: Filename of the component file within the archive.
+                  'schema:description':
+                    type: string
+                    description: Description of the file content. May include checksum information.
+                  'schema:encodingFormat':
+                    type: array
+                    description: MIME type(s) for this file.
+                    items:
+                      type: string
+                  'schema:additionalType':
+                    type: array
+                    description: >-
+                      Domain-specific type classification for this member file: what KIND
+                      of thing it is, beyond its MIME type. The @type above says only that
+                      it is a schema:MediaObject, and using @type to carry a domain classification
+                      conflates "what this node is" with "what it is about". A plain string
+                      is accepted; a schema:DefinedTerm carrying schema:inDefinedTermSet is
+                      preferred where the value comes from a controlled vocabulary.
+                    items:
+                      '$ref': >-
+                        ../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml
+                  'schema:size':
+                    type: object
+                    description: File size as a QuantitativeValue.
+                    properties:
+                      '@type':
+                        type: array
+                        items:
+                          type: string
+                        contains:
+                          const: 'schema:QuantitativeValue'
+                        minItems: 1
+                      'schema:value':
+                        type: number
+                        description: Numeric size value.
+                      'schema:unitText':
+                        type: string
+                        description: Unit of measure for size (e.g. 'byte').
+                  'schema:about':
+                    type: array
+                    description: For metadata sidecar files, references the data file this
+                      metadata describes.
+                    items:
+                      type: object
+                      required:
+                      - '@id'
+                      additionalProperties: false
+                      properties:
+                        '@id':
+                          type: string
+                          description: Reference to the @id of the data file described by
+                            this sidecar.
+                  'spdx:checksum':
+                    type: object
+                    description: Checksum for integrity verification of this component file.
+                    properties:
+                      '@type':
+                        type: array
+                        items:
+                          type: string
+                        contains:
+                          const: 'spdx:Checksum'
+                        minItems: 1
+                      'spdx:algorithm':
+                        type: string
+                      'spdx:checksumValue':
+                        type: string
+                    required:
+                    - '@type'
+                    - 'spdx:algorithm'
+                    - 'spdx:checksumValue'
+                required:
+                - '@type'
+                - 'schema:name'
+                - 'schema:encodingFormat'
+              - anyOf:
+                - '$ref': >-
+                    ../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifDataCube/schema.yaml
+                - '$ref': >-
+                    ../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifTabularData/schema.yaml
+                - {}
+      - if:
+          properties:
+            '@type':
+              type: array
+              contains:
+                const: 'schema:Collection'
+          required:
+          - '@type'
+        then:
+          required:
+          - 'schema:hasPart'
+allOf:
+- properties:
+    'schema:subjectOf':
+      properties:
+        'dcterms:conformsTo':
+          type: array
+          items:
+            type: object
+            required:
+            - '@id'
+            additionalProperties: false
+            properties:
+              '@id':
+                type: string
+                description: uri for specifications that this metadata record conforms to
+          minItems: 1
+          contains:
+            type: object
+            required:
+            - '@id'
+            additionalProperties: false
+            properties:
+              '@id':
+                const: 'https://w3id.org/cdif/manifest/1.1'
+'$defs':
+  ManifestHasPart:
+    type: object
+    description: >-
+      One independently accessible member of a package. Type it for what it is: schema:Dataset
+      for data, schema:CreativeWork for a codebook, methods document or quality report, schema:MediaObject
+      for a browse image. Parts under separate stewardship should carry their own schema:provider,
+      schema:conditionsOfAccess and schema:dateModified, since those are what differ.
+    properties:
+      '@type':
+        type: array
+        description: >-
+          What kind of resource this part is. Must include schema:CreativeWork or one of its
+          subclasses -- everything a package can contain is a creative work of some kind,
+          and saying which one is what lets a consumer tell the data from the codebook from
+          the browse image. Additional types beyond that are free, so domain vocabularies
+          (ada:otherFileType and the like) sit alongside. Not constrained to schema:MediaObject
+          as an archive part is, because a part with its own address may well be a Dataset
+          or a DataDownload.
+        items:
+          type: string
+        minItems: 1
+        contains:
+          type: string
+          pattern: >-
+            ^(schema:|http://schema\.org/)(CreativeWork|Dataset|DataDownload|DataCatalog|MediaObject|ImageObject|VideoObject|AudioObject|3DModel|DigitalDocument|TextDigitalDocument|SpreadsheetDigitalDocument|PresentationDigitalDocument|NoteDigitalDocument|SoftwareApplication|WebApplication|SoftwareSourceCode|Article|ScholarlyArticle|TechArticle|Report|Book|Chapter|Thesis|Manuscript|Map|WebPage|WebSite|Collection|Course|HowTo|Guide|Legislation|Photograph|Painting|Drawing|Poster|Atlas|Periodical|PublicationIssue|PublicationVolume|CreativeWorkSeries|Review|Comment)$
+      '@id':
+        type: string
+        description: Identifier for this part.
+      'schema:name':
+        type: string
+      'schema:description':
+        type: string
+      'schema:encodingFormat':
+        type: array
+        items:
+          type: string
+      'schema:url':
+        type: string
+      'schema:about':
+        type: array
+        items:
+          type: object
+          required:
+          - '@id'
+          additionalProperties: false
+          properties:
+            '@id':
+              type: string
+              description: Reference to the @id of the part being described.
+        description: >-
+          The part this one is about. Use it on a part that describes another -- a codebook,
+          a data dictionary, a quality report, a metadata sidecar -- so that a consumer can
+          tell WHICH part it documents rather than only that both are in the package. Equivalent
+          in this use to cito:documents, which is how OAI-ORE packages express the same relationship;
+          schema:subjectOf is the declared inverse.

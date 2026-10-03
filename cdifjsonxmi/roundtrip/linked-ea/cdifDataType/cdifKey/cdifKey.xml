@@ -31,7 +31,7 @@
 								<UML:TaggedValue tag="ea_guid" value="{4051F7C9-07F2-53da-A11F-8BCD945D7E0D}"/>
 							</UML:ModelElement.taggedValue>
 						</UML:Class>
-						<UML:Class name="ComponentPosition" xmi.id="EAID_53E477AA_CF5C_5497_B97E_DB36F82F30B8" visibility="public" namespace="EAPK_BB4411AE_257E_5a44_ABDD_4B9453720074" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+						<UML:Class name="KeyComponentPosition" xmi.id="EAID_6237B54E_7992_5265_BF1D_95F5E89486EF" visibility="public" namespace="EAPK_BB4411AE_257E_5a44_ABDD_4B9453720074" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:idDescription: &quot;Identifier for this ComponentPosition node.&quot;&#xA;:rdfType: ``cdi:ComponentPosition``"/>
 								<UML:TaggedValue tag="isSpecification" value="false"/>
@@ -39,7 +39,7 @@
 								<UML:TaggedValue tag="ea_ntype" value="0"/>
 								<UML:TaggedValue tag="version" value="1.0"/>
 								<UML:TaggedValue tag="package" value="EAPK_BB4411AE_257E_5a44_ABDD_4B9453720074"/>
-								<UML:TaggedValue tag="ea_guid" value="{53E477AA-CF5C-5497-B97E-DB36F82F30B8}"/>
+								<UML:TaggedValue tag="ea_guid" value="{6237B54E-7992-5265-BF1D-95F5E89486EF}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Classifier.feature>
 								<UML:Attribute name="indexes" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
@@ -60,7 +60,7 @@
 										<UML:TaggedValue tag="lowerBound" value="1"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{122B0F39-C0F0-5a49-9C39-E7E8AD6F0453}"/>
+										<UML:TaggedValue tag="ea_guid" value="{51017947-FEFE-5c92-A7C3-4C9163DABB9B}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -82,22 +82,22 @@
 										<UML:TaggedValue tag="lowerBound" value="1"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{17927771-E566-5bc7-90BE-BEAB3218D949}"/>
+										<UML:TaggedValue tag="ea_guid" value="{D8A9FBFF-671C-586a-9DE0-157503FA4F16}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Association xmi.id="EAID_8194CAF3_9620_5344_A5E0_4F18B11D18E1" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_355E6ABA_78A6_5446_961E_6504FD8C7A80" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Ordered list of cdi:ComponentPosition wrappers. Each wrapper carries cdi:indexes (an @id-reference to a cdi:InstanceVariable declared elsewhere in the dataset) and cdi:value (the 1-based integer position in the key).&#xA;:inlineOrByReference: ``inline``&#xA;:itemsDescription: &quot;ComponentPosition wrapper indexing one variable's position in the key.&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
 								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
 								<UML:TaggedValue tag="ea_sourceName" value="Key"/>
-								<UML:TaggedValue tag="ea_targetName" value="ComponentPosition"/>
+								<UML:TaggedValue tag="ea_targetName" value="KeyComponentPosition"/>
 								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
 								<UML:TaggedValue tag="ea_targetType" value="Class"/>
-								<UML:TaggedValue tag="ea_guid" value="{8194CAF3-9620-5344-A5E0-4F18B11D18E1}"/>
+								<UML:TaggedValue tag="ea_guid" value="{355E6ABA-78A6-5446-961E-6504FD8C7A80}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Association.connection>
 								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_4051F7C9_07F2_53da_A11F_8BCD945D7E0D">
@@ -107,7 +107,7 @@
 										<UML:TaggedValue tag="ea_end" value="source"/>
 									</UML:ModelElement.taggedValue>
 								</UML:AssociationEnd>
-								<UML:AssociationEnd visibility="public" name="isComposedOf" multiplicity="1..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_53E477AA_CF5C_5497_B97E_DB36F82F30B8">
+								<UML:AssociationEnd visibility="public" name="isComposedOf" multiplicity="1..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_6237B54E_7992_5265_BF1D_95F5E89486EF">
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Ordered list of cdi:ComponentPosition wrappers. Each wrapper carries cdi:indexes (an @id-reference to a cdi:InstanceVariable declared elsewhere in the dataset) and cdi:value (the 1-based integer position in the key).&#xA;:inlineOrByReference: ``inline``&#xA;:itemsDescription: &quot;ComponentPosition wrapper indexing one variable's position in the key.&quot;"/>
 										<UML:TaggedValue tag="containment" value="Unspecified"/>
@@ -118,6 +118,17 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
+						<UML:Generalization subtype="EAID_6237B54E_7992_5265_BF1D_95F5E89486EF" supertype="EAID_21101511_F140_5be5_88DE_B104FA6D9E69" xmi.id="EAID_DE717151_1D76_5563_B441_760157C6E70D" visibility="public">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="ea_type" value="Generalization"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="KeyComponentPosition"/>
+								<UML:TaggedValue tag="ea_targetName" value="ComponentPosition"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{DE717151-1D76-5563-B441-760157C6E70D}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Generalization>
 					</UML:Namespace.ownedElement>
 				</UML:Package>
 				<UML:Class name="Integer" xmi.id="eaxmiid_Integer" visibility="public" isRoot="true" isLeaf="false" isAbstract="false">
@@ -131,6 +142,7 @@
 		</UML:Model>
 	</XMI.content>
 	<XMI.extensions xmi.extender="Enterprise Architect 2.5">
+		<EAStub xmi.id="EAID_21101511_F140_5be5_88DE_B104FA6D9E69" name="ComponentPosition" UMLType="Class"/>
 		<EAStub xmi.id="EAID_F8271D36_A3C3_56e8_8F10_27DB8F3C41CE" name="ObjectReference" UMLType="DataType"/>
 	</XMI.extensions>
 </XMI>

@@ -1,0 +1,62 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: CDIF Discovery
+description: >-
+  Profile module for discovery metadata. Currently a thin wrapper that composes cdifCore;
+  reserved for discovery-specific extensions that are not part of the cdifCore foundation.
+type: object
+properties:
+  '@context':
+    type: object
+    description: Additional JSON-LD namespace prefixes for discovery properties.
+    properties:
+      geosparql:
+        const: 'http://www.opengis.net/ont/geosparql#'
+      dqv:
+        const: 'http://www.w3.org/ns/dqv#'
+      cdi:
+        const: 'http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/'
+  'schema:measurementTechnique':
+    type: array
+    items:
+      '$ref': >-
+        ../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml
+    description: >-
+      The technique, technology, or methodology used for measurement or determination of the
+      dataset values.
+  'schema:variableMeasured':
+    type: array
+    items:
+      '$ref': >-
+        ../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/variableMeasured/schema.yaml
+    description: What does the dataset measure? (e.g., temperature, pressure)
+  'schema:spatialCoverage':
+    type: array
+    items:
+      '$ref': >-
+        ../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/spatialExtent/schema.yaml
+    description: Geographic extent of resource content.
+  'schema:temporalCoverage':
+    type: array
+    items:
+      '$ref': >-
+        ../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/temporalExtent/schema.yaml
+    description: Temporal extent of resource content.
+  'dqv:hasQualityMeasurement':
+    type: array
+    items:
+      '$ref': >-
+        ../../../../../../../../metadataBuildingBlocks/_sources/qualityProperties/qualityMeasure/schema.yaml
+    description: Quality measurements reported to assess the resource.
+allOf:
+- properties:
+    'schema:subjectOf':
+      properties:
+        'dcterms:conformsTo':
+          contains:
+            type: object
+            required:
+            - '@id'
+            additionalProperties: false
+            properties:
+              '@id':
+                const: 'https://w3id.org/cdif/discovery/1.1'

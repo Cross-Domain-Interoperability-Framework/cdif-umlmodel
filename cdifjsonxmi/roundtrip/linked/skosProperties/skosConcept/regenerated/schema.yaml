@@ -50,11 +50,6 @@ allOf:
           Preferred lexical label for this concept. A single string, a single language-tagged
           value, or an array of language-tagged values. Each language should appear at most
           once.
-      'skos:notation':
-        type: string
-        description: >-
-          Classification code for this concept within a scheme (a single notation string,
-          consistent with CdifCodelistConcept).
       'skos:definition':
         '$ref': '#/$defs/StringOrLanguageTaggedValueOrChoiceList'
         description: Formal explanation of the meaning of this concept.
@@ -93,6 +88,11 @@ allOf:
         description: >-
           Narrower (child) concepts in the hierarchy. Items are inline concept objects or
           @id references.
+      'skos:notation':
+        type: string
+        description: >-
+          Classification code for this concept within a scheme (a single notation string,
+          consistent with CdifCodelistConcept).
     required:
     - '@type'
     - 'skos:prefLabel'

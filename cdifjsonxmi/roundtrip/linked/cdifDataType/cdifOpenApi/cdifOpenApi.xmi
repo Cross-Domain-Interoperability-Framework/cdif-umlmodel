@@ -85,7 +85,7 @@ identifier for the kind of service, expected to identify the service type and ve
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApi.termsOfService" xmi:uuid="43ac7bba-2699-5d14-84f9-a6bd7d69b649">
           <name>termsOfService</name>
-          <type href="../../cdifSharedUnions.xmi#cdif.union.StringXorLabeledLink"/>
+          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.StringXorLabeledLink"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApi.termsOfService.lower" xmi:uuid="63583d47-9dbe-58dd-b7f3-5a97e867f9a2">
             <value>1</value>
           </lowerValue>
@@ -98,14 +98,13 @@ identifier for the kind of service, expected to identify the service type and ve
 Definition
 ==========
 
-Description of access privileges required to use the API (e.g. registration, licensing, payments). Maps OpenAPI info.termsOfService. Note that access constraints applying to all distributions of the resource should be specified at the resource level.
-:alternativeOverrides: {"string": {"default": null}}</body>
+Description of access privileges required to use the API (e.g. registration, licensing, payments). Maps OpenAPI info.termsOfService. Note that access constraints applying to all distributions of the resource should be specified at the resource level.</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApi.termsOfService"/>
           </ownedComment>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApi.documentation" xmi:uuid="7938ed65-0501-570c-8ef1-dc3d844bd67f">
           <name>documentation</name>
-          <type href="../../cdifSharedUnions.xmi#cdif.union.StringXorLabeledLink"/>
+          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.StringXorLabeledLink"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApi.documentation.lower" xmi:uuid="26917d20-9fb0-581e-9bd2-25aab9d59dfc">
             <value>0</value>
           </lowerValue>
@@ -118,14 +117,13 @@ Description of access privileges required to use the API (e.g. registration, lic
 Definition
 ==========
 
-a document that provides a machine-actionable description of this service instance, typically the canonical OpenAPI document. Even when this BB inlines OAS detail, schema:documentation may still link to an authoritative OAS source.
-:alternativeOverrides: {"string": {"default": null}}</body>
+a document that provides a machine-actionable description of this service instance, typically the canonical OpenAPI document. Even when this BB inlines OAS detail, schema:documentation may still link to an authoritative OAS source.</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApi.documentation"/>
           </ownedComment>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApi.spdx_license" xmi:uuid="3614a023-e2e3-5501-820a-3275e0ad7efd">
           <name>spdx_license</name>
-          <type href="../../cdifSharedUnions.xmi#cdif.union.StringXorLabeledLink"/>
+          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.StringXorLabeledLink"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApi.spdx_license.lower" xmi:uuid="29f8be1e-a012-5a02-b09c-c2bee469df25">
             <value>0</value>
           </lowerValue>
@@ -139,7 +137,6 @@ Definition
 ==========
 
 SPDX license identifier expression for the API itself, per OpenAPI License Object. Use schema:license at the resource (parent) level for licensing of the data. If only a URL identifier is available rather than an SPDX id, encode as a labeled link (#/$defs/Reference).
-:alternativeOverrides: {"string": {"default": null}}
 :jsonName: "spdx:license"</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApi.spdx_license"/>
           </ownedComment>
@@ -365,14 +362,14 @@ HTTP method for the operation. Default GET.
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPoint.oas_parameters" xmi:uuid="01a36666-5da9-5acb-83ec-297c7e77365c">
           <name>oas_parameters</name>
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parameters"/>
+          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParameters"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPoint.oas_parameters.lower" xmi:uuid="225fa164-3e32-58ed-adf8-80d4db109154">
             <value>0</value>
           </lowerValue>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPoint.oas_parameters.upper" xmi:uuid="98aeb346-30a9-5e50-8392-d20312826077">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.assoc.OpenApiEntryPoint_oas_parameters_OpenApiEntryPointOas_parameters"/>
+          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.assoc.OpenApiEntryPoint_oas_parameters_OpenApiEntryPointParameters"/>
           <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPoint.oas_parameters.comment" xmi:uuid="8cccad90-e658-5b93-a045-612fc8086812">
             <body>**CDIF**
 
@@ -387,7 +384,7 @@ query, path, header, or cookie parameters accepted by the operation. Maps OpenAP
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPoint.oas_requestBody" xmi:uuid="a9b35e0b-4e7e-5516-8a41-6b37c46b4129">
           <name>oas_requestBody</name>
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBody"/>
+          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBody"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPoint.oas_requestBody.lower" xmi:uuid="0f4e6324-8729-5247-a82b-16aedd6a8c11">
             <value>0</value>
           </lowerValue>
@@ -407,7 +404,7 @@ request body for the operation (typically POST/PUT/PATCH). Maps OpenAPI Request 
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPoint.oas_response" xmi:uuid="e422564a-3102-52ca-ab1c-2188ac5a46c6">
           <name>oas_response</name>
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_response"/>
+          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponse"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPoint.oas_response.lower" xmi:uuid="a1638d16-8f41-56c7-8f53-f64d1195f0c9">
             <value>1</value>
           </lowerValue>
@@ -426,9 +423,9 @@ possible responses returned by the operation. Maps OpenAPI Responses Object; eac
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parameters" xmi:uuid="151ea0db-c8e6-5b07-8b42-b7d4179202e9">
-        <name>OpenApiEntryPointOas_parameters</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parameters.comment" xmi:uuid="226662fe-d0d7-5f02-b27c-18c721b4fc9a">
+      <packagedElement xmi:type="uml:Class" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParameters" xmi:uuid="40b107c1-0602-5d91-8756-5b00494d9383">
+        <name>OpenApiEntryPointParameters</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParameters.comment" xmi:uuid="cf947ebb-330d-53e1-963d-15e5820d720a">
           <body>**CDIF**
 
 Definition
@@ -436,75 +433,75 @@ Definition
 
 an OpenAPI Parameter Object; describes a single parameter of an operation.
 :prefix: ``oas``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parameters"/>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParameters"/>
         </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parameters.name" xmi:uuid="664ba83c-5f2a-5f07-816e-f96aba1bff58">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParameters.name" xmi:uuid="d96e3f9d-5f6f-54c7-afbb-143b9d5ebbb2">
           <name>name</name>
           <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parameters.name.lower" xmi:uuid="9882d2db-8dd3-5012-bfda-06055a6046e0">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParameters.name.lower" xmi:uuid="68fd7cc4-8bbb-5c20-8bf9-38cf07185dd1">
             <value>1</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parameters.name.upper" xmi:uuid="7218393c-0e20-5fa6-8f5c-1dcb9a351228">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParameters.name.upper" xmi:uuid="83317372-d74e-5f93-b0f7-2585644493ab">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parameters.name.comment" xmi:uuid="cb41b352-aaf0-5bc6-9bc7-bc26915752b1">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParameters.name.comment" xmi:uuid="04e1ec6e-830d-5446-b868-de99db1009e9">
             <body>**CDIF**
 
 Definition
 ==========
 
 name of the parameter (case-sensitive). For path parameters, MUST match a {template} expression in schema:urlTemplate.</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parameters.name"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParameters.name"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parameters.in" xmi:uuid="f8c1da93-52c1-576e-af47-79e7ffd7848e">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParameters.in" xmi:uuid="ccb456b5-c084-5cb5-a617-6ab3abcca152">
           <name>in</name>
           <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.In"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parameters.in.lower" xmi:uuid="47779d75-f4f3-5eea-a23a-15c9e3ced02a">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParameters.in.lower" xmi:uuid="3fd8fdba-5e2c-5e27-a83a-5089c4a6c490">
             <value>1</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parameters.in.upper" xmi:uuid="c4e820b4-4694-552e-8db2-f48574a3ed7b">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParameters.in.upper" xmi:uuid="f24f7485-38dc-5ea2-ab64-83f8c9aa6aca">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parameters.in.comment" xmi:uuid="1192a89e-385b-5171-b7f4-804a58517c4a">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParameters.in.comment" xmi:uuid="0d33b0cb-3e04-5b3e-8ae0-613a8299f60a">
             <body>**CDIF**
 
 Definition
 ==========
 
 location of the parameter.</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parameters.in"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParameters.in"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parameters.description" xmi:uuid="7de76880-9886-583e-95ab-4d629fd9e4fb">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParameters.description" xmi:uuid="0723cb98-3051-5f1a-96f0-8990d62a4ea1">
           <name>description</name>
           <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parameters.description.lower" xmi:uuid="8c484fdd-dec2-51c2-b051-5f772556a36b">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParameters.description.lower" xmi:uuid="2bc2ee11-ad99-5aa0-b6dd-3c0db67796ff">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parameters.description.upper" xmi:uuid="eedf4d71-53a7-568a-81bb-eb46ce728c3c">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParameters.description.upper" xmi:uuid="ff45620a-2273-5822-bbc4-741efd49f93c">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parameters.description.comment" xmi:uuid="1a1a81d7-9bfa-51ab-8588-8c72a2626072">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParameters.description.comment" xmi:uuid="52aa0c3a-6600-5b52-bd79-09d23bf85baa">
             <body>**CDIF**
 
 Definition
 ==========
 
 description of the parameter, including serialization or semantic notes.</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parameters.description"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParameters.description"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parameters.required" xmi:uuid="e5e8b555-236e-5896-95a9-0033c9ffc8e0">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParameters.required" xmi:uuid="2f8c7b37-ab0a-50e3-8dea-4886c6017717">
           <name>required</name>
           <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#Boolean"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parameters.required.lower" xmi:uuid="a682c67c-9082-5c3b-b8f3-9fe61ac1b832">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParameters.required.lower" xmi:uuid="87f8c09d-0a1b-5d17-b5a7-cff6c63a5130">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parameters.required.upper" xmi:uuid="292f2485-6807-5595-bf67-8d298a27d1c8">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParameters.required.upper" xmi:uuid="a233c63f-bccf-5752-8fdc-ce1e54758119">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parameters.required.comment" xmi:uuid="1e0e976c-3675-50ad-894d-81ff112bcc38">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParameters.required.comment" xmi:uuid="dc9f60fc-dbc4-53e9-bdb8-d1c2e99fdc2c">
             <body>**CDIF**
 
 Definition
@@ -512,32 +509,32 @@ Definition
 
 whether the parameter is mandatory. MUST be true if oas:in is "path".
 :default: false</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parameters.required"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParameters.required"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parameters.schema" xmi:uuid="a396b096-79da-59f2-af31-3839c2eca87e">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParameters.schema" xmi:uuid="fa83dba1-87ea-5266-89ef-8747d0ce0ac1">
           <name>schema</name>
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parametersSchema"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parameters.schema.lower" xmi:uuid="8d927e6f-d3b6-55cd-9da3-7348d81166f2">
+          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParametersSchema"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParameters.schema.lower" xmi:uuid="17422389-a90d-566d-9bda-47dfa3a12333">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parameters.schema.upper" xmi:uuid="06e9fbc9-7563-5548-9821-c03f7a3526ec">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParameters.schema.upper" xmi:uuid="78f5fd24-5985-5943-952e-8d7dbed41d2a">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parameters.schema.comment" xmi:uuid="ccf95f7b-5c28-54bb-b5c1-269d8bad19f5">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParameters.schema.comment" xmi:uuid="099f85df-fdc2-5ac5-8296-b72d4214bf0f">
             <body>**CDIF**
 
 Definition
 ==========
 
 schema describing the parameter value type, format, and any pattern.</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parameters.schema"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParameters.schema"/>
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parametersSchema" xmi:uuid="b946bd35-7901-5cb9-babf-e36c55fd1147">
-        <name>OpenApiEntryPointOas_parametersSchema</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parametersSchema.comment" xmi:uuid="278049a3-937c-57d0-8968-9b647240be9b">
+      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParametersSchema" xmi:uuid="9dc0b329-c5bf-5e27-b8c5-9a383719a762">
+        <name>OpenApiEntryPointParametersSchema</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParametersSchema.comment" xmi:uuid="c61f4545-0468-51cc-ab46-bf0511fd02c9">
           <body>**CDIF**
 
 Definition
@@ -545,18 +542,18 @@ Definition
 
 a minimal OpenAPI Schema Object. The full OAS Schema Object is a superset of JSON Schema 2020-12; this BB requires only a basic type/format/pattern/enum/$ref shape sufficient to describe parameter and response payload types in CDIF metadata. For richer schemas, use oas:$ref to point at an external schema document.
 :prefix: ``oas``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parametersSchema"/>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParametersSchema"/>
         </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parametersSchema.type" xmi:uuid="71d2f4bb-57c0-5ff8-ad21-bb9ad8c1d5b1">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParametersSchema.type" xmi:uuid="dd28e202-e7a0-597a-8457-d3cafd4eec3a">
           <name>type</name>
           <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.Type"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parametersSchema.type.lower" xmi:uuid="c371856d-c292-5c90-8296-8ac1b70c652f">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParametersSchema.type.lower" xmi:uuid="5dbd2597-19a3-5458-87f7-4eee5836961a">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parametersSchema.type.upper" xmi:uuid="dda600e0-7afb-5407-89f6-61f0e40c0ab4">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParametersSchema.type.upper" xmi:uuid="2c812463-022e-5ccb-9a38-f45fff6e880c">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parametersSchema.type.comment" xmi:uuid="b1c9bdd9-058d-52d8-8510-d2c46621628b">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParametersSchema.type.comment" xmi:uuid="d80cb69b-580c-5437-bbc6-d901c45ec67e">
             <body>**CDIF**
 
 Definition
@@ -564,88 +561,88 @@ Definition
 
 
 :default: "string"</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parametersSchema.type"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParametersSchema.type"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parametersSchema.format" xmi:uuid="d6a5a833-fae8-505f-a3f1-7b028aa92541">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParametersSchema.format" xmi:uuid="2d90c705-cd01-507d-b064-beeb77f716d2">
           <name>format</name>
           <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parametersSchema.format.lower" xmi:uuid="898b903a-a553-5ec4-9bb1-3e6fbe1e5cc6">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParametersSchema.format.lower" xmi:uuid="d48a51cc-cb0e-590c-8c76-b8d1c771fd08">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parametersSchema.format.upper" xmi:uuid="a900f102-2ea9-50ed-9c85-a05415ab09ef">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParametersSchema.format.upper" xmi:uuid="5afda839-2419-5c1b-8212-eb41ba04e8d9">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parametersSchema.format.comment" xmi:uuid="f5f71f8c-6eb2-59d3-a2b8-685c81009a2b">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParametersSchema.format.comment" xmi:uuid="d758e13f-35f7-51a8-a0bf-00963706ad04">
             <body>**CDIF**
 
 Definition
 ==========
 
 optional format hint (e.g. "int32", "date-time", "uri", "decimal").</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parametersSchema.format"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParametersSchema.format"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parametersSchema.pattern" xmi:uuid="6366db8c-9100-506e-b289-fe3f3d152b79">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParametersSchema.pattern" xmi:uuid="81e1386b-bb64-55fb-8182-80cddf175bb2">
           <name>pattern</name>
           <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parametersSchema.pattern.lower" xmi:uuid="8b82c646-4309-52b4-823a-94fbd91e6de3">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParametersSchema.pattern.lower" xmi:uuid="8573c0a2-b1c9-5774-9726-ec46d4a976d3">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parametersSchema.pattern.upper" xmi:uuid="0610106d-6246-5815-8ea6-f9a65828ce91">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParametersSchema.pattern.upper" xmi:uuid="b5b1f1ac-7018-522c-9134-6063675e5887">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parametersSchema.pattern.comment" xmi:uuid="4309cbff-af2a-5213-aff0-72c026b24c22">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParametersSchema.pattern.comment" xmi:uuid="88849621-7639-5ce4-89df-db4c8445e0d9">
             <body>**CDIF**
 
 Definition
 ==========
 
 regular expression the value must match (string types).</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parametersSchema.pattern"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParametersSchema.pattern"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parametersSchema.enum" xmi:uuid="8a8e217d-312b-571b-8b5d-5d6ad9984a26">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParametersSchema.enum" xmi:uuid="08898546-d901-561f-a1fd-cfee55884f88">
           <name>enum</name>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parametersSchema.enum.lower" xmi:uuid="ea734586-c7ec-5873-9835-32cdb5d8ce2c">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParametersSchema.enum.lower" xmi:uuid="71edf99e-17ef-5ea1-af3f-96218a828675">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parametersSchema.enum.upper" xmi:uuid="d5b739ee-fa3e-5c25-92e6-c60ef733a801">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParametersSchema.enum.upper" xmi:uuid="7ff13f76-068c-557c-9d2b-a8f431655f68">
             <value>*</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parametersSchema.enum.comment" xmi:uuid="c1c78f37-77b5-5ae2-9b84-c453fe355fdd">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParametersSchema.enum.comment" xmi:uuid="786969a4-2eec-510a-bf74-a6fc677d10a5">
             <body>**CDIF**
 
 Definition
 ==========
 
 enumeration of permitted values.</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parametersSchema.enum"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParametersSchema.enum"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parametersSchema.$ref" xmi:uuid="a6ca1642-c056-56c5-9732-0ef21183dc65">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParametersSchema.$ref" xmi:uuid="55fb2efa-e378-58eb-bc65-89b3d7deddfc">
           <name>$ref</name>
           <type href="../../cdifCommonTypes.xmi#XMLSchemaDataTypes.XsdAnyUri"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parametersSchema.$ref.lower" xmi:uuid="f76c5826-2cc1-5375-9660-359d5050868c">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParametersSchema.$ref.lower" xmi:uuid="97502eb1-028d-535b-ad56-7578f349921d">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parametersSchema.$ref.upper" xmi:uuid="b6172c49-ca5d-5d92-9e40-054fb4740efd">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParametersSchema.$ref.upper" xmi:uuid="13a4e5be-64bd-5543-94b4-2890fc61a136">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parametersSchema.$ref.comment" xmi:uuid="027d1366-1a1c-55e6-aef7-debd50206a88">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParametersSchema.$ref.comment" xmi:uuid="59533c9f-1bbc-5a85-88cf-7dc3c946f1d3">
             <body>**CDIF**
 
 Definition
 ==========
 
 reference to an external JSON Schema or XML Schema document describing a complex payload structure.</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_parametersSchema.$ref"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointParametersSchema.$ref"/>
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBody" xmi:uuid="5b147394-42d9-5220-a543-b023a0612151">
-        <name>OpenApiEntryPointOas_requestBody</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBody.comment" xmi:uuid="83035088-216d-5721-93db-6ed16b7f4725">
+      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBody" xmi:uuid="ce199f64-c00d-52db-bf5d-cde0c29e7171">
+        <name>OpenApiEntryPointRequestBody</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBody.comment" xmi:uuid="9eea130b-6805-5d2a-b6a8-bd2660247e24">
           <body>**CDIF**
 
 Definition
@@ -653,28 +650,28 @@ Definition
 
 an OpenAPI Request Body Object; describes the body of a write request.
 :prefix: ``schema``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBody"/>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBody"/>
         </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBody.description" xmi:uuid="5953ef9d-a554-5252-ac7d-c9f8d3b307c7">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBody.description" xmi:uuid="07f7560c-152f-58a7-87f2-49a2c2c6e601">
           <name>description</name>
           <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBody.description.lower" xmi:uuid="598fc2cf-ee76-552f-ba21-4613b3f58b1f">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBody.description.lower" xmi:uuid="28cf6501-29b6-564c-8965-c553fe7d60d4">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBody.description.upper" xmi:uuid="c08c3bc9-1d4c-5a46-bb28-060a6684cb1e">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBody.description.upper" xmi:uuid="8b319e6a-3a42-5e62-8bbc-8796cb929348">
             <value>1</value>
           </upperValue>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBody.oas_required" xmi:uuid="315d1b67-63f2-597f-b969-f1bba9284b53">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBody.oas_required" xmi:uuid="41450ed7-0b68-541e-8ea6-7845336d5394">
           <name>oas_required</name>
           <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#Boolean"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBody.oas_required.lower" xmi:uuid="9abbfb4c-3e24-576d-8133-8d30d31abcad">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBody.oas_required.lower" xmi:uuid="c7c40b39-c6b7-586e-9830-b7f7402a1fa0">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBody.oas_required.upper" xmi:uuid="e0fc77d9-a66b-5b84-8a60-81e88657633d">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBody.oas_required.upper" xmi:uuid="f06fb351-26e9-57a3-928a-70c899a44cb5">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBody.oas_required.comment" xmi:uuid="e6cc60d6-0aae-5c73-89ee-e27a05a01565">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBody.oas_required.comment" xmi:uuid="e605e2c3-3fbe-5b19-85fd-1bdc9ce91e1f">
             <body>**CDIF**
 
 Definition
@@ -683,19 +680,19 @@ Definition
 
 :default: false
 :jsonName: "oas:required"</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBody.oas_required"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBody.oas_required"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBody.oas_content" xmi:uuid="3b397b4d-45fc-5fd5-b0e0-310bf306dfa3">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBody.oas_content" xmi:uuid="2ecaffa9-f503-5421-805c-50387d93ec5b">
           <name>oas_content</name>
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_content"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBody.oas_content.lower" xmi:uuid="5c185424-43ad-5736-8e3a-6eaa1a7d988b">
+          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContent"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBody.oas_content.lower" xmi:uuid="349898f0-8227-5444-9aa3-641275d1003d">
             <value>1</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBody.oas_content.upper" xmi:uuid="f46ad1a1-1683-5174-a96b-33186d9028b3">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBody.oas_content.upper" xmi:uuid="0d61d7a9-b038-5775-8ce6-f055a93600ea">
             <value>*</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBody.oas_content.comment" xmi:uuid="8e2d574c-c51f-5933-a24f-f4849c8a7e3a">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBody.oas_content.comment" xmi:uuid="147ffa46-2921-5e4e-874e-709bac7625e5">
             <body>**CDIF**
 
 Definition
@@ -703,13 +700,13 @@ Definition
 
 representations the request body may take. Maps OpenAPI Request Body content map; each item carries its own schema:encodingFormat instead of using media type as a map key.
 :jsonName: "oas:content"</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBody.oas_content"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBody.oas_content"/>
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_content" xmi:uuid="d97ba4c1-637b-53ce-8d04-1124a9d8f744">
-        <name>OpenApiEntryPointOas_requestBodyOas_content</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_content.comment" xmi:uuid="e56dd16e-cb7e-5e7a-826f-d487a67dad90">
+      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContent" xmi:uuid="9ae8e5ec-3ac7-56cb-a5d8-603f4242fe48">
+        <name>OpenApiEntryPointRequestBodyContent</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContent.comment" xmi:uuid="76eddf4a-5c94-5b20-9ebd-f747fd34410d">
           <body>**CDIF**
 
 Definition
@@ -717,37 +714,37 @@ Definition
 
 an OpenAPI Media Type Object; describes the structure of one media-type representation in a request body or response.
 :prefix: ``schema``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_content"/>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContent"/>
         </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_content.encodingFormat" xmi:uuid="e43da13a-e306-5630-b13d-c55019a0c2d3">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContent.encodingFormat" xmi:uuid="ddab3993-4ef6-58ed-9966-181924fd6889">
           <name>encodingFormat</name>
           <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_content.encodingFormat.lower" xmi:uuid="2f2938a4-471b-557b-befa-57a2ca56028c">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContent.encodingFormat.lower" xmi:uuid="ccf0c335-d3ae-5c15-b710-a284cda84252">
             <value>1</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_content.encodingFormat.upper" xmi:uuid="904f9108-ba03-571f-92e4-7e0a94059f50">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContent.encodingFormat.upper" xmi:uuid="16e619ac-13c9-5603-a053-e92ecc5bab24">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_content.encodingFormat.comment" xmi:uuid="cf87b541-7cb0-5390-9e00-8dd95a09d9c2">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContent.encodingFormat.comment" xmi:uuid="9e70d9f6-3607-5902-b855-23bac2b996eb">
             <body>**CDIF**
 
 Definition
 ==========
 
 registered MIME type for this representation (e.g. application/json, text/csv). Replaces OpenAPI's media-type map key.</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_content.encodingFormat"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContent.encodingFormat"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_content.oas_schema" xmi:uuid="a8cb3e7e-689d-5af6-9736-724bdd1f5fc9">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContent.oas_schema" xmi:uuid="2f46bd8c-2330-54dd-b985-dae6621a41a2">
           <name>oas_schema</name>
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_contentOas_schema"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_content.oas_schema.lower" xmi:uuid="dad03af9-7cc8-556c-be8e-08232e1c5221">
+          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContentSchema"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContent.oas_schema.lower" xmi:uuid="9971f242-b010-5215-be98-eb1703576840">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_content.oas_schema.upper" xmi:uuid="cbaecfb5-17b8-52dc-b93c-289d593f6f53">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContent.oas_schema.upper" xmi:uuid="74024180-d9bb-5570-9b7b-aa98f4ce0f02">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_content.oas_schema.comment" xmi:uuid="e08e4ea6-fcde-53e2-a934-55cadd0d3564">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContent.oas_schema.comment" xmi:uuid="614dda1d-0a17-54dc-a5fb-9081fc0dbc4b">
             <body>**CDIF**
 
 Definition
@@ -755,13 +752,13 @@ Definition
 
 schema describing the structure of the payload. May reference an external JSON Schema or XML Schema document via oas:$ref. For tabular outputs, the referenced schema may align with InstanceVariable definitions in cdifInstanceVariable.
 :jsonName: "oas:schema"</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_content.oas_schema"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContent.oas_schema"/>
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_contentOas_schema" xmi:uuid="800094da-3237-5e93-8255-936995d3ec22">
-        <name>OpenApiEntryPointOas_requestBodyOas_contentOas_schema</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_contentOas_schema.comment" xmi:uuid="1552c54e-5f28-5f77-a958-8b0afa7f2525">
+      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContentSchema" xmi:uuid="b5380f5c-85fd-5a0a-a61c-0f52041de64e">
+        <name>OpenApiEntryPointRequestBodyContentSchema</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContentSchema.comment" xmi:uuid="88521cd9-ef85-5f5a-8fca-703cba1f9ed8">
           <body>**CDIF**
 
 Definition
@@ -769,18 +766,18 @@ Definition
 
 a minimal OpenAPI Schema Object. The full OAS Schema Object is a superset of JSON Schema 2020-12; this BB requires only a basic type/format/pattern/enum/$ref shape sufficient to describe parameter and response payload types in CDIF metadata. For richer schemas, use oas:$ref to point at an external schema document.
 :prefix: ``oas``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_contentOas_schema"/>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContentSchema"/>
         </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_contentOas_schema.type" xmi:uuid="12873aa7-7c4b-5987-a862-0a6c00c88ffe">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContentSchema.type" xmi:uuid="8e16a3a3-589e-5c4b-b891-0eedb8b083fa">
           <name>type</name>
           <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.Type"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_contentOas_schema.type.lower" xmi:uuid="a6e1f79d-2247-5e18-8a6c-8bf9a28bb3df">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContentSchema.type.lower" xmi:uuid="8de2769d-c329-5ec8-9b87-d8eb8b772900">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_contentOas_schema.type.upper" xmi:uuid="d71354b4-f3bf-57ba-84a0-19a24214e717">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContentSchema.type.upper" xmi:uuid="f08fd5b8-b778-5f9a-a558-6bd1a3f63a4c">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_contentOas_schema.type.comment" xmi:uuid="021bc76d-3128-575b-99c0-437e2eccbc48">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContentSchema.type.comment" xmi:uuid="4dfa410d-a92d-59f5-b9f9-3e3f0d4003b5">
             <body>**CDIF**
 
 Definition
@@ -788,88 +785,88 @@ Definition
 
 
 :default: "string"</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_contentOas_schema.type"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContentSchema.type"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_contentOas_schema.format" xmi:uuid="b71e9ef3-f725-5e42-a71a-27008705f650">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContentSchema.format" xmi:uuid="60977da2-28c0-56e9-9bfb-0322751afe92">
           <name>format</name>
           <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_contentOas_schema.format.lower" xmi:uuid="15b37213-efec-5756-b2d3-4ef2c76c9e94">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContentSchema.format.lower" xmi:uuid="5b15f5e6-3167-56ef-9e69-df6e6744fac0">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_contentOas_schema.format.upper" xmi:uuid="4feb5048-5af6-51fb-b120-3da43e0e1f0c">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContentSchema.format.upper" xmi:uuid="900f801e-93e7-5278-bd40-bfbc103d53a7">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_contentOas_schema.format.comment" xmi:uuid="89fddded-f90b-57c1-a54f-51faa11ae09c">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContentSchema.format.comment" xmi:uuid="6f81e770-31fa-52fa-bb3c-23dbe3b2fae8">
             <body>**CDIF**
 
 Definition
 ==========
 
 optional format hint (e.g. "int32", "date-time", "uri", "decimal").</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_contentOas_schema.format"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContentSchema.format"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_contentOas_schema.pattern" xmi:uuid="4b376319-4b2c-5816-8fdf-6f13744f09f7">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContentSchema.pattern" xmi:uuid="ea81a589-82c9-55a9-a4b5-153c66330f18">
           <name>pattern</name>
           <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_contentOas_schema.pattern.lower" xmi:uuid="2c2bef2c-f6cf-5fff-a439-56e591589cc3">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContentSchema.pattern.lower" xmi:uuid="9ec871dd-6a28-5d36-ac88-45a7e916a5e1">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_contentOas_schema.pattern.upper" xmi:uuid="2eb16297-05e6-52e6-a071-da81df1bb823">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContentSchema.pattern.upper" xmi:uuid="b4d4647d-994d-5487-a478-33532ca03312">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_contentOas_schema.pattern.comment" xmi:uuid="d4d29623-5b65-558f-a318-adcc86fe32f5">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContentSchema.pattern.comment" xmi:uuid="24fbb21c-90d1-5e82-97d6-b62ed1ddd4d2">
             <body>**CDIF**
 
 Definition
 ==========
 
 regular expression the value must match (string types).</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_contentOas_schema.pattern"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContentSchema.pattern"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_contentOas_schema.enum" xmi:uuid="6fc26e1d-67e5-584c-a0d5-c0cfb88c264d">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContentSchema.enum" xmi:uuid="b693c1f2-8fbc-562d-bc05-cf1b0b743e7f">
           <name>enum</name>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_contentOas_schema.enum.lower" xmi:uuid="a407392c-6e8b-564c-9c24-688ecb4bb6b7">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContentSchema.enum.lower" xmi:uuid="146a74ae-2085-5e31-abf1-6fd4fcfabdac">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_contentOas_schema.enum.upper" xmi:uuid="f12ac004-5d89-50e6-ab59-c2162d5fefdd">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContentSchema.enum.upper" xmi:uuid="e42cbe6e-aaeb-558c-88d2-cf9224297254">
             <value>*</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_contentOas_schema.enum.comment" xmi:uuid="605548b0-3f3b-51b4-be30-e8a308407cbe">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContentSchema.enum.comment" xmi:uuid="34fcb848-d9c4-592f-a573-ade4a0ac938a">
             <body>**CDIF**
 
 Definition
 ==========
 
 enumeration of permitted values.</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_contentOas_schema.enum"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContentSchema.enum"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_contentOas_schema.$ref" xmi:uuid="f04c9d44-404f-5dc6-b6bf-d413046da9ce">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContentSchema.$ref" xmi:uuid="8fadb342-8090-55a2-821c-7e405033ee2a">
           <name>$ref</name>
           <type href="../../cdifCommonTypes.xmi#XMLSchemaDataTypes.XsdAnyUri"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_contentOas_schema.$ref.lower" xmi:uuid="837ebc14-96c0-55c8-97f7-465fad3e478b">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContentSchema.$ref.lower" xmi:uuid="9af89b5d-bc68-533e-ad92-86fdffbb49c3">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_contentOas_schema.$ref.upper" xmi:uuid="b1baa016-10b1-5282-ad13-ac3546ce990e">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContentSchema.$ref.upper" xmi:uuid="e471eb81-fc02-5268-9592-df63cfd52b6a">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_contentOas_schema.$ref.comment" xmi:uuid="a4669172-74f3-5efc-9b03-7ed3d7e83e7d">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContentSchema.$ref.comment" xmi:uuid="d7e9ee5a-f8a5-5430-b17d-c2198364a513">
             <body>**CDIF**
 
 Definition
 ==========
 
 reference to an external JSON Schema or XML Schema document describing a complex payload structure.</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_requestBodyOas_contentOas_schema.$ref"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointRequestBodyContentSchema.$ref"/>
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_response" xmi:uuid="4323c476-40af-58d1-a414-76ae6a38c420">
-        <name>OpenApiEntryPointOas_response</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_response.comment" xmi:uuid="6b85bde4-a688-52e5-866e-610a673bd2ba">
+      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponse" xmi:uuid="95f87950-f9b8-5a77-91b8-d16d6377598d">
+        <name>OpenApiEntryPointResponse</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponse.comment" xmi:uuid="7d06668e-d68a-5933-943d-31fa4ec653ed">
           <body>**CDIF**
 
 Definition
@@ -877,18 +874,18 @@ Definition
 
 an OpenAPI Response Object describing one response from an operation.
 :prefix: ``oas``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_response"/>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponse"/>
         </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_response.code" xmi:uuid="225a2b42-b2b3-5ddd-850b-b2d6891ea8ac">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponse.code" xmi:uuid="48ab39d2-55b3-5f47-b09f-4c169f5e966d">
           <name>code</name>
           <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_response.code.lower" xmi:uuid="52931b1e-3008-5960-972b-ff48ddc198c3">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponse.code.lower" xmi:uuid="5ab74e4a-400d-53c8-b1c0-86bf4f0d0b21">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_response.code.upper" xmi:uuid="41315258-34a9-5e07-a20b-03de662e0ab6">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponse.code.upper" xmi:uuid="25fba78e-13df-576a-a893-0da6c588cd14">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_response.code.comment" xmi:uuid="3d510d22-8255-556d-a661-7789fbd9812f">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponse.code.comment" xmi:uuid="561c86d1-74ed-5102-a39f-915686028630">
             <body>**CDIF**
 
 Definition
@@ -896,19 +893,19 @@ Definition
 
 HTTP status code (e.g. "200", "404", "303") this response describes. Default "200".
 :default: "200"</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_response.code"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponse.code"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_response.schema_description" xmi:uuid="dbeb844c-31e6-53ec-a448-0ddb6411ab4a">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponse.schema_description" xmi:uuid="4654a06a-1631-5435-bba1-28d0d79bd1e5">
           <name>schema_description</name>
           <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_response.schema_description.lower" xmi:uuid="85bafb66-3565-51ec-a001-536ff923ef52">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponse.schema_description.lower" xmi:uuid="0414af9a-ad97-5079-bb8a-63e45c59c5ce">
             <value>1</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_response.schema_description.upper" xmi:uuid="0fd3d4a5-4fed-5a74-9ed4-557f5776cfcd">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponse.schema_description.upper" xmi:uuid="93ed7586-7061-54d5-a0aa-1642b989266b">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_response.schema_description.comment" xmi:uuid="4bab40c5-b7fe-550f-91be-658c5fd3042c">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponse.schema_description.comment" xmi:uuid="7a4077dc-9622-59bb-911f-f212d19a45e0">
             <body>**CDIF**
 
 Definition
@@ -916,32 +913,32 @@ Definition
 
 description of the response.
 :jsonName: "schema:description"</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_response.schema_description"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponse.schema_description"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_response.content" xmi:uuid="6851b088-1c5c-5286-89a8-a24c4151dc0f">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponse.content" xmi:uuid="6dea4beb-fe79-5a6b-ab54-28885a12e956">
           <name>content</name>
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContent"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_response.content.lower" xmi:uuid="8c1876f8-6694-56be-9835-cd635470a67f">
+          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContent"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponse.content.lower" xmi:uuid="cf3b7a8b-4e21-564a-bca9-918cb4f73fde">
             <value>1</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_response.content.upper" xmi:uuid="3756ed96-9829-5874-9e62-452a810e51a7">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponse.content.upper" xmi:uuid="9569f3fe-6a00-5bd8-a929-7d017b704d8a">
             <value>*</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_response.content.comment" xmi:uuid="e91ca37f-38c2-557d-9c3c-bc37664c5eed">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponse.content.comment" xmi:uuid="d3ec9170-cce5-547e-bc04-b90fb34777d7">
             <body>**CDIF**
 
 Definition
 ==========
 
 representations the response payload may take. Maps OpenAPI Response content map; each item carries its own schema:encodingFormat instead of using media type as a map key.</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_response.content"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponse.content"/>
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContent" xmi:uuid="4ac829af-f1eb-5983-8555-c4dfe15d319b">
-        <name>OpenApiEntryPointOas_responseContent</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContent.comment" xmi:uuid="2d9804c7-fc55-53e3-acc1-c0174d7873b0">
+      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContent" xmi:uuid="50a16558-2e5e-5728-89b5-f667364c6bb3">
+        <name>OpenApiEntryPointResponseContent</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContent.comment" xmi:uuid="55814b3a-5225-5bb7-a719-ffd5dfab9a28">
           <body>**CDIF**
 
 Definition
@@ -949,37 +946,37 @@ Definition
 
 an OpenAPI Media Type Object; describes the structure of one media-type representation in a request body or response.
 :prefix: ``schema``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContent"/>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContent"/>
         </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContent.encodingFormat" xmi:uuid="a29fda04-5af9-59cb-a60b-521ab338245f">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContent.encodingFormat" xmi:uuid="c1f4305c-0ec0-5f22-bc27-15bd66fcf24d">
           <name>encodingFormat</name>
           <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContent.encodingFormat.lower" xmi:uuid="5d6f8cd5-3efc-57a8-a3c0-bae109e05a18">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContent.encodingFormat.lower" xmi:uuid="630b766a-830a-5a26-884e-c1299ae89d6f">
             <value>1</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContent.encodingFormat.upper" xmi:uuid="73dde14d-039e-5341-802d-afa254f32491">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContent.encodingFormat.upper" xmi:uuid="7e929337-4059-5f51-8bc2-563afe1eaed2">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContent.encodingFormat.comment" xmi:uuid="2e7f14f1-b17e-518e-bc37-c7b18533f498">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContent.encodingFormat.comment" xmi:uuid="a9fc0468-5203-5330-a723-004953e2ba63">
             <body>**CDIF**
 
 Definition
 ==========
 
 registered MIME type for this representation (e.g. application/json, text/csv). Replaces OpenAPI's media-type map key.</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContent.encodingFormat"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContent.encodingFormat"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContent.oas_schema" xmi:uuid="621e9bd5-fe23-5d17-9841-b644ed3c5ef6">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContent.oas_schema" xmi:uuid="3665ec1f-725b-5270-9392-28eb1451a757">
           <name>oas_schema</name>
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContentOas_schema"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContent.oas_schema.lower" xmi:uuid="720659ca-e684-5690-ac3a-f341d1daea17">
+          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContentSchema"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContent.oas_schema.lower" xmi:uuid="51bef821-dc0c-5a19-b92f-b1078ae622a3">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContent.oas_schema.upper" xmi:uuid="d94ac325-52ca-5823-b0bb-7770065e2c0f">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContent.oas_schema.upper" xmi:uuid="2160ff29-8636-5f5b-acc3-13599cc69280">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContent.oas_schema.comment" xmi:uuid="de467073-0f33-53c5-8031-5ff6af41ebb8">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContent.oas_schema.comment" xmi:uuid="9285107a-b830-580d-bb77-96002b746d3e">
             <body>**CDIF**
 
 Definition
@@ -987,13 +984,13 @@ Definition
 
 schema describing the structure of the payload. May reference an external JSON Schema or XML Schema document via oas:$ref. For tabular outputs, the referenced schema may align with InstanceVariable definitions in cdifInstanceVariable.
 :jsonName: "oas:schema"</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContent.oas_schema"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContent.oas_schema"/>
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContentOas_schema" xmi:uuid="360e25ad-e723-5850-9ea0-4f758c76c79e">
-        <name>OpenApiEntryPointOas_responseContentOas_schema</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContentOas_schema.comment" xmi:uuid="000cc89d-b910-5ca2-9d9a-b1e47ab6770e">
+      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContentSchema" xmi:uuid="f9b055fc-7f92-5851-9b14-e3ba0acf47e9">
+        <name>OpenApiEntryPointResponseContentSchema</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContentSchema.comment" xmi:uuid="e8016da1-8058-5fb2-b621-cb3ff434a438">
           <body>**CDIF**
 
 Definition
@@ -1001,18 +998,18 @@ Definition
 
 a minimal OpenAPI Schema Object. The full OAS Schema Object is a superset of JSON Schema 2020-12; this BB requires only a basic type/format/pattern/enum/$ref shape sufficient to describe parameter and response payload types in CDIF metadata. For richer schemas, use oas:$ref to point at an external schema document.
 :prefix: ``oas``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContentOas_schema"/>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContentSchema"/>
         </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContentOas_schema.type" xmi:uuid="000da91b-c221-5180-9eaf-23819e565ea0">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContentSchema.type" xmi:uuid="7d8f048f-c0a6-5300-8b1a-c64966a39792">
           <name>type</name>
           <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.Type"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContentOas_schema.type.lower" xmi:uuid="37837c00-448a-5d65-83df-28537618e9ba">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContentSchema.type.lower" xmi:uuid="7b12a27f-5775-5714-8840-f6a1ab419d0e">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContentOas_schema.type.upper" xmi:uuid="06285915-3ef7-56b7-976d-381a2bc05d1f">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContentSchema.type.upper" xmi:uuid="f3122a16-b058-58a4-9896-1a8b9be4061b">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContentOas_schema.type.comment" xmi:uuid="ddd5bec0-598f-53ab-8681-0d333e942eb7">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContentSchema.type.comment" xmi:uuid="410a092b-f6ef-567b-a17a-6fd6b35f761a">
             <body>**CDIF**
 
 Definition
@@ -1020,83 +1017,116 @@ Definition
 
 
 :default: "string"</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContentOas_schema.type"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContentSchema.type"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContentOas_schema.format" xmi:uuid="a74a9891-f5d2-5e79-940f-5db0c163588f">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContentSchema.format" xmi:uuid="5c42e2ab-2d13-5619-967e-cfc81b1f6071">
           <name>format</name>
           <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContentOas_schema.format.lower" xmi:uuid="093865ea-26cb-5d50-8ab0-78a1accc9630">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContentSchema.format.lower" xmi:uuid="8ab27050-1637-5c46-89a0-3d520a1d415a">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContentOas_schema.format.upper" xmi:uuid="f7a553d2-c731-581c-9f9c-a8e85f35b4ce">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContentSchema.format.upper" xmi:uuid="487a5e74-a936-5288-a55b-9846deb92489">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContentOas_schema.format.comment" xmi:uuid="5bc7eb5b-f2c5-5aa8-bb44-7c6cc9735962">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContentSchema.format.comment" xmi:uuid="be76407e-ba38-51cd-9281-01d6e8bb7758">
             <body>**CDIF**
 
 Definition
 ==========
 
 optional format hint (e.g. "int32", "date-time", "uri", "decimal").</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContentOas_schema.format"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContentSchema.format"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContentOas_schema.pattern" xmi:uuid="0108fae7-d6eb-5e90-b130-ba98278b15ff">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContentSchema.pattern" xmi:uuid="5b133305-8269-5023-8b15-65c480f5b4a2">
           <name>pattern</name>
           <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContentOas_schema.pattern.lower" xmi:uuid="4771822d-4cee-5072-a6b4-01e6be070e5b">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContentSchema.pattern.lower" xmi:uuid="35e49251-021b-56ea-ab95-4e663c30705b">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContentOas_schema.pattern.upper" xmi:uuid="ac516af5-a1a0-5434-86fa-335fabfd96d8">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContentSchema.pattern.upper" xmi:uuid="617cdbf6-3981-5b24-b6d7-80aa831f95f6">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContentOas_schema.pattern.comment" xmi:uuid="cfa4f42e-6908-5d34-82c3-2673cdd20884">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContentSchema.pattern.comment" xmi:uuid="c6a7f7d6-e8c4-58fb-8812-8dd530c5cd3e">
             <body>**CDIF**
 
 Definition
 ==========
 
 regular expression the value must match (string types).</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContentOas_schema.pattern"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContentSchema.pattern"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContentOas_schema.enum" xmi:uuid="b4d71a20-3261-543a-96fc-e28dbe26702f">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContentSchema.enum" xmi:uuid="80d7bce4-d9a6-5036-9de9-d02348f46e0e">
           <name>enum</name>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContentOas_schema.enum.lower" xmi:uuid="d3f599dc-d85e-5011-b5f5-82c982e224f3">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContentSchema.enum.lower" xmi:uuid="01f268dc-978d-589a-b333-ce124ba227eb">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContentOas_schema.enum.upper" xmi:uuid="2a6c145a-b45a-5a98-938b-719c92875792">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContentSchema.enum.upper" xmi:uuid="4438d4b1-0788-548d-9341-a517211cf1d9">
             <value>*</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContentOas_schema.enum.comment" xmi:uuid="beacaaab-05df-5cf9-b596-dcebce027c01">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContentSchema.enum.comment" xmi:uuid="b3f976c3-7b08-56d9-b9f7-685c00d2aa8e">
             <body>**CDIF**
 
 Definition
 ==========
 
 enumeration of permitted values.</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContentOas_schema.enum"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContentSchema.enum"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContentOas_schema.$ref" xmi:uuid="68ff1e70-01fd-5dd5-9711-17c5e477baad">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContentSchema.$ref" xmi:uuid="bb4cb686-55f5-5688-9fcd-a9eca4581b9d">
           <name>$ref</name>
           <type href="../../cdifCommonTypes.xmi#XMLSchemaDataTypes.XsdAnyUri"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContentOas_schema.$ref.lower" xmi:uuid="394184b4-7320-57a2-ae7f-0dbac6481660">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContentSchema.$ref.lower" xmi:uuid="ae80df40-5670-5ae7-994e-1f6dffb63be4">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContentOas_schema.$ref.upper" xmi:uuid="321a15dd-0af6-5626-94d6-8630ea1c6818">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContentSchema.$ref.upper" xmi:uuid="a6e95eaa-6b59-50cc-9e39-ee27ead550f0">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContentOas_schema.$ref.comment" xmi:uuid="29828358-9edb-5f37-8055-3030aac2dcf3">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContentSchema.$ref.comment" xmi:uuid="3afc0163-18d2-5905-8bd6-9490b2236543">
             <body>**CDIF**
 
 Definition
 ==========
 
 reference to an external JSON Schema or XML Schema document describing a complex payload structure.</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointOas_responseContentOas_schema.$ref"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContentSchema.$ref"/>
           </ownedComment>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.StringXorLabeledLink" xmi:uuid="3a7bd74e-e8a5-5481-bcf7-812ae7e0b656">
+        <name>StringXorLabeledLink</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.StringXorLabeledLink.comment" xmi:uuid="ac30d50e-baeb-5e49-8840-d3bba5cf643b">
+          <body>**CDIF**
+
+Definition
+==========
+
+
+:union: ``oneOf``</body>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.StringXorLabeledLink"/>
+        </ownedComment>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.StringXorLabeledLink.string" xmi:uuid="ac152416-f94f-53c1-a4e1-e378f05ec631">
+          <name>string</name>
+          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.StringXorLabeledLink.string.lower" xmi:uuid="ad400021-3a3f-5c02-94ce-b4d5b229d96d">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.StringXorLabeledLink.string.upper" xmi:uuid="33433530-a553-5649-b2ef-d89f5ec30751">
+            <value>1</value>
+          </upperValue>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.StringXorLabeledLink.labeledLink" xmi:uuid="a43ff33a-cd0e-595c-b480-0d4aa327d273">
+          <name>labeledLink</name>
+          <type href="../../schemaorgProperties/labeledLink/labeledLink.xmi#cdif.bbr.metadata.schemaorgProperties.labeledLink.LabeledLink"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.StringXorLabeledLink.labeledLink.lower" xmi:uuid="80312332-1fe8-58c0-aaf5-e88171513423">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.StringXorLabeledLink.labeledLink.upper" xmi:uuid="5a8d161e-0c6d-553f-a887-be14bd12a250">
+            <value>1</value>
+          </upperValue>
         </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Enumeration" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.Type" xmi:uuid="df08c58b-9d8a-5f56-b7a9-6b568db4240a">
@@ -1159,19 +1189,19 @@ Definition
         <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.assoc.Action_target_OpenApiEntryPoint.ownedEnd"/>
         <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.Action.target"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.assoc.OpenApiEntryPoint_oas_parameters_OpenApiEntryPointOas_parameters" xmi:uuid="e316a681-5e49-528b-bbd2-d2321aeb3f4e">
-        <name>OpenApiEntryPoint_oas_parameters_OpenApiEntryPointOas_parameters</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.assoc.OpenApiEntryPoint_oas_parameters_OpenApiEntryPointOas_parameters.ownedEnd" xmi:uuid="e7a96e09-ae0c-510c-af42-b656f0b75dc0">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.assoc.OpenApiEntryPoint_oas_parameters_OpenApiEntryPointParameters" xmi:uuid="eeae17b3-a386-59ba-bbfb-157596b64fa1">
+        <name>OpenApiEntryPoint_oas_parameters_OpenApiEntryPointParameters</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.assoc.OpenApiEntryPoint_oas_parameters_OpenApiEntryPointParameters.ownedEnd" xmi:uuid="2fcbeb24-fcfb-5699-bd0c-0fbc02a6173b">
           <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPoint"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.assoc.OpenApiEntryPoint_oas_parameters_OpenApiEntryPointOas_parameters.ownedEnd.lower" xmi:uuid="326b121f-2ade-59ff-aa8e-0ca3087e1c09">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.assoc.OpenApiEntryPoint_oas_parameters_OpenApiEntryPointParameters.ownedEnd.lower" xmi:uuid="d3a4492b-513f-5954-8493-99783c1d4922">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.assoc.OpenApiEntryPoint_oas_parameters_OpenApiEntryPointOas_parameters.ownedEnd.upper" xmi:uuid="4cb5183a-9f6b-57c4-a9d0-296a4c1bd30c">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.assoc.OpenApiEntryPoint_oas_parameters_OpenApiEntryPointParameters.ownedEnd.upper" xmi:uuid="33b50b96-98db-518f-b371-f15386fab5b5">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.assoc.OpenApiEntryPoint_oas_parameters_OpenApiEntryPointOas_parameters"/>
+          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.assoc.OpenApiEntryPoint_oas_parameters_OpenApiEntryPointParameters"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.assoc.OpenApiEntryPoint_oas_parameters_OpenApiEntryPointOas_parameters.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.assoc.OpenApiEntryPoint_oas_parameters_OpenApiEntryPointParameters.ownedEnd"/>
         <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPoint.oas_parameters"/>
       </packagedElement>
     </packagedElement>

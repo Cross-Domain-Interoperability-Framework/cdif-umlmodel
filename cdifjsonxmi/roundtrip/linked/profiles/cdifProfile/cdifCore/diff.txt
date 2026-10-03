@@ -1,0 +1,75 @@
+cdifCore: 40 exact difference(s)
+$.$defs.CdifCatalogRecord: only in original: {"$ref": "../../../cdifDataType/cdifCatalogRecord/schema.yaml"}
+$.$defs.Contributor: only in original: {"$ref": "../../../schemaorgProperties/agentInRole/schema.yaml"}
+$.$defs.CoreCreator: only in regenerated: {"type": "object", "properties": {"@list": {"type": "array", "items": {"anyOf": [{"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "descri
+$.$defs.DataDownload: only in original: {"$ref": "../../../schemaorgProperties/dataDownload/schema.yaml"}
+$.$defs.DataDownloadOrWebAPI: only in regenerated: {"anyOf": [{"$ref": "../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/dataDownload/schema.yaml"}, {"$ref": "../../../../../../../../metadataBuildingBlocks/_sources/schemaorg
+$.$defs.DerivedFrom: only in original: {"$ref": "../../../provProperties/derivedFrom/schema.yaml"}
+$.$defs.GeneratedBy: only in original: {"$ref": "../../../provProperties/generatedBy/schema.yaml"}
+$.$defs.Identifier: only in original: {"$ref": "../../../schemaorgProperties/identifier/schema.yaml"}
+$.$defs.LinkRole: only in original: {"$ref": "../../../schemaorgProperties/linkRole/schema.yaml"}
+$.$defs.MonetaryGrant: only in original: {"$ref": "../../../schemaorgProperties/monetaryGrant/schema.yaml"}
+$.$defs.Organization: only in original: {"$ref": "../../../schemaorgProperties/organization/schema.yaml"}
+$.$defs.Person: only in original: {"$ref": "../../../schemaorgProperties/person/schema.yaml"}
+$.$defs.PersonOrOrganization: only in regenerated: {"anyOf": [{"$ref": "../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/person/schema.yaml"}, {"$ref": "../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProper
+$.$defs.PersonOrOrganizationOrAgentInRole: only in regenerated: {"anyOf": [{"$ref": "../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/person/schema.yaml"}, {"$ref": "../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProper
+$.$defs.Reference: only in original: {"$ref": "../../../schemaorgProperties/labeledLink/schema.yaml"}
+$.$defs.WebAPI: only in original: {"$ref": "../../../schemaorgProperties/webAPI/schema.yaml"}
+$.$defs.cdifConceptOrTerm: only in original: {"$ref": "../../../cdifDataType/cdifConceptOrTerm/schema.yaml"}
+$.$defs.cdifConceptOrTermOrString: only in original: {"$ref": "../../../cdifDataType/cdifConceptOrTermOrString/schema.yaml"}
+$.allOf:
+    original:    [{"properties": {"schema:subjectOf": {"properties": {"dcterms:conformsTo": {"contains": {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"const": "https://w3id.org/cdif/core/1.1"}}}}}}}}, {"required": ["@id", "@type", "@context", "schema:name", "schema:id
+    regenerated: [{"anyOf": [{"required": ["schema:license"]}, {"required": ["schema:conditionsOfAccess"]}]}, {"anyOf": [{"required": ["schema:url"]}, {"required": ["schema:distribution"]}]}, {"properties": {"schema:subjectOf": {"properties": {"dcterms:conformsTo": {"contains": {"type": "object", "required": ["@id"]
+$.properties.prov:wasDerivedFrom.items.$ref:
+    original:    "#/$defs/DerivedFrom"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/provProperties/derivedFrom/schema.yaml"
+$.properties.prov:wasGeneratedBy.items.$ref:
+    original:    "#/$defs/GeneratedBy"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/provProperties/generatedBy/schema.yaml"
+$.properties.schema:additionalType.items.$ref:
+    original:    "#/$defs/cdifConceptOrTermOrString"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml"
+$.properties.schema:conditionsOfAccess.items.anyOf[2].$ref:
+    original:    "#/$defs/Reference"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml"
+$.properties.schema:contributor.items.anyOf:
+    original:    [{"type": "object", "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "a identifier for an agent defined in this metadata, or externally; must be dereferenceable"}}, "required": ["@id"]}, {"$ref": "#/$defs/Person"}, {"$ref": "#/$defs/Organization"}, {"$ref": "#/$
+    regenerated: [{"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "a identifier for an agent defined in this metadata, or externally; must be dereferenceable"}}}, {"$ref": "#/$defs/PersonOrOrganizationOrAgentInRole"}]
+$.properties.schema:creator.$ref: only in regenerated: "#/$defs/CoreCreator"
+$.properties.schema:creator.properties: only in original: {"@list": {"type": "array", "items": {"anyOf": [{"type": "object", "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "a identifier for an agent defined in this met
+$.properties.schema:creator.type: only in original: "object"
+$.properties.schema:distribution.items.$ref: only in regenerated: "#/$defs/DataDownloadOrWebAPI"
+$.properties.schema:distribution.items.anyOf: only in original: [{"$ref": "#/$defs/DataDownload"}, {"$ref": "#/$defs/WebAPI"}]
+$.properties.schema:funding.items.$ref:
+    original:    "#/$defs/MonetaryGrant"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/monetaryGrant/schema.yaml"
+$.properties.schema:identifier.anyOf[0].$ref:
+    original:    "#/$defs/Identifier"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml"
+$.properties.schema:keywords.items.$ref:
+    original:    "#/$defs/cdifConceptOrTermOrString"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml"
+$.properties.schema:license.items.anyOf[2].$ref:
+    original:    "#/$defs/Reference"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml"
+$.properties.schema:provider.items.anyOf:
+    original:    [{"type": "object", "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "a identifier for an agent defined in this metadata, or externally; must be dereferenceable"}}, "required": ["@id"]}, {"$ref": "#/$defs/Person"}, {"$ref": "#/$defs/Organization"}]
+    regenerated: [{"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "a identifier for an agent defined in this metadata, or externally; must be dereferenceable"}}}, {"$ref": "#/$defs/PersonOrOrganization"}]
+$.properties.schema:publisher.anyOf:
+    original:    [{"type": "object", "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "a identifier for an agent defined in this metadata, or externally; must be dereferenceable"}}, "required": ["@id"]}, {"$ref": "#/$defs/Person"}, {"$ref": "#/$defs/Organization"}]
+    regenerated: [{"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "a identifier for an agent defined in this metadata, or externally; must be dereferenceable"}}}, {"$ref": "#/$defs/PersonOrOrganization"}]
+$.properties.schema:publishingPrinciples.items.anyOf[2].$ref:
+    original:    "#/$defs/Reference"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml"
+$.properties.schema:relatedLink.items.$ref:
+    original:    "#/$defs/LinkRole"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/linkRole/schema.yaml"
+$.properties.schema:sameAs.items.anyOf[2].$ref:
+    original:    "#/$defs/Identifier"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml"
+$.properties.schema:subjectOf.$ref:
+    original:    "#/$defs/CdifCatalogRecord"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifCatalogRecord/schema.yaml"
+$.required: only in regenerated: ["@context", "@id", "@type", "schema:name", "schema:identifier", "schema:dateModified", "schema:subjectOf"]
+
+cdifCore: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

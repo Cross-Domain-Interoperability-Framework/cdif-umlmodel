@@ -190,11 +190,11 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="EAID_3B0B5953_36E5_5b56_9107_8D4CDE146653"/>
+										<UML:Classifier xmi.idref="EAID_3F4DE504_719E_59c5_A36D_9013AC7D5509"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:jsonName: &quot;csvw:lineTerminators&quot;"/>
-										<UML:TaggedValue tag="type" value="Csvw_lineTerminators"/>
+										<UML:TaggedValue tag="type" value="LineTerminators"/>
 										<UML:TaggedValue tag="derived" value="0"/>
 										<UML:TaggedValue tag="containment" value="Not Specified"/>
 										<UML:TaggedValue tag="ordered" value="0"/>
@@ -388,11 +388,11 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="EAID_A36CF8B0_B448_5e7e_B5E2_DF49A0469854"/>
+										<UML:Classifier xmi.idref="EAID_84F130E6_D754_5a57_BD2C_B82CF52B8093"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Indicates the direction of the table layout (left-to-right or right-to-left). From DDI-CDI PhysicalSegmentLayout.tableDirection.&#xA;:default: &quot;Ltr&quot;&#xA;:jsonName: &quot;csvw:tableDirection&quot;"/>
-										<UML:TaggedValue tag="type" value="Csvw_tableDirection"/>
+										<UML:TaggedValue tag="type" value="TableDirection"/>
 										<UML:TaggedValue tag="derived" value="0"/>
 										<UML:TaggedValue tag="containment" value="Not Specified"/>
 										<UML:TaggedValue tag="ordered" value="0"/>
@@ -410,11 +410,11 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="EAID_D23106DF_81D2_5b04_999A_192F69EEA690"/>
+										<UML:Classifier xmi.idref="EAID_69A91941_3DF3_5bde_AB72_F6456C45CCE9"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Indicates whether the text within cells should be displayed as left-to-right, right-to-left, according to content, or inherited from the table direction. From DDI-CDI PhysicalSegmentLayout.textDirection.&#xA;:default: &quot;Auto&quot;&#xA;:jsonName: &quot;csvw:textDirection&quot;"/>
-										<UML:TaggedValue tag="type" value="Csvw_textDirection"/>
+										<UML:TaggedValue tag="type" value="TextDirection"/>
 										<UML:TaggedValue tag="derived" value="0"/>
 										<UML:TaggedValue tag="containment" value="Not Specified"/>
 										<UML:TaggedValue tag="ordered" value="0"/>
@@ -432,11 +432,11 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="EAID_1B555212_BB57_5d44_99EE_B57CD591B317"/>
+										<UML:Classifier xmi.idref="EAID_0B458C3A_0535_5943_9B44_6C711BF0F6B3"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Indicates whether to trim whitespace around cells. 'true' corresponds to DDI-CDI 'both' value, 'false' corresponds to DDI-CDI 'neither' value.&#xA;:jsonName: &quot;csvw:trim&quot;"/>
-										<UML:TaggedValue tag="type" value="Csvw_trim"/>
+										<UML:TaggedValue tag="type" value="Trim"/>
 										<UML:TaggedValue tag="derived" value="0"/>
 										<UML:TaggedValue tag="containment" value="Not Specified"/>
 										<UML:TaggedValue tag="ordered" value="0"/>
@@ -495,7 +495,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Class name="Csvw_lineTerminators" xmi.id="EAID_3B0B5953_36E5_5b56_9107_8D4CDE146653" visibility="public" namespace="EAPK_FC3704E8_2B11_558e_B3D3_C406CF9FB252" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+						<UML:Class name="LineTerminators" xmi.id="EAID_3F4DE504_719E_59c5_A36D_9013AC7D5509" visibility="public" namespace="EAPK_FC3704E8_2B11_558e_B3D3_C406CF9FB252" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 							<UML:ModelElement.stereotype>
 								<UML:Stereotype name="enumeration"/>
 							</UML:ModelElement.stereotype>
@@ -506,7 +506,7 @@
 								<UML:TaggedValue tag="ea_ntype" value="0"/>
 								<UML:TaggedValue tag="version" value="1.0"/>
 								<UML:TaggedValue tag="package" value="EAPK_FC3704E8_2B11_558e_B3D3_C406CF9FB252"/>
-								<UML:TaggedValue tag="ea_guid" value="{3B0B5953-36E5-5b56-9107-8D4CDE146653}"/>
+								<UML:TaggedValue tag="ea_guid" value="{3F4DE504-719E-59c5-A36D-9013AC7D5509}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Classifier.feature>
 								<UML:Attribute name="CRLF" changeable="frozen" visibility="public" ownerScope="classifier" targetScope="instance">
@@ -514,7 +514,7 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="ea_guid" value="{4D271E99-87A5-57fe-ABAA-078A4755186A}"/>
+										<UML:TaggedValue tag="ea_guid" value="{6E76891E-C699-54a5-99DD-D4C59ED846E8}"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
 								<UML:Attribute name="LF" changeable="frozen" visibility="public" ownerScope="classifier" targetScope="instance">
@@ -522,7 +522,7 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="ea_guid" value="{3474CC10-EDF2-5608-9BE6-50E931FE2FD6}"/>
+										<UML:TaggedValue tag="ea_guid" value="{F1F99C1D-BFE7-5bcf-90AD-4CF079FE1866}"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
 								<UML:Attribute name="&#xD;&#xA;" changeable="frozen" visibility="public" ownerScope="classifier" targetScope="instance">
@@ -530,7 +530,7 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="ea_guid" value="{D795EEDE-1CC5-52b4-819B-CAA27575806D}"/>
+										<UML:TaggedValue tag="ea_guid" value="{7BED6231-DAE1-5b9b-8539-DD96D0094F80}"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
 								<UML:Attribute name="&#xA;" changeable="frozen" visibility="public" ownerScope="classifier" targetScope="instance">
@@ -538,12 +538,12 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="ea_guid" value="{E0BD3875-0413-57c3-82F9-07C24905298A}"/>
+										<UML:TaggedValue tag="ea_guid" value="{2F20C7DD-F4C3-5259-9097-8C290915C275}"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Class name="Csvw_tableDirection" xmi.id="EAID_A36CF8B0_B448_5e7e_B5E2_DF49A0469854" visibility="public" namespace="EAPK_FC3704E8_2B11_558e_B3D3_C406CF9FB252" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+						<UML:Class name="TableDirection" xmi.id="EAID_84F130E6_D754_5a57_BD2C_B82CF52B8093" visibility="public" namespace="EAPK_FC3704E8_2B11_558e_B3D3_C406CF9FB252" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 							<UML:ModelElement.stereotype>
 								<UML:Stereotype name="enumeration"/>
 							</UML:ModelElement.stereotype>
@@ -554,7 +554,7 @@
 								<UML:TaggedValue tag="ea_ntype" value="0"/>
 								<UML:TaggedValue tag="version" value="1.0"/>
 								<UML:TaggedValue tag="package" value="EAPK_FC3704E8_2B11_558e_B3D3_C406CF9FB252"/>
-								<UML:TaggedValue tag="ea_guid" value="{A36CF8B0-B448-5e7e-B5E2-DF49A0469854}"/>
+								<UML:TaggedValue tag="ea_guid" value="{84F130E6-D754-5a57-BD2C-B82CF52B8093}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Classifier.feature>
 								<UML:Attribute name="Ltr" changeable="frozen" visibility="public" ownerScope="classifier" targetScope="instance">
@@ -562,7 +562,7 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="ea_guid" value="{36522EEC-23B4-5090-9424-B4502DBEFF17}"/>
+										<UML:TaggedValue tag="ea_guid" value="{857454B1-B48C-5f34-808C-8B50509FA5FC}"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
 								<UML:Attribute name="Rtl" changeable="frozen" visibility="public" ownerScope="classifier" targetScope="instance">
@@ -570,12 +570,12 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="ea_guid" value="{BA6BC0B3-92EF-567b-B5EF-DF13BCFD1B70}"/>
+										<UML:TaggedValue tag="ea_guid" value="{1E7D5A74-B1F1-59df-9B36-7D59D6572271}"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Class name="Csvw_textDirection" xmi.id="EAID_D23106DF_81D2_5b04_999A_192F69EEA690" visibility="public" namespace="EAPK_FC3704E8_2B11_558e_B3D3_C406CF9FB252" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+						<UML:Class name="TextDirection" xmi.id="EAID_69A91941_3DF3_5bde_AB72_F6456C45CCE9" visibility="public" namespace="EAPK_FC3704E8_2B11_558e_B3D3_C406CF9FB252" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 							<UML:ModelElement.stereotype>
 								<UML:Stereotype name="enumeration"/>
 							</UML:ModelElement.stereotype>
@@ -586,7 +586,7 @@
 								<UML:TaggedValue tag="ea_ntype" value="0"/>
 								<UML:TaggedValue tag="version" value="1.0"/>
 								<UML:TaggedValue tag="package" value="EAPK_FC3704E8_2B11_558e_B3D3_C406CF9FB252"/>
-								<UML:TaggedValue tag="ea_guid" value="{D23106DF-81D2-5b04-999A-192F69EEA690}"/>
+								<UML:TaggedValue tag="ea_guid" value="{69A91941-3DF3-5bde-AB72-F6456C45CCE9}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Classifier.feature>
 								<UML:Attribute name="Auto" changeable="frozen" visibility="public" ownerScope="classifier" targetScope="instance">
@@ -594,7 +594,7 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="ea_guid" value="{76779909-5B58-5f66-A048-C21EEADE0BAD}"/>
+										<UML:TaggedValue tag="ea_guid" value="{719D53EF-7A45-587a-9266-4766EE7EFF92}"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
 								<UML:Attribute name="Inherit" changeable="frozen" visibility="public" ownerScope="classifier" targetScope="instance">
@@ -602,7 +602,7 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="ea_guid" value="{A42391B0-1C12-59bd-A2B3-97555AE1079D}"/>
+										<UML:TaggedValue tag="ea_guid" value="{DBC25CEB-DB32-52bd-A91D-E8C3A9E95DD9}"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
 								<UML:Attribute name="Ltr" changeable="frozen" visibility="public" ownerScope="classifier" targetScope="instance">
@@ -610,7 +610,7 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="ea_guid" value="{C78FBDB3-1219-5ac0-B43E-AE9B2DDEF911}"/>
+										<UML:TaggedValue tag="ea_guid" value="{8AF0BECF-AECB-5ee8-BE76-4EC4CBBAFF9E}"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
 								<UML:Attribute name="Rtl" changeable="frozen" visibility="public" ownerScope="classifier" targetScope="instance">
@@ -618,12 +618,12 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="ea_guid" value="{FBD417DD-D7FB-5b1f-B7DA-6578B71F9D80}"/>
+										<UML:TaggedValue tag="ea_guid" value="{294712BE-01DA-564b-B9E4-AD7E51402784}"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Class name="Csvw_trim" xmi.id="EAID_1B555212_BB57_5d44_99EE_B57CD591B317" visibility="public" namespace="EAPK_FC3704E8_2B11_558e_B3D3_C406CF9FB252" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+						<UML:Class name="Trim" xmi.id="EAID_0B458C3A_0535_5943_9B44_6C711BF0F6B3" visibility="public" namespace="EAPK_FC3704E8_2B11_558e_B3D3_C406CF9FB252" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 							<UML:ModelElement.stereotype>
 								<UML:Stereotype name="enumeration"/>
 							</UML:ModelElement.stereotype>
@@ -634,7 +634,7 @@
 								<UML:TaggedValue tag="ea_ntype" value="0"/>
 								<UML:TaggedValue tag="version" value="1.0"/>
 								<UML:TaggedValue tag="package" value="EAPK_FC3704E8_2B11_558e_B3D3_C406CF9FB252"/>
-								<UML:TaggedValue tag="ea_guid" value="{1B555212-BB57-5d44-99EE-B57CD591B317}"/>
+								<UML:TaggedValue tag="ea_guid" value="{0B458C3A-0535-5943-9B44-6C711BF0F6B3}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Classifier.feature>
 								<UML:Attribute name="true" changeable="frozen" visibility="public" ownerScope="classifier" targetScope="instance">
@@ -642,7 +642,7 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="ea_guid" value="{487BEB66-F5C6-5875-869E-F1642139A9B7}"/>
+										<UML:TaggedValue tag="ea_guid" value="{388EE01E-04F7-5360-9F81-5EDC5BD6412E}"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
 								<UML:Attribute name="end" changeable="frozen" visibility="public" ownerScope="classifier" targetScope="instance">
@@ -650,7 +650,7 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="ea_guid" value="{A9A9182D-5FA9-53bf-853A-A7FC91B7952C}"/>
+										<UML:TaggedValue tag="ea_guid" value="{D3D9CC93-5553-5325-BA75-14166A7A3BBB}"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
 								<UML:Attribute name="false" changeable="frozen" visibility="public" ownerScope="classifier" targetScope="instance">
@@ -658,7 +658,7 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="ea_guid" value="{4479FA4F-B02B-5596-A2D6-2639868CC2F6}"/>
+										<UML:TaggedValue tag="ea_guid" value="{1FBB4ABD-6325-525a-8E24-FE99C3296876}"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
 								<UML:Attribute name="start" changeable="frozen" visibility="public" ownerScope="classifier" targetScope="instance">
@@ -666,7 +666,7 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="ea_guid" value="{673EF8B4-C80D-5add-AF2B-03A9972F4B11}"/>
+										<UML:TaggedValue tag="ea_guid" value="{BA3EB4BD-3FAA-5d49-88E4-A23CD7D36A6A}"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
 							</UML:Classifier.feature>

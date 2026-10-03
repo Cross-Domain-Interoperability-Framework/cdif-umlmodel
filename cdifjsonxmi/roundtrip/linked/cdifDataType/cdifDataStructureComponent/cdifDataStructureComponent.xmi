@@ -9,9 +9,9 @@
     <packagedElement xmi:type="uml:Package" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent" xmi:uuid="e65a2ff7-a427-5612-a24c-f5477ca7bdf2">
       <name>cdifDataStructureComponent</name>
       <URI>https://w3id.org/cdif/bbr/metadata/cdifDataType/cdifDataStructureComponent</URI>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2" xmi:uuid="0099ddfc-7d1e-5983-89e3-e0c18dfa2069">
-        <name>DataStructureComponent2</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.comment" xmi:uuid="adb44205-4254-546b-9776-ff6aa2bd915d">
+      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile" xmi:uuid="006bd6df-e5f4-502f-a7cc-d4b345481e08">
+        <name>DataStructureComponentProfile</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.comment" xmi:uuid="cb4a777a-2877-5986-9382-dc21a557ba36">
           <body>**CDIF**
 
 Definition
@@ -20,19 +20,19 @@ Definition
 Role given to a represented variable in the context of a long or wide data structure to identify the units associated to data points, and in dimensional and key value data structures to provide identifying fields for the instance values.
 :title: "DDI-CDI Data Structure Component"
 :union: ``anyOf``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2"/>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile"/>
         </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.identifierComponent" xmi:uuid="dfe8f6c9-6902-5593-ba14-368063fa0eec">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.identifierComponent" xmi:uuid="c84589a1-bce5-5c38-82a9-ce36c43ff119">
           <name>identifierComponent</name>
           <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.IdentifierComponent"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.identifierComponent.lower" xmi:uuid="247b90ab-130f-5bdd-a9a3-7e37c33a2b09">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.identifierComponent.lower" xmi:uuid="57775ec5-307b-5639-9306-cac16f4edcc0">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.identifierComponent.upper" xmi:uuid="6096dff2-a309-5312-a7cb-f58f04dadcef">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.identifierComponent.upper" xmi:uuid="e58899d8-bd10-5917-ae89-b1159f99eb38">
             <value>1</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_identifierComponent_IdentifierComponent"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.identifierComponent.comment" xmi:uuid="9fe83dc1-42a0-5b5a-863b-7142a9e366aa">
+          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_identifierComponent_IdentifierComponent"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.identifierComponent.comment" xmi:uuid="8618cef8-e27c-587a-b2c3-d6dbdce6b9d3">
             <body>**CDIF**
 
 Definition
@@ -40,20 +40,20 @@ Definition
 
 
 :inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.identifierComponent"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.identifierComponent"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.measureComponent" xmi:uuid="cec5942a-8486-584c-81e7-ca952beb570d">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.measureComponent" xmi:uuid="4a41ccb1-3925-591c-93bd-e8edb188fb2a">
           <name>measureComponent</name>
           <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.MeasureComponent"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.measureComponent.lower" xmi:uuid="39172dba-a5db-5cdf-b53e-743c77fd2965">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.measureComponent.lower" xmi:uuid="bc0aae90-2dee-5ecd-9b10-ca1492795d84">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.measureComponent.upper" xmi:uuid="aa248779-8647-5f27-9ba3-beffb1eacf42">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.measureComponent.upper" xmi:uuid="0b8e283f-c894-528b-bad1-a5d44ac29f44">
             <value>1</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_measureComponent_MeasureComponent"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.measureComponent.comment" xmi:uuid="2b62c711-f5b3-54fb-a806-dbb5df7b8a4b">
+          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_measureComponent_MeasureComponent"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.measureComponent.comment" xmi:uuid="0d2a3570-a044-5daf-8c7f-4a3ff99ccfbf">
             <body>**CDIF**
 
 Definition
@@ -61,20 +61,20 @@ Definition
 
 
 :inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.measureComponent"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.measureComponent"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.attributeComponent" xmi:uuid="b6bf21a1-8df9-5e84-8e12-58e4d65f9bd3">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.attributeComponent" xmi:uuid="79624869-ca15-5527-ab11-6e56e90522b1">
           <name>attributeComponent</name>
           <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.AttributeComponent"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.attributeComponent.lower" xmi:uuid="fb35ee52-fe0a-58a1-8e89-787372c84247">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.attributeComponent.lower" xmi:uuid="193e2f4a-2ee6-5535-8de8-f43da3f39850">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.attributeComponent.upper" xmi:uuid="5f9ced8c-3cbf-56ea-ad7b-1df841973293">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.attributeComponent.upper" xmi:uuid="a612e007-4aac-54d4-a416-1520375b9a03">
             <value>1</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_attributeComponent_AttributeComponent"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.attributeComponent.comment" xmi:uuid="cc470d99-c214-5d8b-b90b-a93bf10c8f7f">
+          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_attributeComponent_AttributeComponent"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.attributeComponent.comment" xmi:uuid="4e3871b8-a99b-5f5b-a539-3bad2517a184">
             <body>**CDIF**
 
 Definition
@@ -82,20 +82,20 @@ Definition
 
 
 :inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.attributeComponent"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.attributeComponent"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.dimensionComponent" xmi:uuid="beec8e35-0c80-5eea-b2ce-511166e2df46">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.dimensionComponent" xmi:uuid="96f97690-afca-5c01-a3ef-203edcc0019b">
           <name>dimensionComponent</name>
           <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DimensionComponent"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.dimensionComponent.lower" xmi:uuid="8a09411b-2331-5ef3-84fa-a45ae576d75b">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.dimensionComponent.lower" xmi:uuid="f9a63aac-779f-5e61-aca8-78305738a1bf">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.dimensionComponent.upper" xmi:uuid="63cccb60-f51f-5e39-8cca-99a5c1406d6b">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.dimensionComponent.upper" xmi:uuid="c756671f-9bd5-5879-a1c6-e40eafa9bf4f">
             <value>1</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_dimensionComponent_DimensionComponent"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.dimensionComponent.comment" xmi:uuid="5dec2ac9-d95b-56aa-b945-c16fdef36224">
+          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_dimensionComponent_DimensionComponent"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.dimensionComponent.comment" xmi:uuid="3b579bec-83d3-5932-ac5e-1ea14d9a49bc">
             <body>**CDIF**
 
 Definition
@@ -103,20 +103,20 @@ Definition
 
 
 :inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.dimensionComponent"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.dimensionComponent"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.variableValueComponent" xmi:uuid="c8c6e7f5-35a4-513e-939f-6eff50489eeb">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.variableValueComponent" xmi:uuid="1b7ffa39-f89a-5524-9667-be387d1b6a19">
           <name>variableValueComponent</name>
           <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.VariableValueComponent"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.variableValueComponent.lower" xmi:uuid="fcbf4fee-cb68-5380-8381-0c661fbe694f">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.variableValueComponent.lower" xmi:uuid="1d6b3a1c-6538-5854-a500-0e08a695f7db">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.variableValueComponent.upper" xmi:uuid="bc03cbbb-4fc0-5ef3-805d-dbc9caec27cf">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.variableValueComponent.upper" xmi:uuid="fe26ee28-cde5-5543-9f17-183c9c394b00">
             <value>1</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_variableValueComponent_VariableValueComponent"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.variableValueComponent.comment" xmi:uuid="c5b68ae2-7481-5761-acb0-b4f8b37e93f4">
+          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_variableValueComponent_VariableValueComponent"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.variableValueComponent.comment" xmi:uuid="9acd2107-0307-54bd-8b3d-c5d95153cffb">
             <body>**CDIF**
 
 Definition
@@ -124,20 +124,20 @@ Definition
 
 
 :inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.variableValueComponent"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.variableValueComponent"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.variableDescriptorComponent" xmi:uuid="292ff5bd-e491-59dc-ac8b-dbce98839d3a">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.variableDescriptorComponent" xmi:uuid="81ce4d2a-b9cb-549d-bcfc-37644f7277e7">
           <name>variableDescriptorComponent</name>
           <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.VariableDescriptorComponent"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.variableDescriptorComponent.lower" xmi:uuid="d99243eb-bcb2-5276-8012-44c153b831bc">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.variableDescriptorComponent.lower" xmi:uuid="b116d03d-a850-5981-9a48-c1ecaa309c25">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.variableDescriptorComponent.upper" xmi:uuid="1117764e-93a4-5159-92d5-0f2e0b967925">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.variableDescriptorComponent.upper" xmi:uuid="6db4f2bd-88fd-556d-810f-1bfbd7a00d21">
             <value>1</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_variableDescriptorComponent_VariableDescriptorComponent"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.variableDescriptorComponent.comment" xmi:uuid="346dfc41-8dff-52db-a851-80cec3da77c5">
+          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_variableDescriptorComponent_VariableDescriptorComponent"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.variableDescriptorComponent.comment" xmi:uuid="13724359-6e7c-54fe-8b6c-8b193cd13791">
             <body>**CDIF**
 
 Definition
@@ -145,7 +145,7 @@ Definition
 
 
 :inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.variableDescriptorComponent"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.variableDescriptorComponent"/>
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
@@ -159,7 +159,8 @@ Definition
 
 Role given to a represented variable in the context of a data structure to qualify observations or provide other types of supplementary information.
 :idDescription: "Identifier for this AttributeComponent node"
-:rdfType: ``cdi:AttributeComponent``</body>
+:rdfType: ``cdi:AttributeComponent``
+:exportedDef:</body>
           <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.AttributeComponent"/>
         </ownedComment>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.AttributeComponent.cdif_qualifies" xmi:uuid="19ba99b2-6b83-5f63-afdd-402fc8e9a903">
@@ -335,7 +336,8 @@ Definition
 
 Role given to a represented variable in the context of a dimensional data structure to identify the universes associated with data points. The variable acts as a field in the compound identifier (the key structure) to disambiguate the cells in the multi-dimensional "cube".  AG: references to the variables which are the components of a compound identifier, in which each variable is a single field - an axis - in a coordinate system addressing a location in a matrix. These variables are often categorical, but also commonly include time. Unlike other Components, they may be ordered using instances of cdi:ComponentPosition.
 :idDescription: "Identifier for this DimensionComponent node"
-:rdfType: ``cdi:DimensionComponent``</body>
+:rdfType: ``cdi:DimensionComponent``
+:exportedDef:</body>
           <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DimensionComponent"/>
         </ownedComment>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DimensionComponent.cdif_isDefinedBy_Variable" xmi:uuid="d7c6fb24-4cad-5d42-a759-22006db729b2">
@@ -370,7 +372,8 @@ Definition
 
 Role given to a represented variable in the context of a long or wide data structure to identify the units associated to data points, and in dimensional and key value data structures to provide identifying fields for the instance values.
 :idDescription: "Identifier for this IdentifierComponent node"
-:rdfType: ``cdi:IdentifierComponent``</body>
+:rdfType: ``cdi:IdentifierComponent``
+:exportedDef:</body>
           <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.IdentifierComponent"/>
         </ownedComment>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.IdentifierComponent.cdif_isDefinedBy_Variable" xmi:uuid="ba003a1d-98b7-5440-a210-15dfffcbc242">
@@ -405,7 +408,8 @@ Definition
 
 Role given to a represented variable in the context of a data structure to hold the observed/derived values.
 :idDescription: "Identifier for this MeasureComponent node"
-:rdfType: ``cdi:MeasureComponent``</body>
+:rdfType: ``cdi:MeasureComponent``
+:exportedDef:</body>
           <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.MeasureComponent"/>
         </ownedComment>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.MeasureComponent.cdif_name" xmi:uuid="6cac5213-dbc5-55e2-8aa4-a08cfc29277c">
@@ -556,7 +560,8 @@ Definition
 
 Role given to a represented variable in the context of a data structure to provide codes for variable identification.
 :idDescription: "Identifier for this VariableDescriptorComponent node"
-:rdfType: ``cdi:VariableDescriptorComponent``</body>
+:rdfType: ``cdi:VariableDescriptorComponent``
+:exportedDef:</body>
           <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.VariableDescriptorComponent"/>
         </ownedComment>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.VariableDescriptorComponent.cdif_isDefinedBy_DescriptorVariable" xmi:uuid="d3493e07-0b36-5a94-b960-2d4e5461f71f">
@@ -643,7 +648,8 @@ Definition
 
 Role given to a represented variable in the context of a data structure to record values of multiple variables.
 :idDescription: "Identifier for this VariableValueComponent node"
-:rdfType: ``cdi:VariableValueComponent``</body>
+:rdfType: ``cdi:VariableValueComponent``
+:exportedDef:</body>
           <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.VariableValueComponent"/>
         </ownedComment>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.VariableValueComponent.cdif_identifier" xmi:uuid="dc918c21-c9ef-5346-9985-82f597d839ff">
@@ -709,95 +715,95 @@ Qualifies the purpose or use expressed as a paired external controlled vocabular
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_identifierComponent_IdentifierComponent" xmi:uuid="18297a18-522a-51ff-a68a-f66fc3d5da37">
-        <name>DataStructureComponent_identifierComponent_IdentifierComponent</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_identifierComponent_IdentifierComponent.ownedEnd" xmi:uuid="a039729a-9af4-5a07-b994-867cf056fa28">
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_identifierComponent_IdentifierComponent.ownedEnd.lower" xmi:uuid="dd89c0be-fcf5-530e-b948-5ba7b3603bf6">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_identifierComponent_IdentifierComponent" xmi:uuid="8406d00f-6e88-5d3e-b33e-882cf80d4781">
+        <name>DataStructureComponentProfile_identifierComponent_IdentifierComponent</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_identifierComponent_IdentifierComponent.ownedEnd" xmi:uuid="24b917b8-2931-5a0c-9573-b0bf1ecc114a">
+          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_identifierComponent_IdentifierComponent.ownedEnd.lower" xmi:uuid="013440fb-03cd-5708-8a7c-4c89dce3dbfa">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_identifierComponent_IdentifierComponent.ownedEnd.upper" xmi:uuid="bb592d80-e623-5ca9-a483-f2e91857f5cc">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_identifierComponent_IdentifierComponent.ownedEnd.upper" xmi:uuid="c10e5830-4651-5152-beed-4843e30fedf9">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_identifierComponent_IdentifierComponent"/>
+          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_identifierComponent_IdentifierComponent"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_identifierComponent_IdentifierComponent.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.identifierComponent"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_identifierComponent_IdentifierComponent.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.identifierComponent"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_measureComponent_MeasureComponent" xmi:uuid="1d952d0a-6a6a-5151-90d4-153c8bab9a25">
-        <name>DataStructureComponent_measureComponent_MeasureComponent</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_measureComponent_MeasureComponent.ownedEnd" xmi:uuid="6abfbb3d-39bd-52cf-a931-1e8af4e682bb">
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_measureComponent_MeasureComponent.ownedEnd.lower" xmi:uuid="c82f5b10-8758-5d3d-89c8-6595b96e141e">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_measureComponent_MeasureComponent" xmi:uuid="219a3acd-ffd7-5cf7-b89a-e01ac44fb484">
+        <name>DataStructureComponentProfile_measureComponent_MeasureComponent</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_measureComponent_MeasureComponent.ownedEnd" xmi:uuid="bb360040-fb80-5db0-9fe4-da4d2ceb9b92">
+          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_measureComponent_MeasureComponent.ownedEnd.lower" xmi:uuid="33da83ec-19c0-595a-8e71-5d33860a4481">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_measureComponent_MeasureComponent.ownedEnd.upper" xmi:uuid="8b74bf67-e13b-5f70-9282-d7baffd761c2">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_measureComponent_MeasureComponent.ownedEnd.upper" xmi:uuid="c4d5f7ba-6bd3-5252-b5e8-b11567b20aa9">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_measureComponent_MeasureComponent"/>
+          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_measureComponent_MeasureComponent"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_measureComponent_MeasureComponent.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.measureComponent"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_measureComponent_MeasureComponent.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.measureComponent"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_attributeComponent_AttributeComponent" xmi:uuid="63b0feee-9791-50aa-a901-5ec439bdea47">
-        <name>DataStructureComponent_attributeComponent_AttributeComponent</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_attributeComponent_AttributeComponent.ownedEnd" xmi:uuid="eb6d9e51-3286-575f-90f0-8e01a61e7246">
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_attributeComponent_AttributeComponent.ownedEnd.lower" xmi:uuid="63784916-b94b-5929-bfd3-363b87215c9a">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_attributeComponent_AttributeComponent" xmi:uuid="c95f461b-a375-548a-8bd3-efb2b6818cb4">
+        <name>DataStructureComponentProfile_attributeComponent_AttributeComponent</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_attributeComponent_AttributeComponent.ownedEnd" xmi:uuid="918f4bda-57ef-5a82-9f84-a4e6497d3557">
+          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_attributeComponent_AttributeComponent.ownedEnd.lower" xmi:uuid="0320ea04-42c7-545f-8643-1e58f215cb9a">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_attributeComponent_AttributeComponent.ownedEnd.upper" xmi:uuid="e5d1f559-312c-5690-8659-1800dd9895f8">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_attributeComponent_AttributeComponent.ownedEnd.upper" xmi:uuid="4d009614-5dc9-5343-9dfd-df347a69d635">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_attributeComponent_AttributeComponent"/>
+          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_attributeComponent_AttributeComponent"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_attributeComponent_AttributeComponent.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.attributeComponent"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_attributeComponent_AttributeComponent.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.attributeComponent"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_dimensionComponent_DimensionComponent" xmi:uuid="43047906-9111-5d29-a9a4-2cb4af22e9eb">
-        <name>DataStructureComponent_dimensionComponent_DimensionComponent</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_dimensionComponent_DimensionComponent.ownedEnd" xmi:uuid="8e370d28-b01b-51aa-bff2-d1cf3a51feca">
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_dimensionComponent_DimensionComponent.ownedEnd.lower" xmi:uuid="bc8c2ade-8439-5a5e-ba1c-0d4ef3912a33">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_dimensionComponent_DimensionComponent" xmi:uuid="da08ce3d-75e8-50f7-8fe8-6a9a01ea0e53">
+        <name>DataStructureComponentProfile_dimensionComponent_DimensionComponent</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_dimensionComponent_DimensionComponent.ownedEnd" xmi:uuid="6635688d-c872-50fb-b21b-e2d75dff7566">
+          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_dimensionComponent_DimensionComponent.ownedEnd.lower" xmi:uuid="334df34f-4a5f-582d-aacb-fdb18a397880">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_dimensionComponent_DimensionComponent.ownedEnd.upper" xmi:uuid="9b5331ef-b941-56fb-8359-c9d5a53d0f77">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_dimensionComponent_DimensionComponent.ownedEnd.upper" xmi:uuid="9a13be77-fa28-5cbf-9dde-2ceee5d70a3b">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_dimensionComponent_DimensionComponent"/>
+          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_dimensionComponent_DimensionComponent"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_dimensionComponent_DimensionComponent.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.dimensionComponent"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_dimensionComponent_DimensionComponent.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.dimensionComponent"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_variableValueComponent_VariableValueComponent" xmi:uuid="19c10b42-20b7-5a23-b01d-7908bfc60a87">
-        <name>DataStructureComponent_variableValueComponent_VariableValueComponent</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_variableValueComponent_VariableValueComponent.ownedEnd" xmi:uuid="1c47c7b2-eaf7-5388-b38c-2fd692912190">
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_variableValueComponent_VariableValueComponent.ownedEnd.lower" xmi:uuid="432621ce-6e46-5d4f-a250-6f0afa3b63b9">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_variableValueComponent_VariableValueComponent" xmi:uuid="e8fd62af-c75b-5fd9-9d71-9a7c631c369b">
+        <name>DataStructureComponentProfile_variableValueComponent_VariableValueComponent</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_variableValueComponent_VariableValueComponent.ownedEnd" xmi:uuid="a03f19d0-13d6-53f6-bf31-958681969477">
+          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_variableValueComponent_VariableValueComponent.ownedEnd.lower" xmi:uuid="736cfe2f-61ab-583e-8e74-19dbf16d85ea">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_variableValueComponent_VariableValueComponent.ownedEnd.upper" xmi:uuid="438a9fd4-b7ca-52df-b077-c1bc372b563d">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_variableValueComponent_VariableValueComponent.ownedEnd.upper" xmi:uuid="9410509b-121e-52b8-8718-4a36442700c1">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_variableValueComponent_VariableValueComponent"/>
+          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_variableValueComponent_VariableValueComponent"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_variableValueComponent_VariableValueComponent.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.variableValueComponent"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_variableValueComponent_VariableValueComponent.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.variableValueComponent"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_variableDescriptorComponent_VariableDescriptorComponent" xmi:uuid="48c2e4f7-c692-57a5-a3d0-26d3069b5a9c">
-        <name>DataStructureComponent_variableDescriptorComponent_VariableDescriptorComponent</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_variableDescriptorComponent_VariableDescriptorComponent.ownedEnd" xmi:uuid="9dec2739-5543-5d08-aeec-712182f854f0">
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_variableDescriptorComponent_VariableDescriptorComponent.ownedEnd.lower" xmi:uuid="50d26a83-af42-5567-88b7-4a07e17ece8d">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_variableDescriptorComponent_VariableDescriptorComponent" xmi:uuid="63982822-0424-5f82-b77c-67b96169a6d3">
+        <name>DataStructureComponentProfile_variableDescriptorComponent_VariableDescriptorComponent</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_variableDescriptorComponent_VariableDescriptorComponent.ownedEnd" xmi:uuid="772e52c7-4d61-52ea-a013-c853e7e57e23">
+          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_variableDescriptorComponent_VariableDescriptorComponent.ownedEnd.lower" xmi:uuid="443b9c75-2b8a-5ae6-b42a-a1a1751090a1">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_variableDescriptorComponent_VariableDescriptorComponent.ownedEnd.upper" xmi:uuid="78170b5c-4ca3-59f0-b3d6-0cb0c466c02d">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_variableDescriptorComponent_VariableDescriptorComponent.ownedEnd.upper" xmi:uuid="4fcdbb45-2680-578d-951b-39aa205624f2">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_variableDescriptorComponent_VariableDescriptorComponent"/>
+          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_variableDescriptorComponent_VariableDescriptorComponent"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponent_variableDescriptorComponent_VariableDescriptorComponent.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponent2.variableDescriptorComponent"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.DataStructureComponentProfile_variableDescriptorComponent_VariableDescriptorComponent.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.DataStructureComponentProfile.variableDescriptorComponent"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.assoc.AttributeComponent_cdif_qualifies_DataStructureComponent" xmi:uuid="a0c4239d-3508-5134-a6c7-a29639e3c036">
         <name>AttributeComponent_cdif_qualifies_DataStructureComponent</name>

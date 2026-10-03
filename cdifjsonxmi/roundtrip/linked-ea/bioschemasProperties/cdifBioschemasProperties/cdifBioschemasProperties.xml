@@ -470,6 +470,126 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
+						<UML:Class name="LabProtocolObject" xmi.id="EAID_2CE2E726_CBBF_5ce9_B278_571C567FEAA4" visibility="public" namespace="EAPK_B55DAD49_F7BF_5993_AB0D_1169C28A26BB" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;A Bioschemas FormalParameter describing the shape and type of inputs and outputs of a workflow protocol. Values are realized in process executions through bios:parameterValue PropertyValue objects. In cdifProvActivity output, mapped to schema:MediaObject with additionalType bios:FormalParameter.&#xA;:prefix: ``schema``&#xA;:typeSchema: {&quot;type&quot;: &quot;array&quot;, &quot;items&quot;: {&quot;type&quot;: &quot;string&quot;}, &quot;description&quot;: &quot;Should include schema:MediaObject with additionalType bios:FormalParameter&quot;}&#xA;:typeOptional:"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="Class"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_B55DAD49_F7BF_5993_AB0D_1169C28A26BB"/>
+								<UML:TaggedValue tag="ea_guid" value="{2CE2E726-CBBF-5ce9-B278-571C567FEAA4}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Classifier.feature>
+								<UML:Attribute name="name" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:StructuralFeature.type>
+										<UML:Classifier xmi.idref="eaxmiid_String"/>
+									</UML:StructuralFeature.type>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Name matching the corresponding workflow parameter slot"/>
+										<UML:TaggedValue tag="type" value="String"/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="false"/>
+										<UML:TaggedValue tag="position" value="0"/>
+										<UML:TaggedValue tag="lowerBound" value="1"/>
+										<UML:TaggedValue tag="upperBound" value="1"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{1AB09576-235F-5927-942E-072C8C91B640}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+								<UML:Attribute name="description" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:StructuralFeature.type>
+										<UML:Classifier xmi.idref="eaxmiid_String"/>
+									</UML:StructuralFeature.type>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Description of what this parameter represents"/>
+										<UML:TaggedValue tag="type" value="String"/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="false"/>
+										<UML:TaggedValue tag="position" value="1"/>
+										<UML:TaggedValue tag="lowerBound" value="0"/>
+										<UML:TaggedValue tag="upperBound" value="1"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{A8CF2C20-EE76-5a0c-AFE1-5C1559A90919}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+								<UML:Attribute name="additionalType" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:StructuralFeature.type>
+										<UML:Classifier xmi.idref="EAID_4C904941_63B0_5e2d_A6AF_329608DC1F86"/>
+									</UML:StructuralFeature.type>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Further type classification (e.g. File, Dataset, PropertyValue, DataType)"/>
+										<UML:TaggedValue tag="type" value="ConceptOrTermOrString"/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="true"/>
+										<UML:TaggedValue tag="position" value="2"/>
+										<UML:TaggedValue tag="lowerBound" value="0"/>
+										<UML:TaggedValue tag="upperBound" value="*"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{E7F05A18-8D69-50b6-8292-91C59D6D35AA}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+								<UML:Attribute name="encodingFormat" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:StructuralFeature.type>
+										<UML:Classifier xmi.idref="eaxmiid_String"/>
+									</UML:StructuralFeature.type>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;MIME type or URL for expected data format"/>
+										<UML:TaggedValue tag="type" value="String"/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="true"/>
+										<UML:TaggedValue tag="position" value="3"/>
+										<UML:TaggedValue tag="lowerBound" value="0"/>
+										<UML:TaggedValue tag="upperBound" value="*"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{929F0693-3996-5bd7-8303-40BA0315D818}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+								<UML:Attribute name="defaultValue" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Default value for this parameter"/>
+										<UML:TaggedValue tag="type" value=""/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="false"/>
+										<UML:TaggedValue tag="position" value="4"/>
+										<UML:TaggedValue tag="lowerBound" value="0"/>
+										<UML:TaggedValue tag="upperBound" value="1"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{FC3A42E9-CCEB-5e22-8ACA-7143F1986B0B}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+							</UML:Classifier.feature>
+						</UML:Class>
 						<UML:Class name="LabProtocolReagent" xmi.id="EAID_48F4C3E4_4DE7_51cd_9679_33C74FE173D3" visibility="public" namespace="EAPK_B55DAD49_F7BF_5993_AB0D_1169C28A26BB" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:prefix: ``schema``"/>
@@ -505,7 +625,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Class name="LabProtocolSchema_object" xmi.id="EAID_B43A4561_117D_52a0_AEFF_8778F4F0A688" visibility="public" namespace="EAPK_B55DAD49_F7BF_5993_AB0D_1169C28A26BB" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+						<UML:Class name="LabProtocolResult" xmi.id="EAID_F2096919_F8C9_5d02_A0BA_C0821B1A9FA6" visibility="public" namespace="EAPK_B55DAD49_F7BF_5993_AB0D_1169C28A26BB" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;A Bioschemas FormalParameter describing the shape and type of inputs and outputs of a workflow protocol. Values are realized in process executions through bios:parameterValue PropertyValue objects. In cdifProvActivity output, mapped to schema:MediaObject with additionalType bios:FormalParameter.&#xA;:prefix: ``schema``&#xA;:typeSchema: {&quot;type&quot;: &quot;array&quot;, &quot;items&quot;: {&quot;type&quot;: &quot;string&quot;}, &quot;description&quot;: &quot;Should include schema:MediaObject with additionalType bios:FormalParameter&quot;}&#xA;:typeOptional:"/>
 								<UML:TaggedValue tag="isSpecification" value="false"/>
@@ -513,7 +633,7 @@
 								<UML:TaggedValue tag="ea_ntype" value="0"/>
 								<UML:TaggedValue tag="version" value="1.0"/>
 								<UML:TaggedValue tag="package" value="EAPK_B55DAD49_F7BF_5993_AB0D_1169C28A26BB"/>
-								<UML:TaggedValue tag="ea_guid" value="{B43A4561-117D-52a0-AEFF-8778F4F0A688}"/>
+								<UML:TaggedValue tag="ea_guid" value="{F2096919-F8C9-5d02-A0BA-C0821B1A9FA6}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Classifier.feature>
 								<UML:Attribute name="name" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
@@ -534,7 +654,7 @@
 										<UML:TaggedValue tag="lowerBound" value="1"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{ACAA7F88-4F40-5540-BB84-AEC422C7780C}"/>
+										<UML:TaggedValue tag="ea_guid" value="{F226E42C-3258-5d6a-969E-93C2436D2BE7}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -556,7 +676,7 @@
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{CC596A1B-847E-51cc-84CF-AA07FDAD1150}"/>
+										<UML:TaggedValue tag="ea_guid" value="{16624E93-E7A7-5160-8C09-EB51EA6E3C6F}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -578,7 +698,7 @@
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="*"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{B870B25A-E5CF-54f4-8E9C-99D25E6C67A0}"/>
+										<UML:TaggedValue tag="ea_guid" value="{E6F56D50-A490-5a27-B16B-0E9CCCE4D93A}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -600,7 +720,7 @@
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="*"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{AC424A0B-14AB-5de2-8F3D-CDE4ABA634DD}"/>
+										<UML:TaggedValue tag="ea_guid" value="{86B44338-A662-584c-805C-4FE9C21B4C83}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -619,127 +739,7 @@
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{53B7AB76-0659-5356-8EB8-366BAAB216EA}"/>
-										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
-									</UML:ModelElement.taggedValue>
-								</UML:Attribute>
-							</UML:Classifier.feature>
-						</UML:Class>
-						<UML:Class name="LabProtocolSchema_result" xmi.id="EAID_DE4F4392_FBF7_5d32_803D_92B1E805A4AB" visibility="public" namespace="EAPK_B55DAD49_F7BF_5993_AB0D_1169C28A26BB" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
-							<UML:ModelElement.taggedValue>
-								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;A Bioschemas FormalParameter describing the shape and type of inputs and outputs of a workflow protocol. Values are realized in process executions through bios:parameterValue PropertyValue objects. In cdifProvActivity output, mapped to schema:MediaObject with additionalType bios:FormalParameter.&#xA;:prefix: ``schema``&#xA;:typeSchema: {&quot;type&quot;: &quot;array&quot;, &quot;items&quot;: {&quot;type&quot;: &quot;string&quot;}, &quot;description&quot;: &quot;Should include schema:MediaObject with additionalType bios:FormalParameter&quot;}&#xA;:typeOptional:"/>
-								<UML:TaggedValue tag="isSpecification" value="false"/>
-								<UML:TaggedValue tag="ea_stype" value="Class"/>
-								<UML:TaggedValue tag="ea_ntype" value="0"/>
-								<UML:TaggedValue tag="version" value="1.0"/>
-								<UML:TaggedValue tag="package" value="EAPK_B55DAD49_F7BF_5993_AB0D_1169C28A26BB"/>
-								<UML:TaggedValue tag="ea_guid" value="{DE4F4392-FBF7-5d32-803D-92B1E805A4AB}"/>
-							</UML:ModelElement.taggedValue>
-							<UML:Classifier.feature>
-								<UML:Attribute name="name" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
-									<UML:Attribute.initialValue>
-										<UML:Expression/>
-									</UML:Attribute.initialValue>
-									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="eaxmiid_String"/>
-									</UML:StructuralFeature.type>
-									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Name matching the corresponding workflow parameter slot"/>
-										<UML:TaggedValue tag="type" value="String"/>
-										<UML:TaggedValue tag="derived" value="0"/>
-										<UML:TaggedValue tag="containment" value="Not Specified"/>
-										<UML:TaggedValue tag="ordered" value="0"/>
-										<UML:TaggedValue tag="collection" value="false"/>
-										<UML:TaggedValue tag="position" value="0"/>
-										<UML:TaggedValue tag="lowerBound" value="1"/>
-										<UML:TaggedValue tag="upperBound" value="1"/>
-										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{F698BE57-BEA3-543f-AFDA-C613F7642051}"/>
-										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
-									</UML:ModelElement.taggedValue>
-								</UML:Attribute>
-								<UML:Attribute name="description" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
-									<UML:Attribute.initialValue>
-										<UML:Expression/>
-									</UML:Attribute.initialValue>
-									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="eaxmiid_String"/>
-									</UML:StructuralFeature.type>
-									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Description of what this parameter represents"/>
-										<UML:TaggedValue tag="type" value="String"/>
-										<UML:TaggedValue tag="derived" value="0"/>
-										<UML:TaggedValue tag="containment" value="Not Specified"/>
-										<UML:TaggedValue tag="ordered" value="0"/>
-										<UML:TaggedValue tag="collection" value="false"/>
-										<UML:TaggedValue tag="position" value="1"/>
-										<UML:TaggedValue tag="lowerBound" value="0"/>
-										<UML:TaggedValue tag="upperBound" value="1"/>
-										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{EF9D1125-2D84-5db3-B8AE-B3052734C66C}"/>
-										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
-									</UML:ModelElement.taggedValue>
-								</UML:Attribute>
-								<UML:Attribute name="additionalType" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
-									<UML:Attribute.initialValue>
-										<UML:Expression/>
-									</UML:Attribute.initialValue>
-									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="EAID_4C904941_63B0_5e2d_A6AF_329608DC1F86"/>
-									</UML:StructuralFeature.type>
-									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Further type classification (e.g. File, Dataset, PropertyValue, DataType)"/>
-										<UML:TaggedValue tag="type" value="ConceptOrTermOrString"/>
-										<UML:TaggedValue tag="derived" value="0"/>
-										<UML:TaggedValue tag="containment" value="Not Specified"/>
-										<UML:TaggedValue tag="ordered" value="0"/>
-										<UML:TaggedValue tag="collection" value="true"/>
-										<UML:TaggedValue tag="position" value="2"/>
-										<UML:TaggedValue tag="lowerBound" value="0"/>
-										<UML:TaggedValue tag="upperBound" value="*"/>
-										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{ED752049-D600-5f36-8A27-18AEC9E9BF71}"/>
-										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
-									</UML:ModelElement.taggedValue>
-								</UML:Attribute>
-								<UML:Attribute name="encodingFormat" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
-									<UML:Attribute.initialValue>
-										<UML:Expression/>
-									</UML:Attribute.initialValue>
-									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="eaxmiid_String"/>
-									</UML:StructuralFeature.type>
-									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;MIME type or URL for expected data format"/>
-										<UML:TaggedValue tag="type" value="String"/>
-										<UML:TaggedValue tag="derived" value="0"/>
-										<UML:TaggedValue tag="containment" value="Not Specified"/>
-										<UML:TaggedValue tag="ordered" value="0"/>
-										<UML:TaggedValue tag="collection" value="true"/>
-										<UML:TaggedValue tag="position" value="3"/>
-										<UML:TaggedValue tag="lowerBound" value="0"/>
-										<UML:TaggedValue tag="upperBound" value="*"/>
-										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{7EDB416C-4D82-570f-9435-2C0239A28E28}"/>
-										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
-									</UML:ModelElement.taggedValue>
-								</UML:Attribute>
-								<UML:Attribute name="defaultValue" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
-									<UML:Attribute.initialValue>
-										<UML:Expression/>
-									</UML:Attribute.initialValue>
-									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Default value for this parameter"/>
-										<UML:TaggedValue tag="type" value=""/>
-										<UML:TaggedValue tag="derived" value="0"/>
-										<UML:TaggedValue tag="containment" value="Not Specified"/>
-										<UML:TaggedValue tag="ordered" value="0"/>
-										<UML:TaggedValue tag="collection" value="false"/>
-										<UML:TaggedValue tag="position" value="4"/>
-										<UML:TaggedValue tag="lowerBound" value="0"/>
-										<UML:TaggedValue tag="upperBound" value="1"/>
-										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{F225CAE4-E290-5211-BCB2-42B680CDF9DD}"/>
+										<UML:TaggedValue tag="ea_guid" value="{43453A61-A6A4-5872-AF0A-4C5B6855E315}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -1232,16 +1232,16 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_C69B1D7E_9368_5280_9E2B_B2B49763E06D" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_776978CA_C8C3_5839_95C8_5180C6386A79" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Expected input parameters (FormalParameter references)&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;value&quot;, &quot;idReference&quot;]&#xA;:jsonName: &quot;schema:object&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
 								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
 								<UML:TaggedValue tag="ea_sourceName" value="LabProtocol"/>
-								<UML:TaggedValue tag="ea_targetName" value="LabProtocolSchema_object"/>
+								<UML:TaggedValue tag="ea_targetName" value="LabProtocolObject"/>
 								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
 								<UML:TaggedValue tag="ea_targetType" value="Class"/>
-								<UML:TaggedValue tag="ea_guid" value="{C69B1D7E-9368-5280-9E2B-B2B49763E06D}"/>
+								<UML:TaggedValue tag="ea_guid" value="{776978CA-C8C3-5839-95C8-5180C6386A79}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Association.connection>
 								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_46E7D179_86B0_5f0c_870F_D56BF1D752EB">
@@ -1251,7 +1251,7 @@
 										<UML:TaggedValue tag="ea_end" value="source"/>
 									</UML:ModelElement.taggedValue>
 								</UML:AssociationEnd>
-								<UML:AssociationEnd visibility="public" name="schema_object" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_B43A4561_117D_52a0_AEFF_8778F4F0A688">
+								<UML:AssociationEnd visibility="public" name="schema_object" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_2CE2E726_CBBF_5ce9_B278_571C567FEAA4">
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Expected input parameters (FormalParameter references)&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;value&quot;, &quot;idReference&quot;]&#xA;:jsonName: &quot;schema:object&quot;"/>
 										<UML:TaggedValue tag="containment" value="Unspecified"/>
@@ -1262,16 +1262,16 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_DD2BFA8D_F734_5deb_8D1C_FF22A6AB830E" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_61CD4FFC_906D_5b8b_AB3F_03E1D29099BA" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Expected output parameters (FormalParameter references)&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;value&quot;, &quot;idReference&quot;]&#xA;:jsonName: &quot;schema:result&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
 								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
 								<UML:TaggedValue tag="ea_sourceName" value="LabProtocol"/>
-								<UML:TaggedValue tag="ea_targetName" value="LabProtocolSchema_result"/>
+								<UML:TaggedValue tag="ea_targetName" value="LabProtocolResult"/>
 								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
 								<UML:TaggedValue tag="ea_targetType" value="Class"/>
-								<UML:TaggedValue tag="ea_guid" value="{DD2BFA8D-F734-5deb-8D1C-FF22A6AB830E}"/>
+								<UML:TaggedValue tag="ea_guid" value="{61CD4FFC-906D-5b8b-AB3F-03E1D29099BA}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Association.connection>
 								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_46E7D179_86B0_5f0c_870F_D56BF1D752EB">
@@ -1281,7 +1281,7 @@
 										<UML:TaggedValue tag="ea_end" value="source"/>
 									</UML:ModelElement.taggedValue>
 								</UML:AssociationEnd>
-								<UML:AssociationEnd visibility="public" name="schema_result" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_DE4F4392_FBF7_5d32_803D_92B1E805A4AB">
+								<UML:AssociationEnd visibility="public" name="schema_result" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_F2096919_F8C9_5d02_A0BA_C0821B1A9FA6">
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Expected output parameters (FormalParameter references)&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;value&quot;, &quot;idReference&quot;]&#xA;:jsonName: &quot;schema:result&quot;"/>
 										<UML:TaggedValue tag="containment" value="Unspecified"/>

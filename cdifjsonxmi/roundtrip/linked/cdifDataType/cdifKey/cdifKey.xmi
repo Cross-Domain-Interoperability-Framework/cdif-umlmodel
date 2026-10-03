@@ -25,14 +25,14 @@ Profile of ddi-cdi Key/PrimaryKey: a CDIF Key is the role of an ordered set of c
         </ownedComment>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.Key.isComposedOf" xmi:uuid="161317fe-d62c-53c9-87d5-ea4214a47562">
           <name>isComposedOf</name>
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifKey.ComponentPosition"/>
+          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifKey.KeyComponentPosition"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.Key.isComposedOf.lower" xmi:uuid="ee67b1e9-32f2-503d-88f2-9a1b8c1cca75">
             <value>1</value>
           </lowerValue>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.Key.isComposedOf.upper" xmi:uuid="a9bb1b82-a685-5670-99b9-cc107755e23b">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifKey.assoc.Key_isComposedOf_ComponentPosition"/>
+          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifKey.assoc.Key_isComposedOf_KeyComponentPosition"/>
           <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.Key.isComposedOf.comment" xmi:uuid="f9e22304-5b60-598c-b478-3b7bf4a3a260">
             <body>**CDIF**
 
@@ -46,9 +46,9 @@ Ordered list of cdi:ComponentPosition wrappers. Each wrapper carries cdi:indexes
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.ComponentPosition" xmi:uuid="53e477aa-cf5c-5497-b97e-db36f82f30b8">
-        <name>ComponentPosition</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.ComponentPosition.comment" xmi:uuid="8e164701-569b-5bf6-b564-3406dfa4f44f">
+      <packagedElement xmi:type="uml:Class" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.KeyComponentPosition" xmi:uuid="6237b54e-7992-5265-bf1d-95f5e89486ef">
+        <name>KeyComponentPosition</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.KeyComponentPosition.comment" xmi:uuid="1e435fc8-90de-5b24-83c0-b14a98b73a68">
           <body>**CDIF**
 
 Definition
@@ -57,37 +57,40 @@ Definition
 
 :idDescription: "Identifier for this ComponentPosition node."
 :rdfType: ``cdi:ComponentPosition``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifKey.ComponentPosition"/>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifKey.KeyComponentPosition"/>
         </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.ComponentPosition.indexes" xmi:uuid="122b0f39-c0f0-5a49-9c39-e7e8ad6f0453">
+        <generalization xmi:type="uml:Generalization" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.KeyComponentPosition.generalization" xmi:uuid="de717151-1d76-5563-b441-760157c6e70d">
+          <general href="../../cdifSharedTypes.xmi#cdif.shared.ComponentPosition"/>
+        </generalization>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.KeyComponentPosition.indexes" xmi:uuid="51017947-fefe-5c92-a7c3-4c9163dabb9b">
           <name>indexes</name>
           <type href="../objectReference/objectReference.xmi#cdif.bbr.metadata.cdifDataType.objectReference.ObjectReference"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.ComponentPosition.indexes.lower" xmi:uuid="91ddcc9b-9e0e-5819-9b45-c981389fe1a1">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.KeyComponentPosition.indexes.lower" xmi:uuid="32e6a4ac-4dc9-5a38-ac28-b6cadb7d9a66">
             <value>1</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.ComponentPosition.indexes.upper" xmi:uuid="9f701624-5783-5b7a-ab11-faad32c77bd1">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.KeyComponentPosition.indexes.upper" xmi:uuid="7acac383-4a3a-507b-81fc-e16d2cf7459f">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.ComponentPosition.indexes.comment" xmi:uuid="13aa5a5e-d033-5dfb-8ee7-0e3ec8ac604b">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.KeyComponentPosition.indexes.comment" xmi:uuid="a48f7e80-0068-58f9-a7be-f783e96a92d9">
             <body>**CDIF**
 
 Definition
 ==========
 
 The variable this position indexes -- an @id-reference to one declared elsewhere in the document. At dataset level (cdif:hasPrimaryKey) that is a cdi:InstanceVariable in schema:variableMeasured; at data-structure level (cdif:has_PrimaryKey, cdif:has_ForeignKey) it is a cdi:RepresentedVariable in the structure. The value is a bare objectReference either way: a key names variables that are defined once and referenced from the key, so an inline variable here would be a second copy of a node that already exists.</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifKey.ComponentPosition.indexes"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifKey.KeyComponentPosition.indexes"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.ComponentPosition.value" xmi:uuid="17927771-e566-5bc7-90be-beab3218d949">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.KeyComponentPosition.value" xmi:uuid="d8a9fbff-671c-586a-9de0-157503fa4f16">
           <name>value</name>
           <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#Integer"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.ComponentPosition.value.lower" xmi:uuid="4b70bd39-c51f-534f-a84c-0616da29b598">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.KeyComponentPosition.value.lower" xmi:uuid="1f4330c1-f4db-5d27-b29c-66f30d74a67b">
             <value>1</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.ComponentPosition.value.upper" xmi:uuid="b781ff84-0439-5b68-bab7-d1578ffb0717">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.KeyComponentPosition.value.upper" xmi:uuid="1d9fcfbb-2329-5fe4-98ea-9a409becbf4c">
             <value>1</value>
           </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.ComponentPosition.value.comment" xmi:uuid="d7916b7a-d3d3-50c5-b414-e96eea283335">
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.KeyComponentPosition.value.comment" xmi:uuid="be43924d-1deb-5afd-93c2-2dc3cbb0ed78">
             <body>**CDIF**
 
 Definition
@@ -96,23 +99,23 @@ Definition
 1-based position of this variable in the ordered key. Pinned to a minimum of 1 because a key that might be 0- or 1-based has ambiguous ordering, which defeats the purpose of recording a position at all -- and because both structure-level key definitions already rejected 0, so the latitude this description used to advertise was never honoured anywhere.
 :default: 1
 :keywords: {"minimum": 1}</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifKey.ComponentPosition.value"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifKey.KeyComponentPosition.value"/>
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.assoc.Key_isComposedOf_ComponentPosition" xmi:uuid="8194caf3-9620-5344-a5e0-4f18b11d18e1">
-        <name>Key_isComposedOf_ComponentPosition</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.assoc.Key_isComposedOf_ComponentPosition.ownedEnd" xmi:uuid="491f52a6-a3a0-57ab-8427-9664e4f74c15">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.assoc.Key_isComposedOf_KeyComponentPosition" xmi:uuid="355e6aba-78a6-5446-961e-6504fd8c7a80">
+        <name>Key_isComposedOf_KeyComponentPosition</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.assoc.Key_isComposedOf_KeyComponentPosition.ownedEnd" xmi:uuid="e5127ffe-a178-57f7-9c3a-c5fe484712ea">
           <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifKey.Key"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.assoc.Key_isComposedOf_ComponentPosition.ownedEnd.lower" xmi:uuid="181aded0-7655-59d7-8651-62f61200db06">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.assoc.Key_isComposedOf_KeyComponentPosition.ownedEnd.lower" xmi:uuid="da748b39-c7df-5774-94d6-e7f670a7ceee">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.assoc.Key_isComposedOf_ComponentPosition.ownedEnd.upper" xmi:uuid="6295ce80-c250-58b6-9e00-c40b26b441ed">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifKey.assoc.Key_isComposedOf_KeyComponentPosition.ownedEnd.upper" xmi:uuid="1024a9bd-947f-5ea3-ba93-540e17a3166a">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifKey.assoc.Key_isComposedOf_ComponentPosition"/>
+          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifKey.assoc.Key_isComposedOf_KeyComponentPosition"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifKey.assoc.Key_isComposedOf_ComponentPosition.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifKey.assoc.Key_isComposedOf_KeyComponentPosition.ownedEnd"/>
         <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifKey.Key.isComposedOf"/>
       </packagedElement>
     </packagedElement>

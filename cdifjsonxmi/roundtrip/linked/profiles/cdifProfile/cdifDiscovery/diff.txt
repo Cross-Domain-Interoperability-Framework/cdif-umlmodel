@@ -1,0 +1,21 @@
+cdifDiscovery: 8 exact difference(s)
+$.$defs: only in original: {"cdifConceptOrTermOrString": {"$ref": "../../../cdifDataType/cdifConceptOrTermOrString/schema.yaml"}, "cdifConceptOrTerm": {"$ref": "../../../cdifDataType/cdifConceptOrTerm/schema.yaml"}, "VariableMe
+$.allOf: only in regenerated: [{"properties": {"schema:subjectOf": {"properties": {"dcterms:conformsTo": {"contains": {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"const": "https://
+$.properties.dqv:hasQualityMeasurement.items.$ref:
+    original:    "#/$defs/QualityMeasure"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/qualityProperties/qualityMeasure/schema.yaml"
+$.properties.schema:measurementTechnique.items.$ref:
+    original:    "#/$defs/cdifConceptOrTermOrString"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml"
+$.properties.schema:spatialCoverage.items.$ref:
+    original:    "#/$defs/SpatialExtent"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/spatialExtent/schema.yaml"
+$.properties.schema:subjectOf: only in original: {"properties": {"dcterms:conformsTo": {"contains": {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"const": "https://w3id.org/cdif/discovery/1.1"}}}}}}
+$.properties.schema:temporalCoverage.items.$ref:
+    original:    "#/$defs/TemporalExtent"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/temporalExtent/schema.yaml"
+$.properties.schema:variableMeasured.items.$ref:
+    original:    "#/$defs/VariableMeasured"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/variableMeasured/schema.yaml"
+
+cdifDiscovery: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

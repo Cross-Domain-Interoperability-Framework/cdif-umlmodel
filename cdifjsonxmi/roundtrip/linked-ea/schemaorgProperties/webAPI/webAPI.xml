@@ -36,7 +36,7 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="EAID_1AFCADC5_0025_5374_B9AE_0747F4694689"/>
+										<UML:Classifier xmi.idref="EAID_0D9ABA87_9ED1_5b1f_9952_7CD81693BF44"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Description of access privileges required to use the API, e.g. registration, licensing, payments. Note that access constraints applying to all distributions of the resource should be specified in the access constraints for the resource description as a whole."/>
@@ -58,7 +58,7 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="EAID_1AFCADC5_0025_5374_B9AE_0747F4694689"/>
+										<UML:Classifier xmi.idref="EAID_0D9ABA87_9ED1_5b1f_9952_7CD81693BF44"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;a document that provides a machine-actionable description of a service instance. Examples include OpenAPI documents, OGC Capabilities documents. Software designed to utilise a particular service type will typically include functionality to parse such a description document and engage with the service endpoint. If such a document is available for the service instance providing the resource distribution, it should be included in the distribution metadata.&#xA;:alternativeOverrides: {&quot;string&quot;: {&quot;default&quot;: null}}"/>
@@ -72,6 +72,63 @@
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
 										<UML:TaggedValue tag="ea_guid" value="{09B6E75C-BAAB-5ef2-B99A-73B82A96D880}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+							</UML:Classifier.feature>
+						</UML:Class>
+						<UML:Class name="StringXorLabeledLink" xmi.id="EAID_0D9ABA87_9ED1_5b1f_9952_7CD81693BF44" visibility="public" namespace="EAPK_CD69D19E_A503_5c41_911F_E4F4A0A97E08" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:union: ``oneOf``"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="DataType"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_CD69D19E_A503_5c41_911F_E4F4A0A97E08"/>
+								<UML:TaggedValue tag="ea_guid" value="{0D9ABA87-9ED1-5b1f-9952-7CD81693BF44}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Classifier.feature>
+								<UML:Attribute name="string" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:StructuralFeature.type>
+										<UML:Classifier xmi.idref="eaxmiid_String"/>
+									</UML:StructuralFeature.type>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:default: &quot;not specified&quot;"/>
+										<UML:TaggedValue tag="type" value="String"/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="false"/>
+										<UML:TaggedValue tag="position" value="0"/>
+										<UML:TaggedValue tag="lowerBound" value="0"/>
+										<UML:TaggedValue tag="upperBound" value="1"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{6BA5AE16-81BB-5abc-B4F2-E469BEDDC5AD}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+								<UML:Attribute name="labeledLink" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:StructuralFeature.type>
+										<UML:Classifier xmi.idref="EAID_7FB1FAC0_BBF7_507c_85D5_9272F3CF0373"/>
+									</UML:StructuralFeature.type>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value=""/>
+										<UML:TaggedValue tag="type" value="LabeledLink"/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="false"/>
+										<UML:TaggedValue tag="position" value="1"/>
+										<UML:TaggedValue tag="lowerBound" value="0"/>
+										<UML:TaggedValue tag="upperBound" value="1"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{BCBDFBF8-7870-5fd2-B9D9-3F74AE0D4F61}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -150,12 +207,19 @@
 						</UML:Generalization>
 					</UML:Namespace.ownedElement>
 				</UML:Package>
+				<UML:Class name="String" xmi.id="eaxmiid_String" visibility="public" isRoot="true" isLeaf="false" isAbstract="false">
+					<UML:ModelElement.taggedValue>
+						<UML:TaggedValue tag="isSpecification" value="false"/>
+						<UML:TaggedValue tag="ea_stype" value="Primitive"/>
+						<UML:TaggedValue tag="ea_ntype" value="0"/>
+					</UML:ModelElement.taggedValue>
+				</UML:Class>
 			</UML:Namespace.ownedElement>
 		</UML:Model>
 	</XMI.content>
 	<XMI.extensions xmi.extender="Enterprise Architect 2.5">
-		<EAStub xmi.id="EAID_1AFCADC5_0025_5374_B9AE_0747F4694689" name="StringXorLabeledLink" UMLType="DataType"/>
 		<EAStub xmi.id="EAID_758FF594_94AB_5d77_84E6_004AA8CC4AB4" name="DefinedTerm" UMLType="Class"/>
+		<EAStub xmi.id="EAID_7FB1FAC0_BBF7_507c_85D5_9272F3CF0373" name="LabeledLink" UMLType="DataType"/>
 		<EAStub xmi.id="EAID_E7DB57DA_068E_52c3_860F_0F9FB2DA207B" name="WebAPI" UMLType="Class"/>
 		<EAStub xmi.id="EAID_E89A011E_D1A9_5655_A486_E63F9BE666CC" name="Action" UMLType="Class"/>
 	</XMI.extensions>

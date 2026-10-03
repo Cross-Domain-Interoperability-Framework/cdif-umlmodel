@@ -1,39 +1,36 @@
-cdifOpenApi: 26 exact difference(s)
+cdifOpenApi: 29 exact difference(s)
 $.$defs.Action: only in regenerated: {"type": "object", "description": "an OpenAPI-aligned operation. Corresponds to one OpenAPI Operation Object; the path component of OAS Path Item is folded into schema:target/schema:urlTemplate togeth
 $.$defs.EntryPoint: only in original: {"type": "object", "description": "endpoint URL template, HTTP method, and the OpenAPI-shaped parameters, request body, and responses for the operation.", "properties": {"@type": {"type": "array", "it
 $.$defs.MediaType: only in original: {"type": "object", "description": "an OpenAPI Media Type Object; describes the structure of one media-type representation in a request body or response.", "properties": {"schema:encodingFormat": {"typ
 $.$defs.OpenApiEntryPoint: only in regenerated: {"type": "object", "description": "endpoint URL template, HTTP method, and the OpenAPI-shaped parameters, request body, and responses for the operation.", "properties": {"@type": {"default": ["schema:
-$.$defs.OpenApiEntryPointOas_parameters: only in regenerated: {"type": "object", "description": "an OpenAPI Parameter Object; describes a single parameter of an operation.", "properties": {"@id": {"type": "string"}, "oas:name": {"type": "string", "description": 
-$.$defs.OpenApiEntryPointOas_parametersSchema: only in regenerated: {"type": "object", "description": "a minimal OpenAPI Schema Object. The full OAS Schema Object is a superset of JSON Schema 2020-12; this BB requires only a basic type/format/pattern/enum/$ref shape s
-$.$defs.OpenApiEntryPointOas_requestBody: only in regenerated: {"type": "object", "description": "an OpenAPI Request Body Object; describes the body of a write request.", "properties": {"schema:description": {"type": "string"}, "oas:required": {"default": false, 
-$.$defs.OpenApiEntryPointOas_requestBodyOas_content: only in regenerated: {"type": "object", "description": "an OpenAPI Media Type Object; describes the structure of one media-type representation in a request body or response.", "properties": {"schema:encodingFormat": {"typ
-$.$defs.OpenApiEntryPointOas_requestBodyOas_contentOas_schema: only in regenerated: {"type": "object", "description": "a minimal OpenAPI Schema Object. The full OAS Schema Object is a superset of JSON Schema 2020-12; this BB requires only a basic type/format/pattern/enum/$ref shape s
-$.$defs.OpenApiEntryPointOas_response: only in regenerated: {"type": "object", "description": "an OpenAPI Response Object describing one response from an operation.", "properties": {"oas:code": {"default": "200", "type": "string", "description": "HTTP status c
-$.$defs.OpenApiEntryPointOas_responseContent: only in regenerated: {"type": "object", "description": "an OpenAPI Media Type Object; describes the structure of one media-type representation in a request body or response.", "properties": {"schema:encodingFormat": {"typ
-$.$defs.OpenApiEntryPointOas_responseContentOas_schema: only in regenerated: {"type": "object", "description": "a minimal OpenAPI Schema Object. The full OAS Schema Object is a superset of JSON Schema 2020-12; this BB requires only a basic type/format/pattern/enum/$ref shape s
+$.$defs.OpenApiEntryPointParameters: only in regenerated: {"type": "object", "description": "an OpenAPI Parameter Object; describes a single parameter of an operation.", "properties": {"@id": {"type": "string"}, "oas:name": {"type": "string", "description": 
+$.$defs.OpenApiEntryPointParametersSchema: only in regenerated: {"type": "object", "description": "a minimal OpenAPI Schema Object. The full OAS Schema Object is a superset of JSON Schema 2020-12; this BB requires only a basic type/format/pattern/enum/$ref shape s
+$.$defs.OpenApiEntryPointRequestBody: only in regenerated: {"type": "object", "description": "an OpenAPI Request Body Object; describes the body of a write request.", "properties": {"schema:description": {"type": "string"}, "oas:required": {"default": false, 
+$.$defs.OpenApiEntryPointRequestBodyContent: only in regenerated: {"type": "object", "description": "an OpenAPI Media Type Object; describes the structure of one media-type representation in a request body or response.", "properties": {"schema:encodingFormat": {"typ
+$.$defs.OpenApiEntryPointRequestBodyContentSchema: only in regenerated: {"type": "object", "description": "a minimal OpenAPI Schema Object. The full OAS Schema Object is a superset of JSON Schema 2020-12; this BB requires only a basic type/format/pattern/enum/$ref shape s
+$.$defs.OpenApiEntryPointResponse: only in regenerated: {"type": "object", "description": "an OpenAPI Response Object describing one response from an operation.", "properties": {"oas:code": {"default": "200", "type": "string", "description": "HTTP status c
+$.$defs.OpenApiEntryPointResponseContent: only in regenerated: {"type": "object", "description": "an OpenAPI Media Type Object; describes the structure of one media-type representation in a request body or response.", "properties": {"schema:encodingFormat": {"typ
+$.$defs.OpenApiEntryPointResponseContentSchema: only in regenerated: {"type": "object", "description": "a minimal OpenAPI Schema Object. The full OAS Schema Object is a superset of JSON Schema 2020-12; this BB requires only a basic type/format/pattern/enum/$ref shape s
 $.$defs.Operation: only in original: {"type": "object", "description": "an OpenAPI-aligned operation. Corresponds to one OpenAPI Operation Object; the path component of OAS Path Item is folded into schema:target/schema:urlTemplate togeth
 $.$defs.Parameter: only in original: {"type": "object", "description": "an OpenAPI Parameter Object; describes a single parameter of an operation.", "properties": {"@id": {"type": "string"}, "oas:name": {"type": "string", "description": 
 $.$defs.Reference: only in original: {"$ref": "../../schemaorgProperties/labeledLink/schema.yaml"}
 $.$defs.RequestBody: only in original: {"type": "object", "description": "an OpenAPI Request Body Object; describes the body of a write request.", "properties": {"schema:description": {"type": "string"}, "oas:required": {"type": "boolean",
 $.$defs.Response: only in original: {"type": "object", "description": "an OpenAPI Response Object describing one response from an operation.", "properties": {"oas:code": {"type": "string", "description": "HTTP status code (e.g. \"200\",
 $.$defs.Schema: only in original: {"type": "object", "description": "a minimal OpenAPI Schema Object. The full OAS Schema Object is a superset of JSON Schema 2020-12; this BB requires only a basic type/format/pattern/enum/$ref shape s
-$.$defs.StringXorLabeledLink: only in regenerated: {"oneOf": [{"default": "not specified", "type": "string"}, {"$ref": "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml"}]}
+$.$defs.StringXorLabeledLink: only in regenerated: {"oneOf": [{"type": "string"}, {"$ref": "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml"}]}
 $.$defs.cdifConceptOrTerm: only in original: {"$ref": "../cdifConceptOrTerm/schema.yaml"}
 $.$defs.cdifConceptOrTermOrString: only in original: {"$ref": "../cdifConceptOrTermOrString/schema.yaml"}
-$.properties.schema:documentation.oneOf[1].$ref:
-    original:    "#/$defs/Reference"
-    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml"
+$.properties.schema:documentation.$ref: only in regenerated: "#/$defs/StringXorLabeledLink"
+$.properties.schema:documentation.oneOf: only in original: [{"type": "string"}, {"$ref": "#/$defs/Reference"}]
 $.properties.schema:potentialAction.items.$ref:
     original:    "#/$defs/Operation"
     regenerated: "#/$defs/Action"
 $.properties.schema:serviceType.$ref:
     original:    "#/$defs/cdifConceptOrTermOrString"
     regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml"
-$.properties.schema:termsOfService.oneOf[1].$ref:
-    original:    "#/$defs/Reference"
-    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml"
-$.properties.spdx:license.oneOf[1].$ref:
-    original:    "#/$defs/Reference"
-    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml"
+$.properties.schema:termsOfService.$ref: only in regenerated: "#/$defs/StringXorLabeledLink"
+$.properties.schema:termsOfService.oneOf: only in original: [{"type": "string"}, {"$ref": "#/$defs/Reference"}]
+$.properties.spdx:license.$ref: only in regenerated: "#/$defs/StringXorLabeledLink"
+$.properties.spdx:license.oneOf: only in original: [{"type": "string"}, {"$ref": "#/$defs/Reference"}]
 
 cdifOpenApi: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

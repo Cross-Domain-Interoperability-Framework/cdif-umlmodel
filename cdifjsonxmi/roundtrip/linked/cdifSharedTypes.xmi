@@ -5,6 +5,64 @@
     <packagedElement xmi:type="uml:Package" xmi:id="cdif.shared" xmi:uuid="2e10cbf3-328d-5ae0-9f7f-16265f98612d">
       <name>cdifSharedTypes</name>
       <URI>https://w3id.org/cdif/shared/xmi/</URI>
+      <packagedElement xmi:type="uml:Class" xmi:id="cdif.shared.ComponentPosition" xmi:uuid="21101511-f140-5be5-88de-b104fa6d9e69" isAbstract="true">
+        <name>ComponentPosition</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.shared.ComponentPosition.comment" xmi:uuid="e6e0bf06-8152-5561-a414-5b152c26107c">
+          <body>**CDIF**
+
+Definition
+==========
+
+Abstract base of the 2 cdi:ComponentPosition profiles in cdifDataType/cdifKey, profiles/cdifProfile/cdifDataStructure. Each specializes it; this holds the attributes identical in all of them.
+:rdfType: ``cdi:ComponentPosition``</body>
+          <annotatedElement xmi:idref="cdif.shared.ComponentPosition"/>
+        </ownedComment>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="cdif.shared.Concept" xmi:uuid="bd85e227-9516-5134-97ae-e50fce147f9a" isAbstract="true">
+        <name>Concept</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.shared.Concept.comment" xmi:uuid="d8fe06da-4fa2-504a-aac9-a6ac3b8933b2">
+          <body>**CDIF**
+
+Definition
+==========
+
+Abstract base of the 2 skos:Concept profiles in profiles/cdifProfile/cdifConceptScheme, skosProperties/skosConcept. Each specializes it; this holds the attributes identical in all of them.
+:rdfType: ``skos:Concept``</body>
+          <annotatedElement xmi:idref="cdif.shared.Concept"/>
+        </ownedComment>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.shared.Concept.notation" xmi:uuid="e8008512-3458-56ef-8f77-4956281c2023">
+          <name>notation</name>
+          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.shared.Concept.notation.lower" xmi:uuid="0ae87814-2126-5129-96fd-907e95d53390">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.shared.Concept.notation.upper" xmi:uuid="96e97c05-d3f8-544a-a74a-02ebd6c80802">
+            <value>1</value>
+          </upperValue>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.shared.Concept.notation.comment" xmi:uuid="d941ab14-4539-5312-871a-a9ae7c012245">
+            <body>**CDIF**
+
+Definition
+==========
+
+Classification code for this concept within a scheme (a single notation string, consistent with CdifCodelistConcept).</body>
+            <annotatedElement xmi:idref="cdif.shared.Concept.notation"/>
+          </ownedComment>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="cdif.shared.ConceptScheme" xmi:uuid="56963727-52a6-5b7d-85f0-f2a225d4d134" isAbstract="true">
+        <name>ConceptScheme</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.shared.ConceptScheme.comment" xmi:uuid="0712b0b5-d62c-5ca8-b441-10709ddf54c0">
+          <body>**CDIF**
+
+Definition
+==========
+
+Abstract base of the 3 skos:ConceptScheme profiles in profiles/cdifProfile/cdifCodelist, profiles/cdifProfile/cdifConceptScheme, skosProperties/skosConceptScheme. Each specializes it; this holds the attributes identical in all of them.
+:rdfType: ``skos:ConceptScheme``</body>
+          <annotatedElement xmi:idref="cdif.shared.ConceptScheme"/>
+        </ownedComment>
+      </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="cdif.shared.DataDownload" xmi:uuid="6e8e7c0a-ee5b-59ee-b87a-6ad25480a8f9" isAbstract="true">
         <name>DataDownload</name>
         <ownedComment xmi:type="uml:Comment" xmi:id="cdif.shared.DataDownload.comment" xmi:uuid="7b0271fd-f604-56c5-9b35-dd4c59282c55">
@@ -13,9 +71,22 @@
 Definition
 ==========
 
-Abstract base of the 2 schema:DataDownload profiles in schemaorgProperties/actionResult, schemaorgProperties/dataDownload. Each specializes it; this holds the attributes identical in all of them.
+Abstract base of the 3 schema:DataDownload profiles in profiles/cdifProfile/cdifDataStructure, schemaorgProperties/actionResult, schemaorgProperties/dataDownload. Each specializes it; this holds the attributes identical in all of them.
 :rdfType: ``schema:DataDownload``</body>
           <annotatedElement xmi:idref="cdif.shared.DataDownload"/>
+        </ownedComment>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="cdif.shared.Dataset" xmi:uuid="920b79f5-6711-55c1-a420-99418ecbcb78" isAbstract="true">
+        <name>Dataset</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.shared.Dataset.comment" xmi:uuid="e4a58627-62b7-5c43-ba17-4df2e8895a6f">
+          <body>**CDIF**
+
+Definition
+==========
+
+Abstract base of the 4 schema:Dataset profiles in cdifDataType/cdifCatalogRecord, profiles/cdifProfile/cdifCodelist, profiles/cdifProfile/cdifConceptScheme, profiles/cdifProfile/cdifCore. Each specializes it; this holds the attributes identical in all of them.
+:rdfType: ``schema:Dataset``</body>
+          <annotatedElement xmi:idref="cdif.shared.Dataset"/>
         </ownedComment>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="cdif.shared.EntryPoint" xmi:uuid="fa02b167-f1af-5d87-b09b-ef73e2ff578c" isAbstract="true">
@@ -257,7 +328,7 @@ free text description of the temporal interval
 Definition
 ==========
 
-Abstract base of the 2 schema:PropertyValue profiles in bioschemasProperties/cdifBioschemasProperties, schemaorgProperties/additionalProperty. Each specializes it; this holds the attributes identical in all of them.
+Abstract base of the 3 schema:PropertyValue profiles in bioschemasProperties/cdifBioschemasProperties, profiles/cdifProfile/cdifCodelist, schemaorgProperties/additionalProperty. Each specializes it; this holds the attributes identical in all of them.
 :rdfType: ``schema:PropertyValue``</body>
           <annotatedElement xmi:idref="cdif.shared.PropertyValue"/>
         </ownedComment>

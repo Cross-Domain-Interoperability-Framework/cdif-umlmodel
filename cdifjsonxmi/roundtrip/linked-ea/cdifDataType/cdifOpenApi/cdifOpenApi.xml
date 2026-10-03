@@ -102,10 +102,10 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="EAID_1AFCADC5_0025_5374_B9AE_0747F4694689"/>
+										<UML:Classifier xmi.idref="EAID_3A7BD74E_E8A5_5481_BCF7_812AE7E0B656"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Description of access privileges required to use the API (e.g. registration, licensing, payments). Maps OpenAPI info.termsOfService. Note that access constraints applying to all distributions of the resource should be specified at the resource level.&#xA;:alternativeOverrides: {&quot;string&quot;: {&quot;default&quot;: null}}"/>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Description of access privileges required to use the API (e.g. registration, licensing, payments). Maps OpenAPI info.termsOfService. Note that access constraints applying to all distributions of the resource should be specified at the resource level."/>
 										<UML:TaggedValue tag="type" value="StringXorLabeledLink"/>
 										<UML:TaggedValue tag="derived" value="0"/>
 										<UML:TaggedValue tag="containment" value="Not Specified"/>
@@ -124,10 +124,10 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="EAID_1AFCADC5_0025_5374_B9AE_0747F4694689"/>
+										<UML:Classifier xmi.idref="EAID_3A7BD74E_E8A5_5481_BCF7_812AE7E0B656"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;a document that provides a machine-actionable description of this service instance, typically the canonical OpenAPI document. Even when this BB inlines OAS detail, schema:documentation may still link to an authoritative OAS source.&#xA;:alternativeOverrides: {&quot;string&quot;: {&quot;default&quot;: null}}"/>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;a document that provides a machine-actionable description of this service instance, typically the canonical OpenAPI document. Even when this BB inlines OAS detail, schema:documentation may still link to an authoritative OAS source."/>
 										<UML:TaggedValue tag="type" value="StringXorLabeledLink"/>
 										<UML:TaggedValue tag="derived" value="0"/>
 										<UML:TaggedValue tag="containment" value="Not Specified"/>
@@ -146,10 +146,10 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="EAID_1AFCADC5_0025_5374_B9AE_0747F4694689"/>
+										<UML:Classifier xmi.idref="EAID_3A7BD74E_E8A5_5481_BCF7_812AE7E0B656"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;SPDX license identifier expression for the API itself, per OpenAPI License Object. Use schema:license at the resource (parent) level for licensing of the data. If only a URL identifier is available rather than an SPDX id, encode as a labeled link (#/$defs/Reference).&#xA;:alternativeOverrides: {&quot;string&quot;: {&quot;default&quot;: null}}&#xA;:jsonName: &quot;spdx:license&quot;"/>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;SPDX license identifier expression for the API itself, per OpenAPI License Object. Use schema:license at the resource (parent) level for licensing of the data. If only a URL identifier is available rather than an SPDX id, encode as a labeled link (#/$defs/Reference).&#xA;:jsonName: &quot;spdx:license&quot;"/>
 										<UML:TaggedValue tag="type" value="StringXorLabeledLink"/>
 										<UML:TaggedValue tag="derived" value="0"/>
 										<UML:TaggedValue tag="containment" value="Not Specified"/>
@@ -426,11 +426,11 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="EAID_5B147394_42D9_5220_A543_B023A0612151"/>
+										<UML:Classifier xmi.idref="EAID_CE199F64_C00D_52db_BF5D_CDE0C29E7171"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;request body for the operation (typically POST/PUT/PATCH). Maps OpenAPI Request Body Object.&#xA;:jsonName: &quot;oas:requestBody&quot;"/>
-										<UML:TaggedValue tag="type" value="OpenApiEntryPointOas_requestBody"/>
+										<UML:TaggedValue tag="type" value="OpenApiEntryPointRequestBody"/>
 										<UML:TaggedValue tag="derived" value="0"/>
 										<UML:TaggedValue tag="containment" value="Not Specified"/>
 										<UML:TaggedValue tag="ordered" value="0"/>
@@ -448,11 +448,11 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="EAID_4323C476_40AF_58d1_A414_76AE6A38C420"/>
+										<UML:Classifier xmi.idref="EAID_95F87950_F9B8_5a77_91B8_D16D6377598D"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;possible responses returned by the operation. Maps OpenAPI Responses Object; each item carries an explicit oas:code rather than using the HTTP code as a map key.&#xA;:jsonName: &quot;oas:response&quot;"/>
-										<UML:TaggedValue tag="type" value="OpenApiEntryPointOas_response"/>
+										<UML:TaggedValue tag="type" value="OpenApiEntryPointResponse"/>
 										<UML:TaggedValue tag="derived" value="0"/>
 										<UML:TaggedValue tag="containment" value="Not Specified"/>
 										<UML:TaggedValue tag="ordered" value="0"/>
@@ -467,7 +467,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Class name="OpenApiEntryPointOas_parameters" xmi.id="EAID_151EA0DB_C8E6_5b07_8B42_B7D4179202E9" visibility="public" namespace="EAPK_62D635F9_506E_574b_BA21_7014C7E72849" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+						<UML:Class name="OpenApiEntryPointParameters" xmi.id="EAID_40B107C1_0602_5d91_8756_5B00494D9383" visibility="public" namespace="EAPK_62D635F9_506E_574b_BA21_7014C7E72849" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;an OpenAPI Parameter Object; describes a single parameter of an operation.&#xA;:prefix: ``oas``"/>
 								<UML:TaggedValue tag="isSpecification" value="false"/>
@@ -475,7 +475,7 @@
 								<UML:TaggedValue tag="ea_ntype" value="0"/>
 								<UML:TaggedValue tag="version" value="1.0"/>
 								<UML:TaggedValue tag="package" value="EAPK_62D635F9_506E_574b_BA21_7014C7E72849"/>
-								<UML:TaggedValue tag="ea_guid" value="{151EA0DB-C8E6-5b07-8B42-B7D4179202E9}"/>
+								<UML:TaggedValue tag="ea_guid" value="{40B107C1-0602-5d91-8756-5B00494D9383}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Classifier.feature>
 								<UML:Attribute name="name" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
@@ -496,7 +496,7 @@
 										<UML:TaggedValue tag="lowerBound" value="1"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{664BA83C-5F2A-5f07-816E-F96ABA1BFF58}"/>
+										<UML:TaggedValue tag="ea_guid" value="{D96E3F9D-5F6F-54c7-AFBB-143B9D5EBBB2}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -518,7 +518,7 @@
 										<UML:TaggedValue tag="lowerBound" value="1"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{F8C1DA93-52C1-576e-AF47-79E7FFD7848E}"/>
+										<UML:TaggedValue tag="ea_guid" value="{CCB456B5-C084-5cb5-A617-6AB3ABCCA152}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -540,7 +540,7 @@
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{7DE76880-9886-583e-95AB-4D629FD9E4FB}"/>
+										<UML:TaggedValue tag="ea_guid" value="{0723CB98-3051-5f1a-96F0-8990D62A4EA1}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -562,7 +562,7 @@
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{E5E8B555-236E-5896-95A9-0033C9FFC8E0}"/>
+										<UML:TaggedValue tag="ea_guid" value="{2F8C7B37-AB0A-50e3-8DEA-4886C6017717}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -571,11 +571,11 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="EAID_B946BD35_7901_5cb9_BABF_E36C55FD1147"/>
+										<UML:Classifier xmi.idref="EAID_9DC0B329_C5BF_5e27_B8C5_9A383719A762"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;schema describing the parameter value type, format, and any pattern."/>
-										<UML:TaggedValue tag="type" value="OpenApiEntryPointOas_parametersSchema"/>
+										<UML:TaggedValue tag="type" value="OpenApiEntryPointParametersSchema"/>
 										<UML:TaggedValue tag="derived" value="0"/>
 										<UML:TaggedValue tag="containment" value="Not Specified"/>
 										<UML:TaggedValue tag="ordered" value="0"/>
@@ -584,13 +584,13 @@
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{A396B096-79DA-59f2-AF31-3839C2ECA87E}"/>
+										<UML:TaggedValue tag="ea_guid" value="{FA83DBA1-87EA-5266-89EF-8747D0CE0AC1}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Class name="OpenApiEntryPointOas_parametersSchema" xmi.id="EAID_B946BD35_7901_5cb9_BABF_E36C55FD1147" visibility="public" namespace="EAPK_62D635F9_506E_574b_BA21_7014C7E72849" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+						<UML:Class name="OpenApiEntryPointParametersSchema" xmi.id="EAID_9DC0B329_C5BF_5e27_B8C5_9A383719A762" visibility="public" namespace="EAPK_62D635F9_506E_574b_BA21_7014C7E72849" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;a minimal OpenAPI Schema Object. The full OAS Schema Object is a superset of JSON Schema 2020-12; this BB requires only a basic type/format/pattern/enum/$ref shape sufficient to describe parameter and response payload types in CDIF metadata. For richer schemas, use oas:$ref to point at an external schema document.&#xA;:prefix: ``oas``"/>
 								<UML:TaggedValue tag="isSpecification" value="false"/>
@@ -598,7 +598,7 @@
 								<UML:TaggedValue tag="ea_ntype" value="0"/>
 								<UML:TaggedValue tag="version" value="1.0"/>
 								<UML:TaggedValue tag="package" value="EAPK_62D635F9_506E_574b_BA21_7014C7E72849"/>
-								<UML:TaggedValue tag="ea_guid" value="{B946BD35-7901-5cb9-BABF-E36C55FD1147}"/>
+								<UML:TaggedValue tag="ea_guid" value="{9DC0B329-C5BF-5e27-B8C5-9A383719A762}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Classifier.feature>
 								<UML:Attribute name="type" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
@@ -619,7 +619,7 @@
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{71D2F4BB-57C0-5ff8-AD21-BB9AD8C1D5B1}"/>
+										<UML:TaggedValue tag="ea_guid" value="{DD28E202-E7A0-597a-8457-D3CAFD4EEC3A}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -641,7 +641,7 @@
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{D6A5A833-FAE8-505f-A3F1-7B028AA92541}"/>
+										<UML:TaggedValue tag="ea_guid" value="{2D90C705-CD01-507d-B064-BEEB77F716D2}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -663,7 +663,7 @@
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{6366DB8C-9100-506e-B289-FE3F3D152B79}"/>
+										<UML:TaggedValue tag="ea_guid" value="{81E1386B-BB64-55fb-8182-80CDDF175BB2}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -682,7 +682,7 @@
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="*"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{8A8E217D-312B-571b-8B5D-5D6AD9984A26}"/>
+										<UML:TaggedValue tag="ea_guid" value="{08898546-D901-561f-A1FD-CFEE55884F88}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -704,13 +704,13 @@
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{A6CA1642-C056-56c5-9732-0EF21183DC65}"/>
+										<UML:TaggedValue tag="ea_guid" value="{55FB2EFA-E378-58eb-BC65-89B3D7DEDDFC}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Class name="OpenApiEntryPointOas_requestBody" xmi.id="EAID_5B147394_42D9_5220_A543_B023A0612151" visibility="public" namespace="EAPK_62D635F9_506E_574b_BA21_7014C7E72849" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+						<UML:Class name="OpenApiEntryPointRequestBody" xmi.id="EAID_CE199F64_C00D_52db_BF5D_CDE0C29E7171" visibility="public" namespace="EAPK_62D635F9_506E_574b_BA21_7014C7E72849" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;an OpenAPI Request Body Object; describes the body of a write request.&#xA;:prefix: ``schema``"/>
 								<UML:TaggedValue tag="isSpecification" value="false"/>
@@ -718,7 +718,7 @@
 								<UML:TaggedValue tag="ea_ntype" value="0"/>
 								<UML:TaggedValue tag="version" value="1.0"/>
 								<UML:TaggedValue tag="package" value="EAPK_62D635F9_506E_574b_BA21_7014C7E72849"/>
-								<UML:TaggedValue tag="ea_guid" value="{5B147394-42D9-5220-A543-B023A0612151}"/>
+								<UML:TaggedValue tag="ea_guid" value="{CE199F64-C00D-52db-BF5D-CDE0C29E7171}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Classifier.feature>
 								<UML:Attribute name="description" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
@@ -739,7 +739,7 @@
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{5953EF9D-A554-5252-AC7D-C9F8D3B307C7}"/>
+										<UML:TaggedValue tag="ea_guid" value="{07F7560C-152F-58a7-87F2-49A2C2C6E601}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -761,7 +761,7 @@
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{315D1B67-63F2-597f-B969-F1BBA9284B53}"/>
+										<UML:TaggedValue tag="ea_guid" value="{41450ED7-0B68-541e-8EA6-7845336D5394}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -770,11 +770,11 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="EAID_D97BA4C1_637B_53ce_8D04_1124A9D8F744"/>
+										<UML:Classifier xmi.idref="EAID_9AE8E5EC_3AC7_56cb_A5D8_603F4242FE48"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;representations the request body may take. Maps OpenAPI Request Body content map; each item carries its own schema:encodingFormat instead of using media type as a map key.&#xA;:jsonName: &quot;oas:content&quot;"/>
-										<UML:TaggedValue tag="type" value="OpenApiEntryPointOas_requestBodyOas_content"/>
+										<UML:TaggedValue tag="type" value="OpenApiEntryPointRequestBodyContent"/>
 										<UML:TaggedValue tag="derived" value="0"/>
 										<UML:TaggedValue tag="containment" value="Not Specified"/>
 										<UML:TaggedValue tag="ordered" value="0"/>
@@ -783,13 +783,13 @@
 										<UML:TaggedValue tag="lowerBound" value="1"/>
 										<UML:TaggedValue tag="upperBound" value="*"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{3B397B4D-45FC-5fd5-B0E0-310BF306DFA3}"/>
+										<UML:TaggedValue tag="ea_guid" value="{2ECAFFA9-F503-5421-805C-50387D93EC5B}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Class name="OpenApiEntryPointOas_requestBodyOas_content" xmi.id="EAID_D97BA4C1_637B_53ce_8D04_1124A9D8F744" visibility="public" namespace="EAPK_62D635F9_506E_574b_BA21_7014C7E72849" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+						<UML:Class name="OpenApiEntryPointRequestBodyContent" xmi.id="EAID_9AE8E5EC_3AC7_56cb_A5D8_603F4242FE48" visibility="public" namespace="EAPK_62D635F9_506E_574b_BA21_7014C7E72849" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;an OpenAPI Media Type Object; describes the structure of one media-type representation in a request body or response.&#xA;:prefix: ``schema``"/>
 								<UML:TaggedValue tag="isSpecification" value="false"/>
@@ -797,7 +797,7 @@
 								<UML:TaggedValue tag="ea_ntype" value="0"/>
 								<UML:TaggedValue tag="version" value="1.0"/>
 								<UML:TaggedValue tag="package" value="EAPK_62D635F9_506E_574b_BA21_7014C7E72849"/>
-								<UML:TaggedValue tag="ea_guid" value="{D97BA4C1-637B-53ce-8D04-1124A9D8F744}"/>
+								<UML:TaggedValue tag="ea_guid" value="{9AE8E5EC-3AC7-56cb-A5D8-603F4242FE48}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Classifier.feature>
 								<UML:Attribute name="encodingFormat" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
@@ -818,7 +818,7 @@
 										<UML:TaggedValue tag="lowerBound" value="1"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{E43DA13A-E306-5630-B13D-C55019A0C2D3}"/>
+										<UML:TaggedValue tag="ea_guid" value="{DDAB3993-4EF6-58ed-9966-181924FD6889}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -827,11 +827,11 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="EAID_800094DA_3237_5e93_8255_936995D3EC22"/>
+										<UML:Classifier xmi.idref="EAID_B5380F5C_85FD_5a0a_A61C_0F52041DE64E"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;schema describing the structure of the payload. May reference an external JSON Schema or XML Schema document via oas:$ref. For tabular outputs, the referenced schema may align with InstanceVariable definitions in cdifInstanceVariable.&#xA;:jsonName: &quot;oas:schema&quot;"/>
-										<UML:TaggedValue tag="type" value="OpenApiEntryPointOas_requestBodyOas_contentOas_schema"/>
+										<UML:TaggedValue tag="type" value="OpenApiEntryPointRequestBodyContentSchema"/>
 										<UML:TaggedValue tag="derived" value="0"/>
 										<UML:TaggedValue tag="containment" value="Not Specified"/>
 										<UML:TaggedValue tag="ordered" value="0"/>
@@ -840,13 +840,13 @@
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{A8CB3E7E-689D-5af6-9736-724BDD1F5FC9}"/>
+										<UML:TaggedValue tag="ea_guid" value="{2F46BD8C-2330-54dd-B985-DAE6621A41A2}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Class name="OpenApiEntryPointOas_requestBodyOas_contentOas_schema" xmi.id="EAID_800094DA_3237_5e93_8255_936995D3EC22" visibility="public" namespace="EAPK_62D635F9_506E_574b_BA21_7014C7E72849" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+						<UML:Class name="OpenApiEntryPointRequestBodyContentSchema" xmi.id="EAID_B5380F5C_85FD_5a0a_A61C_0F52041DE64E" visibility="public" namespace="EAPK_62D635F9_506E_574b_BA21_7014C7E72849" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;a minimal OpenAPI Schema Object. The full OAS Schema Object is a superset of JSON Schema 2020-12; this BB requires only a basic type/format/pattern/enum/$ref shape sufficient to describe parameter and response payload types in CDIF metadata. For richer schemas, use oas:$ref to point at an external schema document.&#xA;:prefix: ``oas``"/>
 								<UML:TaggedValue tag="isSpecification" value="false"/>
@@ -854,7 +854,7 @@
 								<UML:TaggedValue tag="ea_ntype" value="0"/>
 								<UML:TaggedValue tag="version" value="1.0"/>
 								<UML:TaggedValue tag="package" value="EAPK_62D635F9_506E_574b_BA21_7014C7E72849"/>
-								<UML:TaggedValue tag="ea_guid" value="{800094DA-3237-5e93-8255-936995D3EC22}"/>
+								<UML:TaggedValue tag="ea_guid" value="{B5380F5C-85FD-5a0a-A61C-0F52041DE64E}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Classifier.feature>
 								<UML:Attribute name="type" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
@@ -875,7 +875,7 @@
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{12873AA7-7C4B-5987-A862-0A6C00C88FFE}"/>
+										<UML:TaggedValue tag="ea_guid" value="{8E16A3A3-589E-5c4b-B891-0EEDB8B083FA}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -897,7 +897,7 @@
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{B71E9EF3-F725-5e42-A71A-27008705F650}"/>
+										<UML:TaggedValue tag="ea_guid" value="{60977DA2-28C0-56e9-9BFB-0322751AFE92}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -919,7 +919,7 @@
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{4B376319-4B2C-5816-8FDF-6F13744F09F7}"/>
+										<UML:TaggedValue tag="ea_guid" value="{EA81A589-82C9-55a9-A4B5-153C66330F18}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -938,7 +938,7 @@
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="*"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{6FC26E1D-67E5-584c-A0D5-C0CFB88C264D}"/>
+										<UML:TaggedValue tag="ea_guid" value="{B693C1F2-8FBC-562d-BC05-CF1B0B743E7F}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -960,13 +960,13 @@
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{F04C9D44-404F-5dc6-B6BF-D413046DA9CE}"/>
+										<UML:TaggedValue tag="ea_guid" value="{8FADB342-8090-55a2-821C-7E405033EE2A}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Class name="OpenApiEntryPointOas_response" xmi.id="EAID_4323C476_40AF_58d1_A414_76AE6A38C420" visibility="public" namespace="EAPK_62D635F9_506E_574b_BA21_7014C7E72849" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+						<UML:Class name="OpenApiEntryPointResponse" xmi.id="EAID_95F87950_F9B8_5a77_91B8_D16D6377598D" visibility="public" namespace="EAPK_62D635F9_506E_574b_BA21_7014C7E72849" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;an OpenAPI Response Object describing one response from an operation.&#xA;:prefix: ``oas``"/>
 								<UML:TaggedValue tag="isSpecification" value="false"/>
@@ -974,7 +974,7 @@
 								<UML:TaggedValue tag="ea_ntype" value="0"/>
 								<UML:TaggedValue tag="version" value="1.0"/>
 								<UML:TaggedValue tag="package" value="EAPK_62D635F9_506E_574b_BA21_7014C7E72849"/>
-								<UML:TaggedValue tag="ea_guid" value="{4323C476-40AF-58d1-A414-76AE6A38C420}"/>
+								<UML:TaggedValue tag="ea_guid" value="{95F87950-F9B8-5a77-91B8-D16D6377598D}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Classifier.feature>
 								<UML:Attribute name="code" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
@@ -995,7 +995,7 @@
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{225A2B42-B2B3-5ddd-850B-B2D6891EA8AC}"/>
+										<UML:TaggedValue tag="ea_guid" value="{48AB39D2-55B3-5f47-B09F-4C169F5E966D}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -1017,7 +1017,7 @@
 										<UML:TaggedValue tag="lowerBound" value="1"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{DBEB844C-31E6-53ec-A448-0DDB6411AB4A}"/>
+										<UML:TaggedValue tag="ea_guid" value="{4654A06A-1631-5435-BBA1-28D0D79BD1E5}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -1026,11 +1026,11 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="EAID_4AC829AF_F1EB_5983_8555_C4DFE15D319B"/>
+										<UML:Classifier xmi.idref="EAID_50A16558_2E5E_5728_89B5_F667364C6BB3"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;representations the response payload may take. Maps OpenAPI Response content map; each item carries its own schema:encodingFormat instead of using media type as a map key."/>
-										<UML:TaggedValue tag="type" value="OpenApiEntryPointOas_responseContent"/>
+										<UML:TaggedValue tag="type" value="OpenApiEntryPointResponseContent"/>
 										<UML:TaggedValue tag="derived" value="0"/>
 										<UML:TaggedValue tag="containment" value="Not Specified"/>
 										<UML:TaggedValue tag="ordered" value="0"/>
@@ -1039,13 +1039,13 @@
 										<UML:TaggedValue tag="lowerBound" value="1"/>
 										<UML:TaggedValue tag="upperBound" value="*"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{6851B088-1C5C-5286-89A8-A24C4151DC0F}"/>
+										<UML:TaggedValue tag="ea_guid" value="{6DEA4BEB-FE79-5a6b-AB54-28885A12E956}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Class name="OpenApiEntryPointOas_responseContent" xmi.id="EAID_4AC829AF_F1EB_5983_8555_C4DFE15D319B" visibility="public" namespace="EAPK_62D635F9_506E_574b_BA21_7014C7E72849" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+						<UML:Class name="OpenApiEntryPointResponseContent" xmi.id="EAID_50A16558_2E5E_5728_89B5_F667364C6BB3" visibility="public" namespace="EAPK_62D635F9_506E_574b_BA21_7014C7E72849" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;an OpenAPI Media Type Object; describes the structure of one media-type representation in a request body or response.&#xA;:prefix: ``schema``"/>
 								<UML:TaggedValue tag="isSpecification" value="false"/>
@@ -1053,7 +1053,7 @@
 								<UML:TaggedValue tag="ea_ntype" value="0"/>
 								<UML:TaggedValue tag="version" value="1.0"/>
 								<UML:TaggedValue tag="package" value="EAPK_62D635F9_506E_574b_BA21_7014C7E72849"/>
-								<UML:TaggedValue tag="ea_guid" value="{4AC829AF-F1EB-5983-8555-C4DFE15D319B}"/>
+								<UML:TaggedValue tag="ea_guid" value="{50A16558-2E5E-5728-89B5-F667364C6BB3}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Classifier.feature>
 								<UML:Attribute name="encodingFormat" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
@@ -1074,7 +1074,7 @@
 										<UML:TaggedValue tag="lowerBound" value="1"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{A29FDA04-5AF9-59cb-A60B-521AB338245F}"/>
+										<UML:TaggedValue tag="ea_guid" value="{C1F4305C-0EC0-5f22-BC27-15BD66FCF24D}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -1083,11 +1083,11 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="EAID_360E25AD_E723_5850_9EA0_4F758C76C79E"/>
+										<UML:Classifier xmi.idref="EAID_F9B055FC_7F92_5851_9B14_E3BA0ACF47E9"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;schema describing the structure of the payload. May reference an external JSON Schema or XML Schema document via oas:$ref. For tabular outputs, the referenced schema may align with InstanceVariable definitions in cdifInstanceVariable.&#xA;:jsonName: &quot;oas:schema&quot;"/>
-										<UML:TaggedValue tag="type" value="OpenApiEntryPointOas_responseContentOas_schema"/>
+										<UML:TaggedValue tag="type" value="OpenApiEntryPointResponseContentSchema"/>
 										<UML:TaggedValue tag="derived" value="0"/>
 										<UML:TaggedValue tag="containment" value="Not Specified"/>
 										<UML:TaggedValue tag="ordered" value="0"/>
@@ -1096,13 +1096,13 @@
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{621E9BD5-FE23-5d17-9841-B644ED3C5EF6}"/>
+										<UML:TaggedValue tag="ea_guid" value="{3665EC1F-725B-5270-9392-28EB1451A757}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Class name="OpenApiEntryPointOas_responseContentOas_schema" xmi.id="EAID_360E25AD_E723_5850_9EA0_4F758C76C79E" visibility="public" namespace="EAPK_62D635F9_506E_574b_BA21_7014C7E72849" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+						<UML:Class name="OpenApiEntryPointResponseContentSchema" xmi.id="EAID_F9B055FC_7F92_5851_9B14_E3BA0ACF47E9" visibility="public" namespace="EAPK_62D635F9_506E_574b_BA21_7014C7E72849" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;a minimal OpenAPI Schema Object. The full OAS Schema Object is a superset of JSON Schema 2020-12; this BB requires only a basic type/format/pattern/enum/$ref shape sufficient to describe parameter and response payload types in CDIF metadata. For richer schemas, use oas:$ref to point at an external schema document.&#xA;:prefix: ``oas``"/>
 								<UML:TaggedValue tag="isSpecification" value="false"/>
@@ -1110,7 +1110,7 @@
 								<UML:TaggedValue tag="ea_ntype" value="0"/>
 								<UML:TaggedValue tag="version" value="1.0"/>
 								<UML:TaggedValue tag="package" value="EAPK_62D635F9_506E_574b_BA21_7014C7E72849"/>
-								<UML:TaggedValue tag="ea_guid" value="{360E25AD-E723-5850-9EA0-4F758C76C79E}"/>
+								<UML:TaggedValue tag="ea_guid" value="{F9B055FC-7F92-5851-9B14-E3BA0ACF47E9}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Classifier.feature>
 								<UML:Attribute name="type" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
@@ -1131,7 +1131,7 @@
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{000DA91B-C221-5180-9EAF-23819E565EA0}"/>
+										<UML:TaggedValue tag="ea_guid" value="{7D8F048F-C0A6-5300-8B1A-C64966A39792}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -1153,7 +1153,7 @@
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{A74A9891-F5D2-5e79-940F-5DB0C163588F}"/>
+										<UML:TaggedValue tag="ea_guid" value="{5C42E2AB-2D13-5619-967E-CFC81B1F6071}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -1175,7 +1175,7 @@
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{0108FAE7-D6EB-5e90-B130-BA98278B15FF}"/>
+										<UML:TaggedValue tag="ea_guid" value="{5B133305-8269-5023-8B15-65C480F5B4A2}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -1194,7 +1194,7 @@
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="*"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{B4D71A20-3261-543a-96FC-E28DBE26702F}"/>
+										<UML:TaggedValue tag="ea_guid" value="{80D7BCE4-D9A6-5036-9DE9-D02348F46E0E}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -1216,7 +1216,64 @@
 										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{68FF1E70-01FD-5dd5-9711-17C5E477BAAD}"/>
+										<UML:TaggedValue tag="ea_guid" value="{BB4CB686-55F5-5688-9FCD-A9ECA4581B9D}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+							</UML:Classifier.feature>
+						</UML:Class>
+						<UML:Class name="StringXorLabeledLink" xmi.id="EAID_3A7BD74E_E8A5_5481_BCF7_812AE7E0B656" visibility="public" namespace="EAPK_62D635F9_506E_574b_BA21_7014C7E72849" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:union: ``oneOf``"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="DataType"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_62D635F9_506E_574b_BA21_7014C7E72849"/>
+								<UML:TaggedValue tag="ea_guid" value="{3A7BD74E-E8A5-5481-BCF7-812AE7E0B656}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Classifier.feature>
+								<UML:Attribute name="string" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:StructuralFeature.type>
+										<UML:Classifier xmi.idref="eaxmiid_String"/>
+									</UML:StructuralFeature.type>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value=""/>
+										<UML:TaggedValue tag="type" value="String"/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="false"/>
+										<UML:TaggedValue tag="position" value="0"/>
+										<UML:TaggedValue tag="lowerBound" value="0"/>
+										<UML:TaggedValue tag="upperBound" value="1"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{AC152416-F94F-53c1-A4E1-E378F05EC631}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+								<UML:Attribute name="labeledLink" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:StructuralFeature.type>
+										<UML:Classifier xmi.idref="EAID_7FB1FAC0_BBF7_507c_85D5_9272F3CF0373"/>
+									</UML:StructuralFeature.type>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value=""/>
+										<UML:TaggedValue tag="type" value="LabeledLink"/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="false"/>
+										<UML:TaggedValue tag="position" value="1"/>
+										<UML:TaggedValue tag="lowerBound" value="0"/>
+										<UML:TaggedValue tag="upperBound" value="1"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{A43FF33A-CD0E-595c-B480-0D4AA327D273}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -1346,16 +1403,16 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_E316A681_5E49_528b_BBD2_D2321AEB3F4E" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_EEAE17B3_A386_59ba_BBFB_157596B64FA1" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;query, path, header, or cookie parameters accepted by the operation. Maps OpenAPI Parameter Object.&#xA;:inlineOrByReference: ``inline``&#xA;:jsonName: &quot;oas:parameters&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
 								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
 								<UML:TaggedValue tag="ea_sourceName" value="OpenApiEntryPoint"/>
-								<UML:TaggedValue tag="ea_targetName" value="OpenApiEntryPointOas_parameters"/>
+								<UML:TaggedValue tag="ea_targetName" value="OpenApiEntryPointParameters"/>
 								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
 								<UML:TaggedValue tag="ea_targetType" value="Class"/>
-								<UML:TaggedValue tag="ea_guid" value="{E316A681-5E49-528b-BBD2-D2321AEB3F4E}"/>
+								<UML:TaggedValue tag="ea_guid" value="{EEAE17B3-A386-59ba-BBFB-157596B64FA1}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Association.connection>
 								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_77A75898_6702_5e18_AC17_74D825C5F552">
@@ -1365,7 +1422,7 @@
 										<UML:TaggedValue tag="ea_end" value="source"/>
 									</UML:ModelElement.taggedValue>
 								</UML:AssociationEnd>
-								<UML:AssociationEnd visibility="public" name="oas_parameters" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_151EA0DB_C8E6_5b07_8B42_B7D4179202E9">
+								<UML:AssociationEnd visibility="public" name="oas_parameters" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_40B107C1_0602_5d91_8756_5B00494D9383">
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;query, path, header, or cookie parameters accepted by the operation. Maps OpenAPI Parameter Object.&#xA;:inlineOrByReference: ``inline``&#xA;:jsonName: &quot;oas:parameters&quot;"/>
 										<UML:TaggedValue tag="containment" value="Unspecified"/>
@@ -1419,8 +1476,8 @@
 	</XMI.content>
 	<XMI.extensions xmi.extender="Enterprise Architect 2.5">
 		<EAStub xmi.id="EAID_19A84FDD_C3B2_5615_AA61_7F8BC65D9000" name="XsdAnyUri" UMLType="DataType"/>
-		<EAStub xmi.id="EAID_1AFCADC5_0025_5374_B9AE_0747F4694689" name="StringXorLabeledLink" UMLType="DataType"/>
 		<EAStub xmi.id="EAID_4C904941_63B0_5e2d_A6AF_329608DC1F86" name="ConceptOrTermOrString" UMLType="DataType"/>
+		<EAStub xmi.id="EAID_7FB1FAC0_BBF7_507c_85D5_9272F3CF0373" name="LabeledLink" UMLType="DataType"/>
 		<EAStub xmi.id="EAID_E7DB57DA_068E_52c3_860F_0F9FB2DA207B" name="WebAPI" UMLType="Class"/>
 		<EAStub xmi.id="EAID_FA02B167_F1AF_5d87_B09B_EF73E2FF578C" name="EntryPoint" UMLType="Class"/>
 	</XMI.extensions>

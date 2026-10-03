@@ -9,9 +9,9 @@
     <packagedElement xmi:type="uml:Package" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics" xmi:uuid="39ad41f3-0566-577c-8a48-3c64ecd0f019">
       <name>cdifStatistics</name>
       <URI>https://w3id.org/cdif/bbr/metadata/cdifDataType/cdifStatistics</URI>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.Statistics2" xmi:uuid="9d17810a-8cfe-5b04-ba4e-2f74ffcfbad5">
-        <name>Statistics2</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.Statistics2.comment" xmi:uuid="e8968b64-d03d-57ec-ab44-b90e35625630">
+      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.StatisticsProfile" xmi:uuid="4cd42ebd-5c4e-5e81-bbdf-4497e1d40223">
+        <name>StatisticsProfile</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.StatisticsProfile.comment" xmi:uuid="d7c1a16e-9a36-5d20-bb84-6be5b6f43712">
           <body>**CDIF**
 
 Definition
@@ -21,19 +21,19 @@ CDIF profile of the DDI-CDI Statistics / CategoryStatistics / StatisticsCollecti
 :title: "CDIF Statistics"
 :objectUnion:
 :union: ``anyOf``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.Statistics2"/>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.StatisticsProfile"/>
         </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.Statistics2.statistics" xmi:uuid="a02bad43-75ae-5f61-b805-d9245784953d">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.StatisticsProfile.statistics" xmi:uuid="cd8fd9df-b509-5bde-8901-c386dd5e834e">
           <name>statistics</name>
           <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.Statistics"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.Statistics2.statistics.lower" xmi:uuid="20ee24c2-a52f-5a1e-a13d-d32efd345c0e">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.StatisticsProfile.statistics.lower" xmi:uuid="97a3c528-f7d9-5454-930b-1fa51fe61bdc">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.Statistics2.statistics.upper" xmi:uuid="09ce97bf-fc73-5751-ad2f-8a517a5646ae">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.StatisticsProfile.statistics.upper" xmi:uuid="5a087004-7f2d-529f-8f37-6e6b7ddeacfc">
             <value>1</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.Statistics_statistics_Statistics"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.Statistics2.statistics.comment" xmi:uuid="937efd6b-bf25-53f1-a785-149b175858e5">
+          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.StatisticsProfile_statistics_Statistics"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.StatisticsProfile.statistics.comment" xmi:uuid="91c9d03a-270b-5b04-88ab-e525a33bf9a6">
             <body>**CDIF**
 
 Definition
@@ -41,20 +41,20 @@ Definition
 
 
 :inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.Statistics2.statistics"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.StatisticsProfile.statistics"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.Statistics2.categoryStatistics" xmi:uuid="348c75fb-b156-56ca-bc12-ee6d15b24e2c">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.StatisticsProfile.categoryStatistics" xmi:uuid="5eb9de05-8ac1-5a27-ae71-a4515c869478">
           <name>categoryStatistics</name>
           <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.CategoryStatistics"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.Statistics2.categoryStatistics.lower" xmi:uuid="494a1611-da14-598c-adae-8254f1e3badb">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.StatisticsProfile.categoryStatistics.lower" xmi:uuid="45a05097-14ff-568e-b5a7-ec5d46f17f68">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.Statistics2.categoryStatistics.upper" xmi:uuid="c7e0e25a-4c65-54d3-b368-1564c3649e47">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.StatisticsProfile.categoryStatistics.upper" xmi:uuid="f0853e61-a32a-5c20-9013-edea50499ef1">
             <value>1</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.Statistics_categoryStatistics_CategoryStatistics"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.Statistics2.categoryStatistics.comment" xmi:uuid="092c523d-5e79-51d0-b53e-df93c5aab95b">
+          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.StatisticsProfile_categoryStatistics_CategoryStatistics"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.StatisticsProfile.categoryStatistics.comment" xmi:uuid="a21683cb-4f05-5df2-9da9-d605905ae197">
             <body>**CDIF**
 
 Definition
@@ -62,20 +62,20 @@ Definition
 
 
 :inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.Statistics2.categoryStatistics"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.StatisticsProfile.categoryStatistics"/>
           </ownedComment>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.Statistics2.statisticsCollection" xmi:uuid="35d11667-9cea-515a-8f0d-4f027a329296">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.StatisticsProfile.statisticsCollection" xmi:uuid="9b2a981a-f9a5-575b-bc50-9de8a91fc81d">
           <name>statisticsCollection</name>
           <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.StatisticsCollection"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.Statistics2.statisticsCollection.lower" xmi:uuid="8342d697-e33f-5251-8eb3-736dd7307b4e">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.StatisticsProfile.statisticsCollection.lower" xmi:uuid="72fffc92-e332-5c48-81ce-4d0a7adc8c5d">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.Statistics2.statisticsCollection.upper" xmi:uuid="911eee91-6be7-557c-8fc8-b5f9c0472367">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.StatisticsProfile.statisticsCollection.upper" xmi:uuid="2239d67b-76ac-5dff-aa3e-d1ff2ca9e597">
             <value>1</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.Statistics_statisticsCollection_StatisticsCollection"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.Statistics2.statisticsCollection.comment" xmi:uuid="da837a0c-5ac7-58a5-a160-1f16633ba6de">
+          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.StatisticsProfile_statisticsCollection_StatisticsCollection"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.StatisticsProfile.statisticsCollection.comment" xmi:uuid="c1c7a7c2-a03b-5c4c-8ec1-25041f58643b">
             <body>**CDIF**
 
 Definition
@@ -83,7 +83,7 @@ Definition
 
 
 :inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.Statistics2.statisticsCollection"/>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.StatisticsProfile.statisticsCollection"/>
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
@@ -690,50 +690,50 @@ The type of numeric value carried in cdi:content — decimal, float, or double.<
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.Statistics_statistics_Statistics" xmi:uuid="01d385b5-bc9b-52bc-b75b-d18054a1fc53">
-        <name>Statistics_statistics_Statistics</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.Statistics_statistics_Statistics.ownedEnd" xmi:uuid="913a6323-7f6e-5af9-9d47-b7b47a0c3315">
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.Statistics2"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.Statistics_statistics_Statistics.ownedEnd.lower" xmi:uuid="179c668e-73f1-5cad-acbc-18eff88cd04b">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.StatisticsProfile_statistics_Statistics" xmi:uuid="d6b5e504-1dc4-5cbc-a5a3-aeef9405917f">
+        <name>StatisticsProfile_statistics_Statistics</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.StatisticsProfile_statistics_Statistics.ownedEnd" xmi:uuid="733d8a0d-9364-5bb4-8ce0-c6425b3fd0a0">
+          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.StatisticsProfile"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.StatisticsProfile_statistics_Statistics.ownedEnd.lower" xmi:uuid="f775c1b7-528a-51cb-b9d6-c5b5118f20f4">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.Statistics_statistics_Statistics.ownedEnd.upper" xmi:uuid="5506ad29-e470-58ed-8655-10782cf14184">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.StatisticsProfile_statistics_Statistics.ownedEnd.upper" xmi:uuid="c45472f6-4bea-53d0-9990-da6e8abe80a7">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.Statistics_statistics_Statistics"/>
+          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.StatisticsProfile_statistics_Statistics"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.Statistics_statistics_Statistics.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.Statistics2.statistics"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.StatisticsProfile_statistics_Statistics.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.StatisticsProfile.statistics"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.Statistics_categoryStatistics_CategoryStatistics" xmi:uuid="34b748f8-2fa2-5a05-8fba-652abc19c637">
-        <name>Statistics_categoryStatistics_CategoryStatistics</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.Statistics_categoryStatistics_CategoryStatistics.ownedEnd" xmi:uuid="9dcb6797-f72a-5bdd-ba0e-9a91cb5fe026">
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.Statistics2"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.Statistics_categoryStatistics_CategoryStatistics.ownedEnd.lower" xmi:uuid="41a73a5b-e2d4-596d-916e-b583c41fcf9e">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.StatisticsProfile_categoryStatistics_CategoryStatistics" xmi:uuid="44d7b5e2-2898-576c-bea9-d6631b6774a8">
+        <name>StatisticsProfile_categoryStatistics_CategoryStatistics</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.StatisticsProfile_categoryStatistics_CategoryStatistics.ownedEnd" xmi:uuid="fa667868-1b62-5e4f-bd88-00452521c23f">
+          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.StatisticsProfile"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.StatisticsProfile_categoryStatistics_CategoryStatistics.ownedEnd.lower" xmi:uuid="aa860aac-2857-5cb0-bf5d-c9738678316e">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.Statistics_categoryStatistics_CategoryStatistics.ownedEnd.upper" xmi:uuid="e44b7570-88db-501f-8c11-abb89fb2635a">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.StatisticsProfile_categoryStatistics_CategoryStatistics.ownedEnd.upper" xmi:uuid="8a6faf12-6c5a-5558-b618-0d80b1819176">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.Statistics_categoryStatistics_CategoryStatistics"/>
+          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.StatisticsProfile_categoryStatistics_CategoryStatistics"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.Statistics_categoryStatistics_CategoryStatistics.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.Statistics2.categoryStatistics"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.StatisticsProfile_categoryStatistics_CategoryStatistics.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.StatisticsProfile.categoryStatistics"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.Statistics_statisticsCollection_StatisticsCollection" xmi:uuid="89d71839-93a3-5862-9e01-50ff42b5d5be">
-        <name>Statistics_statisticsCollection_StatisticsCollection</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.Statistics_statisticsCollection_StatisticsCollection.ownedEnd" xmi:uuid="9c0564fc-bb18-572a-87f0-d9ba31618444">
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.Statistics2"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.Statistics_statisticsCollection_StatisticsCollection.ownedEnd.lower" xmi:uuid="52ccf3f5-7878-53f7-b6d2-243009cf2b8c">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.StatisticsProfile_statisticsCollection_StatisticsCollection" xmi:uuid="d25afcd6-0266-5ee6-86ac-5a68fdfbb47c">
+        <name>StatisticsProfile_statisticsCollection_StatisticsCollection</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.StatisticsProfile_statisticsCollection_StatisticsCollection.ownedEnd" xmi:uuid="ebfdb5c4-363b-5778-98f6-d3ffab0a5e28">
+          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.StatisticsProfile"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.StatisticsProfile_statisticsCollection_StatisticsCollection.ownedEnd.lower" xmi:uuid="8e6ad2cf-5046-5cf0-95c3-4fb1f3b8dfe2">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.Statistics_statisticsCollection_StatisticsCollection.ownedEnd.upper" xmi:uuid="df3958d6-2c3c-51d8-ab35-eb18d3efa4d8">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.StatisticsProfile_statisticsCollection_StatisticsCollection.ownedEnd.upper" xmi:uuid="a5c9a429-2bdd-51e5-9aed-c92f7d109798">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.Statistics_statisticsCollection_StatisticsCollection"/>
+          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.StatisticsProfile_statisticsCollection_StatisticsCollection"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.Statistics_statisticsCollection_StatisticsCollection.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.Statistics2.statisticsCollection"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.StatisticsProfile_statisticsCollection_StatisticsCollection.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifStatistics.StatisticsProfile.statisticsCollection"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.assoc.CategoryStatistics_for_Category" xmi:uuid="1445f9f4-6a8b-5f28-8758-558b074a0b9a">
         <name>CategoryStatistics_for_Category</name>

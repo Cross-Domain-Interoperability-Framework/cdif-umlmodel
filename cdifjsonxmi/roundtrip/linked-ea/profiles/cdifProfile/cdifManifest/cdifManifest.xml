@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<XMI xmi.version="1.1" xmlns:UML="omg.org/UML1.3">
+	<XMI.header>
+		<XMI.documentation>
+			<XMI.exporter>Enterprise Architect</XMI.exporter>
+			<XMI.exporterVersion>2.5</XMI.exporterVersion>
+		</XMI.documentation>
+	</XMI.header>
+	<XMI.content>
+		<UML:Model name="cdifManifest" xmi.id="MX_EAID_D1D65738_5953_5bbd_B7DC_A4A73D9CA102">
+			<UML:Namespace.ownedElement>
+				<UML:Class name="EARootClass" xmi.id="EAID_11111111_5487_4080_A7F4_41526CB0AA00" isRoot="true" isLeaf="false" isAbstract="false"/>
+				<UML:Package name="cdifManifest" xmi.id="EAPK_ECF0A72C_FF2F_5035_A6C6_632968CF911F" isRoot="false" isLeaf="false" isAbstract="false" visibility="public">
+					<UML:ModelElement.taggedValue>
+						<UML:TaggedValue tag="documentation" value="https://w3id.org/cdif/bbr/metadata/profiles/cdifProfile/cdifManifest"/>
+						<UML:TaggedValue tag="isSpecification" value="false"/>
+						<UML:TaggedValue tag="ea_stype" value="Public"/>
+						<UML:TaggedValue tag="ea_eleType" value="package"/>
+						<UML:TaggedValue tag="version" value="1.0"/>
+						<UML:TaggedValue tag="ea_guid" value="{ECF0A72C-FF2F-5035-A6C6-632968CF911F}"/>
+					</UML:ModelElement.taggedValue>
+					<UML:Namespace.ownedElement>
+						<UML:Class name="Manifest" xmi.id="EAID_E610F044_99A9_5ace_AA7A_88CBD7AD039C" visibility="public" namespace="EAPK_ECF0A72C_FF2F_5035_A6C6_632968CF911F" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Profile module for packages: the resources that make up a dataset and where to retrieve each of them. Marks the catalog record as conformant to the CDIF manifest spec (https://w3id.org/cdif/manifest/1.1) and declares schema:hasPart in the two places a package needs it — on the Dataset, for parts that are independently accessible at their own addresses, and on a schema:distribution item, for component files inside an archive (ZIP, etc.) that have no address of their own. Both part shapes carry schema:about, so a part that describes another — a codebook, a data dictionary, a metadata sidecar — can say which one. The base schema:distribution anyOf [DataDownload, WebAPI] contributed by cdifCore is preserved — this BB only adds property constraints, no new anyOf branch. (Merged from the previous cdifProfile/cdifArchive BB, which held only the $defs for ArchivePart; everything now lives here.)&#xA;:title: &quot;CDIF Manifest&quot;&#xA;:prefix: ``schema``&#xA;:constraint: {&quot;properties&quot;: {&quot;schema:subjectOf&quot;: {&quot;properties&quot;: {&quot;dcterms:conformsTo&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;items&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;required&quot;: [&quot;@id&quot;], &quot;additionalProperties&quot;: false, &quot;properties&quot;: {&quot;@id&quot;: {&quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;uri for specifications that this metadata record conforms to&quot;}}}, &quot;minItems&quot;: 1, &quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;required&quot;: [&quot;@id&quot;], &quot;additionalProperties&quot;: false, &quot;properties&quot;: {&quot;@id&quot;: {&quot;const&quot;: &quot;https://w3id.org/cdif/manifest/1.1&quot;}}}}}}}}&#xA;:noId:"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="Class"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_ECF0A72C_FF2F_5035_A6C6_632968CF911F"/>
+								<UML:TaggedValue tag="ea_guid" value="{E610F044-99A9-5ace-AA7A-88CBD7AD039C}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Classifier.feature>
+								<UML:Attribute name="distribution" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:valueSchema: {&quot;allOf&quot;: [{&quot;properties&quot;: {&quot;schema:hasPart&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;description&quot;: &quot;For bundle/archive distributions (positively typed with schema:Collection in @type), describes the component files. Each component is typed as schema:MediaObject and may include CDIF data description extensions (cdifTabularData, cdifDataCube) to describe its internal structure.&quot;, &quot;items&quot;: {&quot;allOf&quot;: [{&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;@id&quot;: {&quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;Identifier for this file, typically a hash-based anchor (e.g. '#abc123'). Used for cross-references from schema:about in metadata sidecar files.&quot;}, &quot;@type&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;description&quot;: &quot;Must include schema:MediaObject. Must NOT include schema:DataDownload since this file is not independently accessible. May include additional types for categorization.&quot;, &quot;items&quot;: {&quot;type&quot;: &quot;string&quot;}, &quot;contains&quot;: {&quot;const&quot;: &quot;schema:MediaObject&quot;}, &quot;not&quot;: {&quot;contains&quot;: {&quot;const&quot;: &quot;schema:DataDownload&quot;}}, &quot;minItems&quot;: 1}, &quot;schema:name&quot;: {&quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;Filename of the component file within the archive.&quot;}, &quot;schema:description&quot;: {&quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;Description of the file content. May include checksum information.&quot;}, &quot;schema:encodingFormat&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;description&quot;: &quot;MIME type(s) for this file.&quot;, &quot;items&quot;: {&quot;type&quot;: &quot;string&quot;}}, &quot;schema:additionalType&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;description&quot;: &quot;Domain-specific type classification for this member file: what KIND of thing it is, beyond its MIME type. The @type above says only that it is a schema:MediaObject, and using @type to carry a domain classification conflates \&quot;what this node is\&quot; with \&quot;what it is about\&quot;. A plain string is accepted; a schema:DefinedTerm carrying schema:inDefinedTermSet is preferred where the value comes from a controlled vocabulary.&quot;, &quot;items&quot;: {&quot;$ref&quot;: &quot;bb:cdifDataType/cdifConceptOrTermOrString/schema.yaml&quot;}}, &quot;schema:size&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;description&quot;: &quot;File size as a QuantitativeValue.&quot;, &quot;properties&quot;: {&quot;@type&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;items&quot;: {&quot;type&quot;: &quot;string&quot;}, &quot;contains&quot;: {&quot;const&quot;: &quot;schema:QuantitativeValue&quot;}, &quot;minItems&quot;: 1}, &quot;schema:value&quot;: {&quot;type&quot;: &quot;number&quot;, &quot;description&quot;: &quot;Numeric size value.&quot;}, &quot;schema:unitText&quot;: {&quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;Unit of measure for size (e.g. 'byte').&quot;}}}, &quot;schema:about&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;description&quot;: &quot;For metadata sidecar files, references the data file this metadata describes.&quot;, &quot;items&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;required&quot;: [&quot;@id&quot;], &quot;additionalProperties&quot;: false, &quot;properties&quot;: {&quot;@id&quot;: {&quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;Reference to the @id of the data file described by this sidecar.&quot;}}}}, &quot;spdx:checksum&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;description&quot;: &quot;Checksum for integrity verification of this component file.&quot;, &quot;properties&quot;: {&quot;@type&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;items&quot;: {&quot;type&quot;: &quot;string&quot;}, &quot;contains&quot;: {&quot;const&quot;: &quot;spdx:Checksum&quot;}, &quot;minItems&quot;: 1}, &quot;spdx:algorithm&quot;: {&quot;type&quot;: &quot;string&quot;}, &quot;spdx:checksumValue&quot;: {&quot;type&quot;: &quot;string&quot;}}, &quot;required&quot;: [&quot;@type&quot;, &quot;spdx:algorithm&quot;, &quot;spdx:checksumValue&quot;]}}, &quot;required&quot;: [&quot;@type&quot;, &quot;schema:name&quot;, &quot;schema:encodingFormat&quot;]}, {&quot;anyOf&quot;: [{&quot;$ref&quot;: &quot;bb:cdifDataType/cdifDataCube/schema.yaml&quot;}, {&quot;$ref&quot;: &quot;bb:cdifDataType/cdifTabularData/schema.yaml&quot;}, {}]}]}}}}, {&quot;if&quot;: {&quot;properties&quot;: {&quot;@type&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;contains&quot;: {&quot;const&quot;: &quot;schema:Collection&quot;}}}, &quot;required&quot;: [&quot;@type&quot;]}, &quot;then&quot;: {&quot;required&quot;: [&quot;schema:hasPart&quot;]}}]}"/>
+										<UML:TaggedValue tag="type" value=""/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="true"/>
+										<UML:TaggedValue tag="position" value="0"/>
+										<UML:TaggedValue tag="lowerBound" value="0"/>
+										<UML:TaggedValue tag="upperBound" value="*"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{0731DFBD-E131-536b-A089-4B6B160D0999}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+							</UML:Classifier.feature>
+						</UML:Class>
+						<UML:Class name="ManifestHasPart" xmi.id="EAID_6698A9FB_5C2B_586e_9D0A_C9D2A9CE03A4" visibility="public" namespace="EAPK_ECF0A72C_FF2F_5035_A6C6_632968CF911F" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;One independently accessible member of a package. Type it for what it is: schema:Dataset for data, schema:CreativeWork for a codebook, methods document or quality report, schema:MediaObject for a browse image. Parts under separate stewardship should carry their own schema:provider, schema:conditionsOfAccess and schema:dateModified, since those are what differ.&#xA;:prefix: ``schema``&#xA;:idDescription: &quot;Identifier for this part.&quot;&#xA;:typeSchema: {&quot;type&quot;: &quot;array&quot;, &quot;description&quot;: &quot;What kind of resource this part is. Must include schema:CreativeWork or one of its subclasses -- everything a package can contain is a creative work of some kind, and saying which one is what lets a consumer tell the data from the codebook from the browse image. Additional types beyond that are free, so domain vocabularies (ada:otherFileType and the like) sit alongside. Not constrained to schema:MediaObject as an archive part is, because a part with its own address may well be a Dataset or a DataDownload.&quot;, &quot;items&quot;: {&quot;type&quot;: &quot;string&quot;}, &quot;minItems&quot;: 1, &quot;contains&quot;: {&quot;type&quot;: &quot;string&quot;, &quot;pattern&quot;: &quot;^(schema:|http://schema\\.org/)(CreativeWork|Dataset|DataDownload|DataCatalog|MediaObject|ImageObject|VideoObject|AudioObject|3DModel|DigitalDocument|TextDigitalDocument|SpreadsheetDigitalDocument|PresentationDigitalDocument|NoteDigitalDocument|SoftwareApplication|WebApplication|SoftwareSourceCode|Article|ScholarlyArticle|TechArticle|Report|Book|Chapter|Thesis|Manuscript|Map|WebPage|WebSite|Collection|Course|HowTo|Guide|Legislation|Photograph|Painting|Drawing|Poster|Atlas|Periodical|PublicationIssue|PublicationVolume|CreativeWorkSeries|Review|Comment)$&quot;}}&#xA;:typeOptional:"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="Class"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_ECF0A72C_FF2F_5035_A6C6_632968CF911F"/>
+								<UML:TaggedValue tag="ea_guid" value="{6698A9FB-5C2B-586e-9D0A-C9D2A9CE03A4}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Classifier.feature>
+								<UML:Attribute name="name" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:StructuralFeature.type>
+										<UML:Classifier xmi.idref="eaxmiid_String"/>
+									</UML:StructuralFeature.type>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value=""/>
+										<UML:TaggedValue tag="type" value="String"/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="false"/>
+										<UML:TaggedValue tag="position" value="0"/>
+										<UML:TaggedValue tag="lowerBound" value="0"/>
+										<UML:TaggedValue tag="upperBound" value="1"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{07E77A28-AEE2-5a6a-A20D-6243FF81C91B}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+								<UML:Attribute name="description" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:StructuralFeature.type>
+										<UML:Classifier xmi.idref="eaxmiid_String"/>
+									</UML:StructuralFeature.type>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value=""/>
+										<UML:TaggedValue tag="type" value="String"/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="false"/>
+										<UML:TaggedValue tag="position" value="1"/>
+										<UML:TaggedValue tag="lowerBound" value="0"/>
+										<UML:TaggedValue tag="upperBound" value="1"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{B01290CC-10BE-5cb7-AF96-502F9700D7E6}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+								<UML:Attribute name="encodingFormat" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:StructuralFeature.type>
+										<UML:Classifier xmi.idref="eaxmiid_String"/>
+									</UML:StructuralFeature.type>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value=""/>
+										<UML:TaggedValue tag="type" value="String"/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="true"/>
+										<UML:TaggedValue tag="position" value="2"/>
+										<UML:TaggedValue tag="lowerBound" value="0"/>
+										<UML:TaggedValue tag="upperBound" value="*"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{2C0D4337-149A-55f9-A783-7DADF00F3A0B}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+								<UML:Attribute name="url" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:StructuralFeature.type>
+										<UML:Classifier xmi.idref="eaxmiid_String"/>
+									</UML:StructuralFeature.type>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value=""/>
+										<UML:TaggedValue tag="type" value="String"/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="false"/>
+										<UML:TaggedValue tag="position" value="3"/>
+										<UML:TaggedValue tag="lowerBound" value="0"/>
+										<UML:TaggedValue tag="upperBound" value="1"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{D6514A5F-3D09-5cfb-A01D-BA2C607FAD3F}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+								<UML:Attribute name="about" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:StructuralFeature.type>
+										<UML:Classifier xmi.idref="EAID_8706B14E_5B51_5aeb_AEBF_F3E363919845"/>
+									</UML:StructuralFeature.type>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;The part this one is about. Use it on a part that describes another -- a codebook, a data dictionary, a quality report, a metadata sidecar -- so that a consumer can tell WHICH part it documents rather than only that both are in the package. Equivalent in this use to cito:documents, which is how OAI-ORE packages express the same relationship; schema:subjectOf is the declared inverse.&#xA;:idRefDescription: &quot;Reference to the @id of the part being described.&quot;"/>
+										<UML:TaggedValue tag="type" value="IdReference"/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="true"/>
+										<UML:TaggedValue tag="position" value="4"/>
+										<UML:TaggedValue tag="lowerBound" value="0"/>
+										<UML:TaggedValue tag="upperBound" value="*"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{2BD1F833-23C0-5e92-A563-E3BE80BDEA72}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+							</UML:Classifier.feature>
+						</UML:Class>
+						<UML:Association xmi.id="EAID_8E4BC02C_A5C8_5ecd_AE17_69A1403E7A98" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Component resources of a package whose parts are independently accessible, each with its own distribution. Parts may differ in content type, format and data structure. For component files inside an archive, which have no address of their own, use schema:hasPart on the distribution instead.&#xA;:inlineOrByReference: ``inline``"/>
+								<UML:TaggedValue tag="ea_type" value="Association"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="Manifest"/>
+								<UML:TaggedValue tag="ea_targetName" value="ManifestHasPart"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{8E4BC02C-A5C8-5ecd-AE17-69A1403E7A98}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Association.connection>
+								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_E610F044_99A9_5ace_AA7A_88CBD7AD039C">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="source"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+								<UML:AssociationEnd visibility="public" name="hasPart" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_6698A9FB_5C2B_586e_9D0A_C9D2A9CE03A4">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Component resources of a package whose parts are independently accessible, each with its own distribution. Parts may differ in content type, format and data structure. For component files inside an archive, which have no address of their own, use schema:hasPart on the distribution instead.&#xA;:inlineOrByReference: ``inline``"/>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="deststyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="target"/>
+										<UML:TaggedValue tag="ea_guid" value="{2A1C7E0E-A8CB-5e09-8B2E-8013A7F2C207}"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+							</UML:Association.connection>
+						</UML:Association>
+					</UML:Namespace.ownedElement>
+				</UML:Package>
+				<UML:Class name="String" xmi.id="eaxmiid_String" visibility="public" isRoot="true" isLeaf="false" isAbstract="false">
+					<UML:ModelElement.taggedValue>
+						<UML:TaggedValue tag="isSpecification" value="false"/>
+						<UML:TaggedValue tag="ea_stype" value="Primitive"/>
+						<UML:TaggedValue tag="ea_ntype" value="0"/>
+					</UML:ModelElement.taggedValue>
+				</UML:Class>
+			</UML:Namespace.ownedElement>
+		</UML:Model>
+	</XMI.content>
+	<XMI.extensions xmi.extender="Enterprise Architect 2.5">
+		<EAStub xmi.id="EAID_8706B14E_5B51_5aeb_AEBF_F3E363919845" name="IdReference" UMLType="DataType"/>
+	</XMI.extensions>
+</XMI>

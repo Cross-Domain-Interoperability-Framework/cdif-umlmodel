@@ -1,0 +1,8 @@
+cdifProvenance: 3 exact difference(s)
+$.allOf: only in regenerated: [{"properties": {"schema:subjectOf": {"properties": {"dcterms:conformsTo": {"type": "array", "items": {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"typ
+$.properties.prov:wasGeneratedBy.items.$ref:
+    original:    "../../../cdifDataType/cdifProvActivity/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifProvActivity/schema.yaml"
+$.properties.schema:subjectOf: only in original: {"properties": {"dcterms:conformsTo": {"type": "array", "items": {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "uri for
+
+cdifProvenance: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

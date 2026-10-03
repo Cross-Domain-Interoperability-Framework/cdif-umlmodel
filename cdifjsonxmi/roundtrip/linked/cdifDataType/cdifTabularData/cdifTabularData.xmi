@@ -148,7 +148,7 @@ Schema constraint is that one of {'isDelimited','isFixedWidth'} must be present 
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.TabularData.csvw_lineTerminators" xmi:uuid="1af0f1a2-36a8-547b-88d7-f852bb83eefd">
           <name>csvw_lineTerminators</name>
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifTabularData.Csvw_lineTerminators"/>
+          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifTabularData.LineTerminators"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.TabularData.csvw_lineTerminators.lower" xmi:uuid="9fcba423-f207-52e6-a668-5a1efe2ea999">
             <value>0</value>
           </lowerValue>
@@ -332,7 +332,7 @@ Whether consecutive delimiters should be treated as a single delimiter. From DDI
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.TabularData.csvw_tableDirection" xmi:uuid="e26faae6-fda2-504b-b69b-606be1dbe712">
           <name>csvw_tableDirection</name>
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifTabularData.Csvw_tableDirection"/>
+          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifTabularData.TableDirection"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.TabularData.csvw_tableDirection.lower" xmi:uuid="cca78817-1311-5866-b127-535e4b2bdcff">
             <value>0</value>
           </lowerValue>
@@ -353,7 +353,7 @@ Indicates the direction of the table layout (left-to-right or right-to-left). Fr
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.TabularData.csvw_textDirection" xmi:uuid="07171619-2df9-5220-b573-10554e6f3c72">
           <name>csvw_textDirection</name>
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifTabularData.Csvw_textDirection"/>
+          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifTabularData.TextDirection"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.TabularData.csvw_textDirection.lower" xmi:uuid="324fdcf6-181d-50e0-80d0-58df738b3004">
             <value>0</value>
           </lowerValue>
@@ -374,7 +374,7 @@ Indicates whether the text within cells should be displayed as left-to-right, ri
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.TabularData.csvw_trim" xmi:uuid="144c66b5-18c7-52eb-9a99-4a5fb0621564">
           <name>csvw_trim</name>
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifTabularData.Csvw_trim"/>
+          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifTabularData.Trim"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.TabularData.csvw_trim.lower" xmi:uuid="953d3e43-b280-5ca8-afb7-8c34c2c30710">
             <value>0</value>
           </lowerValue>
@@ -456,93 +456,93 @@ Definition
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Enumeration" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.Csvw_lineTerminators" xmi:uuid="3b0b5953-36e5-5b56-9107-8d4cde146653">
-        <name>Csvw_lineTerminators</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.Csvw_lineTerminators.comment" xmi:uuid="70a26d63-1475-5e9b-9f3d-388280a072be">
+      <packagedElement xmi:type="uml:Enumeration" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.LineTerminators" xmi:uuid="3f4de504-719e-59c5-a36d-9013ac7d5509">
+        <name>LineTerminators</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.LineTerminators.comment" xmi:uuid="26fc7bed-4059-545e-a69e-558c8043c8d1">
           <body>**CDIF**
 
 Definition
 ==========
 
 </body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifTabularData.Csvw_lineTerminators"/>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifTabularData.LineTerminators"/>
         </ownedComment>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.Csvw_lineTerminators.CRLF" xmi:uuid="4d271e99-87a5-57fe-abaa-078a4755186a">
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.LineTerminators.CRLF" xmi:uuid="6e76891e-c699-54a5-99dd-d4c59ed846e8">
           <name>CRLF</name>
         </ownedLiteral>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.Csvw_lineTerminators.LF" xmi:uuid="3474cc10-edf2-5608-9be6-50e931fe2fd6">
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.LineTerminators.LF" xmi:uuid="f1f99c1d-bfe7-5bcf-90ad-4cf079fe1866">
           <name>LF</name>
         </ownedLiteral>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.Csvw_lineTerminators.\r\n" xmi:uuid="d795eede-1cc5-52b4-819b-caa27575806d">
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.LineTerminators.\r\n" xmi:uuid="7bed6231-dae1-5b9b-8539-dd96d0094f80">
           <name>&#13;&#10;</name>
         </ownedLiteral>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.Csvw_lineTerminators.\n" xmi:uuid="e0bd3875-0413-57c3-82f9-07c24905298a">
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.LineTerminators.\n" xmi:uuid="2f20c7dd-f4c3-5259-9097-8c290915c275">
           <name>&#10;</name>
         </ownedLiteral>
       </packagedElement>
-      <packagedElement xmi:type="uml:Enumeration" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.Csvw_tableDirection" xmi:uuid="a36cf8b0-b448-5e7e-b5e2-df49a0469854">
-        <name>Csvw_tableDirection</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.Csvw_tableDirection.comment" xmi:uuid="0bff1072-d2cb-5034-bf02-4c592eb6efe1">
+      <packagedElement xmi:type="uml:Enumeration" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.TableDirection" xmi:uuid="84f130e6-d754-5a57-bd2c-b82cf52b8093">
+        <name>TableDirection</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.TableDirection.comment" xmi:uuid="426e215e-34b4-5839-bcb4-36c157c3103a">
           <body>**CDIF**
 
 Definition
 ==========
 
 </body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifTabularData.Csvw_tableDirection"/>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifTabularData.TableDirection"/>
         </ownedComment>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.Csvw_tableDirection.Ltr" xmi:uuid="36522eec-23b4-5090-9424-b4502dbeff17">
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.TableDirection.Ltr" xmi:uuid="857454b1-b48c-5f34-808c-8b50509fa5fc">
           <name>Ltr</name>
         </ownedLiteral>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.Csvw_tableDirection.Rtl" xmi:uuid="ba6bc0b3-92ef-567b-b5ef-df13bcfd1b70">
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.TableDirection.Rtl" xmi:uuid="1e7d5a74-b1f1-59df-9b36-7d59d6572271">
           <name>Rtl</name>
         </ownedLiteral>
       </packagedElement>
-      <packagedElement xmi:type="uml:Enumeration" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.Csvw_textDirection" xmi:uuid="d23106df-81d2-5b04-999a-192f69eea690">
-        <name>Csvw_textDirection</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.Csvw_textDirection.comment" xmi:uuid="86b1979b-b7a8-53a1-bf04-b8e3daef2c25">
+      <packagedElement xmi:type="uml:Enumeration" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.TextDirection" xmi:uuid="69a91941-3df3-5bde-ab72-f6456c45cce9">
+        <name>TextDirection</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.TextDirection.comment" xmi:uuid="e8f4df95-e474-59a8-a897-d5258abfc353">
           <body>**CDIF**
 
 Definition
 ==========
 
 </body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifTabularData.Csvw_textDirection"/>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifTabularData.TextDirection"/>
         </ownedComment>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.Csvw_textDirection.Auto" xmi:uuid="76779909-5b58-5f66-a048-c21eeade0bad">
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.TextDirection.Auto" xmi:uuid="719d53ef-7a45-587a-9266-4766ee7eff92">
           <name>Auto</name>
         </ownedLiteral>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.Csvw_textDirection.Inherit" xmi:uuid="a42391b0-1c12-59bd-a2b3-97555ae1079d">
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.TextDirection.Inherit" xmi:uuid="dbc25ceb-db32-52bd-a91d-e8c3a9e95dd9">
           <name>Inherit</name>
         </ownedLiteral>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.Csvw_textDirection.Ltr" xmi:uuid="c78fbdb3-1219-5ac0-b43e-ae9b2ddef911">
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.TextDirection.Ltr" xmi:uuid="8af0becf-aecb-5ee8-be76-4ec4cbbaff9e">
           <name>Ltr</name>
         </ownedLiteral>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.Csvw_textDirection.Rtl" xmi:uuid="fbd417dd-d7fb-5b1f-b7da-6578b71f9d80">
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.TextDirection.Rtl" xmi:uuid="294712be-01da-564b-b9e4-ad7e51402784">
           <name>Rtl</name>
         </ownedLiteral>
       </packagedElement>
-      <packagedElement xmi:type="uml:Enumeration" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.Csvw_trim" xmi:uuid="1b555212-bb57-5d44-99ee-b57cd591b317">
-        <name>Csvw_trim</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.Csvw_trim.comment" xmi:uuid="6327a9e9-5c97-5bfa-ac84-9a17cff01ed7">
+      <packagedElement xmi:type="uml:Enumeration" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.Trim" xmi:uuid="0b458c3a-0535-5943-9b44-6c711bf0f6b3">
+        <name>Trim</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.Trim.comment" xmi:uuid="16652779-f1fc-5c1f-8f62-f5db77c8703f">
           <body>**CDIF**
 
 Definition
 ==========
 
 </body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifTabularData.Csvw_trim"/>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifTabularData.Trim"/>
         </ownedComment>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.Csvw_trim.true" xmi:uuid="487beb66-f5c6-5875-869e-f1642139a9b7">
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.Trim.true" xmi:uuid="388ee01e-04f7-5360-9f81-5edc5bd6412e">
           <name>true</name>
         </ownedLiteral>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.Csvw_trim.end" xmi:uuid="a9a9182d-5fa9-53bf-853a-a7fc91b7952c">
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.Trim.end" xmi:uuid="d3d9cc93-5553-5325-ba75-14166a7a3bbb">
           <name>end</name>
         </ownedLiteral>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.Csvw_trim.false" xmi:uuid="4479fa4f-b02b-5596-a2d6-2639868cc2f6">
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.Trim.false" xmi:uuid="1fbb4abd-6325-525a-8e24-fe99c3296876">
           <name>false</name>
         </ownedLiteral>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.Csvw_trim.start" xmi:uuid="673ef8b4-c80d-5add-af2b-03a9972f4b11">
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.Trim.start" xmi:uuid="ba3eb4bd-3faa-5d49-88e4-a23cd7d36a6a">
           <name>start</name>
         </ownedLiteral>
       </packagedElement>

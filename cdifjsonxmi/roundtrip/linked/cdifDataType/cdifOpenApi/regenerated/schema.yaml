@@ -30,28 +30,19 @@ properties:
       shared between provider and consumer. Subsumes OpenAPI info.version when the service-type
       identifier includes versioning.
   'schema:termsOfService':
-    oneOf:
-    - type: string
-    - '$ref': >-
-        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml
+    '$ref': '#/$defs/StringXorLabeledLink'
     description: >-
       Description of access privileges required to use the API (e.g. registration, licensing,
       payments). Maps OpenAPI info.termsOfService. Note that access constraints applying to
       all distributions of the resource should be specified at the resource level.
   'schema:documentation':
-    oneOf:
-    - type: string
-    - '$ref': >-
-        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml
+    '$ref': '#/$defs/StringXorLabeledLink'
     description: >-
       a document that provides a machine-actionable description of this service instance,
       typically the canonical OpenAPI document. Even when this BB inlines OAS detail, schema:documentation
       may still link to an authoritative OAS source.
   'spdx:license':
-    oneOf:
-    - type: string
-    - '$ref': >-
-        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml
+    '$ref': '#/$defs/StringXorLabeledLink'
     description: >-
       SPDX license identifier expression for the API itself, per OpenAPI License Object. Use
       schema:license at the resource (parent) level for licensing of the data. If only a URL
@@ -153,19 +144,19 @@ required:
       'oas:parameters':
         type: array
         items:
-          '$ref': '#/$defs/OpenApiEntryPointOas_parameters'
+          '$ref': '#/$defs/OpenApiEntryPointParameters'
         description: >-
           query, path, header, or cookie parameters accepted by the operation. Maps OpenAPI
           Parameter Object.
       'oas:requestBody':
-        '$ref': '#/$defs/OpenApiEntryPointOas_requestBody'
+        '$ref': '#/$defs/OpenApiEntryPointRequestBody'
         description: >-
           request body for the operation (typically POST/PUT/PATCH). Maps OpenAPI Request
           Body Object.
       'oas:response':
         type: array
         items:
-          '$ref': '#/$defs/OpenApiEntryPointOas_response'
+          '$ref': '#/$defs/OpenApiEntryPointResponse'
         minItems: 1
         description: >-
           possible responses returned by the operation. Maps OpenAPI Responses Object; each
@@ -173,7 +164,7 @@ required:
     required:
     - 'schema:urlTemplate'
     - 'oas:response'
-  OpenApiEntryPointOas_parameters:
+  OpenApiEntryPointParameters:
     type: object
     description: an OpenAPI Parameter Object; describes a single parameter of an operation.
     properties:
@@ -201,12 +192,12 @@ required:
         type: boolean
         description: whether the parameter is mandatory. MUST be true if oas:in is "path".
       'oas:schema':
-        '$ref': '#/$defs/OpenApiEntryPointOas_parametersSchema'
+        '$ref': '#/$defs/OpenApiEntryPointParametersSchema'
         description: schema describing the parameter value type, format, and any pattern.
     required:
     - 'oas:name'
     - 'oas:in'
-  OpenApiEntryPointOas_parametersSchema:
+  OpenApiEntryPointParametersSchema:
     type: object
     description: >-
       a minimal OpenAPI Schema Object. The full OAS Schema Object is a superset of JSON Schema
@@ -240,7 +231,7 @@ required:
         description: >-
           reference to an external JSON Schema or XML Schema document describing a complex
           payload structure.
-  OpenApiEntryPointOas_requestBody:
+  OpenApiEntryPointRequestBody:
     type: object
     description: an OpenAPI Request Body Object; describes the body of a write request.
     properties:
@@ -252,7 +243,7 @@ required:
       'oas:content':
         type: array
         items:
-          '$ref': '#/$defs/OpenApiEntryPointOas_requestBodyOas_content'
+          '$ref': '#/$defs/OpenApiEntryPointRequestBodyContent'
         minItems: 1
         description: >-
           representations the request body may take. Maps OpenAPI Request Body content map;
@@ -260,7 +251,7 @@ required:
           map key.
     required:
     - 'oas:content'
-  OpenApiEntryPointOas_requestBodyOas_content:
+  OpenApiEntryPointRequestBodyContent:
     type: object
     description: >-
       an OpenAPI Media Type Object; describes the structure of one media-type representation
@@ -272,14 +263,14 @@ required:
           registered MIME type for this representation (e.g. application/json, text/csv).
           Replaces OpenAPI's media-type map key.
       'oas:schema':
-        '$ref': '#/$defs/OpenApiEntryPointOas_requestBodyOas_contentOas_schema'
+        '$ref': '#/$defs/OpenApiEntryPointRequestBodyContentSchema'
         description: >-
           schema describing the structure of the payload. May reference an external JSON Schema
           or XML Schema document via oas:$ref. For tabular outputs, the referenced schema
           may align with InstanceVariable definitions in cdifInstanceVariable.
     required:
     - 'schema:encodingFormat'
-  OpenApiEntryPointOas_requestBodyOas_contentOas_schema:
+  OpenApiEntryPointRequestBodyContentSchema:
     type: object
     description: >-
       a minimal OpenAPI Schema Object. The full OAS Schema Object is a superset of JSON Schema
@@ -313,7 +304,7 @@ required:
         description: >-
           reference to an external JSON Schema or XML Schema document describing a complex
           payload structure.
-  OpenApiEntryPointOas_response:
+  OpenApiEntryPointResponse:
     type: object
     description: an OpenAPI Response Object describing one response from an operation.
     properties:
@@ -328,7 +319,7 @@ required:
       'oas:content':
         type: array
         items:
-          '$ref': '#/$defs/OpenApiEntryPointOas_responseContent'
+          '$ref': '#/$defs/OpenApiEntryPointResponseContent'
         minItems: 1
         description: >-
           representations the response payload may take. Maps OpenAPI Response content map;
@@ -337,7 +328,7 @@ required:
     required:
     - 'schema:description'
     - 'oas:content'
-  OpenApiEntryPointOas_responseContent:
+  OpenApiEntryPointResponseContent:
     type: object
     description: >-
       an OpenAPI Media Type Object; describes the structure of one media-type representation
@@ -349,14 +340,14 @@ required:
           registered MIME type for this representation (e.g. application/json, text/csv).
           Replaces OpenAPI's media-type map key.
       'oas:schema':
-        '$ref': '#/$defs/OpenApiEntryPointOas_responseContentOas_schema'
+        '$ref': '#/$defs/OpenApiEntryPointResponseContentSchema'
         description: >-
           schema describing the structure of the payload. May reference an external JSON Schema
           or XML Schema document via oas:$ref. For tabular outputs, the referenced schema
           may align with InstanceVariable definitions in cdifInstanceVariable.
     required:
     - 'schema:encodingFormat'
-  OpenApiEntryPointOas_responseContentOas_schema:
+  OpenApiEntryPointResponseContentSchema:
     type: object
     description: >-
       a minimal OpenAPI Schema Object. The full OAS Schema Object is a superset of JSON Schema
@@ -392,7 +383,6 @@ required:
           payload structure.
   StringXorLabeledLink:
     oneOf:
-    - default: not specified
-      type: string
+    - type: string
     - '$ref': >-
         ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml

@@ -166,7 +166,7 @@ An identifier for a standard or specification that the distribution conforms to.
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.dataDownload.DataDownload.provider" xmi:uuid="064355c1-bc23-5b08-a54e-a2d5ef7358bd">
           <name>provider</name>
-          <type href="../../cdifSharedUnions.xmi#cdif.union.PersonOrOrganization"/>
+          <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.dataDownload.PersonOrOrganization"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.dataDownload.DataDownload.provider.lower" xmi:uuid="e8cccada-44e3-5680-ba8c-b7a39ca74a58">
             <value>0</value>
           </lowerValue>
@@ -218,6 +218,91 @@ Definition
             <value>1</value>
           </upperValue>
         </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.schemaorgProperties.dataDownload.PersonOrOrganization" xmi:uuid="0bf163f0-ead5-52d9-9c8d-e7cd622230e3">
+        <name>PersonOrOrganization</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.dataDownload.PersonOrOrganization.comment" xmi:uuid="637f340e-2362-53e7-afcd-55c0c28e9ea9">
+          <body>**CDIF**
+
+Definition
+==========
+
+
+:union: ``anyOf``</body>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.dataDownload.PersonOrOrganization"/>
+        </ownedComment>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.dataDownload.PersonOrOrganization.person" xmi:uuid="2fe04e51-d127-5d1c-abfb-ea9deebb82ad">
+          <name>person</name>
+          <type href="../person/person.xmi#cdif.bbr.metadata.schemaorgProperties.person.Person"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.dataDownload.PersonOrOrganization.person.lower" xmi:uuid="c69ddfeb-226a-5d11-b6d4-aadf42bf5ff8">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.dataDownload.PersonOrOrganization.person.upper" xmi:uuid="3d720c99-aede-531d-b020-349603d32d6a">
+            <value>1</value>
+          </upperValue>
+          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.dataDownload.assoc.PersonOrOrganization_person_Person"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.dataDownload.PersonOrOrganization.person.comment" xmi:uuid="f1ba1cae-9f16-5ca8-a37d-b3776fa1f0d1">
+            <body>**CDIF**
+
+Definition
+==========
+
+
+:inlineOrByReference: ``inline``</body>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.dataDownload.PersonOrOrganization.person"/>
+          </ownedComment>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.dataDownload.PersonOrOrganization.organization" xmi:uuid="c20896ee-5dec-514c-9839-2e17facacb82">
+          <name>organization</name>
+          <type href="../organization/organization.xmi#cdif.bbr.metadata.schemaorgProperties.organization.Organization"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.dataDownload.PersonOrOrganization.organization.lower" xmi:uuid="8e7cad0a-019a-5c3a-a52e-d3aed6657f6b">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.dataDownload.PersonOrOrganization.organization.upper" xmi:uuid="09f1aa8c-b8af-5030-bd3e-7461e274dd4d">
+            <value>1</value>
+          </upperValue>
+          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.dataDownload.assoc.PersonOrOrganization_organization_Organization"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.dataDownload.PersonOrOrganization.organization.comment" xmi:uuid="3ef2a0d2-7517-57bd-b82d-ff786e66b242">
+            <body>**CDIF**
+
+Definition
+==========
+
+
+:inlineOrByReference: ``inline``</body>
+            <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.dataDownload.PersonOrOrganization.organization"/>
+          </ownedComment>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.schemaorgProperties.dataDownload.assoc.PersonOrOrganization_person_Person" xmi:uuid="b909b078-2fdf-5ce8-8807-079aa483a14b">
+        <name>PersonOrOrganization_person_Person</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.dataDownload.assoc.PersonOrOrganization_person_Person.ownedEnd" xmi:uuid="269b626a-8c0a-53ff-aff4-155b64caaa01">
+          <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.dataDownload.PersonOrOrganization"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.dataDownload.assoc.PersonOrOrganization_person_Person.ownedEnd.lower" xmi:uuid="4692e3a7-8bda-5e8a-a768-7997526cb248">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.dataDownload.assoc.PersonOrOrganization_person_Person.ownedEnd.upper" xmi:uuid="7fd14eb9-419c-593c-b0f6-8dda745f11f2">
+            <value>*</value>
+          </upperValue>
+          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.dataDownload.assoc.PersonOrOrganization_person_Person"/>
+        </ownedEnd>
+        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.dataDownload.assoc.PersonOrOrganization_person_Person.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.dataDownload.PersonOrOrganization.person"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.schemaorgProperties.dataDownload.assoc.PersonOrOrganization_organization_Organization" xmi:uuid="b1f684d2-4793-515d-9a4b-9a64701b6348">
+        <name>PersonOrOrganization_organization_Organization</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.dataDownload.assoc.PersonOrOrganization_organization_Organization.ownedEnd" xmi:uuid="fcb46c55-6128-58f4-a414-db16b371e472">
+          <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.dataDownload.PersonOrOrganization"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.dataDownload.assoc.PersonOrOrganization_organization_Organization.ownedEnd.lower" xmi:uuid="456449f2-7eda-5f17-9f8b-65be8acea706">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.dataDownload.assoc.PersonOrOrganization_organization_Organization.ownedEnd.upper" xmi:uuid="120857fd-d82d-5445-9957-8689824d83e6">
+            <value>*</value>
+          </upperValue>
+          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.dataDownload.assoc.PersonOrOrganization_organization_Organization"/>
+        </ownedEnd>
+        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.dataDownload.assoc.PersonOrOrganization_organization_Organization.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.dataDownload.PersonOrOrganization.organization"/>
       </packagedElement>
     </packagedElement>
   </uml:Model>

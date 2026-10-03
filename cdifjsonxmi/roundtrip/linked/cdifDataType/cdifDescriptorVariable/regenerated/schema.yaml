@@ -53,7 +53,7 @@ required:
       'cdif:takesValuesFrom':
         type: array
         items:
-          '$ref': '#/$defs/DescriptorValueDomainCdif_takesValuesFrom'
+          '$ref': '#/$defs/DescriptorValueDomainTakesValuesFrom'
         minItems: 1
         description: >-
           Ordered list of descriptor entries. Each entry has a cdif:value (the code as it
@@ -62,7 +62,7 @@ required:
     required:
     - '@type'
     - 'cdif:takesValuesFrom'
-  DescriptorValueDomainCdif_takesValuesFrom:
+  DescriptorValueDomainTakesValuesFrom:
     type: object
     properties:
       'cdif:value':
