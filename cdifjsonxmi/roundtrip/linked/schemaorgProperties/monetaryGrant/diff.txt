@@ -1,13 +1,10 @@
-monetaryGrant: 9 exact difference(s)
+monetaryGrant: 8 exact difference(s)
 $.$defs.Identifier: only in original: {"$ref": "../identifier/schema.yaml"}
 $.$defs.Organization: only in original: {"$ref": "../organization/schema.yaml"}
 $.$defs.Person: only in original: {"$ref": "../person/schema.yaml"}
 $.$defs.PersonOrOrganization: only in regenerated: {"anyOf": [{"$ref": "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/person/schema.yaml"}, {"$ref": "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/o
 $.allOf: only in regenerated: [{"anyOf": [{"required": ["schema:funder"]}, {"required": ["schema:identifier"]}, {"required": ["schema:name"]}]}]
 $.anyOf: only in original: [{"required": ["schema:funder"]}, {"required": ["schema:identifier"]}, {"required": ["schema:name"]}]
-$.properties.@type.default:
-    original:    "schema:MonetaryGrant"
-    regenerated: ["schema:MonetaryGrant"]
 $.properties.schema:funder.anyOf:
     original:    [{"type": "object", "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "a identifier for an agent defined in this metadata, or externally; must be dereferenceable"}}, "required": ["@id"]}, {"$ref": "#/$defs/Person"}, {"$ref": "#/$defs/Organization"}]
     regenerated: [{"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "a identifier for an agent defined in this metadata, or externally; must be dereferenceable"}}}, {"$ref": "#/$defs/PersonOrOrganization"}]
@@ -15,7 +12,4 @@ $.properties.schema:identifier.$ref:
     original:    "#/$defs/Identifier"
     regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml"
 
-monetaryGrant: 1 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)
-$.properties.@type.default:
-    original:    "schema:MonetaryGrant"
-    regenerated: ["schema:MonetaryGrant"]
+monetaryGrant: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

@@ -1,4 +1,4 @@
-spatialExtent: 22 exact difference(s)
+spatialExtent: 21 exact difference(s)
 $.$defs.DefinedTerm: only in original: {"$ref": "../definedTerm/schema.yaml"}
 $.$defs.GeoCoordinates: only in regenerated: {"type": "object", "properties": {"@type": {"default": ["schema:GeoCoordinates"], "type": "array", "items": {"type": "string"}, "contains": {"const": "schema:GeoCoordinates"}, "minItems": 1}, "schema:
 $.$defs.GeoCoordinatesOrGeoShapeOrGeoShape2: only in regenerated: {"anyOf": [{"$ref": "#/$defs/GeoCoordinates", "description": "A point location. Point locations are recommended for data that is associated with specific sample locations, particularly if these are wi
@@ -10,9 +10,6 @@ $.$defs.cdifConceptOrTermOrString: only in original: {"$ref": "../../cdifDataTyp
 $.$defs.wktLiteral: only in regenerated: {"type": "object", "properties": {"@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "geosparql:wktLiteral"}, "minItems": 1}, "@value": {"type": "string", "description": "a 
 $.allOf: only in regenerated: [{"anyOf": [{"required": ["schema:name"]}, {"required": ["schema:identifier"]}, {"required": ["schema:geo"]}, {"required": ["geosparql:hasGeometry"]}]}]
 $.anyOf: only in original: [{"required": ["schema:name"]}, {"required": ["schema:identifier"]}, {"required": ["schema:geo"]}, {"required": ["geosparql:hasGeometry"]}]
-$.properties.@type.default:
-    original:    "schema:Place"
-    regenerated: ["schema:Place"]
 $.properties.geosparql:hasGeometry.$ref: only in regenerated: "#/$defs/SpatialExtentGeosparql_hasGeometry"
 $.properties.geosparql:hasGeometry.properties: only in original: {"@type": {"type": "array", "items": {"type": "string"}, "minItems": 1, "description": "MUST be sf: (<http://www.opengis.net/ont/sf#>) SimpleFeature geometry type. See https://opengeospatial.github.io
 $.properties.geosparql:hasGeometry.required: only in original: ["geosparql:asWKT"]
@@ -32,16 +29,4 @@ $.properties.schema:name.anyOf[1].$ref:
     original:    "#/$defs/DefinedTerm"
     regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml"
 
-spatialExtent: 4 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)
-$.properties.@type.default:
-    original:    "schema:Place"
-    regenerated: ["schema:Place"]
-$.properties.schema:geo.anyOf[0].properties.@type.default:
-    original:    "schema:GeoCoordinates"
-    regenerated: ["schema:GeoCoordinates"]
-$.properties.schema:geo.anyOf[1].properties.@type.default:
-    original:    "schema:GeoShape"
-    regenerated: ["schema:GeoShape"]
-$.properties.schema:geo.anyOf[2].properties.@type.default:
-    original:    "schema:GeoShape"
-    regenerated: ["schema:GeoShape"]
+spatialExtent: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

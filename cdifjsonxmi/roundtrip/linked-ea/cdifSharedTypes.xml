@@ -303,7 +303,7 @@
 						</UML:Class>
 						<UML:Class name="Thing" xmi.id="EAID_43A8D84B_186E_5db4_9B20_AFCF529DD220" visibility="public" namespace="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D" isRoot="false" isLeaf="false" isAbstract="true" isActive="false">
 							<UML:ModelElement.taggedValue>
-								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Abstract base of the 3 schema:Thing profiles in bioschemasProperties/cdifBioschemasProperties, schemaorgProperties/action, schemaorgProperties/instrument. Each specializes it; this holds the attributes identical in all of them.&#xA;:rdfType: ``schema:Thing``"/>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Abstract base of the 2 schema:Thing profiles in bioschemasProperties/cdifBioschemasProperties, schemaorgProperties/instrument. Each specializes it; this holds the attributes identical in all of them.&#xA;:rdfType: ``schema:Thing``"/>
 								<UML:TaggedValue tag="isSpecification" value="false"/>
 								<UML:TaggedValue tag="ea_stype" value="Class"/>
 								<UML:TaggedValue tag="ea_ntype" value="0"/>

@@ -1,20 +1,14 @@
-labeledLink: 10 exact difference(s)
+labeledLink: 9 exact difference(s)
 $.$defs.DcatRole: only in original: {"description": "A dcat:Role -- DCAT's declared range for dcat:hadRole. Defined inline rather than as its own building block because nothing else in the register needs it yet; dcat:hadRole's domain is
 $.$defs.DcatRoleOrConceptOrTermOrString: only in regenerated: {"anyOf": [{"$ref": "#/$defs/Role"}, {"$ref": "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml"}]}
 $.$defs.Role: only in regenerated: {"type": "object", "description": "A dcat:Role -- DCAT's declared range for dcat:hadRole. Defined inline rather than as its own building block because nothing else in the register needs it yet; dcat:h
 $.$defs.cdifConceptOrTermOrString: only in original: {"$ref": "../../cdifDataType/cdifConceptOrTermOrString/schema.yaml"}
 $.properties.@type.anyOf: only in original: [{"contains": {"const": "schema:CreativeWork"}}, {"contains": {"const": "dcat:Relationship"}}]
 $.properties.@type.contains: only in regenerated: {"anyOf": [{"const": "schema:CreativeWork"}, {"const": "dcat:Relationship"}]}
-$.properties.@type.default:
-    original:    "schema:CreativeWork"
-    regenerated: ["schema:CreativeWork"]
 $.properties.dcat:hadRole.$ref: only in regenerated: "#/$defs/DcatRoleOrConceptOrTermOrString"
 $.properties.dcat:hadRole.anyOf: only in original: [{"$ref": "#/$defs/DcatRole"}, {"$ref": "#/$defs/cdifConceptOrTermOrString"}]
 $.properties.dcterms:relation.anyOf[0].$ref:
     original:    "../../cdifDataType/objectReference/schema.yaml"
     regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/objectReference/schema.yaml"
 
-labeledLink: 1 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)
-$.properties.@type.default:
-    original:    "schema:CreativeWork"
-    regenerated: ["schema:CreativeWork"]
+labeledLink: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

@@ -9,7 +9,7 @@ $.properties.schema:additionalType.items.$ref:
     original:    "#/$defs/cdifConceptOrTermOrString"
     regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml"
 $.properties.schema:includedInDataCatalog.$ref: only in regenerated: "#/$defs/DataCatalog"
-$.properties.schema:includedInDataCatalog.properties: only in original: {"@id": {"type": "string", "description": "identifier for the graph node."}, "@type": {"default": "schema:DataCatalog", "type": "array", "items": {"type": "string"}, "contains": {"const": "schema:Data
+$.properties.schema:includedInDataCatalog.properties: only in original: {"@id": {"type": "string", "description": "identifier for the graph node."}, "@type": {"default": ["schema:DataCatalog"], "type": "array", "items": {"type": "string"}, "contains": {"const": "schema:Da
 $.properties.schema:includedInDataCatalog.type: only in original: "object"
 $.properties.schema:maintainer.$ref: only in regenerated: "#/$defs/PersonOrOrganization"
 $.properties.schema:maintainer.anyOf: only in original: [{"$ref": "#/$defs/Person"}, {"$ref": "#/$defs/Organization"}]
@@ -26,7 +26,4 @@ $.required[4]:
     original:    "@id"
     regenerated: "dcterms:conformsTo"
 
-cdifCatalogRecord: 1 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)
-$.properties.schema:includedInDataCatalog.properties.@type.default:
-    original:    "schema:DataCatalog"
-    regenerated: ["schema:DataCatalog"]
+cdifCatalogRecord: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

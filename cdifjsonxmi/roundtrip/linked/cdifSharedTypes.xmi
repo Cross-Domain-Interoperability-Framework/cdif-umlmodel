@@ -283,7 +283,7 @@ Abstract base of the 2 schema:PropertyValueSpecification profiles in schemaorgPr
 Definition
 ==========
 
-Abstract base of the 3 schema:Thing profiles in bioschemasProperties/cdifBioschemasProperties, schemaorgProperties/action, schemaorgProperties/instrument. Each specializes it; this holds the attributes identical in all of them.
+Abstract base of the 2 schema:Thing profiles in bioschemasProperties/cdifBioschemasProperties, schemaorgProperties/instrument. Each specializes it; this holds the attributes identical in all of them.
 :rdfType: ``schema:Thing``</body>
           <annotatedElement xmi:idref="cdif.shared.Thing"/>
         </ownedComment>

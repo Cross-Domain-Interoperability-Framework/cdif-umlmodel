@@ -89,14 +89,14 @@ specifies the serialization scheme (encoding format, information model) for the 
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.action.Action.object" xmi:uuid="9bf54aab-ad42-59c6-8c93-ff2d55cb2537">
           <name>object</name>
-          <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.action.ActionThing"/>
+          <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.action.ActionObject"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.action.Action.object.lower" xmi:uuid="b6ddb032-2673-548f-8a64-a9eb3b5f8c18">
             <value>0</value>
           </lowerValue>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.action.Action.object.upper" xmi:uuid="3d9a039e-3d42-503e-bfd5-18e9982555b2">
             <value>1</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.action.assoc.Action_object_ActionThing"/>
+          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.action.assoc.Action_object_ActionObject"/>
           <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.action.Action.object.comment" xmi:uuid="e2307269-f011-581e-9d08-dbef09939bf3">
             <body>**CDIF**
 
@@ -219,6 +219,32 @@ The supported content type(s) for an EntryPoint response. a MIME type (https://w
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="cdif.bbr.metadata.schemaorgProperties.action.ActionObject" xmi:uuid="b6ad9e01-197f-59a0-adad-d5b1633a83ae">
+        <name>ActionObject</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.action.ActionObject.comment" xmi:uuid="da49ae93-b5ec-5605-9ac9-779ee28213ea">
+          <body>**CDIF**
+
+Definition
+==========
+
+
+:prefix: ``schema``
+:typeSchema: {"default": ["schema:Thing"], "type": "array", "items": {"type": "string"}, "minItems": 1}
+:typeOptional:
+:noId:</body>
+          <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.action.ActionObject"/>
+        </ownedComment>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.action.ActionObject.description" xmi:uuid="b739b757-3ede-517f-ae5b-619e17bec6aa">
+          <name>description</name>
+          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.action.ActionObject.description.lower" xmi:uuid="de08d5a8-d1c9-58a9-b010-766edacbb5fa">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.action.ActionObject.description.upper" xmi:uuid="2c5a1d38-fced-53da-be5f-535eefaeb0e0">
+            <value>1</value>
+          </upperValue>
+        </ownedAttribute>
+      </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="cdif.bbr.metadata.schemaorgProperties.action.ActionPropertyValueSpecification" xmi:uuid="71b1ad45-9673-5b4f-9f4a-fa6ba79eea47">
         <name>ActionPropertyValueSpecification</name>
         <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.action.ActionPropertyValueSpecification.comment" xmi:uuid="b7150460-fcf4-5c67-99de-eb3f3f2317b6">
@@ -283,35 +309,6 @@ Definition
             <value>0</value>
           </lowerValue>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.action.ActionPropertyValueSpecification.valuePattern.upper" xmi:uuid="a5a26d3b-488b-5574-a987-0e1e2c176f48">
-            <value>1</value>
-          </upperValue>
-        </ownedAttribute>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="cdif.bbr.metadata.schemaorgProperties.action.ActionThing" xmi:uuid="2f49046e-a668-5d4f-ad37-82860e037de7">
-        <name>ActionThing</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.action.ActionThing.comment" xmi:uuid="5f4e72a7-b576-5579-a276-f1237ed845b4">
-          <body>**CDIF**
-
-Definition
-==========
-
-
-:prefix: ``schema``
-:typeSchema: {"default": "schema:Thing", "type": "array", "items": {"type": "string"}, "minItems": 1}
-:typeOptional:
-:noId:</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.action.ActionThing"/>
-        </ownedComment>
-        <generalization xmi:type="uml:Generalization" xmi:id="cdif.bbr.metadata.schemaorgProperties.action.ActionThing.generalization" xmi:uuid="170520cb-3dcf-5f01-9505-f45d3d5f759c">
-          <general href="../../cdifSharedTypes.xmi#cdif.shared.Thing"/>
-        </generalization>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.action.ActionThing.description" xmi:uuid="d07ce2d4-aabc-5743-b7ff-b66090f64c75">
-          <name>description</name>
-          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.action.ActionThing.description.lower" xmi:uuid="0ea91907-d74e-5365-adff-21d1ab50ab34">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.action.ActionThing.description.upper" xmi:uuid="9e4229f2-794e-533c-b53e-a6b146911a8c">
             <value>1</value>
           </upperValue>
         </ownedAttribute>
@@ -385,19 +382,19 @@ Definition
         <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.action.assoc.Action_result_ActionResult.ownedEnd"/>
         <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.action.Action.result"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.schemaorgProperties.action.assoc.Action_object_ActionThing" xmi:uuid="025a5a06-bc47-57d7-8506-21eb05eb98a8">
-        <name>Action_object_ActionThing</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.action.assoc.Action_object_ActionThing.ownedEnd" xmi:uuid="2e54c5b6-70ac-573d-ae42-10cf06358903">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.schemaorgProperties.action.assoc.Action_object_ActionObject" xmi:uuid="3735d8c4-a75f-51c7-8f42-4d111ec05075">
+        <name>Action_object_ActionObject</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.action.assoc.Action_object_ActionObject.ownedEnd" xmi:uuid="2301cf5e-e3e0-546d-a765-6b594458f62a">
           <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.action.Action"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.action.assoc.Action_object_ActionThing.ownedEnd.lower" xmi:uuid="63207ffe-675d-552b-b264-f3042e6f4790">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.action.assoc.Action_object_ActionObject.ownedEnd.lower" xmi:uuid="4f471e20-5347-58f1-9b19-f47260920d21">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.action.assoc.Action_object_ActionThing.ownedEnd.upper" xmi:uuid="c7b8c17c-3b75-51d5-a113-37ecd549d249">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.action.assoc.Action_object_ActionObject.ownedEnd.upper" xmi:uuid="81a8b871-aa10-51ed-8c10-3e77d0a1a260">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.action.assoc.Action_object_ActionThing"/>
+          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.action.assoc.Action_object_ActionObject"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.action.assoc.Action_object_ActionThing.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.action.assoc.Action_object_ActionObject.ownedEnd"/>
         <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.action.Action.object"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.schemaorgProperties.action.assoc.Action_query-input_ActionPropertyValueSpecification" xmi:uuid="0743df0e-f617-5a9d-8242-e1a29d89f8ca">

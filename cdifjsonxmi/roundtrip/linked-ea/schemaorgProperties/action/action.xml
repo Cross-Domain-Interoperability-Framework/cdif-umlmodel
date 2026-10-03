@@ -156,6 +156,41 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
+						<UML:Class name="ActionObject" xmi.id="EAID_B6AD9E01_197F_59a0_ADAD_D5B1633A83AE" visibility="public" namespace="EAPK_59F0F6A5_74F2_55ad_9EE2_FB29C58B78AE" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:prefix: ``schema``&#xA;:typeSchema: {&quot;default&quot;: [&quot;schema:Thing&quot;], &quot;type&quot;: &quot;array&quot;, &quot;items&quot;: {&quot;type&quot;: &quot;string&quot;}, &quot;minItems&quot;: 1}&#xA;:typeOptional:&#xA;:noId:"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="Class"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_59F0F6A5_74F2_55ad_9EE2_FB29C58B78AE"/>
+								<UML:TaggedValue tag="ea_guid" value="{B6AD9E01-197F-59a0-ADAD-D5B1633A83AE}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Classifier.feature>
+								<UML:Attribute name="description" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:StructuralFeature.type>
+										<UML:Classifier xmi.idref="eaxmiid_String"/>
+									</UML:StructuralFeature.type>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value=""/>
+										<UML:TaggedValue tag="type" value="String"/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="false"/>
+										<UML:TaggedValue tag="position" value="0"/>
+										<UML:TaggedValue tag="lowerBound" value="0"/>
+										<UML:TaggedValue tag="upperBound" value="1"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{B739B757-3EDE-517f-AE5B-619E17BEC6AA}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+							</UML:Classifier.feature>
+						</UML:Class>
 						<UML:Class name="ActionPropertyValueSpecification" xmi.id="EAID_71B1AD45_9673_5b4f_9F4A_FA6BA79EEA47" visibility="public" namespace="EAPK_59F0F6A5_74F2_55ad_9EE2_FB29C58B78AE" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:rdfType: ``schema:PropertyValueSpecification``&#xA;:typeDefault: ``schema:PropertyValueSpecification``&#xA;:typeOptional:"/>
@@ -252,41 +287,6 @@
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
 										<UML:TaggedValue tag="ea_guid" value="{DAD639D3-7A58-5d1b-8630-31AA019FC1BD}"/>
-										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
-									</UML:ModelElement.taggedValue>
-								</UML:Attribute>
-							</UML:Classifier.feature>
-						</UML:Class>
-						<UML:Class name="ActionThing" xmi.id="EAID_2F49046E_A668_5d4f_AD37_82860E037DE7" visibility="public" namespace="EAPK_59F0F6A5_74F2_55ad_9EE2_FB29C58B78AE" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
-							<UML:ModelElement.taggedValue>
-								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:prefix: ``schema``&#xA;:typeSchema: {&quot;default&quot;: &quot;schema:Thing&quot;, &quot;type&quot;: &quot;array&quot;, &quot;items&quot;: {&quot;type&quot;: &quot;string&quot;}, &quot;minItems&quot;: 1}&#xA;:typeOptional:&#xA;:noId:"/>
-								<UML:TaggedValue tag="isSpecification" value="false"/>
-								<UML:TaggedValue tag="ea_stype" value="Class"/>
-								<UML:TaggedValue tag="ea_ntype" value="0"/>
-								<UML:TaggedValue tag="version" value="1.0"/>
-								<UML:TaggedValue tag="package" value="EAPK_59F0F6A5_74F2_55ad_9EE2_FB29C58B78AE"/>
-								<UML:TaggedValue tag="ea_guid" value="{2F49046E-A668-5d4f-AD37-82860E037DE7}"/>
-							</UML:ModelElement.taggedValue>
-							<UML:Classifier.feature>
-								<UML:Attribute name="description" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
-									<UML:Attribute.initialValue>
-										<UML:Expression/>
-									</UML:Attribute.initialValue>
-									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="eaxmiid_String"/>
-									</UML:StructuralFeature.type>
-									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="description" value=""/>
-										<UML:TaggedValue tag="type" value="String"/>
-										<UML:TaggedValue tag="derived" value="0"/>
-										<UML:TaggedValue tag="containment" value="Not Specified"/>
-										<UML:TaggedValue tag="ordered" value="0"/>
-										<UML:TaggedValue tag="collection" value="false"/>
-										<UML:TaggedValue tag="position" value="0"/>
-										<UML:TaggedValue tag="lowerBound" value="0"/>
-										<UML:TaggedValue tag="upperBound" value="1"/>
-										<UML:TaggedValue tag="duplicates" value="0"/>
-										<UML:TaggedValue tag="ea_guid" value="{D07CE2D4-AABC-5743-B7FF-B66090F64C75}"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
@@ -440,16 +440,16 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_025A5A06_BC47_57d7_8506_21EB05EB98A8" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_3735D8C4_A75F_51c7_8F42_4D111EC05075" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;The entity upon which the action is carried out, whose state is kept intact or changed. This is an open ended class for general description of Actions. When schema:Action (or a subclass) is used to describe operations for a WebAPI distribution, the object is implicitly the resource that is the subject of the containing metadata record, so this property would be superfluous.&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
 								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
 								<UML:TaggedValue tag="ea_sourceName" value="Action"/>
-								<UML:TaggedValue tag="ea_targetName" value="ActionThing"/>
+								<UML:TaggedValue tag="ea_targetName" value="ActionObject"/>
 								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
 								<UML:TaggedValue tag="ea_targetType" value="Class"/>
-								<UML:TaggedValue tag="ea_guid" value="{025A5A06-BC47-57d7-8506-21EB05EB98A8}"/>
+								<UML:TaggedValue tag="ea_guid" value="{3735D8C4-A75F-51c7-8F42-4D111EC05075}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Association.connection>
 								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_E89A011E_D1A9_5655_A486_E63F9BE666CC">
@@ -459,7 +459,7 @@
 										<UML:TaggedValue tag="ea_end" value="source"/>
 									</UML:ModelElement.taggedValue>
 								</UML:AssociationEnd>
-								<UML:AssociationEnd visibility="public" name="object" multiplicity="0..1" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_2F49046E_A668_5d4f_AD37_82860E037DE7">
+								<UML:AssociationEnd visibility="public" name="object" multiplicity="0..1" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_B6AD9E01_197F_59a0_ADAD_D5B1633A83AE">
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;The entity upon which the action is carried out, whose state is kept intact or changed. This is an open ended class for general description of Actions. When schema:Action (or a subclass) is used to describe operations for a WebAPI distribution, the object is implicitly the resource that is the subject of the containing metadata record, so this property would be superfluous.&#xA;:inlineOrByReference: ``inline``"/>
 										<UML:TaggedValue tag="containment" value="Unspecified"/>
@@ -522,17 +522,6 @@
 								<UML:TaggedValue tag="ea_guid" value="{9CAF7FE0-70C5-50b7-BC36-13BCA2B65A8C}"/>
 							</UML:ModelElement.taggedValue>
 						</UML:Generalization>
-						<UML:Generalization subtype="EAID_2F49046E_A668_5d4f_AD37_82860E037DE7" supertype="EAID_43A8D84B_186E_5db4_9B20_AFCF529DD220" xmi.id="EAID_170520CB_3DCF_5f01_9505_F45D3D5F759C" visibility="public">
-							<UML:ModelElement.taggedValue>
-								<UML:TaggedValue tag="ea_type" value="Generalization"/>
-								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
-								<UML:TaggedValue tag="ea_sourceName" value="ActionThing"/>
-								<UML:TaggedValue tag="ea_targetName" value="Thing"/>
-								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
-								<UML:TaggedValue tag="ea_targetType" value="Class"/>
-								<UML:TaggedValue tag="ea_guid" value="{170520CB-3DCF-5f01-9505-F45D3D5F759C}"/>
-							</UML:ModelElement.taggedValue>
-						</UML:Generalization>
 					</UML:Namespace.ownedElement>
 				</UML:Package>
 				<UML:Class name="Boolean" xmi.id="eaxmiid_Boolean" visibility="public" isRoot="true" isLeaf="false" isAbstract="false">
@@ -553,7 +542,6 @@
 		</UML:Model>
 	</XMI.content>
 	<XMI.extensions xmi.extender="Enterprise Architect 2.5">
-		<EAStub xmi.id="EAID_43A8D84B_186E_5db4_9B20_AFCF529DD220" name="Thing" UMLType="Class"/>
 		<EAStub xmi.id="EAID_6B31E454_1B08_59b9_A8BA_FAE8AFE2B0AF" name="PropertyValueSpecification" UMLType="Class"/>
 		<EAStub xmi.id="EAID_B584F416_EFAC_5357_B310_AFB30D561FE7" name="ActionResult" UMLType="Class"/>
 		<EAStub xmi.id="EAID_FA02B167_F1AF_5d87_B09B_EF73E2FF578C" name="EntryPoint" UMLType="Class"/>

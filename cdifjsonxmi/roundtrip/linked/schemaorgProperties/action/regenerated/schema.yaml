@@ -49,7 +49,7 @@ properties:
       representation of the data - documentation of the serialization format for the API response.
       See the actionResult building block.
   'schema:object':
-    '$ref': '#/$defs/ActionThing'
+    '$ref': '#/$defs/ActionObject'
     description: >-
       The entity upon which the action is carried out, whose state is kept intact or changed.
       This is an open ended class for general description of Actions. When schema:Action (or
@@ -120,6 +120,18 @@ required:
           property for the Action.
     required:
     - 'schema:urlTemplate'
+  ActionObject:
+    type: object
+    properties:
+      '@type':
+        default:
+        - 'schema:Thing'
+        type: array
+        items:
+          type: string
+        minItems: 1
+      'schema:description':
+        type: string
   ActionPropertyValueSpecification:
     type: object
     properties:
@@ -146,14 +158,3 @@ required:
     required:
     - 'schema:valueName'
     - 'schema:description'
-  ActionThing:
-    type: object
-    properties:
-      '@type':
-        default: 'schema:Thing'
-        type: array
-        items:
-          type: string
-        minItems: 1
-      'schema:description':
-        type: string

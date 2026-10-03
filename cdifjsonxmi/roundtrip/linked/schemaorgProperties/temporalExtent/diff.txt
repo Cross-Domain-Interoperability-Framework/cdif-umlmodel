@@ -3,26 +3,14 @@ $.$defs.Instant: only in regenerated: {"type": "object", "properties": {"@type":
 $.$defs.TemporalExtentProperInterval: only in regenerated: {"type": "object", "properties": {"@type": {"default": ["time:ProperInterval"], "type": "array", "items": {"type": "string"}, "contains": {"const": "time:ProperInterval"}, "minItems": 1}, "time:interv
 $.$defs.TemporalExtentProperInterval2: only in regenerated: {"type": "object", "properties": {"@context": {"type": "object", "properties": {"time": {"type": "string", "const": "http://www.w3.org/2006/time#"}, "schema": {"type": "string", "const": "http://schem
 $.$defs.TimePosition: only in regenerated: {"type": "object", "properties": {"@type": {"default": ["time:TimePosition"], "type": "array", "items": {"type": "string"}, "contains": {"const": "time:TimePosition"}, "minItems": 1}, "time:hasTRS": {
-$.$defs.timePosition_type: only in original: {"type": "object", "properties": {"@type": {"default": "time:TimePosition", "type": "array", "items": {"type": "string"}, "contains": {"const": "time:TimePosition"}, "minItems": 1}, "time:hasTRS": {"t
+$.$defs.timePosition_type: only in original: {"type": "object", "properties": {"@type": {"default": ["time:TimePosition"], "type": "array", "items": {"type": "string"}, "contains": {"const": "time:TimePosition"}, "minItems": 1}, "time:hasTRS": {
 $.anyOf[0].$ref: only in regenerated: "#/$defs/TemporalExtentProperInterval"
 $.anyOf[0].anyOf: only in original: [{"required": ["time:intervalStartedBy"]}, {"required": ["time:intervalFinishedBy"]}]
-$.anyOf[0].properties: only in original: {"@type": {"default": "time:ProperInterval", "type": "array", "items": {"type": "string"}, "contains": {"const": "time:ProperInterval"}, "minItems": 1}, "schema:description": {"type": "string", "descr
+$.anyOf[0].properties: only in original: {"@type": {"default": ["time:ProperInterval"], "type": "array", "items": {"type": "string"}, "contains": {"const": "time:ProperInterval"}, "minItems": 1}, "schema:description": {"type": "string", "des
 $.anyOf[0].type: only in original: "object"
 $.anyOf[1].$ref: only in regenerated: "#/$defs/TemporalExtentProperInterval2"
 $.anyOf[1].anyOf: only in original: [{"required": ["time:hasBeginning"]}, {"required": ["time:hasEnd"]}]
 $.anyOf[1].properties: only in original: {"@context": {"type": "object", "properties": {"time": {"type": "string", "const": "http://www.w3.org/2006/time#"}, "schema": {"type": "string", "const": "http://schema.org/"}}, "required": ["time", "
 $.anyOf[1].type: only in original: "object"
 
-temporalExtent: 4 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)
-$.anyOf[0].properties.@type.default:
-    original:    "time:ProperInterval"
-    regenerated: ["time:ProperInterval"]
-$.anyOf[0].properties.time:hasBeginning.properties.time:inTimePosition.properties.@type.default:
-    original:    "time:TimePosition"
-    regenerated: ["time:TimePosition"]
-$.anyOf[0].properties.time:hasEnd.properties.time:inTimePosition.properties.@type.default:
-    original:    "time:TimePosition"
-    regenerated: ["time:TimePosition"]
-$.anyOf[1].properties.@type.default:
-    original:    "time:ProperInterval"
-    regenerated: ["time:ProperInterval"]
+temporalExtent: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)
