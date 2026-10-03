@@ -682,6 +682,8 @@ def verbatim_definition(doc: Optional[str]) -> Optional[str]:
 #   :hasId:                                  -> a datatype that declares @id
 #   :idRequired:                             -> @id is required
 #   :untypedRoot:                            -> with :extends:, the root has no type: object
+#   :contextRequired:                        -> with :contextSchema:, @context is required
+#   :noOwnSchema:                            -> with :extends:, allOf of the parents' $refs only
 #   :objectUnion:                            -> a :union: that also declares type: object
 #   :extends: on a nested element            -> its $defs entry is allOf [$ref <parent block>, own schema]
 # On an attribute:
@@ -693,6 +695,7 @@ def verbatim_definition(doc: Optional[str]) -> Optional[str]:
 #                                               (no "value" entry: the attribute has no type);
 #                                               "objectReference": $ref to cdifDataType/objectReference
 #   :referenceFirst:                         -> on an --iri-reference-type value: {"@id"} first
+#   :valueAllOf: [{...}, ...]                -> allOf [<value>, these members]: further constraints
 #   :valueSchema: {...}                      -> the value schema, verbatim (e.g. a bare if/then);
 #                                               $refs "bb:<path under sources>" made relative
 #   :valueDescription: "text"                -> description on the value schema itself
@@ -719,7 +722,7 @@ _DIRECTIVE_NAMES = ("rdfType", "allowedTypes", "typeDefault", "typeDescription",
                     "itemsDescription", "noId", "alternativeOverrides", "schemaRef", "exportedDef",
                     "rootAlias", "rootDescription", "extends", "valueDescription", "closed",
                     "objectUnion", "valueSchema", "hasId", "idRequired", "untypedRoot",
-                    "orReference", "referenceFirst")
+                    "orReference", "referenceFirst", "valueAllOf", "noOwnSchema", "contextRequired")
 _DIRECTIVE_RE = re.compile(r"\n:(" + "|".join(_DIRECTIVE_NAMES) + r"):")
 
 
@@ -834,7 +837,8 @@ def _root_alias_or_extension(cls: "UmlClass", d: dict, ctx: "BuildContext",
     [$ref <parent block>, own schema])."""
     node = copy.deepcopy(ctx.local_defs[cls.name])
     if d.get("extends"):
-        node = node["allOf"][1]  # class_to_node_def's allOf [$ref <parent>, own schema]
+        # class_to_node_def's allOf [$ref <each parent>, own schema (unless :noOwnSchema:)]
+        node = {} if d.get("noOwnSchema") else node["allOf"][-1]
     node.pop("title", None)
     root: dict[str, Any] = OrderedDict()
     root["$schema"] = "https://json-schema.org/draft/2020-12/schema"
@@ -850,11 +854,9 @@ def _root_alias_or_extension(cls: "UmlClass", d: dict, ctx: "BuildContext",
         node.pop("description", None)
         if description:
             root["description"] = description
-        bb = element_bb_path(cls.parents[0])
-        target = (ctx.sources_dir / bb / "schema.yaml").resolve()
         if not d.get("untypedRoot"):
             root["type"] = "object"
-        root["allOf"] = [{"$ref": os.path.relpath(target, ctx.bb_out_dir.resolve()).replace(os.sep, "/")}, node]
+        root["allOf"] = _parent_refs(cls, ctx) + ([node] if node else [])
         defs.pop(cls.name, None)
     if defs:
         root["$defs"] = defs
@@ -1216,6 +1218,8 @@ def datatype_to_def(dt: UmlClass, ctx: BuildContext) -> dict:
         required = ["@type", *required]
     if dt_d.get("idRequired"):
         required = ["@id", *required]
+    if dt_d.get("contextRequired"):
+        required = ["@context", *required]
     if required:
         schema["required"] = required
     if choices:
@@ -1266,6 +1270,8 @@ def class_to_node_def(cls: UmlClass, ctx: BuildContext) -> dict:
     required.extend(extra_req)
     if _directives(ctx, cls.doc).get("idRequired"):
         required.insert(0, "@id")
+    if _directives(ctx, cls.doc).get("contextRequired"):
+        required.insert(0, "@context")
     if props or not ctx.comment_directives:  # an empty object stays {"type": "object"}
         schema["properties"] = props
     if required:
@@ -1275,11 +1281,18 @@ def class_to_node_def(cls: UmlClass, ctx: BuildContext) -> dict:
     if _directives(ctx, cls.doc).get("closed"):
         schema["additionalProperties"] = False
     if _directives(ctx, cls.doc).get("extends"):
-        # a specialization of another block's root: allOf [$ref <that block>, own schema]
-        target = (ctx.sources_dir / element_bb_path(cls.parents[0]) / "schema.yaml").resolve()
-        schema = {"allOf": [{"$ref": os.path.relpath(target, ctx.bb_out_dir.resolve()).replace(os.sep, "/")},
-                            schema]}
+        # a specialization of other blocks' roots: allOf [$ref <each block>, own schema]
+        schema = {"allOf": _parent_refs(cls, ctx) + ([] if _directives(ctx, cls.doc).get("noOwnSchema") else [schema])}
     return schema
+
+
+def _parent_refs(cls: "UmlClass", ctx: "BuildContext") -> list:
+    """$refs to the schemas of the blocks whose roots cls specializes (:extends:)."""
+    refs = []
+    for parent in cls.parents:
+        target = (ctx.sources_dir / element_bb_path(parent) / "schema.yaml").resolve()
+        refs.append({"$ref": os.path.relpath(target, ctx.bb_out_dir.resolve()).replace(os.sep, "/")})
+    return refs
 
 
 def _wrap_multiplicity(inner: dict, prop: Property) -> dict:
@@ -1320,6 +1333,8 @@ def property_to_schema(prop: Property, ctx: BuildContext) -> Optional[dict]:
         inner = _apply_alternative_overrides(ctx.model.elements[prop.type_id], d["alternativeOverrides"], ctx)
     if "valueSchema" in d:
         inner = _bb_refs(d["valueSchema"], ctx)
+    if "valueAllOf" in d:
+        inner = {"allOf": [inner, *_bb_refs(d["valueAllOf"], ctx)]}
     if "valueDescription" in d:
         inner = {**inner, "description": d["valueDescription"]}
     if inner == _iri_reference_value_schema() and ("idRefDescription" in d or d.get("referenceFirst")):
@@ -1353,7 +1368,7 @@ def property_to_schema(prop: Property, ctx: BuildContext) -> Optional[dict]:
     if "itemsDefault" in d and out.get("type") == "array":
         out = {**out, "items": {"default": d["itemsDefault"], **out["items"]}}
     if d.get("arrayKeywords") and out.get("type") == "array":
-        out = {**out, **d["arrayKeywords"]}
+        out = {**out, **_bb_refs(d["arrayKeywords"], ctx)}
     if "minItems" in d and out.get("type") == "array":
         out = dict(out)
         if d["minItems"] is None:

@@ -11,3 +11,11 @@
 
 # geosparql:wktLiteral is an RDF literal type, not a resource.
 wktLiteral: DataType
+
+# Profile modules (profiles/cdifProfile): aspects of the dataset node, no @type of their own;
+# classes, so that the composite profiles can specialize them.
+Discovery: Class
+DataDescription: Class
+Manifest: Class
+Provenance: Class
+DataStructureProfile: Class

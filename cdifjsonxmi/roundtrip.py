@@ -64,14 +64,21 @@ def normalize(schema, base_dir):
         node = dict(node)
         ref = node.get("$ref")
         key = ref[len("#/$defs/"):] if isinstance(ref, str) and ref.startswith("#/$defs/") else None
-        if key in defs and key not in expanding:
+        # A definition that is only a union is always expanded (a few times at most): one side
+        # may name a union the other writes inline, and a cut there would come one level apart.
+        union_def = key in defs and set(defs[key]) - {"description"} in ({"anyOf"}, {"oneOf"})
+        if key in defs and (key not in expanding or (union_def and expanding.count(key) < 3)):
             node.pop("$ref")
             node = {**defs[key], **node}
             return walk(node, expanding + (key,))
         if key is not None:
-            return node
+            # a recursive reference: cut, without the definition's name (the two sides may name
+            # the same definition differently)
+            return {**{k: v for k, v in node.items() if k != "$ref"}, "$recursive": True}
         if isinstance(ref, str) and not ref.startswith("#"):
             node["$ref"] = (base_dir / ref).resolve().as_posix()
+        if node.get("items") == {}:
+            node.pop("items")  # items: {} allows any item, as no items does
         if set(node) == {"anyOf"} and len(node["anyOf"]) == 1:
             return walk(node["anyOf"][0], expanding)
         contains = node.get("contains")
@@ -86,6 +93,19 @@ def normalize(schema, base_dir):
                 consts += c["anyOf"] if set(c) == {"anyOf"} else [c]
             node["contains"] = {"anyOf": consts}
         node.pop("$defs", None)
+        if isinstance(node.get("allOf"), list):
+            # hoist members' own allOf first, so a member doesn't gather its nested members'
+            # 'required' as its own before they join the parent
+            flat = []
+            for m in node["allOf"]:
+                if isinstance(m, dict) and isinstance(m.get("allOf"), list) and "$ref" not in m:
+                    flat += m["allOf"]
+                    m = {k: v for k, v in m.items() if k != "allOf"}
+                    if m:
+                        flat.append(m)
+                else:
+                    flat.append(m)
+            node["allOf"] = flat
         node = {k: walk(v, expanding) for k, v in node.items()}
         for key in ("anyOf", "oneOf"):
             if isinstance(node.get(key), list):
@@ -97,11 +117,39 @@ def normalize(schema, base_dir):
         contains = node.get("contains")
         if isinstance(contains, dict) and set(contains) == {"anyOf"} and len(contains["anyOf"]) == 1:
             node["contains"] = contains["anyOf"][0]
-        if node.get("type") == "object" and "properties" in node:
-            # a top-level conditional / exclusive choice means the same as an allOf member
-            lifted = {k: node.pop(k) for k in ("if", "then", "else", "not", "oneOf") if k in node}
+        if "if" in node or "not" in node or (node.get("type") == "object" and "properties" in node):
+            # a top-level conditional (or, beside properties, an exclusive choice) means the same
+            # as an allOf member
+            keys = ("if", "then", "else", "not") + (("oneOf",) if "properties" in node else ())
+            lifted = {k: node.pop(k) for k in keys if k in node}
             if lifted:
                 node["allOf"] = node.get("allOf", []) + [lifted]
+        if isinstance(node.get("allOf"), list):
+            # allOf is unordered, and a member's own allOf can join its parent's
+            flat = []
+            for m in node["allOf"]:
+                if isinstance(m, dict) and isinstance(m.get("allOf"), list):
+                    flat += m["allOf"]
+                    m = {k: v for k, v in m.items() if k != "allOf"}
+                    if m:
+                        flat.append(m)
+                else:
+                    flat.append(m)
+            node["allOf"] = sorted(flat, key=lambda b: json.dumps(b, sort_keys=True))
+        if node.get("type") == "object" and "allOf" in node:
+            # an allOf member that only adds property schemas means the same as those properties
+            # on the object itself (cdifProvenance's partial schema:subjectOf), if not already there
+            kept = []
+            for block in node["allOf"]:
+                if isinstance(block, dict) and set(block) == {"properties"} \
+                        and not set(block["properties"]) & set(node.get("properties", {})):
+                    node["properties"] = {**node.get("properties", {}), **block["properties"]}
+                else:
+                    kept.append(block)
+            if kept:
+                node["allOf"] = kept
+            else:
+                node.pop("allOf")
         if node.get("type") == "object":
             req, anyofs = set(node.pop("required", [])), []
             if "anyOf" in node:

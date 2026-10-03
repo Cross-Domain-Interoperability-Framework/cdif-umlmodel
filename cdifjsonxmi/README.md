@@ -71,8 +71,18 @@ block, composable the way the schemas are:
   (`../../bioschemasProperties/cdifBioschemasProperties/schema.yaml#/$defs/ComputationalTool`)
   is an element of its block named by its key (`:exportedDef:`); the referencing attribute
   links to it and records the reference as `:schemaRef:`.
-- **A block that `allOf`s another block's root and adds properties** (provActivity) becomes a
-  specialization of that root, with `:extends:`.
+- **A block that `allOf`s other blocks' roots and adds properties** (provActivity) becomes a
+  specialization of those roots, with `:extends:`: one generalization per `$ref`. The same
+  holds for a nested value (cdifDataDescription's variable is both a VariableMeasured and an
+  InstanceVariable) and a composite of `$ref`s only (`:noOwnSchema:`).
+- **Profile modules** (`profiles/cdifProfile`: cdifDiscovery, cdifDataDescription,
+  cdifManifest, cdifProvenance, cdifDataStructure) add properties to the dataset node and
+  have no `@type` of their own. Each is an *aspect* class named after the module
+  (`Discovery`, …; `DataStructureProfile`, since cdifDataStructure has a `DataStructure`
+  definition), a Class by [`classification.yaml`](classification.yaml) so that composite
+  profiles can specialize it. Their refinements of properties cdifCore defines (the
+  `schema:subjectOf.dcterms:conformsTo` pin to the module's profile URI) are kept verbatim as
+  constraints.
 - **Package:** each file holds one `uml:Package` for the block. Its `xmi:id` is the block's
   register identifier (`cdif.bbr.metadata.schemaorgProperties.person`, using the
   `identifier-prefix` from `bblocks-config.yaml`). Its `URI` is the register URI
@@ -138,10 +148,8 @@ automation interface: `-Dir <linked root>-ea -Package <name>` imports every file
 of that name first. EA must be running with the project open. The script relaunches itself
 in Windows PowerShell 5.1, since EA's COM objects aren't reachable from PowerShell 7.
 
-Not yet done: profile modules that refine another block's class (`cdifDiscovery` etc. on
-`schema:Dataset`, planned as UML PackageMerge); composite profiles (`allOf` of modules,
-planned as PackageImport); a block's vocabulary prefix when its root has no `@type`; and
-importing a linked set into Enterprise Architect.
+Not yet done: the composite profiles (`profiles/cdifCompositeProfile`), which become
+classes specializing cdifCore and the modules they combine.
 
 ## Reuse report
 
@@ -190,7 +198,12 @@ go in ` ``…`` `; free text, defaults and verbatim schema fragments are JSON.
 | a union alternative that only requires a key it doesn't declare (generatedBy's role-keyed wrappers, `{required: [schema:instrument]}`) | DataType `<Key>Role` (`InstrumentRole`), alternative `<key>Role`, the key in `:constraint: {"required": [...]}` |
 | inline `{type: string, enum: [...]}` | `uml:Enumeration` named after the property, with its literals |
 | inline `type: object` | nested element named from its `@type` const (e.g. `ContactPoint`), else `<Owner><Role>`; a numeric suffix where names collide |
-| inline `allOf: [{$ref: other block}, {type: object, properties…}]` (cdifDataCube) | nested element specializing that block's root, `:extends:`, of the root's kind |
+| inline `allOf: [{$ref: other block}, …, {type: object, properties…}]` (cdifDataCube, cdifDataDescription's variables) | nested element specializing those blocks' roots, `:extends:`, of their kind; the object member with the most properties gives the attributes, other members are `:constraint:`s |
+| `allOf: [{$ref: X}, {required: […]}]` (X and further constraints) | type of X plus `:valueAllOf: [...]` |
+| a value of conditions and partial schemas only (`if`/`then`, `{properties: …}` with no type, an `allOf` of those) | attribute with no type, `:valueSchema: {...}` verbatim |
+| a local definition that is a union with its own description, or that refers back to itself | the element named after the definition, built once |
+| `$ref` to a local definition that is an array (cdifManifest's `resourcePartArray`) | the array, inline (the definition's own description gives way to the property's) |
+| an array with `contains` and no `items` | attribute with no type, upper bound `*`, `contains` in `:arrayKeywords:` |
 | block root | element named from the directory (`cdifConceptOrTermOrString` → `ConceptOrTermOrString`) |
 | block root that is only a `$ref` to a local `$defs` entry (skosConcept) | that definition's element, plus `:rootAlias:` (and `:rootDescription:` for the root's own description) |
 | `$defs` entry referenced from another block, or recursively | element named by its key, `:exportedDef:` |
@@ -240,7 +253,9 @@ go in ` ``…`` `; free text, defaults and verbatim schema fragments are JSON.
 | other `allOf` members (e.g. `if` / `then` / `else`) | `:constraint: {...}`, verbatim |
 | top-level `if` / `then` / `else`, `not`, or `oneOf` beside `properties` | one `:constraint: {...}` (written back as an `allOf` member, which means the same) |
 | `required` keys with no property schema | `:constraint: {"required": [...]}` |
-| `allOf: [{$ref: other block}, {properties…}]` | generalization to that block's root, `:extends:`; `:untypedRoot:` when the root has no `type: object` |
+| a property schema with no type that refines a property defined elsewhere (`schema:subjectOf: {properties: {dcterms:conformsTo: …}}`) | `:constraint: {"properties": {...}}` (written back as an `allOf` member, which means the same) |
+| `@context` required | `:contextRequired:` |
+| `allOf: [{$ref: other block}, …, {properties…}]` | a generalization to each block's root, `:extends:`; `:untypedRoot:` when the root has no `type: object`, `:noOwnSchema:` when there are only `$ref`s |
 | `additionalProperties: false` | `:closed:` |
 | `@id` declared on a DataType (by classification, e.g. objectReference) / `@id` required | `:hasId:` / `:idRequired:` |
 | a union block that also says `type: object` (cdifStatistics) | `:objectUnion:` |
@@ -254,9 +269,9 @@ Anything else stops the converter with an error, rather than being dropped.
 
 ## Results
 
-**All 50 blocks round-trip** (`roundtrip.py --linked`): `schemaorgProperties`,
-`skosProperties`, `provProperties`, `qualityProperties`, `bioschemasProperties` and
-`cdifDataType`, with no semantic differences. (The 20 bare-string `@type` defaults that
+**All 58 blocks round-trip** (`roundtrip.py --linked`): `schemaorgProperties`,
+`skosProperties`, `provProperties`, `qualityProperties`, `bioschemasProperties`,
+`cdifDataType` and `profiles/cdifProfile`, with no semantic differences. (The 20 bare-string `@type` defaults that
 used to come back wrapped as arrays are now arrays in the sources, as the always-an-array
 `@type` policy requires.) Exact differences are placement only: `required` and choice
 `anyOf`s at the top level or in `allOf`, and unions or nested objects written as local
@@ -266,12 +281,9 @@ Earlier checks, from when the set was identifier, person and organization: the e
 and edge cases (2 + 4, 2 + 11, 2 + 9) validate the same way against the original and
 regenerated schemas, with `$ref`s resolved from disk.
 
-The set converts to 53 EA XMI 1.1 files (50 blocks plus the common types, shared types and
-shared unions) with 124 associations and 29 generalizations (to 11 abstract shared bases,
-and five extensions of another block: provActivity, cdifProvActivity, cdifLocatorMapping,
-cdifTextMapping and cdifDataCube's nested mapping); every reference resolves to an element
-or a declared stub. The one referenced block outside the set is
-`profiles/cdifProfile/cdifCodelist`. Import order follows the references: common types,
+The set converts to 61 EA XMI 1.1 files (58 blocks plus the common types, shared types and
+shared unions) with 180 associations and 43 generalizations (to the abstract shared bases,
+and the extensions of other blocks); every reference resolves to an element. Import order follows the references: common types,
 shared types, then each block (and the shared unions) before the blocks that reference it;
 cdifStatistics' five associations to InstanceVariable are written in cdifInstanceVariable's
 file (see above). The set has 39 union datatypes; 29 more value-or-reference unions became plain types and
@@ -289,8 +301,8 @@ DDI-CDI XMI and `cdifmodels.xmi` (single-class, multi-class with `--emit-uml`,
 
 ## Not handled yet
 
-- `ddiProperties` and the profile folders are untried; `ddiProperties` will add
-  inheritance, and composite profiles need PackageImport / PackageMerge.
+- `ddiProperties`, `xasProperties` and the composite profiles are untried; `ddiProperties`
+  will add inheritance.
 - cdifInstanceVariable's `allOf` `$ref` to variableMeasured (beside its own properties) is
   carried as a `:constraint:`, not as a generalization, so EA shows no link between them.
 - Each building block is its own XMI file; there's no merged model of several blocks.
