@@ -204,7 +204,8 @@ def _parse_class(elem: ET.Element, package: str, kind: str) -> UmlClass:
         if not sup:
             child = gen.find("general")
             if child is not None:
-                sup = child.get(XMI_IDREF)
+                # an href ("other.xmi#id") is resolved across files by --linked
+                sup = child.get(XMI_IDREF) or child.get(XMI_HREF)
         if sup:
             parents.append(sup)
     props: list[Property] = []
@@ -542,6 +543,11 @@ def load_linked_xmi(path: Path) -> Model:
                 if file_part and "://" not in file_part:
                     p.type_id, p.primitive = frag, None
                     queue.append((f.parent / file_part).resolve())
+            for i, parent in enumerate(el.parents):
+                file_part, sep, frag = parent.partition("#")
+                if sep and file_part and "://" not in file_part:
+                    el.parents[i] = frag
+                    queue.append((f.parent / file_part).resolve())
         for eid, el in part.elements.items():
             if eid not in model.elements:
                 model.elements[eid] = el
@@ -664,6 +670,18 @@ def verbatim_definition(doc: Optional[str]) -> Optional[str]:
 #                                               array has its own
 # On a class / datatype, also:
 #   :typeOptional:                           -> @type is declared but not required
+#   :noId:                                   -> a class whose schema declares no @id
+#   :exportedDef:                            -> a $defs entry other blocks reference: kept in $defs
+#   :rootAlias:, :rootDescription: "text"    -> the block's root is allOf [$ref to this $defs entry]
+#   :extends:                                -> root is allOf [$ref <parent block>, own schema]; the
+#                                               parent's attributes are not merged in
+# On an attribute:
+#   :schemaRef: "<bb path>#/$defs/K"         -> the value is exactly that $ref into another block
+#   :valueDescription: "text"                -> description on the value schema itself
+# On an attribute typed by a :union: datatype:
+#   :alternativeOverrides: {"alt": {...}}    -> per-use annotations of the alternatives
+#                                               (description, default, title, idRefDescription;
+#                                               null removes), the union inlined with them
 #   :prefix: ``schema``                      -> prefix of its property keys, where it has no
 #                                               :rdfType: to take it from
 #   :union: ``anyOf`` / ``oneOf``            -> a union (ISO 19103 style): the schema is that
@@ -680,7 +698,8 @@ _DIRECTIVE_NAMES = ("rdfType", "allowedTypes", "typeDefault", "typeDescription",
                     "alsoAcceptsString", "default", "descriptionOnItems", "minItems",
                     "idRefDescription", "jsonName", "keywords", "arrayKeywords", "typeOptional",
                     "itemsDefault", "prefix", "union", "contextSchema", "constraint", "typeSchema",
-                    "itemsDescription")
+                    "itemsDescription", "noId", "alternativeOverrides", "schemaRef", "exportedDef",
+                    "rootAlias", "rootDescription", "extends", "valueDescription")
 _DIRECTIVE_RE = re.compile(r"\n:(" + "|".join(_DIRECTIVE_NAMES) + r"):")
 
 
@@ -787,6 +806,62 @@ def _declares_type(cls: "UmlClass", ctx: "BuildContext") -> bool:
         return True
     d = _directives(ctx, cls.doc)
     return "rdfType" in d or "typeSchema" in d
+
+
+def _root_alias_or_extension(cls: "UmlClass", d: dict, ctx: "BuildContext",
+                              title: Optional[str], description: Optional[str]) -> dict:
+    """Root schema for :rootAlias: (allOf [$ref '#/$defs/<root>']) or :extends: (allOf
+    [$ref <parent block>, own schema])."""
+    node = copy.deepcopy(ctx.local_defs[cls.name])
+    node.pop("title", None)
+    root: dict[str, Any] = OrderedDict()
+    root["$schema"] = "https://json-schema.org/draft/2020-12/schema"
+    if title:
+        root["title"] = title
+    defs = OrderedDict(sorted(ctx.local_defs.items()))
+    if d.get("rootAlias"):
+        if d.get("rootDescription"):
+            root["description"] = d["rootDescription"]
+        defs[cls.name] = node
+        root["allOf"] = [{"$ref": f"#/$defs/{cls.name}"}]
+    else:
+        node.pop("description", None)
+        if description:
+            root["description"] = description
+        bb = element_bb_path(cls.parents[0])
+        target = (ctx.sources_dir / bb / "schema.yaml").resolve()
+        root["type"] = "object"
+        root["allOf"] = [{"$ref": os.path.relpath(target, ctx.bb_out_dir.resolve()).replace(os.sep, "/")}, node]
+        defs.pop(cls.name, None)
+    if defs:
+        root["$defs"] = defs
+    return root
+
+
+def _apply_alternative_overrides(union: "UmlClass", overrides: dict, ctx: "BuildContext") -> dict:
+    """The union's schema, inline, with one use's annotations of its alternatives applied."""
+    schema = _union_def(union, ctx)
+    keyword = "oneOf" if "oneOf" in schema else "anyOf"
+    branches = []
+    for prop, branch in zip([p for p in union.properties if p.name], schema[keyword]):
+        branch = dict(branch)
+        for key, value in overrides.get(prop.name, {}).items():
+            if key == "idRefDescription":
+                at_id = dict(branch["properties"]["@id"])
+                if value is None:
+                    at_id.pop("description", None)
+                else:
+                    at_id["description"] = value
+                branch = {**branch, "properties": {"@id": at_id}}
+            elif value is None:
+                branch.pop(key, None)
+            else:
+                branch[key] = value
+        branches.append(branch)
+    schema = dict(schema)
+    schema.pop("description", None)
+    schema[keyword] = branches
+    return schema
 
 
 def _union_def(cls: "UmlClass", ctx: "BuildContext") -> dict:
@@ -1125,7 +1200,7 @@ def class_to_node_def(cls: UmlClass, ctx: BuildContext) -> dict:
     if ctx.comment_directives:
         # @id as the model declares it: on classes only, with the recorded description.
         d = _directives(ctx, cls.doc)
-        if cls.kind != "datatype":
+        if cls.kind != "datatype" and not d.get("noId"):
             props["@id"] = {"type": "string"}
             if "idDescription" in d:
                 props["@id"]["description"] = d["idDescription"]
@@ -1134,9 +1209,10 @@ def class_to_node_def(cls: UmlClass, ctx: BuildContext) -> dict:
             "type": "string",
             "description": f"Identifier for this {cls.name} node",
         }
+    own = (cls.properties if _directives(ctx, cls.doc).get("extends")
+           else collect_inherited_properties(cls.id, ctx.model))
     extra, extra_req = _build_properties_dict(
-        collect_inherited_properties(cls.id, ctx.model), ctx,
-        owner_class_name=cls.name, owner_prefix=_class_prefix(cls, ctx),
+        own, ctx, owner_class_name=cls.name, owner_prefix=_class_prefix(cls, ctx),
     )
     props.update(extra)
     required.extend(extra_req)
@@ -1174,10 +1250,19 @@ def property_to_schema(prop: Property, ctx: BuildContext) -> Optional[dict]:
         # skip rather than emit a malformed `cdi:` key.
         print(f"WARN: skipping unnamed property id={prop.id}", file=sys.stderr)
         return None
-    inner = _resolve_property_type(prop, ctx)
+    inner = (_resolve_property_type(prop, ctx)
+             if not _directives(ctx, prop.doc).get("schemaRef") else {})
     if inner is None:
         return None
     d = _directives(ctx, prop.doc)
+    if d.get("schemaRef"):
+        bb, _, frag = d["schemaRef"].partition("#")
+        target = (ctx.sources_dir / bb / "schema.yaml").resolve()
+        inner = {"$ref": os.path.relpath(target, ctx.bb_out_dir.resolve()).replace(os.sep, "/") + "#" + frag}
+    if d.get("alternativeOverrides") and prop.type_id in ctx.model.elements:
+        inner = _apply_alternative_overrides(ctx.model.elements[prop.type_id], d["alternativeOverrides"], ctx)
+    if "valueDescription" in d:
+        inner = {**inner, "description": d["valueDescription"]}
     if "idRefDescription" in d and inner.get("properties", {}).get("@id"):
         inner = {**inner, "properties": {"@id": {**inner["properties"]["@id"],
                                                  "description": d["idRefDescription"]}}}
@@ -1219,6 +1304,8 @@ def _resolve_property_type(prop: Property, ctx: BuildContext) -> Optional[dict]:
     if prop.primitive:
         return {"type": prop.primitive}
     if not prop.type_id:
+        if ctx.comment_directives and prop.type_href is None:
+            return {}  # an untyped attribute: any value
         return {"type": "string"}  # unknown type → permissive string
     target = ctx.model.elements.get(prop.type_id)
     if target is None:
@@ -1288,7 +1375,7 @@ def _resolve_datatype_ref(dt: UmlClass, ctx: BuildContext) -> dict:
     bb_ref = _building_block_ref(ctx, dt)
     if bb_ref:
         return bb_ref
-    if not ctx.inline_datatypes and dt.name in ctx.shared_defs:
+    if not ctx.inline_datatypes and dt.name in ctx.shared_defs and not ctx.comment_directives:
         return _ref_to_shared(ctx, dt.name)
     # Inline: ensure local $def exists
     if dt.name not in ctx.local_defs:
@@ -1339,6 +1426,21 @@ def build_root_schema(
             ctx.local_defs[cls.name] = class_to_node_def(cls, ctx)
             ctx.expanding.discard(cls.name)
         node_def_names.append(cls.name)
+
+    if ctx.comment_directives and ctx.root_bb_path:
+        # $defs entries other blocks reference (:exportedDef:) stay in $defs even if unused here
+        for el in list(ctx.model.elements.values()):
+            if element_bb_path(el.id) == ctx.root_bb_path and el.name not in ctx.local_defs                     and el not in classes and _directives(ctx, el.doc).get("exportedDef"):
+                if el.kind == "enumeration":
+                    ctx.local_defs[el.name] = {"type": "string", "enum": list(el.literals)}
+                elif el.kind == "class":
+                    _inline_class_ref(el, ctx)
+                else:
+                    _resolve_datatype_ref(el, ctx)
+    if ctx.comment_directives and len(classes) == 1:
+        d = _directives(ctx, classes[0].doc)
+        if d.get("rootAlias") or d.get("extends"):
+            return _root_alias_or_extension(classes[0], d, ctx, title, description)
 
     root: dict[str, Any] = OrderedDict()
     root["$schema"] = "https://json-schema.org/draft/2020-12/schema"

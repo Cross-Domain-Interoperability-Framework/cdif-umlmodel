@@ -45,8 +45,30 @@ construct outside the mapping below, instead of approximating it.
 `bblock_to_xmi.py --linked OUT_DIR <bb dir>...` writes one Canonical XMI file per building
 block, composable the way the schemas are:
 
-- **Layout:** `OUT_DIR/<path under _sources>/<dir>.xmi`, plus `OUT_DIR/cdifCommonTypes.xmi`.
-  The shared file holds the XSD datatypes and `IriReference` once, and every block links to it.
+- **Layout:** `OUT_DIR/<path under _sources>/<dir>.xmi`, plus `OUT_DIR/cdifCommonTypes.xmi`
+  (the XSD datatypes, `IriReference` and `IdReference`, once), `OUT_DIR/cdifSharedTypes.xmi`
+  (abstract bases, below) and `OUT_DIR/cdifSharedUnions.xmi` (shared unions, below). Blocks
+  link to all three.
+- **Shared bases:** an RDF type defined by two or more elements of the same kind across the
+  converted set (e.g. two different `schema:EntryPoint` objects in action and linkRole) gets
+  one abstract base in `cdifSharedTypes.xmi`, and each of those elements specializes it by a
+  cross-file generalization. The base holds the attributes identical in all of them, removed
+  from the specializations; `uml_to_schema.py` merges them back by walking the generalization,
+  so the round trip is unchanged. Inline specializations are named by their block
+  (`ActionEntryPoint`, `LinkRoleEntryPoint`); block roots keep their names. The converter runs
+  two passes over the set to find these.
+- **Shared unions:** unions are named by content, not by use (`StringOrLabeledLink`). A union
+  with the same alternatives in two or more blocks, all of them references, scalars or `@id` /
+  IRI references, is defined once in `cdifSharedUnions.xmi` (ids `cdif.union.<Name>`), e.g.
+  `IdReferenceOrPersonOrOrganization` and `StringOrIdReferenceOrDefinedTerm`. Within a block,
+  uses of the same union share one element. Annotations that differ between uses (a
+  description on one alternative) are kept on the attribute as `:alternativeOverrides:`.
+- **`$defs` used across blocks:** a definition another block `$ref`s
+  (`../../bioschemasProperties/cdifBioschemasProperties/schema.yaml#/$defs/ComputationalTool`)
+  is an element of its block named by its key (`:exportedDef:`); the referencing attribute
+  links to it and records the reference as `:schemaRef:`.
+- **A block that `allOf`s another block's root and adds properties** (provActivity) becomes a
+  specialization of that root, with `:extends:`.
 - **Package:** each file holds one `uml:Package` for the block. Its `xmi:id` is the block's
   register identifier (`cdif.bbr.metadata.schemaorgProperties.person`, using the
   `identifier-prefix` from `bblocks-config.yaml`). Its `URI` is the register URI
@@ -80,7 +102,8 @@ converts a linked set to EA XMI 1.1, one file per block (`<linked root>-ea/…/<
   its name.
 - **Associations:** an association end becomes an EA connector instead of an attribute. Its
   source end is at the owner, non-navigable, `0..*`. Its target end is named after the role
-  and carries the attribute's multiplicity, comment and GUID.
+  and carries the attribute's multiplicity, comment and GUID. The connector itself is
+  unnamed, so diagrams show only the role name; the Canonical XMI keeps the association name.
 - **Comments:** kept verbatim.
 
 The files name "Enterprise Architect" 2.5 as exporter and declare each element referenced
@@ -99,7 +122,14 @@ package in that order:
   type name, unlinked.
 
 Import in dependency order: `cdifCommonTypes.xml` first, then each block before the
-blocks that reference it.
+blocks that reference it. `linked_to_ea.py` writes that order to `import_order.txt`.
+
+[`import_to_ea.ps1`](import_to_ea.ps1) runs the imports in the open EA project through EA's
+automation interface: `-Dir <linked root>-ea -Package <name>` imports every file in
+`import_order.txt` into a root package of that name, each block in a package named after its
+`_sources` subdirectory (`schemaorgProperties`, …) and the shared files at the top; `-Replace` deletes an existing package
+of that name first. EA must be running with the project open. The script relaunches itself
+in Windows PowerShell 5.1, since EA's COM objects aren't reachable from PowerShell 7.
 
 Not yet done: profile modules that refine another block's class (`cdifDiscovery` etc. on
 `schema:Dataset`, planned as UML PackageMerge); composite profiles (`allOf` of modules,
@@ -148,12 +178,13 @@ go in ` ``…`` `; free text, defaults and verbatim schema fragments are JSON.
 
 | JSON Schema | XMI |
 |---|---|
-| object schema that declares `@id` | `uml:Class` |
-| object schema without `@id` | `uml:DataType` (a value type) |
-| `anyOf` / `oneOf` of alternatives, as a property's value or as a whole block (temporalExtent) | **union DataType** (ISO 19103 «Union» style): one optional attribute per alternative, named after it (`person`, `organization`, `idReference`, `string`, …), each mapped like a property; directive `:union: ``anyOf``` or ``oneOf``. Named `<Owner><Role>Choice`, e.g. `AgentInRoleContributorChoice`. |
+| object schema | `uml:Class` or `uml:DataType`, decided in this order: [`classification.yaml`](classification.yaml) overrides; Achim Wackerow's kind for that name in `cdifmodels.xmi`; else Class if the schema declares `@id` or `@type`, otherwise DataType. A Class whose schema has no `@id` gets `:noId:`. |
+| `anyOf` / `oneOf` of alternatives, as a property's value or as a whole block (temporalExtent) | **union DataType** (ISO 19103 «Union» style): one optional attribute per alternative, named after it (`person`, `organization`, `idReference`, `string`, …), each mapped like a property; directive `:union: ``anyOf``` or ``oneOf``. A property's union is named by its alternatives, joined with `Or` (anyOf) or `Xor` (oneOf), e.g. `IdReferenceOrPersonOrOrganization`; a whole-block union is `<Block>Choice`. Unnameable alternatives are `option<N>`. |
 | inline `{type: string, enum: [...]}` | `uml:Enumeration` named after the property, with its literals |
 | inline `type: object` | nested element named from its `@type` const (e.g. `ContactPoint`), else `<Owner><Role>`; a numeric suffix where names collide |
 | block root | element named from the directory (`cdifConceptOrTermOrString` → `ConceptOrTermOrString`) |
+| block root that is only a `$ref` to a local `$defs` entry (skosConcept) | that definition's element, plus `:rootAlias:` (and `:rootDescription:` for the root's own description) |
+| `$defs` entry referenced from another block, or recursively | element named by its key, `:exportedDef:` |
 
 **Properties**
 
@@ -167,6 +198,11 @@ go in ` ``…`` `; free text, defaults and verbatim schema fragments are JSON.
 | `{"@id": string}` object, nothing else (node reference) | `common.IdReference` (**new DataType**); a description on its `@id` → `:idRefDescription:` |
 | `$ref: ../X/schema.yaml` (another building block) | linked mode: `href` into X's file; single-file mode: stub element with `:buildingBlock:` |
 | `$ref: '#/$defs/X'` | followed to the definition, then mapped like any property schema |
+| `$ref: ../X/schema.yaml#/$defs/K` | the type of K's element in X's file, plus `:schemaRef:` with the reference |
+| `{}` (any value) | attribute with no type |
+| `type: [string, number, …]` (scalars) | `String` plus `:keywords: {"type": [...]}` |
+| a union alternative's annotations that differ from the union's first use | `:alternativeOverrides: {alternative: {key: value or null}}` |
+| `description` beside a `$ref` / node reference (the value's, not the property's) | `:valueDescription:` |
 | a property typed by a `uml:Class` | navigable end of a `uml:Association` named `<Owner>_<role>_<Target>`; the association owns the other end, `0..*`. A `$ref` to a Class is embed-only: `:inlineOrByReference: ``inline```. |
 | `anyOf: [X, string]` / `[string, X]`, X a `$ref` | type of X plus `:alsoAcceptsString:` (` ``first`` ` when string is first) |
 | `type: array`, `items: X` | type of X, upper bound `*`; `minItems` the lower bound doesn't imply → `:minItems:` |
@@ -189,26 +225,31 @@ go in ` ``…`` `; free text, defaults and verbatim schema fragments are JSON.
 | no `@type`: prefix of the property keys | `:prefix: ``p``` |
 | `anyOf: [{required: [a]}, {required: [b, c]}]` | `:choiceConstraints:` then `- ``a | b & c``` (JSON keys) |
 | other `allOf` members (e.g. `if` / `then` / `else`) | `:constraint: {...}`, verbatim |
+| `required` keys with no property schema | `:constraint: {"required": [...]}` |
+| `allOf: [{$ref: other block}, {properties…}]` | generalization to that block's root, `:extends:` |
 | an `@context` property | `:contextSchema: {...}`, verbatim |
 
 Anything else stops the converter with an error, rather than being dropped.
 
 ## Results
 
-**All 19 `schemaorgProperties` blocks round-trip** (`roundtrip.py --linked`): the only
-semantic differences are the 18 bare-string `@type` defaults, which come back wrapped as
-arrays by design. identifier, definedTerm, definedTermSet, actionResult, dataDownload,
-instrument, statisticalVariable, variableMeasured and webAPI come back identical.
+**All 28 blocks of `schemaorgProperties`, `skosProperties`, `provProperties`,
+`qualityProperties` and `bioschemasProperties` round-trip** (`roundtrip.py --linked`): the
+only semantic differences are the 18 bare-string `@type` defaults in schemaorgProperties,
+which come back wrapped as arrays by design. The other 19 blocks have no semantic
+differences. Exact differences are placement only: `required` and choice `anyOf`s at the
+top level or in `allOf`, and unions or nested objects written as local `$defs`.
 
 Earlier checks, from when the set was identifier, person and organization: the examples
 and edge cases (2 + 4, 2 + 11, 2 + 9) validate the same way against the original and
 regenerated schemas, with `$ref`s resolved from disk.
 
-The set converts to 20 EA XMI 1.1 files (19 blocks plus the common types) with 16
-associations and one enumeration; every reference resolves to an element or a declared
-stub. Two referenced blocks are outside the set (`cdifDataType/cdifConceptOrTermOrString`,
-`cdifDataType/objectReference`). Import order follows the references: common types, then
-each block before the blocks that reference it.
+The set converts to 31 EA XMI 1.1 files (28 blocks plus the common types, shared types and
+shared unions) with 60 associations and 18 generalizations (to 8 abstract shared bases, and
+provActivity's extension); every reference resolves to an element or a declared stub.
+Referenced blocks outside the set (e.g. `cdifDataType/cdifConceptOrTermOrString`) are stubs.
+Import order follows the references: common types, shared types, then each block (and the
+shared unions) before the blocks that reference it.
 
 Without the opt-in flags, the identifier round trip had 14 differences and rejected both
 of its own examples: XSD types and `IriReference` became JSON-LD node objects, `@type`
@@ -222,9 +263,11 @@ DDI-CDI XMI and `cdifmodels.xmi` (single-class, multi-class with `--emit-uml`,
 
 ## Not handled yet
 
-- Blocks outside `schemaorgProperties` are untried; `ddiProperties` will add
-  inheritance, and composite profiles need PackageImport / PackageMerge.
+- `ddiProperties`, `cdifDataType` and the profile folders are untried; `ddiProperties` will
+  add inheritance, and composite profiles need PackageImport / PackageMerge.
 - Each building block is its own XMI file; there's no merged model of several blocks.
-- The Class / DataType split is a heuristic (does the schema declare `@id`?).
+- Elements sharing an RDF type are different shapes in schemaorgProperties, so the shared
+  bases hold almost nothing yet. Identical copies elsewhere (e.g. `cdi:TypedString`, identical
+  in 10 blocks) should become one shared element rather than base plus copies.
 - `:constraint:`, `:typeSchema:` and `:contextSchema:` carry JSON verbatim; a UML
   `ownedRule` would be the formal home for constraints.

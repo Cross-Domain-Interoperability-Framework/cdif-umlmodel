@@ -1,0 +1,13 @@
+# Class / DataType overrides for bblock_to_xmi.py, by UML element name.
+#
+# bblock_to_xmi.py decides whether an object schema becomes a uml:Class or a uml:DataType:
+#   1. this file, if it names the element;
+#   2. Achim Wackerow's model, ../xmiModels/cdifmodels/cdifmodels.xmi, if it has an element of
+#      that name with a single kind;
+#   3. otherwise Class when the schema declares @id or @type (a typed JSON-LD node), else DataType.
+# A property typed by a Class becomes an association (an EA connector); one typed by a
+# DataType stays an attribute. Element names are as the converter writes them: a block's
+# root is named from its directory, an inline object from its @type const.
+
+# geosparql:wktLiteral is an RDF literal type, not a resource.
+wktLiteral: DataType

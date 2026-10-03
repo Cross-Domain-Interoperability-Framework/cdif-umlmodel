@@ -28,7 +28,7 @@ import uuid
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-from bblock_to_xmi import COMMON_TYPES_FILE, REGISTER_PREFIX, REGISTER_URI, common_uid
+from bblock_to_xmi import COMMON_TYPES_FILE, REGISTER_PREFIX, REGISTER_URI, SHARED_TYPES_FILE, common_uid
 
 XMI = "{http://www.omg.org/spec/XMI/20131001}"
 UML_PRIM_NAMES = {"String", "Integer", "Boolean", "Real"}
@@ -101,7 +101,7 @@ class Context:
     elements of other files, association ends to emit as connectors, association uuids."""
 
     def __init__(self, model):
-        self.primitives, self.stubs, self.assoc_ends = set(), {}, []
+        self.primitives, self.stubs, self.assoc_ends, self.generalizations = set(), {}, [], []
         self.assoc_uuids = {e.get(f"{XMI}id"): e.get(f"{XMI}uuid") for e in model.iter("packagedElement")
                             if e.get(f"{XMI}type") == "uml:Association"}
 
@@ -138,7 +138,7 @@ def emit_classifier(w, el, package_eaid, ctx):
     stype = el.get(f"{XMI}type")[len("uml:"):]
     w.open("UML:Class", {"name": el.findtext("name"), "xmi.id": ea_id("EAID", u), "visibility": "public",
                          "namespace": package_eaid, "isRoot": "false", "isLeaf": "false",
-                         "isAbstract": "false", "isActive": "false"})
+                         "isAbstract": el.get("isAbstract", "false"), "isActive": "false"})
     if stype == "Enumeration":
         w.open("UML:ModelElement.stereotype")
         w.open("UML:Stereotype", {"name": "enumeration"}, close=True)
@@ -157,6 +157,8 @@ def emit_classifier(w, el, package_eaid, ctx):
             w.tagged([("ea_guid", guid(lit.get(f"{XMI}uuid")))])
             w.close("UML:Attribute")
         w.close("UML:Classifier.feature")
+    for gen in el.findall("generalization"):
+        ctx.generalizations.append((el, gen))
     attrs = []
     for a in el.findall("ownedAttribute"):
         if a.find("association") is not None:
@@ -191,14 +193,15 @@ def emit_association(w, owner, end, ctx):
     """An association end (Canonical ownedAttribute with <association>) as an EA connector,
     written inside the owner's package:
     source end at the owner, non-navigable, 0..*; target end navigable, named after the role,
-    with the attribute's multiplicity, comment and GUID."""
+    with the attribute's multiplicity, comment and GUID. The association is unnamed."""
     assoc_id = end.find("association").get(f"{XMI}idref")
     u = ctx.assoc_uuids[assoc_id]
     owner_u = owner.get(f"{XMI}uuid")
     target_eaid, target_name = type_ref(end, ctx)
     target_kind = ctx.stubs.get(target_eaid, (target_name, ELEMENT_KINDS.get(
         end.find("type").get(f"{XMI}idref", ""), "Class")))[1]
-    w.open("UML:Association", {"name": assoc_id.rsplit(".", 1)[-1], "xmi.id": ea_id("EAID", u),
+    # unnamed in EA, so diagrams show only the role name (the Canonical XMI keeps the name)
+    w.open("UML:Association", {"xmi.id": ea_id("EAID", u),
                                "visibility": "public", "isRoot": "false", "isLeaf": "false",
                                "isAbstract": "false"})
     w.tagged([("documentation", comment_body(end)), ("ea_type", "Association"),
@@ -225,6 +228,25 @@ def emit_association(w, owner, end, ctx):
     w.close("UML:Association")
 
 
+def emit_generalization(w, sub, gen, ctx):
+    """A canonical <generalization> (general by idref or href) as an EA UML:Generalization,
+    written inside the subtype's package; a supertype in another file is declared as an EAStub."""
+    g = gen.find("general")
+    target = g.get(f"{XMI}idref") or g.get("href", "").partition("#")[2]
+    super_eaid = ea_id("EAID", element_uuid(target))
+    kind = ELEMENT_KINDS.get(target, "Class")
+    if not g.get(f"{XMI}idref"):
+        ctx.stubs[super_eaid] = (target.rsplit(".", 1)[-1], kind)
+    u = gen.get(f"{XMI}uuid")
+    w.open("UML:Generalization", {"subtype": ea_id("EAID", sub.get(f"{XMI}uuid")), "supertype": super_eaid,
+                                  "xmi.id": ea_id("EAID", u), "visibility": "public"})
+    w.tagged([("ea_type", "Generalization"), ("direction", "Source -> Destination"),
+              ("ea_sourceName", sub.findtext("name")), ("ea_targetName", target.rsplit(".", 1)[-1]),
+              ("ea_sourceType", sub.get(f"{XMI}type")[len("uml:"):]), ("ea_targetType", kind),
+              ("ea_guid", guid(u))])
+    w.close("UML:Generalization")
+
+
 def emit_package(w, pkg, ctx):
     """A uml:Package (and nested packages) as an EA UML:Package; classifiers before packages."""
     u = pkg.get(f"{XMI}uuid")
@@ -236,14 +258,16 @@ def emit_package(w, pkg, ctx):
               ("ea_eleType", "package"), ("version", "1.0"), ("ea_guid", guid(u))])
     w.open("UML:Namespace.ownedElement")
     children = pkg.findall("packagedElement")
-    first_end = len(ctx.assoc_ends)
+    first_end, first_gen = len(ctx.assoc_ends), len(ctx.generalizations)
     for el in children:
         if el.get(f"{XMI}type") in ("uml:Class", "uml:DataType", "uml:Enumeration"):
             emit_classifier(w, el, eaid, ctx)
-    # Associations go inside the package of the classes that own them, as in EA's own exports;
-    # EA's package import ignores associations at the model root.
+    # Associations and generalizations go inside the package of the classes that own them, as
+    # in EA's own exports; EA's package import ignores them at the model root.
     for owner, end in ctx.assoc_ends[first_end:]:
         emit_association(w, owner, end, ctx)
+    for sub, gen in ctx.generalizations[first_gen:]:
+        emit_generalization(w, sub, gen, ctx)
     for el in children:
         if el.get(f"{XMI}type") == "uml:Package":
             emit_package(w, el, ctx)
@@ -304,7 +328,8 @@ def main():
     args = ap.parse_args()
     root = args.linked_root.resolve()
     out_root = (args.output or root.with_name(root.name + "-ea")).resolve()
-    files = [root / COMMON_TYPES_FILE] + sorted(p for p in root.rglob("*.xmi") if p.name != COMMON_TYPES_FILE)
+    first = [root / n for n in (COMMON_TYPES_FILE, SHARED_TYPES_FILE) if (root / n).exists()]
+    files = first + import_order(sorted(p for p in root.rglob("*.xmi") if p not in first))
     for f in files:
         for el in ET.parse(f).getroot().iter("packagedElement"):
             if el.get(f"{XMI}type") in ("uml:Class", "uml:DataType", "uml:Enumeration"):
@@ -314,6 +339,40 @@ def main():
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(convert(f), encoding="utf-8")
         print(f"wrote {target}")
+    # The order EA needs them in (referenced files first), for import_to_ea.ps1.
+    order = out_root / "import_order.txt"
+    order.write_text("".join(str(f.relative_to(root).with_suffix(".xml")).replace("/", "\\") + "\n"
+                             for f in files), encoding="utf-8")
+    print(f"wrote {order}")
+
+
+def import_order(files):
+    """Files ordered so each comes after every file its hrefs (types, generalizations) point to."""
+    deps = {}
+    for f in files:
+        targets = set()
+        for e in ET.parse(f).getroot().iter():
+            href = e.get("href", "") if e.tag in ("type", "general") else ""
+            path = href.partition("#")[0]
+            if path and "://" not in path:
+                targets.add((f.parent / path).resolve())
+        deps[f.resolve()] = targets
+    ordered, done = [], set()
+
+    def visit(f, stack=()):
+        if f in done:
+            return
+        if f in stack:
+            raise SystemExit(f"cyclic references: {' -> '.join(p.name for p in stack + (f,))}")
+        for t in sorted(deps[f]):
+            if t in deps:  # files outside the set (or the common/shared files) impose no order here
+                visit(t, stack + (f,))
+        done.add(f)
+        ordered.append(f)
+
+    for f in sorted(deps):
+        visit(f)
+    return ordered
 
 
 if __name__ == "__main__":

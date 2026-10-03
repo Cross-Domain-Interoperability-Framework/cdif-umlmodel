@@ -44,7 +44,8 @@ def normalize(schema, base_dir):
     """Rewrite a schema into a canonical form that keeps its meaning:
     - file $refs become absolute paths (resolved against base_dir), so the same
       target written from different directories compares equal;
-    - local #/$defs/X refs are inlined and $defs dropped;
+    - local #/$defs/X refs are inlined and $defs dropped; a recursive one (X inside X) stays a
+      $ref, which then only matches the same recursion;
     - a one-branch anyOf is replaced by its branch; a branch that is itself only an anyOf is
       flattened into its parent, and anyOf / oneOf branches are sorted (both are unordered);
     - an array's "contains one of these types" is written one way: contains {enum: [...]},
@@ -54,21 +55,24 @@ def normalize(schema, base_dir):
       and from allOf members are gathered into one place."""
     defs = schema.get("$defs", {})
 
-    def walk(node, depth=0):
+    def walk(node, expanding=()):
         if isinstance(node, list):
-            return [walk(x, depth) for x in node]
+            return [walk(x, expanding) for x in node]
         if not isinstance(node, dict):
             return node
         node = dict(node)
         ref = node.get("$ref")
-        if isinstance(ref, str) and ref.startswith("#/$defs/") and depth < 20:
+        key = ref[len("#/$defs/"):] if isinstance(ref, str) and ref.startswith("#/$defs/") else None
+        if key in defs and key not in expanding:
             node.pop("$ref")
-            node = {**defs[ref[len("#/$defs/"):]], **node}
-            return walk(node, depth + 1)
+            node = {**defs[key], **node}
+            return walk(node, expanding + (key,))
+        if key is not None:
+            return node
         if isinstance(ref, str) and not ref.startswith("#"):
             node["$ref"] = (base_dir / ref).resolve().as_posix()
         if set(node) == {"anyOf"} and len(node["anyOf"]) == 1:
-            return walk(node["anyOf"][0], depth)
+            return walk(node["anyOf"][0], expanding)
         contains = node.get("contains")
         if isinstance(contains, dict) and set(contains) == {"enum"}:
             node["contains"] = {"anyOf": [{"const": v} for v in contains["enum"]]}
@@ -81,7 +85,7 @@ def normalize(schema, base_dir):
                 consts += c["anyOf"] if set(c) == {"anyOf"} else [c]
             node["contains"] = {"anyOf": consts}
         node.pop("$defs", None)
-        node = {k: walk(v, depth) for k, v in node.items()}
+        node = {k: walk(v, expanding) for k, v in node.items()}
         for key in ("anyOf", "oneOf"):
             if isinstance(node.get(key), list):
                 flat = []
@@ -92,7 +96,7 @@ def normalize(schema, base_dir):
         contains = node.get("contains")
         if isinstance(contains, dict) and set(contains) == {"anyOf"} and len(contains["anyOf"]) == 1:
             node["contains"] = contains["anyOf"][0]
-        if node.get("type") == "object" and "properties" in node:
+        if node.get("type") == "object":
             req, anyofs = set(node.pop("required", [])), []
             if "anyOf" in node:
                 anyofs.append(node.pop("anyOf"))
