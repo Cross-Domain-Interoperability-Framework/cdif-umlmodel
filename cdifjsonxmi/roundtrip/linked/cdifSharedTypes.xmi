@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.5.1" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.omg.org/spec/UML/20161101">
+  <uml:Model xmi:id="cdif.sharedTypes" xmi:uuid="5abbd8a5-a836-5461-82dd-25674ece819f">
+    <name>cdifSharedTypes</name>
+    <packagedElement xmi:type="uml:Package" xmi:id="cdif.shared" xmi:uuid="2e10cbf3-328d-5ae0-9f7f-16265f98612d">
+      <name>cdifSharedTypes</name>
+      <URI>https://w3id.org/cdif/shared/xmi/</URI>
+      <packagedElement xmi:type="uml:Class" xmi:id="cdif.shared.DataDownload" xmi:uuid="6e8e7c0a-ee5b-59ee-b87a-6ad25480a8f9" isAbstract="true">
+        <name>DataDownload</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.shared.DataDownload.comment" xmi:uuid="7b0271fd-f604-56c5-9b35-dd4c59282c55">
+          <body>**CDIF**
+
+Definition
+==========
+
+Abstract base of the 2 schema:DataDownload profiles in schemaorgProperties/actionResult, schemaorgProperties/dataDownload. Each specializes it; this holds the attributes identical in all of them.
+:rdfType: ``schema:DataDownload``</body>
+          <annotatedElement xmi:idref="cdif.shared.DataDownload"/>
+        </ownedComment>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="cdif.shared.EntryPoint" xmi:uuid="fa02b167-f1af-5d87-b09b-ef73e2ff578c" isAbstract="true">
+        <name>EntryPoint</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.shared.EntryPoint.comment" xmi:uuid="2beefc84-7397-593e-9134-4caede773a03">
+          <body>**CDIF**
+
+Definition
+==========
+
+Abstract base of the 2 schema:EntryPoint profiles in schemaorgProperties/action, schemaorgProperties/linkRole. Each specializes it; this holds the attributes identical in all of them.
+:rdfType: ``schema:EntryPoint``</body>
+          <annotatedElement xmi:idref="cdif.shared.EntryPoint"/>
+        </ownedComment>
+      </packagedElement>
+      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.shared.GeoShape" xmi:uuid="05c4420b-f42c-54e3-bce2-98d97851342d" isAbstract="true">
+        <name>GeoShape</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.shared.GeoShape.comment" xmi:uuid="a59cd519-bd09-514c-8cd9-f953fe3bf11f">
+          <body>**CDIF**
+
+Definition
+==========
+
+Abstract base of the 2 schema:GeoShape profiles in schemaorgProperties/spatialExtent. Each specializes it; this holds the attributes identical in all of them.
+:rdfType: ``schema:GeoShape``</body>
+          <annotatedElement xmi:idref="cdif.shared.GeoShape"/>
+        </ownedComment>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="cdif.shared.ProductModel" xmi:uuid="a9517249-ff8f-5f9c-8a65-ec1f2d19b0a8" isAbstract="true">
+        <name>ProductModel</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.shared.ProductModel.comment" xmi:uuid="9dc2bb2a-539d-5598-ac23-7a934af87662">
+          <body>**CDIF**
+
+Definition
+==========
+
+Abstract base of the 2 schema:ProductModel profiles in schemaorgProperties/instrument. Each specializes it; this holds the attributes identical in all of them.
+:rdfType: ``schema:ProductModel``</body>
+          <annotatedElement xmi:idref="cdif.shared.ProductModel"/>
+        </ownedComment>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="cdif.shared.ProperInterval" xmi:uuid="78546318-1c7c-5dd2-af0c-f10f2b0d4d4e" isAbstract="true">
+        <name>ProperInterval</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.shared.ProperInterval.comment" xmi:uuid="9f1ac01f-d00c-5e22-bf88-916876f424de">
+          <body>**CDIF**
+
+Definition
+==========
+
+Abstract base of the 2 time:ProperInterval profiles in schemaorgProperties/temporalExtent. Each specializes it; this holds the attributes identical in all of them.
+:rdfType: ``time:ProperInterval``</body>
+          <annotatedElement xmi:idref="cdif.shared.ProperInterval"/>
+        </ownedComment>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.shared.ProperInterval.schema_description" xmi:uuid="e03ab50f-05dd-5f7b-90eb-35d7ea448bfe">
+          <name>schema_description</name>
+          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.shared.ProperInterval.schema_description.lower" xmi:uuid="5c6aeb88-0f60-5a91-b395-7d413ca5d42c">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.shared.ProperInterval.schema_description.upper" xmi:uuid="ded524de-366b-5883-96e6-0d3deb10f822">
+            <value>1</value>
+          </upperValue>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.shared.ProperInterval.schema_description.comment" xmi:uuid="a6d8c0d0-3ae2-5dd5-8c7e-c8ec3f9625c6">
+            <body>**CDIF**
+
+Definition
+==========
+
+free text description of the temporal interval
+:jsonName: "schema:description"</body>
+            <annotatedElement xmi:idref="cdif.shared.ProperInterval.schema_description"/>
+          </ownedComment>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="cdif.shared.PropertyValue" xmi:uuid="bfc2535a-3d50-5350-b457-cfc692bd42a0" isAbstract="true">
+        <name>PropertyValue</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.shared.PropertyValue.comment" xmi:uuid="106cdac9-9e73-5e53-8294-37501b619b9e">
+          <body>**CDIF**
+
+Definition
+==========
+
+Abstract base of the 2 schema:PropertyValue profiles in bioschemasProperties/cdifBioschemasProperties, schemaorgProperties/additionalProperty. Each specializes it; this holds the attributes identical in all of them.
+:rdfType: ``schema:PropertyValue``</body>
+          <annotatedElement xmi:idref="cdif.shared.PropertyValue"/>
+        </ownedComment>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="cdif.shared.PropertyValueSpecification" xmi:uuid="6b31e454-1b08-59b9-a8ba-fae8afe2b0af" isAbstract="true">
+        <name>PropertyValueSpecification</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.shared.PropertyValueSpecification.comment" xmi:uuid="a685fd02-6f1a-51f8-8f95-3b3375e05e1c">
+          <body>**CDIF**
+
+Definition
+==========
+
+Abstract base of the 2 schema:PropertyValueSpecification profiles in schemaorgProperties/action, schemaorgProperties/instrument. Each specializes it; this holds the attributes identical in all of them.
+:rdfType: ``schema:PropertyValueSpecification``</body>
+          <annotatedElement xmi:idref="cdif.shared.PropertyValueSpecification"/>
+        </ownedComment>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="cdif.shared.Thing" xmi:uuid="43a8d84b-186e-5db4-9b20-afcf529dd220" isAbstract="true">
+        <name>Thing</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.shared.Thing.comment" xmi:uuid="be573b69-3898-5291-9a68-1bb561565a1e">
+          <body>**CDIF**
+
+Definition
+==========
+
+Abstract base of the 3 schema:Thing profiles in bioschemasProperties/cdifBioschemasProperties, schemaorgProperties/action, schemaorgProperties/instrument. Each specializes it; this holds the attributes identical in all of them.
+:rdfType: ``schema:Thing``</body>
+          <annotatedElement xmi:idref="cdif.shared.Thing"/>
+        </ownedComment>
+      </packagedElement>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

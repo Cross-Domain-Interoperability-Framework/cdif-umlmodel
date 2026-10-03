@@ -1,0 +1,55 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: additionalProperty PropertyValue
+description: 'PropertyValue values required to define a soft-typed property with a value. '
+type: object
+properties:
+  '@type':
+    type: array
+    items:
+      type: string
+    contains:
+      const: 'schema:PropertyValue'
+    minItems: 1
+  'schema:propertyID':
+    type: array
+    items:
+      '$ref': '#/$defs/StringOrIdReferenceOrDefinedTerm'
+    minItems: 1
+    description: >-
+      identifier or name for the property concept quantified by the values in this variable
+      slot. Multiple values can specify the property at different levels of granularity.
+  'schema:name':
+    type: string
+  'schema:value':
+    '$ref': '#/$defs/StringOrNumberOrBooleanOrOption4'
+  'schema:unitCode':
+    anyOf:
+    - type: string
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml
+  'schema:unitText':
+    type: string
+required:
+- 'schema:name'
+- 'schema:value'
+'$defs':
+  StringOrIdReferenceOrDefinedTerm:
+    anyOf:
+    - type: string
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml
+  StringOrNumberOrBooleanOrOption4:
+    anyOf:
+    - type: string
+    - type: number
+    - type: boolean
+    - '$ref': '#/$defs/StringOrNumberOrBooleanOrOption4Option4'
+  StringOrNumberOrBooleanOrOption4Option4:
+    type: object

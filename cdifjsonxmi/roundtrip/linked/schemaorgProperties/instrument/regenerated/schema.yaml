@@ -1,0 +1,310 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: Instrument Description
+description: >-
+  Schema for describing laboratory instruments and instrument systems. Supports ownership,
+  manufacturer, model, commissioning dates, hierarchical sub-components via schema:hasPart,
+  and domain-specific typing. Instruments may be standalone devices or complex systems with
+  sub-components.
+type: object
+properties:
+  '@context':
+    type: object
+    description: JSON-LD context declaring namespace prefixes.
+    properties:
+      schema:
+        const: 'http://schema.org/'
+      dcterms:
+        const: 'http://purl.org/dc/terms/'
+    required:
+    - schema
+  '@type':
+    type: array
+    items:
+      type: string
+    allOf:
+    - contains:
+        const: 'schema:Product'
+    - contains:
+        const: 'schema:Thing'
+    minItems: 2
+    description: Must include schema:Product and schema:Thing. May include additional types.
+  '@id':
+    type: string
+    description: Persistent identifier URI for this instrument metadata record.
+  'schema:additionalType':
+    type: array
+    items:
+      '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml
+    minItems: 1
+    description: >-
+      Domain-specific type classifications. Should include a scientific instrument type URI
+      (e.g. wd:Q3099911 for Wikidata scientific instrument).
+  'schema:name':
+    type: string
+    minLength: 3
+    description: Human-readable name for this instrument.
+  'schema:description':
+    type: string
+    description: Text description of this instrument, its purpose, and capabilities.
+  'schema:alternateName':
+    type: array
+    items:
+      anyOf:
+      - type: string
+      - type: object
+        additionalProperties: false
+        required:
+        - '@id'
+        properties:
+          '@id':
+            type: string
+    description: Alternate name(s), e.g. specific make/model designation, common abbreviation.
+  'schema:identifier':
+    type: array
+    items:
+      anyOf:
+      - type: string
+      - '$ref': >-
+          ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml
+    description: >-
+      Formal identifier(s) for this instrument. Use PropertyValue for structured identifiers
+      (e.g. PIDINST, serial number, inventory number).
+  'schema:url':
+    type: string
+    format: uri
+    description: Landing page URL for this instrument.
+  'schema:manufacturer':
+    '$ref': >-
+      ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/organization/schema.yaml
+    description: Organization that manufactured this instrument.
+  'schema:model':
+    '$ref': '#/$defs/InstrumentProductModel'
+    description: Product model information for this instrument.
+  'schema:category':
+    type: array
+    items:
+      '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml
+    description: Instrument type classification(s) from a controlled vocabulary.
+  'schema:owner':
+    '$ref': >-
+      ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/organization/schema.yaml
+    description: Organization that owns this instrument.
+  'schema:contributor':
+    type: array
+    items:
+      '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/agentInRole/schema.yaml
+    description: >-
+      Agents associated with this instrument in specific roles (e.g. operator, custodian,
+      principal investigator). Use schema:owner for the owning organization.
+  'schema:additionalProperty':
+    type: array
+    items:
+      '$ref': '#/$defs/AdditionalPropertyOrAdditionalPropertySpecification'
+    description: >-
+      Instrument-specific properties (measured variables, detection limits, calibration information,
+      operating parameters, etc.). On a procedure / plan instrument (e.g. an instrument named
+      directly on an ada:TAPPDefinition) these are schema:PropertyValueSpecification parameter
+      templates (an overridable default); on a prov:used analysis-event instrument they are
+      schema:PropertyValue concrete values. The JSON Schema accepts both; a profile SHACL
+      rule pins which form applies in which context.
+  'schema:validFrom':
+    type: string
+    description: Date the instrument was commissioned (ISO 8601).
+  'schema:validThrough':
+    type: string
+    description: Date the instrument was decommissioned (ISO 8601). Absent if still operational.
+  'schema:hasPart':
+    type: array
+    items:
+      '$ref': '#/$defs/InstrumentComponentOrIdReference'
+    description: >-
+      Sub-components of this instrument system. Each item is either an inline instrument description
+      or an @id reference.
+  'schema:relatedLink':
+    type: array
+    items:
+      '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/linkRole/schema.yaml
+    description: >-
+      Links to related resources (manuals, datasheets, calibration records, related instruments),
+      each naming how the target relates to the instrument. Uses the same linkRole block as
+      cdifCore; before 2026-09-23 this property was a labeled link here and a LinkRole there.
+  'schema:subjectOf':
+    '$ref': '#/$defs/InstrumentSubjectOf'
+    description: Catalog record metadata-about-metadata for this instrument description.
+required:
+- '@type'
+- 'schema:name'
+'$defs':
+  AdditionalPropertyOrAdditionalPropertySpecification:
+    anyOf:
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/additionalProperty/schema.yaml
+    - '$ref': '#/$defs/InstrumentPropertyValueSpecification'
+  InstrumentComponentOrIdReference:
+    anyOf:
+    - '$ref': '#/$defs/InstrumentThing'
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+          description: Reference to a sub-component defined elsewhere.
+  InstrumentProductModel:
+    type: object
+    properties:
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'schema:ProductModel'
+        minItems: 1
+      'schema:name':
+        type: string
+        description: Model name or number.
+      'schema:identifier':
+        anyOf:
+        - type: string
+        - '$ref': >-
+            ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml
+        description: Model identifier.
+    required:
+    - '@type'
+    - 'schema:name'
+  InstrumentProductModel2:
+    type: object
+    properties:
+      '@type':
+        type: array
+        items:
+          anyOf:
+          - type: string
+          - type: object
+            additionalProperties: false
+            required:
+            - '@id'
+            properties:
+              '@id':
+                type: string
+        contains:
+          const: 'schema:ProductModel'
+        minItems: 1
+      'schema:name':
+        type: string
+      'schema:identifier':
+        anyOf:
+        - type: string
+        - '$ref': >-
+            ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml
+    required:
+    - '@type'
+  InstrumentPropertyValueSpecification:
+    type: object
+    title: additionalProperty PropertyValueSpecification
+    description: >-
+      A parameter specification (an overridable default) declared on a procedure / plan instrument,
+      typed schema:PropertyValueSpecification; the default sits in schema:defaultValue. Contrast
+      with AdditionalProperty (schema:PropertyValue), the concrete-value form carried by a
+      prov:used analysis-event instrument.
+    properties:
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'schema:PropertyValueSpecification'
+        minItems: 1
+      'schema:name':
+        type: string
+    required:
+    - '@type'
+    - 'schema:name'
+  InstrumentSubjectOf:
+    type: object
+    properties:
+      '@type':
+        type: array
+        items:
+          type: string
+      '@id':
+        type: string
+      'schema:dateModified':
+        type: string
+        description: Date this metadata record was last modified (ISO 8601).
+      'schema:about':
+        type: object
+        required:
+        - '@id'
+        additionalProperties: false
+        properties:
+          '@id':
+            type: string
+            description: Reference back to the instrument @id.
+      'dcterms:conformsTo':
+        type: array
+        items:
+          anyOf:
+          - type: string
+          - type: object
+            additionalProperties: false
+            required:
+            - '@id'
+            properties:
+              '@id':
+                type: string
+        description: Schema or profile this metadata record conforms to.
+    required:
+    - '@type'
+  InstrumentThing:
+    type: object
+    description: >-
+      A sub-component of an instrument system. Uses the same structure as the parent instrument
+      but without nesting (single level of hasPart).
+    properties:
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'schema:Thing'
+        minItems: 1
+      '@id':
+        type: string
+      'schema:name':
+        type: string
+        minLength: 3
+      'schema:description':
+        type: string
+      'schema:alternateName':
+        type: array
+        items:
+          type: string
+      'schema:identifier':
+        anyOf:
+        - type: string
+        - '$ref': >-
+            ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml
+      'schema:additionalType':
+        type: array
+        items:
+          '$ref': >-
+            ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml
+        description: Component type classification.
+      'schema:additionalProperty':
+        type: array
+        items:
+          '$ref': '#/$defs/AdditionalPropertyOrAdditionalPropertySpecification'
+      'schema:manufacturer':
+        '$ref': >-
+          ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/organization/schema.yaml
+      'schema:model':
+        '$ref': '#/$defs/InstrumentProductModel2'
+    required:
+    - '@type'
+    - 'schema:name'

@@ -1,0 +1,191 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+description: >-
+  Spatial Extent description for CDIF discovery profile.  Note required prefix declaration
+  for geoSparql ( http://www.opengis.net/ont/geosparql#) and OGC simple features (sf: http://www.opengis.net/ont/sf#)
+type: object
+properties:
+  '@type':
+    default:
+    - 'schema:Place'
+    type: array
+    items:
+      type: string
+    contains:
+      const: 'schema:Place'
+    minItems: 1
+  'schema:additionalType':
+    type: array
+    items:
+      '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml
+    description: >-
+      Domain-specific type classifications for this place (e.g. facility type,laboratory classification,
+      feature type).
+  'schema:name':
+    anyOf:
+    - type: string
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml
+    description: >-
+      A place name for the location, either as a string or a DefinedTerm from a gazetteer.
+  'schema:identifier':
+    anyOf:
+    - type: string
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml
+    description: Formal identifier for this place (e.g. ROR identifier for a facility).
+  'schema:alternateName':
+    type: array
+    items:
+      anyOf:
+      - type: string
+      - '$ref': >-
+          ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml
+    description: Alternate or abbreviated name(s) for this place.
+  'schema:geo':
+    '$ref': '#/$defs/GeoCoordinatesOrGeoShapeOrGeoShape2'
+    description: Either a bounding box or a point location.
+  'geosparql:hasGeometry':
+    '$ref': '#/$defs/SpatialExtentGeosparql_hasGeometry'
+    description: >-
+      Optional geographic extent using wkt geometry, see Ocean InfoHub (https://book.oceaninfohub.org/thematics/spatial/README.html#simple-geosparql-wkt).
+      Other geometry schemes might be specified in a specific domain profile, e.g. for atmospheric,
+      subsurface data, or local coordinate systems. NOTE that the location specified here
+      should be the same as the schema.org point or contained within the specified bounding
+      box.
+allOf:
+- anyOf:
+  - required:
+    - 'schema:name'
+  - required:
+    - 'schema:identifier'
+  - required:
+    - 'schema:geo'
+  - required:
+    - 'geosparql:hasGeometry'
+'$defs':
+  GeoCoordinates:
+    type: object
+    properties:
+      '@type':
+        default:
+        - 'schema:GeoCoordinates'
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'schema:GeoCoordinates'
+        minItems: 1
+      'schema:latitude':
+        type: number
+        minimum: -90
+        maximum: 90
+      'schema:longitude':
+        type: number
+        minimum: -180
+        maximum: 180
+    required:
+    - '@type'
+    - 'schema:latitude'
+    - 'schema:longitude'
+  GeoCoordinatesOrGeoShapeOrGeoShape2:
+    anyOf:
+    - '$ref': '#/$defs/GeoCoordinates'
+      description: >-
+        A point location. Point locations are recommended for data that is associated with
+        specific sample locations, particularly if these are widely spaced such that an enclosing
+        bounding box would be a misleading representation of the spatial location. Be aware
+        that some client applications might only index or display bounding box extents or
+        a single point location.
+    - '$ref': '#/$defs/SpatialExtentGeoShape'
+      description: >-
+        A schema:GeoShape bounding box. The geometry is described with a set of latitude/longitude
+        pairs (in that order).The documentation for schema:GeoShape states 'Either whitespace
+        or commas can be used to separate latitude and longitude; whitespace should be used
+        when writing a list of several such points.'
+    - '$ref': '#/$defs/SpatialExtentGeoShape2'
+      description: >-
+        A schema:GeoShape curvilinear trace, for resource related to a linear trace like a
+        ship track or airplane flight line
+  SpatialExtentGeoShape:
+    type: object
+    properties:
+      '@type':
+        default:
+        - 'schema:GeoShape'
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'schema:GeoShape'
+        minItems: 1
+      'schema:box':
+        type: string
+        description: >-
+          A GeoShape box defines an area on the surface of the earth defined by point locations
+          of the southwest corner and northeast corner of the rectangle in latitude-longitude
+          coordinates. A space should be used to separate the latitude and longitude values.
+          The two corner coordinate points are separated by a space. 'East longitude' means
+          positive longitude values are east of the prime (Greenwich) meridian.
+    required:
+    - '@type'
+    - 'schema:box'
+  SpatialExtentGeoShape2:
+    type: object
+    properties:
+      '@type':
+        default:
+        - 'schema:GeoShape'
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'schema:GeoShape'
+        minItems: 1
+      'schema:line':
+        type: string
+        description: "A GeoShape box defines a curvilinear geometry as a string of latitude-longitude\
+          \ coordinates. A space should be used to separate the latitude and longitude values.\
+          \ The coordinate point pairs are also separated by a space. 'East longitude' means\
+          \ positive longitude values are east of the prime (Greenwich) meridian. e.g. '39.33\
+          \ 120.77 40.44 123.96 41.00 121.34' "
+    required:
+    - '@type'
+    - 'schema:line'
+  SpatialExtentGeosparql_hasGeometry:
+    type: object
+    properties:
+      '@type':
+        type: array
+        items:
+          type: string
+        minItems: 1
+        description: >-
+          MUST be sf: (<http://www.opengis.net/ont/sf#>) SimpleFeature geometry type. See
+          https://opengeospatial.github.io/ogc-geosparql/geosparql11/sf_geometries.ttl
+      'geosparql:asWKT':
+        '$ref': '#/$defs/wktLiteral'
+      'geosparql:crs':
+        type: object
+        required:
+        - '@id'
+        additionalProperties: false
+        properties:
+          '@id':
+            type: string
+            description: identifier string for coordinate reference system, e.g., 'CRS84'
+    required:
+    - 'geosparql:asWKT'
+  wktLiteral:
+    type: object
+    properties:
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'geosparql:wktLiteral'
+        minItems: 1
+      '@value':
+        type: string
+        description: a WKT geometry description string, e.g. 'POINT(-76 -18)'

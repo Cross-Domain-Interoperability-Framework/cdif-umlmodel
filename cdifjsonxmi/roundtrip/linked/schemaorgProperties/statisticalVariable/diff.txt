@@ -1,0 +1,14 @@
+statisticalVariable: 9 exact difference(s)
+$.$defs.DefinedTerm: only in original: {"$ref": "../definedTerm/schema.yaml"}
+$.$defs.Property: only in regenerated: {"type": "object", "properties": {"@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "schema:Property"}, "minItems": 1}, "@id": {"type": "string", "description": "reference 
+$.$defs.StringOrIdReferenceOrDefinedTerm: only in regenerated: {"anyOf": [{"type": "string"}, {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string"}}}, {"$ref": "../../../../../../../metadataBuildingBlocks/
+$.properties.schema:measuredProperty.$ref: only in regenerated: "#/$defs/Property"
+$.properties.schema:measuredProperty.properties: only in original: {"@id": {"type": "string", "description": "reference to a skos concept for the property"}, "@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "schema:Property"}, "minItems":
+$.properties.schema:measuredProperty.type: only in original: "object"
+$.properties.schema:measurementTechnique.anyOf[2].$ref:
+    original:    "#/$defs/DefinedTerm"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml"
+$.properties.schema:statType.$ref: only in regenerated: "#/$defs/StringOrIdReferenceOrDefinedTerm"
+$.properties.schema:statType.anyOf: only in original: [{"type": "string"}, {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string"}}}, {"$ref": "#/$defs/DefinedTerm"}]
+
+statisticalVariable: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

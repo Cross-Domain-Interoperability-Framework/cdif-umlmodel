@@ -1,0 +1,63 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: Direct data access to a resource via web servcie
+description: >-
+  use schema.org Action to document url or url template and parameters to request data through
+  a web accessible location. At this point, schema is set up for one action-- an HTTP Get
+  that requests data. The url template parameters (in curly brackets '{}') specify query paramters
+  to filter the source data, request particular output formats or other aspects of data.
+type: object
+properties:
+  '@type':
+    type: array
+    items:
+      type: string
+    contains:
+      const: 'schema:WebAPI'
+    minItems: 1
+  'schema:serviceType':
+    anyOf:
+    - type: string
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml
+    description: >-
+      specify the kind of service. Ideally this should be a resolvable identifier. Currently
+      there is no widely adopted registry for serviceType identifiers, in large part because
+      services might be defined at different levels of granularity, and classifications might
+      focus on function, data formats, thematic content, security, or other aspects of the
+      service definition. For interoperability, there must be an external arrangement between
+      data providers and consumers on the strings that will be used to specify service types.
+  'schema:termsOfService':
+    '$ref': '#/$defs/StringXorLabeledLink'
+    description: >-
+      Description of access privileges required to use the API, e.g. registration, licensing,
+      payments. Note that access constraints applying to all distributions of the resource
+      should be specified in the access constraints for the resource description as a whole.
+  'schema:documentation':
+    oneOf:
+    - type: string
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml
+    description: >-
+      a document that provides a machine-actionable description of a service instance. Examples
+      include OpenAPI documents, OGC Capabilities documents. Software designed to utilise
+      a particular service type will typically include functionality to parse such a description
+      document and engage with the service endpoint. If such a document is available for the
+      service instance providing the resource distribution, it should be included in the distribution
+      metadata.
+  'schema:potentialAction':
+    type: array
+    items:
+      '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/action/schema.yaml
+    description: actions that can be invoked via the API
+required:
+- 'schema:serviceType'
+- 'schema:termsOfService'
+- 'schema:potentialAction'
+'$defs':
+  StringXorLabeledLink:
+    oneOf:
+    - default: not specified
+      type: string
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml

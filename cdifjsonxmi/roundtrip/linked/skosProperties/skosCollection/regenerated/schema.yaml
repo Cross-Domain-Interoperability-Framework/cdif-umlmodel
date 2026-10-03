@@ -1,0 +1,178 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: SKOS Collection
+description: >-
+  JSON Schema for SKOS Collection and OrderedCollection in JSON-LD form. A Collection is a
+  meaningful grouping of concepts; an OrderedCollection preserves member ordering via the
+  JSON-LD @list construct. Based on the W3C SKOS Reference (https://www.w3.org/TR/skos-reference/).
+anyOf:
+- '$ref': '#/$defs/Collection'
+- '$ref': '#/$defs/OrderedCollection'
+'$defs':
+  Collection:
+    type: object
+    description: >-
+      A SKOS Collection -- a meaningful grouping of concepts. Disjoint with Concept and ConceptScheme.
+    properties:
+      '@context':
+        description: JSON-LD context declaring the skos namespace prefix.
+        anyOf:
+        - type: object
+          properties:
+            skos:
+              const: 'http://www.w3.org/2004/02/skos/core#'
+          required:
+          - skos
+        - type: array
+          items:
+            anyOf:
+            - type: string
+            - type: object
+          contains:
+            type: object
+            properties:
+              skos:
+                const: 'http://www.w3.org/2004/02/skos/core#'
+            required:
+            - skos
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'skos:Collection'
+        minItems: 1
+      '@id':
+        type: string
+        description: URI identifier for this collection.
+      'skos:prefLabel':
+        '$ref': '#/$defs/StringOr$defsList'
+        description: Preferred lexical label for this collection.
+      'skos:altLabel':
+        '$ref': '#/$defs/StringOrChoiceList'
+        description: Alternative lexical labels.
+      'skos:notation':
+        type: array
+        items:
+          type: string
+        description: Classification code for this collection.
+      'skos:definition':
+        '$ref': '#/$defs/StringOrChoiceList'
+        description: Formal explanation of the purpose of this collection.
+      'skos:note':
+        '$ref': '#/$defs/StringOrChoiceList'
+        description: General note about this collection.
+      'skos:member':
+        type: array
+        items:
+          '$ref': '#/$defs/IdReferenceOrConceptOrCollection'
+        minItems: 1
+        description: >-
+          Members of this collection (concepts or nested collections, inline or by @id reference).
+    required:
+    - '@type'
+    - 'skos:prefLabel'
+    - 'skos:member'
+  IdReferenceOrConcept:
+    anyOf:
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/skosProperties/skosConcept/schema.yaml
+  IdReferenceOrConceptOrCollection:
+    anyOf:
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/skosProperties/skosConcept/schema.yaml
+    - '$ref': '#/$defs/Collection'
+  OrderedCollection:
+    type: object
+    description: >-
+      A SKOS OrderedCollection -- concepts where both grouping and ordering are meaningful.
+      Subclass of Collection. Uses JSON-LD @list for the member list.
+    properties:
+      '@context':
+        description: JSON-LD context declaring the skos namespace prefix.
+        anyOf:
+        - type: object
+          properties:
+            skos:
+              const: 'http://www.w3.org/2004/02/skos/core#'
+          required:
+          - skos
+        - type: array
+          items:
+            anyOf:
+            - type: string
+            - type: object
+          contains:
+            type: object
+            properties:
+              skos:
+                const: 'http://www.w3.org/2004/02/skos/core#'
+            required:
+            - skos
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'skos:OrderedCollection'
+        minItems: 1
+      '@id':
+        type: string
+        description: URI identifier for this ordered collection.
+      'skos:prefLabel':
+        '$ref': '#/$defs/StringOr$defsList'
+        description: Preferred lexical label for this ordered collection.
+      'skos:altLabel':
+        '$ref': '#/$defs/StringOrChoiceList'
+        description: Alternative lexical labels.
+      'skos:notation':
+        '$ref': '#/$defs/StringOrStringList'
+        description: Classification code for this ordered collection.
+      'skos:memberList':
+        '$ref': '#/$defs/OrderedCollectionMemberList'
+        description: Ordered list of members using JSON-LD @list construct.
+    required:
+    - '@type'
+    - 'skos:prefLabel'
+    - 'skos:memberList'
+  OrderedCollectionMemberList:
+    type: object
+    properties:
+      '@list':
+        type: array
+        items:
+          '$ref': '#/$defs/IdReferenceOrConcept'
+        minItems: 1
+  StringOr$defsList:
+    anyOf:
+    - type: string
+    - type: array
+      items:
+        '$ref': '../../../../../../../metadataBuildingBlocks/_sources/skosProperties/skosConcept/schema.yaml#/$defs/LanguageTaggedValue'
+  StringOrChoiceList:
+    anyOf:
+    - type: string
+    - type: array
+      items:
+        anyOf:
+        - type: string
+        - '$ref': '../../../../../../../metadataBuildingBlocks/_sources/skosProperties/skosConcept/schema.yaml#/$defs/LanguageTaggedValue'
+  StringOrStringList:
+    anyOf:
+    - type: string
+    - type: array
+      items:
+        type: string

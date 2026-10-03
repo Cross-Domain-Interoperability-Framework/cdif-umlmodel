@@ -1,0 +1,19 @@
+dataDownload: 10 exact difference(s)
+$.$defs.Checksum: only in regenerated: {"type": "object", "properties": {"@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "spdx:Checksum"}, "minItems": 1}, "spdx:algorithm": {"type": "string"}, "spdx:checksumVa
+$.$defs.IdReferenceOrPersonOrOrganization: only in regenerated: {"anyOf": [{"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "IRI reference to a Person or Organization defined elsewhere"}
+$.$defs.cdifConceptOrTermOrString: only in original: {"$ref": "../../cdifDataType/cdifConceptOrTermOrString/schema.yaml"}
+$.properties.schema:additionalType.items.$ref:
+    original:    "#/$defs/cdifConceptOrTermOrString"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml"
+$.properties.schema:provider.items.anyOf[1].$ref:
+    original:    "../person/schema.yaml"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/person/schema.yaml"
+$.properties.schema:provider.items.anyOf[2].$ref:
+    original:    "../organization/schema.yaml"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/organization/schema.yaml"
+$.properties.spdx:checksum.$ref: only in regenerated: "#/$defs/Checksum"
+$.properties.spdx:checksum.properties: only in original: {"@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "spdx:Checksum"}, "minItems": 1}, "spdx:algorithm": {"type": "string"}, "spdx:checksumValue": {"type": "string"}}
+$.properties.spdx:checksum.required: only in original: ["@type", "spdx:algorithm", "spdx:checksumValue"]
+$.properties.spdx:checksum.type: only in original: "object"
+
+dataDownload: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

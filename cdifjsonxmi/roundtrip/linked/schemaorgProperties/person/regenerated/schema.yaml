@@ -1,0 +1,76 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+description: schema for cdif profile of schema.org/Person
+type: object
+properties:
+  '@type':
+    type: array
+    items:
+      type: string
+    contains:
+      const: 'schema:Person'
+    minItems: 1
+  '@id':
+    type: string
+  'schema:name':
+    type: string
+    description: >-
+      string label for person that is meaningful for human users, should format consistently.
+      Recommend 'Family Name, Given name' format.
+  'schema:description':
+    type: string
+  'schema:identifier':
+    anyOf:
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml
+    - type: string
+    description: identifier for person, recommend ORCID
+  'schema:alternateName':
+    type: string
+    description: other labels by which the person might be known
+  'schema:affiliation':
+    '$ref': >-
+      ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/organization/schema.yaml
+    description: if affiliation is present, value must be a schema:Organization.
+  'schema:contactPoint':
+    '$ref': '#/$defs/ContactPoint'
+    description: restrict to email only. Schema.org allows telephone and postal contacts as
+      well
+  'schema:sameAs':
+    type: array
+    items:
+      anyOf:
+      - type: string
+      - type: object
+        additionalProperties: false
+        required:
+        - '@id'
+        properties:
+          '@id':
+            type: string
+    description: other identifiers for the person
+required:
+- '@type'
+allOf:
+- anyOf:
+  - required:
+    - 'schema:name'
+  - required:
+    - 'schema:identifier'
+'$defs':
+  ContactPoint:
+    type: object
+    properties:
+      '@type':
+        default:
+        - 'schema:ContactPoint'
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'schema:ContactPoint'
+        minItems: 1
+      'schema:email':
+        type: string
+    required:
+    - '@type'
+    - 'schema:email'

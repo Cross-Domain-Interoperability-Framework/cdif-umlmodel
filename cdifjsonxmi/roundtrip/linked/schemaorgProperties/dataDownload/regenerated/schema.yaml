@@ -1,0 +1,137 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+description: >-
+  schema to document file-based access to a resoruce via URL, based on schema.org/DataDownload
+type: object
+properties:
+  '@type':
+    type: array
+    items:
+      type: string
+    contains:
+      const: 'schema:DataDownload'
+    minItems: 1
+    description: implement as array because extensions might need to add additional types
+  '@id':
+    type: string
+  'schema:name':
+    type: string
+  'schema:description':
+    type: string
+    description: Description of this distribution, e.g. what format, access constraints, etc.
+  'schema:contentUrl':
+    type: string
+    format: uri
+  'schema:encodingFormat':
+    type: array
+    items:
+      type: string
+    description: >-
+      MIME type with extension; should indicate the serialization scheme in sufficient detail
+      that machine can know how to parse.
+  'schema:additionalType':
+    type: array
+    items:
+      '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml
+    description: >-
+      Domain-specific type classification for this distribution: what KIND of thing the file
+      is, beyond its MIME type. schema:encodingFormat says how to parse the bytes; this says
+      what they are. A plain string is accepted, but a schema:DefinedTerm carrying schema:inDefinedTermSet
+      is preferred where the value comes from a controlled vocabulary, so the vocabulary travels
+      with the data rather than being asserted only in a profile.
+  'schema:contentSize':
+    type: string
+    description: >-
+      File size of this distribution, e.g. '2.5 MB' or a byte count. Per schema.org/contentSize.
+  'spdx:checksum':
+    '$ref': '#/$defs/Checksum'
+    description: >-
+      A string value calculated from the content of the resource representation, used to test
+      if content has been modified. The checksum is a property of a particular distribution/DataDownload.
+  'dcterms:conformsTo':
+    type: array
+    items:
+      type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+          description: uri for specification that this distribution conforms to
+    minItems: 1
+    description: >-
+      An identifier for a standard or specification that the distribution conforms to. Recommended
+      to enable machine-actionable data access.
+  'schema:provider':
+    type: array
+    items:
+      anyOf:
+      - type: object
+        required:
+        - '@id'
+        additionalProperties: false
+        properties:
+          '@id':
+            type: string
+            description: >-
+              a identifier for an agent defined in this metadata, or externally; must be dereferenceable
+      - '$ref': >-
+          ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/person/schema.yaml
+      - '$ref': >-
+          ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/organization/schema.yaml
+    description: >-
+      Party who maintains this particular distribution option for the dataset. Use this property
+      if there are multiple distributions from different providers
+required:
+- '@type'
+allOf:
+- if:
+    not:
+      type: object
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: array
+          contains:
+            const: 'schema:Collection'
+  then:
+    required:
+    - 'schema:contentUrl'
+  else:
+    required:
+    - 'schema:hasPart'
+'$defs':
+  Checksum:
+    type: object
+    properties:
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'spdx:Checksum'
+        minItems: 1
+      'spdx:algorithm':
+        type: string
+      'spdx:checksumValue':
+        type: string
+    required:
+    - '@type'
+    - 'spdx:algorithm'
+    - 'spdx:checksumValue'
+  IdReferenceOrPersonOrOrganization:
+    anyOf:
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+          description: IRI reference to a Person or Organization defined elsewhere
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/person/schema.yaml
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/organization/schema.yaml

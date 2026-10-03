@@ -1,0 +1,28 @@
+skosCollection: 25 exact difference(s)
+$.$defs.Collection.properties.skos:altLabel.$ref: only in regenerated: "#/$defs/StringOrChoiceList"
+$.$defs.Collection.properties.skos:altLabel.anyOf: only in original: [{"type": "string"}, {"type": "array", "items": {"anyOf": [{"type": "string"}, {"$ref": "../skosConcept/schema.yaml#/$defs/LanguageTaggedValue"}]}}]
+$.$defs.Collection.properties.skos:definition.$ref: only in regenerated: "#/$defs/StringOrChoiceList"
+$.$defs.Collection.properties.skos:definition.anyOf: only in original: [{"type": "string"}, {"type": "array", "items": {"anyOf": [{"type": "string"}, {"$ref": "../skosConcept/schema.yaml#/$defs/LanguageTaggedValue"}]}}]
+$.$defs.Collection.properties.skos:member.items.$ref: only in regenerated: "#/$defs/IdReferenceOrConceptOrCollection"
+$.$defs.Collection.properties.skos:member.items.anyOf: only in original: [{"type": "object", "additionalProperties": false, "properties": {"@id": {"type": "string"}}, "required": ["@id"]}, {"$ref": "../skosConcept/schema.yaml"}, {"$ref": "#/$defs/Collection"}]
+$.$defs.Collection.properties.skos:note.$ref: only in regenerated: "#/$defs/StringOrChoiceList"
+$.$defs.Collection.properties.skos:note.anyOf: only in original: [{"type": "string"}, {"type": "array", "items": {"anyOf": [{"type": "string"}, {"$ref": "../skosConcept/schema.yaml#/$defs/LanguageTaggedValue"}]}}]
+$.$defs.Collection.properties.skos:prefLabel.$ref: only in regenerated: "#/$defs/StringOr$defsList"
+$.$defs.Collection.properties.skos:prefLabel.anyOf: only in original: [{"type": "string"}, {"type": "array", "items": {"$ref": "../skosConcept/schema.yaml#/$defs/LanguageTaggedValue"}}]
+$.$defs.IdReferenceOrConcept: only in regenerated: {"anyOf": [{"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string"}}}, {"$ref": "../../../../../../../metadataBuildingBlocks/_sources/skosPropert
+$.$defs.IdReferenceOrConceptOrCollection: only in regenerated: {"anyOf": [{"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string"}}}, {"$ref": "../../../../../../../metadataBuildingBlocks/_sources/skosPropert
+$.$defs.OrderedCollection.properties.skos:altLabel.$ref: only in regenerated: "#/$defs/StringOrChoiceList"
+$.$defs.OrderedCollection.properties.skos:altLabel.anyOf: only in original: [{"type": "string"}, {"type": "array", "items": {"anyOf": [{"type": "string"}, {"$ref": "../skosConcept/schema.yaml#/$defs/LanguageTaggedValue"}]}}]
+$.$defs.OrderedCollection.properties.skos:memberList.$ref: only in regenerated: "#/$defs/OrderedCollectionMemberList"
+$.$defs.OrderedCollection.properties.skos:memberList.properties: only in original: {"@list": {"type": "array", "minItems": 1, "items": {"anyOf": [{"type": "object", "additionalProperties": false, "properties": {"@id": {"type": "string"}}, "required": ["@id"]}, {"$ref": "../skosConce
+$.$defs.OrderedCollection.properties.skos:memberList.type: only in original: "object"
+$.$defs.OrderedCollection.properties.skos:notation.$ref: only in regenerated: "#/$defs/StringOrStringList"
+$.$defs.OrderedCollection.properties.skos:notation.anyOf: only in original: [{"type": "string"}, {"type": "array", "items": {"type": "string"}}]
+$.$defs.OrderedCollection.properties.skos:prefLabel.$ref: only in regenerated: "#/$defs/StringOr$defsList"
+$.$defs.OrderedCollection.properties.skos:prefLabel.anyOf: only in original: [{"type": "string"}, {"type": "array", "items": {"$ref": "../skosConcept/schema.yaml#/$defs/LanguageTaggedValue"}}]
+$.$defs.OrderedCollectionMemberList: only in regenerated: {"type": "object", "properties": {"@list": {"type": "array", "items": {"$ref": "#/$defs/IdReferenceOrConcept"}, "minItems": 1}}}
+$.$defs.StringOr$defsList: only in regenerated: {"anyOf": [{"type": "string"}, {"type": "array", "items": {"$ref": "../../../../../../../metadataBuildingBlocks/_sources/skosProperties/skosConcept/schema.yaml#/$defs/LanguageTaggedValue"}}]}
+$.$defs.StringOrChoiceList: only in regenerated: {"anyOf": [{"type": "string"}, {"type": "array", "items": {"anyOf": [{"type": "string"}, {"$ref": "../../../../../../../metadataBuildingBlocks/_sources/skosProperties/skosConcept/schema.yaml#/$defs/La
+$.$defs.StringOrStringList: only in regenerated: {"anyOf": [{"type": "string"}, {"type": "array", "items": {"type": "string"}}]}
+
+skosCollection: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

@@ -1,0 +1,10 @@
+definedTerm: 3 exact difference(s)
+$.allOf:
+    original:    [{"required": ["@type"]}, {"anyOf": [{"required": ["schema:name"]}, {"required": ["schema:identifier"]}, {"required": ["schema:termCode"]}]}]
+    regenerated: [{"anyOf": [{"required": ["schema:name"]}, {"required": ["schema:identifier"]}, {"required": ["schema:termCode"]}]}]
+$.properties.schema:identifier.anyOf[1].$ref:
+    original:    "../identifier/schema.yaml"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml"
+$.required: only in regenerated: ["@type"]
+
+definedTerm: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

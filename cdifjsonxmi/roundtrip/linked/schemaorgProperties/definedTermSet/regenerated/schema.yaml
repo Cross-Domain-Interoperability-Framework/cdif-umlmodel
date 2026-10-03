@@ -1,0 +1,50 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+description: >-
+  schema.org Defined Term Set schema. A controlled vocabulary or named list of schema:DefinedTerm
+  objects.
+type: object
+properties:
+  '@type':
+    type: array
+    items:
+      type: string
+    contains:
+      const: 'schema:DefinedTermSet'
+    minItems: 1
+  '@id':
+    type: string
+    description: Persistent identifier (URI) for this DefinedTermSet.
+  'schema:name':
+    type: string
+    description: Human-readable name (label) for the term set.
+  'schema:description':
+    type: string
+    description: Description of the scope and purpose of the term set.
+  'schema:identifier':
+    anyOf:
+    - type: string
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml
+    description: Formal identifier for the term set, as a string or structured PropertyValue.
+  'schema:url':
+    type: string
+    format: uri
+    description: URL where the term set is published.
+  'schema:hasDefinedTerm':
+    type: array
+    items:
+      '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml
+    minItems: 1
+    description: The terms that make up this set. Each item is a schema:DefinedTerm.
+required:
+- '@type'
+- 'schema:hasDefinedTerm'
+allOf:
+- anyOf:
+  - required:
+    - 'schema:name'
+  - required:
+    - 'schema:identifier'
+  - required:
+    - '@id'

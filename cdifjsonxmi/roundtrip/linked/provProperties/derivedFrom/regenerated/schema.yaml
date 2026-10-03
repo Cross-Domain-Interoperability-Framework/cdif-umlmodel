@@ -1,0 +1,16 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: >-
+  very simple links or names of data sources used to generate the described resource.
+anyOf:
+- type: string
+- type: object
+  required:
+  - '@id'
+  additionalProperties: false
+  properties:
+    '@id':
+      type: string
+      description: a resolvable reference to a representation of the software or instrument
+        used
+- '$ref': >-
+    ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml

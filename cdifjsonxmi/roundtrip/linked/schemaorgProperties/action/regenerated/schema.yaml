@@ -1,0 +1,159 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: 'Action '
+description: "this element defines an action (operation) that can be invoked via messages\
+  \ using the protocol defined. In most cases this will be an http request via TCP/IP, but\
+  \ in desktop or LAN environments, other protocols might be used. The target property defines\
+  \ the endpoint and syntax for invoking the action. Result specifies the encoding format\
+  \ for the (possible) response(s) when the action is invoked. Object specifies the information\
+  \ model for the resource that is the object of the action. This approach is an adoptation\
+  \ of the Action Blog Post from schema.org (see https://schema.org/docs/actions.html, and\
+  \ https://github.com/schemaorg/suggestions-questions-brainstorming/issues/62) "
+type: object
+properties:
+  '@type':
+    default:
+    - 'schema:Action'
+    type: array
+    items:
+      type: string
+    contains:
+      anyOf:
+      - const: 'schema:Action'
+      - const: 'schema:AssessAction'
+      - const: 'schema:ConsumeAction'
+      - const: 'schema:ControlAction'
+      - const: 'schema:CreateAction'
+      - const: 'schema:DeleteAction'
+      - const: 'schema:FindAction'
+      - const: 'schema:InteractAction'
+      - const: 'schema:MoveAction'
+      - const: 'schema:PlayAction'
+      - const: 'schema:SearchAction'
+      - const: 'schema:TransferAction'
+      - const: 'schema:UpdateAction'
+    minItems: 1
+    description: The type of action. Must be schema:Action or one of its subtypes.
+  'schema:name':
+    type: string
+    description: text label for the action
+  'schema:target':
+    '$ref': '#/$defs/ActionEntryPoint'
+    description: >-
+      specifies the request target location and request syntax. Documentation of the URL end
+      point and syntax to invoke the service. This schema doesn't handle post requests.
+  'schema:result':
+    '$ref': >-
+      ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/actionResult/schema.yaml
+    description: >-
+      specifies the serialization scheme (encoding format, information model) for the expected
+      representation of the data - documentation of the serialization format for the API response.
+      See the actionResult building block.
+  'schema:object':
+    '$ref': '#/$defs/ActionThing'
+    description: >-
+      The entity upon which the action is carried out, whose state is kept intact or changed.
+      This is an open ended class for general description of Actions. When schema:Action (or
+      a subclass) is used to describe operations for a WebAPI distribution, the object is
+      implicitly the resource that is the subject of the containing metadata record, so this
+      property would be superfluous.
+  'schema:query-input':
+    type: array
+    items:
+      '$ref': '#/$defs/ActionPropertyValueSpecification'
+      description: >-
+        Query input parameter for a web API action, typed as schema:PropertyValueSpecification.
+    description: set of explanations of the parameters in the URL template for the target.
+required:
+- 'schema:name'
+- 'schema:target'
+'$defs':
+  ActionEntryPoint:
+    type: object
+    properties:
+      '@type':
+        default:
+        - 'schema:EntryPoint'
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'schema:EntryPoint'
+        minItems: 1
+      'schema:description':
+        type: string
+      'schema:urlTemplate':
+        type: string
+        description: >-
+          a templated URL; parameters are enclosed in curly braces ({..}); parameters are
+          not required. If included, parameters MUST be documented in the query-input element.
+          Template should be consitent with URI Template (https://datatracker.ietf.org/doc/html/rfc6570)
+          examples: - http://portal.chordsrt.com/api/v1/data.{encoding}; single parameter
+          - http://portal.chordsrt.com/api/v1/data.{encoding}?instruments={instruments}&start={start}&end={end}
+          ; multiple parameters - {endpoint}{encoding}; endpoint URL path is a parameter,should
+          only appear in potential actions for API specification descriptions, which are generic-not
+          specific to a particular endpoint.
+      'schema:httpMethod':
+        type: array
+        items:
+          default: GET
+          type: string
+          enum:
+          - GET
+          - PUT
+          - POST
+          - PATCH
+          - DELETE
+          - COPY
+          - HEAD
+          - OPTIONS
+          - PROPFIND
+        title: HTTP Method
+        description: only applicable if protocol is http or a protocol that tunnels on http
+      'schema:contentType':
+        type: array
+        items:
+          type: string
+        description: >-
+          The supported content type(s) for an EntryPoint response. a MIME type (https://www.iana.org/assignments/media-types/media-types.xhtml)
+          that specifies the content type for messages in resonses from the service endpoint.
+          This is a schema.org property, and is redundant with encodingFormat in the result
+          property for the Action.
+    required:
+    - 'schema:urlTemplate'
+  ActionPropertyValueSpecification:
+    type: object
+    properties:
+      '@type':
+        default:
+        - 'schema:PropertyValueSpecification'
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'schema:PropertyValueSpecification'
+        minItems: 1
+      '@id':
+        type: string
+      'schema:valueName':
+        type: string
+      'schema:description':
+        type: string
+      'schema:valueRequired':
+        default: true
+        type: boolean
+      'schema:valuePattern':
+        type: string
+    required:
+    - 'schema:valueName'
+    - 'schema:description'
+  ActionThing:
+    type: object
+    properties:
+      '@type':
+        default: 'schema:Thing'
+        type: array
+        items:
+          type: string
+        minItems: 1
+      'schema:description':
+        type: string

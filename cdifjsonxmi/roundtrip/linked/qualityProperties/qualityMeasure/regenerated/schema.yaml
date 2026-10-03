@@ -1,0 +1,54 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: definitions for simple quality measure property
+type: object
+properties:
+  '@type':
+    type: array
+    items:
+      type: string
+    contains:
+      const: 'dqv:QualityMeasurement'
+    minItems: 1
+  'dqv:isMeasurementOf':
+    anyOf:
+    - type: string
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+          description: a resolvable reference to a representation of a quality measure
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml
+    description: >-
+      specify the quality measure that is reported, by name, with an ID ref, or as a Defined
+      Term
+  'dqv:value':
+    '$ref': '#/$defs/StringOrNumberOrDefinedTerm'
+    description: >-
+      the reported result of the quality measure, as a string, a number, or a defined term
+      from a vocabulary
+required:
+- 'dqv:isMeasurementOf'
+- 'dqv:value'
+'$defs':
+  StringOrIdReferenceOrDefinedTerm:
+    anyOf:
+    - type: string
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml
+  StringOrNumberOrDefinedTerm:
+    anyOf:
+    - type: string
+    - type: number
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml

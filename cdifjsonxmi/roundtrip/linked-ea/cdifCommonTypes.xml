@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<XMI xmi.version="1.1" xmlns:UML="omg.org/UML1.3">
+	<XMI.header>
+		<XMI.documentation>
+			<XMI.exporter>Enterprise Architect</XMI.exporter>
+			<XMI.exporterVersion>2.5</XMI.exporterVersion>
+		</XMI.documentation>
+	</XMI.header>
+	<XMI.content>
+		<UML:Model name="cdifCommonTypes" xmi.id="MX_EAID_8588313A_0C1C_51af_BD83_2EFBBC4C30DE">
+			<UML:Namespace.ownedElement>
+				<UML:Class name="EARootClass" xmi.id="EAID_11111111_5487_4080_A7F4_41526CB0AA00" isRoot="true" isLeaf="false" isAbstract="false"/>
+				<UML:Package name="cdifCommonTypes" xmi.id="EAPK_8588313A_0C1C_51af_BD83_2EFBBC4C30DE" isRoot="false" isLeaf="false" isAbstract="false" visibility="public">
+					<UML:ModelElement.taggedValue>
+						<UML:TaggedValue tag="documentation" value=""/>
+						<UML:TaggedValue tag="isSpecification" value="false"/>
+						<UML:TaggedValue tag="ea_stype" value="Public"/>
+						<UML:TaggedValue tag="ea_eleType" value="package"/>
+						<UML:TaggedValue tag="version" value="1.0"/>
+						<UML:TaggedValue tag="ea_guid" value="{8588313A-0C1C-51af-BD83-2EFBBC4C30DE}"/>
+					</UML:ModelElement.taggedValue>
+					<UML:Namespace.ownedElement>
+						<UML:Package name="XMLSchemaDataTypes" xmi.id="EAPK_D81F380E_7139_5bc9_A340_0D28DBA534FB" isRoot="false" isLeaf="false" isAbstract="false" visibility="public">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="https://w3id.org/cdif/XMLSchemaDataTypes/xmi/"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="Public"/>
+								<UML:TaggedValue tag="ea_eleType" value="package"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="ea_guid" value="{D81F380E-7139-5bc9-A340-0D28DBA534FB}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Namespace.ownedElement>
+								<UML:Class name="XsdAnyUri" xmi.id="EAID_19A84FDD_C3B2_5615_AA61_7F8BC65D9000" visibility="public" namespace="EAPK_D81F380E_7139_5bc9_A340_0D28DBA534FB" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;XML Schema primitive datatype (XsdAnyUri)."/>
+										<UML:TaggedValue tag="isSpecification" value="false"/>
+										<UML:TaggedValue tag="ea_stype" value="DataType"/>
+										<UML:TaggedValue tag="ea_ntype" value="0"/>
+										<UML:TaggedValue tag="version" value="1.0"/>
+										<UML:TaggedValue tag="package" value="EAPK_D81F380E_7139_5bc9_A340_0D28DBA534FB"/>
+										<UML:TaggedValue tag="ea_guid" value="{19A84FDD-C3B2-5615-AA61-7F8BC65D9000}"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Class>
+								<UML:Class name="XsdDate" xmi.id="EAID_0B8A186A_8FF0_5647_B24E_039B6535859C" visibility="public" namespace="EAPK_D81F380E_7139_5bc9_A340_0D28DBA534FB" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;XML Schema primitive datatype (XsdDate)."/>
+										<UML:TaggedValue tag="isSpecification" value="false"/>
+										<UML:TaggedValue tag="ea_stype" value="DataType"/>
+										<UML:TaggedValue tag="ea_ntype" value="0"/>
+										<UML:TaggedValue tag="version" value="1.0"/>
+										<UML:TaggedValue tag="package" value="EAPK_D81F380E_7139_5bc9_A340_0D28DBA534FB"/>
+										<UML:TaggedValue tag="ea_guid" value="{0B8A186A-8FF0-5647-B24E-039B6535859C}"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Class>
+								<UML:Class name="XsdDateTime" xmi.id="EAID_FBCC3E16_39EB_5dd1_8BB4_44D87E1E5D37" visibility="public" namespace="EAPK_D81F380E_7139_5bc9_A340_0D28DBA534FB" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;XML Schema primitive datatype (XsdDateTime)."/>
+										<UML:TaggedValue tag="isSpecification" value="false"/>
+										<UML:TaggedValue tag="ea_stype" value="DataType"/>
+										<UML:TaggedValue tag="ea_ntype" value="0"/>
+										<UML:TaggedValue tag="version" value="1.0"/>
+										<UML:TaggedValue tag="package" value="EAPK_D81F380E_7139_5bc9_A340_0D28DBA534FB"/>
+										<UML:TaggedValue tag="ea_guid" value="{FBCC3E16-39EB-5dd1-8BB4-44D87E1E5D37}"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Class>
+							</UML:Namespace.ownedElement>
+						</UML:Package>
+						<UML:Package name="Common" xmi.id="EAPK_01EAC54A_A759_5151_87C6_5B4A05D41825" isRoot="false" isLeaf="false" isAbstract="false" visibility="public">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="https://w3id.org/cdif/common/xmi/"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="Public"/>
+								<UML:TaggedValue tag="ea_eleType" value="package"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="ea_guid" value="{01EAC54A-A759-5151-87C6-5B4A05D41825}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Namespace.ownedElement>
+								<UML:Class name="IdReference" xmi.id="EAID_8706B14E_5B51_5aeb_AEBF_F3E363919845" visibility="public" namespace="EAPK_01EAC54A_A759_5151_87C6_5B4A05D41825" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;A reference to a node defined elsewhere. JSON-LD encoding: an object {&quot;@id&quot;: string} with no other keys."/>
+										<UML:TaggedValue tag="isSpecification" value="false"/>
+										<UML:TaggedValue tag="ea_stype" value="DataType"/>
+										<UML:TaggedValue tag="ea_ntype" value="0"/>
+										<UML:TaggedValue tag="version" value="1.0"/>
+										<UML:TaggedValue tag="package" value="EAPK_01EAC54A_A759_5151_87C6_5B4A05D41825"/>
+										<UML:TaggedValue tag="ea_guid" value="{8706B14E-5B51-5aeb-AEBF-F3E363919845}"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Class>
+								<UML:Class name="IriReference" xmi.id="EAID_504C91FE_8377_5649_9719_308C129EBFB1" visibility="public" namespace="EAPK_01EAC54A_A759_5151_87C6_5B4A05D41825" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;An IRI-valued property. JSON-LD encoding: either a plain string, or a node reference object {&quot;@id&quot;: string} with no other keys. URI-shape values should use the {&quot;@id&quot;} form so they participate in RDF entailment."/>
+										<UML:TaggedValue tag="isSpecification" value="false"/>
+										<UML:TaggedValue tag="ea_stype" value="DataType"/>
+										<UML:TaggedValue tag="ea_ntype" value="0"/>
+										<UML:TaggedValue tag="version" value="1.0"/>
+										<UML:TaggedValue tag="package" value="EAPK_01EAC54A_A759_5151_87C6_5B4A05D41825"/>
+										<UML:TaggedValue tag="ea_guid" value="{504C91FE-8377-5649-9719-308C129EBFB1}"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Class>
+							</UML:Namespace.ownedElement>
+						</UML:Package>
+					</UML:Namespace.ownedElement>
+				</UML:Package>
+			</UML:Namespace.ownedElement>
+		</UML:Model>
+	</XMI.content>
+	<XMI.extensions xmi.extender="Enterprise Architect 2.5">
+	</XMI.extensions>
+</XMI>

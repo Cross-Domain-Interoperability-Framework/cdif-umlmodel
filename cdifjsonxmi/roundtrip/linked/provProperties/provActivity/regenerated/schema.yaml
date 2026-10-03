@@ -1,0 +1,234 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: PROV-O Provenance Activity
+description: >-
+  PROV-O native provenance activity building block for CDIF. Extends the minimal prov:Activity
+  (generatedBy) with W3C PROV-O properties for comprehensive provenance documentation. Uses
+  schema.org fallbacks only where PROV-O has no equivalent (name, description, instrument,
+  methodology, status).
+type: object
+allOf:
+- '$ref': >-
+    ../../../../../../../metadataBuildingBlocks/_sources/provProperties/generatedBy/schema.yaml
+- type: object
+  properties:
+    '@type':
+      type: array
+      items:
+        type: string
+      contains:
+        const: 'prov:Activity'
+      minItems: 1
+      description: >-
+        Must include prov:Activity. Unlike cdifProvActivity, does not require schema:Action
+        dual typing.
+    'schema:name':
+      type: string
+      description: >-
+        Human-readable name for the activity (schema.org fallback -- PROV-O has no name property)
+    'schema:description':
+      type: string
+      description: >-
+        Text description of what this activity did (schema.org fallback -- PROV-O has no description
+        property)
+    'prov:generated':
+      type: array
+      items:
+        '$ref': '#/$defs/StringOrIdReference'
+      description: Entities produced by this activity (inverse of prov:wasGeneratedBy)
+    'prov:wasAssociatedWith':
+      type: array
+      items:
+        '$ref': '#/$defs/PersonOrOrganizationOrAgentInRoleOrStringOrIdReference'
+      description: >-
+        Agents responsible for this activity (PROV-O native -- maps to schema:agent in cdifProvActivity)
+    'prov:wasInformedBy':
+      type: array
+      items:
+        '$ref': '#/$defs/IdReferenceOrString'
+      description: >-
+        Other activities that communicated information to this one (PROV-O activity-to-activity
+        chain -- maps to schema:object in cdifProvActivity)
+    'prov:startedAtTime':
+      type: string
+      description: >-
+        ISO8601 date-time when the activity started (PROV-O native -- maps to schema:startTime
+        in cdifProvActivity)
+    'prov:endedAtTime':
+      type: string
+      description: >-
+        ISO8601 date-time when the activity ended (PROV-O native -- maps to schema:endTime
+        in cdifProvActivity)
+    'prov:atLocation':
+      '$ref': '#/$defs/SpatialExtentOrStringOrIdReference'
+      description: >-
+        Location where the activity occurred (PROV-O expanded term -- maps to schema:location
+        in cdifProvActivity)
+    'prov:wasStartedBy':
+      anyOf:
+      - type: string
+      - type: object
+        required:
+        - '@id'
+        additionalProperties: false
+        properties:
+          '@id':
+            type: string
+            description: reference to a triggering entity
+      description: Entity that triggered the start of this activity (PROV-O expanded term)
+    'prov:wasEndedBy':
+      anyOf:
+      - type: string
+      - type: object
+        required:
+        - '@id'
+        additionalProperties: false
+        properties:
+          '@id':
+            type: string
+            description: reference to an entity that ended this activity
+      description: Entity that triggered the end of this activity (PROV-O expanded term)
+    'schema:actionStatus':
+      type: string
+      enum:
+      - 'schema:CompletedActionStatus'
+      - 'schema:ActiveActionStatus'
+      - 'schema:PotentialActionStatus'
+      - 'schema:FailedActionStatus'
+      description: Status of this activity (schema.org fallback -- no PROV-O equivalent)
+    'schema:actionProcess':
+      '$ref': '#/$defs/HowToOrStringOrIdReference'
+      description: >-
+        Methodology or protocol for this activity (schema.org fallback -- PROV-O has prov:hadPlan
+        only inside qualified Association)
+    'schema:error':
+      type: string
+      description: >-
+        Error description for failed activities (schema.org fallback -- no PROV-O equivalent)
+'$defs':
+  HowTo:
+    type: object
+    description: A methodology or protocol described as a HowTo with optional steps
+    properties:
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'schema:HowTo'
+        minItems: 1
+      '@id':
+        type: string
+      'schema:name':
+        type: string
+        description: Name of the methodology or protocol
+      'schema:description':
+        type: string
+        description: Description of the methodology
+      'schema:url':
+        type: string
+        format: uri
+        description: URL to a published methodology or protocol document
+      'schema:step':
+        type: array
+        items:
+          '$ref': '#/$defs/HowToStep'
+        description: Ordered steps in this methodology
+    required:
+    - '@type'
+    allOf:
+    - anyOf:
+      - required:
+        - 'schema:name'
+      - required:
+        - 'schema:url'
+  HowToOrStringOrIdReference:
+    anyOf:
+    - '$ref': '#/$defs/HowTo'
+    - type: string
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+          description: reference to a methodology defined elsewhere
+  HowToStep:
+    type: object
+    description: A single step in a HowTo methodology
+    properties:
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'schema:HowToStep'
+        minItems: 1
+      'schema:name':
+        type: string
+        description: Name of this step
+      'schema:description':
+        type: string
+        description: Description of what this step involves
+      'schema:url':
+        type: string
+        format: uri
+        description: URL to documentation for this step
+      'schema:position':
+        type: integer
+        description: Ordinal position of this step
+    required:
+    - '@type'
+    - 'schema:name'
+  IdReferenceOrString:
+    anyOf:
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+          description: reference to a prior activity
+    - type: string
+  PersonOrOrganizationOrAgentInRoleOrStringOrIdReference:
+    anyOf:
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/person/schema.yaml
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/organization/schema.yaml
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/agentInRole/schema.yaml
+    - type: string
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+          description: reference to an agent defined elsewhere
+  SpatialExtentOrStringOrIdReference:
+    anyOf:
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/spatialExtent/schema.yaml
+    - type: string
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+          description: reference to a place defined elsewhere
+  StringOrIdReference:
+    anyOf:
+    - type: string
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+          description: reference to an entity produced by this activity

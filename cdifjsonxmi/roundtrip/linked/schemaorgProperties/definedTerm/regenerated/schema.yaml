@@ -1,0 +1,63 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+description: |
+  schema.org Defined Term schema.
+
+  **Union-type policy:** In CDIF profile UML models an attribute typed as
+  schema:DefinedTerm is represented by a single attribute of that class type.
+  The JSON Schema implementation permits the property value to be EITHER a
+  plain string (interpreted as schema:name or schema:termCode in the default
+  vocabulary) OR a full schema:DefinedTerm object (with explicit @type, name,
+  identifier, termCode, inDefinedTermSet). Consumers should accept either form.
+
+  Note that this differs from the cdif Concept policy: a Concept (skos:Concept)
+  in CDIF profiles MUST be a controlled-vocabulary entry (object form or
+  @id-reference) — plain strings are not permitted for Concept-typed values
+  because vocabulary identity cannot be recovered from an unscoped label.
+type: object
+properties:
+  '@type':
+    type: array
+    items:
+      type: string
+    contains:
+      const: 'schema:DefinedTerm'
+    minItems: 1
+  'schema:name':
+    type: string
+    description: text label for the term that is useful to human user
+  'schema:identifier':
+    anyOf:
+    - type: string
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml
+  'schema:inDefinedTermSet':
+    anyOf:
+    - type: string
+    - type: object
+      additionalProperties: false
+      required:
+      - '@id'
+      properties:
+        '@id':
+          type: string
+    description: >-
+      The controlled vocabulary responsible for this keyword, as EITHER a plain URI string
+      identifying the vocabulary, OR an object reference ({"@id": "<uri>"}) to a vocabulary
+      defined elsewhere in the document. Both forms are already in use across CDIF profiles
+      and downstream ADA building blocks; permitting only the string form made the object
+      form - the natural JSON-LD spelling of a reference - invalid, while this class's own
+      union-type policy above explicitly anticipates both.
+  'schema:termCode':
+    type: string
+    description: >-
+      A representative code for this keyword in the controlled vocabulary. Analogous to skos:Notation
+required:
+- '@type'
+allOf:
+- anyOf:
+  - required:
+    - 'schema:name'
+  - required:
+    - 'schema:identifier'
+  - required:
+    - 'schema:termCode'

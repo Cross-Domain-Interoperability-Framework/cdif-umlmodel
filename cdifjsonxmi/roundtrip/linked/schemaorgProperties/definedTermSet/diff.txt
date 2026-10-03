@@ -1,0 +1,13 @@
+definedTermSet: 4 exact difference(s)
+$.allOf:
+    original:    [{"required": ["@type", "schema:hasDefinedTerm"]}, {"anyOf": [{"required": ["schema:name"]}, {"required": ["schema:identifier"]}, {"required": ["@id"]}]}]
+    regenerated: [{"anyOf": [{"required": ["schema:name"]}, {"required": ["schema:identifier"]}, {"required": ["@id"]}]}]
+$.properties.schema:hasDefinedTerm.items.$ref:
+    original:    "../definedTerm/schema.yaml"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml"
+$.properties.schema:identifier.anyOf[1].$ref:
+    original:    "../identifier/schema.yaml"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml"
+$.required: only in regenerated: ["@type", "schema:hasDefinedTerm"]
+
+definedTermSet: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

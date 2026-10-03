@@ -1,0 +1,81 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: definitions for a quality annotation property
+description: >-
+  A dqv:QualityAnnotation (a subclass of oa:Annotation) attaches a narrative or categorical
+  quality statement -- a standards-compliance note, a rating, or a quality certificate --
+  to a resource. Unlike a dqv:QualityMeasurement it does not report a measured value against
+  a named metric; the assertion lives in the annotation body.
+type: object
+properties:
+  '@type':
+    type: array
+    items:
+      type: string
+    contains:
+      const: 'dqv:QualityAnnotation'
+    minItems: 1
+  'oa:hasBody':
+    '$ref': '#/$defs/StringOrDefinedTermOrIdReference'
+    description: >-
+      the content of the quality annotation -- a free-text statement, a categorical outcome
+      as a Defined Term (e.g. a certification level or a pass/fail rating), or a reference
+      to a separate body resource
+  'oa:motivatedBy':
+    anyOf:
+    - type: string
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+          description: a resolvable reference to an oa:Motivation
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml
+    description: >-
+      why the annotation was made; for quality annotations this is normally the instance dqv:qualityAssessment,
+      but any motivation IRI or Defined Term is allowed
+  'oa:hasTarget':
+    type: object
+    required:
+    - '@id'
+    additionalProperties: false
+    properties:
+      '@id':
+        type: string
+        description: a resolvable reference to the annotated resource
+    description: >-
+      the resource the annotation is about; if omitted, the annotation is about the resource
+      that carries it (e.g. the Dataset)
+  'schema:name':
+    type: string
+    description: optional short human-readable label for the annotation
+required:
+- 'oa:hasBody'
+'$defs':
+  StringOrDefinedTermOrIdReference:
+    anyOf:
+    - type: string
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+          description: a resolvable reference to the annotation body
+  StringOrIdReferenceOrDefinedTerm:
+    anyOf:
+    - type: string
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml

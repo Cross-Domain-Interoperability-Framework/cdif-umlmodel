@@ -1,0 +1,21 @@
+person: 9 exact difference(s)
+$.$defs: only in regenerated: {"ContactPoint": {"type": "object", "properties": {"@type": {"default": ["schema:ContactPoint"], "type": "array", "items": {"type": "string"}, "contains": {"const": "schema:ContactPoint"}, "minItems":
+$.allOf:
+    original:    [{"required": ["@type"]}, {"anyOf": [{"required": ["schema:name"]}, {"required": ["schema:identifier"]}]}]
+    regenerated: [{"anyOf": [{"required": ["schema:name"]}, {"required": ["schema:identifier"]}]}]
+$.properties.schema:affiliation.$ref:
+    original:    "../organization/schema.yaml"
+    regenerated: "../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/organization/schema.yaml"
+$.properties.schema:contactPoint.$ref: only in regenerated: "#/$defs/ContactPoint"
+$.properties.schema:contactPoint.properties: only in original: {"@type": {"default": "schema:ContactPoint", "type": "array", "items": {"type": "string"}, "contains": {"const": "schema:ContactPoint"}, "minItems": 1}, "schema:email": {"type": "string"}}
+$.properties.schema:contactPoint.required: only in original: ["@type", "schema:email"]
+$.properties.schema:contactPoint.type: only in original: "object"
+$.properties.schema:identifier.anyOf[0].$ref:
+    original:    "../identifier/schema.yaml"
+    regenerated: "../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml"
+$.required: only in regenerated: ["@type"]
+
+person: 1 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)
+$.properties.schema:contactPoint.properties.@type.default:
+    original:    "schema:ContactPoint"
+    regenerated: ["schema:ContactPoint"]

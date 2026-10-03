@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.5.1" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.omg.org/spec/UML/20161101">
+  <uml:Model xmi:id="cdif.commonTypes" xmi:uuid="8588313a-0c1c-51af-bd83-2efbbc4c30de">
+    <name>cdifCommonTypes</name>
+    <packagedElement xmi:type="uml:Package" xmi:id="XMLSchemaDataTypes" xmi:uuid="d81f380e-7139-5bc9-a340-0d28dba534fb">
+      <name>XMLSchemaDataTypes</name>
+      <URI>https://w3id.org/cdif/XMLSchemaDataTypes/xmi/</URI>
+      <packagedElement xmi:type="uml:DataType" xmi:id="XMLSchemaDataTypes.XsdAnyUri" xmi:uuid="19a84fdd-c3b2-5615-aa61-7f8bc65d9000">
+        <name>XsdAnyUri</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="XMLSchemaDataTypes.XsdAnyUri.comment" xmi:uuid="910c43fd-6b8f-5a3a-9305-0cdf188a1d32">
+          <body>**CDIF**
+
+Definition
+==========
+
+XML Schema primitive datatype (XsdAnyUri).</body>
+          <annotatedElement xmi:idref="XMLSchemaDataTypes.XsdAnyUri"/>
+        </ownedComment>
+      </packagedElement>
+      <packagedElement xmi:type="uml:DataType" xmi:id="XMLSchemaDataTypes.XsdDate" xmi:uuid="0b8a186a-8ff0-5647-b24e-039b6535859c">
+        <name>XsdDate</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="XMLSchemaDataTypes.XsdDate.comment" xmi:uuid="4da11d59-9a8b-5cad-90c7-f9a0026a22a1">
+          <body>**CDIF**
+
+Definition
+==========
+
+XML Schema primitive datatype (XsdDate).</body>
+          <annotatedElement xmi:idref="XMLSchemaDataTypes.XsdDate"/>
+        </ownedComment>
+      </packagedElement>
+      <packagedElement xmi:type="uml:DataType" xmi:id="XMLSchemaDataTypes.XsdDateTime" xmi:uuid="fbcc3e16-39eb-5dd1-8bb4-44d87e1e5d37">
+        <name>XsdDateTime</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="XMLSchemaDataTypes.XsdDateTime.comment" xmi:uuid="fa62b0ba-ab73-509d-a4e8-15dbfbca5306">
+          <body>**CDIF**
+
+Definition
+==========
+
+XML Schema primitive datatype (XsdDateTime).</body>
+          <annotatedElement xmi:idref="XMLSchemaDataTypes.XsdDateTime"/>
+        </ownedComment>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="common" xmi:uuid="01eac54a-a759-5151-87c6-5b4a05d41825">
+      <name>Common</name>
+      <URI>https://w3id.org/cdif/common/xmi/</URI>
+      <packagedElement xmi:type="uml:DataType" xmi:id="common.IdReference" xmi:uuid="8706b14e-5b51-5aeb-aebf-f3e363919845">
+        <name>IdReference</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="common.IdReference.comment" xmi:uuid="2c134b3a-625b-5364-86f7-c2757d97e486">
+          <body>**CDIF**
+
+Definition
+==========
+
+A reference to a node defined elsewhere. JSON-LD encoding: an object {"@id": string} with no other keys.</body>
+          <annotatedElement xmi:idref="common.IdReference"/>
+        </ownedComment>
+      </packagedElement>
+      <packagedElement xmi:type="uml:DataType" xmi:id="common.IriReference" xmi:uuid="504c91fe-8377-5649-9719-308c129ebfb1">
+        <name>IriReference</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="common.IriReference.comment" xmi:uuid="c4267d79-c772-5d4a-b057-2479e56e9762">
+          <body>**CDIF**
+
+Definition
+==========
+
+An IRI-valued property. JSON-LD encoding: either a plain string, or a node reference object {"@id": string} with no other keys. URI-shape values should use the {"@id"} form so they participate in RDF entailment.</body>
+          <annotatedElement xmi:idref="common.IriReference"/>
+        </ownedComment>
+      </packagedElement>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

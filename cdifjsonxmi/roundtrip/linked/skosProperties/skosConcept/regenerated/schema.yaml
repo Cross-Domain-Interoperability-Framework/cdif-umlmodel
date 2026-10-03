@@ -1,0 +1,172 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: SKOS Concept
+description: >-
+  JSON Schema for a SKOS Concept in JSON-LD form. A unit of thought within a concept scheme.
+  Supports labels (prefLabel, altLabel, hiddenLabel), notations, hierarchical relations (broader/narrower),
+  associative relations (related), cross-scheme mapping properties, scheme membership, and
+  documentary notes. Based on the W3C SKOS Reference (https://www.w3.org/TR/skos-reference/).
+allOf:
+- '$ref': '#/$defs/Concept'
+'$defs':
+  Concept:
+    type: object
+    properties:
+      '@context':
+        description: >-
+          JSON-LD context declaring the skos namespace prefix. May be a single object or an
+          array of strings and objects.
+        anyOf:
+        - type: object
+          properties:
+            skos:
+              const: 'http://www.w3.org/2004/02/skos/core#'
+          required:
+          - skos
+        - type: array
+          items:
+            anyOf:
+            - type: string
+            - type: object
+          contains:
+            type: object
+            properties:
+              skos:
+                const: 'http://www.w3.org/2004/02/skos/core#'
+            required:
+            - skos
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'skos:Concept'
+        minItems: 1
+      '@id':
+        type: string
+        description: URI identifier for this concept.
+      'skos:prefLabel':
+        '$ref': '#/$defs/StringOrLanguageTaggedValueOrLanguageTaggedValueList'
+        description: >-
+          Preferred lexical label for this concept. A single string, a single language-tagged
+          value, or an array of language-tagged values. Each language should appear at most
+          once.
+      'skos:notation':
+        type: string
+        description: >-
+          Classification code for this concept within a scheme (a single notation string,
+          consistent with CdifCodelistConcept).
+      'skos:definition':
+        '$ref': '#/$defs/StringOrLanguageTaggedValueOrChoiceList'
+        description: Formal explanation of the meaning of this concept.
+      'skos:scopeNote':
+        '$ref': '#/$defs/StringOrLanguageTaggedValueOrChoiceList'
+        description: Note clarifying meaning and/or intended use.
+      'skos:note':
+        '$ref': '#/$defs/StringOrLanguageTaggedValueOrChoiceList'
+        description: General note about this concept.
+      'skos:historyNote':
+        '$ref': '#/$defs/StringOrLanguageTaggedValueOrChoiceList'
+        description: Note about past state or use.
+      'skos:changeNote':
+        '$ref': '#/$defs/StringOrLanguageTaggedValueOrChoiceList'
+        description: Note documenting a change.
+      'skos:editorialNote':
+        '$ref': '#/$defs/StringOrLanguageTaggedValueOrChoiceList'
+        description: Note for editors and maintainers.
+      'skos:inScheme':
+        '$ref': '#/$defs/IdReferenceOrIdReferenceList'
+        description: Concept scheme(s) this concept belongs to.
+      'skos:topConceptOf':
+        '$ref': '#/$defs/IdReferenceOrIdReferenceList'
+        description: Concept scheme(s) for which this is a top concept.
+      'skos:broader':
+        type: array
+        items:
+          '$ref': '#/$defs/ConceptRefOrConcept'
+        description: >-
+          Broader (parent) concepts in the hierarchy. Items are inline concept objects or
+          @id references.
+      'skos:narrower':
+        type: array
+        items:
+          '$ref': '#/$defs/ConceptRefOrConcept'
+        description: >-
+          Narrower (child) concepts in the hierarchy. Items are inline concept objects or
+          @id references.
+    required:
+    - '@type'
+    - 'skos:prefLabel'
+    - 'skos:definition'
+    - 'skos:inScheme'
+  ConceptRefOrConcept:
+    anyOf:
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+          description: URI of the referenced concept.
+      description: A reference to a SKOS Concept by URI.
+    - '$ref': '#/$defs/Concept'
+  IdReferenceOrIdReferenceList:
+    anyOf:
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+    - type: array
+      items:
+        type: object
+        required:
+        - '@id'
+        additionalProperties: false
+        properties:
+          '@id':
+            type: string
+  LanguageTaggedValue:
+    type: object
+    description: An RDF literal value with a language tag, serialized as a JSON-LD value object.
+    properties:
+      '@value':
+        type: string
+        description: The text content.
+      '@language':
+        type: string
+        description: BCP 47 language tag (e.g. en, fr, de).
+    required:
+    - '@value'
+    - '@language'
+  StringOrLanguageTaggedValueOrChoiceList:
+    anyOf:
+    - type: string
+    - '$ref': '#/$defs/LanguageTaggedValue'
+    - type: array
+      items:
+        anyOf:
+        - type: string
+        - '$ref': '#/$defs/StringOrLanguageTaggedValueOrChoiceListChoiceList'
+  StringOrLanguageTaggedValueOrChoiceListChoiceList:
+    type: object
+    description: An RDF literal value with a language tag, serialized as a JSON-LD value object.
+    properties:
+      '@value':
+        type: string
+        description: The text content.
+      '@language':
+        type: string
+        description: BCP 47 language tag (e.g. en, fr, de).
+    required:
+    - '@value'
+    - '@language'
+  StringOrLanguageTaggedValueOrLanguageTaggedValueList:
+    anyOf:
+    - type: string
+    - '$ref': '#/$defs/LanguageTaggedValue'
+    - type: array
+      items:
+        '$ref': '#/$defs/LanguageTaggedValue'

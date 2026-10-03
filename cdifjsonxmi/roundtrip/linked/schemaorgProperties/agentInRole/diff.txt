@@ -1,0 +1,16 @@
+agentInRole: 6 exact difference(s)
+$.$defs.IdReferenceOrPersonOrOrganization: only in regenerated: {"anyOf": [{"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "IRI reference to a Person or Organization defined elsewhere"}
+$.$defs.cdifConceptOrTermOrString: only in original: {"$ref": "../../cdifDataType/cdifConceptOrTermOrString/schema.yaml"}
+$.properties.@type.default:
+    original:    "schema:Role"
+    regenerated: ["schema:Role"]
+$.properties.schema:contributor.$ref: only in regenerated: "#/$defs/IdReferenceOrPersonOrOrganization"
+$.properties.schema:contributor.anyOf: only in original: [{"type": "object", "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "IRI reference to a Person or Organization defined elsewhere"}}, "required": ["@id"]}, {"$ref
+$.properties.schema:roleName.$ref:
+    original:    "#/$defs/cdifConceptOrTermOrString"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml"
+
+agentInRole: 1 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)
+$.properties.@type.default:
+    original:    "schema:Role"
+    regenerated: ["schema:Role"]

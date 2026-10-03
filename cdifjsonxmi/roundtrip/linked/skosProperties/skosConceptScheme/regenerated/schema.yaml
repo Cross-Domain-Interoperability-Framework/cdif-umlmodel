@@ -1,0 +1,267 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: SKOS Concept Scheme
+description: >-
+  JSON Schema for a SKOS ConceptScheme in JSON-LD form. Validates the root object as a skos:ConceptScheme
+  with prefLabel, hasTopConcept, and nested skos:Concept items. References the skosConcept
+  and skosCollection building blocks. Based on the W3C SKOS Reference (https://www.w3.org/TR/skos-reference/)
+  and the SKOS RDF vocabulary (https://www.w3.org/2004/02/skos/core.rdf).
+type: object
+properties:
+  '@context':
+    description: >-
+      JSON-LD context declaring the skos namespace prefix and any additional prefixes used
+      in concept URIs. May be a single object or an array of strings and objects.
+    anyOf:
+    - type: object
+      properties:
+        skos:
+          const: 'http://www.w3.org/2004/02/skos/core#'
+      required:
+      - skos
+    - type: array
+      items:
+        anyOf:
+        - type: string
+        - type: object
+      contains:
+        type: object
+        properties:
+          skos:
+            const: 'http://www.w3.org/2004/02/skos/core#'
+        required:
+        - skos
+  '@type':
+    type: array
+    items:
+      type: string
+    contains:
+      const: 'skos:ConceptScheme'
+    minItems: 1
+  '@id':
+    type: string
+    description: URI identifier for this concept scheme.
+  'skos:prefLabel':
+    '$ref': '#/$defs/StringOrLanguageTaggedValueOrLanguageTaggedValueList'
+    description: >-
+      Preferred lexical label for the concept scheme. A single string, a single language-tagged
+      value, or an array of language-tagged values. Each language should appear at most once.
+  'skos:altLabel':
+    '$ref': '#/$defs/StringOrLanguageTaggedValueOrChoiceList'
+    description: Alternative lexical labels (acronyms, abbreviations, spelling variants).
+  'skos:hiddenLabel':
+    '$ref': '#/$defs/StringOrLanguageTaggedValueOrChoiceList'
+    description: Labels accessible to free-text search but not displayed.
+  'skos:definition':
+    '$ref': '#/$defs/StringOrLanguageTaggedValueOrChoiceList'
+    description: Formal explanation of the meaning or purpose of this concept scheme.
+  'skos:notation':
+    type: array
+    items:
+      type: string
+    description: Classification code or notation for this concept scheme.
+  'skos:note':
+    '$ref': '#/$defs/StringOrLanguageTaggedValueOrChoiceList'
+    description: General note about the concept scheme.
+  'skos:scopeNote':
+    '$ref': '#/$defs/StringOrLanguageTaggedValueOrChoiceList'
+    description: Note clarifying the intended scope of the concept scheme.
+  'skos:historyNote':
+    '$ref': '#/$defs/StringOrLanguageTaggedValueOrChoiceList'
+    description: Note about the history of the concept scheme.
+  'skos:changeNote':
+    '$ref': '#/$defs/StringOrLanguageTaggedValueOrChoiceList'
+    description: Note documenting a change to the concept scheme.
+  'skos:editorialNote':
+    '$ref': '#/$defs/StringOrLanguageTaggedValueOrChoiceList'
+    description: Note for editors, translators, and maintainers.
+  'skos:example':
+    '$ref': '#/$defs/StringOrLanguageTaggedValueOrChoiceList'
+    description: Example of the use of this concept scheme.
+  'skos:hasTopConcept':
+    type: array
+    items:
+      '$ref': '#/$defs/ConceptOrIdReference'
+    minItems: 1
+    description: >-
+      Top-level concepts in this scheme. Each item is a skos:Concept (inline or @id reference).
+  'dcterms:creator':
+    '$ref': '#/$defs/StringOrOption2OrChoiceList'
+    description: Agent(s) who created this concept scheme.
+  'dcterms:created':
+    type: string
+    description: Date the concept scheme was created (ISO 8601).
+  'dcterms:modified':
+    type: string
+    description: Date the concept scheme was last modified (ISO 8601).
+  'dcterms:title':
+    anyOf:
+    - type: string
+    - '$ref': '#/$defs/ConceptSchemeDcterms_title'
+    description: >-
+      Title of the concept scheme (Dublin Core). Prefer skos:prefLabel for the SKOS label;
+      dcterms:title may be used for additional metadata.
+  'dcterms:description':
+    anyOf:
+    - type: string
+    - '$ref': '#/$defs/ConceptSchemeDcterms_description'
+    description: Description of the concept scheme (Dublin Core).
+  'dcterms:license':
+    anyOf:
+    - type: string
+    - type: object
+      additionalProperties: false
+      required:
+      - '@id'
+      properties:
+        '@id':
+          type: string
+    description: License for the concept scheme.
+  'dcterms:rights':
+    type: string
+    description: Rights statement for the concept scheme.
+  'schema:version':
+    type:
+    - string
+    - number
+    description: Version identifier for the concept scheme.
+required:
+- '@type'
+- 'skos:prefLabel'
+'$defs':
+  ConceptOrIdReference:
+    anyOf:
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/skosProperties/skosConcept/schema.yaml
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+          description: URI reference to a concept defined elsewhere
+  ConceptSchemeDcterms_description:
+    type: object
+    description: >-
+      An RDF literal value with a language tag, serialized as a JSON-LD value object. Inlined
+      from skosConcept (the resolver does not preserve cross-file '#/$defs/...' fragment refs).
+    properties:
+      '@value':
+        type: string
+        description: The text content.
+      '@language':
+        type: string
+        description: BCP 47 language tag (e.g. en, fr, de).
+    required:
+    - '@value'
+  ConceptSchemeDcterms_title:
+    type: object
+    description: >-
+      An RDF literal value with a language tag, serialized as a JSON-LD value object. Inlined
+      from skosConcept (the resolver does not preserve cross-file '#/$defs/...' fragment refs).
+    properties:
+      '@value':
+        type: string
+        description: The text content.
+      '@language':
+        type: string
+        description: BCP 47 language tag (e.g. en, fr, de).
+    required:
+    - '@value'
+  StringOrLanguageTaggedValueOrChoiceList:
+    anyOf:
+    - type: string
+    - '$ref': '#/$defs/StringOrLanguageTaggedValueOrChoiceListLanguageTaggedValue'
+    - type: array
+      items:
+        anyOf:
+        - type: string
+        - '$ref': '#/$defs/StringOrLanguageTaggedValueOrChoiceListChoiceList'
+  StringOrLanguageTaggedValueOrChoiceListChoiceList:
+    type: object
+    description: >-
+      An RDF literal value with a language tag, serialized as a JSON-LD value object. Inlined
+      from skosConcept (the resolver does not preserve cross-file '#/$defs/...' fragment refs).
+    properties:
+      '@value':
+        type: string
+        description: The text content.
+      '@language':
+        type: string
+        description: BCP 47 language tag (e.g. en, fr, de).
+    required:
+    - '@value'
+  StringOrLanguageTaggedValueOrChoiceListLanguageTaggedValue:
+    type: object
+    description: >-
+      An RDF literal value with a language tag, serialized as a JSON-LD value object. Inlined
+      from skosConcept (the resolver does not preserve cross-file '#/$defs/...' fragment refs).
+    properties:
+      '@value':
+        type: string
+        description: The text content.
+      '@language':
+        type: string
+        description: BCP 47 language tag (e.g. en, fr, de).
+    required:
+    - '@value'
+  StringOrLanguageTaggedValueOrLanguageTaggedValueList:
+    anyOf:
+    - type: string
+    - '$ref': '#/$defs/StringOrLanguageTaggedValueOrLanguageTaggedValueListLanguageTaggedValue'
+    - type: array
+      items:
+        '$ref': '#/$defs/StringOrLanguageTaggedValueOrLanguageTaggedValueListLanguageTaggedValueList'
+  StringOrLanguageTaggedValueOrLanguageTaggedValueListLanguageTaggedValue:
+    type: object
+    description: >-
+      An RDF literal value with a language tag, serialized as a JSON-LD value object. Inlined
+      from skosConcept (the resolver does not preserve cross-file '#/$defs/...' fragment refs).
+    properties:
+      '@value':
+        type: string
+        description: The text content.
+      '@language':
+        type: string
+        description: BCP 47 language tag (e.g. en, fr, de).
+    required:
+    - '@value'
+  StringOrLanguageTaggedValueOrLanguageTaggedValueListLanguageTaggedValueList:
+    type: object
+    description: >-
+      An RDF literal value with a language tag, serialized as a JSON-LD value object. Inlined
+      from skosConcept (the resolver does not preserve cross-file '#/$defs/...' fragment refs).
+    properties:
+      '@value':
+        type: string
+        description: The text content.
+      '@language':
+        type: string
+        description: BCP 47 language tag (e.g. en, fr, de).
+    required:
+    - '@value'
+  StringOrOption2:
+    anyOf:
+    - type: string
+    - '$ref': '#/$defs/StringOrOption2Option2'
+  StringOrOption2Option2:
+    type: object
+    properties:
+      '@id':
+        type: string
+      'schema:name':
+        type: string
+  StringOrOption2OrChoiceList:
+    anyOf:
+    - type: string
+    - '$ref': '#/$defs/StringOrOption2OrChoiceListOption2'
+    - type: array
+      items:
+        '$ref': '#/$defs/StringOrOption2'
+  StringOrOption2OrChoiceListOption2:
+    type: object
+    properties:
+      '@id':
+        type: string
+      'schema:name':
+        type: string

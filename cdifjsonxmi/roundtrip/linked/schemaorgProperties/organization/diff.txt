@@ -1,0 +1,23 @@
+organization: 9 exact difference(s)
+$.$defs: only in original: {"cdifConceptOrTermOrString": {"$ref": "../../cdifDataType/cdifConceptOrTermOrString/schema.yaml"}}
+$.allOf:
+    original:    [{"required": ["@type"]}, {"anyOf": [{"required": ["schema:name"]}, {"required": ["schema:identifier"]}]}]
+    regenerated: [{"anyOf": [{"required": ["schema:name"]}, {"required": ["schema:identifier"]}]}]
+$.properties.@type.default:
+    original:    "schema:Organization"
+    regenerated: ["schema:Organization"]
+$.properties.@type.items.anyOf: only in original: [{"type": "string", "enum": ["schema:Organization", "schema:FundingAgency", "schema:Consortium", "schema:Corporation", "schema:EducationalOrganization", "schema:FundingScheme", "schema:GovernmentOrgan
+$.properties.@type.items.enum: only in regenerated: ["schema:Organization", "schema:FundingAgency", "schema:Consortium", "schema:Corporation", "schema:EducationalOrganization", "schema:FundingScheme", "schema:GovernmentOrganization", "schema:NGO", "sch
+$.properties.@type.items.type: only in regenerated: "string"
+$.properties.schema:additionalType.items.$ref:
+    original:    "#/$defs/cdifConceptOrTermOrString"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml"
+$.properties.schema:identifier.anyOf[0].$ref:
+    original:    "../identifier/schema.yaml"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml"
+$.required: only in regenerated: ["@type"]
+
+organization: 1 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)
+$.properties.@type.default:
+    original:    "schema:Organization"
+    regenerated: ["schema:Organization"]

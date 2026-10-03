@@ -1,0 +1,31 @@
+skosConcept: 28 exact difference(s)
+$.$defs.Concept.properties.skos:broader.items.$ref: only in regenerated: "#/$defs/ConceptRefOrConcept"
+$.$defs.Concept.properties.skos:broader.items.anyOf: only in original: [{"$ref": "#/$defs/ConceptRef"}, {"$ref": "#/$defs/Concept"}]
+$.$defs.Concept.properties.skos:changeNote.$ref: only in regenerated: "#/$defs/StringOrLanguageTaggedValueOrChoiceList"
+$.$defs.Concept.properties.skos:changeNote.anyOf: only in original: [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}, {"type": "array", "items": {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}]}}]
+$.$defs.Concept.properties.skos:definition.$ref: only in regenerated: "#/$defs/StringOrLanguageTaggedValueOrChoiceList"
+$.$defs.Concept.properties.skos:definition.anyOf: only in original: [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}, {"type": "array", "items": {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}]}}]
+$.$defs.Concept.properties.skos:editorialNote.$ref: only in regenerated: "#/$defs/StringOrLanguageTaggedValueOrChoiceList"
+$.$defs.Concept.properties.skos:editorialNote.anyOf: only in original: [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}, {"type": "array", "items": {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}]}}]
+$.$defs.Concept.properties.skos:historyNote.$ref: only in regenerated: "#/$defs/StringOrLanguageTaggedValueOrChoiceList"
+$.$defs.Concept.properties.skos:historyNote.anyOf: only in original: [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}, {"type": "array", "items": {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}]}}]
+$.$defs.Concept.properties.skos:inScheme.$ref: only in regenerated: "#/$defs/IdReferenceOrIdReferenceList"
+$.$defs.Concept.properties.skos:inScheme.anyOf: only in original: [{"type": "object", "additionalProperties": false, "properties": {"@id": {"type": "string"}}, "required": ["@id"]}, {"type": "array", "items": {"type": "object", "additionalProperties": false, "proper
+$.$defs.Concept.properties.skos:narrower.items.$ref: only in regenerated: "#/$defs/ConceptRefOrConcept"
+$.$defs.Concept.properties.skos:narrower.items.anyOf: only in original: [{"$ref": "#/$defs/ConceptRef"}, {"$ref": "#/$defs/Concept"}]
+$.$defs.Concept.properties.skos:note.$ref: only in regenerated: "#/$defs/StringOrLanguageTaggedValueOrChoiceList"
+$.$defs.Concept.properties.skos:note.anyOf: only in original: [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}, {"type": "array", "items": {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}]}}]
+$.$defs.Concept.properties.skos:prefLabel.$ref: only in regenerated: "#/$defs/StringOrLanguageTaggedValueOrLanguageTaggedValueList"
+$.$defs.Concept.properties.skos:prefLabel.anyOf: only in original: [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}, {"type": "array", "items": {"$ref": "#/$defs/LanguageTaggedValue"}}]
+$.$defs.Concept.properties.skos:scopeNote.$ref: only in regenerated: "#/$defs/StringOrLanguageTaggedValueOrChoiceList"
+$.$defs.Concept.properties.skos:scopeNote.anyOf: only in original: [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}, {"type": "array", "items": {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}]}}]
+$.$defs.Concept.properties.skos:topConceptOf.$ref: only in regenerated: "#/$defs/IdReferenceOrIdReferenceList"
+$.$defs.Concept.properties.skos:topConceptOf.anyOf: only in original: [{"type": "object", "additionalProperties": false, "properties": {"@id": {"type": "string"}}, "required": ["@id"]}, {"type": "array", "items": {"type": "object", "additionalProperties": false, "proper
+$.$defs.ConceptRef: only in original: {"type": "object", "additionalProperties": false, "description": "A reference to a SKOS Concept by URI.", "properties": {"@id": {"type": "string", "description": "URI of the referenced concept."}}, "r
+$.$defs.ConceptRefOrConcept: only in regenerated: {"anyOf": [{"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "URI of the referenced concept."}}, "description": "A referenc
+$.$defs.IdReferenceOrIdReferenceList: only in regenerated: {"anyOf": [{"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string"}}}, {"type": "array", "items": {"type": "object", "required": ["@id"], "additi
+$.$defs.StringOrLanguageTaggedValueOrChoiceList: only in regenerated: {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}, {"type": "array", "items": {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/StringOrLanguageTaggedValueOrChoiceListChoiceList"}]
+$.$defs.StringOrLanguageTaggedValueOrChoiceListChoiceList: only in regenerated: {"type": "object", "description": "An RDF literal value with a language tag, serialized as a JSON-LD value object.", "properties": {"@value": {"type": "string", "description": "The text content."}, "@
+$.$defs.StringOrLanguageTaggedValueOrLanguageTaggedValueList: only in regenerated: {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}, {"type": "array", "items": {"$ref": "#/$defs/LanguageTaggedValue"}}]}
+
+skosConcept: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

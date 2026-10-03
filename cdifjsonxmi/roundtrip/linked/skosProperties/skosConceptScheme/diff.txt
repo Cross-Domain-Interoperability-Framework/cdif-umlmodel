@@ -1,0 +1,48 @@
+skosConceptScheme: 41 exact difference(s)
+$.$defs.Concept: only in original: {"$ref": "../skosConcept/schema.yaml"}
+$.$defs.ConceptOrIdReference: only in regenerated: {"anyOf": [{"$ref": "../../../../../../../metadataBuildingBlocks/_sources/skosProperties/skosConcept/schema.yaml"}, {"type": "object", "required": ["@id"], "additionalProperties": false, "properties":
+$.$defs.ConceptSchemeDcterms_description: only in regenerated: {"type": "object", "description": "An RDF literal value with a language tag, serialized as a JSON-LD value object. Inlined from skosConcept (the resolver does not preserve cross-file '#/$defs/...' fra
+$.$defs.ConceptSchemeDcterms_title: only in regenerated: {"type": "object", "description": "An RDF literal value with a language tag, serialized as a JSON-LD value object. Inlined from skosConcept (the resolver does not preserve cross-file '#/$defs/...' fra
+$.$defs.LanguageTaggedValue: only in original: {"type": "object", "description": "An RDF literal value with a language tag, serialized as a JSON-LD value object. Inlined from skosConcept (the resolver does not preserve cross-file '#/$defs/...' fra
+$.$defs.StringOrLanguageTaggedValueOrChoiceList: only in regenerated: {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/StringOrLanguageTaggedValueOrChoiceListLanguageTaggedValue"}, {"type": "array", "items": {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/StringOrLangu
+$.$defs.StringOrLanguageTaggedValueOrChoiceListChoiceList: only in regenerated: {"type": "object", "description": "An RDF literal value with a language tag, serialized as a JSON-LD value object. Inlined from skosConcept (the resolver does not preserve cross-file '#/$defs/...' fra
+$.$defs.StringOrLanguageTaggedValueOrChoiceListLanguageTaggedValue: only in regenerated: {"type": "object", "description": "An RDF literal value with a language tag, serialized as a JSON-LD value object. Inlined from skosConcept (the resolver does not preserve cross-file '#/$defs/...' fra
+$.$defs.StringOrLanguageTaggedValueOrLanguageTaggedValueList: only in regenerated: {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/StringOrLanguageTaggedValueOrLanguageTaggedValueListLanguageTaggedValue"}, {"type": "array", "items": {"$ref": "#/$defs/StringOrLanguageTaggedValueOrLa
+$.$defs.StringOrLanguageTaggedValueOrLanguageTaggedValueListLanguageTaggedValue: only in regenerated: {"type": "object", "description": "An RDF literal value with a language tag, serialized as a JSON-LD value object. Inlined from skosConcept (the resolver does not preserve cross-file '#/$defs/...' fra
+$.$defs.StringOrLanguageTaggedValueOrLanguageTaggedValueListLanguageTaggedValueList: only in regenerated: {"type": "object", "description": "An RDF literal value with a language tag, serialized as a JSON-LD value object. Inlined from skosConcept (the resolver does not preserve cross-file '#/$defs/...' fra
+$.$defs.StringOrOption2: only in regenerated: {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/StringOrOption2Option2"}]}
+$.$defs.StringOrOption2Option2: only in regenerated: {"type": "object", "properties": {"@id": {"type": "string"}, "schema:name": {"type": "string"}}}
+$.$defs.StringOrOption2OrChoiceList: only in regenerated: {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/StringOrOption2OrChoiceListOption2"}, {"type": "array", "items": {"$ref": "#/$defs/StringOrOption2"}}]}
+$.$defs.StringOrOption2OrChoiceListOption2: only in regenerated: {"type": "object", "properties": {"@id": {"type": "string"}, "schema:name": {"type": "string"}}}
+$.properties.dcterms:creator.$ref: only in regenerated: "#/$defs/StringOrOption2OrChoiceList"
+$.properties.dcterms:creator.anyOf: only in original: [{"type": "string"}, {"type": "object", "properties": {"@id": {"type": "string"}, "schema:name": {"type": "string"}}}, {"type": "array", "items": {"anyOf": [{"type": "string"}, {"type": "object", "pro
+$.properties.dcterms:description.anyOf[1].$ref:
+    original:    "#/$defs/LanguageTaggedValue"
+    regenerated: "#/$defs/ConceptSchemeDcterms_description"
+$.properties.dcterms:title.anyOf[1].$ref:
+    original:    "#/$defs/LanguageTaggedValue"
+    regenerated: "#/$defs/ConceptSchemeDcterms_title"
+$.properties.skos:altLabel.$ref: only in regenerated: "#/$defs/StringOrLanguageTaggedValueOrChoiceList"
+$.properties.skos:altLabel.anyOf: only in original: [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}, {"type": "array", "items": {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}]}}]
+$.properties.skos:changeNote.$ref: only in regenerated: "#/$defs/StringOrLanguageTaggedValueOrChoiceList"
+$.properties.skos:changeNote.anyOf: only in original: [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}, {"type": "array", "items": {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}]}}]
+$.properties.skos:definition.$ref: only in regenerated: "#/$defs/StringOrLanguageTaggedValueOrChoiceList"
+$.properties.skos:definition.anyOf: only in original: [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}, {"type": "array", "items": {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}]}}]
+$.properties.skos:editorialNote.$ref: only in regenerated: "#/$defs/StringOrLanguageTaggedValueOrChoiceList"
+$.properties.skos:editorialNote.anyOf: only in original: [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}, {"type": "array", "items": {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}]}}]
+$.properties.skos:example.$ref: only in regenerated: "#/$defs/StringOrLanguageTaggedValueOrChoiceList"
+$.properties.skos:example.anyOf: only in original: [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}, {"type": "array", "items": {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}]}}]
+$.properties.skos:hasTopConcept.items.$ref: only in regenerated: "#/$defs/ConceptOrIdReference"
+$.properties.skos:hasTopConcept.items.anyOf: only in original: [{"$ref": "#/$defs/Concept"}, {"type": "object", "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "URI reference to a concept defined elsewhere"}}, "required": ["
+$.properties.skos:hiddenLabel.$ref: only in regenerated: "#/$defs/StringOrLanguageTaggedValueOrChoiceList"
+$.properties.skos:hiddenLabel.anyOf: only in original: [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}, {"type": "array", "items": {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}]}}]
+$.properties.skos:historyNote.$ref: only in regenerated: "#/$defs/StringOrLanguageTaggedValueOrChoiceList"
+$.properties.skos:historyNote.anyOf: only in original: [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}, {"type": "array", "items": {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}]}}]
+$.properties.skos:note.$ref: only in regenerated: "#/$defs/StringOrLanguageTaggedValueOrChoiceList"
+$.properties.skos:note.anyOf: only in original: [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}, {"type": "array", "items": {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}]}}]
+$.properties.skos:prefLabel.$ref: only in regenerated: "#/$defs/StringOrLanguageTaggedValueOrLanguageTaggedValueList"
+$.properties.skos:prefLabel.anyOf: only in original: [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}, {"type": "array", "items": {"$ref": "#/$defs/LanguageTaggedValue"}}]
+$.properties.skos:scopeNote.$ref: only in regenerated: "#/$defs/StringOrLanguageTaggedValueOrChoiceList"
+$.properties.skos:scopeNote.anyOf: only in original: [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}, {"type": "array", "items": {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/LanguageTaggedValue"}]}}]
+
+skosConceptScheme: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

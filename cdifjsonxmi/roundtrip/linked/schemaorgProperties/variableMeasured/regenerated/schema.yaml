@@ -1,0 +1,90 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+description: >-
+  Schema.org PropertyValue-based variableMeasured. Defines properties for a measured variable
+  in a dataset, typed as schema:PropertyValue.
+type: object
+properties:
+  '@type':
+    type: array
+    items:
+      type: string
+    contains:
+      anyOf:
+      - const: 'schema:PropertyValue'
+      - const: 'schema:PropertyValueSpecification'
+    minItems: 1
+    description: >-
+      Must include schema:PropertyValue - a measured VALUE - or schema:PropertyValueSpecification
+      - a SPECIFICATION of one, stating the permitted range, default or unit rather than an
+      observed result. Protocol and method descriptions declare the latter, and pinning the
+      array to PropertyValue alone left them no valid spelling. Additional type URIs may be
+      included.
+  '@id':
+    type: string
+  'schema:name':
+    type: string
+    description: string label associated with the variable in the dataset serialization
+  'schema:description':
+    default: missing
+    type: string
+  'schema:alternateName':
+    type: array
+    items:
+      type: string
+      description: human intelligible name for variable that conveys semantics
+  'schema:measurementTechnique':
+    anyOf:
+    - type: string
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+          description: reference to a skos concept
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml
+    description: Text description or URI specifying how values for the variable were obtained.
+  'schema:propertyID':
+    type: array
+    items:
+      '$ref': '#/$defs/StringOrIdReferenceOrDefinedTerm'
+    description: identifier or name for the property concept
+  'schema:unitText':
+    type: string
+    description: unit of measurement as text
+  'schema:unitCode':
+    '$ref': '#/$defs/StringOrIdReferenceOrDefinedTerm'
+    description: URI or code identifying the unit of measure
+  'schema:minValue':
+    type: number
+    description: minimum numeric value in the dataset
+  'schema:maxValue':
+    type: number
+    description: maximum numeric value in the dataset
+  'schema:url':
+    '$ref': '#/$defs/StringOrLabeledLink'
+required:
+- '@type'
+- 'schema:name'
+'$defs':
+  StringOrIdReferenceOrDefinedTerm:
+    anyOf:
+    - type: string
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml
+  StringOrLabeledLink:
+    anyOf:
+    - type: string
+      format: uri
+      description: link to a web page useful for interpreting the variable
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml

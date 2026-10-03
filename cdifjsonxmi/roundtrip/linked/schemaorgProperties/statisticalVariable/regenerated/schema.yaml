@@ -1,0 +1,75 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+description: >-
+  A statistical variable description using schema.org/StatisticalVariable. Defines a variable
+  that represents a statistical measure, such as median income or unemployment rate.
+type: object
+properties:
+  '@type':
+    type: array
+    items:
+      type: string
+    contains:
+      const: 'schema:StatisticalVariable'
+    minItems: 1
+  '@id':
+    type: string
+  'schema:name':
+    type: string
+    description: string label for the statistical variable
+  'schema:description':
+    type: string
+  'schema:alternateName':
+    type: array
+    items:
+      type: string
+      description: human intelligible name for variable that conveys semantics
+  'schema:measurementTechnique':
+    anyOf:
+    - type: string
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+          description: reference to a skos concept
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml
+    description: Text description or URI identifying the measurement method.
+  'schema:statType':
+    '$ref': '#/$defs/StringOrIdReferenceOrDefinedTerm'
+  'schema:measuredProperty':
+    '$ref': '#/$defs/Property'
+required:
+- '@type'
+- 'schema:name'
+- 'schema:measuredProperty'
+'$defs':
+  Property:
+    type: object
+    properties:
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'schema:Property'
+        minItems: 1
+      '@id':
+        type: string
+        description: reference to a skos concept for the property
+      'schema:name':
+        '$ref': '#/$defs/StringOrIdReferenceOrDefinedTerm'
+  StringOrIdReferenceOrDefinedTerm:
+    anyOf:
+    - type: string
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml

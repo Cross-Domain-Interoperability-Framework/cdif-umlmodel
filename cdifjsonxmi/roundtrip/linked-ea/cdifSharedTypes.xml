@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<XMI xmi.version="1.1" xmlns:UML="omg.org/UML1.3">
+	<XMI.header>
+		<XMI.documentation>
+			<XMI.exporter>Enterprise Architect</XMI.exporter>
+			<XMI.exporterVersion>2.5</XMI.exporterVersion>
+		</XMI.documentation>
+	</XMI.header>
+	<XMI.content>
+		<UML:Model name="cdifSharedTypes" xmi.id="MX_EAID_5ABBD8A5_A836_5461_82DD_25674ECE819F">
+			<UML:Namespace.ownedElement>
+				<UML:Class name="EARootClass" xmi.id="EAID_11111111_5487_4080_A7F4_41526CB0AA00" isRoot="true" isLeaf="false" isAbstract="false"/>
+				<UML:Package name="cdifSharedTypes" xmi.id="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D" isRoot="false" isLeaf="false" isAbstract="false" visibility="public">
+					<UML:ModelElement.taggedValue>
+						<UML:TaggedValue tag="documentation" value="https://w3id.org/cdif/shared/xmi/"/>
+						<UML:TaggedValue tag="isSpecification" value="false"/>
+						<UML:TaggedValue tag="ea_stype" value="Public"/>
+						<UML:TaggedValue tag="ea_eleType" value="package"/>
+						<UML:TaggedValue tag="version" value="1.0"/>
+						<UML:TaggedValue tag="ea_guid" value="{2E10CBF3-328D-5ae0-9F7F-16265F98612D}"/>
+					</UML:ModelElement.taggedValue>
+					<UML:Namespace.ownedElement>
+						<UML:Class name="DataDownload" xmi.id="EAID_6E8E7C0A_EE5B_59ee_B87A_6AD25480A8F9" visibility="public" namespace="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D" isRoot="false" isLeaf="false" isAbstract="true" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Abstract base of the 2 schema:DataDownload profiles in schemaorgProperties/actionResult, schemaorgProperties/dataDownload. Each specializes it; this holds the attributes identical in all of them.&#xA;:rdfType: ``schema:DataDownload``"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="Class"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D"/>
+								<UML:TaggedValue tag="ea_guid" value="{6E8E7C0A-EE5B-59ee-B87A-6AD25480A8F9}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Class>
+						<UML:Class name="EntryPoint" xmi.id="EAID_FA02B167_F1AF_5d87_B09B_EF73E2FF578C" visibility="public" namespace="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D" isRoot="false" isLeaf="false" isAbstract="true" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Abstract base of the 2 schema:EntryPoint profiles in schemaorgProperties/action, schemaorgProperties/linkRole. Each specializes it; this holds the attributes identical in all of them.&#xA;:rdfType: ``schema:EntryPoint``"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="Class"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D"/>
+								<UML:TaggedValue tag="ea_guid" value="{FA02B167-F1AF-5d87-B09B-EF73E2FF578C}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Class>
+						<UML:Class name="GeoShape" xmi.id="EAID_05C4420B_F42C_54e3_BCE2_98D97851342D" visibility="public" namespace="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D" isRoot="false" isLeaf="false" isAbstract="true" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Abstract base of the 2 schema:GeoShape profiles in schemaorgProperties/spatialExtent. Each specializes it; this holds the attributes identical in all of them.&#xA;:rdfType: ``schema:GeoShape``"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="DataType"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D"/>
+								<UML:TaggedValue tag="ea_guid" value="{05C4420B-F42C-54e3-BCE2-98D97851342D}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Class>
+						<UML:Class name="ProductModel" xmi.id="EAID_A9517249_FF8F_5f9c_8A65_EC1F2D19B0A8" visibility="public" namespace="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D" isRoot="false" isLeaf="false" isAbstract="true" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Abstract base of the 2 schema:ProductModel profiles in schemaorgProperties/instrument. Each specializes it; this holds the attributes identical in all of them.&#xA;:rdfType: ``schema:ProductModel``"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="Class"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D"/>
+								<UML:TaggedValue tag="ea_guid" value="{A9517249-FF8F-5f9c-8A65-EC1F2D19B0A8}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Class>
+						<UML:Class name="ProperInterval" xmi.id="EAID_78546318_1C7C_5dd2_AF0C_F10F2B0D4D4E" visibility="public" namespace="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D" isRoot="false" isLeaf="false" isAbstract="true" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Abstract base of the 2 time:ProperInterval profiles in schemaorgProperties/temporalExtent. Each specializes it; this holds the attributes identical in all of them.&#xA;:rdfType: ``time:ProperInterval``"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="Class"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D"/>
+								<UML:TaggedValue tag="ea_guid" value="{78546318-1C7C-5dd2-AF0C-F10F2B0D4D4E}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Classifier.feature>
+								<UML:Attribute name="schema_description" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:StructuralFeature.type>
+										<UML:Classifier xmi.idref="eaxmiid_String"/>
+									</UML:StructuralFeature.type>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;free text description of the temporal interval&#xA;:jsonName: &quot;schema:description&quot;"/>
+										<UML:TaggedValue tag="type" value="String"/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="false"/>
+										<UML:TaggedValue tag="position" value="0"/>
+										<UML:TaggedValue tag="lowerBound" value="0"/>
+										<UML:TaggedValue tag="upperBound" value="1"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{E03AB50F-05DD-5f7b-90EB-35D7EA448BFE}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+							</UML:Classifier.feature>
+						</UML:Class>
+						<UML:Class name="PropertyValue" xmi.id="EAID_BFC2535A_3D50_5350_B457_CFC692BD42A0" visibility="public" namespace="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D" isRoot="false" isLeaf="false" isAbstract="true" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Abstract base of the 2 schema:PropertyValue profiles in bioschemasProperties/cdifBioschemasProperties, schemaorgProperties/additionalProperty. Each specializes it; this holds the attributes identical in all of them.&#xA;:rdfType: ``schema:PropertyValue``"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="Class"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D"/>
+								<UML:TaggedValue tag="ea_guid" value="{BFC2535A-3D50-5350-B457-CFC692BD42A0}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Class>
+						<UML:Class name="PropertyValueSpecification" xmi.id="EAID_6B31E454_1B08_59b9_A8BA_FAE8AFE2B0AF" visibility="public" namespace="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D" isRoot="false" isLeaf="false" isAbstract="true" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Abstract base of the 2 schema:PropertyValueSpecification profiles in schemaorgProperties/action, schemaorgProperties/instrument. Each specializes it; this holds the attributes identical in all of them.&#xA;:rdfType: ``schema:PropertyValueSpecification``"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="Class"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D"/>
+								<UML:TaggedValue tag="ea_guid" value="{6B31E454-1B08-59b9-A8BA-FAE8AFE2B0AF}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Class>
+						<UML:Class name="Thing" xmi.id="EAID_43A8D84B_186E_5db4_9B20_AFCF529DD220" visibility="public" namespace="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D" isRoot="false" isLeaf="false" isAbstract="true" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Abstract base of the 3 schema:Thing profiles in bioschemasProperties/cdifBioschemasProperties, schemaorgProperties/action, schemaorgProperties/instrument. Each specializes it; this holds the attributes identical in all of them.&#xA;:rdfType: ``schema:Thing``"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="Class"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D"/>
+								<UML:TaggedValue tag="ea_guid" value="{43A8D84B-186E-5db4-9B20-AFCF529DD220}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Class>
+					</UML:Namespace.ownedElement>
+				</UML:Package>
+				<UML:Class name="String" xmi.id="eaxmiid_String" visibility="public" isRoot="true" isLeaf="false" isAbstract="false">
+					<UML:ModelElement.taggedValue>
+						<UML:TaggedValue tag="isSpecification" value="false"/>
+						<UML:TaggedValue tag="ea_stype" value="Primitive"/>
+						<UML:TaggedValue tag="ea_ntype" value="0"/>
+					</UML:ModelElement.taggedValue>
+				</UML:Class>
+			</UML:Namespace.ownedElement>
+		</UML:Model>
+	</XMI.content>
+	<XMI.extensions xmi.extender="Enterprise Architect 2.5">
+	</XMI.extensions>
+</XMI>

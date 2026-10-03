@@ -1,0 +1,24 @@
+webAPI: 11 exact difference(s)
+$.$defs.Action: only in original: {"$ref": "../action/schema.yaml"}
+$.$defs.DefinedTerm: only in original: {"$ref": "../definedTerm/schema.yaml"}
+$.$defs.Reference: only in original: {"$ref": "../../schemaorgProperties/labeledLink/schema.yaml"}
+$.$defs.StringXorLabeledLink: only in regenerated: {"oneOf": [{"default": "not specified", "type": "string"}, {"$ref": "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml"}]}
+$.properties.schema:documentation.oneOf[1].$ref:
+    original:    "#/$defs/Reference"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml"
+$.properties.schema:potentialAction.items.$ref:
+    original:    "#/$defs/Action"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/action/schema.yaml"
+$.properties.schema:serviceType.anyOf[1].$ref:
+    original:    "#/$defs/DefinedTerm"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml"
+$.properties.schema:termsOfService.$ref: only in regenerated: "#/$defs/StringXorLabeledLink"
+$.properties.schema:termsOfService.oneOf: only in original: [{"type": "string", "default": "not specified"}, {"$ref": "#/$defs/Reference"}]
+$.required[1]:
+    original:    "schema:potentialAction"
+    regenerated: "schema:termsOfService"
+$.required[2]:
+    original:    "schema:termsOfService"
+    regenerated: "schema:potentialAction"
+
+webAPI: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

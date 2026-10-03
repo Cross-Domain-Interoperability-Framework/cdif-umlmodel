@@ -1,0 +1,7 @@
+identifier: 2 exact difference(s)
+$.allOf:
+    original:    [{"required": ["@type"]}, {"anyOf": [{"required": ["schema:value"]}, {"required": ["schema:url"]}]}]
+    regenerated: [{"anyOf": [{"required": ["schema:value"]}, {"required": ["schema:url"]}]}]
+$.required: only in regenerated: ["@type"]
+
+identifier: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

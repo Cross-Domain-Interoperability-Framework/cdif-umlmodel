@@ -1,0 +1,41 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+description: >-
+  For more granularity on how a person contributed to a Dataset, use schema:Role. The schema.org
+  documentation does not state that the Role type is an expected data type of author, creator
+  and contributor, but that is addressed in this blog post (http://blog.schema.org/2014/06/introducing-role.html).
+  see https://github.com/ESIPFed/science-on-schema.org/blob/develop/guides/Dataset.md#roles-of-people
+type: object
+properties:
+  '@type':
+    default:
+    - 'schema:Role'
+    type: array
+    items:
+      type: string
+    contains:
+      const: 'schema:Role'
+    minItems: 1
+  'schema:roleName':
+    '$ref': >-
+      ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml
+  'schema:contributor':
+    '$ref': '#/$defs/IdReferenceOrPersonOrOrganization'
+required:
+- '@type'
+- 'schema:roleName'
+- 'schema:contributor'
+'$defs':
+  IdReferenceOrPersonOrOrganization:
+    anyOf:
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+          description: IRI reference to a Person or Organization defined elsewhere
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/person/schema.yaml
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/organization/schema.yaml

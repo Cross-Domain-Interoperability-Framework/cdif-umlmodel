@@ -1,0 +1,20 @@
+linkRole: 7 exact difference(s)
+$.$defs.LinkRoleEntryPoint: only in regenerated: {"type": "object", "properties": {"@type": {"default": ["schema:EntryPoint"], "type": "array", "items": {"type": "string"}, "contains": {"const": "schema:EntryPoint"}, "minItems": 1}, "schema:name": {
+$.$defs.cdifConceptOrTermOrString: only in original: {"$ref": "../../cdifDataType/cdifConceptOrTermOrString/schema.yaml"}
+$.properties.@type.default:
+    original:    "schema:LinkRole"
+    regenerated: ["schema:LinkRole"]
+$.properties.schema:linkRelationship.$ref:
+    original:    "#/$defs/cdifConceptOrTermOrString"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml"
+$.properties.schema:target.$ref: only in regenerated: "#/$defs/LinkRoleEntryPoint"
+$.properties.schema:target.properties: only in original: {"@type": {"default": "schema:EntryPoint", "type": "array", "items": {"type": "string"}, "contains": {"const": "schema:EntryPoint"}, "minItems": 1}, "schema:name": {"type": "string"}, "schema:url": {"
+$.properties.schema:target.type: only in original: "object"
+
+linkRole: 2 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)
+$.properties.@type.default:
+    original:    "schema:LinkRole"
+    regenerated: ["schema:LinkRole"]
+$.properties.schema:target.properties.@type.default:
+    original:    "schema:EntryPoint"
+    regenerated: ["schema:EntryPoint"]

@@ -1,0 +1,41 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: Action result
+description: >-
+  The result of a schema:Action invoked on a schema:WebAPI distribution - documents the serialization/format
+  of the data the service returns. Typed as schema:DataDownload but, unlike a file distribution,
+  an action result has no contentUrl/contentSize because the response is generated per request
+  (its size depends on the request). Profiles may extend this result; e.g. the CDIF Data Description
+  profile adds cdif:hasPhysicalMapping and cdi:characterSet.
+type: object
+properties:
+  '@type':
+    type: array
+    items:
+      type: string
+    contains:
+      const: 'schema:DataDownload'
+    minItems: 1
+    description: >-
+      Type of result object. Typically schema:DataDownload, but may include additional types.
+  'schema:name':
+    type: string
+    description: text label for the result/response format.
+  'schema:description':
+    type: string
+    description: description of the result/response representation.
+  'schema:encodingFormat':
+    type: array
+    items:
+      type: string
+    description: MIME type(s) of the response serialization.
+  'dcterms:conformsTo':
+    type: array
+    items:
+      type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+    description: identifier(s) for a standard or specification the response conforms to.

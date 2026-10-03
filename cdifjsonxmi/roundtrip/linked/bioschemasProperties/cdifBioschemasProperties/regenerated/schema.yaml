@@ -1,0 +1,328 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: CDIF Bioschemas Properties
+description: >-
+  Bioschemas classes and properties for laboratory workflow provenance in CDIF. Defines types
+  and properties from the Bioschemas vocabulary and the ARC Workflow Run RO-Crate profile
+  for describing lab processes, protocols, samples, parameters, equipment, and computational
+  tools.
+type: object
+properties:
+  'bios:executesLabProtocol':
+    '$ref': '#/$defs/LabProtocolOrIdReference'
+    description: >-
+      The laboratory protocol executed by this process. Links a LabProcess activity to the
+      LabProtocol it follows. In cdifProvActivity, also mapped to schema:actionProcess for
+      compatibility.
+  'bios:parameterValue':
+    type: array
+    items:
+      '$ref': '#/$defs/BioschemasPropertiesPropertyValue'
+    description: >-
+      Actual parameter values used during a lab process execution. Each entry is a schema:PropertyValue
+      recording a specific instrument setting or measurement condition (temperature, flow
+      rate, scan range, etc.).
+  'bios:labEquipment':
+    type: array
+    items:
+      anyOf:
+      - '$ref': '#/$defs/BioschemasPropertiesThing'
+      - type: object
+        required:
+        - '@id'
+        additionalProperties: false
+        properties:
+          '@id':
+            type: string
+            description: reference to equipment defined elsewhere
+    description: >-
+      Laboratory equipment used in a protocol. Instruments, devices, and apparatus employed
+      during the process.
+  'bios:computationalTool':
+    type: array
+    items:
+      anyOf:
+      - '$ref': '#/$defs/SoftwareApplication'
+      - type: object
+        required:
+        - '@id'
+        additionalProperties: false
+        properties:
+          '@id':
+            type: string
+            description: reference to a software tool defined elsewhere
+    description: >-
+      Software or computational tool used as part of a lab protocol to complete a part of
+      it.
+  'bios:reagent':
+    type: array
+    items:
+      '$ref': '#/$defs/StringOrOption23'
+    description: Materials or chemical substances used in protocol execution.
+'$defs':
+  BioschemasPropertiesPropertyValue:
+    type: object
+    description: >-
+      A schema:PropertyValue recording an actual parameter setting used during a lab process
+      execution. Contains the measured or configured value, units, and optionally a link back
+      to the FormalParameter definition via schema:propertyID.
+    properties:
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'schema:PropertyValue'
+        minItems: 1
+      '@id':
+        type: string
+      'schema:name':
+        type: string
+        description: Name of the parameter
+      'schema:value':
+        '$ref': '#/$defs/StringOrNumberOrBoolean'
+        description: The actual value (string, number, or boolean)
+      'schema:unitText':
+        type: string
+        description: Unit of measurement (e.g. degrees C, mL/min, mg)
+      'schema:propertyID':
+        anyOf:
+        - type: string
+        - type: object
+          additionalProperties: false
+          required:
+          - '@id'
+          properties:
+            '@id':
+              type: string
+        description: Link to the FormalParameter definition this value realizes
+    required:
+    - '@type'
+    - 'schema:name'
+  BioschemasPropertiesThing:
+    type: object
+    description: >-
+      Laboratory equipment or instrument described as a schema:DefinedTerm. Physical instruments
+      that don't have software versions — pyrolysis ovens, chromatographs, mass spectrometers,
+      etc.
+    properties:
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'schema:Thing'
+        minItems: 1
+        description: Must include schema:Thing. Typically also includes schema:DefinedTerm.
+      '@id':
+        type: string
+      'schema:name':
+        type: string
+        description: Name of the equipment
+      'schema:description':
+        type: string
+        description: Description including capabilities and specifications
+      'schema:identifier':
+        '$ref': '#/$defs/StringOrOption2'
+        description: Serial number or other formal identifier
+      'schema:url':
+        type: string
+        format: uri
+        description: URL to manufacturer or equipment documentation
+    required:
+    - 'schema:name'
+  ComputationalToolOrIdReference:
+    anyOf:
+    - '$ref': '#/$defs/SoftwareApplication'
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+  FormalParameterOrIdReference:
+    anyOf:
+    - '$ref': '#/$defs/FormalParameterOrIdReferenceFormalParameter'
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+  FormalParameterOrIdReferenceFormalParameter:
+    type: object
+    description: >-
+      A Bioschemas FormalParameter describing the shape and type of inputs and outputs of
+      a workflow protocol. Values are realized in process executions through bios:parameterValue
+      PropertyValue objects. In cdifProvActivity output, mapped to schema:MediaObject with
+      additionalType bios:FormalParameter.
+    properties:
+      '@type':
+        type: array
+        items:
+          type: string
+        description: Should include schema:MediaObject with additionalType bios:FormalParameter
+      '@id':
+        type: string
+      'schema:name':
+        type: string
+        description: Name matching the corresponding workflow parameter slot
+      'schema:description':
+        type: string
+        description: Description of what this parameter represents
+      'schema:additionalType':
+        type: array
+        items:
+          '$ref': >-
+            ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml
+        description: Further type classification (e.g. File, Dataset, PropertyValue, DataType)
+      'schema:encodingFormat':
+        type: array
+        items:
+          type: string
+        description: MIME type or URL for expected data format
+      'schema:defaultValue':
+        description: Default value for this parameter
+    required:
+    - 'schema:name'
+  LabEquipmentOrIdReference:
+    anyOf:
+    - '$ref': '#/$defs/BioschemasPropertiesThing'
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+  LabProtocol:
+    type: object
+    description: >-
+      A Bioschemas LabProtocol describing how a lab process should be carried out. Includes
+      equipment, reagents, computational tools, and expected parameters. Maps to schema:HowTo
+      in the cdifProvActivity context.
+    properties:
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'bios:LabProtocol'
+        minItems: 1
+      '@id':
+        type: string
+      'schema:name':
+        type: string
+        description: Name of the protocol
+      'schema:description':
+        type: string
+        description: Description of the protocol
+      'schema:url':
+        type: string
+        format: uri
+        description: URL to a published protocol document
+      'bios:labEquipment':
+        type: array
+        items:
+          '$ref': '#/$defs/LabEquipmentOrIdReference'
+        description: Equipment used in this protocol
+      'bios:computationalTool':
+        type: array
+        items:
+          '$ref': '#/$defs/ComputationalToolOrIdReference'
+        description: Software tools used in this protocol
+      'bios:reagent':
+        type: array
+        items:
+          '$ref': '#/$defs/StringOrOption22'
+        description: Reagents or materials used
+      'schema:intendedUse':
+        type: string
+        description: The protocol type or intended use as an ontology term or text
+      'schema:measurementMethod':
+        type: string
+        description: The analytical method implemented by this protocol
+      'schema:object':
+        type: array
+        items:
+          '$ref': '#/$defs/FormalParameterOrIdReference'
+        description: Expected input parameters (FormalParameter references)
+      'schema:result':
+        type: array
+        items:
+          '$ref': '#/$defs/FormalParameterOrIdReference'
+        description: Expected output parameters (FormalParameter references)
+    required:
+    - '@type'
+    - 'schema:name'
+  LabProtocolOrIdReference:
+    anyOf:
+    - '$ref': '#/$defs/LabProtocol'
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+          description: reference to a LabProtocol defined elsewhere
+  SoftwareApplication:
+    type: object
+    description: A software application used as part of a lab protocol.
+    properties:
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'schema:SoftwareApplication'
+      '@id':
+        type: string
+      'schema:name':
+        type: string
+      'schema:description':
+        type: string
+      'schema:url':
+        type: string
+        format: uri
+      'schema:version':
+        type: string
+    required:
+    - 'schema:name'
+  StringOrNumberOrBoolean:
+    anyOf:
+    - type: string
+    - type: number
+    - type: boolean
+  StringOrOption2:
+    anyOf:
+    - type: string
+    - '$ref': '#/$defs/StringOrOption2Option2'
+  StringOrOption22:
+    anyOf:
+    - type: string
+    - '$ref': '#/$defs/StringOrOption2Option22'
+  StringOrOption23:
+    anyOf:
+    - type: string
+      description: name or URI of the reagent
+    - '$ref': '#/$defs/StringOrOption2Option23'
+  StringOrOption2Option2:
+    type: object
+  StringOrOption2Option22:
+    type: object
+    properties:
+      '@id':
+        type: string
+      'schema:name':
+        type: string
+  StringOrOption2Option23:
+    type: object
+    properties:
+      '@id':
+        type: string
+      'schema:name':
+        type: string
+      'schema:description':
+        type: string

@@ -1,0 +1,6 @@
+derivedFrom: 1 exact difference(s)
+$.anyOf[2].$ref:
+    original:    "../../schemaorgProperties/labeledLink/schema.yaml"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml"
+
+derivedFrom: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

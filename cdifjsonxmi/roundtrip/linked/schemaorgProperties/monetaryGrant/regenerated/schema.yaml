@@ -1,0 +1,64 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+description: Funding acknowledgement properties, profile of schema.org/MonetaryGrant
+type: object
+properties:
+  '@type':
+    default:
+    - 'schema:MonetaryGrant'
+    type: array
+    items:
+      type: string
+    contains:
+      const: 'schema:MonetaryGrant'
+    minItems: 1
+  '@id':
+    type: string
+    description: URI identifier for this funding record
+  'schema:identifier':
+    '$ref': >-
+      ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml
+    description: identifier for a particular grant
+  'schema:description':
+    type: string
+    description: description of the funding or grant
+  'schema:name':
+    type: string
+    description: title of the grant
+  'schema:funder':
+    anyOf:
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+          description: >-
+            a identifier for an agent defined in this metadata, or externally; must be dereferenceable
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/person/schema.yaml
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/organization/schema.yaml
+allOf:
+- anyOf:
+  - required:
+    - 'schema:funder'
+  - required:
+    - 'schema:identifier'
+  - required:
+    - 'schema:name'
+'$defs':
+  IdReferenceOrPersonOrOrganization:
+    anyOf:
+    - type: object
+      required:
+      - '@id'
+      additionalProperties: false
+      properties:
+        '@id':
+          type: string
+          description: IRI reference to a Person or Organization defined elsewhere
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/person/schema.yaml
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/organization/schema.yaml
