@@ -256,10 +256,11 @@ Anything else stops the converter with an error, rather than being dropped.
 
 **All 50 blocks round-trip** (`roundtrip.py --linked`): `schemaorgProperties`,
 `skosProperties`, `provProperties`, `qualityProperties`, `bioschemasProperties` and
-`cdifDataType`. The only semantic differences are 19 bare-string `@type` defaults (18 in
-schemaorgProperties, one in cdifCatalogRecord), which come back wrapped as arrays by design;
-the other 40 blocks have no semantic differences. Exact differences are placement only: `required` and choice `anyOf`s at the
-top level or in `allOf`, and unions or nested objects written as local `$defs`.
+`cdifDataType`, with no semantic differences. (The 20 bare-string `@type` defaults that
+used to come back wrapped as arrays are now arrays in the sources, as the always-an-array
+`@type` policy requires.) Exact differences are placement only: `required` and choice
+`anyOf`s at the top level or in `allOf`, and unions or nested objects written as local
+`$defs`.
 
 Earlier checks, from when the set was identifier, person and organization: the examples
 and edge cases (2 + 4, 2 + 11, 2 + 9) validate the same way against the original and
