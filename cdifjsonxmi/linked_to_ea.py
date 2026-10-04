@@ -198,15 +198,16 @@ def emit_association(w, owner, end, ctx):
     """An association end (Canonical ownedAttribute with <association>) as an EA connector,
     written inside the owner's package:
     source end at the owner, non-navigable, 0..*; target end navigable, named after the role,
-    with the attribute's multiplicity, comment and GUID. The association is unnamed."""
+    with the attribute's multiplicity, comment and GUID."""
     assoc_id = end.find("association").get(f"{XMI}idref")
     u = ctx.assoc_uuids[assoc_id]
     owner_u = owner.get(f"{XMI}uuid")
     target_eaid, target_name = type_ref(end, ctx)
     target_kind = ctx.stubs.get(target_eaid, (target_name, ELEMENT_KINDS.get(
         end.find("type").get(f"{XMI}idref", ""), "Class")))[1]
-    # unnamed in EA, so diagrams show only the role name (the Canonical XMI keeps the name)
-    w.open("UML:Association", {"xmi.id": ea_id("EAID", u),
+    # named as in the Canonical XMI (Owner_role_Target): to-canonical-xmi derives association ids
+    # from the name, so unnamed ones would collide; hide_association_names.ps1 hides the labels
+    w.open("UML:Association", {"name": assoc_id.rsplit(".", 1)[-1], "xmi.id": ea_id("EAID", u),
                                "visibility": "public", "isRoot": "false", "isLeaf": "false",
                                "isAbstract": "false"})
     w.tagged([("documentation", comment_body(end)), ("ea_type", "Association"),

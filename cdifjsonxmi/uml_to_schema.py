@@ -683,6 +683,8 @@ def verbatim_definition(doc: Optional[str]) -> Optional[str]:
 #   :idRequired:                             -> @id is required
 #   :untypedRoot:                            -> with :extends:, the root has no type: object
 #   :contextRequired:                        -> with :contextSchema:, @context is required
+#   :escapedLiterals:                        -> on an enumeration: literal names are JSON string
+#                                               contents ("\r\n" is a line break), decoded
 #   :noOwnSchema:                            -> with :extends:, allOf of the parents' $refs only
 #   :objectUnion:                            -> a :union: that also declares type: object
 #   :extends: on a nested element            -> its $defs entry is allOf [$ref <parent block>, own schema]
@@ -722,7 +724,8 @@ _DIRECTIVE_NAMES = ("rdfType", "allowedTypes", "typeDefault", "typeDescription",
                     "itemsDescription", "noId", "alternativeOverrides", "schemaRef", "exportedDef",
                     "rootAlias", "rootDescription", "extends", "valueDescription", "closed",
                     "objectUnion", "valueSchema", "hasId", "idRequired", "untypedRoot",
-                    "orReference", "referenceFirst", "valueAllOf", "noOwnSchema", "contextRequired")
+                    "orReference", "referenceFirst", "valueAllOf", "noOwnSchema", "contextRequired",
+                    "escapedLiterals")
 _DIRECTIVE_RE = re.compile(r"\n:(" + "|".join(_DIRECTIVE_NAMES) + r"):")
 
 
@@ -905,6 +908,14 @@ def _union_def(cls: "UmlClass", ctx: "BuildContext") -> dict:
     if _directives(ctx, cls.doc).get("objectUnion"):
         schema = {"type": "object", **schema}
     return schema
+
+
+def _enum_values(en: "UmlClass", ctx: "BuildContext") -> list:
+    """An enumeration's literals as JSON values: decoded where :escapedLiterals: says they are
+    JSON-escaped (literals EA can't carry, such as line breaks)."""
+    if _directives(ctx, en.doc).get("escapedLiterals"):
+        return [json.loads(f'"{lit}"') for lit in en.literals]
+    return list(en.literals)
 
 
 def _bb_refs(node: Any, ctx: "BuildContext") -> Any:
@@ -1409,7 +1420,7 @@ def _resolve_property_type(prop: Property, ctx: BuildContext) -> Optional[dict]:
 
     if target.kind == "enumeration":
         # Emit literal-list enum
-        return {"type": "string", "enum": list(target.literals)}
+        return {"type": "string", "enum": _enum_values(target, ctx)}
 
     if ctx.iri_reference_type and target.name == ctx.iri_reference_type:
         return _iri_reference_value_schema()
@@ -1521,7 +1532,7 @@ def build_root_schema(
         for el in list(ctx.model.elements.values()):
             if element_bb_path(el.id) == ctx.root_bb_path and el.name not in ctx.local_defs                     and el not in classes and _directives(ctx, el.doc).get("exportedDef"):
                 if el.kind == "enumeration":
-                    ctx.local_defs[el.name] = {"type": "string", "enum": list(el.literals)}
+                    ctx.local_defs[el.name] = {"type": "string", "enum": _enum_values(el, ctx)}
                 elif el.kind == "class":
                     _inline_class_ref(el, ctx)
                 else:

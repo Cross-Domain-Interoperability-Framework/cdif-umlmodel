@@ -116,8 +116,10 @@ converts a linked set to EA XMI 1.1, one file per block (`<linked root>-ea/…/<
   its name.
 - **Associations:** an association end becomes an EA connector instead of an attribute. Its
   source end is at the owner, non-navigable, `0..*`. Its target end is named after the role
-  and carries the attribute's multiplicity, comment and GUID. The connector itself is
-  unnamed, so diagrams show only the role name; the Canonical XMI keeps the association name.
+  and carries the attribute's multiplicity, comment and GUID. The connector is named as in
+  the Canonical XMI (`Owner_role_Target`): to-canonical-xmi derives association identifiers
+  from their names. [`hide_association_names.ps1`](hide_association_names.ps1) hides the name
+  labels on diagrams, which then show only role names and multiplicities.
 - **Comments:** kept verbatim.
 
 The files name "Enterprise Architect" 2.5 as exporter and declare each element referenced
@@ -172,19 +174,27 @@ the building-block schemas. The chain, all scripted:
    regenerates each block. A block's package is recognized by its comment, the block's
    register URI.
 
-Pilot on the 58 blocks imported into EA, exported again: 58 of the 61 linked files come back
-identical to bblock_to_xmi.py's (ignoring element order, which Canonical XMI sorts); 57 of the
-58 schemas regenerate with no semantic differences. What doesn't survive yet:
+Pilot on the 58 blocks imported into EA, exported again: 59 of the 61 linked files come back
+identical to bblock_to_xmi.py's (ignoring element order, which Canonical XMI sorts), and all
+58 schemas regenerate with no semantic differences. Along the way:
 
-- **Unnamed associations.** to-canonical-xmi names an association's identifier after the
-  association, so unnamed ones collide (162 non-unique ids in its log) and get invented names
-  (`Person_TODOrelatesTo_Organization`). canonical_to_linked.py finds each end's association
-  by its memberEnd instead, but Achim's tools need the associations named.
-- **An enumeration literal of line breaks** (cdifTabularData's `"
-"`): EA's export writes it
-  as a raw newline, which XML reads as `"
-"`.
-- **`isAbstract` on a DataType** (`cdif.shared.GeoShape`) is not in the export.
+- **Associations are named** (`Owner_role_Target`): to-canonical-xmi names an association's
+  identifier after the association, so unnamed ones collided (162 non-unique ids in its log)
+  and got invented names (`Person_TODOrelatesTo_Organization`).
+  [`hide_association_names.ps1`](hide_association_names.ps1) hides the names on diagrams.
+- **Enumeration literals EA can't carry** (cdifTabularData's line terminators `"
+"`, which
+  EA's export writes as a raw line break that XML reads back as `"
+"`) are written
+  JSON-escaped, with `:escapedLiterals:`; uml_to_schema.py decodes them.
+
+Still open:
+
+- **Multiple generalization:** to-canonical-xmi names a generalization's identifier after its
+  owner only, so an element with two parents (cdifDataDescription's
+  `DataDescriptionVariableMeasured`) gets two generalizations with one id (2 non-unique ids
+  in its log). The composite profiles would add more.
+- **`isAbstract` on a DataType** (`cdif.shared.GeoShape`) is not in EA's export.
 - Canonical XMI trims the end of comment bodies and orders attributes and literals by
   identifier: trailing whitespace in descriptions and `enum` order don't round-trip (the
   comparison ignores both; neither changes what a schema accepts).

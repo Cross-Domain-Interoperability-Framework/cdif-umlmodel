@@ -797,8 +797,14 @@ class ModelBuilder:
         """A uml:Enumeration for an inline string enum, named after the property."""
         if not all(isinstance(v, str) for v in literals):
             raise Unmapped(f"{where}: non-string enum {literals}")
+        body = DEFINITION_HEADER
+        if any(not v.isprintable() or v != v.strip() for v in literals):
+            # literals EA can't carry (csvw:lineTerminators "\r\n": its export writes a raw line
+            # break, which XML reads back as "\n"): JSON-escaped text, which uml_to_schema decodes
+            literals = [json.dumps(v)[1:-1] for v in literals]
+            body += directive("escapedLiterals")
         elem = {"kind": "uml:Enumeration", "pkg": owner[1], "name": cap(local_role(role)),
-                "body": DEFINITION_HEADER, "attrs": [], "literals": list(literals)}
+                "body": body, "attrs": [], "literals": list(literals)}
         return self.add_unique(owner[1], elem["name"], elem)
 
     def element(self, schema, name, base_dir, where, fallback_name=None, fallback_pkg=None, extends=None,
