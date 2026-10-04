@@ -492,8 +492,13 @@ class ModelBuilder:
         candidate, n = name, 1
         while True:
             eid = self.element_id(pkg, candidate)
-            if eid not in self.elements or self.elements[eid] == {**elem, "name": candidate}:
-                return self.add(eid, {**elem, "name": candidate})
+            renamed = {**elem, "name": candidate}
+            if candidate != name:
+                # its association ids were made with the name it asked for
+                renamed["attrs"] = [{**a, "assoc": a["assoc"].replace(f".assoc.{name}_", f".assoc.{candidate}_", 1)}
+                                    if a.get("assoc") else a for a in elem["attrs"]]
+            if eid not in self.elements or self.elements[eid] == renamed:
+                return self.add(eid, renamed)
             n += 1
             candidate = f"{name}{n}"
 

@@ -151,6 +151,44 @@ in Windows PowerShell 5.1, since EA's COM objects aren't reachable from PowerShe
 Not yet done: the composite profiles (`profiles/cdifCompositeProfile`), which become
 classes specializing cdifCore and the modules they combine.
 
+## From Enterprise Architect back to JSON Schema (pilot)
+
+The aim: make the EA project normative, so that documentation, new classes and changed
+multiplicities edited in EA flow to Canonical (UCMIS) XMI for Achim Wackerow's tools and to
+the building-block schemas. The chain, all scripted:
+
+1. [`export_from_ea.ps1`](export_from_ea.ps1) `-Package linkTestEA4`: exports the package
+   from the running EA as UML 2.5 / XMI 2.5.1 (XMI type 22 in EA 16), to
+   `roundtrip/from-ea/<package>.xmi`. Exporting only reads the model.
+2. [`to_canonical.py`](to_canonical.py) `roundtrip/from-ea/linkTestEA4.xmi`: Achim's
+   [to-canonical-xmi](../../to-canonical-xmi) stylesheets, unchanged on disk, run by lxml
+   instead of Xalan/Saxon/sed. Two libxslt differences are corrected as the stylesheets
+   load (an `@name` pattern matching the namespaced `xmi:type`; `xsl:sort` collation); every
+   step's output is then the same XML as Xalan's. Writes `_canonical.xmi`,
+   `_canonical-unique-names.xmi` and `_validate-ids.log`; xmi:uuids under
+   `https://w3id.org/cdif/xmi/`.
+3. [`canonical_to_linked.py`](canonical_to_linked.py) `…_canonical-unique-names.xmi -o
+   roundtrip/from-ea/linked`: back to the linked layout, so `uml_to_schema.py --linked`
+   regenerates each block. A block's package is recognized by its comment, the block's
+   register URI.
+
+Pilot on the 58 blocks imported into EA, exported again: 58 of the 61 linked files come back
+identical to bblock_to_xmi.py's (ignoring element order, which Canonical XMI sorts); 57 of the
+58 schemas regenerate with no semantic differences. What doesn't survive yet:
+
+- **Unnamed associations.** to-canonical-xmi names an association's identifier after the
+  association, so unnamed ones collide (162 non-unique ids in its log) and get invented names
+  (`Person_TODOrelatesTo_Organization`). canonical_to_linked.py finds each end's association
+  by its memberEnd instead, but Achim's tools need the associations named.
+- **An enumeration literal of line breaks** (cdifTabularData's `"
+"`): EA's export writes it
+  as a raw newline, which XML reads as `"
+"`.
+- **`isAbstract` on a DataType** (`cdif.shared.GeoShape`) is not in the export.
+- Canonical XMI trims the end of comment bodies and orders attributes and literals by
+  identifier: trailing whitespace in descriptions and `enum` order don't round-trip (the
+  comparison ignores both; neither changes what a schema accepts).
+
 ## Reuse report
 
 `reuse_report.py` scans every `schema.yaml` under `_sources` (archive excluded) and writes

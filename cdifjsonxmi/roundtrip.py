@@ -79,6 +79,11 @@ def normalize(schema, base_dir):
             node["$ref"] = (base_dir / ref).resolve().as_posix()
         if node.get("items") == {}:
             node.pop("items")  # items: {} allows any item, as no items does
+        if isinstance(node.get("enum"), list):
+            # an enum is a set (canonical XMI orders enumeration literals by identifier)
+            node["enum"] = sorted(node["enum"], key=lambda v: json.dumps(v, sort_keys=True))
+        if isinstance(node.get("description"), str):
+            node["description"] = node["description"].rstrip()  # (canonical XMI trims comment ends)
         if set(node) == {"anyOf"} and len(node["anyOf"]) == 1:
             return walk(node["anyOf"][0], expanding)
         contains = node.get("contains")
