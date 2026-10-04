@@ -12,9 +12,12 @@ lxml (libxslt) runs after two adjustments made as they are loaded:
     (case-insensitive, then lowercase first), libxslt by code point. Each text sort becomes a
     case-folded sort with a case-swapped tie-break, which gives Xalan's order.
 
-One CDIF addition to step 3: a class with several generalizations (multiple inheritance,
-which DDI-CDI doesn't use) gets generalization ids naming the general
-(...-generalization_VariableMeasured), where step 3 would give them all one id.
+Two CDIF additions to step 3, where it would give several elements one id:
+  - an unnamed association (the EA model leaves them unnamed, so diagrams show only role
+    names) is named after its navigable end's role, Owner_role_Target, not
+    Owner_TODOrelatesTo_Target, and its id is built from that name;
+  - a class with several generalizations (multiple inheritance, which DDI-CDI doesn't use)
+    gets generalization ids naming the general (...-generalization_VariableMeasured).
 
 format.xslt (XSLT 2.0: trailing whitespace off comment bodies, then indenting) and the sed
 namespace edits of the Eclipse variant are done in Python. Checked against Xalan on the linked
@@ -54,6 +57,7 @@ def stylesheet(home, name):
             t.set("priority", t.get("priority", "0"))
     if name == "step-3":
         _name_generalizations(tree)
+        _name_associations(tree)
     for sort in list(tree.iter(XSL + "sort")):
         if sort.get("data-type", "text") != "text" or sort.get("lang"):
             continue
@@ -73,6 +77,37 @@ def _name_generalizations(tree):
     for select in ("local-name()", "$WordSeparator", "key('id', general/@xmi:idref)/name"):
         etree.SubElement(rule, XSL + "value-of", select=select)
     owned_end.addnext(rule)  # (the xmi prefix is declared on the stylesheet element)
+
+
+def _role_name_param():
+    """<xsl:with-param name="AssociationName"> for an unnamed association: the role name of its
+    end owned by a class (the navigable end, the JSON property), else Achim's TODOrelatesTo."""
+    param = etree.Element(XSL + "with-param", name="AssociationName")
+    etree.SubElement(param, XSL + "variable", name="Role",
+                     select="key('ownedAttribute', memberEnd[1]/@xmi:idref | memberEnd[2]/@xmi:idref)/name")
+    choose = etree.SubElement(param, XSL + "choose")
+    etree.SubElement(etree.SubElement(choose, XSL + "when", test="$Role"), XSL + "value-of", select="$Role")
+    etree.SubElement(choose, XSL + "otherwise").text = "TODOrelatesTo"
+    return param
+
+
+def _name_associations(tree):
+    """Step 3 names an unnamed association Source_TODOrelatesTo_Target, but builds its identifier
+    from the unnamed input (<package>-packagedElement), so all unnamed associations of a package
+    share one id. The EA model leaves associations unnamed (diagrams then show only the role
+    names), so: name an unnamed association after its navigable end's role
+    (Core_relatedLink_LinkRole), and build its identifier from that name."""
+    association = next(t for t in tree.iter(XSL + "template")
+                       if t.get("match") == "packagedElement[@xmi:type='uml:Association']")
+    old = next(p for p in association.iter(XSL + "with-param") if p.get("name") == "AssociationName")
+    old.getparent().replace(old, _role_name_param())
+    create_id = next(t for t in tree.iter(XSL + "template") if t.get("name") == "CreateID")
+    owned_end = next(w for w in create_id.iter(XSL + "when") if "local-name()='ownedEnd'" in w.get("test", ""))
+    rule = etree.Element(XSL + "when", test="local-name()='packagedElement' and @xmi:type='uml:Association'")
+    call = etree.SubElement(rule, XSL + "call-template", name="AssociationName")
+    etree.SubElement(call, XSL + "with-param", name="AssociationNode", select=".")
+    call.append(_role_name_param())
+    owned_end.addnext(rule)
 
 
 def formatted(doc):

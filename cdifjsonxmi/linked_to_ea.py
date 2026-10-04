@@ -205,9 +205,9 @@ def emit_association(w, owner, end, ctx):
     target_eaid, target_name = type_ref(end, ctx)
     target_kind = ctx.stubs.get(target_eaid, (target_name, ELEMENT_KINDS.get(
         end.find("type").get(f"{XMI}idref", ""), "Class")))[1]
-    # named as in the Canonical XMI (Owner_role_Target): to-canonical-xmi derives association ids
-    # from the name, so unnamed ones would collide; hide_association_names.ps1 hides the labels
-    w.open("UML:Association", {"name": assoc_id.rsplit(".", 1)[-1], "xmi.id": ea_id("EAID", u),
+    # unnamed, so diagrams show only the role names of the ends (the JSON properties);
+    # to_canonical.py names it Owner_role_Target for the canonical XMI
+    w.open("UML:Association", {"xmi.id": ea_id("EAID", u),
                                "visibility": "public", "isRoot": "false", "isLeaf": "false",
                                "isAbstract": "false"})
     w.tagged([("documentation", comment_body(end)), ("ea_type", "Association"),

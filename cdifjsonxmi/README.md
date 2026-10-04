@@ -116,10 +116,10 @@ converts a linked set to EA XMI 1.1, one file per block (`<linked root>-ea/…/<
   its name.
 - **Associations:** an association end becomes an EA connector instead of an attribute. Its
   source end is at the owner, non-navigable, `0..*`. Its target end is named after the role
-  and carries the attribute's multiplicity, comment and GUID. The connector is named as in
-  the Canonical XMI (`Owner_role_Target`): to-canonical-xmi derives association identifiers
-  from their names. [`hide_association_names.ps1`](hide_association_names.ps1) hides the name
-  labels on diagrams, which then show only role names and multiplicities.
+  and carries the attribute's multiplicity, comment and GUID. The connector is unnamed, so
+  diagrams show only the role names (the JSON properties) and multiplicities; to_canonical.py
+  names it `Owner_role_Target` for the Canonical XMI. For associations named by hand in EA,
+  [`hide_association_names.ps1`](hide_association_names.ps1) hides the name labels on diagrams.
 - **Comments:** kept verbatim.
 
 The files name "Enterprise Architect" 2.5 as exporter and declare each element referenced
@@ -166,8 +166,8 @@ the building-block schemas. The chain, all scripted:
    [to-canonical-xmi](../../to-canonical-xmi) stylesheets, unchanged on disk, run by lxml
    instead of Xalan/Saxon/sed. Two libxslt differences are corrected as the stylesheets
    load (an `@name` pattern matching the namespaced `xmi:type`; `xsl:sort` collation); every
-   step's output is then the same XML as Xalan's, except the identifiers of a class's several
-   generalizations (see below). Writes `_canonical.xmi`,
+   step's output is then the same XML as Xalan's, except for two CDIF additions (below):
+   unnamed associations' names and identifiers, and a class's several generalizations. Writes `_canonical.xmi`,
    `_canonical-unique-names.xmi` and `_validate-ids.log`; xmi:uuids under
    `https://w3id.org/cdif/xmi/`.
 3. [`canonical_to_linked.py`](canonical_to_linked.py) `…_canonical-unique-names.xmi -o
@@ -179,10 +179,12 @@ Pilot on the 58 blocks imported into EA, exported again: 59 of the 61 linked fil
 identical to bblock_to_xmi.py's (ignoring element order, which Canonical XMI sorts), and all
 58 schemas regenerate with no semantic differences. Along the way:
 
-- **Associations are named** (`Owner_role_Target`): to-canonical-xmi names an association's
-  identifier after the association, so unnamed ones collided (162 non-unique ids in its log)
-  and got invented names (`Person_TODOrelatesTo_Organization`).
-  [`hide_association_names.ps1`](hide_association_names.ps1) hides the names on diagrams.
+- **Unnamed associations get names in the Canonical XMI:** step 3 names an unnamed
+  association `Source_TODOrelatesTo_Target` but builds its identifier from the unnamed input,
+  so all unnamed associations of a package collided (162 non-unique ids in its log).
+  to_canonical.py adjusts step 3 as it loads it: an unnamed association is named after its
+  navigable end's role (`Core_relatedLink_LinkRole`), and its identifier is built from that
+  name. The EA model keeps associations unnamed, so diagrams show no association labels.
 - **Enumeration literals EA can't carry** (cdifTabularData's line terminators `"
 "`, which
   EA's export writes as a raw line break that XML reads back as `"
