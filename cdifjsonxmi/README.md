@@ -47,8 +47,8 @@ block, composable the way the schemas are:
 
 - **Layout:** `OUT_DIR/<path under _sources>/<dir>.xmi`, plus `OUT_DIR/cdifCommonTypes.xmi`
   (the XSD datatypes, `IriReference` and `IdReference`, once), `OUT_DIR/cdifSharedTypes.xmi`
-  (abstract bases, below) and `OUT_DIR/cdifSharedUnions.xmi` (shared unions, below). Blocks
-  link to all three.
+  (abstract bases, below) and `OUT_DIR/cdifSharedUnions/<Name>.xmi`, one file per shared
+  union (below). Blocks link to them.
 - **Shared bases:** an RDF type defined by two or more elements of the same kind across the
   converted set (e.g. two different `schema:EntryPoint` objects in action and linkRole) gets
   one abstract base in `cdifSharedTypes.xmi`, and each of those elements specializes it by a
@@ -59,14 +59,15 @@ block, composable the way the schemas are:
   two passes over the set to find these.
 - **Shared unions:** unions are named by content, not by use (`StringOrLabeledLink`). A union
   with the same alternatives in two or more blocks, all of them references, scalars or `@id` /
-  IRI references, is defined once in `cdifSharedUnions.xmi` (ids `cdif.union.<Name>`), e.g.
-  `IdReferenceOrPersonOrOrganization` and `StringOrIdReferenceOrDefinedTerm`. Within a block,
-  uses of the same union share one element. Annotations that differ between uses (a
+  IRI references, is defined once, in its own file `cdifSharedUnions/<Name>.xmi` (id
+  `cdif.union.<Name>`, package URI `https://w3id.org/cdif/union/xmi/<Name>`), e.g.
+  `PersonOrOrganization` (used in five blocks) and `PersonOrOrganizationOrAgentInRole`. Within
+  a block, uses of the same union share one element. Annotations that differ between uses (a
   description on one alternative) are kept on the attribute as `:alternativeOverrides:`.
-  The shared file is imported after the blocks its unions reference and before the blocks
-  using them, so a union referencing a block that itself uses a shared union is not shared
-  (it would make a cycle EA can't import: attribute types to an element imported later stay
-  unlinked).
+  A union's file is imported after the blocks it references and before the blocks using it,
+  so a union is shared only if nothing it depends on (through block `$ref`s and the shared
+  unions those blocks use) depends back on it; otherwise it would make a cycle EA can't
+  import (attribute types to an element imported later stay unlinked), and stays local.
 - **`$defs` used across blocks:** a definition another block `$ref`s
   (`../../bioschemasProperties/cdifBioschemasProperties/schema.yaml#/$defs/ComputationalTool`)
   is an element of its block named by its key (`:exportedDef:`); the referencing attribute
@@ -334,13 +335,13 @@ Earlier checks, from when the set was identifier, person and organization: the e
 and edge cases (2 + 4, 2 + 11, 2 + 9) validate the same way against the original and
 regenerated schemas, with `$ref`s resolved from disk.
 
-The set converts to 61 EA XMI 1.1 files (58 blocks plus the common types, shared types and
-shared unions) with 180 associations and 43 generalizations (to the abstract shared bases,
+The set converts to 65 EA XMI 1.1 files (58 blocks plus the common types, shared types and
+five shared unions) with 166 associations and 43 generalizations (to the abstract shared bases,
 and the extensions of other blocks); every reference resolves to an element. Import order follows the references: common types,
-shared types, then each block (and the shared unions) before the blocks that reference it;
+shared types, then each block and shared union before the blocks that reference it;
 cdifStatistics' five associations to InstanceVariable are written in cdifInstanceVariable's
-file (see above). The set has 39 union datatypes; 29 more value-or-reference unions became plain types and
-associations (`:orReference:`, `common.IriReference`).
+file (see above). Value-or-reference unions are plain types and associations
+(`:orReference:`, `common.IriReference`).
 
 Without the opt-in flags, the identifier round trip had 14 differences and rejected both
 of its own examples: XSD types and `IriReference` became JSON-LD node objects, `@type`

@@ -9,9 +9,10 @@ bblock_to_xmi.py wrote.
 
 How the canonical model maps back:
   - a block's package is the one whose comment is its register URI
-    (https://w3id.org/cdif/bbr/metadata/<path>, written by linked_to_ea.py), so the folder
-    packages above it don't matter; cdifSharedTypes, cdifSharedUnions and cdifCommonTypes
-    (Common, XMLSchemaDataTypes) are found by name;
+    (https://w3id.org/cdif/bbr/metadata/<path>, written by linked_to_ea.py), a shared union's
+    the one whose comment is https://w3id.org/cdif/union/xmi/<Name>, so the folder packages
+    above them don't matter; cdifSharedTypes and cdifCommonTypes (Common, XMLSchemaDataTypes)
+    are found by name;
   - each classifier gets its linked id back: <register id>.<Name>, cdif.shared.<Name>,
     cdif.union.<Name>, common.<Name>, XMLSchemaDataTypes.<Name>; attributes <element id>.<name>;
   - types and generalizations in other files become hrefs; an association end gets the
@@ -30,8 +31,8 @@ import yaml
 from lxml import etree
 
 import bblock_to_xmi as b2x
-from bblock_to_xmi import (COMMON_TYPES_FILE, REGISTER_URI, SHARED_PREFIX, SHARED_TYPES_FILE, SHARED_UNIONS_FILE,
-                           UNION_NS)
+from bblock_to_xmi import (COMMON_TYPES_FILE, REGISTER_URI, SHARED_PREFIX, SHARED_TYPES_FILE, SHARED_UNIONS_DIR,
+                           UNION_NS, UNION_URI)
 from uml_to_schema import DEFAULT_SOURCES_DIR
 
 XMI = "{http://www.omg.org/spec/XMI/20131001}"
@@ -71,8 +72,8 @@ class Canonical:
                 key, prefix, kind = bb_path, b2x.bb_id(bb_path) + ".", "block"
             elif name == "cdifSharedTypes":
                 key, prefix, kind, bb_path = SHARED_TYPES_FILE, SHARED_PREFIX, "shared", None
-            elif name == "cdifSharedUnions":
-                key, prefix, kind, bb_path = SHARED_UNIONS_FILE, UNION_NS + ".", "union", None
+            elif doc.startswith(UNION_URI):
+                key, prefix, kind, bb_path = f"{SHARED_UNIONS_DIR}/{name}.xmi", UNION_NS + ".", "union", None
             elif name in SUPPORT_PACKAGES:
                 key, prefix, kind, bb_path = COMMON_TYPES_FILE, SUPPORT_PACKAGES[name] + ".", "common", None
             else:
@@ -180,21 +181,8 @@ class Canonical:
         """As bblock_to_xmi.shared_types_xmi / shared_unions write them."""
         if entry["kind"] == "shared":
             return b2x.shared_types_xmi(elements)
-        out = b2x.Writer(b2x.common_uid)
-        out.lines += b2x.XMI_HEADER
-        out.add(1, f'<uml:Model xmi:id="{UNION_NS}.model" xmi:uuid="{b2x.common_uid(UNION_NS + ".model")}">')
-        out.add(2, "<name>cdifSharedUnions</name>")
-        out.add(2, f'<packagedElement xmi:type="uml:Package" xmi:id="{UNION_NS}" xmi:uuid="{b2x.common_uid(UNION_NS)}">')
-        out.add(3, "<name>cdifSharedUnions</name>")
-        out.add(3, "<URI>https://w3id.org/cdif/union/xmi/</URI>")
-        for eid in sorted(elements):
-            out.element(3, eid, elements[eid])
-        for eid in sorted(elements):
-            out.associations(3, eid, elements[eid])
-        out.add(2, "</packagedElement>")
-        out.add(1, "</uml:Model>")
-        out.add(0, "</xmi:XMI>")
-        return "\n".join(out.lines) + "\n"
+        (eid, elem), = elements.items()  # a shared union's file holds that union
+        return b2x.union_file_xmi(eid, elem)
 
 
 def main():

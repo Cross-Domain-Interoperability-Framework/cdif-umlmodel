@@ -104,8 +104,9 @@ REGISTER_URI = "https://w3id.org/cdif/bbr/metadata/"
 COMMON_TYPES_FILE = "cdifCommonTypes.xmi"                # XSD datatypes and IriReference, shared
 SHARED_TYPES_FILE = "cdifSharedTypes.xmi"                # abstract bases of RDF types defined in several places
 SHARED_PREFIX = "cdif.shared."
-SHARED_UNIONS_FILE = "cdifSharedUnions.xmi"              # unions used by more than one block
+SHARED_UNIONS_DIR = "cdifSharedUnions"                  # unions used by more than one block, one file each
 UNION_NS = "cdif.union"
+UNION_URI = "https://w3id.org/cdif/union/xmi/"
 # Per-use annotations of a union alternative: not part of the union's identity.
 ALTERNATIVE_NOTES = ("description", "default", "title", "$comment", "examples")
 
@@ -138,8 +139,9 @@ class Link:
     def href_to_shared(self):
         return os.path.relpath(self.out_root / SHARED_TYPES_FILE, self.file.parent).replace(os.sep, "/")
 
-    def href_to_unions(self):
-        return os.path.relpath(self.out_root / SHARED_UNIONS_FILE, self.file.parent).replace(os.sep, "/")
+    def href_to_union(self, name):
+        return os.path.relpath(self.out_root / SHARED_UNIONS_DIR / f"{name}.xmi",
+                               self.file.parent).replace(os.sep, "/")
 
     def uid(self, xmi_id):
         """uuid5 of the element's URI: the block's register URI + '#' + the id local to the block."""
@@ -744,7 +746,7 @@ class ModelBuilder:
         self.union_occurrences.append((key, branches, keyword, base_dir, self.defs, self.shareable(stripped)))
         if key in self.union_plan:
             eid, base_notes, alts = self.union_plan[key]
-            type_ref = ("href", f"{self.link.href_to_unions()}#{eid}")
+            type_ref = ("href", f"{self.link.href_to_union(eid.rsplit('.', 1)[-1])}#{eid}")
         elif key in self.unions:
             type_ref, base_notes, alts = self.unions[key]
         else:
@@ -1456,7 +1458,8 @@ def reachable(bb_paths, sources):
 
 def shared_unions(builds, out_root, sources=None):
     """Unions whose content more than one block uses, and whose alternatives are all references
-    or scalars: built once in the shared unions file. Returns (union plan, XMI text or None)."""
+    or scalars: built once, each in its own file under cdifSharedUnions/. Returns (union plan,
+    {union name: XMI text})."""
     blocks_by_key, first = {}, {}
     for mb, link in builds:
         for key, branches, keyword, base_dir, defs, shareable in mb.union_occurrences:
@@ -1464,19 +1467,18 @@ def shared_unions(builds, out_root, sources=None):
                 blocks_by_key.setdefault(key, set()).add(link.bb_path)
                 first.setdefault(key, (branches, keyword, base_dir, defs))
     keys = [k for k in sorted(blocks_by_key) if len(blocks_by_key[k]) > 1]
-    # The shared file must be imported after the blocks its unions reference and before the
-    # blocks that use them: a union referencing a block that uses a shared union stays local.
+    # A union's file is imported after the blocks it references and before the blocks that use
+    # it, so a union is shared only if nothing it depends on depends back on it: through block
+    # $refs and through the shared unions those blocks use. Otherwise it stays local to its users.
     while True:
-        users = set().union(*(blocks_by_key[k] for k in keys))
-        # (through the blocks they reference in turn: an import cycle all the same)
-        local = [k for k in keys if (reachable(set(re.findall(r'"bb:([^"#]+)', k)), sources) if sources
-                                     else set(re.findall(r'"bb:([^"#]+)', k))) & users]
+        local = [k for k in keys if union_cycle(k, keys, blocks_by_key, sources)]
         if not local:
             break
         keys = [k for k in keys if k not in local]
     if not keys:
-        return {}, None
-    link = SharedLink(SHARED_UNIONS_FILE, UNION_NS, Path(out_root).resolve())
+        return {}, {}
+    # (all union files are in one directory, so one builder computes their hrefs)
+    link = SharedLink(f"{SHARED_UNIONS_DIR}/_.xmi", UNION_NS, Path(out_root).resolve())
     sb = ModelBuilder({}, link)
     plan = {}
     for key in keys:
@@ -1484,21 +1486,48 @@ def shared_unions(builds, out_root, sources=None):
         sb.defs = defs
         (_, eid), _ = sb.union_ref(branches, keyword, ("Shared", None), base_dir, "shared union")
         plan[key] = (eid, sb.unions[key][1], sb.unions[key][2])
+    return plan, {elem["name"]: union_file_xmi(eid, elem) for eid, elem in sorted(sb.elements.items())}
+
+
+def union_file_xmi(eid, elem):
+    """The file of one shared union: a package named after it (URI https://w3id.org/cdif/union/xmi/
+    <Name>) holding the union DataType and its associations."""
+    name = elem["name"]
     out = Writer(common_uid)
     out.lines += XMI_HEADER
-    out.add(1, f'<uml:Model xmi:id="{UNION_NS}.model" xmi:uuid="{common_uid(UNION_NS + ".model")}">')
-    out.add(2, "<name>cdifSharedUnions</name>")
-    out.add(2, f'<packagedElement xmi:type="uml:Package" xmi:id="{UNION_NS}" xmi:uuid="{common_uid(UNION_NS)}">')
-    out.add(3, "<name>cdifSharedUnions</name>")
-    out.add(3, "<URI>https://w3id.org/cdif/union/xmi/</URI>")
-    for eid in sorted(sb.elements):
-        out.element(3, eid, sb.elements[eid])
-    for eid in sorted(sb.elements):
-        out.associations(3, eid, sb.elements[eid])
+    out.add(1, f'<uml:Model xmi:id="{eid}.model" xmi:uuid="{common_uid(eid + ".model")}">')
+    out.add(2, f"<name>{name}</name>")
+    out.add(2, f'<packagedElement xmi:type="uml:Package" xmi:id="{eid}.pkg" xmi:uuid="{common_uid(eid + ".pkg")}">')
+    out.add(3, f"<name>{name}</name>")
+    out.add(3, f"<URI>{UNION_URI}{name}</URI>")
+    out.element(3, eid, elem)
+    out.associations(3, eid, elem)
     out.add(2, "</packagedElement>")
     out.add(1, "</uml:Model>")
     out.add(0, "</xmi:XMI>")
-    return plan, "\n".join(out.lines) + "\n"
+    return "\n".join(out.lines) + "\n"
+
+
+def union_cycle(key, keys, blocks_by_key, sources):
+    """Whether shared union `key` depends on itself: from the blocks it references, through
+    those blocks' $refs and the shared unions (of keys) they use, back to one of its users."""
+    refs = lambda k: set(re.findall(r'"bb:([^"#]+)', k))
+    uses = {}
+    for k in keys:
+        for b in blocks_by_key[k]:
+            uses.setdefault(b, set()).add(k)
+    seen, stack = set(), list(refs(key))
+    while stack:
+        b = stack.pop()
+        if b in seen:
+            continue
+        seen.add(b)
+        if key in uses.get(b, ()):
+            return True
+        stack.extend(block_deps(b, sources) if sources else ())
+        for k in uses.get(b, ()):
+            stack.extend(refs(k))
+    return False
 
 
 def shared_types_xmi(bases):
@@ -1552,12 +1581,19 @@ def write_linked(bblock_dirs, out_root):
             exports.setdefault(bb_path, set()).add(key)
     plan, bases = shared_bases(first, out_root)
     sources = next(p for p in Path(bblock_dirs[0]).resolve().parents if p.name == "_sources")
-    union_plan, unions_xml = shared_unions(first, out_root, sources)
-    for name, text in ((SHARED_TYPES_FILE, bases and shared_types_xmi(bases)), (SHARED_UNIONS_FILE, unions_xml)):
-        if text:
-            (out_root / name).write_text(text, encoding="utf-8")
-        elif (out_root / name).exists():
-            (out_root / name).unlink()
+    union_plan, union_files = shared_unions(first, out_root, sources)
+    if bases:
+        (out_root / SHARED_TYPES_FILE).write_text(shared_types_xmi(bases), encoding="utf-8")
+    elif (out_root / SHARED_TYPES_FILE).exists():
+        (out_root / SHARED_TYPES_FILE).unlink()
+    unions_dir = out_root / SHARED_UNIONS_DIR
+    for old in unions_dir.glob("*.xmi") if unions_dir.exists() else ():
+        old.unlink()
+    for name, text in union_files.items():
+        unions_dir.mkdir(exist_ok=True)
+        (unions_dir / f"{name}.xmi").write_text(text, encoding="utf-8")
+    if (out_root / "cdifSharedUnions.xmi").exists():
+        (out_root / "cdifSharedUnions.xmi").unlink()  # (the single file of earlier versions)
     results = {}
     for d in bblock_dirs:
         bb_path = Path(d).resolve().relative_to(
