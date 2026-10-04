@@ -708,7 +708,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Association xmi.id="EAID_F26AFA0D_225F_5867_8F78_A512FDC42B0D" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="ValueDomain_substantiveValueDomain_SubstantiveValueDomain" xmi.id="EAID_F26AFA0D_225F_5867_8F78_A512FDC42B0D" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -738,7 +738,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_23F7C806_5D4D_522b_BD38_716E180B0892" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="ValueDomain_sentinelValueDomain_SentinelValueDomain" xmi.id="EAID_23F7C806_5D4D_522b_BD38_716E180B0892" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -768,7 +768,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_AE2A2C74_1551_5a03_9CE3_12D17B2AA636" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="SentinelValueDomain_takesValuesFrom_EnumerationDomain" xmi.id="EAID_AE2A2C74_1551_5a03_9CE3_12D17B2AA636" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``&#xA;:idRefDescription: &quot;IRI or blank node identifier of the referenced node&quot;&#xA;:orReference: [&quot;value&quot;, {&quot;idReference&quot;: {&quot;description&quot;: &quot;JSON-LD @id reference to a node defined elsewhere in the graph&quot;}}]"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -798,7 +798,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_E2776460_03FE_5749_90DA_9E2D30E19204" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="SentinelValueDomain_cdi_isDescribedBy_ValueAndConceptDescription" xmi.id="EAID_E2776460_03FE_5749_90DA_9E2D30E19204" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;A ValueAndConceptDescription giving the formal description (ranges, patterns, classification level, expressions) of the values this domain admits.&#xA;:inlineOrByReference: ``inline``&#xA;:idRefDescription: &quot;IRI or blank node identifier of the referenced node&quot;&#xA;:orReference: [&quot;value&quot;, {&quot;idReference&quot;: {&quot;description&quot;: &quot;JSON-LD @id reference to a node defined elsewhere in the graph&quot;}}]&#xA;:jsonName: &quot;cdi:isDescribedBy&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -828,7 +828,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_F254025E_84A9_5828_946D_8A3239D07F4F" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="SubstantiveValueDomain_takesValuesFrom_EnumerationDomain" xmi.id="EAID_F254025E_84A9_5828_946D_8A3239D07F4F" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``&#xA;:idRefDescription: &quot;IRI or blank node identifier of the referenced node&quot;&#xA;:orReference: [&quot;value&quot;, {&quot;idReference&quot;: {&quot;description&quot;: &quot;JSON-LD @id reference to a node defined elsewhere in the graph&quot;}}]"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -858,7 +858,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_E818A676_920B_555e_A647_043A4220651C" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="SubstantiveValueDomain_cdi_isDescribedBy_ValueAndConceptDescription" xmi.id="EAID_E818A676_920B_555e_A647_043A4220651C" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;A ValueAndConceptDescription giving the formal description (ranges, patterns, classification level, expressions) of the values this domain admits.&#xA;:inlineOrByReference: ``inline``&#xA;:idRefDescription: &quot;IRI or blank node identifier of the referenced node&quot;&#xA;:orReference: [&quot;value&quot;, {&quot;idReference&quot;: {&quot;description&quot;: &quot;JSON-LD @id reference to a node defined elsewhere in the graph&quot;}}]&#xA;:jsonName: &quot;cdi:isDescribedBy&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

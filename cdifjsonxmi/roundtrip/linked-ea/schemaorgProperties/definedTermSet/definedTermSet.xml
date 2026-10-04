@@ -121,7 +121,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Association xmi.id="EAID_855CAAD0_29D9_5ee1_ACCD_716B6F69F28C" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="DefinedTermSet_hasDefinedTerm_DefinedTerm" xmi.id="EAID_855CAAD0_29D9_5ee1_ACCD_716B6F69F28C" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;The terms that make up this set. Each item is a schema:DefinedTerm.&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

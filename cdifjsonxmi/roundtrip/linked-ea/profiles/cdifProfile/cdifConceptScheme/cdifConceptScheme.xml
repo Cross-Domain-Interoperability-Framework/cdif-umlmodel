@@ -696,7 +696,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Association xmi.id="EAID_F02080DE_2B66_54ad_B3DF_4B93B7520717" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="ConceptScheme_hasTopConcept_cdifConcept" xmi.id="EAID_F02080DE_2B66_54ad_B3DF_4B93B7520717" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Top-level concepts in this scheme. Each item is a skos:Concept (inline or @id reference).&#xA;:inlineOrByReference: ``inline``&#xA;:idRefDescription: &quot;URI reference to a concept defined elsewhere&quot;&#xA;:orReference: [&quot;value&quot;, &quot;idReference&quot;]"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -726,7 +726,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_FCEB3543_F8E1_5b40_B35F_1F08B43357E0" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="ConceptScheme_schema_subjectOf_ConceptSchemeDataset" xmi.id="EAID_FCEB3543_F8E1_5b40_B35F_1F08B43357E0" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Catalog record describing this concept scheme as CDIF-conformant metadata. Must declare conformance to the cdifConceptScheme profile via dcterms:conformsTo and be typed as schema:Dataset with schema:additionalType including dcat:CatalogRecord.&#xA;:inlineOrByReference: ``inline``&#xA;:jsonName: &quot;schema:subjectOf&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -756,7 +756,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_54E1E9BD_C586_5ab6_8BB6_BAB6B5E33143" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="ConceptRefOrCdifConcept_cdifConcept_cdifConcept" xmi.id="EAID_54E1E9BD_C586_5ab6_8BB6_BAB6B5E33143" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

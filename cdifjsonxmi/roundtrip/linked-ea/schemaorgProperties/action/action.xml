@@ -380,7 +380,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Association xmi.id="EAID_7AB7260E_EEF5_5877_B897_83258C399D22" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="Action_target_ActionEntryPoint" xmi.id="EAID_7AB7260E_EEF5_5877_B897_83258C399D22" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;specifies the request target location and request syntax. Documentation of the URL end point and syntax to invoke the service. This schema doesn't handle post requests.&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -410,7 +410,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_42B28695_58D9_555b_AC45_EFF1D1AE1E4C" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="Action_result_ActionResult" xmi.id="EAID_42B28695_58D9_555b_AC45_EFF1D1AE1E4C" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;specifies the serialization scheme (encoding format, information model) for the expected representation of the data - documentation of the serialization format for the API response. See the actionResult building block.&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -440,7 +440,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_3735D8C4_A75F_51c7_8F42_4D111EC05075" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="Action_object_ActionObject" xmi.id="EAID_3735D8C4_A75F_51c7_8F42_4D111EC05075" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;The entity upon which the action is carried out, whose state is kept intact or changed. This is an open ended class for general description of Actions. When schema:Action (or a subclass) is used to describe operations for a WebAPI distribution, the object is implicitly the resource that is the subject of the containing metadata record, so this property would be superfluous.&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -470,7 +470,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_0743DF0E_F617_5a9d_8242_E1A29D89F8CA" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="Action_query-input_ActionPropertyValueSpecification" xmi.id="EAID_0743DF0E_F617_5a9d_8242_E1A29D89F8CA" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;set of explanations of the parameters in the URL template for the target.&#xA;:inlineOrByReference: ``inline``&#xA;:itemsDescription: &quot;Query input parameter for a web API action, typed as schema:PropertyValueSpecification.&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

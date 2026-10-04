@@ -189,7 +189,7 @@
 								<UML:TaggedValue tag="ea_guid" value="{D44A66DE-2218-58cd-8A45-7259CF199EF4}"/>
 							</UML:ModelElement.taggedValue>
 						</UML:Class>
-						<UML:Association xmi.id="EAID_2F7A754B_38A1_569b_8AA2_FC46E7A02442" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="DcatRoleOrConceptOrTermOrString_dcatRole_Role" xmi.id="EAID_2F7A754B_38A1_569b_8AA2_FC46E7A02442" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

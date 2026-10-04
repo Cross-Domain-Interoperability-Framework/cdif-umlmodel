@@ -464,7 +464,8 @@ Definition
 Definition
 ==========
 
-</body>
+
+:escapedLiterals:</body>
           <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifTabularData.LineTerminators"/>
         </ownedComment>
         <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.LineTerminators.CRLF" xmi:uuid="6e76891e-c699-54a5-99dd-d4c59ed846e8">
@@ -474,10 +475,10 @@ Definition
           <name>LF</name>
         </ownedLiteral>
         <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.LineTerminators.\r\n" xmi:uuid="7bed6231-dae1-5b9b-8539-dd96d0094f80">
-          <name>&#13;&#10;</name>
+          <name>\r\n</name>
         </ownedLiteral>
         <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.LineTerminators.\n" xmi:uuid="2f20c7dd-f4c3-5259-9097-8c290915c275">
-          <name>&#10;</name>
+          <name>\n</name>
         </ownedLiteral>
       </packagedElement>
       <packagedElement xmi:type="uml:Enumeration" xmi:id="cdif.bbr.metadata.cdifDataType.cdifTabularData.TableDirection" xmi:uuid="84f130e6-d754-5a57-bd2c-b82cf52b8093">

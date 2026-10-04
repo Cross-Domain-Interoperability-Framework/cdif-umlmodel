@@ -77,7 +77,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Association xmi.id="EAID_284A2C9B_DBF7_5f2f_A68B_17C22F964492" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="Discovery_variableMeasured_VariableMeasured" xmi.id="EAID_284A2C9B_DBF7_5f2f_A68B_17C22F964492" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;What does the dataset measure? (e.g., temperature, pressure)&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -107,7 +107,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_4A8F29D1_6515_54b2_A61F_21826DFD8060" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="Discovery_spatialCoverage_SpatialExtent" xmi.id="EAID_4A8F29D1_6515_54b2_A61F_21826DFD8060" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Geographic extent of resource content.&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -137,7 +137,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_DDA19FDC_A373_589b_BBDD_DD461E5FF35C" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="Discovery_dqv_hasQualityMeasurement_QualityMeasure" xmi.id="EAID_DDA19FDC_A373_589b_BBDD_DD461E5FF35C" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Quality measurements reported to assess the resource.&#xA;:inlineOrByReference: ``inline``&#xA;:jsonName: &quot;dqv:hasQualityMeasurement&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

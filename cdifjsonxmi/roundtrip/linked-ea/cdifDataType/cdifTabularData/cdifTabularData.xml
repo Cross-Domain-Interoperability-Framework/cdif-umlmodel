@@ -500,7 +500,7 @@
 								<UML:Stereotype name="enumeration"/>
 							</UML:ModelElement.stereotype>
 							<UML:ModelElement.taggedValue>
-								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;"/>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:escapedLiterals:"/>
 								<UML:TaggedValue tag="isSpecification" value="false"/>
 								<UML:TaggedValue tag="ea_stype" value="Enumeration"/>
 								<UML:TaggedValue tag="ea_ntype" value="0"/>
@@ -525,7 +525,7 @@
 										<UML:TaggedValue tag="ea_guid" value="{F1F99C1D-BFE7-5bcf-90AD-4CF079FE1866}"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
-								<UML:Attribute name="&#xD;&#xA;" changeable="frozen" visibility="public" ownerScope="classifier" targetScope="instance">
+								<UML:Attribute name="\r\n" changeable="frozen" visibility="public" ownerScope="classifier" targetScope="instance">
 									<UML:Attribute.initialValue>
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
@@ -533,7 +533,7 @@
 										<UML:TaggedValue tag="ea_guid" value="{7BED6231-DAE1-5b9b-8539-DD96D0094F80}"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
-								<UML:Attribute name="&#xA;" changeable="frozen" visibility="public" ownerScope="classifier" targetScope="instance">
+								<UML:Attribute name="\n" changeable="frozen" visibility="public" ownerScope="classifier" targetScope="instance">
 									<UML:Attribute.initialValue>
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
@@ -671,7 +671,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Association xmi.id="EAID_994D162D_F134_540a_AE2A_D4676DEF35C8" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="TabularData_cdif_hasPhysicalMapping_PhysicalMapping" xmi.id="EAID_994D162D_F134_540a_AE2A_D4676DEF35C8" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Links variables to their physical representation in this dataset.&#xA;:inlineOrByReference: ``inline``&#xA;:minItems: null&#xA;:jsonName: &quot;cdif:hasPhysicalMapping&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

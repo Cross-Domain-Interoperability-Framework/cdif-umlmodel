@@ -85,7 +85,7 @@
 								<UML:TaggedValue tag="ea_guid" value="{CEF481A5-608E-52e1-97DE-12E6161B3237}"/>
 							</UML:ModelElement.taggedValue>
 						</UML:Class>
-						<UML:Association xmi.id="EAID_EBFFC3CE_9EAC_53bb_A393_A52A7D639ADA" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="DataDescription_hasPrimaryKey_Key" xmi.id="EAID_EBFFC3CE_9EAC_53bb_A393_A52A7D639ADA" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Primary key of the dataset: a cdif:Key whose cdif:isComposedOf is an ordered list of cdi:InstanceVariables (from schema:variableMeasured) that uniquely identify each data instance.&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;value&quot;, {&quot;idReference&quot;: {&quot;description&quot;: &quot;object reference via URI or URI fragment to a cdif:Key defined elsewhere in the same document&quot;}}]"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -115,7 +115,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_90208F01_8941_5c1f_B8B6_FB6F2290FAAF" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="DataDescription_schema_variableMeasured_DataDescriptionVariableMeasured" xmi.id="EAID_90208F01_8941_5c1f_B8B6_FB6F2290FAAF" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``&#xA;:minItems: null&#xA;:jsonName: &quot;schema:variableMeasured&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -145,7 +145,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_B1CE223F_FCA0_58a2_9353_86D7D9A35791" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="DataDescriptionVariableMeasured_takesSentinelValuesFrom_SentinelValueDomain" xmi.id="EAID_B1CE223F_FCA0_58a2_9353_86D7D9A35791" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Sentinel (missing / not-applicable) value domain(s) for this variable (RepresentedVariable.takesSentinelValuesFrom).&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;value&quot;, &quot;idReference&quot;]&#xA;:schemaRef: &quot;cdifDataType/cdifValueDomain#/$defs/SentinelValueDomain&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -175,7 +175,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_55BF9787_6078_5f39_BBDA_9880BF4265BD" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="DataDescriptionVariableMeasured_takesSubstantiveValuesFrom_SubstantiveValueDomain" xmi.id="EAID_55BF9787_6078_5f39_BBDA_9880BF4265BD" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;The substantive value domain for this variable - the set of valid, meaningful values (RepresentedVariable.takesSubstantiveValuesFrom).&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;value&quot;, &quot;idReference&quot;]&#xA;:schemaRef: &quot;cdifDataType/cdifValueDomain#/$defs/SubstantiveValueDomain&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

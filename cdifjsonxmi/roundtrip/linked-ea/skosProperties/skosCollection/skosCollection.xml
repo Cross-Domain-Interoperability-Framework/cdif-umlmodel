@@ -470,7 +470,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Association xmi.id="EAID_3C7D536B_457E_5ae4_816E_4B19404A8FFE" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="CollectionProfile_collection_Collection" xmi.id="EAID_3C7D536B_457E_5ae4_816E_4B19404A8FFE" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -500,7 +500,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_8B1AC5FA_48A8_5dc7_A404_9F6F4E6D8BCD" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="CollectionProfile_orderedCollection_OrderedCollection" xmi.id="EAID_8B1AC5FA_48A8_5dc7_A404_9F6F4E6D8BCD" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -530,7 +530,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_063AFD7B_3F2A_5370_AE90_268FBF69189F" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="ConceptOrCollection_concept_Concept" xmi.id="EAID_063AFD7B_3F2A_5370_AE90_268FBF69189F" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -560,7 +560,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_AE1B5AE3_779C_5789_8974_517E53696860" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="ConceptOrCollection_collection_Collection" xmi.id="EAID_AE1B5AE3_779C_5789_8974_517E53696860" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -590,7 +590,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_5F1ADD62_48B9_557a_B304_500627756553" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="OrderedCollectionMemberList_@list__Concept" xmi.id="EAID_5F1ADD62_48B9_557a_B304_500627756553" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``&#xA;:minItems: 1&#xA;:orReference: [&quot;idReference&quot;, &quot;value&quot;]&#xA;:jsonName: &quot;@list&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

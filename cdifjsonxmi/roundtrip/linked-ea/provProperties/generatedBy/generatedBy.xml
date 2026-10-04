@@ -178,7 +178,7 @@
 								<UML:TaggedValue tag="ea_guid" value="{2FBCE1B1-FD34-513a-98B4-A789BE491698}"/>
 							</UML:ModelElement.taggedValue>
 						</UML:Class>
-						<UML:Association xmi.id="EAID_C452E367_7425_5822_8800_4778E8255555" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="GeneratedByUsedChoice_entity_Entity" xmi.id="EAID_C452E367_7425_5822_8800_4778E8255555" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;an inline prov:Entity used by the activity (see prov:used description)&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

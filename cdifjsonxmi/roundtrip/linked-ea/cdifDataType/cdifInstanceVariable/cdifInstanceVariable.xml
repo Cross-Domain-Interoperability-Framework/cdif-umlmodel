@@ -317,7 +317,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Association xmi.id="EAID_E17C4D7C_5C97_5123_8206_1272E44FF0CD" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="InstanceVariable_isDescribedBy_StatisticsCollection_StatisticsCollection" xmi.id="EAID_E17C4D7C_5C97_5123_8206_1272E44FF0CD" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;The StatisticsCollection holding summary / category statistics for this InstanceVariable (direct JSON mapping of the DDI-CDI `InstanceVariable.isDescribedBy → StatisticsCollection` association). cdif: namespaced and target-suffixed because the DDI-CDI isDescribedBy association is polymorphic. This is the canonical CDIF path for **per-variable** statistics; dataset-scope aggregates (row count etc.) go under `Dataset.cdif:statistics` instead.&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;value&quot;, &quot;idReference&quot;]&#xA;:schemaRef: &quot;cdifDataType/cdifStatistics#/$defs/StatisticsCollection&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -347,7 +347,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_CB5E5DDC_41ED_506c_8AB3_81D913F64840" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="CategoryStatistics_hasWeight_InstanceVariable" xmi.id="EAID_CB5E5DDC_41ED_506c_8AB3_81D913F64840" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;The InstanceVariable whose values were used as weights (inline cdifInstanceVariable node or an @id-reference).&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;value&quot;, &quot;idReference&quot;]"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -377,7 +377,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_D0220260_43D4_51c6_8D74_C0EA225660ED" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="Statistics_hasWeight_InstanceVariable" xmi.id="EAID_D0220260_43D4_51c6_8D74_C0EA225660ED" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;The InstanceVariable whose values were used as weights when computing the Statistic entries (inline cdifInstanceVariable node or an @id-reference).&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;value&quot;, &quot;idReference&quot;]"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -407,7 +407,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_8EF93363_2E7D_5b8f_9DFE_ABA0B4744972" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="Statistics_cdif_appliesTo_InstanceVariable" xmi.id="EAID_8EF93363_2E7D_5b8f_9DFE_ABA0B4744972" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;CDIF addition (not in canonical DDI-CDI): the InstanceVariable(s) this Statistics bundle summarizes — the per-bundle &quot;what these numbers describe&quot; link. Used **only** when this Statistics bundle sits inside a StatisticsCollection that indexes more than one variable, to disambiguate which variable each bundle describes. It MUST NOT appear on a Statistics bundle attached at Dataset level via `cdif:statistics`; per-variable stats belong under `schema:variableMeasured[i].cdif:isDescribedBy_StatisticsCollection` (the direct JSON mapping of the DDI-CDI `InstanceVariable.isDescribedBy` association).&#xA;:inlineOrByReference: ``inline``&#xA;:minItems: 1&#xA;:orReference: [&quot;value&quot;, &quot;idReference&quot;]&#xA;:jsonName: &quot;cdif:appliesTo&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -437,7 +437,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_4DCDB827_87A7_5dc1_8057_ED1FB9F32DDC" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="StatisticsCollection_hasWeight_InstanceVariable" xmi.id="EAID_4DCDB827_87A7_5dc1_8057_ED1FB9F32DDC" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;The InstanceVariable whose values were used as weights (inline cdifInstanceVariable node or an @id-reference).&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;value&quot;, &quot;idReference&quot;]"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -467,7 +467,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_3BDEEDA9_3095_50cd_B05A_CE156E3AA338" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="StatisticsCollection_cdif_indexedBy_InstanceVariable" xmi.id="EAID_3BDEEDA9_3095_50cd_B05A_CE156E3AA338" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;CDIF addition (not in canonical DDI-CDI): the InstanceVariable(s) the contained Statistics index — the collection-level coordinate space. Marks the collection as per-variable-scoped: a StatisticsCollection carrying `cdif:indexedBy` MUST be attached via `schema:variableMeasured[i].cdif:isDescribedBy_StatisticsCollection` on one of the indexed variables, NOT at Dataset level via `cdif:statistics` (which is reserved for genuinely dataset-scope aggregates like row count).&#xA;:inlineOrByReference: ``inline``&#xA;:minItems: 1&#xA;:orReference: [&quot;value&quot;, &quot;idReference&quot;]&#xA;:jsonName: &quot;cdif:indexedBy&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

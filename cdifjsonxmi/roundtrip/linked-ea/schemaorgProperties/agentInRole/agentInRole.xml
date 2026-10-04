@@ -88,7 +88,7 @@
 								<UML:TaggedValue tag="ea_guid" value="{10D871E2-8EA7-5758-8CDD-9EAB264256AB}"/>
 							</UML:ModelElement.taggedValue>
 						</UML:Class>
-						<UML:Association xmi.id="EAID_D0FCD4EA_16A2_5066_9830_EF7D39528C5A" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="PersonOrOrganization_person_Person" xmi.id="EAID_D0FCD4EA_16A2_5066_9830_EF7D39528C5A" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -118,7 +118,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_6BFAB235_1AA7_5eea_A57E_001D7D08566B" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="PersonOrOrganization_organization_Organization" xmi.id="EAID_6BFAB235_1AA7_5eea_A57E_001D7D08566B" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

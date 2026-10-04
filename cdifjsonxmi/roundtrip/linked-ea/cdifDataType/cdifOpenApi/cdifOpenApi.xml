@@ -1343,7 +1343,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Association xmi.id="EAID_A9307759_63FE_5e2d_9D34_B421CB5E7FE8" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="OpenApi_potentialAction_Action" xmi.id="EAID_A9307759_63FE_5e2d_9D34_B421CB5E7FE8" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;operations exposed by the API. Each entry corresponds to an OpenAPI Operation Object (one path + HTTP method).&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -1373,7 +1373,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_9BD49D36_63E6_55ea_A197_61FB89A92FFF" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="Action_target_OpenApiEntryPoint" xmi.id="EAID_9BD49D36_63E6_55ea_A197_61FB89A92FFF" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -1403,7 +1403,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_EEAE17B3_A386_59ba_BBFB_157596B64FA1" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="OpenApiEntryPoint_oas_parameters_OpenApiEntryPointParameters" xmi.id="EAID_EEAE17B3_A386_59ba_BBFB_157596B64FA1" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;query, path, header, or cookie parameters accepted by the operation. Maps OpenAPI Parameter Object.&#xA;:inlineOrByReference: ``inline``&#xA;:jsonName: &quot;oas:parameters&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

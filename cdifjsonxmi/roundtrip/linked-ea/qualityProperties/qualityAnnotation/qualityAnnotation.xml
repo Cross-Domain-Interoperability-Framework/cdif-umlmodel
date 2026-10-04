@@ -77,7 +77,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Association xmi.id="EAID_54D2AAFE_2B83_5e09_88F8_83538321AD8A" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="QualityAnnotation_oa_hasBody_DefinedTerm" xmi.id="EAID_54D2AAFE_2B83_5e09_88F8_83538321AD8A" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;the content of the quality annotation -- a free-text statement, a categorical outcome as a Defined Term (e.g. a certification level or a pass/fail rating), or a reference to a separate body resource&#xA;:inlineOrByReference: ``inline``&#xA;:idRefDescription: &quot;a resolvable reference to the annotation body&quot;&#xA;:orReference: [&quot;string&quot;, &quot;value&quot;, &quot;idReference&quot;]&#xA;:jsonName: &quot;oa:hasBody&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -107,7 +107,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_83CBA88D_4D05_5442_AD02_ED3818393F2C" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="QualityAnnotation_oa_motivatedBy_DefinedTerm" xmi.id="EAID_83CBA88D_4D05_5442_AD02_ED3818393F2C" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;why the annotation was made; for quality annotations this is normally the instance dqv:qualityAssessment, but any motivation IRI or Defined Term is allowed&#xA;:inlineOrByReference: ``inline``&#xA;:idRefDescription: &quot;a resolvable reference to an oa:Motivation&quot;&#xA;:orReference: [&quot;string&quot;, &quot;idReference&quot;, &quot;value&quot;]&#xA;:jsonName: &quot;oa:motivatedBy&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

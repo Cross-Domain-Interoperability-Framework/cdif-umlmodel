@@ -66,7 +66,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Association xmi.id="EAID_2953B500_1A3B_5b2f_A2A5_6EF2E34E309F" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="DataCube_hasPhysicalMapping_DataCubeHasPhysicalMapping" xmi.id="EAID_2953B500_1A3B_5b2f_A2A5_6EF2E34E309F" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Links variables to their physical representation in this dataset.&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

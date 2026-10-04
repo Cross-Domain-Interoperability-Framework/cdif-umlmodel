@@ -529,7 +529,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Association xmi.id="EAID_8406D00F_6E88_5d3e_B33E_882CF80D4781" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="DataStructureComponentProfile_identifierComponent_IdentifierComponent" xmi.id="EAID_8406D00F_6E88_5d3e_B33E_882CF80D4781" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -559,7 +559,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_219A3ACD_FFD7_5cf7_B89A_E01AC44FB484" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="DataStructureComponentProfile_measureComponent_MeasureComponent" xmi.id="EAID_219A3ACD_FFD7_5cf7_B89A_E01AC44FB484" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -589,7 +589,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_C95F461B_A375_548a_8BD3_EFB2B6818CB4" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="DataStructureComponentProfile_attributeComponent_AttributeComponent" xmi.id="EAID_C95F461B_A375_548a_8BD3_EFB2B6818CB4" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -619,7 +619,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_DA08CE3D_75E8_50f7_8FE8_6A9A01EA0E53" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="DataStructureComponentProfile_dimensionComponent_DimensionComponent" xmi.id="EAID_DA08CE3D_75E8_50f7_8FE8_6A9A01EA0E53" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -649,7 +649,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_E8FD62AF_C75B_5fd9_9D71_9A7C631C369B" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="DataStructureComponentProfile_variableValueComponent_VariableValueComponent" xmi.id="EAID_E8FD62AF_C75B_5fd9_9D71_9A7C631C369B" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -679,7 +679,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_63982822_0424_5f82_B77C_67B96169A6D3" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="DataStructureComponentProfile_variableDescriptorComponent_VariableDescriptorComponent" xmi.id="EAID_63982822_0424_5f82_B77C_67B96169A6D3" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -709,7 +709,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_A0C4239D_3508_5134_A6C7_A29639E3C036" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="AttributeComponent_cdif_qualifies_DataStructureComponent" xmi.id="EAID_A0C4239D_3508_5134_A6C7_A29639E3C036" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``&#xA;:minItems: 1&#xA;:orReference: [&quot;value&quot;, &quot;objectReference&quot;]&#xA;:jsonName: &quot;cdif:qualifies&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -739,7 +739,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_0EF6A94E_7018_5d58_92D1_8C4413AC5683" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="RepresentedVariableOrInstanceVariable_representedVariable_RepresentedVariable" xmi.id="EAID_0EF6A94E_7018_5d58_92D1_8C4413AC5683" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -769,7 +769,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_6FF936E8_8F45_577e_A1B2_993D2BE5D54E" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="RepresentedVariableOrInstanceVariable_instanceVariable_InstanceVariable" xmi.id="EAID_6FF936E8_8F45_577e_A1B2_993D2BE5D54E" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -799,7 +799,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_4B8B2F4E_075C_518e_9732_18490D237414" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="VariableDescriptorComponent_cdif_isDefinedBy_DescriptorVariable_DescriptorVariable" xmi.id="EAID_4B8B2F4E_075C_518e_9732_18490D237414" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Variable that provides codes for variable identification in the context of a data structure. Descriptor Variables hold values which reference the logical variables in the data set, indicating which one the associated value in the corresponding Reference Variable is a measure/value for. Descriptor Variables are presentational variables found only in Long Data Sets.&#xA;:inlineOrByReference: ``inline``&#xA;:jsonName: &quot;cdif:isDefinedBy_DescriptorVariable&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

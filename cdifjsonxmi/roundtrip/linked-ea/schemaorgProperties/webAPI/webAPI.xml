@@ -134,7 +134,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Association xmi.id="EAID_100AB45B_5AE0_5b44_80BE_1B5D4068196A" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="WebAPI_serviceType_DefinedTerm" xmi.id="EAID_100AB45B_5AE0_5b44_80BE_1B5D4068196A" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;specify the kind of service. Ideally this should be a resolvable identifier. Currently there is no widely adopted registry for serviceType identifiers, in large part because services might be defined at different levels of granularity, and classifications might focus on function, data formats, thematic content, security, or other aspects of the service definition. For interoperability, there must be an external arrangement between data providers and consumers on the strings that will be used to specify service types.&#xA;:inlineOrByReference: ``inline``&#xA;:alsoAcceptsString: ``first``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -164,7 +164,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_D0381A99_DDC9_5143_9B60_90713D40F5B4" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="WebAPI_potentialAction_Action" xmi.id="EAID_D0381A99_DDC9_5143_9B60_90713D40F5B4" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;actions that can be invoked via the API&#xA;:inlineOrByReference: ``inline``&#xA;:minItems: null"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

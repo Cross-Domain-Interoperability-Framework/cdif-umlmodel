@@ -525,7 +525,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Association xmi.id="EAID_5207240B_08DC_5f06_AF75_6A649FAA28B8" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="Codelist_hasTopConcept_CdifCodelistConcept" xmi.id="EAID_5207240B_08DC_5f06_AF75_6A649FAA28B8" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Top-level concepts that have no skos:broader in this scheme. Required for hierarchical codelists.&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -555,7 +555,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_DEC65245_5A3E_5f81_B14A_093C3789D1C2" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="Codelist_schema_subjectOf_CodelistDataset" xmi.id="EAID_DEC65245_5A3E_5f81_B14A_093C3789D1C2" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Catalog record describing this codelist as CDIF-conformant metadata. Must declare conformance to the cdifCodelist profile via dcterms:conformsTo and be typed as schema:Dataset with schema:additionalType including dcat:CatalogRecord.&#xA;:inlineOrByReference: ``inline``&#xA;:jsonName: &quot;schema:subjectOf&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -585,7 +585,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_B85ACE2C_4D5E_5989_9A6B_EF35C83E4C22" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="CdifCodelistConcept_narrower_CdifCodelistConcept" xmi.id="EAID_B85ACE2C_4D5E_5989_9A6B_EF35C83E4C22" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Narrower (child) concepts. If present, each inline concept must also declare skos:broader pointing back to the parent concept. Both skos:narrower and skos:broader must be explicit in CDIF codelists.&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;idReference&quot;, &quot;value&quot;]&#xA;:valueAllOf: [{&quot;required&quot;: [&quot;skos:broader&quot;]}]"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -615,7 +615,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_AB15A13A_1454_5d0f_BCA4_CC6793638042" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="StringOrIdentifier_identifier_CodelistPropertyValue" xmi.id="EAID_AB15A13A_1454_5d0f_BCA4_CC6793638042" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

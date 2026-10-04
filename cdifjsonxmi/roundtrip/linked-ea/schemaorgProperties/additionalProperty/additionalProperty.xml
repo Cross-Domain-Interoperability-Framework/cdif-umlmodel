@@ -211,7 +211,7 @@
 								<UML:TaggedValue tag="ea_guid" value="{C956ACCF-B334-5f09-A43C-963333E8026D}"/>
 							</UML:ModelElement.taggedValue>
 						</UML:Class>
-						<UML:Association xmi.id="EAID_315DB36B_BABC_5748_9151_4C2A4CADE20A" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="AdditionalProperty_propertyID_DefinedTerm" xmi.id="EAID_315DB36B_BABC_5748_9151_4C2A4CADE20A" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;identifier or name for the property concept quantified by the values in this variable slot. Multiple values can specify the property at different levels of granularity.&#xA;:inlineOrByReference: ``inline``&#xA;:minItems: 1&#xA;:orReference: [&quot;string&quot;, &quot;idReference&quot;, &quot;value&quot;]"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -241,7 +241,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_CDD938EC_7ED1_54b4_B4E4_15FDA1B1543E" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="AdditionalProperty_unitCode_DefinedTerm" xmi.id="EAID_CDD938EC_7ED1_54b4_B4E4_15FDA1B1543E" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``&#xA;:alsoAcceptsString: ``first``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

@@ -31,7 +31,7 @@
 								<UML:TaggedValue tag="ea_guid" value="{24DA4460-4FAF-57a4-BF4D-1E70F816C773}"/>
 							</UML:ModelElement.taggedValue>
 						</UML:Class>
-						<UML:Association xmi.id="EAID_BCADEBBE_9D18_5b9c_99AC_E88BCAB95C60" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association name="Provenance_prov_wasGeneratedBy_ProvActivity" xmi.id="EAID_BCADEBBE_9D18_5b9c_99AC_E88BCAB95C60" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Provenance activities describing how the resource was generated, including agents, instruments, methodology, temporal bounds, and action chaining.&#xA;:inlineOrByReference: ``inline``&#xA;:jsonName: &quot;prov:wasGeneratedBy&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
