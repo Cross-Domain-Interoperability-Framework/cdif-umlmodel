@@ -40,6 +40,32 @@ def diff(a, b, path="$"):
         yield f"{path}:\n    original:    {json.dumps(a)[:300]}\n    regenerated: {json.dumps(b)[:300]}"
 
 
+def merge_property_members(m):
+    """An object schema with its allOf members that only add property schemas ({properties: ...},
+    none it already has) or required keys ({required: [...]}) merged into its own, which means
+    the same."""
+    if not (m.get("type") == "object" or "properties" in m):
+        return m
+    m = dict(m)
+    props, required, kept = dict(m.get("properties", {})), list(m.get("required", [])), []
+    for block in m["allOf"]:
+        if isinstance(block, dict) and set(block) == {"properties"} and not set(block["properties"]) & set(props):
+            props.update(block["properties"])
+        elif isinstance(block, dict) and set(block) == {"required"}:
+            required += [r for r in block["required"] if r not in required]
+        else:
+            kept.append(block)
+    if props:
+        m["properties"] = props
+    if required:
+        m["required"] = required
+    if kept:
+        m["allOf"] = kept
+    else:
+        m.pop("allOf")
+    return m
+
+
 def normalize(schema, base_dir):
     """Rewrite a schema into a canonical form that keeps its meaning:
     - file $refs become absolute paths (resolved against base_dir), so the same
@@ -103,6 +129,8 @@ def normalize(schema, base_dir):
             # 'required' as its own before they join the parent
             flat = []
             for m in node["allOf"]:
+                if isinstance(m, dict) and isinstance(m.get("allOf"), list) and "$ref" not in m:
+                    m = merge_property_members(m)
                 if isinstance(m, dict) and isinstance(m.get("allOf"), list) and "$ref" not in m:
                     flat += m["allOf"]
                     m = {k: v for k, v in m.items() if k != "allOf"}

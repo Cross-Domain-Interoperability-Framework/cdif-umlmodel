@@ -84,6 +84,12 @@ block, composable the way the schemas are:
   profiles can specialize it. Their refinements of properties cdifCore defines (the
   `schema:subjectOf.dcterms:conformsTo` pin to the module's profile URI) are kept verbatim as
   constraints.
+- **Composite profiles** (`profiles/cdifCompositeProfile`: CoreDiscovery,
+  DiscoveryDataDescription, DiscoveryDataDescriptionStructure, cdifComplete, xasDocument) are
+  `allOf`s of cdifCore and the modules: each is a class specializing cdifCore's `Core` and the
+  module aspect classes it combines (cdifComplete all six), so EA diagrams show the
+  composition as generalizations. A parent may be named through a local definition that is
+  only its `$ref` (xasCore's `#/$defs/CdifProvActivity`).
 - **Package:** each file holds one `uml:Package` for the block. Its `xmi:id` is the block's
   register identifier (`cdif.bbr.metadata.schemaorgProperties.person`, using the
   `identifier-prefix` from `bblocks-config.yaml`). Its `URI` is the register URI
@@ -150,9 +156,6 @@ automation interface: `-Dir <linked root>-ea -Package <name>` imports every file
 `_sources` subdirectory (`schemaorgProperties`, …) and the shared files at the top; `-Replace` deletes an existing package
 of that name first. EA must be running with the project open. The script relaunches itself
 in Windows PowerShell 5.1, since EA's COM objects aren't reachable from PowerShell 7.
-
-Not yet done: the composite profiles (`profiles/cdifCompositeProfile`), which become
-classes specializing cdifCore and the modules they combine.
 
 ## From Enterprise Architect back to JSON Schema (pilot)
 
@@ -258,7 +261,7 @@ go in ` ``…`` `; free text, defaults and verbatim schema fragments are JSON.
 | a local definition that is a union with its own description, or that refers back to itself | the element named after the definition, built once |
 | `$ref` to a local definition that is an array (cdifManifest's `resourcePartArray`) | the array, inline (the definition's own description gives way to the property's) |
 | an array with `contains` and no `items` | attribute with no type, upper bound `*`, `contains` in `:arrayKeywords:` |
-| block root | element named from the directory (`cdifConceptOrTermOrString` → `ConceptOrTermOrString`) |
+| block root | element named from the directory (`cdifConceptOrTermOrString` → `ConceptOrTermOrString`); the `xas` prefix is kept (`xasCore` → `XasCore`, not a second `Core`) |
 | block root that is only a `$ref` to a local `$defs` entry (skosConcept) | that definition's element, plus `:rootAlias:` (and `:rootDescription:` for the root's own description) |
 | `$defs` entry referenced from another block, or recursively | element named by its key, `:exportedDef:` |
 
@@ -309,6 +312,9 @@ go in ` ``…`` `; free text, defaults and verbatim schema fragments are JSON.
 | `required` keys with no property schema | `:constraint: {"required": [...]}` |
 | a property schema with no type that refines a property defined elsewhere (`schema:subjectOf: {properties: {dcterms:conformsTo: …}}`) | `:constraint: {"properties": {...}}` (written back as an `allOf` member, which means the same) |
 | `@context` required | `:contextRequired:` |
+| `additionalProperties: true` (the default, said explicitly) | `:open:` |
+| an extension's own member with no `type: object` (`{properties: …}`) | `:noObjectType:` |
+| an extension root with a description and an own member with another | the member's in `:ownDescription:` |
 | `allOf: [{$ref: other block}, …, {properties…}]` | a generalization to each block's root, `:extends:`; `:untypedRoot:` when the root has no `type: object`, `:noOwnSchema:` when there are only `$ref`s |
 | `additionalProperties: false` | `:closed:` |
 | `@id` declared on a DataType (by classification, e.g. objectReference) / `@id` required | `:hasId:` / `:idRequired:` |
@@ -323,9 +329,10 @@ Anything else stops the converter with an error, rather than being dropped.
 
 ## Results
 
-**All 58 blocks round-trip** (`roundtrip.py --linked`): `schemaorgProperties`,
+**All 69 blocks round-trip** (`roundtrip.py --linked`): `schemaorgProperties`,
 `skosProperties`, `provProperties`, `qualityProperties`, `bioschemasProperties`,
-`cdifDataType` and `profiles/cdifProfile`, with no semantic differences. (The 20 bare-string `@type` defaults that
+`cdifDataType`, `xasProperties`, `profiles/cdifProfile` and `profiles/cdifCompositeProfile`,
+with no semantic differences. (The 20 bare-string `@type` defaults that
 used to come back wrapped as arrays are now arrays in the sources, as the always-an-array
 `@type` policy requires.) Exact differences are placement only: `required` and choice
 `anyOf`s at the top level or in `allOf`, and unions or nested objects written as local
@@ -335,8 +342,8 @@ Earlier checks, from when the set was identifier, person and organization: the e
 and edge cases (2 + 4, 2 + 11, 2 + 9) validate the same way against the original and
 regenerated schemas, with `$ref`s resolved from disk.
 
-The set converts to 65 EA XMI 1.1 files (58 blocks plus the common types, shared types and
-five shared unions) with 166 associations and 43 generalizations (to the abstract shared bases,
+The set converts to 76 EA XMI 1.1 files (69 blocks plus the common types, shared types and
+five shared unions) with 178 associations and 72 generalizations (to the abstract shared bases,
 and the extensions of other blocks); every reference resolves to an element. Import order follows the references: common types,
 shared types, then each block and shared union before the blocks that reference it;
 cdifStatistics' five associations to InstanceVariable are written in cdifInstanceVariable's
@@ -355,8 +362,7 @@ DDI-CDI XMI and `cdifmodels.xmi` (single-class, multi-class with `--emit-uml`,
 
 ## Not handled yet
 
-- `ddiProperties`, `xasProperties` and the composite profiles are untried; `ddiProperties`
-  will add inheritance.
+- `ddiProperties` is untried; it will add inheritance.
 - cdifInstanceVariable's `allOf` `$ref` to variableMeasured (beside its own properties) is
   carried as a `:constraint:`, not as a generalization, so EA shows no link between them.
 - Each building block is its own XMI file; there's no merged model of several blocks.

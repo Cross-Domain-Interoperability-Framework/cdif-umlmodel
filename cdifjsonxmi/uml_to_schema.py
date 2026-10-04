@@ -679,6 +679,7 @@ def verbatim_definition(doc: Optional[str]) -> Optional[str]:
 #   :extends:                                -> root is allOf [$ref <parent block>, own schema]; the
 #                                               parent's attributes are not merged in
 #   :closed:                                 -> additionalProperties: false
+#   :open:                                   -> additionalProperties: true (the default, said explicitly)
 #   :hasId:                                  -> a datatype that declares @id
 #   :idRequired:                             -> @id is required
 #   :untypedRoot:                            -> with :extends:, the root has no type: object
@@ -686,6 +687,8 @@ def verbatim_definition(doc: Optional[str]) -> Optional[str]:
 #   :escapedLiterals:                        -> on an enumeration: literal names are JSON string
 #                                               contents ("\r\n" is a line break), decoded
 #   :noOwnSchema:                            -> with :extends:, allOf of the parents' $refs only
+#   :noObjectType:                           -> with :extends:, the own schema has no type: object
+#   :ownDescription: "text"                  -> with :extends: at the root, the own schema's description
 #   :objectUnion:                            -> a :union: that also declares type: object
 #   :extends: on a nested element            -> its $defs entry is allOf [$ref <parent block>, own schema]
 # On an attribute:
@@ -725,7 +728,7 @@ _DIRECTIVE_NAMES = ("rdfType", "allowedTypes", "typeDefault", "typeDescription",
                     "rootAlias", "rootDescription", "extends", "valueDescription", "closed",
                     "objectUnion", "valueSchema", "hasId", "idRequired", "untypedRoot",
                     "orReference", "referenceFirst", "valueAllOf", "noOwnSchema", "contextRequired",
-                    "escapedLiterals")
+                    "escapedLiterals", "noObjectType", "open", "ownDescription")
 _DIRECTIVE_RE = re.compile(r"\n:(" + "|".join(_DIRECTIVE_NAMES) + r"):")
 
 
@@ -843,6 +846,8 @@ def _root_alias_or_extension(cls: "UmlClass", d: dict, ctx: "BuildContext",
         # class_to_node_def's allOf [$ref <each parent>, own schema (unless :noOwnSchema:)]
         node = {} if d.get("noOwnSchema") else node["allOf"][-1]
     node.pop("title", None)
+    if d.get("extends") and "ownDescription" in d:
+        node = {**node, "description": d["ownDescription"]}
     root: dict[str, Any] = OrderedDict()
     root["$schema"] = "https://json-schema.org/draft/2020-12/schema"
     if title:
@@ -854,7 +859,8 @@ def _root_alias_or_extension(cls: "UmlClass", d: dict, ctx: "BuildContext",
         defs[cls.name] = node
         root["allOf"] = [{"$ref": f"#/$defs/{cls.name}"}]
     else:
-        node.pop("description", None)
+        if "ownDescription" not in d:
+            node.pop("description", None)
         if description:
             root["description"] = description
         if not d.get("untypedRoot"):
@@ -1237,6 +1243,8 @@ def datatype_to_def(dt: UmlClass, ctx: BuildContext) -> dict:
         schema["allOf"] = choices
     if dt_d.get("closed"):
         schema["additionalProperties"] = False
+    if dt_d.get("open"):
+        schema["additionalProperties"] = True
     return schema
 
 
@@ -1291,6 +1299,10 @@ def class_to_node_def(cls: UmlClass, ctx: BuildContext) -> dict:
         schema["allOf"] = choices
     if _directives(ctx, cls.doc).get("closed"):
         schema["additionalProperties"] = False
+    if _directives(ctx, cls.doc).get("open"):
+        schema["additionalProperties"] = True
+    if _directives(ctx, cls.doc).get("noObjectType"):
+        schema.pop("type", None)
     if _directives(ctx, cls.doc).get("extends"):
         # a specialization of other blocks' roots: allOf [$ref <each block>, own schema]
         schema = {"allOf": _parent_refs(cls, ctx) + ([] if _directives(ctx, cls.doc).get("noOwnSchema") else [schema])}

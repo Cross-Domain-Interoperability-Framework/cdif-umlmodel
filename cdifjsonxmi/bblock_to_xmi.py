@@ -260,10 +260,18 @@ def recursive_defs(defs):
     return found
 
 
+# Directory prefixes kept in a block root's name: xasCore's root is XasCore, not Core (which
+# cdifCore's is), xasInstrument's XasInstrument, not Instrument (schemaorgProperties').
+ROOT_NAME_PREFIXES = {"xas": "Xas"}
+
+
 def root_name(bdir, schema):
-    """The UML name of a block's root element: from its directory, + "Profile" where one of the
-    block's definitions has that name (cdifDataStructure)."""
+    """The UML name of a block's root element: from its directory (keeping a ROOT_NAME_PREFIXES
+    prefix), + "Profile" where one of the block's definitions has that name (cdifDataStructure)."""
     name = split_dir_name(bdir)[0]
+    for prefix, kept in ROOT_NAME_PREFIXES.items():
+        if Path(bdir).name.startswith(prefix) and Path(bdir).name[len(prefix):len(prefix) + 1].isupper():
+            name = kept + name
     alias = schema.get("allOf", [{}])[0].get("$ref") if len(schema.get("allOf", [])) == 1 else None
     if alias == f"#/$defs/{name}":
         return name  # the root is that definition (skosConcept: allOf [$ref Concept])
@@ -844,8 +852,7 @@ class ModelBuilder:
             self.elements[eid]["body"] += body
             return eid
         members = schema.get("allOf", [])
-        refs = [m for m in members if isinstance(m, dict) and set(m) == {"$ref"}
-                and not m["$ref"].startswith("#") and "#" not in m["$ref"]]
+        refs = [m for m in members if self.block_target(m)]
         if (name is not None or fallback_name) and extends is None and "properties" not in schema \
                 and set(schema) <= {"$schema", "title", "description", "type", "allOf", "$defs"} \
                 and refs and len(refs) + sum(isinstance(m, dict) for m in members) - len(refs) == len(members):
@@ -857,11 +864,18 @@ class ModelBuilder:
             objects = [m for m in rest if m.get("type") == "object" or "properties" in m]
             own = max(objects, key=lambda m: len(m.get("properties", {}))) if objects else {"type": "object"}
             constraints = [m for m in rest if m is not own]
-            if {"title", "description"} & set(own) & set(schema):
-                raise Unmapped(f"{where}: extension object with its own title / description")
-            parents = [self.bblock_ref(m["$ref"], base_dir) for m in refs]
+            if "title" in own and "title" in schema:
+                raise Unmapped(f"{where}: extension object with its own title")
+            own_description = own.get("description") if "description" in schema else None
+            if own_description is not None:
+                # the root's description documents the class; the member's is kept for it
+                own = {k: v for k, v in own.items() if k != "description"}
+            parents = [self.bblock_ref(self.block_target(m), base_dir) for m in refs]
             kinds = [k for _, k in parents]
             merged = {**own, **{k: schema[k] for k in ("title", "description") if k in schema}}
+            untyped_own = objects and "type" not in own
+            if untyped_own:
+                merged["type"] = "object"
             eid = self.element(merged, name, base_dir, where, fallback_name=fallback_name, fallback_pkg=fallback_pkg,
                                extends=[p for p, _ in parents],
                                extends_kind="uml:Class" if "uml:Class" in kinds else kinds[0])
@@ -871,6 +885,10 @@ class ModelBuilder:
                 self.elements[eid]["body"] += directive("untypedRoot")  # no type: object beside allOf
             if not objects:
                 self.elements[eid]["body"] += directive("noOwnSchema")  # only the $refs (a composite)
+            if own_description is not None:
+                self.elements[eid]["body"] += text_directive("ownDescription", own_description)
+            if untyped_own:
+                self.elements[eid]["body"] += directive("noObjectType")  # {properties: ...} with no type
             return eid
         props = schema.get("properties", {})
         # partial refinements of properties defined elsewhere: one verbatim constraint, not attributes
@@ -878,8 +896,9 @@ class ModelBuilder:
         props = {k: v for k, v in props.items() if k not in partials}
         top_constraint = {k: schema[k] for k in CONSTRAINT_KEYWORDS if k in schema}
         closed = schema.get("additionalProperties") is False
+        open_ = schema.get("additionalProperties") is True  # the default, but said explicitly
         schema = {k: v for k, v in schema.items() if k not in top_constraint
-                  and not (k == "additionalProperties" and closed)}
+                  and not (k == "additionalProperties" and (closed or open_))}
         extra = set(schema) - OBJECT_KEYWORDS
         if extra or schema.get("type") != "object":
             raise Unmapped(f"{where}: keywords {sorted(extra)} / type {schema.get('type')}")
@@ -971,6 +990,8 @@ class ModelBuilder:
             body += text_directive("constraint", self.verbatim(top_constraint, base_dir, where))
         if closed:
             body += directive("closed")
+        if open_:
+            body += directive("open")
         undeclared = [r for r in schema.get("required", []) if r not in props]
         if undeclared:
             # required keys with no property schema: no attribute to carry them
@@ -1127,8 +1148,8 @@ class ModelBuilder:
             return ("idref", self.enumeration(prop["enum"], owner, role, where)), upper, directives, None, items_desc
         if set(prop) == {"$ref"} and not prop["$ref"].startswith("#"):
             type_ref, kind = self.bblock_ref(prop["$ref"], base_dir)
-        elif prop.get("type") == "object" or (set(prop) == {"allOf"} and any(
-                isinstance(m, dict) and set(m) == {"$ref"} and "#" not in m["$ref"] for m in prop["allOf"])):
+        elif prop.get("type") == "object" or (set(prop) == {"allOf"} and any(self.block_target(m)
+                                                                            for m in prop["allOf"])):
             wrapper = role_key(prop)
             use, self.alt_use = self.alt_use, None
             if wrapper:
@@ -1192,6 +1213,20 @@ class ModelBuilder:
             return (None, None), upper, directives, None, items_desc
         value = values[0] if len(values) == 1 else {"anyOf": values}
         return self.resolve_value(value, base_dir, where, owner, role, upper, directives, items_desc)
+
+    def block_target(self, member):
+        """The file $ref (a whole block, no fragment) that an allOf member is, directly or through
+        local definitions that are only that $ref (xasCore's #/$defs/CdifProvActivity); else None."""
+        if not isinstance(member, dict) or set(member) != {"$ref"}:
+            return None
+        ref, seen = member["$ref"], set()
+        while ref.startswith("#/$defs/") and ref not in seen:
+            seen.add(ref)
+            d = self.defs.get(ref[len("#/$defs/"):])
+            if not isinstance(d, dict) or set(d) != {"$ref"}:
+                return None
+            ref = d["$ref"]
+        return ref if not ref.startswith("#") and "#" not in ref else None
 
     def is_object_reference(self, b, base_dir):
         """Whether b is a $ref (perhaps through a local alias) to the cdifDataType/objectReference
