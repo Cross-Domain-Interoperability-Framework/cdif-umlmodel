@@ -12,6 +12,10 @@ lxml (libxslt) runs after two adjustments made as they are loaded:
     (case-insensitive, then lowercase first), libxslt by code point. Each text sort becomes a
     case-folded sort with a case-swapped tie-break, which gives Xalan's order.
 
+One CDIF addition to step 3: a class with several generalizations (multiple inheritance,
+which DDI-CDI doesn't use) gets generalization ids naming the general
+(...-generalization_VariableMeasured), where step 3 would give them all one id.
+
 format.xslt (XSLT 2.0: trailing whitespace off comment bodies, then indenting) and the sed
 namespace edits of the Eclipse variant are done in Python. Checked against Xalan on the linked
 set exported from EA: every step's output is the same XML.
@@ -48,6 +52,8 @@ def stylesheet(home, name):
         if new != alts:
             t.set("match", " | ".join(new))
             t.set("priority", t.get("priority", "0"))
+    if name == "step-3":
+        _name_generalizations(tree)
     for sort in list(tree.iter(XSL + "sort")):
         if sort.get("data-type", "text") != "text" or sort.get("lang"):
             continue
@@ -55,6 +61,18 @@ def stylesheet(home, name):
         sort.set("select", f"translate({select}, '{UPPER}', '{LOWER}')")
         sort.addnext(etree.Element(XSL + "sort", select=f"translate({select}, '{UPPER}{LOWER}', '{LOWER}{UPPER}')"))
     return etree.XSLT(tree)
+
+
+def _name_generalizations(tree):
+    """Step 3 names an unnamed element's identifier part after its tag, so a class with two
+    generalizations gets two generalizations with one id. When there are several, add the
+    general's name (generalization_VariableMeasured); a single generalization keeps its id."""
+    create_id = next(t for t in tree.iter(XSL + "template") if t.get("name") == "CreateID")
+    owned_end = next(w for w in create_id.iter(XSL + "when") if "local-name()='ownedEnd'" in w.get("test", ""))
+    rule = etree.Element(XSL + "when", test="local-name()='generalization' and count(../generalization) > 1")
+    for select in ("local-name()", "$WordSeparator", "key('id', general/@xmi:idref)/name"):
+        etree.SubElement(rule, XSL + "value-of", select=select)
+    owned_end.addnext(rule)  # (the xmi prefix is declared on the stylesheet element)
 
 
 def formatted(doc):

@@ -166,7 +166,8 @@ the building-block schemas. The chain, all scripted:
    [to-canonical-xmi](../../to-canonical-xmi) stylesheets, unchanged on disk, run by lxml
    instead of Xalan/Saxon/sed. Two libxslt differences are corrected as the stylesheets
    load (an `@name` pattern matching the namespaced `xmi:type`; `xsl:sort` collation); every
-   step's output is then the same XML as Xalan's. Writes `_canonical.xmi`,
+   step's output is then the same XML as Xalan's, except the identifiers of a class's several
+   generalizations (see below). Writes `_canonical.xmi`,
    `_canonical-unique-names.xmi` and `_validate-ids.log`; xmi:uuids under
    `https://w3id.org/cdif/xmi/`.
 3. [`canonical_to_linked.py`](canonical_to_linked.py) `…_canonical-unique-names.xmi -o
@@ -192,8 +193,10 @@ Still open:
 
 - **Multiple generalization:** to-canonical-xmi names a generalization's identifier after its
   owner only, so an element with two parents (cdifDataDescription's
-  `DataDescriptionVariableMeasured`) gets two generalizations with one id (2 non-unique ids
-  in its log). The composite profiles would add more.
+  `DataDescriptionVariableMeasured`) got two generalizations with one id. For now
+  to_canonical.py adds a rule to step 3 as it loads it: with several generalizations, each id
+  names its general (`…-generalization_VariableMeasured`); single generalizations keep Achim's
+  ids. Its log then reports no non-unique ids. To be raised with Achim for his stylesheet.
 - **`isAbstract` on a DataType** (`cdif.shared.GeoShape`) is not in EA's export.
 - Canonical XMI trims the end of comment bodies and orders attributes and literals by
   identifier: trailing whitespace in descriptions and `enum` order don't round-trip (the
