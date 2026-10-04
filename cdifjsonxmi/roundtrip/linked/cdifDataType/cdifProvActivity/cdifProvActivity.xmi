@@ -111,7 +111,7 @@ Formal identifier for this activity
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.ProvActivity.schema_agent" xmi:uuid="0b9fd641-8aed-585f-9256-1cf02326e0e8">
           <name>schema_agent</name>
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifProvActivity.PersonOrOrganizationOrAgentInRole"/>
+          <type href="../../cdifSharedUnions/PersonOrOrganizationOrAgentInRole.xmi#cdif.union.PersonOrOrganizationOrAgentInRole"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.ProvActivity.schema_agent.lower" xmi:uuid="e5dc62a4-a8c7-534d-b90a-ba16cadbb50f">
             <value>0</value>
           </lowerValue>
@@ -133,7 +133,7 @@ Primary responsible agent for this activity (maps to PROV wasAssociatedWith)
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.ProvActivity.schema_participant" xmi:uuid="a6b0e456-bede-5f29-8f0d-f519702bd40b">
           <name>schema_participant</name>
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifProvActivity.PersonOrOrganizationOrAgentInRole"/>
+          <type href="../../cdifSharedUnions/PersonOrOrganizationOrAgentInRole.xmi#cdif.union.PersonOrOrganizationOrAgentInRole"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.ProvActivity.schema_participant.lower" xmi:uuid="7e32c0c1-ed04-5cf7-b038-b2fa1110f3bd">
             <value>0</value>
           </lowerValue>
@@ -368,82 +368,6 @@ Definition
         <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.ActionStatus.schema:FailedActionStatus" xmi:uuid="6697770a-9468-56ad-85d4-735f098f54d5">
           <name>schema:FailedActionStatus</name>
         </ownedLiteral>
-      </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.PersonOrOrganizationOrAgentInRole" xmi:uuid="b1610864-4ff8-5eaa-8407-1280ca44e5a5">
-        <name>PersonOrOrganizationOrAgentInRole</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.PersonOrOrganizationOrAgentInRole.comment" xmi:uuid="6c79656d-1763-54e7-bf7e-a2baeff0f5a9">
-          <body>**CDIF**
-
-Definition
-==========
-
-
-:union: ``anyOf``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifProvActivity.PersonOrOrganizationOrAgentInRole"/>
-        </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.PersonOrOrganizationOrAgentInRole.person" xmi:uuid="d0603e52-e31a-5266-8daa-e472b4c08afe">
-          <name>person</name>
-          <type href="../../schemaorgProperties/person/person.xmi#cdif.bbr.metadata.schemaorgProperties.person.Person"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.PersonOrOrganizationOrAgentInRole.person.lower" xmi:uuid="42af09a9-46a8-58fb-a332-8c74092aca44">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.PersonOrOrganizationOrAgentInRole.person.upper" xmi:uuid="18f91a08-1014-51d3-a61b-03be53465eb5">
-            <value>1</value>
-          </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifProvActivity.assoc.PersonOrOrganizationOrAgentInRole_person_Person"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.PersonOrOrganizationOrAgentInRole.person.comment" xmi:uuid="34af78f3-10ba-527e-aad7-50dbf5b02feb">
-            <body>**CDIF**
-
-Definition
-==========
-
-
-:inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifProvActivity.PersonOrOrganizationOrAgentInRole.person"/>
-          </ownedComment>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.PersonOrOrganizationOrAgentInRole.organization" xmi:uuid="c0cf8a38-ea24-5785-84b1-273d77208bc5">
-          <name>organization</name>
-          <type href="../../schemaorgProperties/organization/organization.xmi#cdif.bbr.metadata.schemaorgProperties.organization.Organization"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.PersonOrOrganizationOrAgentInRole.organization.lower" xmi:uuid="0fb72512-9bf1-5b0a-836e-347d9c4780a3">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.PersonOrOrganizationOrAgentInRole.organization.upper" xmi:uuid="52e84577-5925-5799-aaf7-54457e8d271d">
-            <value>1</value>
-          </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifProvActivity.assoc.PersonOrOrganizationOrAgentInRole_organization_Organization"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.PersonOrOrganizationOrAgentInRole.organization.comment" xmi:uuid="1f61c5fa-4eaf-50be-95d2-9890aa4764ad">
-            <body>**CDIF**
-
-Definition
-==========
-
-
-:inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifProvActivity.PersonOrOrganizationOrAgentInRole.organization"/>
-          </ownedComment>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.PersonOrOrganizationOrAgentInRole.agentInRole" xmi:uuid="5871b434-01f4-5636-a6cd-317cd75b3cf4">
-          <name>agentInRole</name>
-          <type href="../../schemaorgProperties/agentInRole/agentInRole.xmi#cdif.bbr.metadata.schemaorgProperties.agentInRole.AgentInRole"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.PersonOrOrganizationOrAgentInRole.agentInRole.lower" xmi:uuid="07d751b4-5796-5368-bbb3-e559c54e6341">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.PersonOrOrganizationOrAgentInRole.agentInRole.upper" xmi:uuid="5acb6aa3-2257-5b07-8126-77cc4303f4f0">
-            <value>1</value>
-          </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifProvActivity.assoc.PersonOrOrganizationOrAgentInRole_agentInRole_AgentInRole"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.PersonOrOrganizationOrAgentInRole.agentInRole.comment" xmi:uuid="49d3f0d7-b3f5-540a-bedc-08cea3890a8b">
-            <body>**CDIF**
-
-Definition
-==========
-
-
-:inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifProvActivity.PersonOrOrganizationOrAgentInRole.agentInRole"/>
-          </ownedComment>
-        </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.ProvActivityHowTo" xmi:uuid="1e8acd19-20da-5190-9540-54055d4d6fb2">
         <name>ProvActivityHowTo</name>
@@ -689,51 +613,6 @@ Definition
         </ownedEnd>
         <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifProvActivity.assoc.ProvActivity_schema_additionalProperty_AdditionalProperty.ownedEnd"/>
         <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifProvActivity.ProvActivity.schema_additionalProperty"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.assoc.PersonOrOrganizationOrAgentInRole_person_Person" xmi:uuid="a99c646a-eb63-5e98-aa06-20c3891b42ed">
-        <name>PersonOrOrganizationOrAgentInRole_person_Person</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.assoc.PersonOrOrganizationOrAgentInRole_person_Person.ownedEnd" xmi:uuid="611f7508-513f-5e7d-9044-7011841f0723">
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifProvActivity.PersonOrOrganizationOrAgentInRole"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.assoc.PersonOrOrganizationOrAgentInRole_person_Person.ownedEnd.lower" xmi:uuid="1fa225e6-3230-5c1a-97f9-0cc6eddea4d3">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.assoc.PersonOrOrganizationOrAgentInRole_person_Person.ownedEnd.upper" xmi:uuid="90bb8e9c-b1e3-5e90-bf06-ef891eb0c56c">
-            <value>*</value>
-          </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifProvActivity.assoc.PersonOrOrganizationOrAgentInRole_person_Person"/>
-        </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifProvActivity.assoc.PersonOrOrganizationOrAgentInRole_person_Person.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifProvActivity.PersonOrOrganizationOrAgentInRole.person"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.assoc.PersonOrOrganizationOrAgentInRole_organization_Organization" xmi:uuid="4fc383bc-5841-5ba3-a0fa-e806f241a629">
-        <name>PersonOrOrganizationOrAgentInRole_organization_Organization</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.assoc.PersonOrOrganizationOrAgentInRole_organization_Organization.ownedEnd" xmi:uuid="6d7549d9-f230-5209-88e0-15074a8c2a6f">
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifProvActivity.PersonOrOrganizationOrAgentInRole"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.assoc.PersonOrOrganizationOrAgentInRole_organization_Organization.ownedEnd.lower" xmi:uuid="2d62adbd-95cd-56a7-8bf7-cce9acfd22da">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.assoc.PersonOrOrganizationOrAgentInRole_organization_Organization.ownedEnd.upper" xmi:uuid="7421e2c6-2e58-50eb-a9c5-5cdb6733f859">
-            <value>*</value>
-          </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifProvActivity.assoc.PersonOrOrganizationOrAgentInRole_organization_Organization"/>
-        </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifProvActivity.assoc.PersonOrOrganizationOrAgentInRole_organization_Organization.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifProvActivity.PersonOrOrganizationOrAgentInRole.organization"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.assoc.PersonOrOrganizationOrAgentInRole_agentInRole_AgentInRole" xmi:uuid="ce37d196-40b0-5e4d-b424-5cd466898b12">
-        <name>PersonOrOrganizationOrAgentInRole_agentInRole_AgentInRole</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.assoc.PersonOrOrganizationOrAgentInRole_agentInRole_AgentInRole.ownedEnd" xmi:uuid="9656cff8-f1de-5879-b0fe-1201a070b58c">
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifProvActivity.PersonOrOrganizationOrAgentInRole"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.assoc.PersonOrOrganizationOrAgentInRole_agentInRole_AgentInRole.ownedEnd.lower" xmi:uuid="6ea22213-a599-5855-ac10-8f83034ad92c">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.assoc.PersonOrOrganizationOrAgentInRole_agentInRole_AgentInRole.ownedEnd.upper" xmi:uuid="1edd1254-3bc7-55eb-80ec-fdb7dad052c3">
-            <value>*</value>
-          </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifProvActivity.assoc.PersonOrOrganizationOrAgentInRole_agentInRole_AgentInRole"/>
-        </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifProvActivity.assoc.PersonOrOrganizationOrAgentInRole_agentInRole_AgentInRole.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifProvActivity.PersonOrOrganizationOrAgentInRole.agentInRole"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifProvActivity.assoc.ProvActivityHowTo_step_ProvActivityHowToStep" xmi:uuid="5019bbfe-b3fd-5d83-9065-0f0e3b9d05da">
         <name>ProvActivityHowTo_step_ProvActivityHowToStep</name>

@@ -2,13 +2,14 @@ cdifCommonTypes.xml
 cdifSharedTypes.xml
 schemaorgProperties\identifier\identifier.xml
 schemaorgProperties\definedTerm\definedTerm.xml
-cdifSharedUnions.xml
+cdifSharedUnions\IdReferenceOrIdReferenceList.xml
 skosProperties\skosConcept\skosConcept.xml
 cdifDataType\cdifConceptOrTerm\cdifConceptOrTerm.xml
 cdifDataType\cdifConceptOrTermOrString\cdifConceptOrTermOrString.xml
 bioschemasProperties\cdifBioschemasProperties\cdifBioschemasProperties.xml
 schemaorgProperties\organization\organization.xml
 schemaorgProperties\person\person.xml
+cdifSharedUnions\PersonOrOrganization.xml
 cdifDataType\cdifCatalogRecord\cdifCatalogRecord.xml
 cdifDataType\cdifPhysicalMapping\cdifPhysicalMapping.xml
 cdifDataType\cdifDataCube\cdifDataCube.xml
@@ -16,6 +17,7 @@ cdifDataType\cdifDataFingerprint\cdifDataFingerprint.xml
 profiles\cdifProfile\cdifCodelist\cdifCodelist.xml
 cdifDataType\cdifEnumerationDomain\cdifEnumerationDomain.xml
 cdifDataType\cdifValueDomain\cdifValueDomain.xml
+cdifSharedUnions\StringOrStringList.xml
 schemaorgProperties\labeledLink\labeledLink.xml
 cdifDataType\cdifRepresentedVariable\cdifRepresentedVariable.xml
 cdifDataType\cdifDescriptorVariable\cdifDescriptorVariable.xml
@@ -25,10 +27,12 @@ cdifDataType\cdifInstanceVariable\cdifInstanceVariable.xml
 cdifDataType\cdifDataStructureComponent\cdifDataStructureComponent.xml
 cdifDataType\cdifKey\cdifKey.xml
 cdifDataType\cdifLocatorMapping\cdifLocatorMapping.xml
+cdifSharedUnions\StringXorLabeledLink.xml
 cdifDataType\cdifOpenApi\cdifOpenApi.xml
+schemaorgProperties\agentInRole\agentInRole.xml
+cdifSharedUnions\PersonOrOrganizationOrAgentInRole.xml
 provProperties\generatedBy\generatedBy.xml
 schemaorgProperties\additionalProperty\additionalProperty.xml
-schemaorgProperties\agentInRole\agentInRole.xml
 schemaorgProperties\spatialExtent\spatialExtent.xml
 cdifDataType\cdifProvActivity\cdifProvActivity.xml
 cdifDataType\cdifStructuredDataSet\cdifStructuredDataSet.xml

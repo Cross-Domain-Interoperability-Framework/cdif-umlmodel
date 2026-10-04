@@ -30,19 +30,28 @@ properties:
       shared between provider and consumer. Subsumes OpenAPI info.version when the service-type
       identifier includes versioning.
   'schema:termsOfService':
-    '$ref': '#/$defs/StringXorLabeledLink'
+    oneOf:
+    - type: string
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml
     description: >-
       Description of access privileges required to use the API (e.g. registration, licensing,
       payments). Maps OpenAPI info.termsOfService. Note that access constraints applying to
       all distributions of the resource should be specified at the resource level.
   'schema:documentation':
-    '$ref': '#/$defs/StringXorLabeledLink'
+    oneOf:
+    - type: string
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml
     description: >-
       a document that provides a machine-actionable description of this service instance,
       typically the canonical OpenAPI document. Even when this BB inlines OAS detail, schema:documentation
       may still link to an authoritative OAS source.
   'spdx:license':
-    '$ref': '#/$defs/StringXorLabeledLink'
+    oneOf:
+    - type: string
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml
     description: >-
       SPDX license identifier expression for the API itself, per OpenAPI License Object. Use
       schema:license at the resource (parent) level for licensing of the data. If only a URL
@@ -383,6 +392,7 @@ required:
           payload structure.
   StringXorLabeledLink:
     oneOf:
-    - type: string
+    - default: not specified
+      type: string
     - '$ref': >-
         ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml

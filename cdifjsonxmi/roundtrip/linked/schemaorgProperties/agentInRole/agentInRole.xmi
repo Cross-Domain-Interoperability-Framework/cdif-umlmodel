@@ -35,7 +35,7 @@ For more granularity on how a person contributed to a Dataset, use schema:Role. 
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.agentInRole.AgentInRole.contributor" xmi:uuid="e573e0aa-9b9b-5f97-b664-c85b3f12397f">
           <name>contributor</name>
-          <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.agentInRole.PersonOrOrganization"/>
+          <type href="../../cdifSharedUnions/PersonOrOrganization.xmi#cdif.union.PersonOrOrganization"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.agentInRole.AgentInRole.contributor.lower" xmi:uuid="7dedf3fb-f7a9-5b9a-a252-8625b4b3e532">
             <value>1</value>
           </lowerValue>
@@ -54,91 +54,6 @@ Definition
             <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.agentInRole.AgentInRole.contributor"/>
           </ownedComment>
         </ownedAttribute>
-      </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.schemaorgProperties.agentInRole.PersonOrOrganization" xmi:uuid="10d871e2-8ea7-5758-8cdd-9eab264256ab">
-        <name>PersonOrOrganization</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.agentInRole.PersonOrOrganization.comment" xmi:uuid="6d93351a-1587-5f20-abf5-4e84d6e9b2fc">
-          <body>**CDIF**
-
-Definition
-==========
-
-
-:union: ``anyOf``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.agentInRole.PersonOrOrganization"/>
-        </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.agentInRole.PersonOrOrganization.person" xmi:uuid="aad14f60-9d3c-5afe-8cce-d32e57512a13">
-          <name>person</name>
-          <type href="../person/person.xmi#cdif.bbr.metadata.schemaorgProperties.person.Person"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.agentInRole.PersonOrOrganization.person.lower" xmi:uuid="730e8d24-f688-572e-a06a-f78ae2225736">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.agentInRole.PersonOrOrganization.person.upper" xmi:uuid="365ece52-2429-5add-b42d-55540e0ab6ab">
-            <value>1</value>
-          </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.agentInRole.assoc.PersonOrOrganization_person_Person"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.agentInRole.PersonOrOrganization.person.comment" xmi:uuid="d8969fd2-0420-5e1d-b9f1-9bed87152ee3">
-            <body>**CDIF**
-
-Definition
-==========
-
-
-:inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.agentInRole.PersonOrOrganization.person"/>
-          </ownedComment>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.agentInRole.PersonOrOrganization.organization" xmi:uuid="b0a22c9f-40a8-5784-b871-30d8e647a251">
-          <name>organization</name>
-          <type href="../organization/organization.xmi#cdif.bbr.metadata.schemaorgProperties.organization.Organization"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.agentInRole.PersonOrOrganization.organization.lower" xmi:uuid="2b3711d4-14f9-593a-a34f-c252200101ae">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.agentInRole.PersonOrOrganization.organization.upper" xmi:uuid="e60d1286-f696-5cce-b8f7-0bd3d1b44fc9">
-            <value>1</value>
-          </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.agentInRole.assoc.PersonOrOrganization_organization_Organization"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.agentInRole.PersonOrOrganization.organization.comment" xmi:uuid="d50efdc7-822c-552d-9ca8-d519be37f027">
-            <body>**CDIF**
-
-Definition
-==========
-
-
-:inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.agentInRole.PersonOrOrganization.organization"/>
-          </ownedComment>
-        </ownedAttribute>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.schemaorgProperties.agentInRole.assoc.PersonOrOrganization_person_Person" xmi:uuid="d0fcd4ea-16a2-5066-9830-ef7d39528c5a">
-        <name>PersonOrOrganization_person_Person</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.agentInRole.assoc.PersonOrOrganization_person_Person.ownedEnd" xmi:uuid="af950171-1af5-5033-9f32-75e6934565c8">
-          <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.agentInRole.PersonOrOrganization"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.agentInRole.assoc.PersonOrOrganization_person_Person.ownedEnd.lower" xmi:uuid="b3c5fe47-fa0f-5031-a19a-0e8dad3738fe">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.agentInRole.assoc.PersonOrOrganization_person_Person.ownedEnd.upper" xmi:uuid="8b8bea9a-b226-5dd3-99c1-6267a68669e3">
-            <value>*</value>
-          </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.agentInRole.assoc.PersonOrOrganization_person_Person"/>
-        </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.agentInRole.assoc.PersonOrOrganization_person_Person.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.agentInRole.PersonOrOrganization.person"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.schemaorgProperties.agentInRole.assoc.PersonOrOrganization_organization_Organization" xmi:uuid="6bfab235-1aa7-5eea-a57e-001d7d08566b">
-        <name>PersonOrOrganization_organization_Organization</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.agentInRole.assoc.PersonOrOrganization_organization_Organization.ownedEnd" xmi:uuid="9e75f816-032e-5365-a972-6c6cba249c62">
-          <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.agentInRole.PersonOrOrganization"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.agentInRole.assoc.PersonOrOrganization_organization_Organization.ownedEnd.lower" xmi:uuid="ff50e59a-a567-5cf9-972d-2db2ab59912a">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.agentInRole.assoc.PersonOrOrganization_organization_Organization.ownedEnd.upper" xmi:uuid="bb84f906-4312-5a45-8949-1bdbc54615aa">
-            <value>*</value>
-          </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.agentInRole.assoc.PersonOrOrganization_organization_Organization"/>
-        </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.agentInRole.assoc.PersonOrOrganization_organization_Organization.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.agentInRole.PersonOrOrganization.organization"/>
       </packagedElement>
     </packagedElement>
   </uml:Model>

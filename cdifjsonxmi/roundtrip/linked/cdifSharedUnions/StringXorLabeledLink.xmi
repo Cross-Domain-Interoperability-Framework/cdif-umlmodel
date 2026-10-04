@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.5.1" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.omg.org/spec/UML/20161101">
+  <uml:Model xmi:id="cdif.union.StringXorLabeledLink.model" xmi:uuid="66910aac-7e60-5cc0-87f5-43573fbb7f66">
+    <name>StringXorLabeledLink</name>
+    <packagedElement xmi:type="uml:Package" xmi:id="cdif.union.StringXorLabeledLink.pkg" xmi:uuid="d62f65f5-22a0-53ac-b70f-51f1922d9a11">
+      <name>StringXorLabeledLink</name>
+      <URI>https://w3id.org/cdif/union/xmi/StringXorLabeledLink</URI>
+      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.union.StringXorLabeledLink" xmi:uuid="1afcadc5-0025-5374-b9ae-0747f4694689">
+        <name>StringXorLabeledLink</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.union.StringXorLabeledLink.comment" xmi:uuid="91b43462-e341-5e37-99c9-9cd65f7ec21c">
+          <body>**CDIF**
+
+Definition
+==========
+
+
+:union: ``oneOf``</body>
+          <annotatedElement xmi:idref="cdif.union.StringXorLabeledLink"/>
+        </ownedComment>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.union.StringXorLabeledLink.string" xmi:uuid="b69b8cbe-1c90-55e7-9464-c09634408ff3">
+          <name>string</name>
+          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.union.StringXorLabeledLink.string.lower" xmi:uuid="10a1c45e-b54c-5425-9d66-e0e28fd1ba33">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.union.StringXorLabeledLink.string.upper" xmi:uuid="51fb165c-1333-5000-af44-99511a7c050c">
+            <value>1</value>
+          </upperValue>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.union.StringXorLabeledLink.string.comment" xmi:uuid="8d3657a1-0706-5e86-bf51-5d07bcc84b21">
+            <body>**CDIF**
+
+Definition
+==========
+
+
+:default: "not specified"</body>
+            <annotatedElement xmi:idref="cdif.union.StringXorLabeledLink.string"/>
+          </ownedComment>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.union.StringXorLabeledLink.labeledLink" xmi:uuid="7d21d352-015e-51bd-a3a9-c42a646ea147">
+          <name>labeledLink</name>
+          <type href="../schemaorgProperties/labeledLink/labeledLink.xmi#cdif.bbr.metadata.schemaorgProperties.labeledLink.LabeledLink"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.union.StringXorLabeledLink.labeledLink.lower" xmi:uuid="384ed4c5-f932-5ce2-82fd-19dda124ba4e">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.union.StringXorLabeledLink.labeledLink.upper" xmi:uuid="aab6cc5a-9efa-570e-8da5-66f61645fdcf">
+            <value>1</value>
+          </upperValue>
+        </ownedAttribute>
+      </packagedElement>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

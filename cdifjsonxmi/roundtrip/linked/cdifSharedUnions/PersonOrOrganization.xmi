@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.5.1" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.omg.org/spec/UML/20161101">
+  <uml:Model xmi:id="cdif.union.PersonOrOrganization.model" xmi:uuid="2f352341-f6b2-517b-8d8f-ea256687c2da">
+    <name>PersonOrOrganization</name>
+    <packagedElement xmi:type="uml:Package" xmi:id="cdif.union.PersonOrOrganization.pkg" xmi:uuid="32eb664a-af7d-55ba-af8d-a57fe81e247a">
+      <name>PersonOrOrganization</name>
+      <URI>https://w3id.org/cdif/union/xmi/PersonOrOrganization</URI>
+      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.union.PersonOrOrganization" xmi:uuid="c21abd6b-beec-5259-a866-18e4a9a02d9d">
+        <name>PersonOrOrganization</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.union.PersonOrOrganization.comment" xmi:uuid="1edb0724-e5f3-52af-84d5-1f9506d5c7d3">
+          <body>**CDIF**
+
+Definition
+==========
+
+
+:union: ``anyOf``</body>
+          <annotatedElement xmi:idref="cdif.union.PersonOrOrganization"/>
+        </ownedComment>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.union.PersonOrOrganization.person" xmi:uuid="9a19cb25-5c0a-5769-a629-2410cd41f342">
+          <name>person</name>
+          <type href="../schemaorgProperties/person/person.xmi#cdif.bbr.metadata.schemaorgProperties.person.Person"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.union.PersonOrOrganization.person.lower" xmi:uuid="2b696350-1652-53f6-a39e-d21c5655f3df">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.union.PersonOrOrganization.person.upper" xmi:uuid="f0fc27d7-40e4-5827-bb28-2b0521c234dd">
+            <value>1</value>
+          </upperValue>
+          <association xmi:idref="cdif.union.assoc.PersonOrOrganization_person_Person"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.union.PersonOrOrganization.person.comment" xmi:uuid="ae14e550-fa06-5cd4-8900-13361ce7b565">
+            <body>**CDIF**
+
+Definition
+==========
+
+
+:inlineOrByReference: ``inline``</body>
+            <annotatedElement xmi:idref="cdif.union.PersonOrOrganization.person"/>
+          </ownedComment>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.union.PersonOrOrganization.organization" xmi:uuid="20fcdc66-3bce-56b9-b3a4-10c88b1f056a">
+          <name>organization</name>
+          <type href="../schemaorgProperties/organization/organization.xmi#cdif.bbr.metadata.schemaorgProperties.organization.Organization"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.union.PersonOrOrganization.organization.lower" xmi:uuid="458dc2bd-4852-5c93-83f9-15ad516e2529">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.union.PersonOrOrganization.organization.upper" xmi:uuid="3d93914b-31b1-56b0-8bb8-291e3feaebef">
+            <value>1</value>
+          </upperValue>
+          <association xmi:idref="cdif.union.assoc.PersonOrOrganization_organization_Organization"/>
+          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.union.PersonOrOrganization.organization.comment" xmi:uuid="94e31d13-6294-5ea2-9ef3-75e716a48527">
+            <body>**CDIF**
+
+Definition
+==========
+
+
+:inlineOrByReference: ``inline``</body>
+            <annotatedElement xmi:idref="cdif.union.PersonOrOrganization.organization"/>
+          </ownedComment>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.union.assoc.PersonOrOrganization_person_Person" xmi:uuid="2cb920fe-8afb-5658-929f-5e76c99f35db">
+        <name>PersonOrOrganization_person_Person</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.union.assoc.PersonOrOrganization_person_Person.ownedEnd" xmi:uuid="defea1f3-732f-59bd-80d2-e1e885496e49">
+          <type xmi:idref="cdif.union.PersonOrOrganization"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.union.assoc.PersonOrOrganization_person_Person.ownedEnd.lower" xmi:uuid="6200e41d-1317-59e6-ba7c-f1198c40f16b">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.union.assoc.PersonOrOrganization_person_Person.ownedEnd.upper" xmi:uuid="83259b71-5b60-5acf-9bc8-1fba2d79d3f2">
+            <value>*</value>
+          </upperValue>
+          <association xmi:idref="cdif.union.assoc.PersonOrOrganization_person_Person"/>
+        </ownedEnd>
+        <memberEnd xmi:idref="cdif.union.assoc.PersonOrOrganization_person_Person.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.union.PersonOrOrganization.person"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.union.assoc.PersonOrOrganization_organization_Organization" xmi:uuid="2ec4347c-6671-522b-b0d7-6b568f7f88d3">
+        <name>PersonOrOrganization_organization_Organization</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.union.assoc.PersonOrOrganization_organization_Organization.ownedEnd" xmi:uuid="fc4f8b8d-1d7a-5fac-9437-c138f4f35945">
+          <type xmi:idref="cdif.union.PersonOrOrganization"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.union.assoc.PersonOrOrganization_organization_Organization.ownedEnd.lower" xmi:uuid="ea7e1f7b-68ad-535c-9ed2-b5fb56cba98e">
+            <value>0</value>
+          </lowerValue>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.union.assoc.PersonOrOrganization_organization_Organization.ownedEnd.upper" xmi:uuid="7bfcbcdd-ea7c-5822-8198-d5b5104dfa7d">
+            <value>*</value>
+          </upperValue>
+          <association xmi:idref="cdif.union.assoc.PersonOrOrganization_organization_Organization"/>
+        </ownedEnd>
+        <memberEnd xmi:idref="cdif.union.assoc.PersonOrOrganization_organization_Organization.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.union.PersonOrOrganization.organization"/>
+      </packagedElement>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

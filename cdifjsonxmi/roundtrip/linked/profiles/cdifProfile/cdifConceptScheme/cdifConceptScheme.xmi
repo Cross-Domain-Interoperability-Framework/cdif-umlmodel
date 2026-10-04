@@ -590,7 +590,7 @@ General note about this concept.</body>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.profiles.cdifProfile.cdifConceptScheme.cdifConcept.inScheme" xmi:uuid="6f0f90c0-e6e4-5a82-93cd-d8aaef4b2649">
           <name>inScheme</name>
-          <type href="../../../cdifSharedUnions.xmi#cdif.union.IdReferenceOrIdReferenceList"/>
+          <type href="../../../cdifSharedUnions/IdReferenceOrIdReferenceList.xmi#cdif.union.IdReferenceOrIdReferenceList"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.profiles.cdifProfile.cdifConceptScheme.cdifConcept.inScheme.lower" xmi:uuid="1ae9b417-7003-5fe4-bc96-d29f166f5fa4">
             <value>0</value>
           </lowerValue>

@@ -85,7 +85,7 @@ identifier for the kind of service, expected to identify the service type and ve
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApi.termsOfService" xmi:uuid="43ac7bba-2699-5d14-84f9-a6bd7d69b649">
           <name>termsOfService</name>
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.StringXorLabeledLink"/>
+          <type href="../../cdifSharedUnions/StringXorLabeledLink.xmi#cdif.union.StringXorLabeledLink"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApi.termsOfService.lower" xmi:uuid="63583d47-9dbe-58dd-b7f3-5a97e867f9a2">
             <value>1</value>
           </lowerValue>
@@ -98,13 +98,14 @@ identifier for the kind of service, expected to identify the service type and ve
 Definition
 ==========
 
-Description of access privileges required to use the API (e.g. registration, licensing, payments). Maps OpenAPI info.termsOfService. Note that access constraints applying to all distributions of the resource should be specified at the resource level.</body>
+Description of access privileges required to use the API (e.g. registration, licensing, payments). Maps OpenAPI info.termsOfService. Note that access constraints applying to all distributions of the resource should be specified at the resource level.
+:alternativeOverrides: {"string": {"default": null}}</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApi.termsOfService"/>
           </ownedComment>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApi.documentation" xmi:uuid="7938ed65-0501-570c-8ef1-dc3d844bd67f">
           <name>documentation</name>
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.StringXorLabeledLink"/>
+          <type href="../../cdifSharedUnions/StringXorLabeledLink.xmi#cdif.union.StringXorLabeledLink"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApi.documentation.lower" xmi:uuid="26917d20-9fb0-581e-9bd2-25aab9d59dfc">
             <value>0</value>
           </lowerValue>
@@ -117,13 +118,14 @@ Description of access privileges required to use the API (e.g. registration, lic
 Definition
 ==========
 
-a document that provides a machine-actionable description of this service instance, typically the canonical OpenAPI document. Even when this BB inlines OAS detail, schema:documentation may still link to an authoritative OAS source.</body>
+a document that provides a machine-actionable description of this service instance, typically the canonical OpenAPI document. Even when this BB inlines OAS detail, schema:documentation may still link to an authoritative OAS source.
+:alternativeOverrides: {"string": {"default": null}}</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApi.documentation"/>
           </ownedComment>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApi.spdx_license" xmi:uuid="3614a023-e2e3-5501-820a-3275e0ad7efd">
           <name>spdx_license</name>
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.StringXorLabeledLink"/>
+          <type href="../../cdifSharedUnions/StringXorLabeledLink.xmi#cdif.union.StringXorLabeledLink"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApi.spdx_license.lower" xmi:uuid="29f8be1e-a012-5a02-b09c-c2bee469df25">
             <value>0</value>
           </lowerValue>
@@ -137,6 +139,7 @@ Definition
 ==========
 
 SPDX license identifier expression for the API itself, per OpenAPI License Object. Use schema:license at the resource (parent) level for licensing of the data. If only a URL identifier is available rather than an SPDX id, encode as a labeled link (#/$defs/Reference).
+:alternativeOverrides: {"string": {"default": null}}
 :jsonName: "spdx:license"</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApi.spdx_license"/>
           </ownedComment>
@@ -1094,39 +1097,6 @@ Definition
 reference to an external JSON Schema or XML Schema document describing a complex payload structure.</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.OpenApiEntryPointResponseContentSchema.$ref"/>
           </ownedComment>
-        </ownedAttribute>
-      </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.StringXorLabeledLink" xmi:uuid="3a7bd74e-e8a5-5481-bcf7-812ae7e0b656">
-        <name>StringXorLabeledLink</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.StringXorLabeledLink.comment" xmi:uuid="ac30d50e-baeb-5e49-8840-d3bba5cf643b">
-          <body>**CDIF**
-
-Definition
-==========
-
-
-:union: ``oneOf``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifOpenApi.StringXorLabeledLink"/>
-        </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.StringXorLabeledLink.string" xmi:uuid="ac152416-f94f-53c1-a4e1-e378f05ec631">
-          <name>string</name>
-          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.StringXorLabeledLink.string.lower" xmi:uuid="ad400021-3a3f-5c02-94ce-b4d5b229d96d">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.StringXorLabeledLink.string.upper" xmi:uuid="33433530-a553-5649-b2ef-d89f5ec30751">
-            <value>1</value>
-          </upperValue>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.StringXorLabeledLink.labeledLink" xmi:uuid="a43ff33a-cd0e-595c-b480-0d4aa327d273">
-          <name>labeledLink</name>
-          <type href="../../schemaorgProperties/labeledLink/labeledLink.xmi#cdif.bbr.metadata.schemaorgProperties.labeledLink.LabeledLink"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.StringXorLabeledLink.labeledLink.lower" xmi:uuid="80312332-1fe8-58c0-aaf5-e88171513423">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.StringXorLabeledLink.labeledLink.upper" xmi:uuid="5a8d161e-0c6d-553f-a887-be14bd12a250">
-            <value>1</value>
-          </upperValue>
         </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Enumeration" xmi:id="cdif.bbr.metadata.cdifDataType.cdifOpenApi.Type" xmi:uuid="df08c58b-9d8a-5f56-b7a9-6b568db4240a">

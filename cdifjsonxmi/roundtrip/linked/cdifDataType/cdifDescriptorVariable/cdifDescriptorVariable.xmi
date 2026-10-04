@@ -47,7 +47,7 @@ A cdi:DescriptorValueDomain enumerating the codes that can appear in the descrip
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorVariable.cdif_name" xmi:uuid="35f9f20a-83a0-598a-a398-dc5e331dbb4b">
           <name>cdif_name</name>
-          <type href="../../cdifSharedUnions.xmi#cdif.union.StringOrStringList"/>
+          <type href="../../cdifSharedUnions/StringOrStringList.xmi#cdif.union.StringOrStringList"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDescriptorVariable.DescriptorVariable.cdif_name.lower" xmi:uuid="02510d1e-d593-59e9-a694-3bcf7bc9e1bc">
             <value>1</value>
           </lowerValue>

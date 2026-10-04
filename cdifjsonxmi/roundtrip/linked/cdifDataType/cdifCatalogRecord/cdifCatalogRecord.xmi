@@ -89,7 +89,7 @@ uri for specifications that this metadata record conforms to. Minimimally should
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.CatalogRecord.maintainer" xmi:uuid="3d023e9d-8f36-5958-a2e5-68c01e62a541">
           <name>maintainer</name>
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.PersonOrOrganization"/>
+          <type href="../../cdifSharedUnions/PersonOrOrganization.xmi#cdif.union.PersonOrOrganization"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.CatalogRecord.maintainer.lower" xmi:uuid="966b98b7-9278-5576-8148-c44409c6484b">
             <value>0</value>
           </lowerValue>
@@ -211,61 +211,6 @@ identifier for the collection or catalog; use identifier_type to provide informa
           </ownedComment>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.PersonOrOrganization" xmi:uuid="28f5c9c8-e54b-5cb2-a76b-0f28d06605c2">
-        <name>PersonOrOrganization</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.PersonOrOrganization.comment" xmi:uuid="bd9f8cb8-c3a9-5c2d-b928-b30111f9f160">
-          <body>**CDIF**
-
-Definition
-==========
-
-
-:union: ``anyOf``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.PersonOrOrganization"/>
-        </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.PersonOrOrganization.person" xmi:uuid="7d442b31-e6bd-503b-85f0-c74e2ceb6a96">
-          <name>person</name>
-          <type href="../../schemaorgProperties/person/person.xmi#cdif.bbr.metadata.schemaorgProperties.person.Person"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.PersonOrOrganization.person.lower" xmi:uuid="df28050e-41db-505e-9a52-3ba6dbd8a9a6">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.PersonOrOrganization.person.upper" xmi:uuid="44399dad-c6f7-5009-99c7-67e236bb4335">
-            <value>1</value>
-          </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.assoc.PersonOrOrganization_person_Person"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.PersonOrOrganization.person.comment" xmi:uuid="63ddb98d-0b92-503d-980e-004b69fe8327">
-            <body>**CDIF**
-
-Definition
-==========
-
-
-:inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.PersonOrOrganization.person"/>
-          </ownedComment>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.PersonOrOrganization.organization" xmi:uuid="749d2e06-49a5-58f8-8431-ec5312667710">
-          <name>organization</name>
-          <type href="../../schemaorgProperties/organization/organization.xmi#cdif.bbr.metadata.schemaorgProperties.organization.Organization"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.PersonOrOrganization.organization.lower" xmi:uuid="68e9a731-f394-5d54-b1ae-c573808be3a3">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.PersonOrOrganization.organization.upper" xmi:uuid="3bb74fa4-9a78-5f71-b9e4-6fb726e02258">
-            <value>1</value>
-          </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.assoc.PersonOrOrganization_organization_Organization"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.PersonOrOrganization.organization.comment" xmi:uuid="4baee4e1-9dea-57bc-8ce9-e44875aa2569">
-            <body>**CDIF**
-
-Definition
-==========
-
-
-:inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.PersonOrOrganization.organization"/>
-          </ownedComment>
-        </ownedAttribute>
-      </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.assoc.CatalogRecord_includedInDataCatalog_DataCatalog" xmi:uuid="801843a1-df8b-55b1-8a5d-859a652905c8">
         <name>CatalogRecord_includedInDataCatalog_DataCatalog</name>
         <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.assoc.CatalogRecord_includedInDataCatalog_DataCatalog.ownedEnd" xmi:uuid="8115f00d-d297-59af-b78f-77f0d4698894">
@@ -280,36 +225,6 @@ Definition
         </ownedEnd>
         <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.assoc.CatalogRecord_includedInDataCatalog_DataCatalog.ownedEnd"/>
         <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.CatalogRecord.includedInDataCatalog"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.assoc.PersonOrOrganization_person_Person" xmi:uuid="6b4aa6bd-f8eb-5999-9cf7-c58c4c6a1c99">
-        <name>PersonOrOrganization_person_Person</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.assoc.PersonOrOrganization_person_Person.ownedEnd" xmi:uuid="7b4e224e-9733-5ab2-b6a7-00e7f268aff7">
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.PersonOrOrganization"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.assoc.PersonOrOrganization_person_Person.ownedEnd.lower" xmi:uuid="b5b4bd57-4ffd-50fe-8db7-f10543e7e0bb">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.assoc.PersonOrOrganization_person_Person.ownedEnd.upper" xmi:uuid="ceb07e1b-53a8-5ed1-80bf-6bc0d2a691f1">
-            <value>*</value>
-          </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.assoc.PersonOrOrganization_person_Person"/>
-        </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.assoc.PersonOrOrganization_person_Person.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.PersonOrOrganization.person"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.assoc.PersonOrOrganization_organization_Organization" xmi:uuid="0fcefcb3-81f6-507a-b28b-ee9d9789b9cc">
-        <name>PersonOrOrganization_organization_Organization</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.assoc.PersonOrOrganization_organization_Organization.ownedEnd" xmi:uuid="8f5bc1ec-dcdc-5524-b21e-61be84e1a676">
-          <type xmi:idref="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.PersonOrOrganization"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.assoc.PersonOrOrganization_organization_Organization.ownedEnd.lower" xmi:uuid="6cb4f641-80fc-5331-884a-b37cf40c09f2">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.assoc.PersonOrOrganization_organization_Organization.ownedEnd.upper" xmi:uuid="3d5f3f6e-4d84-5de7-b220-a102ddd10a99">
-            <value>*</value>
-          </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.assoc.PersonOrOrganization_organization_Organization"/>
-        </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.assoc.PersonOrOrganization_organization_Organization.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.cdifDataType.cdifCatalogRecord.PersonOrOrganization.organization"/>
       </packagedElement>
     </packagedElement>
   </uml:Model>

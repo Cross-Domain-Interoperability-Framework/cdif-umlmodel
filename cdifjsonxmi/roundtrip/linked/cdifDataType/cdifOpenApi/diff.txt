@@ -1,4 +1,4 @@
-cdifOpenApi: 29 exact difference(s)
+cdifOpenApi: 26 exact difference(s)
 $.$defs.Action: only in regenerated: {"type": "object", "description": "an OpenAPI-aligned operation. Corresponds to one OpenAPI Operation Object; the path component of OAS Path Item is folded into schema:target/schema:urlTemplate togeth
 $.$defs.EntryPoint: only in original: {"type": "object", "description": "endpoint URL template, HTTP method, and the OpenAPI-shaped parameters, request body, and responses for the operation.", "properties": {"@type": {"type": "array", "it
 $.$defs.MediaType: only in original: {"type": "object", "description": "an OpenAPI Media Type Object; describes the structure of one media-type representation in a request body or response.", "properties": {"schema:encodingFormat": {"typ
@@ -17,20 +17,23 @@ $.$defs.Reference: only in original: {"$ref": "../../schemaorgProperties/labeled
 $.$defs.RequestBody: only in original: {"type": "object", "description": "an OpenAPI Request Body Object; describes the body of a write request.", "properties": {"schema:description": {"type": "string"}, "oas:required": {"type": "boolean",
 $.$defs.Response: only in original: {"type": "object", "description": "an OpenAPI Response Object describing one response from an operation.", "properties": {"oas:code": {"type": "string", "description": "HTTP status code (e.g. \"200\",
 $.$defs.Schema: only in original: {"type": "object", "description": "a minimal OpenAPI Schema Object. The full OAS Schema Object is a superset of JSON Schema 2020-12; this BB requires only a basic type/format/pattern/enum/$ref shape s
-$.$defs.StringXorLabeledLink: only in regenerated: {"oneOf": [{"type": "string"}, {"$ref": "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml"}]}
+$.$defs.StringXorLabeledLink: only in regenerated: {"oneOf": [{"default": "not specified", "type": "string"}, {"$ref": "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml"}]}
 $.$defs.cdifConceptOrTerm: only in original: {"$ref": "../cdifConceptOrTerm/schema.yaml"}
 $.$defs.cdifConceptOrTermOrString: only in original: {"$ref": "../cdifConceptOrTermOrString/schema.yaml"}
-$.properties.schema:documentation.$ref: only in regenerated: "#/$defs/StringXorLabeledLink"
-$.properties.schema:documentation.oneOf: only in original: [{"type": "string"}, {"$ref": "#/$defs/Reference"}]
+$.properties.schema:documentation.oneOf[1].$ref:
+    original:    "#/$defs/Reference"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml"
 $.properties.schema:potentialAction.items.$ref:
     original:    "#/$defs/Operation"
     regenerated: "#/$defs/Action"
 $.properties.schema:serviceType.$ref:
     original:    "#/$defs/cdifConceptOrTermOrString"
     regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml"
-$.properties.schema:termsOfService.$ref: only in regenerated: "#/$defs/StringXorLabeledLink"
-$.properties.schema:termsOfService.oneOf: only in original: [{"type": "string"}, {"$ref": "#/$defs/Reference"}]
-$.properties.spdx:license.$ref: only in regenerated: "#/$defs/StringXorLabeledLink"
-$.properties.spdx:license.oneOf: only in original: [{"type": "string"}, {"$ref": "#/$defs/Reference"}]
+$.properties.schema:termsOfService.oneOf[1].$ref:
+    original:    "#/$defs/Reference"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml"
+$.properties.spdx:license.oneOf[1].$ref:
+    original:    "#/$defs/Reference"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/labeledLink/schema.yaml"
 
 cdifOpenApi: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

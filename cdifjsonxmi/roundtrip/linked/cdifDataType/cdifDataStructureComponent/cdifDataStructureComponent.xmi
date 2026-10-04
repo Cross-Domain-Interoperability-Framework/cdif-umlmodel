@@ -414,7 +414,7 @@ Role given to a represented variable in the context of a data structure to hold 
         </ownedComment>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.MeasureComponent.cdif_name" xmi:uuid="6cac5213-dbc5-55e2-8aa4-a08cfc29277c">
           <name>cdif_name</name>
-          <type href="../../cdifSharedUnions.xmi#cdif.union.StringOrStringList"/>
+          <type href="../../cdifSharedUnions/StringOrStringList.xmi#cdif.union.StringOrStringList"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifDataStructureComponent.MeasureComponent.cdif_name.lower" xmi:uuid="297ad1fa-97d8-5480-9c35-5fd49e3df2c7">
             <value>0</value>
           </lowerValue>

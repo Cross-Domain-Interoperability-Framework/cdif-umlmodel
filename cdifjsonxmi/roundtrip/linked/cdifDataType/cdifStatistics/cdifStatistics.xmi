@@ -103,7 +103,7 @@ Minimal Category shape used as a CategoryStatistics target. CDIF simplifies the 
         </ownedComment>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.Category.cdif_name" xmi:uuid="f527df20-9389-547c-b5e2-0fb6de94a72e">
           <name>cdif_name</name>
-          <type href="../../cdifSharedUnions.xmi#cdif.union.StringOrStringList"/>
+          <type href="../../cdifSharedUnions/StringOrStringList.xmi#cdif.union.StringOrStringList"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifStatistics.Category.cdif_name.lower" xmi:uuid="e3a5249b-8a8e-544c-804d-c7d710fdcd1d">
             <value>0</value>
           </lowerValue>

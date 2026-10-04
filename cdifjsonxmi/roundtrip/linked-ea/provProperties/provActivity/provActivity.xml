@@ -102,7 +102,7 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="EAID_1572DA26_3ED2_54eb_9C4A_93A1BB52A719"/>
+										<UML:Classifier xmi.idref="EAID_6729A101_FE29_5d92_91B4_DCCC89235977"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Agents responsible for this activity (PROV-O native -- maps to schema:agent in cdifProvActivity)&#xA;:idRefDescription: &quot;reference to an agent defined elsewhere&quot;&#xA;:orReference: [&quot;value&quot;, &quot;string&quot;, &quot;idReference&quot;]"/>
@@ -345,17 +345,6 @@
 								<UML:TaggedValue tag="ea_guid" value="{6DD8365C-288C-5b79-8827-AC0863692134}"/>
 							</UML:ModelElement.taggedValue>
 						</UML:Class>
-						<UML:Class name="PersonOrOrganizationOrAgentInRole" xmi.id="EAID_1572DA26_3ED2_54eb_9C4A_93A1BB52A719" visibility="public" namespace="EAPK_C9401947_112A_539c_98DE_6FBDFCD6BC5E" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
-							<UML:ModelElement.taggedValue>
-								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:union: ``anyOf``"/>
-								<UML:TaggedValue tag="isSpecification" value="false"/>
-								<UML:TaggedValue tag="ea_stype" value="DataType"/>
-								<UML:TaggedValue tag="ea_ntype" value="0"/>
-								<UML:TaggedValue tag="version" value="1.0"/>
-								<UML:TaggedValue tag="package" value="EAPK_C9401947_112A_539c_98DE_6FBDFCD6BC5E"/>
-								<UML:TaggedValue tag="ea_guid" value="{1572DA26-3ED2-54eb-9C4A-93A1BB52A719}"/>
-							</UML:ModelElement.taggedValue>
-						</UML:Class>
 						<UML:Association xmi.id="EAID_EE2E20D4_D229_5bd8_A575_1C6B3034F353" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Location where the activity occurred (PROV-O expanded term -- maps to schema:location in cdifProvActivity)&#xA;:inlineOrByReference: ``inline``&#xA;:idRefDescription: &quot;reference to a place defined elsewhere&quot;&#xA;:orReference: [&quot;value&quot;, &quot;string&quot;, &quot;idReference&quot;]"/>
@@ -446,96 +435,6 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_0C3591BE_84E9_5b2b_A5A7_F0B2EA8D0BFE" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
-							<UML:ModelElement.taggedValue>
-								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
-								<UML:TaggedValue tag="ea_type" value="Association"/>
-								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
-								<UML:TaggedValue tag="ea_sourceName" value="PersonOrOrganizationOrAgentInRole"/>
-								<UML:TaggedValue tag="ea_targetName" value="Person"/>
-								<UML:TaggedValue tag="ea_sourceType" value="DataType"/>
-								<UML:TaggedValue tag="ea_targetType" value="Class"/>
-								<UML:TaggedValue tag="ea_guid" value="{0C3591BE-84E9-5b2b-A5A7-F0B2EA8D0BFE}"/>
-							</UML:ModelElement.taggedValue>
-							<UML:Association.connection>
-								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_1572DA26_3ED2_54eb_9C4A_93A1BB52A719">
-									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="containment" value="Unspecified"/>
-										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
-										<UML:TaggedValue tag="ea_end" value="source"/>
-									</UML:ModelElement.taggedValue>
-								</UML:AssociationEnd>
-								<UML:AssociationEnd visibility="public" name="person" multiplicity="0..1" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_BABACB35_08EA_53fe_9036_A97C131DA82B">
-									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
-										<UML:TaggedValue tag="containment" value="Unspecified"/>
-										<UML:TaggedValue tag="deststyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
-										<UML:TaggedValue tag="ea_end" value="target"/>
-										<UML:TaggedValue tag="ea_guid" value="{41C4B221-1B63-5894-9834-D39A4A3893AF}"/>
-									</UML:ModelElement.taggedValue>
-								</UML:AssociationEnd>
-							</UML:Association.connection>
-						</UML:Association>
-						<UML:Association xmi.id="EAID_A4396810_A59A_5128_80B8_FAB2F7E7F620" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
-							<UML:ModelElement.taggedValue>
-								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
-								<UML:TaggedValue tag="ea_type" value="Association"/>
-								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
-								<UML:TaggedValue tag="ea_sourceName" value="PersonOrOrganizationOrAgentInRole"/>
-								<UML:TaggedValue tag="ea_targetName" value="Organization"/>
-								<UML:TaggedValue tag="ea_sourceType" value="DataType"/>
-								<UML:TaggedValue tag="ea_targetType" value="Class"/>
-								<UML:TaggedValue tag="ea_guid" value="{A4396810-A59A-5128-80B8-FAB2F7E7F620}"/>
-							</UML:ModelElement.taggedValue>
-							<UML:Association.connection>
-								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_1572DA26_3ED2_54eb_9C4A_93A1BB52A719">
-									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="containment" value="Unspecified"/>
-										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
-										<UML:TaggedValue tag="ea_end" value="source"/>
-									</UML:ModelElement.taggedValue>
-								</UML:AssociationEnd>
-								<UML:AssociationEnd visibility="public" name="organization" multiplicity="0..1" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_2DB61F44_7333_577b_A6B1_4637CAA17142">
-									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
-										<UML:TaggedValue tag="containment" value="Unspecified"/>
-										<UML:TaggedValue tag="deststyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
-										<UML:TaggedValue tag="ea_end" value="target"/>
-										<UML:TaggedValue tag="ea_guid" value="{33A82AED-7590-5e9f-9E96-750AF30A88CA}"/>
-									</UML:ModelElement.taggedValue>
-								</UML:AssociationEnd>
-							</UML:Association.connection>
-						</UML:Association>
-						<UML:Association xmi.id="EAID_52CEE017_0311_59fc_B496_FB086D4D21D0" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
-							<UML:ModelElement.taggedValue>
-								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
-								<UML:TaggedValue tag="ea_type" value="Association"/>
-								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
-								<UML:TaggedValue tag="ea_sourceName" value="PersonOrOrganizationOrAgentInRole"/>
-								<UML:TaggedValue tag="ea_targetName" value="AgentInRole"/>
-								<UML:TaggedValue tag="ea_sourceType" value="DataType"/>
-								<UML:TaggedValue tag="ea_targetType" value="Class"/>
-								<UML:TaggedValue tag="ea_guid" value="{52CEE017-0311-59fc-B496-FB086D4D21D0}"/>
-							</UML:ModelElement.taggedValue>
-							<UML:Association.connection>
-								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_1572DA26_3ED2_54eb_9C4A_93A1BB52A719">
-									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="containment" value="Unspecified"/>
-										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
-										<UML:TaggedValue tag="ea_end" value="source"/>
-									</UML:ModelElement.taggedValue>
-								</UML:AssociationEnd>
-								<UML:AssociationEnd visibility="public" name="agentInRole" multiplicity="0..1" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_DE7C1B8C_551A_5ed1_8B16_FB664396D7EB">
-									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
-										<UML:TaggedValue tag="containment" value="Unspecified"/>
-										<UML:TaggedValue tag="deststyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
-										<UML:TaggedValue tag="ea_end" value="target"/>
-										<UML:TaggedValue tag="ea_guid" value="{143073CE-01F2-5541-A853-D34766AB1050}"/>
-									</UML:ModelElement.taggedValue>
-								</UML:AssociationEnd>
-							</UML:Association.connection>
-						</UML:Association>
 						<UML:Generalization subtype="EAID_24F635D0_DCC3_51da_91C3_F8F3EBCB0F94" supertype="EAID_3F050191_3F2B_5298_9A7F_6B8D0DAD7484" xmi.id="EAID_1E59B359_9621_56ee_9259_68503CDFF211" visibility="public">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="ea_type" value="Generalization"/>
@@ -582,13 +481,11 @@
 		</UML:Model>
 	</XMI.content>
 	<XMI.extensions xmi.extender="Enterprise Architect 2.5">
-		<EAStub xmi.id="EAID_2DB61F44_7333_577b_A6B1_4637CAA17142" name="Organization" UMLType="Class"/>
 		<EAStub xmi.id="EAID_3F050191_3F2B_5298_9A7F_6B8D0DAD7484" name="GeneratedBy" UMLType="Class"/>
 		<EAStub xmi.id="EAID_46393A5F_79B9_5a97_8228_4585E51BEEDF" name="HowTo" UMLType="Class"/>
 		<EAStub xmi.id="EAID_504C91FE_8377_5649_9719_308C129EBFB1" name="IriReference" UMLType="DataType"/>
+		<EAStub xmi.id="EAID_6729A101_FE29_5d92_91B4_DCCC89235977" name="PersonOrOrganizationOrAgentInRole" UMLType="DataType"/>
 		<EAStub xmi.id="EAID_79F0F633_AAE6_5e1d_82B9_722DC9E50965" name="HowToStep" UMLType="Class"/>
 		<EAStub xmi.id="EAID_A372246D_054E_5875_8DE8_082D93DDA478" name="SpatialExtent" UMLType="Class"/>
-		<EAStub xmi.id="EAID_BABACB35_08EA_53fe_9036_A97C131DA82B" name="Person" UMLType="Class"/>
-		<EAStub xmi.id="EAID_DE7C1B8C_551A_5ed1_8B16_FB664396D7EB" name="AgentInRole" UMLType="Class"/>
 	</XMI.extensions>
 </XMI>

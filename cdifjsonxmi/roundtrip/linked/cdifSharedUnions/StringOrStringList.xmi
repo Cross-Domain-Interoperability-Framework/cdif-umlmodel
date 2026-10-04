@@ -1,43 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.5.1" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.omg.org/spec/UML/20161101">
-  <uml:Model xmi:id="cdif.union.model" xmi:uuid="450455c0-dde0-5719-afa7-af0759bfdcb5">
-    <name>cdifSharedUnions</name>
-    <packagedElement xmi:type="uml:Package" xmi:id="cdif.union" xmi:uuid="7b9f3a2b-ef0c-5fc3-9471-ac4d1e84f9fa">
-      <name>cdifSharedUnions</name>
-      <URI>https://w3id.org/cdif/union/xmi/</URI>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.union.IdReferenceOrIdReferenceList" xmi:uuid="036d7fa9-2cf9-5bd7-bd7d-7592ea5bbbc5">
-        <name>IdReferenceOrIdReferenceList</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.union.IdReferenceOrIdReferenceList.comment" xmi:uuid="01d7c470-45ca-54a6-9df9-334cb34e5ba2">
-          <body>**CDIF**
-
-Definition
-==========
-
-
-:union: ``anyOf``</body>
-          <annotatedElement xmi:idref="cdif.union.IdReferenceOrIdReferenceList"/>
-        </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.union.IdReferenceOrIdReferenceList.idReference" xmi:uuid="3fba00d4-60d3-5525-9d0e-901dfda5df6d">
-          <name>idReference</name>
-          <type href="cdifCommonTypes.xmi#common.IdReference"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.union.IdReferenceOrIdReferenceList.idReference.lower" xmi:uuid="d31f76ed-a1be-5f43-9a06-45d8b638d526">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.union.IdReferenceOrIdReferenceList.idReference.upper" xmi:uuid="ef5faea7-ffcf-5c5b-9961-762e07cf40a7">
-            <value>1</value>
-          </upperValue>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.union.IdReferenceOrIdReferenceList.idReferenceList" xmi:uuid="e8724158-c341-59fc-bd8b-15c66050aab0">
-          <name>idReferenceList</name>
-          <type href="cdifCommonTypes.xmi#common.IdReference"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.union.IdReferenceOrIdReferenceList.idReferenceList.lower" xmi:uuid="f14674c3-df3b-5f5f-b863-5bcbaa33d02c">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.union.IdReferenceOrIdReferenceList.idReferenceList.upper" xmi:uuid="1ffb61f7-74ec-52c5-ad08-4fb88c4f84d6">
-            <value>*</value>
-          </upperValue>
-        </ownedAttribute>
-      </packagedElement>
+  <uml:Model xmi:id="cdif.union.StringOrStringList.model" xmi:uuid="a0372e5a-ea8f-51f4-bb45-5906c0d715d0">
+    <name>StringOrStringList</name>
+    <packagedElement xmi:type="uml:Package" xmi:id="cdif.union.StringOrStringList.pkg" xmi:uuid="70090584-eaf2-569a-a5ef-6538cce141e8">
+      <name>StringOrStringList</name>
+      <URI>https://w3id.org/cdif/union/xmi/StringOrStringList</URI>
       <packagedElement xmi:type="uml:DataType" xmi:id="cdif.union.StringOrStringList" xmi:uuid="5b597d40-b2f2-5bbd-bf03-f9154828eaba">
         <name>StringOrStringList</name>
         <ownedComment xmi:type="uml:Comment" xmi:id="cdif.union.StringOrStringList.comment" xmi:uuid="20084d3c-c0a2-56de-bbc7-20dced9cf26c">

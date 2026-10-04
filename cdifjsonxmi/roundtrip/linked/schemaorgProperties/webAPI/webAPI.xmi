@@ -51,7 +51,7 @@ specify the kind of service. Ideally this should be a resolvable identifier. Cur
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.webAPI.WebAPI.termsOfService" xmi:uuid="5d9bc747-7307-514a-8d1d-149270099c98">
           <name>termsOfService</name>
-          <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.webAPI.StringXorLabeledLink"/>
+          <type href="../../cdifSharedUnions/StringXorLabeledLink.xmi#cdif.union.StringXorLabeledLink"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.webAPI.WebAPI.termsOfService.lower" xmi:uuid="1d4c1a69-6f08-5c1d-a9b6-aa926323118e">
             <value>1</value>
           </lowerValue>
@@ -70,7 +70,7 @@ Description of access privileges required to use the API, e.g. registration, lic
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.webAPI.WebAPI.documentation" xmi:uuid="09b6e75c-baab-5ef2-b99a-73b82a96d880">
           <name>documentation</name>
-          <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.webAPI.StringXorLabeledLink"/>
+          <type href="../../cdifSharedUnions/StringXorLabeledLink.xmi#cdif.union.StringXorLabeledLink"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.webAPI.WebAPI.documentation.lower" xmi:uuid="c47335df-a020-5986-abc7-4cc42bf80a35">
             <value>0</value>
           </lowerValue>
@@ -109,49 +109,6 @@ actions that can be invoked via the API
 :minItems: null</body>
             <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.webAPI.WebAPI.potentialAction"/>
           </ownedComment>
-        </ownedAttribute>
-      </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.schemaorgProperties.webAPI.StringXorLabeledLink" xmi:uuid="0d9aba87-9ed1-5b1f-9952-7cd81693bf44">
-        <name>StringXorLabeledLink</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.webAPI.StringXorLabeledLink.comment" xmi:uuid="a57aaa37-57e3-52c1-8df9-4c966cd2e6ba">
-          <body>**CDIF**
-
-Definition
-==========
-
-
-:union: ``oneOf``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.webAPI.StringXorLabeledLink"/>
-        </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.webAPI.StringXorLabeledLink.string" xmi:uuid="6ba5ae16-81bb-5abc-b4f2-e469beddc5ad">
-          <name>string</name>
-          <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.webAPI.StringXorLabeledLink.string.lower" xmi:uuid="f80958fe-9b05-553b-8006-cb6912d1b085">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.webAPI.StringXorLabeledLink.string.upper" xmi:uuid="46da8fac-d00b-5b2c-a54b-a5894ae06c84">
-            <value>1</value>
-          </upperValue>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.webAPI.StringXorLabeledLink.string.comment" xmi:uuid="bd85e555-5468-5804-9128-ca1165387435">
-            <body>**CDIF**
-
-Definition
-==========
-
-
-:default: "not specified"</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.webAPI.StringXorLabeledLink.string"/>
-          </ownedComment>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.webAPI.StringXorLabeledLink.labeledLink" xmi:uuid="bcbdfbf8-7870-5fd2-b9d9-3f74ae0d4f61">
-          <name>labeledLink</name>
-          <type href="../labeledLink/labeledLink.xmi#cdif.bbr.metadata.schemaorgProperties.labeledLink.LabeledLink"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.webAPI.StringXorLabeledLink.labeledLink.lower" xmi:uuid="6bbaa839-22d9-5fc7-b997-7ed796c3a8f7">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.webAPI.StringXorLabeledLink.labeledLink.upper" xmi:uuid="e976ad15-5077-575c-884f-b7c0d22a3b77">
-            <value>1</value>
-          </upperValue>
         </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.schemaorgProperties.webAPI.assoc.WebAPI_serviceType_DefinedTerm" xmi:uuid="100ab45b-5ae0-5b44-80be-1b5d4068196a">

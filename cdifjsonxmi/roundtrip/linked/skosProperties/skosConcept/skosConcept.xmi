@@ -165,7 +165,7 @@ Note for editors and maintainers.</body>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosConcept.Concept.inScheme" xmi:uuid="098ee5e2-28cb-574e-9ab0-f36ddf8a21d1">
           <name>inScheme</name>
-          <type href="../../cdifSharedUnions.xmi#cdif.union.IdReferenceOrIdReferenceList"/>
+          <type href="../../cdifSharedUnions/IdReferenceOrIdReferenceList.xmi#cdif.union.IdReferenceOrIdReferenceList"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosConcept.Concept.inScheme.lower" xmi:uuid="c7d69360-7329-5fb9-aa41-c597414ecc85">
             <value>1</value>
           </lowerValue>
@@ -184,7 +184,7 @@ Concept scheme(s) this concept belongs to.</body>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.skosProperties.skosConcept.Concept.topConceptOf" xmi:uuid="4944e1a4-9486-524d-8ae8-78e70b983587">
           <name>topConceptOf</name>
-          <type href="../../cdifSharedUnions.xmi#cdif.union.IdReferenceOrIdReferenceList"/>
+          <type href="../../cdifSharedUnions/IdReferenceOrIdReferenceList.xmi#cdif.union.IdReferenceOrIdReferenceList"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.skosProperties.skosConcept.Concept.topConceptOf.lower" xmi:uuid="e73b2b27-323f-548f-bc99-32c760386f89">
             <value>0</value>
           </lowerValue>

@@ -274,7 +274,7 @@ Identifier for objects requiring short- or long-lasting referencing and manageme
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifRepresentedVariable.RepresentedVariable.cdif_name" xmi:uuid="4cba1f14-0411-59b2-99f0-3d3b5364e0b6">
           <name>cdif_name</name>
-          <type href="../../cdifSharedUnions.xmi#cdif.union.StringOrStringList"/>
+          <type href="../../cdifSharedUnions/StringOrStringList.xmi#cdif.union.StringOrStringList"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifRepresentedVariable.RepresentedVariable.cdif_name.lower" xmi:uuid="4823d2e4-5247-5915-b51a-c28d7cc28530">
             <value>0</value>
           </lowerValue>
@@ -433,7 +433,7 @@ Identifier for objects requiring short- or long-lasting referencing and manageme
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.cdifDataType.cdifRepresentedVariable.UnitType.cdif_name" xmi:uuid="5ee57a3a-d065-5e3c-b054-86ec2a131c51">
           <name>cdif_name</name>
-          <type href="../../cdifSharedUnions.xmi#cdif.union.StringOrStringList"/>
+          <type href="../../cdifSharedUnions/StringOrStringList.xmi#cdif.union.StringOrStringList"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.cdifDataType.cdifRepresentedVariable.UnitType.cdif_name.lower" xmi:uuid="ab39791b-b435-5e05-a355-68549e1ee171">
             <value>0</value>
           </lowerValue>

@@ -85,7 +85,7 @@ title of the grant</body>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.MonetaryGrant.funder" xmi:uuid="167262a4-7b09-5a5e-bcfc-9da74276f1fa">
           <name>funder</name>
-          <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.PersonOrOrganization"/>
+          <type href="../../cdifSharedUnions/PersonOrOrganization.xmi#cdif.union.PersonOrOrganization"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.MonetaryGrant.funder.lower" xmi:uuid="c0ba14b8-ec9c-5fa8-9e5f-96924841723a">
             <value>0</value>
           </lowerValue>
@@ -104,91 +104,6 @@ Definition
             <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.MonetaryGrant.funder"/>
           </ownedComment>
         </ownedAttribute>
-      </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.PersonOrOrganization" xmi:uuid="73267a02-fcf8-55a8-ba73-426a248b8501">
-        <name>PersonOrOrganization</name>
-        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.PersonOrOrganization.comment" xmi:uuid="2631657c-327b-5b79-9c22-d05f27ef61de">
-          <body>**CDIF**
-
-Definition
-==========
-
-
-:union: ``anyOf``</body>
-          <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.PersonOrOrganization"/>
-        </ownedComment>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.PersonOrOrganization.person" xmi:uuid="8f9aeeb0-323e-5071-97b7-b547d5d66a83">
-          <name>person</name>
-          <type href="../person/person.xmi#cdif.bbr.metadata.schemaorgProperties.person.Person"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.PersonOrOrganization.person.lower" xmi:uuid="3cc50181-b00f-57d3-9b21-e9f34087595d">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.PersonOrOrganization.person.upper" xmi:uuid="e6b7f242-8f46-53db-9baa-791c49a64743">
-            <value>1</value>
-          </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.assoc.PersonOrOrganization_person_Person"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.PersonOrOrganization.person.comment" xmi:uuid="29c9ecac-c166-56ff-9e4a-345679e32539">
-            <body>**CDIF**
-
-Definition
-==========
-
-
-:inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.PersonOrOrganization.person"/>
-          </ownedComment>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.PersonOrOrganization.organization" xmi:uuid="267d9316-0128-58e8-aa00-e55582b582c7">
-          <name>organization</name>
-          <type href="../organization/organization.xmi#cdif.bbr.metadata.schemaorgProperties.organization.Organization"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.PersonOrOrganization.organization.lower" xmi:uuid="26980b54-823f-542e-99d9-b1ac96f5e5f5">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.PersonOrOrganization.organization.upper" xmi:uuid="9eaac707-a081-577f-b184-628099d80aad">
-            <value>1</value>
-          </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.assoc.PersonOrOrganization_organization_Organization"/>
-          <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.PersonOrOrganization.organization.comment" xmi:uuid="8c912940-18c6-5edd-9ad8-57c0702b3d66">
-            <body>**CDIF**
-
-Definition
-==========
-
-
-:inlineOrByReference: ``inline``</body>
-            <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.PersonOrOrganization.organization"/>
-          </ownedComment>
-        </ownedAttribute>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.assoc.PersonOrOrganization_person_Person" xmi:uuid="a06474d6-fc03-553d-9c19-0678861bebd3">
-        <name>PersonOrOrganization_person_Person</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.assoc.PersonOrOrganization_person_Person.ownedEnd" xmi:uuid="d6f896e5-2bc7-553f-8b05-75f1169f5ae1">
-          <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.PersonOrOrganization"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.assoc.PersonOrOrganization_person_Person.ownedEnd.lower" xmi:uuid="1cae263c-5360-51f4-a37c-b1cc322717b0">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.assoc.PersonOrOrganization_person_Person.ownedEnd.upper" xmi:uuid="7f558f77-f920-5814-a09a-4976d3c8f7ac">
-            <value>*</value>
-          </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.assoc.PersonOrOrganization_person_Person"/>
-        </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.assoc.PersonOrOrganization_person_Person.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.PersonOrOrganization.person"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.assoc.PersonOrOrganization_organization_Organization" xmi:uuid="f8a60908-89b3-5730-95e5-2188d9f8835c">
-        <name>PersonOrOrganization_organization_Organization</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.assoc.PersonOrOrganization_organization_Organization.ownedEnd" xmi:uuid="df9e6843-f9ea-53a1-a34d-3684cee5b2d9">
-          <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.PersonOrOrganization"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.assoc.PersonOrOrganization_organization_Organization.ownedEnd.lower" xmi:uuid="3fb509dc-552c-5ceb-8c57-7d0df893f07a">
-            <value>0</value>
-          </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.assoc.PersonOrOrganization_organization_Organization.ownedEnd.upper" xmi:uuid="8e0e9027-03d4-592a-9a84-57e018918d20">
-            <value>*</value>
-          </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.assoc.PersonOrOrganization_organization_Organization"/>
-        </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.assoc.PersonOrOrganization_organization_Organization.ownedEnd"/>
-        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.monetaryGrant.PersonOrOrganization.organization"/>
       </packagedElement>
     </packagedElement>
   </uml:Model>
