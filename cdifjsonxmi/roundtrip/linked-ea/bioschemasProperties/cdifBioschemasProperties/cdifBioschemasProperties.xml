@@ -1322,7 +1322,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_25DE5604_8450_5479_A076_6B75B6762050" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_BD5302EA_7F93_5c2d_83EB_DFA67CDAF7C1" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -1331,7 +1331,7 @@
 								<UML:TaggedValue tag="ea_targetName" value="BioschemasPropertiesReagent"/>
 								<UML:TaggedValue tag="ea_sourceType" value="DataType"/>
 								<UML:TaggedValue tag="ea_targetType" value="Class"/>
-								<UML:TaggedValue tag="ea_guid" value="{25DE5604-8450-5479-A076-6B75B6762050}"/>
+								<UML:TaggedValue tag="ea_guid" value="{BD5302EA-7F93-5c2d-83EB-DFA67CDAF7C1}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Association.connection>
 								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_2F4D6114_225D_5c58_9DDE_B6B85795D328">

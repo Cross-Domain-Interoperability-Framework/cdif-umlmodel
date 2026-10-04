@@ -1042,7 +1042,7 @@ name or URI of the reagent</body>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.StringOrReagent2.reagent.upper" xmi:uuid="b4ef66eb-4080-5ab9-a610-9c56e099c8c3">
             <value>1</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.StringOrReagent_reagent_BioschemasPropertiesReagent"/>
+          <association xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.StringOrReagent2_reagent_BioschemasPropertiesReagent"/>
           <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.StringOrReagent2.reagent.comment" xmi:uuid="7db2c195-56ac-58e9-8950-2479642cad9a">
             <body>**CDIF**
 
@@ -1190,19 +1190,19 @@ Definition
         <memberEnd xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.StringOrReagent_reagent_LabProtocolReagent.ownedEnd"/>
         <memberEnd xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.StringOrReagent.reagent"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.StringOrReagent_reagent_BioschemasPropertiesReagent" xmi:uuid="25de5604-8450-5479-a076-6b75b6762050">
-        <name>StringOrReagent_reagent_BioschemasPropertiesReagent</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.StringOrReagent_reagent_BioschemasPropertiesReagent.ownedEnd" xmi:uuid="d105ba03-4e51-5af0-9795-d8792dd1eebf">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.StringOrReagent2_reagent_BioschemasPropertiesReagent" xmi:uuid="bd5302ea-7f93-5c2d-83eb-dfa67cdaf7c1">
+        <name>StringOrReagent2_reagent_BioschemasPropertiesReagent</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.StringOrReagent2_reagent_BioschemasPropertiesReagent.ownedEnd" xmi:uuid="987c41e6-4929-5aad-9e08-40ae9c982b32">
           <type xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.StringOrReagent2"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.StringOrReagent_reagent_BioschemasPropertiesReagent.ownedEnd.lower" xmi:uuid="bdedde3f-b20e-5a75-9699-143afad09103">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.StringOrReagent2_reagent_BioschemasPropertiesReagent.ownedEnd.lower" xmi:uuid="b9dd8cae-efda-5ae2-a722-5d1fbd3e6f28">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.StringOrReagent_reagent_BioschemasPropertiesReagent.ownedEnd.upper" xmi:uuid="adf2e013-702d-5ef8-8aa2-92df31f96115">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.StringOrReagent2_reagent_BioschemasPropertiesReagent.ownedEnd.upper" xmi:uuid="71ed5e9a-8eb2-508b-9fc1-9cd0f3558c30">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.StringOrReagent_reagent_BioschemasPropertiesReagent"/>
+          <association xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.StringOrReagent2_reagent_BioschemasPropertiesReagent"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.StringOrReagent_reagent_BioschemasPropertiesReagent.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.assoc.StringOrReagent2_reagent_BioschemasPropertiesReagent.ownedEnd"/>
         <memberEnd xmi:idref="cdif.bbr.metadata.bioschemasProperties.cdifBioschemasProperties.StringOrReagent2.reagent"/>
       </packagedElement>
     </packagedElement>

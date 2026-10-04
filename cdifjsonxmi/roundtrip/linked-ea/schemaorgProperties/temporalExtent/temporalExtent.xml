@@ -275,7 +275,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_877675C1_5323_53d4_98F6_105C237FF342" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_1AEC5441_B9BA_506b_8937_DF4D6BC335BA" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -284,7 +284,7 @@
 								<UML:TaggedValue tag="ea_targetName" value="Instant"/>
 								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
 								<UML:TaggedValue tag="ea_targetType" value="Class"/>
-								<UML:TaggedValue tag="ea_guid" value="{877675C1-5323-53d4-98F6-105C237FF342}"/>
+								<UML:TaggedValue tag="ea_guid" value="{1AEC5441-B9BA-506b-8937-DF4D6BC335BA}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Association.connection>
 								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_62E8A66D_ECA8_5a33_9D32_2AAA9C28CDE0">
@@ -305,7 +305,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association xmi.id="EAID_12EA433F_DD2E_5980_83C7_73E88E446BC3" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_66D1654D_97AD_5879_8728_071CC33F74BD" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -314,7 +314,7 @@
 								<UML:TaggedValue tag="ea_targetName" value="Instant"/>
 								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
 								<UML:TaggedValue tag="ea_targetType" value="Class"/>
-								<UML:TaggedValue tag="ea_guid" value="{12EA433F-DD2E-5980-83C7-73E88E446BC3}"/>
+								<UML:TaggedValue tag="ea_guid" value="{66D1654D-97AD-5879-8728-071CC33F74BD}"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Association.connection>
 								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_62E8A66D_ECA8_5a33_9D32_2AAA9C28CDE0">

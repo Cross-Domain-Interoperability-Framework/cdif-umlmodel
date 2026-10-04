@@ -197,7 +197,7 @@ Definition
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.temporalExtent.TemporalExtentProperInterval2.hasBeginning.upper" xmi:uuid="1a054731-520c-5a18-9d87-1af2541785b6">
             <value>1</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.temporalExtent.assoc.TemporalExtentProperInterval_hasBeginning_Instant"/>
+          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.temporalExtent.assoc.TemporalExtentProperInterval2_hasBeginning_Instant"/>
           <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.temporalExtent.TemporalExtentProperInterval2.hasBeginning.comment" xmi:uuid="5103797f-2035-5ce5-996e-27a00685e4fc">
             <body>**CDIF**
 
@@ -218,7 +218,7 @@ Definition
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.temporalExtent.TemporalExtentProperInterval2.hasEnd.upper" xmi:uuid="e484b123-2abb-59d7-985b-e3b9cd7f4375">
             <value>1</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.temporalExtent.assoc.TemporalExtentProperInterval_hasEnd_Instant"/>
+          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.temporalExtent.assoc.TemporalExtentProperInterval2_hasEnd_Instant"/>
           <ownedComment xmi:type="uml:Comment" xmi:id="cdif.bbr.metadata.schemaorgProperties.temporalExtent.TemporalExtentProperInterval2.hasEnd.comment" xmi:uuid="d9c52763-542d-53bb-976e-138fa90781f9">
             <body>**CDIF**
 
@@ -305,34 +305,34 @@ identifier for a temporal reference system; default is million years before prse
         <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.temporalExtent.assoc.TemporalExtent_properInterval2_TemporalExtentProperInterval2.ownedEnd"/>
         <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.temporalExtent.TemporalExtent.properInterval2"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.schemaorgProperties.temporalExtent.assoc.TemporalExtentProperInterval_hasBeginning_Instant" xmi:uuid="877675c1-5323-53d4-98f6-105c237ff342">
-        <name>TemporalExtentProperInterval_hasBeginning_Instant</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.temporalExtent.assoc.TemporalExtentProperInterval_hasBeginning_Instant.ownedEnd" xmi:uuid="fd940723-6494-529b-b8d9-2b16e9a7e5c3">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.schemaorgProperties.temporalExtent.assoc.TemporalExtentProperInterval2_hasBeginning_Instant" xmi:uuid="1aec5441-b9ba-506b-8937-df4d6bc335ba">
+        <name>TemporalExtentProperInterval2_hasBeginning_Instant</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.temporalExtent.assoc.TemporalExtentProperInterval2_hasBeginning_Instant.ownedEnd" xmi:uuid="d6daf0e2-e613-5b45-989a-b455e59d631f">
           <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.temporalExtent.TemporalExtentProperInterval2"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.temporalExtent.assoc.TemporalExtentProperInterval_hasBeginning_Instant.ownedEnd.lower" xmi:uuid="50ad9a39-15e2-54ce-b4c4-f6f10997b8c5">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.temporalExtent.assoc.TemporalExtentProperInterval2_hasBeginning_Instant.ownedEnd.lower" xmi:uuid="14ed0679-4893-59dc-b053-82d25b2d80ac">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.temporalExtent.assoc.TemporalExtentProperInterval_hasBeginning_Instant.ownedEnd.upper" xmi:uuid="c83ea3ef-1568-5603-b434-6507f99b2357">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.temporalExtent.assoc.TemporalExtentProperInterval2_hasBeginning_Instant.ownedEnd.upper" xmi:uuid="0be46767-c75f-5de6-b3c9-be382f9eda37">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.temporalExtent.assoc.TemporalExtentProperInterval_hasBeginning_Instant"/>
+          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.temporalExtent.assoc.TemporalExtentProperInterval2_hasBeginning_Instant"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.temporalExtent.assoc.TemporalExtentProperInterval_hasBeginning_Instant.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.temporalExtent.assoc.TemporalExtentProperInterval2_hasBeginning_Instant.ownedEnd"/>
         <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.temporalExtent.TemporalExtentProperInterval2.hasBeginning"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.schemaorgProperties.temporalExtent.assoc.TemporalExtentProperInterval_hasEnd_Instant" xmi:uuid="12ea433f-dd2e-5980-83c7-73e88e446bc3">
-        <name>TemporalExtentProperInterval_hasEnd_Instant</name>
-        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.temporalExtent.assoc.TemporalExtentProperInterval_hasEnd_Instant.ownedEnd" xmi:uuid="d53a406a-cab5-59a4-9a91-672d90a1037e">
+      <packagedElement xmi:type="uml:Association" xmi:id="cdif.bbr.metadata.schemaorgProperties.temporalExtent.assoc.TemporalExtentProperInterval2_hasEnd_Instant" xmi:uuid="66d1654d-97ad-5879-8728-071cc33f74bd">
+        <name>TemporalExtentProperInterval2_hasEnd_Instant</name>
+        <ownedEnd xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.temporalExtent.assoc.TemporalExtentProperInterval2_hasEnd_Instant.ownedEnd" xmi:uuid="ba121794-ffbf-586f-b8c8-f1711feaaea0">
           <type xmi:idref="cdif.bbr.metadata.schemaorgProperties.temporalExtent.TemporalExtentProperInterval2"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.temporalExtent.assoc.TemporalExtentProperInterval_hasEnd_Instant.ownedEnd.lower" xmi:uuid="4728f063-a02c-5c21-863e-0be7f65979f4">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="cdif.bbr.metadata.schemaorgProperties.temporalExtent.assoc.TemporalExtentProperInterval2_hasEnd_Instant.ownedEnd.lower" xmi:uuid="1286b9fc-cfa4-533e-9ee2-284467bf235f">
             <value>0</value>
           </lowerValue>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.temporalExtent.assoc.TemporalExtentProperInterval_hasEnd_Instant.ownedEnd.upper" xmi:uuid="c95c2f19-9e1f-5b3f-a3d9-18edc5c6ca9e">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="cdif.bbr.metadata.schemaorgProperties.temporalExtent.assoc.TemporalExtentProperInterval2_hasEnd_Instant.ownedEnd.upper" xmi:uuid="c96dddf6-abab-5124-b156-44e6cb2acad2">
             <value>*</value>
           </upperValue>
-          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.temporalExtent.assoc.TemporalExtentProperInterval_hasEnd_Instant"/>
+          <association xmi:idref="cdif.bbr.metadata.schemaorgProperties.temporalExtent.assoc.TemporalExtentProperInterval2_hasEnd_Instant"/>
         </ownedEnd>
-        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.temporalExtent.assoc.TemporalExtentProperInterval_hasEnd_Instant.ownedEnd"/>
+        <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.temporalExtent.assoc.TemporalExtentProperInterval2_hasEnd_Instant.ownedEnd"/>
         <memberEnd xmi:idref="cdif.bbr.metadata.schemaorgProperties.temporalExtent.TemporalExtentProperInterval2.hasEnd"/>
       </packagedElement>
     </packagedElement>
