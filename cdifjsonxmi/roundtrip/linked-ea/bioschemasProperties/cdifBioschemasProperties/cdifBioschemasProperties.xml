@@ -1052,7 +1052,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Association name="BioschemasProperties_executesLabProtocol_LabProtocol" xmi.id="EAID_E7605688_85EE_5477_B3D2_11B4DDCD93CC" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_E7605688_85EE_5477_B3D2_11B4DDCD93CC" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;The laboratory protocol executed by this process. Links a LabProcess activity to the LabProtocol it follows. In cdifProvActivity, also mapped to schema:actionProcess for compatibility.&#xA;:inlineOrByReference: ``inline``&#xA;:idRefDescription: &quot;reference to a LabProtocol defined elsewhere&quot;&#xA;:orReference: [&quot;value&quot;, &quot;idReference&quot;]"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -1082,7 +1082,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="BioschemasProperties_parameterValue_BioschemasPropertiesPropertyValue" xmi.id="EAID_49FF7D50_C06B_50fd_8DE7_FA1583870481" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_49FF7D50_C06B_50fd_8DE7_FA1583870481" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Actual parameter values used during a lab process execution. Each entry is a schema:PropertyValue recording a specific instrument setting or measurement condition (temperature, flow rate, scan range, etc.).&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -1112,7 +1112,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="BioschemasProperties_labEquipment_BioschemasPropertiesThing" xmi.id="EAID_BDABB3CA_22BE_56d4_8521_6044A291F291" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_BDABB3CA_22BE_56d4_8521_6044A291F291" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Laboratory equipment used in a protocol. Instruments, devices, and apparatus employed during the process.&#xA;:inlineOrByReference: ``inline``&#xA;:idRefDescription: &quot;reference to equipment defined elsewhere&quot;&#xA;:orReference: [&quot;value&quot;, &quot;idReference&quot;]"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -1142,7 +1142,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="BioschemasProperties_computationalTool_SoftwareApplication" xmi.id="EAID_41EB1DF8_4C49_5f4a_9785_31F70E7D87D5" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_41EB1DF8_4C49_5f4a_9785_31F70E7D87D5" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Software or computational tool used as part of a lab protocol to complete a part of it.&#xA;:inlineOrByReference: ``inline``&#xA;:idRefDescription: &quot;reference to a software tool defined elsewhere&quot;&#xA;:orReference: [&quot;value&quot;, &quot;idReference&quot;]"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -1172,7 +1172,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="LabProtocol_labEquipment_BioschemasPropertiesThing" xmi.id="EAID_7BCC52E0_B243_52d2_8BBE_0C962B547C9F" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_7BCC52E0_B243_52d2_8BBE_0C962B547C9F" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Equipment used in this protocol&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;value&quot;, &quot;idReference&quot;]"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -1202,7 +1202,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="LabProtocol_computationalTool_SoftwareApplication" xmi.id="EAID_5FCD48DB_1B35_5966_94E0_3DDB7CFB9983" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_5FCD48DB_1B35_5966_94E0_3DDB7CFB9983" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Software tools used in this protocol&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;value&quot;, &quot;idReference&quot;]"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -1232,7 +1232,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="LabProtocol_schema_object_LabProtocolObject" xmi.id="EAID_776978CA_C8C3_5839_95C8_5180C6386A79" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_776978CA_C8C3_5839_95C8_5180C6386A79" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Expected input parameters (FormalParameter references)&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;value&quot;, &quot;idReference&quot;]&#xA;:jsonName: &quot;schema:object&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -1262,7 +1262,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="LabProtocol_schema_result_LabProtocolResult" xmi.id="EAID_61CD4FFC_906D_5b8b_AB3F_03E1D29099BA" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_61CD4FFC_906D_5b8b_AB3F_03E1D29099BA" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Expected output parameters (FormalParameter references)&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;value&quot;, &quot;idReference&quot;]&#xA;:jsonName: &quot;schema:result&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -1292,7 +1292,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="StringOrReagent_reagent_LabProtocolReagent" xmi.id="EAID_BE600337_E296_5219_81DB_B47C5D1B1BDA" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_BE600337_E296_5219_81DB_B47C5D1B1BDA" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -1322,7 +1322,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="StringOrReagent2_reagent_BioschemasPropertiesReagent" xmi.id="EAID_BD5302EA_7F93_5c2d_83EB_DFA67CDAF7C1" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_BD5302EA_7F93_5c2d_83EB_DFA67CDAF7C1" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

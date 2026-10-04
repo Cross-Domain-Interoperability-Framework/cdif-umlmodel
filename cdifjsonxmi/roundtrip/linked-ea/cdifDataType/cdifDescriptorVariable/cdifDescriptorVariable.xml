@@ -125,7 +125,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Association name="DescriptorVariable_cdif_hasValuesFrom_DescriptorValueDomain" xmi.id="EAID_7C000413_7415_5932_9D0B_CA49FDCE0946" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_7C000413_7415_5932_9D0B_CA49FDCE0946" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;A cdi:DescriptorValueDomain enumerating the codes that can appear in the descriptor column, each paired (via cdif:isDefinedBy) with the RepresentedVariable that the code names.&#xA;:inlineOrByReference: ``inline``&#xA;:jsonName: &quot;cdif:hasValuesFrom&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -155,7 +155,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="DescriptorValueDomainTakesValuesFrom_isDefinedBy_RepresentedVariable" xmi.id="EAID_8E43F9F4_A182_5484_BB8A_18DC77C11127" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_8E43F9F4_A182_5484_BB8A_18DC77C11127" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;value&quot;, {&quot;idReference&quot;: {&quot;description&quot;: &quot;object reference via URI or URI fragment to a RepresentedVariable defined elsewhere in the document&quot;}}]"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

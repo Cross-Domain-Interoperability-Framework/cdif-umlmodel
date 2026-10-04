@@ -499,7 +499,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Association name="StatisticsProfile_statistics_Statistics" xmi.id="EAID_D6B5E504_1DC4_5cbc_A5A3_AEEF9405917F" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_D6B5E504_1DC4_5cbc_A5A3_AEEF9405917F" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -529,7 +529,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="StatisticsProfile_categoryStatistics_CategoryStatistics" xmi.id="EAID_44D7B5E2_2898_576c_BEA9_D6631B6774A8" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_44D7B5E2_2898_576c_BEA9_D6631B6774A8" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -559,7 +559,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="StatisticsProfile_statisticsCollection_StatisticsCollection" xmi.id="EAID_D25AFCD6_0266_5ee6_86AC_5A68FDFBB47C" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_D25AFCD6_0266_5ee6_86AC_5A68FDFBB47C" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -589,7 +589,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="CategoryStatistics_for_Category" xmi.id="EAID_1445F9F4_6A8B_5f28_8758_558B074A0B9A" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_1445F9F4_6A8B_5f28_8758_558B074A0B9A" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;The Category this CategoryStatistics is for (inline Category node or an @id-reference).&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;value&quot;, &quot;idReference&quot;]"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -619,7 +619,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="Statistics_cdif_has_CategoryStatistics_CategoryStatistics" xmi.id="EAID_933DF410_5408_5421_B660_5BA8AD06C819" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_933DF410_5408_5421_B660_5BA8AD06C819" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;CategoryStatistics entries breaking this Statistics bundle down by Category. cdif: namespaced and target-suffixed because the DDI-CDI cdi:has association is polymorphic.&#xA;:inlineOrByReference: ``inline``&#xA;:jsonName: &quot;cdif:has_CategoryStatistics&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -649,7 +649,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="StatisticsCollection_cdif_has_Statistics_Statistics" xmi.id="EAID_DFB9B5B9_70F4_5b0d_9F81_5AA7E96DB862" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_DFB9B5B9_70F4_5b0d_9F81_5AA7E96DB862" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Statistics nodes carried by this collection (inline or @id-ref). cdif: namespaced and target-suffixed because the DDI-CDI cdi:has association is polymorphic.&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;value&quot;, &quot;idReference&quot;]&#xA;:jsonName: &quot;cdif:has_Statistics&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

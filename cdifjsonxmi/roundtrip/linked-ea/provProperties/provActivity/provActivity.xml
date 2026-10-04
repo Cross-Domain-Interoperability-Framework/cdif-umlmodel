@@ -356,7 +356,7 @@
 								<UML:TaggedValue tag="ea_guid" value="{1572DA26-3ED2-54eb-9C4A-93A1BB52A719}"/>
 							</UML:ModelElement.taggedValue>
 						</UML:Class>
-						<UML:Association name="Activity_atLocation_SpatialExtent" xmi.id="EAID_EE2E20D4_D229_5bd8_A575_1C6B3034F353" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_EE2E20D4_D229_5bd8_A575_1C6B3034F353" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Location where the activity occurred (PROV-O expanded term -- maps to schema:location in cdifProvActivity)&#xA;:inlineOrByReference: ``inline``&#xA;:idRefDescription: &quot;reference to a place defined elsewhere&quot;&#xA;:orReference: [&quot;value&quot;, &quot;string&quot;, &quot;idReference&quot;]"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -386,7 +386,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="Activity_schema_actionProcess_ActivityHowTo" xmi.id="EAID_980AE0C6_93E6_54bb_9138_2D103900A83E" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_980AE0C6_93E6_54bb_9138_2D103900A83E" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Methodology or protocol for this activity (schema.org fallback -- PROV-O has prov:hadPlan only inside qualified Association)&#xA;:inlineOrByReference: ``inline``&#xA;:idRefDescription: &quot;reference to a methodology defined elsewhere&quot;&#xA;:orReference: [&quot;value&quot;, &quot;string&quot;, &quot;idReference&quot;]&#xA;:jsonName: &quot;schema:actionProcess&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -416,7 +416,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="ActivityHowTo_step_ActivityHowToStep" xmi.id="EAID_AF566508_01F4_566e_AA3C_0EDBE261F71D" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_AF566508_01F4_566e_AA3C_0EDBE261F71D" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Ordered steps in this methodology&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -446,7 +446,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="PersonOrOrganizationOrAgentInRole_person_Person" xmi.id="EAID_0C3591BE_84E9_5b2b_A5A7_F0B2EA8D0BFE" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_0C3591BE_84E9_5b2b_A5A7_F0B2EA8D0BFE" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -476,7 +476,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="PersonOrOrganizationOrAgentInRole_organization_Organization" xmi.id="EAID_A4396810_A59A_5128_80B8_FAB2F7E7F620" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_A4396810_A59A_5128_80B8_FAB2F7E7F620" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -506,7 +506,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="PersonOrOrganizationOrAgentInRole_agentInRole_AgentInRole" xmi.id="EAID_52CEE017_0311_59fc_B496_FB086D4D21D0" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_52CEE017_0311_59fc_B496_FB086D4D21D0" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

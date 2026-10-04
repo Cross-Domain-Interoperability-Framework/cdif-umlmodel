@@ -999,7 +999,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Association name="ConceptScheme_hasTopConcept_Concept" xmi.id="EAID_2D4DB017_D0EB_5cfb_80A6_7D804FE4D387" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_2D4DB017_D0EB_5cfb_80A6_7D804FE4D387" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Top-level concepts in this scheme. Each item is a skos:Concept (inline or @id reference).&#xA;:inlineOrByReference: ``inline``&#xA;:minItems: 1&#xA;:idRefDescription: &quot;URI reference to a concept defined elsewhere&quot;&#xA;:orReference: [&quot;value&quot;, &quot;idReference&quot;]"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -1029,7 +1029,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="StringOrChoiceList_choiceList_StringOrCreatorOrChoiceListChoiceList" xmi.id="EAID_68089A68_4E92_5951_AB3B_452AE351C4BA" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_68089A68_4E92_5951_AB3B_452AE351C4BA" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -1059,7 +1059,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="StringOrCreatorOrChoiceList_creator_ConceptSchemeCreator" xmi.id="EAID_444543A5_24A5_5af6_9EFA_9408758AE593" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_444543A5_24A5_5af6_9EFA_9408758AE593" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

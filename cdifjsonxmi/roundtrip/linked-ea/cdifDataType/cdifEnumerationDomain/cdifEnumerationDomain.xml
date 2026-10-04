@@ -121,7 +121,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Association name="EnumerationDomain_references_Codelist" xmi.id="EAID_40F0EDF6_6223_5bc7_8DCB_DD60BC2A7537" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_40F0EDF6_6223_5bc7_8DCB_DD60BC2A7537" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;CDIF codelist (skos:ConceptScheme) whose concepts define the allowed values of this enumeration domain.&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;value&quot;, {&quot;idReference&quot;: {&quot;description&quot;: &quot;object reference via URI or URI fragment referencing an @id in the same document&quot;}}]"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

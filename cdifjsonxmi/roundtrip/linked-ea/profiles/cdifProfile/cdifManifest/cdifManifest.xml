@@ -175,7 +175,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Association name="Manifest_hasPart_ManifestHasPart" xmi.id="EAID_8E4BC02C_A5C8_5ecd_AE17_69A1403E7A98" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_8E4BC02C_A5C8_5ecd_AE17_69A1403E7A98" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Component resources of a package whose parts are independently accessible, each with its own distribution. Parts may differ in content type, format and data structure. For component files inside an archive, which have no address of their own, use schema:hasPart on the distribution instead.&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

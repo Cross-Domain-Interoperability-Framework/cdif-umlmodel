@@ -541,7 +541,7 @@
 								<UML:TaggedValue tag="ea_guid" value="{DB95059F-BF2D-50fa-B545-4EA02B84C749}"/>
 							</UML:ModelElement.taggedValue>
 						</UML:Class>
-						<UML:Association name="Core_relatedLink_LinkRole" xmi.id="EAID_531309BE_E2F0_507f_A174_B9C77EF6F38D" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_531309BE_E2F0_507f_A174_B9C77EF6F38D" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Links to related resources. schema:linkRelationship says how the target relates to this resource. Defined by schemaorgProperties/linkRole since 2026-09-23; it was inline here, which is why schemaorgProperties/instrument could not reuse it and defined the same property as a labeled link instead.&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -571,7 +571,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="Core_funding_MonetaryGrant" xmi.id="EAID_6FFF8DB1_0B22_5a83_BC64_C12236C22325" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_6FFF8DB1_0B22_5a83_BC64_C12236C22325" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -601,7 +601,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="Core_prov_wasGeneratedBy_GeneratedBy" xmi.id="EAID_080E1EB2_51E5_5f95_83F0_E257CCB149B1" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_080E1EB2_51E5_5f95_83F0_E257CCB149B1" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Brief information about instruments, software or experimental protocols used&#xA;:inlineOrByReference: ``inline``&#xA;:jsonName: &quot;prov:wasGeneratedBy&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -631,7 +631,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="Core_subjectOf_CatalogRecord" xmi.id="EAID_767A88C1_349E_573d_A0F6_6F28934A1146" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_767A88C1_349E_573d_A0F6_6F28934A1146" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -661,7 +661,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="DataDownloadOrWebAPI_dataDownload_DataDownload" xmi.id="EAID_42D4D1D0_F69E_522d_8B3B_2A9BECE8D085" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_42D4D1D0_F69E_522d_8B3B_2A9BECE8D085" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -691,7 +691,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="DataDownloadOrWebAPI_webAPI_WebAPI" xmi.id="EAID_42360077_7BCF_57ab_BAE6_F4F95B9322A7" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_42360077_7BCF_57ab_BAE6_F4F95B9322A7" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -721,7 +721,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="PersonOrOrganization_person_Person" xmi.id="EAID_440AF6F7_00E7_56c2_A3DD_4D8C55BAE4B7" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_440AF6F7_00E7_56c2_A3DD_4D8C55BAE4B7" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -751,7 +751,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="PersonOrOrganization_organization_Organization" xmi.id="EAID_C2D7EF29_3F11_5622_9E77_5DC9E7011F90" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_C2D7EF29_3F11_5622_9E77_5DC9E7011F90" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -781,7 +781,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="PersonOrOrganizationOrAgentInRole_person_Person" xmi.id="EAID_645165AD_5EFE_5d03_B7A6_85C1B5DE7633" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_645165AD_5EFE_5d03_B7A6_85C1B5DE7633" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -811,7 +811,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="PersonOrOrganizationOrAgentInRole_organization_Organization" xmi.id="EAID_38FFAF41_362D_5d2f_8F1C_85AF15584FF1" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_38FFAF41_362D_5d2f_8F1C_85AF15584FF1" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -841,7 +841,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="PersonOrOrganizationOrAgentInRole_agentInRole_AgentInRole" xmi.id="EAID_08DB6661_0CA8_5bd2_BBB5_FB21C1C5CB96" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_08DB6661_0CA8_5bd2_BBB5_FB21C1C5CB96" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

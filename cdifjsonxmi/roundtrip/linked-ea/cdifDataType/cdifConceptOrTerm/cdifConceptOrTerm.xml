@@ -55,7 +55,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Association name="ConceptOrTerm_definedTerm_DefinedTerm" xmi.id="EAID_E540E2CC_C1F1_59c5_8DA9_9D7AC614A683" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_E540E2CC_C1F1_59c5_8DA9_9D7AC614A683" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -85,7 +85,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="ConceptOrTerm_concept_Concept" xmi.id="EAID_DD3466D2_0FDB_5a09_9830_D5122E8F62E6" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_DD3466D2_0FDB_5a09_9830_D5122E8F62E6" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``&#xA;:schemaRef: &quot;skosProperties/skosConcept#/$defs/Concept&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

@@ -112,7 +112,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Association name="QualityMeasure_isMeasurementOf_DefinedTerm" xmi.id="EAID_5B7897A8_1924_51a5_98AA_DBBE785CEAAC" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_5B7897A8_1924_51a5_98AA_DBBE785CEAAC" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;specify the quality measure that is reported, by name, with an ID ref, or as a Defined Term&#xA;:inlineOrByReference: ``inline``&#xA;:idRefDescription: &quot;a resolvable reference to a representation of a quality measure&quot;&#xA;:orReference: [&quot;string&quot;, &quot;idReference&quot;, &quot;value&quot;]"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -142,7 +142,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="StringOrNumberOrDefinedTerm_definedTerm_DefinedTerm" xmi.id="EAID_15B467AD_DC38_5d94_8092_D16D1370A86D" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_15B467AD_DC38_5d94_8092_D16D1370A86D" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

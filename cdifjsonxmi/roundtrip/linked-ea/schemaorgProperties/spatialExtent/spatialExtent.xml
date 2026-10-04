@@ -397,7 +397,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Association name="SpatialExtent_name_DefinedTerm" xmi.id="EAID_E612D132_F910_58b7_BF10_4F54329E34B0" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_E612D132_F910_58b7_BF10_4F54329E34B0" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;A place name for the location, either as a string or a DefinedTerm from a gazetteer.&#xA;:inlineOrByReference: ``inline``&#xA;:alsoAcceptsString: ``first``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -427,7 +427,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="SpatialExtent_alternateName_DefinedTerm" xmi.id="EAID_22A8EC12_1DA0_5519_9290_6338A2A194E0" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_22A8EC12_1DA0_5519_9290_6338A2A194E0" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Alternate or abbreviated name(s) for this place.&#xA;:inlineOrByReference: ``inline``&#xA;:alsoAcceptsString: ``first``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -457,7 +457,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="SpatialExtent_geosparql_hasGeometry_SpatialExtentHasGeometry" xmi.id="EAID_B37717BA_BD62_5e42_9303_3B98CE01CB31" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_B37717BA_BD62_5e42_9303_3B98CE01CB31" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Optional geographic extent using wkt geometry, see Ocean InfoHub (https://book.oceaninfohub.org/thematics/spatial/README.html#simple-geosparql-wkt). Other geometry schemes might be specified in a specific domain profile, e.g. for atmospheric, subsurface data, or local coordinate systems. NOTE that the location specified here should be the same as the schema.org point or contained within the specified bounding box.&#xA;:inlineOrByReference: ``inline``&#xA;:jsonName: &quot;geosparql:hasGeometry&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

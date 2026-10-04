@@ -88,7 +88,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Association name="Key_isComposedOf_KeyComponentPosition" xmi.id="EAID_355E6ABA_78A6_5446_961E_6504FD8C7A80" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_355E6ABA_78A6_5446_961E_6504FD8C7A80" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Ordered list of cdi:ComponentPosition wrappers. Each wrapper carries cdi:indexes (an @id-reference to a cdi:InstanceVariable declared elsewhere in the dataset) and cdi:value (the 1-based integer position in the key).&#xA;:inlineOrByReference: ``inline``&#xA;:itemsDescription: &quot;ComponentPosition wrapper indexing one variable's position in the key.&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

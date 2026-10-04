@@ -671,7 +671,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Association name="TabularData_cdif_hasPhysicalMapping_PhysicalMapping" xmi.id="EAID_994D162D_F134_540a_AE2A_D4676DEF35C8" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_994D162D_F134_540a_AE2A_D4676DEF35C8" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Links variables to their physical representation in this dataset.&#xA;:inlineOrByReference: ``inline``&#xA;:minItems: null&#xA;:jsonName: &quot;cdif:hasPhysicalMapping&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

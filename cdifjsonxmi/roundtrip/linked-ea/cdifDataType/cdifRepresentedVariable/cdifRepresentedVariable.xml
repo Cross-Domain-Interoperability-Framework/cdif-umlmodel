@@ -398,7 +398,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Association name="RepresentedVariable_takesSentinelValuesFrom_SentinelValueDomain" xmi.id="EAID_A86A420F_DA35_521d_A83E_E7C3E3A364B6" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_A86A420F_DA35_521d_A83E_E7C3E3A364B6" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Sentinel (missing / not-applicable) value domain(s) for this RepresentedVariable (RepresentedVariable.takesSentinelValuesFrom).&#xA;:inlineOrByReference: ``inline``&#xA;:minItems: 1&#xA;:orReference: [&quot;value&quot;, &quot;objectReference&quot;]&#xA;:schemaRef: &quot;cdifDataType/cdifValueDomain#/$defs/SentinelValueDomain&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -428,7 +428,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="RepresentedVariable_takesSubstantiveValuesFrom_SubstantiveValueDomain" xmi.id="EAID_B1E76ED3_3F61_5215_8823_56F348C910BE" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_B1E76ED3_3F61_5215_8823_56F348C910BE" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;The substantive value domain for this RepresentedVariable - the set of valid, meaningful values (RepresentedVariable.takesSubstantiveValuesFrom).&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;value&quot;, &quot;objectReference&quot;]&#xA;:schemaRef: &quot;cdifDataType/cdifValueDomain#/$defs/SubstantiveValueDomain&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -458,7 +458,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="RepresentedVariable_measures_UnitType" xmi.id="EAID_5571CF3A_2363_5b4b_9CB8_CE1B72A57178" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_5571CF3A_2363_5b4b_9CB8_CE1B72A57178" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;value&quot;, &quot;objectReference&quot;]"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -488,7 +488,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="RepresentedVariable_cdif_uses_Concept_Concept" xmi.id="EAID_8A3CF739_B9AA_547f_A8E8_AFB45A9A3EF7" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_8A3CF739_B9AA_547f_A8E8_AFB45A9A3EF7" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Specifies the concept(s) that this variable expresses or aligns with.&#xA;:inlineOrByReference: ``inline``&#xA;:minItems: 1&#xA;:orReference: [&quot;value&quot;, &quot;objectReference&quot;]&#xA;:jsonName: &quot;cdif:uses_Concept&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -518,7 +518,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="UnitType_cdif_uses_Concept_Concept" xmi.id="EAID_CEA928D5_F0C0_5032_9F08_A35018274478" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_CEA928D5_F0C0_5032_9F08_A35018274478" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Specifies the concept(s) that this variable expresses or aligns with.&#xA;:inlineOrByReference: ``inline``&#xA;:minItems: 1&#xA;:orReference: [&quot;value&quot;, &quot;objectReference&quot;]&#xA;:jsonName: &quot;cdif:uses_Concept&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

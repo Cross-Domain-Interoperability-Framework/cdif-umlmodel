@@ -233,7 +233,7 @@
 								<UML:TaggedValue tag="ea_guid" value="{28F5C9C8-E54B-5cb2-A76B-0F28D06605C2}"/>
 							</UML:ModelElement.taggedValue>
 						</UML:Class>
-						<UML:Association name="CatalogRecord_includedInDataCatalog_DataCatalog" xmi.id="EAID_801843A1_DF8B_55b1_8A5D_859A652905C8" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_801843A1_DF8B_55b1_8A5D_859A652905C8" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;identify the source for the origin the metadata record.&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -263,7 +263,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="PersonOrOrganization_person_Person" xmi.id="EAID_6B4AA6BD_F8EB_5999_9CF7_C58C4C6A1C99" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_6B4AA6BD_F8EB_5999_9CF7_C58C4C6A1C99" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -293,7 +293,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="PersonOrOrganization_organization_Organization" xmi.id="EAID_0FCEFCB3_81F6_507a_B28B_EE9D9789B9CC" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_0FCEFCB3_81F6_507a_B28B_EE9D9789B9CC" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

@@ -533,7 +533,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Association name="ProvActivity_schema_location_SpatialExtent" xmi.id="EAID_A4AC1CEB_DE08_5fd2_A70E_431CA130EAF0" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_A4AC1CEB_DE08_5fd2_A70E_431CA130EAF0" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Where the activity occurred&#xA;:inlineOrByReference: ``inline``&#xA;:idRefDescription: &quot;reference to a place defined elsewhere&quot;&#xA;:orReference: [&quot;value&quot;, &quot;string&quot;, &quot;idReference&quot;]&#xA;:jsonName: &quot;schema:location&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -563,7 +563,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="ProvActivity_schema_actionProcess_ProvActivityHowTo" xmi.id="EAID_DDA429C9_F53F_5b8f_ADC6_EE14875BFEEE" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_DDA429C9_F53F_5b8f_ADC6_EE14875BFEEE" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Methodology or protocol for this activity&#xA;:inlineOrByReference: ``inline``&#xA;:idRefDescription: &quot;reference to a methodology defined elsewhere&quot;&#xA;:orReference: [&quot;value&quot;, &quot;string&quot;, &quot;idReference&quot;]&#xA;:jsonName: &quot;schema:actionProcess&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -593,7 +593,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="ProvActivity_schema_additionalProperty_AdditionalProperty" xmi.id="EAID_8B4E0F3D_E7BC_5d56_BD28_609A4DA2BE4A" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_8B4E0F3D_E7BC_5d56_BD28_609A4DA2BE4A" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Domain-specific extension properties&#xA;:inlineOrByReference: ``inline``&#xA;:jsonName: &quot;schema:additionalProperty&quot;"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -623,7 +623,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="PersonOrOrganizationOrAgentInRole_person_Person" xmi.id="EAID_A99C646A_EB63_5e98_AA06_20C3891B42ED" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_A99C646A_EB63_5e98_AA06_20C3891B42ED" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -653,7 +653,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="PersonOrOrganizationOrAgentInRole_organization_Organization" xmi.id="EAID_4FC383BC_5841_5ba3_A0FA_E806F241A629" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_4FC383BC_5841_5ba3_A0FA_E806F241A629" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -683,7 +683,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="PersonOrOrganizationOrAgentInRole_agentInRole_AgentInRole" xmi.id="EAID_CE37D196_40B0_5e4d_B424_5CD466898B12" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_CE37D196_40B0_5e4d_B424_5CD466898B12" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -713,7 +713,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="ProvActivityHowTo_step_ProvActivityHowToStep" xmi.id="EAID_5019BBFE_B3FD_5d83_9065_0F0E3B9D05DA" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_5019BBFE_B3FD_5d83_9065_0F0E3B9D05DA" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Ordered steps in this methodology&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -743,7 +743,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="ProvActivityObjectChoice_object_ProvActivityObject" xmi.id="EAID_F5C431FE_C711_5f7c_A40C_FF2DDFE154F6" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_F5C431FE_C711_5f7c_A40C_FF2DDFE154F6" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Inline schema:Thing object describing the input entity.&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

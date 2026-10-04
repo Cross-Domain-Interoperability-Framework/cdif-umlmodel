@@ -110,7 +110,7 @@
 								<UML:TaggedValue tag="ea_guid" value="{91D5979A-8F40-5f62-9ABC-3FB578F7D3CB}"/>
 							</UML:ModelElement.taggedValue>
 						</UML:Class>
-						<UML:Association name="StatisticalVariable_measurementTechnique_DefinedTerm" xmi.id="EAID_EE295E2B_9683_5eb2_AB1E_E325719C3D66" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_EE295E2B_9683_5eb2_AB1E_E325719C3D66" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Text description or URI identifying the measurement method.&#xA;:inlineOrByReference: ``inline``&#xA;:idRefDescription: &quot;reference to a skos concept&quot;&#xA;:orReference: [&quot;string&quot;, &quot;idReference&quot;, &quot;value&quot;]"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -140,7 +140,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="StatisticalVariable_statType_DefinedTerm" xmi.id="EAID_7407124B_972D_53f4_BFA7_67BFC55A87D5" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_7407124B_972D_53f4_BFA7_67BFC55A87D5" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;string&quot;, &quot;idReference&quot;, &quot;value&quot;]"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -170,7 +170,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="StatisticalVariable_measuredProperty_Property" xmi.id="EAID_07C1BEA6_67D7_530a_8106_C6D1C809458A" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_07C1BEA6_67D7_530a_8106_C6D1C809458A" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -200,7 +200,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="Property_name_DefinedTerm" xmi.id="EAID_678087F6_938C_50ad_8A71_C1A5F558E378" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_678087F6_938C_50ad_8A71_C1A5F558E378" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;string&quot;, &quot;idReference&quot;, &quot;value&quot;]"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>

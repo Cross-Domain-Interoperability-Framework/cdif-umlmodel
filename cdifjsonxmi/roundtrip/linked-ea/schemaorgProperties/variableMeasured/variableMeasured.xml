@@ -244,7 +244,7 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
-						<UML:Association name="VariableMeasured_measurementTechnique_DefinedTerm" xmi.id="EAID_3D11AAEB_B5AE_5cd1_ADC9_7CB19AF6B368" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_3D11AAEB_B5AE_5cd1_ADC9_7CB19AF6B368" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Text description or URI specifying how values for the variable were obtained.&#xA;:inlineOrByReference: ``inline``&#xA;:idRefDescription: &quot;reference to a skos concept&quot;&#xA;:orReference: [&quot;string&quot;, &quot;idReference&quot;, &quot;value&quot;]"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -274,7 +274,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="VariableMeasured_propertyID_DefinedTerm" xmi.id="EAID_AB24533D_4D08_5cc1_AEB1_D5701DEC64D4" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_AB24533D_4D08_5cc1_AEB1_D5701DEC64D4" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;identifier or name for the property concept&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;string&quot;, &quot;idReference&quot;, &quot;value&quot;]"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
@@ -304,7 +304,7 @@
 								</UML:AssociationEnd>
 							</UML:Association.connection>
 						</UML:Association>
-						<UML:Association name="VariableMeasured_unitCode_DefinedTerm" xmi.id="EAID_31508908_E560_5af4_B73B_B85F5AAFC0CF" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+						<UML:Association xmi.id="EAID_31508908_E560_5af4_B73B_B85F5AAFC0CF" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
 							<UML:ModelElement.taggedValue>
 								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;URI or code identifying the unit of measure&#xA;:inlineOrByReference: ``inline``&#xA;:orReference: [&quot;string&quot;, &quot;idReference&quot;, &quot;value&quot;]"/>
 								<UML:TaggedValue tag="ea_type" value="Association"/>
