@@ -1,0 +1,9 @@
+CoreDiscovery: 2 exact difference(s)
+$.allOf[0].$ref:
+    original:    "../../../profiles/cdifProfile/cdifCore/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifCore/schema.yaml"
+$.allOf[1].$ref:
+    original:    "../../../profiles/cdifProfile/cdifDiscovery/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifDiscovery/schema.yaml"
+
+CoreDiscovery: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

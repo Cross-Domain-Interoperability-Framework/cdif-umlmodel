@@ -37,6 +37,9 @@ because vocabulary identity cannot be recovered from an unscoped label.
 :noId:</body>
           <annotatedElement xmi:idref="cdif.bbr.metadata.schemaorgProperties.definedTerm.DefinedTerm"/>
         </ownedComment>
+        <generalization xmi:type="uml:Generalization" xmi:id="cdif.bbr.metadata.schemaorgProperties.definedTerm.DefinedTerm.generalization" xmi:uuid="bd5fb92c-b80f-5191-a591-5547fc1b0055">
+          <general href="../../cdifSharedTypes.xmi#cdif.shared.DefinedTerm"/>
+        </generalization>
         <ownedAttribute xmi:type="uml:Property" xmi:id="cdif.bbr.metadata.schemaorgProperties.definedTerm.DefinedTerm.name" xmi:uuid="9560e35f-4483-577e-828d-210a5a251e47">
           <name>name</name>
           <type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#String"/>

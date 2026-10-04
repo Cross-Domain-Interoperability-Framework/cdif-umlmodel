@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<XMI xmi.version="1.1" xmlns:UML="omg.org/UML1.3">
+	<XMI.header>
+		<XMI.documentation>
+			<XMI.exporter>Enterprise Architect</XMI.exporter>
+			<XMI.exporterVersion>2.5</XMI.exporterVersion>
+		</XMI.documentation>
+	</XMI.header>
+	<XMI.content>
+		<UML:Model name="xasDocument" xmi.id="MX_EAID_CCCF4A30_B30C_5732_999F_E63EF9E2BFE1">
+			<UML:Namespace.ownedElement>
+				<UML:Class name="EARootClass" xmi.id="EAID_11111111_5487_4080_A7F4_41526CB0AA00" isRoot="true" isLeaf="false" isAbstract="false"/>
+				<UML:Package name="xasDocument" xmi.id="EAPK_E8227622_CF92_5c46_A08D_32108C04945D" isRoot="false" isLeaf="false" isAbstract="false" visibility="public">
+					<UML:ModelElement.taggedValue>
+						<UML:TaggedValue tag="documentation" value="https://w3id.org/cdif/bbr/metadata/profiles/cdifCompositeProfile/xasDocument"/>
+						<UML:TaggedValue tag="isSpecification" value="false"/>
+						<UML:TaggedValue tag="ea_stype" value="Public"/>
+						<UML:TaggedValue tag="ea_eleType" value="package"/>
+						<UML:TaggedValue tag="version" value="1.0"/>
+						<UML:TaggedValue tag="ea_guid" value="{E8227622-CF92-5c46-A08D-32108C04945D}"/>
+					</UML:ModelElement.taggedValue>
+					<UML:Namespace.ownedElement>
+						<UML:Class name="XasDocument" xmi.id="EAID_7D29482B_6AFB_5eaf_A142_5230D502C703" visibility="public" namespace="EAPK_E8227622_CF92_5c46_A08D_32108C04945D" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;CDIF document-level profile for X-ray Absorption Spectroscopy datasets. Composes the four base CDIF 1.1 profiles (core, discovery, data description, data structure) with the two XAS extensions (xasCore mandatory, xasOptional recommended) so a conforming document is discoverable, describes its measured variables, describes its physical/tabular structure, and carries the XAS-specific metadata that lets a domain client interpret the spectrum.&#xA;:title: &quot;CDIF XAS document profile&quot;&#xA;:prefix: ``xas``&#xA;:noId:&#xA;:extends:&#xA;:noOwnSchema:"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="Class"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_E8227622_CF92_5c46_A08D_32108C04945D"/>
+								<UML:TaggedValue tag="ea_guid" value="{7D29482B-6AFB-5eaf-A142-5230D502C703}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Class>
+						<UML:Generalization subtype="EAID_7D29482B_6AFB_5eaf_A142_5230D502C703" supertype="EAID_3F9EE39D_FB58_5cb6_B1EF_874D4783540E" xmi.id="EAID_3F888F51_29A9_54df_8CC1_9C617704F2C3" visibility="public">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="ea_type" value="Generalization"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="XasDocument"/>
+								<UML:TaggedValue tag="ea_targetName" value="Core"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{3F888F51-29A9-54df-8CC1-9C617704F2C3}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Generalization>
+						<UML:Generalization subtype="EAID_7D29482B_6AFB_5eaf_A142_5230D502C703" supertype="EAID_3DED079A_58CF_5325_8945_5132655A0CE6" xmi.id="EAID_53797E91_1097_5d62_9261_3298A7519C3F" visibility="public">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="ea_type" value="Generalization"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="XasDocument"/>
+								<UML:TaggedValue tag="ea_targetName" value="Discovery"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{53797E91-1097-5d62-9261-3298A7519C3F}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Generalization>
+						<UML:Generalization subtype="EAID_7D29482B_6AFB_5eaf_A142_5230D502C703" supertype="EAID_163A204F_7867_5686_A483_0C3C37ABF08A" xmi.id="EAID_B0A21EA2_2060_53d5_9D63_5C20EDC3F799" visibility="public">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="ea_type" value="Generalization"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="XasDocument"/>
+								<UML:TaggedValue tag="ea_targetName" value="DataDescription"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{B0A21EA2-2060-53d5-9D63-5C20EDC3F799}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Generalization>
+						<UML:Generalization subtype="EAID_7D29482B_6AFB_5eaf_A142_5230D502C703" supertype="EAID_1230AC0F_EA60_5ddd_81A5_B8CB8673D752" xmi.id="EAID_9405FE5D_1915_5df2_B0C3_DAAAD578EBB9" visibility="public">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="ea_type" value="Generalization"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="XasDocument"/>
+								<UML:TaggedValue tag="ea_targetName" value="DataStructureProfile"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{9405FE5D-1915-5df2-B0C3-DAAAD578EBB9}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Generalization>
+						<UML:Generalization subtype="EAID_7D29482B_6AFB_5eaf_A142_5230D502C703" supertype="EAID_D405A3A8_7F85_5cf1_B505_0BD07364F9A3" xmi.id="EAID_2412F758_7BEE_55ca_8565_DA6773751C61" visibility="public">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="ea_type" value="Generalization"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="XasDocument"/>
+								<UML:TaggedValue tag="ea_targetName" value="XasCore"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{2412F758-7BEE-55ca-8565-DA6773751C61}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Generalization>
+						<UML:Generalization subtype="EAID_7D29482B_6AFB_5eaf_A142_5230D502C703" supertype="EAID_3788AEA2_0286_5b4c_97A4_699D36AF67E3" xmi.id="EAID_109FF7EA_5793_513d_A593_733CD5E3087C" visibility="public">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="ea_type" value="Generalization"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="XasDocument"/>
+								<UML:TaggedValue tag="ea_targetName" value="XasOptional"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="DataType"/>
+								<UML:TaggedValue tag="ea_guid" value="{109FF7EA-5793-513d-A593-733CD5E3087C}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Generalization>
+					</UML:Namespace.ownedElement>
+				</UML:Package>
+			</UML:Namespace.ownedElement>
+		</UML:Model>
+	</XMI.content>
+	<XMI.extensions xmi.extender="Enterprise Architect 2.5">
+		<EAStub xmi.id="EAID_1230AC0F_EA60_5ddd_81A5_B8CB8673D752" name="DataStructureProfile" UMLType="Class"/>
+		<EAStub xmi.id="EAID_163A204F_7867_5686_A483_0C3C37ABF08A" name="DataDescription" UMLType="Class"/>
+		<EAStub xmi.id="EAID_3788AEA2_0286_5b4c_97A4_699D36AF67E3" name="XasOptional" UMLType="DataType"/>
+		<EAStub xmi.id="EAID_3DED079A_58CF_5325_8945_5132655A0CE6" name="Discovery" UMLType="Class"/>
+		<EAStub xmi.id="EAID_3F9EE39D_FB58_5cb6_B1EF_874D4783540E" name="Core" UMLType="Class"/>
+		<EAStub xmi.id="EAID_D405A3A8_7F85_5cf1_B505_0BD07364F9A3" name="XasCore" UMLType="Class"/>
+	</XMI.extensions>
+</XMI>

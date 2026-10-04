@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<XMI xmi.version="1.1" xmlns:UML="omg.org/UML1.3">
+	<XMI.header>
+		<XMI.documentation>
+			<XMI.exporter>Enterprise Architect</XMI.exporter>
+			<XMI.exporterVersion>2.5</XMI.exporterVersion>
+		</XMI.documentation>
+	</XMI.header>
+	<XMI.content>
+		<UML:Model name="xasGeneratedBy" xmi.id="MX_EAID_39FF2D86_A0E8_59f0_9DBA_D61057AF441E">
+			<UML:Namespace.ownedElement>
+				<UML:Class name="EARootClass" xmi.id="EAID_11111111_5487_4080_A7F4_41526CB0AA00" isRoot="true" isLeaf="false" isAbstract="false"/>
+				<UML:Package name="xasGeneratedBy" xmi.id="EAPK_34426386_AF9E_5965_BE14_03838B0FF10D" isRoot="false" isLeaf="false" isAbstract="false" visibility="public">
+					<UML:ModelElement.taggedValue>
+						<UML:TaggedValue tag="documentation" value="https://w3id.org/cdif/bbr/metadata/xasProperties/xasGeneratedBy"/>
+						<UML:TaggedValue tag="isSpecification" value="false"/>
+						<UML:TaggedValue tag="ea_stype" value="Public"/>
+						<UML:TaggedValue tag="ea_eleType" value="package"/>
+						<UML:TaggedValue tag="version" value="1.0"/>
+						<UML:TaggedValue tag="ea_guid" value="{34426386-AF9E-5965-BE14-03838B0FF10D}"/>
+					</UML:ModelElement.taggedValue>
+					<UML:Namespace.ownedElement>
+						<UML:Class name="XasGeneratedBy" xmi.id="EAID_0A69D80B_8A10_560d_AE75_59AEE62F4C63" visibility="public" namespace="EAPK_34426386_AF9E_5965_BE14_03838B0FF10D" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;XAS-specific provenance activity building block. Extends cdifProvActivity with XAS analysis event typing (xas:analysisevent), XAS facility location, sample object, XAS-specific instrument type, and XAS additional properties (edge_energy, calibration method, instrument configuration, installedOptions).&#xA;:title: &quot;XAS Analysis Event activity&quot;&#xA;:prefix: ``schema``&#xA;:typeSchema: {&quot;type&quot;: &quot;array&quot;, &quot;items&quot;: {&quot;type&quot;: &quot;string&quot;}}&#xA;:typeOptional:&#xA;:noId:&#xA;:extends:&#xA;:untypedRoot:"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="Class"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_34426386_AF9E_5965_BE14_03838B0FF10D"/>
+								<UML:TaggedValue tag="ea_guid" value="{0A69D80B-8A10-560d-AE75-59AEE62F4C63}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Classifier.feature>
+								<UML:Attribute name="additionalType" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:StructuralFeature.type>
+										<UML:Classifier xmi.idref="EAID_4C904941_63B0_5e2d_A6AF_329608DC1F86"/>
+									</UML:StructuralFeature.type>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Domain type(s) for the activity; must include xas:analysisevent (an XAS analysis event).&#xA;:arrayKeywords: {&quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;additionalProperties&quot;: false, &quot;required&quot;: [&quot;@id&quot;], &quot;properties&quot;: {&quot;@id&quot;: {&quot;const&quot;: &quot;xas:analysisevent&quot;}}}}&#xA;:minItems: null"/>
+										<UML:TaggedValue tag="type" value="ConceptOrTermOrString"/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="true"/>
+										<UML:TaggedValue tag="position" value="0"/>
+										<UML:TaggedValue tag="lowerBound" value="1"/>
+										<UML:TaggedValue tag="upperBound" value="*"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{3B959E30-C873-5a20-833B-A0BD45B6AF55}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+								<UML:Attribute name="startTime" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:StructuralFeature.type>
+										<UML:Classifier xmi.idref="eaxmiid_String"/>
+									</UML:StructuralFeature.type>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Date/time the XAS analysis started"/>
+										<UML:TaggedValue tag="type" value="String"/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="false"/>
+										<UML:TaggedValue tag="position" value="1"/>
+										<UML:TaggedValue tag="lowerBound" value="0"/>
+										<UML:TaggedValue tag="upperBound" value="1"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{C635C702-A168-5e1a-BEA3-2809FAD25153}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+								<UML:Attribute name="endTime" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:StructuralFeature.type>
+										<UML:Classifier xmi.idref="eaxmiid_String"/>
+									</UML:StructuralFeature.type>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Date/time the XAS analysis finished"/>
+										<UML:TaggedValue tag="type" value="String"/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="false"/>
+										<UML:TaggedValue tag="position" value="2"/>
+										<UML:TaggedValue tag="lowerBound" value="0"/>
+										<UML:TaggedValue tag="upperBound" value="1"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{CE032E4A-863F-5a1b-ACC9-5ABFDF60A860}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+								<UML:Attribute name="prov_used" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:StructuralFeature.type>
+										<UML:Classifier xmi.idref="EAID_0F362090_8D8F_5634_B8DA_34789F1D0539"/>
+									</UML:StructuralFeature.type>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:arrayKeywords: {&quot;allOf&quot;: [{&quot;description&quot;: &quot;Must contain a prov:used entry whose schema:instrument is classified as an NXinstrument (via schema:additionalType) and carries a schema:name (the beamline name).&quot;, &quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;schema:instrument&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;schema:additionalType&quot;: {&quot;anyOf&quot;: [{&quot;type&quot;: &quot;object&quot;, &quot;additionalProperties&quot;: false, &quot;required&quot;: [&quot;@id&quot;], &quot;properties&quot;: {&quot;@id&quot;: {&quot;enum&quot;: [&quot;nxs:base_classes/NXinstrument.html&quot;, &quot;xas:beamline&quot;]}}}, {&quot;type&quot;: &quot;array&quot;, &quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;additionalProperties&quot;: false, &quot;required&quot;: [&quot;@id&quot;], &quot;properties&quot;: {&quot;@id&quot;: {&quot;enum&quot;: [&quot;nxs:base_classes/NXinstrument.html&quot;, &quot;xas:beamline&quot;]}}}}]}, &quot;schema:name&quot;: {&quot;type&quot;: &quot;string&quot;}}, &quot;required&quot;: [&quot;schema:additionalType&quot;, &quot;schema:name&quot;]}}}, &quot;required&quot;: [&quot;schema:instrument&quot;]}}, {&quot;description&quot;: &quot;Must contain a prov:used entry whose schema:instrument is classified as an xas:xraymonochromator (via schema:additionalType) and has a schema:additionalProperty carrying the xas:dspacing PropertyValue with a schema:value.&quot;, &quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;schema:instrument&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;schema:additionalType&quot;: {&quot;anyOf&quot;: [{&quot;type&quot;: &quot;object&quot;, &quot;additionalProperties&quot;: false, &quot;required&quot;: [&quot;@id&quot;], &quot;properties&quot;: {&quot;@id&quot;: {&quot;const&quot;: &quot;xas:xraymonochromator&quot;}}}, {&quot;type&quot;: &quot;array&quot;, &quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;additionalProperties&quot;: false, &quot;required&quot;: [&quot;@id&quot;], &quot;properties&quot;: {&quot;@id&quot;: {&quot;const&quot;: &quot;xas:xraymonochromator&quot;}}}}]}, &quot;schema:additionalProperty&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;schema:propertyID&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;additionalProperties&quot;: false, &quot;required&quot;: [&quot;@id&quot;], &quot;properties&quot;: {&quot;@id&quot;: {&quot;const&quot;: &quot;xas:dspacing&quot;}}}}, &quot;schema:value&quot;: {&quot;type&quot;: &quot;string&quot;}}, &quot;required&quot;: [&quot;schema:propertyID&quot;, &quot;schema:value&quot;]}}}, &quot;required&quot;: [&quot;schema:additionalType&quot;, &quot;schema:additionalProperty&quot;]}}}, &quot;required&quot;: [&quot;schema:instrument&quot;]}}]}&#xA;:orReference: [&quot;value&quot;, &quot;string&quot;, &quot;idReference&quot;]&#xA;:jsonName: &quot;prov:used&quot;"/>
+										<UML:TaggedValue tag="type" value="XasGeneratedByUsed"/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="true"/>
+										<UML:TaggedValue tag="position" value="3"/>
+										<UML:TaggedValue tag="lowerBound" value="0"/>
+										<UML:TaggedValue tag="upperBound" value="*"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{B8EDE069-A2EE-593e-9001-D9F4B75B5D4B}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+							</UML:Classifier.feature>
+						</UML:Class>
+						<UML:Class name="XasGeneratedByUsed" xmi.id="EAID_0F362090_8D8F_5634_B8DA_34789F1D0539" visibility="public" namespace="EAPK_34426386_AF9E_5965_BE14_03838B0FF10D" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:prefix: ``schema``"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="DataType"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_34426386_AF9E_5965_BE14_03838B0FF10D"/>
+								<UML:TaggedValue tag="ea_guid" value="{0F362090-8D8F-5634-B8DA-34789F1D0539}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Class>
+						<UML:Class name="XasGeneratedByUsedInstrument" xmi.id="EAID_2F22E646_B759_5d30_972E_677DD5F96328" visibility="public" namespace="EAPK_34426386_AF9E_5965_BE14_03838B0FF10D" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;As a prov:used entity, the instrument's @type includes prov:Entity (the PROV-O range of prov:used) alongside schema:Thing / schema:Product.&#xA;:prefix: ``schema``&#xA;:constraint: {&quot;properties&quot;: {&quot;@type&quot;: {&quot;contains&quot;: {&quot;const&quot;: &quot;prov:Entity&quot;}}}}&#xA;:noId:&#xA;:extends:"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="Class"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_34426386_AF9E_5965_BE14_03838B0FF10D"/>
+								<UML:TaggedValue tag="ea_guid" value="{2F22E646-B759-5d30-972E-677DD5F96328}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Class>
+						<UML:Association xmi.id="EAID_3AA117FF_A7DF_57a1_9BF1_F3DD9DB4A3F2" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Additional properties on the XAS analysis activity (base AdditionalProperty shape). The activity-level propertyID enum (xas:edgeenergy, calibration method, ...) is layered on in xasOptional so it applies at the profile level, not this shape.&#xA;:inlineOrByReference: ``inline``"/>
+								<UML:TaggedValue tag="ea_type" value="Association"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="XasGeneratedBy"/>
+								<UML:TaggedValue tag="ea_targetName" value="AdditionalProperty"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{3AA117FF-A7DF-57a1-9BF1-F3DD9DB4A3F2}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Association.connection>
+								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_0A69D80B_8A10_560d_AE75_59AEE62F4C63">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="source"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+								<UML:AssociationEnd visibility="public" name="additionalProperty" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_7D94D7A4_BEF4_5c8f_8C4D_171051B83A03">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Additional properties on the XAS analysis activity (base AdditionalProperty shape). The activity-level propertyID enum (xas:edgeenergy, calibration method, ...) is layered on in xasOptional so it applies at the profile level, not this shape.&#xA;:inlineOrByReference: ``inline``"/>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="deststyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="target"/>
+										<UML:TaggedValue tag="ea_guid" value="{0E65BCF6-EEDD-5841-94BE-19AA04B002E3}"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+							</UML:Association.connection>
+						</UML:Association>
+						<UML:Association xmi.id="EAID_BD441E16_4E35_5874_A174_E4EEA7419DD8" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
+								<UML:TaggedValue tag="ea_type" value="Association"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="XasGeneratedBy"/>
+								<UML:TaggedValue tag="ea_targetName" value="XasFacility"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{BD441E16-4E35-5874-A174-E4EEA7419DD8}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Association.connection>
+								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_0A69D80B_8A10_560d_AE75_59AEE62F4C63">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="source"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+								<UML:AssociationEnd visibility="public" name="location" multiplicity="0..1" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_48F4E2A3_4D87_5838_8997_1FB70C81733F">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="deststyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="target"/>
+										<UML:TaggedValue tag="ea_guid" value="{BC5884C4-E369-51f7-B357-97835F7C1E4A}"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+							</UML:Association.connection>
+						</UML:Association>
+						<UML:Association xmi.id="EAID_05D705E8_A2ED_54af_A44C_57DF71D8F5F8" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Sample being analyzed (per Ocean Info Hub recommendation)&#xA;:inlineOrByReference: ``inline``"/>
+								<UML:TaggedValue tag="ea_type" value="Association"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="XasGeneratedBy"/>
+								<UML:TaggedValue tag="ea_targetName" value="XasSample"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{05D705E8-A2ED-54af-A44C-57DF71D8F5F8}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Association.connection>
+								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_0A69D80B_8A10_560d_AE75_59AEE62F4C63">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="source"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+								<UML:AssociationEnd visibility="public" name="object" multiplicity="0..1" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_75CCC3F8_79F1_586e_8F87_C0450F2CBED0">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Sample being analyzed (per Ocean Info Hub recommendation)&#xA;:inlineOrByReference: ``inline``"/>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="deststyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="target"/>
+										<UML:TaggedValue tag="ea_guid" value="{02A622B3-F068-5ba9-A3D5-AD9D3D38684E}"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+							</UML:Association.connection>
+						</UML:Association>
+						<UML:Association xmi.id="EAID_91589A0F_5301_5b18_909A_EC9A4A330B0B" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
+								<UML:TaggedValue tag="ea_type" value="Association"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="XasGeneratedByUsed"/>
+								<UML:TaggedValue tag="ea_targetName" value="XasGeneratedByUsedInstrument"/>
+								<UML:TaggedValue tag="ea_sourceType" value="DataType"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{91589A0F-5301-5b18-909A-EC9A4A330B0B}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Association.connection>
+								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_0F362090_8D8F_5634_B8DA_34789F1D0539">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="source"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+								<UML:AssociationEnd visibility="public" name="instrument" multiplicity="1..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_2F22E646_B759_5d30_972E_677DD5F96328">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``"/>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="deststyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="target"/>
+										<UML:TaggedValue tag="ea_guid" value="{24C7CB9A-D5CB-544d-9DA9-55519961186D}"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+							</UML:Association.connection>
+						</UML:Association>
+						<UML:Generalization subtype="EAID_0A69D80B_8A10_560d_AE75_59AEE62F4C63" supertype="EAID_CF45CDBE_3A4F_5fe7_8903_7C0A44DDEF56" xmi.id="EAID_ADBBDADB_7BE7_5761_BD9A_70CB11C7A43E" visibility="public">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="ea_type" value="Generalization"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="XasGeneratedBy"/>
+								<UML:TaggedValue tag="ea_targetName" value="ProvActivity"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{ADBBDADB-7BE7-5761-BD9A-70CB11C7A43E}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Generalization>
+						<UML:Generalization subtype="EAID_2F22E646_B759_5d30_972E_677DD5F96328" supertype="EAID_1296E3DC_A33C_51b6_A3AD_D99AD2AE6A19" xmi.id="EAID_4F6C91D0_B4C3_5ad8_995C_322A334C2C9F" visibility="public">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="ea_type" value="Generalization"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="XasGeneratedByUsedInstrument"/>
+								<UML:TaggedValue tag="ea_targetName" value="XasInstrument"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{4F6C91D0-B4C3-5ad8-995C-322A334C2C9F}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Generalization>
+					</UML:Namespace.ownedElement>
+				</UML:Package>
+				<UML:Class name="String" xmi.id="eaxmiid_String" visibility="public" isRoot="true" isLeaf="false" isAbstract="false">
+					<UML:ModelElement.taggedValue>
+						<UML:TaggedValue tag="isSpecification" value="false"/>
+						<UML:TaggedValue tag="ea_stype" value="Primitive"/>
+						<UML:TaggedValue tag="ea_ntype" value="0"/>
+					</UML:ModelElement.taggedValue>
+				</UML:Class>
+			</UML:Namespace.ownedElement>
+		</UML:Model>
+	</XMI.content>
+	<XMI.extensions xmi.extender="Enterprise Architect 2.5">
+		<EAStub xmi.id="EAID_1296E3DC_A33C_51b6_A3AD_D99AD2AE6A19" name="XasInstrument" UMLType="Class"/>
+		<EAStub xmi.id="EAID_48F4E2A3_4D87_5838_8997_1FB70C81733F" name="XasFacility" UMLType="Class"/>
+		<EAStub xmi.id="EAID_4C904941_63B0_5e2d_A6AF_329608DC1F86" name="ConceptOrTermOrString" UMLType="DataType"/>
+		<EAStub xmi.id="EAID_75CCC3F8_79F1_586e_8F87_C0450F2CBED0" name="XasSample" UMLType="Class"/>
+		<EAStub xmi.id="EAID_7D94D7A4_BEF4_5c8f_8C4D_171051B83A03" name="AdditionalProperty" UMLType="Class"/>
+		<EAStub xmi.id="EAID_CF45CDBE_3A4F_5fe7_8903_7C0A44DDEF56" name="ProvActivity" UMLType="Class"/>
+	</XMI.extensions>
+</XMI>

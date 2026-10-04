@@ -1,0 +1,45 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: definitions a Facility location, type schema:Place
+description: |-
+  The facility where XAS data was acquired: a synchrotron, X-ray free electron laser, or laboratory.
+  Extends the core CDIF spatialExtent (schema:Place) rather than redeclaring it. A facility is an ordinary CDIF place that happens to be classified as a facility, so it should be described by the same block as any other place; the only thing this block adds is the requirement that schema:additionalType classify it.
+  Redeclaring meant this block described four of spatialExtent's properties and silently ignored the rest: schema:geo, geosparql: hasGeometry and schema:alternateName were accepted on a facility but never validated, so a facility whose coordinates were an unparseable string passed. Composing the core block instead constrains them.
+  geochemBuildingBlocks composes the same core block for its laboratory building block, so both profiles now describe this kind of place the same way. They still differ on the classification term -- that block uses a NeXus base class where this one uses xas:facility -- which is a separate question from where the place structure comes from.
+  xas:facility is deliberately NOT among the concepts retired onto NeXus base classes: it covers a synchrotron, an XFEL or a laboratory facility, while NXsource is the storage ring specifically. The narrower xas:synchrotonfacility is the one that corresponds to NXsource, and the glossary records it as skos:narrower of this concept.
+allOf:
+- '$ref': >-
+    ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/spatialExtent/schema.yaml
+- type: object
+  properties:
+    '@id':
+      type: string
+    'schema:additionalProperty':
+      type: array
+      items:
+        '$ref': >-
+          ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/additionalProperty/schema.yaml
+      description: >-
+        Facility-scope properties that are not places, e.g. storage-ring energy or current.
+        Not offered by the core block, which describes a location rather than an operating
+        machine.
+  allOf:
+  - properties:
+      'schema:additionalType':
+        description: >-
+          Must classify the place as an XAS facility. The value is a sealed reference ({"@id":
+          ...}) per the CDIF convention for a term defined elsewhere; the core block also
+          permits a bare string or an inline DefinedTerm for other classifications carried
+          alongside this one.
+        contains:
+          type: object
+          additionalProperties: false
+          required:
+          - '@id'
+          properties:
+            '@id':
+              const: 'xas:facility'
+        minItems: 1
+  - required:
+    - '@type'
+    - 'schema:additionalType'
+    - 'schema:name'

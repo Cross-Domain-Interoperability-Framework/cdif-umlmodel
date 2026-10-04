@@ -121,6 +121,17 @@
 								</UML:Attribute>
 							</UML:Classifier.feature>
 						</UML:Class>
+						<UML:Generalization subtype="EAID_758FF594_94AB_5d77_84E6_004AA8CC4AB4" supertype="EAID_D60B1DBE_E35B_5a55_A647_BE76B0BA055A" xmi.id="EAID_BD5FB92C_B80F_5191_A591_5547FC1B0055" visibility="public">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="ea_type" value="Generalization"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="DefinedTerm"/>
+								<UML:TaggedValue tag="ea_targetName" value="DefinedTerm"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{BD5FB92C-B80F-5191-A591-5547FC1B0055}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Generalization>
 					</UML:Namespace.ownedElement>
 				</UML:Package>
 				<UML:Class name="String" xmi.id="eaxmiid_String" visibility="public" isRoot="true" isLeaf="false" isAbstract="false">
@@ -135,6 +146,7 @@
 	</XMI.content>
 	<XMI.extensions xmi.extender="Enterprise Architect 2.5">
 		<EAStub xmi.id="EAID_504C91FE_8377_5649_9719_308C129EBFB1" name="IriReference" UMLType="DataType"/>
+		<EAStub xmi.id="EAID_D60B1DBE_E35B_5a55_A647_BE76B0BA055A" name="DefinedTerm" UMLType="Class"/>
 		<EAStub xmi.id="EAID_DC41695B_BD4E_53b3_90AA_D198F447FECB" name="Identifier" UMLType="DataType"/>
 	</XMI.extensions>
 </XMI>

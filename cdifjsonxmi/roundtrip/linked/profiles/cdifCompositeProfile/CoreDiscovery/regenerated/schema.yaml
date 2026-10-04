@@ -1,0 +1,11 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: CDIF Discovery metadata profile
+description: >-
+  CDIF Discovery profile for dataset metadata. Composes cdifCore with discovery-oriented properties:
+  measurement technique, variables, spatial and temporal coverage, quality measurements.
+type: object
+allOf:
+- '$ref': >-
+    ../../../../../../../../metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifCore/schema.yaml
+- '$ref': >-
+    ../../../../../../../../metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifDiscovery/schema.yaml

@@ -1,0 +1,13 @@
+xasSample: 4 exact difference(s)
+$.$defs: only in original: {"cdifConceptOrTermOrString": {"$ref": "../../cdifDataType/cdifConceptOrTermOrString/schema.yaml"}, "Identifier": {"$ref": "../../schemaorgProperties/identifier/schema.yaml"}, "AdditionalProperty": {"
+$.properties.schema:additionalProperty.items.$ref:
+    original:    "#/$defs/AdditionalProperty"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/additionalProperty/schema.yaml"
+$.properties.schema:additionalType.items.$ref:
+    original:    "#/$defs/cdifConceptOrTermOrString"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml"
+$.properties.schema:identifier.anyOf[1].$ref:
+    original:    "#/$defs/Identifier"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml"
+
+xasSample: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

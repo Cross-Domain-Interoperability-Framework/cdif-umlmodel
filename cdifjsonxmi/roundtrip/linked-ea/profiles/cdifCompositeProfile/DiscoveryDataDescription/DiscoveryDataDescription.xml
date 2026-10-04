@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<XMI xmi.version="1.1" xmlns:UML="omg.org/UML1.3">
+	<XMI.header>
+		<XMI.documentation>
+			<XMI.exporter>Enterprise Architect</XMI.exporter>
+			<XMI.exporterVersion>2.5</XMI.exporterVersion>
+		</XMI.documentation>
+	</XMI.header>
+	<XMI.content>
+		<UML:Model name="DiscoveryDataDescription" xmi.id="MX_EAID_B6FFBFE7_04B4_5256_BEEE_375075AE1817">
+			<UML:Namespace.ownedElement>
+				<UML:Class name="EARootClass" xmi.id="EAID_11111111_5487_4080_A7F4_41526CB0AA00" isRoot="true" isLeaf="false" isAbstract="false"/>
+				<UML:Package name="DiscoveryDataDescription" xmi.id="EAPK_0366CD3D_284E_57cf_A5D5_14108AC41644" isRoot="false" isLeaf="false" isAbstract="false" visibility="public">
+					<UML:ModelElement.taggedValue>
+						<UML:TaggedValue tag="documentation" value="https://w3id.org/cdif/bbr/metadata/profiles/cdifCompositeProfile/DiscoveryDataDescription"/>
+						<UML:TaggedValue tag="isSpecification" value="false"/>
+						<UML:TaggedValue tag="ea_stype" value="Public"/>
+						<UML:TaggedValue tag="ea_eleType" value="package"/>
+						<UML:TaggedValue tag="version" value="1.0"/>
+						<UML:TaggedValue tag="ea_guid" value="{0366CD3D-284E-57cf-A5D5-14108AC41644}"/>
+					</UML:ModelElement.taggedValue>
+					<UML:Namespace.ownedElement>
+						<UML:Class name="DiscoveryDataDescription" xmi.id="EAID_B1ED7859_D34E_5ae7_93EB_18752521B00E" visibility="public" namespace="EAPK_0366CD3D_284E_57cf_A5D5_14108AC41644" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;CDIF Data Description profile. Composes cdifCore with discovery properties and data description extensions for detailed variable and structure documentation.&#xA;:title: &quot;CDIF Data Description metadata profile&quot;&#xA;:prefix: ``cdif``&#xA;:noId:&#xA;:extends:&#xA;:noOwnSchema:"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="Class"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_0366CD3D_284E_57cf_A5D5_14108AC41644"/>
+								<UML:TaggedValue tag="ea_guid" value="{B1ED7859-D34E-5ae7-93EB-18752521B00E}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Class>
+						<UML:Generalization subtype="EAID_B1ED7859_D34E_5ae7_93EB_18752521B00E" supertype="EAID_3F9EE39D_FB58_5cb6_B1EF_874D4783540E" xmi.id="EAID_5E98E827_58A4_5a10_8C7F_BB851A4819C9" visibility="public">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="ea_type" value="Generalization"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="DiscoveryDataDescription"/>
+								<UML:TaggedValue tag="ea_targetName" value="Core"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{5E98E827-58A4-5a10-8C7F-BB851A4819C9}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Generalization>
+						<UML:Generalization subtype="EAID_B1ED7859_D34E_5ae7_93EB_18752521B00E" supertype="EAID_3DED079A_58CF_5325_8945_5132655A0CE6" xmi.id="EAID_6EC03B23_4E75_5e40_83AE_673DF236F4A3" visibility="public">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="ea_type" value="Generalization"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="DiscoveryDataDescription"/>
+								<UML:TaggedValue tag="ea_targetName" value="Discovery"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{6EC03B23-4E75-5e40-83AE-673DF236F4A3}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Generalization>
+						<UML:Generalization subtype="EAID_B1ED7859_D34E_5ae7_93EB_18752521B00E" supertype="EAID_163A204F_7867_5686_A483_0C3C37ABF08A" xmi.id="EAID_E30E9DEB_D294_5b05_99C1_6B033D2AA634" visibility="public">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="ea_type" value="Generalization"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="DiscoveryDataDescription"/>
+								<UML:TaggedValue tag="ea_targetName" value="DataDescription"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{E30E9DEB-D294-5b05-99C1-6B033D2AA634}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Generalization>
+					</UML:Namespace.ownedElement>
+				</UML:Package>
+			</UML:Namespace.ownedElement>
+		</UML:Model>
+	</XMI.content>
+	<XMI.extensions xmi.extender="Enterprise Architect 2.5">
+		<EAStub xmi.id="EAID_163A204F_7867_5686_A483_0C3C37ABF08A" name="DataDescription" UMLType="Class"/>
+		<EAStub xmi.id="EAID_3DED079A_58CF_5325_8945_5132655A0CE6" name="Discovery" UMLType="Class"/>
+		<EAStub xmi.id="EAID_3F9EE39D_FB58_5cb6_B1EF_874D4783540E" name="Core" UMLType="Class"/>
+	</XMI.extensions>
+</XMI>

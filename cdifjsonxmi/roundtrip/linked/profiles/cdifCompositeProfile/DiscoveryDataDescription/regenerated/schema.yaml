@@ -1,0 +1,13 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: CDIF Data Description metadata profile
+description: >-
+  CDIF Data Description profile. Composes cdifCore with discovery properties and data description
+  extensions for detailed variable and structure documentation.
+type: object
+allOf:
+- '$ref': >-
+    ../../../../../../../../metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifCore/schema.yaml
+- '$ref': >-
+    ../../../../../../../../metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifDiscovery/schema.yaml
+- '$ref': >-
+    ../../../../../../../../metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifDataDescription/schema.yaml

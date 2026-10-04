@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<XMI xmi.version="1.1" xmlns:UML="omg.org/UML1.3">
+	<XMI.header>
+		<XMI.documentation>
+			<XMI.exporter>Enterprise Architect</XMI.exporter>
+			<XMI.exporterVersion>2.5</XMI.exporterVersion>
+		</XMI.documentation>
+	</XMI.header>
+	<XMI.content>
+		<UML:Model name="xasFacility" xmi.id="MX_EAID_80063234_3E2B_5467_B7F3_2F55E64198EC">
+			<UML:Namespace.ownedElement>
+				<UML:Class name="EARootClass" xmi.id="EAID_11111111_5487_4080_A7F4_41526CB0AA00" isRoot="true" isLeaf="false" isAbstract="false"/>
+				<UML:Package name="xasFacility" xmi.id="EAPK_BD5964C2_444C_58a0_B7D8_4112E73BF5A5" isRoot="false" isLeaf="false" isAbstract="false" visibility="public">
+					<UML:ModelElement.taggedValue>
+						<UML:TaggedValue tag="documentation" value="https://w3id.org/cdif/bbr/metadata/xasProperties/xasFacility"/>
+						<UML:TaggedValue tag="isSpecification" value="false"/>
+						<UML:TaggedValue tag="ea_stype" value="Public"/>
+						<UML:TaggedValue tag="ea_eleType" value="package"/>
+						<UML:TaggedValue tag="version" value="1.0"/>
+						<UML:TaggedValue tag="ea_guid" value="{BD5964C2-444C-58a0-B7D8-4112E73BF5A5}"/>
+					</UML:ModelElement.taggedValue>
+					<UML:Namespace.ownedElement>
+						<UML:Class name="XasFacility" xmi.id="EAID_48F4E2A3_4D87_5838_8997_1FB70C81733F" visibility="public" namespace="EAPK_BD5964C2_444C_58a0_B7D8_4112E73BF5A5" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;The facility where XAS data was acquired: a synchrotron, X-ray free electron laser, or laboratory.&#xA;Extends the core CDIF spatialExtent (schema:Place) rather than redeclaring it. A facility is an ordinary CDIF place that happens to be classified as a facility, so it should be described by the same block as any other place; the only thing this block adds is the requirement that schema:additionalType classify it.&#xA;Redeclaring meant this block described four of spatialExtent's properties and silently ignored the rest: schema:geo, geosparql: hasGeometry and schema:alternateName were accepted on a facility but never validated, so a facility whose coordinates were an unparseable string passed. Composing the core block instead constrains them.&#xA;geochemBuildingBlocks composes the same core block for its laboratory building block, so both profiles now describe this kind of place the same way. They still differ on the classification term -- that block uses a NeXus base class where this one uses xas:facility -- which is a separate question from where the place structure comes from.&#xA;xas:facility is deliberately NOT among the concepts retired onto NeXus base classes: it covers a synchrotron, an XFEL or a laboratory facility, while NXsource is the storage ring specifically. The narrower xas:synchrotonfacility is the one that corresponds to NXsource, and the glossary records it as skos:narrower of this concept.&#xA;:title: &quot;definitions a Facility location, type schema:Place&quot;&#xA;:prefix: ``schema``&#xA;:constraint: {&quot;properties&quot;: {&quot;schema:additionalType&quot;: {&quot;description&quot;: &quot;Must classify the place as an XAS facility. The value is a sealed reference ({\&quot;@id\&quot;: ...}) per the CDIF convention for a term defined elsewhere; the core block also permits a bare string or an inline DefinedTerm for other classifications carried alongside this one.&quot;, &quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;additionalProperties&quot;: false, &quot;required&quot;: [&quot;@id&quot;], &quot;properties&quot;: {&quot;@id&quot;: {&quot;const&quot;: &quot;xas:facility&quot;}}}, &quot;minItems&quot;: 1}}}&#xA;:constraint: {&quot;required&quot;: [&quot;@type&quot;, &quot;schema:additionalType&quot;, &quot;schema:name&quot;]}&#xA;:extends:&#xA;:untypedRoot:"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="Class"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_BD5964C2_444C_58a0_B7D8_4112E73BF5A5"/>
+								<UML:TaggedValue tag="ea_guid" value="{48F4E2A3-4D87-5838-8997-1FB70C81733F}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Class>
+						<UML:Association xmi.id="EAID_837D6145_F0CB_5aa8_B971_05A4676D9191" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Facility-scope properties that are not places, e.g. storage-ring energy or current. Not offered by the core block, which describes a location rather than an operating machine.&#xA;:inlineOrByReference: ``inline``"/>
+								<UML:TaggedValue tag="ea_type" value="Association"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="XasFacility"/>
+								<UML:TaggedValue tag="ea_targetName" value="AdditionalProperty"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{837D6145-F0CB-5aa8-B971-05A4676D9191}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Association.connection>
+								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_48F4E2A3_4D87_5838_8997_1FB70C81733F">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="source"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+								<UML:AssociationEnd visibility="public" name="additionalProperty" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_7D94D7A4_BEF4_5c8f_8C4D_171051B83A03">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Facility-scope properties that are not places, e.g. storage-ring energy or current. Not offered by the core block, which describes a location rather than an operating machine.&#xA;:inlineOrByReference: ``inline``"/>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="deststyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="target"/>
+										<UML:TaggedValue tag="ea_guid" value="{1FD13938-DB0F-5f2d-85A0-1D90D6127C13}"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+							</UML:Association.connection>
+						</UML:Association>
+						<UML:Generalization subtype="EAID_48F4E2A3_4D87_5838_8997_1FB70C81733F" supertype="EAID_A372246D_054E_5875_8DE8_082D93DDA478" xmi.id="EAID_B9C33F81_EE89_5f73_92F6_2536E02606DB" visibility="public">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="ea_type" value="Generalization"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="XasFacility"/>
+								<UML:TaggedValue tag="ea_targetName" value="SpatialExtent"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{B9C33F81-EE89-5f73-92F6-2536E02606DB}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Generalization>
+					</UML:Namespace.ownedElement>
+				</UML:Package>
+			</UML:Namespace.ownedElement>
+		</UML:Model>
+	</XMI.content>
+	<XMI.extensions xmi.extender="Enterprise Architect 2.5">
+		<EAStub xmi.id="EAID_7D94D7A4_BEF4_5c8f_8C4D_171051B83A03" name="AdditionalProperty" UMLType="Class"/>
+		<EAStub xmi.id="EAID_A372246D_054E_5875_8DE8_082D93DDA478" name="SpatialExtent" UMLType="Class"/>
+	</XMI.extensions>
+</XMI>

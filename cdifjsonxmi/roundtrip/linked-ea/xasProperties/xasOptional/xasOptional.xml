@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<XMI xmi.version="1.1" xmlns:UML="omg.org/UML1.3">
+	<XMI.header>
+		<XMI.documentation>
+			<XMI.exporter>Enterprise Architect</XMI.exporter>
+			<XMI.exporterVersion>2.5</XMI.exporterVersion>
+		</XMI.documentation>
+	</XMI.header>
+	<XMI.content>
+		<UML:Model name="xasOptional" xmi.id="MX_EAID_E177B83F_D12C_55d2_BC94_D041D0D7FFD4">
+			<UML:Namespace.ownedElement>
+				<UML:Class name="EARootClass" xmi.id="EAID_11111111_5487_4080_A7F4_41526CB0AA00" isRoot="true" isLeaf="false" isAbstract="false"/>
+				<UML:Package name="xasOptional" xmi.id="EAPK_1C5DF87C_70A3_50b7_B29F_6F865D68243F" isRoot="false" isLeaf="false" isAbstract="false" visibility="public">
+					<UML:ModelElement.taggedValue>
+						<UML:TaggedValue tag="documentation" value="https://w3id.org/cdif/bbr/metadata/xasProperties/xasOptional"/>
+						<UML:TaggedValue tag="isSpecification" value="false"/>
+						<UML:TaggedValue tag="ea_stype" value="Public"/>
+						<UML:TaggedValue tag="ea_eleType" value="package"/>
+						<UML:TaggedValue tag="version" value="1.0"/>
+						<UML:TaggedValue tag="ea_guid" value="{1C5DF87C-70A3-50b7-B29F-6F865D68243F}"/>
+					</UML:ModelElement.taggedValue>
+					<UML:Namespace.ownedElement>
+						<UML:Class name="XasOptional" xmi.id="EAID_3788AEA2_0286_5b4c_97A4_699D36AF67E3" visibility="public" namespace="EAPK_1C5DF87C_70A3_50b7_B29F_6F865D68243F" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Genuinely-optional XAS properties layered on cdifCore. Adds no requirement to a record that carries no optional XAS content; a record that does carry schema:variableMeasured must declare conformance to https://w3id.org/cdif/xasOptional/1.0. Documents and permits optional XAS content: (a) XAS data-array variables as schema:variableMeasured cdi:InstanceVariable items, and (b) optional beamline-operational and sample physico-chemical parameters carried as schema:additionalProperty entries (on the prov:used NXinstrument entity and the schema:object sample respectively; see description.md for the propertyID vocabularies). Present only when the corresponding measurements exist.&#xA;:title: &quot;Optional XAS metadata fields&quot;&#xA;:prefix: ``schema``&#xA;:contextSchema: {&quot;type&quot;: &quot;object&quot;, &quot;description&quot;: &quot;JSON-LD prefixes used by optional XAS fields.&quot;, &quot;properties&quot;: {&quot;xas&quot;: {&quot;const&quot;: &quot;https://w3id.org/cdif/xas/&quot;}, &quot;nxs&quot;: {&quot;const&quot;: &quot;https://manual.nexusformat.org/classes/&quot;}}}"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="DataType"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_1C5DF87C_70A3_50b7_B29F_6F865D68243F"/>
+								<UML:TaggedValue tag="ea_guid" value="{3788AEA2-0286-5b4c-97A4-699D36AF67E3}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Classifier.feature>
+								<UML:Attribute name="prov_wasGeneratedBy" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Optional-vocabulary layer on the XAS analysis activity. Adds propertyID enums for (a) activity-level additionalProperty entries, (b) the sample (schema:object) additionalProperty entries, and (c) the beamline peer instrument's additionalProperty entries. Enum arms are additive over the base propertyID_item shape.&#xA;:valueSchema: {&quot;properties&quot;: {&quot;schema:additionalProperty&quot;: {&quot;description&quot;: &quot;XAS activity-level additionalProperty vocabulary. All entries resolve to SKOS concepts in the XAS-CDIF glossary.&quot;, &quot;type&quot;: &quot;array&quot;, &quot;items&quot;: {&quot;allOf&quot;: [{&quot;$ref&quot;: &quot;bb:schemaorgProperties/additionalProperty/schema.yaml&quot;}, {&quot;properties&quot;: {&quot;schema:propertyID&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;minItems&quot;: 1, &quot;items&quot;: {&quot;anyOf&quot;: [{&quot;$ref&quot;: &quot;bb:schemaorgProperties/additionalProperty/schema.yaml#/$defs/propertyID_item&quot;}, {&quot;enum&quot;: [&quot;xas:edgeenergy&quot;, &quot;xas:calibrationmethod&quot;, &quot;xas:experimentdocumentation&quot;, &quot;xas:installedoptions&quot;]}]}}}}]}}, &quot;schema:object&quot;: {&quot;description&quot;: &quot;Sample additionalProperty entries. XDI Sample.* vocabulary (XDI-CDIF-Mapping.xlsx rows 47-64) plus legacy xas:* names and NEXUS NXsample fields.&quot;, &quot;properties&quot;: {&quot;schema:additionalProperty&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;items&quot;: {&quot;allOf&quot;: [{&quot;$ref&quot;: &quot;bb:schemaorgProperties/additionalProperty/schema.yaml&quot;}, {&quot;properties&quot;: {&quot;schema:propertyID&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;minItems&quot;: 1, &quot;items&quot;: {&quot;anyOf&quot;: [{&quot;$ref&quot;: &quot;bb:schemaorgProperties/additionalProperty/schema.yaml#/$defs/propertyID_item&quot;}, {&quot;enum&quot;: [&quot;xas:concentration&quot;, &quot;xas:samplecrystalstructure&quot;, &quot;xas:density&quot;, &quot;xas:eh&quot;, &quot;xas:electricfield&quot;, &quot;xas:electrochemicalpotential&quot;, &quot;xas:magneticfield&quot;, &quot;xas:magneticmoment&quot;, &quot;xas:opacity&quot;, &quot;xas:parentsample&quot;, &quot;xas:ph&quot;, &quot;xas:porosity&quot;, &quot;xas:pressure&quot;, &quot;xas:resistivity&quot;, &quot;xas:samplechemicalcomposition&quot;, &quot;xas:samplematerial&quot;, &quot;xas:samplepreparation&quot;, &quot;nxs:base_classes/NXsample.html#nxsample-temperature-field&quot;, &quot;xas:temperature&quot;, &quot;xas:viscosity&quot;, &quot;xas:volume&quot;, &quot;nxs:Field/NXsample/mass&quot;, &quot;nxs:Field/NXsample/point_group&quot;, &quot;nxs:Field/NXsample/unit_cell&quot;]}]}}}}]}}}}, &quot;prov:used&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;items&quot;: {&quot;if&quot;: {&quot;description&quot;: &quot;When this peer prov:used entry's instrument is a beamline (schema:additionalType contains the NXinstrument class), its schema:additionalProperty entries SHOULD use the XDI Beamline vocabulary (XDI-CDIF-Mapping.xlsx rows 10-20, excluding Beamline.name which maps to schema:name).&quot;, &quot;properties&quot;: {&quot;schema:instrument&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;schema:additionalType&quot;: {&quot;anyOf&quot;: [{&quot;type&quot;: &quot;object&quot;, &quot;additionalProperties&quot;: false, &quot;required&quot;: [&quot;@id&quot;], &quot;properties&quot;: {&quot;@id&quot;: {&quot;enum&quot;: [&quot;nxs:base_classes/NXinstrument.html&quot;, &quot;xas:beamline&quot;]}}}, {&quot;type&quot;: &quot;array&quot;, &quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;additionalProperties&quot;: false, &quot;required&quot;: [&quot;@id&quot;], &quot;properties&quot;: {&quot;@id&quot;: {&quot;enum&quot;: [&quot;nxs:base_classes/NXinstrument.html&quot;, &quot;xas:beamline&quot;]}}}}]}}}}}}, &quot;then&quot;: {&quot;properties&quot;: {&quot;schema:instrument&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;schema:additionalProperty&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;items&quot;: {&quot;allOf&quot;: [{&quot;$ref&quot;: &quot;bb:schemaorgProperties/additionalProperty/schema.yaml&quot;}, {&quot;properties&quot;: {&quot;schema:propertyID&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;minItems&quot;: 1, &quot;items&quot;: {&quot;anyOf&quot;: [{&quot;$ref&quot;: &quot;bb:schemaorgProperties/additionalProperty/schema.yaml#/$defs/propertyID_item&quot;}, {&quot;enum&quot;: [&quot;xas:collimation&quot;, &quot;xas:detectortype&quot;, &quot;xas:energyrange&quot;, &quot;xas:energyresolution&quot;, &quot;xas:flux&quot;, &quot;xas:focusing&quot;, &quot;xas:harmonicrejection&quot;, &quot;xas:scanmode&quot;, &quot;xas:spotsize&quot;, &quot;xas:website&quot;]}]}}}}]}}}}}}}}}}}&#xA;:jsonName: &quot;prov:wasGeneratedBy&quot;"/>
+										<UML:TaggedValue tag="type" value=""/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="true"/>
+										<UML:TaggedValue tag="position" value="0"/>
+										<UML:TaggedValue tag="lowerBound" value="0"/>
+										<UML:TaggedValue tag="upperBound" value="*"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{634E4DBD-EC02-584c-81C8-98CEE3D61E32}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+							</UML:Classifier.feature>
+						</UML:Class>
+						<UML:Association xmi.id="EAID_0EE9568D_BF4E_578b_A898_EED5DFEF6053" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Optional XAS data-array variables (energy, i0, itrans, ifluor, irefer, mutrans, mufluor, murefer, normtrans, normfluor, normrefer, chi, chi_re, chi_im, chi_mag, chi_pha, k, r, angle), each a cdi:InstanceVariable / schema:PropertyValue. Not required. The XDI variable propertyID enum is layered on in xasCore; this profile only enforces the base cdifInstanceVariable shape.&#xA;:inlineOrByReference: ``inline``"/>
+								<UML:TaggedValue tag="ea_type" value="Association"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="XasOptional"/>
+								<UML:TaggedValue tag="ea_targetName" value="InstanceVariable"/>
+								<UML:TaggedValue tag="ea_sourceType" value="DataType"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{0EE9568D-BF4E-578b-A898-EED5DFEF6053}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Association.connection>
+								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_3788AEA2_0286_5b4c_97A4_699D36AF67E3">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="source"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+								<UML:AssociationEnd visibility="public" name="variableMeasured" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_6AC4ED47_7975_5748_B693_7C83ED45B649">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Optional XAS data-array variables (energy, i0, itrans, ifluor, irefer, mutrans, mufluor, murefer, normtrans, normfluor, normrefer, chi, chi_re, chi_im, chi_mag, chi_pha, k, r, angle), each a cdi:InstanceVariable / schema:PropertyValue. Not required. The XDI variable propertyID enum is layered on in xasCore; this profile only enforces the base cdifInstanceVariable shape.&#xA;:inlineOrByReference: ``inline``"/>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="deststyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="target"/>
+										<UML:TaggedValue tag="ea_guid" value="{24EB692E-4BC2-5b10-94E6-CDDADF33069B}"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+							</UML:Association.connection>
+						</UML:Association>
+					</UML:Namespace.ownedElement>
+				</UML:Package>
+			</UML:Namespace.ownedElement>
+		</UML:Model>
+	</XMI.content>
+	<XMI.extensions xmi.extender="Enterprise Architect 2.5">
+		<EAStub xmi.id="EAID_6AC4ED47_7975_5748_B693_7C83ED45B649" name="InstanceVariable" UMLType="Class"/>
+	</XMI.extensions>
+</XMI>

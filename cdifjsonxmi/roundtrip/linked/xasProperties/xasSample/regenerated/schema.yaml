@@ -1,0 +1,59 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: definitions for roles used in XAS profile
+type: object
+properties:
+  '@type':
+    type: array
+    items:
+      type: string
+    minItems: 2
+    uniqueItems: true
+    allOf:
+    - contains:
+        const: 'schema:Product'
+      minContains: 1
+    - contains:
+        const: 'schema:Thing'
+      minContains: 1
+  'schema:additionalType':
+    type: array
+    items:
+      '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml
+    minItems: 2
+    uniqueItems: true
+    allOf:
+    - contains:
+        const: MaterialSample
+      minContains: 1
+    - contains:
+        type: object
+        additionalProperties: false
+        required:
+        - '@id'
+        properties:
+          '@id':
+            const: 'https://w3id.org/isample/vocabulary/materialsampleobjecttype/materialsample'
+      minContains: 1
+  'schema:name':
+    type: string
+  'schema:identifier':
+    anyOf:
+    - type: string
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/identifier/schema.yaml
+  'schema:description':
+    type: string
+  'schema:additionalProperty':
+    type: array
+    items:
+      '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/additionalProperty/schema.yaml
+    description: >-
+      Sample additionalProperty entries (base AdditionalProperty shape). The XDI Sample.*
+      propertyID vocabulary enum is layered on in xasOptional, so it applies at the profile
+      level, not this shape.
+required:
+- '@type'
+- 'schema:additionalType'
+- 'schema:name'

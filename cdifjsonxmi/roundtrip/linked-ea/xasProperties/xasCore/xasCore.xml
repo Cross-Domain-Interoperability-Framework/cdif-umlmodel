@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<XMI xmi.version="1.1" xmlns:UML="omg.org/UML1.3">
+	<XMI.header>
+		<XMI.documentation>
+			<XMI.exporter>Enterprise Architect</XMI.exporter>
+			<XMI.exporterVersion>2.5</XMI.exporterVersion>
+		</XMI.documentation>
+	</XMI.header>
+	<XMI.content>
+		<UML:Model name="xasCore" xmi.id="MX_EAID_4FDFB2AE_5103_5e02_93D3_9F5F92459853">
+			<UML:Namespace.ownedElement>
+				<UML:Class name="EARootClass" xmi.id="EAID_11111111_5487_4080_A7F4_41526CB0AA00" isRoot="true" isLeaf="false" isAbstract="false"/>
+				<UML:Package name="xasCore" xmi.id="EAPK_DE786552_4FF0_565f_B466_A2D5F2B987FC" isRoot="false" isLeaf="false" isAbstract="false" visibility="public">
+					<UML:ModelElement.taggedValue>
+						<UML:TaggedValue tag="documentation" value="https://w3id.org/cdif/bbr/metadata/xasProperties/xasCore"/>
+						<UML:TaggedValue tag="isSpecification" value="false"/>
+						<UML:TaggedValue tag="ea_stype" value="Public"/>
+						<UML:TaggedValue tag="ea_eleType" value="package"/>
+						<UML:TaggedValue tag="version" value="1.0"/>
+						<UML:TaggedValue tag="ea_guid" value="{DE786552-4FF0-565f-B466-A2D5F2B987FC}"/>
+					</UML:ModelElement.taggedValue>
+					<UML:Namespace.ownedElement>
+						<UML:Class name="XasCore" xmi.id="EAID_D405A3A8_7F85_5cf1_B505_0BD07364F9A3" visibility="public" namespace="EAPK_DE786552_4FF0_565f_B466_A2D5F2B987FC" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Required XAS constraints layered on cdifCore (composed once by the xasDocument profile; this module does NOT re-embed cdifCore). Enforces dual @type (Dataset+Product), a prov:wasGeneratedBy analysis activity whose prov:used carries the NXsource+NXmonochromator instrument wrapper, an XDI-conformant distribution, required XAS measurementTechnique DefinedTerms, required element/edge keywords, and the schema:object material sample.&#xA;:title: &quot;XAS Core (required) metadata constraints&quot;&#xA;:rdfType: ``schema:Dataset``&#xA;:typeDescription: &quot;Dataset @type MUST include schema:Dataset. schema:Product MAY also be included (to treat the dataset as a data product) but is not required; no root-level property depends on the Product type.&quot;&#xA;:allowedTypes: ``schema:Dataset | schema:Product``&#xA;:typeOptional:&#xA;:constraint: {&quot;properties&quot;: {&quot;schema:subjectOf&quot;: {&quot;properties&quot;: {&quot;dcterms:conformsTo&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;items&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;required&quot;: [&quot;@id&quot;], &quot;additionalProperties&quot;: false, &quot;properties&quot;: {&quot;@id&quot;: {&quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;uri for specifications that this metadata record conforms to&quot;}}}, &quot;minItems&quot;: 1, &quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;required&quot;: [&quot;@id&quot;], &quot;additionalProperties&quot;: false, &quot;properties&quot;: {&quot;@id&quot;: {&quot;const&quot;: &quot;https://w3id.org/cdif/xasCore/1.0&quot;}}}}}}}}&#xA;:noId:"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="Class"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_DE786552_4FF0_565f_B466_A2D5F2B987FC"/>
+								<UML:TaggedValue tag="ea_guid" value="{D405A3A8-7F85-5cf1-B505-0BD07364F9A3}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Classifier.feature>
+								<UML:Attribute name="variableMeasured" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;XAS variableMeasured items. Each item's schema:propertyID SHOULD reference one of the XDI canonical variable concept URIs (XDI-CDIF-Mapping.xlsx rows 71-89); any other propertyID string is also permitted (propertyID_item arm).&#xA;:valueSchema: {&quot;properties&quot;: {&quot;schema:propertyID&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;minItems&quot;: 1, &quot;items&quot;: {&quot;anyOf&quot;: [{&quot;$ref&quot;: &quot;bb:schemaorgProperties/additionalProperty/schema.yaml#/$defs/propertyID_item&quot;}, {&quot;enum&quot;: [&quot;xas:monochromatorenergy&quot;, &quot;xas:monochromatorangle&quot;, &quot;xas:incidentintensity&quot;, &quot;xas:transmittedintensity&quot;, &quot;xas:fluorescenceintensity&quot;, &quot;xas:referenceintensity&quot;, &quot;xas:absorptioncoefficient&quot;, &quot;xas:fluorescenceabsorptioncoefficient&quot;, &quot;xas:referenceabsorptioncoefficient&quot;, &quot;xas:normalizedtransmissionabsorptioncoefficient&quot;, &quot;xas:normalizedfluorescenceabsorptioncoefficient&quot;, &quot;xas:normalizedreferenceabsorptioncoefficient&quot;, &quot;xas:wavenumber&quot;, &quot;xas:exafsfunction&quot;, &quot;xas:filteredchimagnitude&quot;, &quot;xas:filteredchiphase&quot;, &quot;xas:filteredchireal&quot;, &quot;xas:filteredchiimaginary&quot;, &quot;xas:radialdistance&quot;]}]}}}}"/>
+										<UML:TaggedValue tag="type" value=""/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="true"/>
+										<UML:TaggedValue tag="position" value="0"/>
+										<UML:TaggedValue tag="lowerBound" value="0"/>
+										<UML:TaggedValue tag="upperBound" value="*"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{23998092-91D4-5d0d-90EF-93BE0C5839FF}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+							</UML:Classifier.feature>
+						</UML:Class>
+						<UML:Class name="XasCoreDefinedTerm" xmi.id="EAID_C0CA1C5A_095E_5f1d_A35F_2BA7E4BCB880" visibility="public" namespace="EAPK_DE786552_4FF0_565f_B466_A2D5F2B987FC" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:rdfType: ``schema:DefinedTerm``&#xA;:open:&#xA;:noId:"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="Class"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_DE786552_4FF0_565f_B466_A2D5F2B987FC"/>
+								<UML:TaggedValue tag="ea_guid" value="{C0CA1C5A-095E-5f1d-A35F-2BA7E4BCB880}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Classifier.feature>
+								<UML:Attribute name="name" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:StructuralFeature.type>
+										<UML:Classifier xmi.idref="eaxmiid_String"/>
+									</UML:StructuralFeature.type>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value=""/>
+										<UML:TaggedValue tag="type" value="String"/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="false"/>
+										<UML:TaggedValue tag="position" value="0"/>
+										<UML:TaggedValue tag="lowerBound" value="1"/>
+										<UML:TaggedValue tag="upperBound" value="1"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{30900269-908C-5209-BB69-4F1D38D010AC}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+								<UML:Attribute name="identifier" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:StructuralFeature.type>
+										<UML:Classifier xmi.idref="eaxmiid_String"/>
+									</UML:StructuralFeature.type>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value=""/>
+										<UML:TaggedValue tag="type" value="String"/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="false"/>
+										<UML:TaggedValue tag="position" value="1"/>
+										<UML:TaggedValue tag="lowerBound" value="0"/>
+										<UML:TaggedValue tag="upperBound" value="1"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{F970D321-D5FC-527b-BF12-123F3CC8F140}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+								<UML:Attribute name="inDefinedTermSet" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:StructuralFeature.type>
+										<UML:Classifier xmi.idref="eaxmiid_String"/>
+									</UML:StructuralFeature.type>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;need to include this to tag what the keyword is about; we're using the keywords as soft-typed properties"/>
+										<UML:TaggedValue tag="type" value="String"/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="false"/>
+										<UML:TaggedValue tag="position" value="2"/>
+										<UML:TaggedValue tag="lowerBound" value="1"/>
+										<UML:TaggedValue tag="upperBound" value="1"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{05DC7777-8CBB-52c1-B412-20B038F786B7}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+							</UML:Classifier.feature>
+						</UML:Class>
+						<UML:Class name="XasCoreWasGeneratedBy" xmi.id="EAID_16CF8247_8EE5_5497_84B6_5EED91732760" visibility="public" namespace="EAPK_DE786552_4FF0_565f_B466_A2D5F2B987FC" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:prefix: ``prov``&#xA;:noId:&#xA;:extends:"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="Class"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_DE786552_4FF0_565f_B466_A2D5F2B987FC"/>
+								<UML:TaggedValue tag="ea_guid" value="{16CF8247-8EE5-5497-84B6-5EED91732760}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Classifier.feature>
+								<UML:Attribute name="used" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Array of instrument-wrapper entries used by the analysis. Under the peer prov:used model each instrument (source, beamline, monochromator, monitor, ...) is its own top-level wrapper differentiated by schema:instrument.schema:additionalType. An x-ray source (with type and probe properties) and a monochromator (with crystal type, d_spacing, and reflection plane properties) are required here; the NXinstrument-typed beamline and the monochromator d_spacing schema:value are additionally required by xasGeneratedBy.&#xA;:arrayKeywords: {&quot;allOf&quot;: [{&quot;description&quot;: &quot;Must contain a peer wrapper whose schema:instrument is classified as xas:source and carries schema:additionalProperty entries for the NXsource type and probe fields (each with a schema:value; the probe entry is also named \&quot;Probe\&quot;).&quot;, &quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;required&quot;: [&quot;schema:instrument&quot;], &quot;properties&quot;: {&quot;schema:instrument&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;required&quot;: [&quot;schema:additionalType&quot;, &quot;schema:additionalProperty&quot;], &quot;properties&quot;: {&quot;schema:additionalType&quot;: {&quot;anyOf&quot;: [{&quot;type&quot;: &quot;object&quot;, &quot;additionalProperties&quot;: false, &quot;required&quot;: [&quot;@id&quot;], &quot;properties&quot;: {&quot;@id&quot;: {&quot;const&quot;: &quot;xas:source&quot;}}}, {&quot;type&quot;: &quot;array&quot;, &quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;additionalProperties&quot;: false, &quot;required&quot;: [&quot;@id&quot;], &quot;properties&quot;: {&quot;@id&quot;: {&quot;const&quot;: &quot;xas:source&quot;}}}}]}, &quot;schema:additionalProperty&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;minItems&quot;: 2, &quot;items&quot;: {&quot;$ref&quot;: &quot;bb:schemaorgProperties/additionalProperty/schema.yaml&quot;}, &quot;allOf&quot;: [{&quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;required&quot;: [&quot;schema:propertyID&quot;, &quot;schema:value&quot;], &quot;properties&quot;: {&quot;schema:propertyID&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;additionalProperties&quot;: false, &quot;required&quot;: [&quot;@id&quot;], &quot;properties&quot;: {&quot;@id&quot;: {&quot;enum&quot;: [&quot;nxs:base_classes/NXsource.html#nxsource-type-field&quot;, &quot;xas:xraysourcetype&quot;]}}}}, &quot;schema:value&quot;: {&quot;type&quot;: &quot;string&quot;}}}}, {&quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;required&quot;: [&quot;schema:name&quot;, &quot;schema:propertyID&quot;, &quot;schema:value&quot;], &quot;properties&quot;: {&quot;schema:propertyID&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;additionalProperties&quot;: false, &quot;required&quot;: [&quot;@id&quot;], &quot;properties&quot;: {&quot;@id&quot;: {&quot;enum&quot;: [&quot;nxs:base_classes/NXsource.html#nxsource-probe-field&quot;, &quot;xas:probe&quot;]}}}}, &quot;schema:name&quot;: {&quot;const&quot;: &quot;Probe&quot;}, &quot;schema:value&quot;: {&quot;type&quot;: &quot;string&quot;}}}}]}}}}}}}, {&quot;description&quot;: &quot;Must contain a peer wrapper whose schema:instrument is classified as xas:xraymonochromator, has a schema:name, and carries schema:additionalProperty entries for xas:monochromatortype, xas:dspacing (with value + unitText), and xas:reflectionplane.&quot;, &quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;required&quot;: [&quot;schema:instrument&quot;], &quot;properties&quot;: {&quot;schema:instrument&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;required&quot;: [&quot;schema:additionalType&quot;, &quot;schema:name&quot;, &quot;schema:additionalProperty&quot;], &quot;properties&quot;: {&quot;schema:additionalType&quot;: {&quot;anyOf&quot;: [{&quot;type&quot;: &quot;object&quot;, &quot;additionalProperties&quot;: false, &quot;required&quot;: [&quot;@id&quot;], &quot;properties&quot;: {&quot;@id&quot;: {&quot;const&quot;: &quot;xas:xraymonochromator&quot;}}}, {&quot;type&quot;: &quot;array&quot;, &quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;additionalProperties&quot;: false, &quot;required&quot;: [&quot;@id&quot;], &quot;properties&quot;: {&quot;@id&quot;: {&quot;const&quot;: &quot;xas:xraymonochromator&quot;}}}}]}, &quot;schema:name&quot;: {&quot;type&quot;: &quot;string&quot;}, &quot;schema:additionalProperty&quot;: {&quot;description&quot;: &quot;Require crystal type, d_spacing (with unitText), and reflection plane properties.&quot;, &quot;type&quot;: &quot;array&quot;, &quot;minItems&quot;: 3, &quot;items&quot;: {&quot;$ref&quot;: &quot;bb:schemaorgProperties/additionalProperty/schema.yaml&quot;}, &quot;allOf&quot;: [{&quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;required&quot;: [&quot;schema:propertyID&quot;, &quot;schema:value&quot;], &quot;properties&quot;: {&quot;schema:propertyID&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;additionalProperties&quot;: false, &quot;required&quot;: [&quot;@id&quot;], &quot;properties&quot;: {&quot;@id&quot;: {&quot;const&quot;: &quot;xas:monochromatortype&quot;}}}}, &quot;schema:value&quot;: {&quot;type&quot;: &quot;string&quot;}}}}, {&quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;required&quot;: [&quot;schema:propertyID&quot;, &quot;schema:value&quot;, &quot;schema:unitText&quot;], &quot;properties&quot;: {&quot;schema:propertyID&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;additionalProperties&quot;: false, &quot;required&quot;: [&quot;@id&quot;], &quot;properties&quot;: {&quot;@id&quot;: {&quot;const&quot;: &quot;xas:dspacing&quot;}}}}, &quot;schema:value&quot;: {&quot;type&quot;: &quot;string&quot;}, &quot;schema:unitText&quot;: {&quot;type&quot;: &quot;string&quot;}}}}, {&quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;required&quot;: [&quot;schema:propertyID&quot;, &quot;schema:value&quot;], &quot;properties&quot;: {&quot;schema:propertyID&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;additionalProperties&quot;: false, &quot;required&quot;: [&quot;@id&quot;], &quot;properties&quot;: {&quot;@id&quot;: {&quot;const&quot;: &quot;xas:reflectionplane&quot;}}}}, &quot;schema:value&quot;: {&quot;type&quot;: &quot;string&quot;}}}}]}}}}}}}]}"/>
+										<UML:TaggedValue tag="type" value=""/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="true"/>
+										<UML:TaggedValue tag="position" value="0"/>
+										<UML:TaggedValue tag="lowerBound" value="0"/>
+										<UML:TaggedValue tag="upperBound" value="*"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{4B4B81CB-A1AE-5464-9AEC-68FD5E4FFCE7}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+							</UML:Classifier.feature>
+						</UML:Class>
+						<UML:Association xmi.id="EAID_9F389895_D284_5b76_B4DE_A57838653D84" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``&#xA;:jsonName: &quot;prov:wasGeneratedBy&quot;"/>
+								<UML:TaggedValue tag="ea_type" value="Association"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="XasCore"/>
+								<UML:TaggedValue tag="ea_targetName" value="XasCoreWasGeneratedBy"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{9F389895-D284-5b76-B4DE-A57838653D84}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Association.connection>
+								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_D405A3A8_7F85_5cf1_B505_0BD07364F9A3">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="source"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+								<UML:AssociationEnd visibility="public" name="prov_wasGeneratedBy" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_16CF8247_8EE5_5497_84B6_5EED91732760">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``&#xA;:jsonName: &quot;prov:wasGeneratedBy&quot;"/>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="deststyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="target"/>
+										<UML:TaggedValue tag="ea_guid" value="{53C18332-D391-5fb9-9A7C-4F6B017D4A03}"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+							</UML:Association.connection>
+						</UML:Association>
+						<UML:Association xmi.id="EAID_28F645B0_20DB_5fb4_815E_D28F734576EE" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``&#xA;:arrayKeywords: {&quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;@type&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;items&quot;: {&quot;type&quot;: &quot;string&quot;}, &quot;minItems&quot;: 2, &quot;allOf&quot;: [{&quot;contains&quot;: {&quot;const&quot;: &quot;schema:DataDownload&quot;}}, {&quot;contains&quot;: {&quot;enum&quot;: [&quot;cdi:PhysicalDataSet&quot;, &quot;cdi:TabularTextDataSet&quot;, &quot;cdi:StructuredDataSet&quot;]}}]}, &quot;dcterms:conformsTo&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;description&quot;: &quot;The distribution must declare the format specification its bytes follow. XDI and NeXus are the two serializations of XAS data in scope, so either satisfies this. The '@type' constraint above is already format-neutral (tabular text or structured binary); requiring the XDI specification here contradicted it and made a conforming NeXus/HDF5 distribution impossible to describe.&quot;, &quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;additionalProperties&quot;: false, &quot;properties&quot;: {&quot;@id&quot;: {&quot;anyOf&quot;: [{&quot;description&quot;: &quot;The XDI specification.&quot;, &quot;const&quot;: &quot;https://github.com/XraySpectroscopy/XAS-Data-Interchange/blob/master/specification/spec.md&quot;}, {&quot;description&quot;: &quot;A NeXus application definition, compact form, as emitted with the nxs: prefix bound to https://manual.nexusformat.org/classes/.&quot;, &quot;type&quot;: &quot;string&quot;, &quot;pattern&quot;: &quot;^nxs:applications/NX[A-Za-z0-9_]+\\.html$&quot;}, {&quot;description&quot;: &quot;A NeXus application definition, full form.&quot;, &quot;type&quot;: &quot;string&quot;, &quot;pattern&quot;: &quot;^https://manual\\.nexusformat\\.org/classes/applications/NX[A-Za-z0-9_]+\\.html$&quot;}]}}, &quot;required&quot;: [&quot;@id&quot;]}}}, &quot;required&quot;: [&quot;@type&quot;, &quot;dcterms:conformsTo&quot;]}}"/>
+								<UML:TaggedValue tag="ea_type" value="Association"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="XasCore"/>
+								<UML:TaggedValue tag="ea_targetName" value="DataDownload"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{28F645B0-20DB-5fb4-815E-D28F734576EE}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Association.connection>
+								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_D405A3A8_7F85_5cf1_B505_0BD07364F9A3">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="source"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+								<UML:AssociationEnd visibility="public" name="distribution" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_B1BFCEFA_0F02_52e8_9A86_0D447CBF88CE">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``&#xA;:arrayKeywords: {&quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;@type&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;items&quot;: {&quot;type&quot;: &quot;string&quot;}, &quot;minItems&quot;: 2, &quot;allOf&quot;: [{&quot;contains&quot;: {&quot;const&quot;: &quot;schema:DataDownload&quot;}}, {&quot;contains&quot;: {&quot;enum&quot;: [&quot;cdi:PhysicalDataSet&quot;, &quot;cdi:TabularTextDataSet&quot;, &quot;cdi:StructuredDataSet&quot;]}}]}, &quot;dcterms:conformsTo&quot;: {&quot;type&quot;: &quot;array&quot;, &quot;description&quot;: &quot;The distribution must declare the format specification its bytes follow. XDI and NeXus are the two serializations of XAS data in scope, so either satisfies this. The '@type' constraint above is already format-neutral (tabular text or structured binary); requiring the XDI specification here contradicted it and made a conforming NeXus/HDF5 distribution impossible to describe.&quot;, &quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;additionalProperties&quot;: false, &quot;properties&quot;: {&quot;@id&quot;: {&quot;anyOf&quot;: [{&quot;description&quot;: &quot;The XDI specification.&quot;, &quot;const&quot;: &quot;https://github.com/XraySpectroscopy/XAS-Data-Interchange/blob/master/specification/spec.md&quot;}, {&quot;description&quot;: &quot;A NeXus application definition, compact form, as emitted with the nxs: prefix bound to https://manual.nexusformat.org/classes/.&quot;, &quot;type&quot;: &quot;string&quot;, &quot;pattern&quot;: &quot;^nxs:applications/NX[A-Za-z0-9_]+\\.html$&quot;}, {&quot;description&quot;: &quot;A NeXus application definition, full form.&quot;, &quot;type&quot;: &quot;string&quot;, &quot;pattern&quot;: &quot;^https://manual\\.nexusformat\\.org/classes/applications/NX[A-Za-z0-9_]+\\.html$&quot;}]}}, &quot;required&quot;: [&quot;@id&quot;]}}}, &quot;required&quot;: [&quot;@type&quot;, &quot;dcterms:conformsTo&quot;]}}"/>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="deststyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="target"/>
+										<UML:TaggedValue tag="ea_guid" value="{69AE7931-DA82-5293-8DE7-FA2C1D61D782}"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+							</UML:Association.connection>
+						</UML:Association>
+						<UML:Association xmi.id="EAID_85F45CDA_CEBB_5cbc_AB08_5CD3427DEBA0" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Require DefinedTerms for both: absorption edge (XDI dict) and target element (SWEET).&#xA;:inlineOrByReference: ``inline``&#xA;:arrayKeywords: {&quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;schema:name&quot;: {&quot;const&quot;: &quot;X-Ray Absorption Spectroscopy&quot;}, &quot;schema:termCode&quot;: {&quot;const&quot;: &quot;XAS&quot;}, &quot;schema:identifier&quot;: {&quot;const&quot;: &quot;http://purl.org/pan-science/PaNET/PaNET01196&quot;}, &quot;schema:inDefinedTermSet&quot;: {&quot;const&quot;: &quot;http://purl.org/pan-science/PaNET/PaNET.owl&quot;}}, &quot;required&quot;: [&quot;schema:name&quot;, &quot;schema:termCode&quot;, &quot;schema:identifier&quot;, &quot;schema:inDefinedTermSet&quot;]}, &quot;allOf&quot;: [{&quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;schema:name&quot;: {&quot;type&quot;: &quot;string&quot;}, &quot;schema:inDefinedTermSet&quot;: {&quot;const&quot;: &quot;nxs:Field/NXxas/ENTRY/DATA/mode&quot;}}, &quot;required&quot;: [&quot;schema:name&quot;, &quot;schema:inDefinedTermSet&quot;]}}]}&#xA;:minItems: 2"/>
+								<UML:TaggedValue tag="ea_type" value="Association"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="XasCore"/>
+								<UML:TaggedValue tag="ea_targetName" value="DefinedTerm"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{85F45CDA-CEBB-5cbc-AB08-5CD3427DEBA0}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Association.connection>
+								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_D405A3A8_7F85_5cf1_B505_0BD07364F9A3">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="source"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+								<UML:AssociationEnd visibility="public" name="measurementTechnique" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_758FF594_94AB_5d77_84E6_004AA8CC4AB4">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Require DefinedTerms for both: absorption edge (XDI dict) and target element (SWEET).&#xA;:inlineOrByReference: ``inline``&#xA;:arrayKeywords: {&quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;schema:name&quot;: {&quot;const&quot;: &quot;X-Ray Absorption Spectroscopy&quot;}, &quot;schema:termCode&quot;: {&quot;const&quot;: &quot;XAS&quot;}, &quot;schema:identifier&quot;: {&quot;const&quot;: &quot;http://purl.org/pan-science/PaNET/PaNET01196&quot;}, &quot;schema:inDefinedTermSet&quot;: {&quot;const&quot;: &quot;http://purl.org/pan-science/PaNET/PaNET.owl&quot;}}, &quot;required&quot;: [&quot;schema:name&quot;, &quot;schema:termCode&quot;, &quot;schema:identifier&quot;, &quot;schema:inDefinedTermSet&quot;]}, &quot;allOf&quot;: [{&quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;schema:name&quot;: {&quot;type&quot;: &quot;string&quot;}, &quot;schema:inDefinedTermSet&quot;: {&quot;const&quot;: &quot;nxs:Field/NXxas/ENTRY/DATA/mode&quot;}}, &quot;required&quot;: [&quot;schema:name&quot;, &quot;schema:inDefinedTermSet&quot;]}}]}&#xA;:minItems: 2"/>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="deststyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="target"/>
+										<UML:TaggedValue tag="ea_guid" value="{892FE6F6-E579-570d-8417-C042A9AE4238}"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+							</UML:Association.connection>
+						</UML:Association>
+						<UML:Association xmi.id="EAID_CB93FA85_FDF5_58e6_A4CF_EFD0EA8ACEF8" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;extends base CDIF keyword schema to require defined terms for the absorption edge and the target element for the analysis&#xA;:inlineOrByReference: ``inline``&#xA;:arrayKeywords: {&quot;contains&quot;: {&quot;description&quot;: &quot;The XDI-dictionary keyword identifying the absorption edge; tagged with schema:about \&quot;element.edge\&quot; to mark its role.&quot;, &quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;schema:inDefinedTermSet&quot;: {&quot;const&quot;: &quot;https://github.com/XraySpectroscopy/XAS-Data-Interchange/blob/master/specification/dictionary.md&quot;}, &quot;schema:about&quot;: {&quot;const&quot;: &quot;element.edge&quot;}}, &quot;required&quot;: [&quot;schema:inDefinedTermSet&quot;, &quot;schema:about&quot;]}, &quot;allOf&quot;: [{&quot;contains&quot;: {&quot;description&quot;: &quot;The SWEET matrElement keyword identifying the target element; tagged with schema:about \&quot;element.symbol\&quot; to mark its role.&quot;, &quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;schema:inDefinedTermSet&quot;: {&quot;const&quot;: &quot;http://sweetontology.net/matrElement&quot;}, &quot;schema:about&quot;: {&quot;const&quot;: &quot;element.symbol&quot;}}, &quot;required&quot;: [&quot;schema:inDefinedTermSet&quot;, &quot;schema:about&quot;]}}]}&#xA;:minItems: 2"/>
+								<UML:TaggedValue tag="ea_type" value="Association"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="XasCore"/>
+								<UML:TaggedValue tag="ea_targetName" value="XasCoreDefinedTerm"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{CB93FA85-FDF5-58e6-A4CF-EFD0EA8ACEF8}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Association.connection>
+								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_D405A3A8_7F85_5cf1_B505_0BD07364F9A3">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="source"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+								<UML:AssociationEnd visibility="public" name="keywords" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_C0CA1C5A_095E_5f1d_A35F_2BA7E4BCB880">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;extends base CDIF keyword schema to require defined terms for the absorption edge and the target element for the analysis&#xA;:inlineOrByReference: ``inline``&#xA;:arrayKeywords: {&quot;contains&quot;: {&quot;description&quot;: &quot;The XDI-dictionary keyword identifying the absorption edge; tagged with schema:about \&quot;element.edge\&quot; to mark its role.&quot;, &quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;schema:inDefinedTermSet&quot;: {&quot;const&quot;: &quot;https://github.com/XraySpectroscopy/XAS-Data-Interchange/blob/master/specification/dictionary.md&quot;}, &quot;schema:about&quot;: {&quot;const&quot;: &quot;element.edge&quot;}}, &quot;required&quot;: [&quot;schema:inDefinedTermSet&quot;, &quot;schema:about&quot;]}, &quot;allOf&quot;: [{&quot;contains&quot;: {&quot;description&quot;: &quot;The SWEET matrElement keyword identifying the target element; tagged with schema:about \&quot;element.symbol\&quot; to mark its role.&quot;, &quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;schema:inDefinedTermSet&quot;: {&quot;const&quot;: &quot;http://sweetontology.net/matrElement&quot;}, &quot;schema:about&quot;: {&quot;const&quot;: &quot;element.symbol&quot;}}, &quot;required&quot;: [&quot;schema:inDefinedTermSet&quot;, &quot;schema:about&quot;]}}]}&#xA;:minItems: 2"/>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="deststyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="target"/>
+										<UML:TaggedValue tag="ea_guid" value="{E7B7A4C7-4CA9-55e1-BD14-95A1AD3D6508}"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+							</UML:Association.connection>
+						</UML:Association>
+						<UML:Association xmi.id="EAID_9554602B_7A54_5d69_9F50_48BC3CCC4DAF" visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``&#xA;:jsonName: &quot;schema:object&quot;"/>
+								<UML:TaggedValue tag="ea_type" value="Association"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="XasCoreWasGeneratedBy"/>
+								<UML:TaggedValue tag="ea_targetName" value="XasSample"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{9554602B-7A54-5d69-9F50-48BC3CCC4DAF}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Association.connection>
+								<UML:AssociationEnd visibility="public" multiplicity="0..*" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_16CF8247_8EE5_5497_84B6_5EED91732760">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="source"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+								<UML:AssociationEnd visibility="public" name="schema_object" multiplicity="0..1" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="true" type="EAID_75CCC3F8_79F1_586e_8F87_C0450F2CBED0">
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:inlineOrByReference: ``inline``&#xA;:jsonName: &quot;schema:object&quot;"/>
+										<UML:TaggedValue tag="containment" value="Unspecified"/>
+										<UML:TaggedValue tag="deststyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+										<UML:TaggedValue tag="ea_end" value="target"/>
+										<UML:TaggedValue tag="ea_guid" value="{5956A7C9-EADC-59cc-AFB9-C5316D0AF400}"/>
+									</UML:ModelElement.taggedValue>
+								</UML:AssociationEnd>
+							</UML:Association.connection>
+						</UML:Association>
+						<UML:Generalization subtype="EAID_D405A3A8_7F85_5cf1_B505_0BD07364F9A3" supertype="EAID_920B79F5_6711_55c1_A420_99418ECBCB78" xmi.id="EAID_DAF05E8C_1AB9_5549_A901_8B032D8F3B2A" visibility="public">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="ea_type" value="Generalization"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="XasCore"/>
+								<UML:TaggedValue tag="ea_targetName" value="Dataset"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{DAF05E8C-1AB9-5549-A901-8B032D8F3B2A}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Generalization>
+						<UML:Generalization subtype="EAID_C0CA1C5A_095E_5f1d_A35F_2BA7E4BCB880" supertype="EAID_D60B1DBE_E35B_5a55_A647_BE76B0BA055A" xmi.id="EAID_6939CF6D_7716_5725_922B_8856368F2959" visibility="public">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="ea_type" value="Generalization"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="XasCoreDefinedTerm"/>
+								<UML:TaggedValue tag="ea_targetName" value="DefinedTerm"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{6939CF6D-7716-5725-922B-8856368F2959}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Generalization>
+						<UML:Generalization subtype="EAID_16CF8247_8EE5_5497_84B6_5EED91732760" supertype="EAID_0A69D80B_8A10_560d_AE75_59AEE62F4C63" xmi.id="EAID_D0F18133_6636_5188_96E8_58BD012B4410" visibility="public">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="ea_type" value="Generalization"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="XasCoreWasGeneratedBy"/>
+								<UML:TaggedValue tag="ea_targetName" value="XasGeneratedBy"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{D0F18133-6636-5188-96E8-58BD012B4410}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Generalization>
+					</UML:Namespace.ownedElement>
+				</UML:Package>
+				<UML:Class name="String" xmi.id="eaxmiid_String" visibility="public" isRoot="true" isLeaf="false" isAbstract="false">
+					<UML:ModelElement.taggedValue>
+						<UML:TaggedValue tag="isSpecification" value="false"/>
+						<UML:TaggedValue tag="ea_stype" value="Primitive"/>
+						<UML:TaggedValue tag="ea_ntype" value="0"/>
+					</UML:ModelElement.taggedValue>
+				</UML:Class>
+			</UML:Namespace.ownedElement>
+		</UML:Model>
+	</XMI.content>
+	<XMI.extensions xmi.extender="Enterprise Architect 2.5">
+		<EAStub xmi.id="EAID_0A69D80B_8A10_560d_AE75_59AEE62F4C63" name="XasGeneratedBy" UMLType="Class"/>
+		<EAStub xmi.id="EAID_758FF594_94AB_5d77_84E6_004AA8CC4AB4" name="DefinedTerm" UMLType="Class"/>
+		<EAStub xmi.id="EAID_75CCC3F8_79F1_586e_8F87_C0450F2CBED0" name="XasSample" UMLType="Class"/>
+		<EAStub xmi.id="EAID_920B79F5_6711_55c1_A420_99418ECBCB78" name="Dataset" UMLType="Class"/>
+		<EAStub xmi.id="EAID_B1BFCEFA_0F02_52e8_9A86_0D447CBF88CE" name="DataDownload" UMLType="Class"/>
+		<EAStub xmi.id="EAID_D60B1DBE_E35B_5a55_A647_BE76B0BA055A" name="DefinedTerm" UMLType="Class"/>
+	</XMI.extensions>
+</XMI>

@@ -1,0 +1,442 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: XAS Core (required) metadata constraints
+description: >-
+  Required XAS constraints layered on cdifCore (composed once by the xasDocument profile;
+  this module does NOT re-embed cdifCore). Enforces dual @type (Dataset+Product), a prov:wasGeneratedBy
+  analysis activity whose prov:used carries the NXsource+NXmonochromator instrument wrapper,
+  an XDI-conformant distribution, required XAS measurementTechnique DefinedTerms, required
+  element/edge keywords, and the schema:object material sample.
+type: object
+properties:
+  '@type':
+    type: array
+    items:
+      type: string
+      enum:
+      - 'schema:Dataset'
+      - 'schema:Product'
+    contains:
+      const: 'schema:Dataset'
+    minItems: 1
+    description: >-
+      Dataset @type MUST include schema:Dataset. schema:Product MAY also be included (to treat
+      the dataset as a data product) but is not required; no root-level property depends on
+      the Product type.
+  'prov:wasGeneratedBy':
+    type: array
+    items:
+      '$ref': '#/$defs/XasCoreWasGeneratedBy'
+  'schema:distribution':
+    type: array
+    items:
+      '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/dataDownload/schema.yaml
+    contains:
+      type: object
+      properties:
+        '@type':
+          type: array
+          items:
+            type: string
+          minItems: 2
+          allOf:
+          - contains:
+              const: 'schema:DataDownload'
+          - contains:
+              enum:
+              - 'cdi:PhysicalDataSet'
+              - 'cdi:TabularTextDataSet'
+              - 'cdi:StructuredDataSet'
+        'dcterms:conformsTo':
+          type: array
+          description: >-
+            The distribution must declare the format specification its bytes follow. XDI and
+            NeXus are the two serializations of XAS data in scope, so either satisfies this.
+            The '@type' constraint above is already format-neutral (tabular text or structured
+            binary); requiring the XDI specification here contradicted it and made a conforming
+            NeXus/HDF5 distribution impossible to describe.
+          contains:
+            type: object
+            additionalProperties: false
+            properties:
+              '@id':
+                anyOf:
+                - description: The XDI specification.
+                  const: 'https://github.com/XraySpectroscopy/XAS-Data-Interchange/blob/master/specification/spec.md'
+                - description: >-
+                    A NeXus application definition, compact form, as emitted with the nxs:
+                    prefix bound to https://manual.nexusformat.org/classes/.
+                  type: string
+                  pattern: ^nxs:applications/NX[A-Za-z0-9_]+\.html$
+                - description: A NeXus application definition, full form.
+                  type: string
+                  pattern: ^https://manual\.nexusformat\.org/classes/applications/NX[A-Za-z0-9_]+\.html$
+            required:
+            - '@id'
+      required:
+      - '@type'
+      - 'dcterms:conformsTo'
+  'schema:measurementTechnique':
+    type: array
+    items:
+      '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml
+    contains:
+      type: object
+      properties:
+        'schema:name':
+          const: X-Ray Absorption Spectroscopy
+        'schema:termCode':
+          const: XAS
+        'schema:identifier':
+          const: 'http://purl.org/pan-science/PaNET/PaNET01196'
+        'schema:inDefinedTermSet':
+          const: 'http://purl.org/pan-science/PaNET/PaNET.owl'
+      required:
+      - 'schema:name'
+      - 'schema:termCode'
+      - 'schema:identifier'
+      - 'schema:inDefinedTermSet'
+    allOf:
+    - contains:
+        type: object
+        properties:
+          'schema:name':
+            type: string
+          'schema:inDefinedTermSet':
+            const: 'nxs:Field/NXxas/ENTRY/DATA/mode'
+        required:
+        - 'schema:name'
+        - 'schema:inDefinedTermSet'
+    minItems: 2
+    description: >-
+      Require DefinedTerms for both: absorption edge (XDI dict) and target element (SWEET).
+  'schema:keywords':
+    type: array
+    items:
+      '$ref': '#/$defs/XasCoreDefinedTerm'
+    contains:
+      description: >-
+        The XDI-dictionary keyword identifying the absorption edge; tagged with schema:about
+        "element.edge" to mark its role.
+      type: object
+      properties:
+        'schema:inDefinedTermSet':
+          const: 'https://github.com/XraySpectroscopy/XAS-Data-Interchange/blob/master/specification/dictionary.md'
+        'schema:about':
+          const: element.edge
+      required:
+      - 'schema:inDefinedTermSet'
+      - 'schema:about'
+    allOf:
+    - contains:
+        description: >-
+          The SWEET matrElement keyword identifying the target element; tagged with schema:about
+          "element.symbol" to mark its role.
+        type: object
+        properties:
+          'schema:inDefinedTermSet':
+            const: 'http://sweetontology.net/matrElement'
+          'schema:about':
+            const: element.symbol
+        required:
+        - 'schema:inDefinedTermSet'
+        - 'schema:about'
+    minItems: 2
+    description: >-
+      extends base CDIF keyword schema to require defined terms for the absorption edge and
+      the target element for the analysis
+  'schema:variableMeasured':
+    type: array
+    items:
+      properties:
+        'schema:propertyID':
+          type: array
+          minItems: 1
+          items:
+            anyOf:
+            - '$ref': '../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/additionalProperty/schema.yaml#/$defs/propertyID_item'
+            - enum:
+              - 'xas:monochromatorenergy'
+              - 'xas:monochromatorangle'
+              - 'xas:incidentintensity'
+              - 'xas:transmittedintensity'
+              - 'xas:fluorescenceintensity'
+              - 'xas:referenceintensity'
+              - 'xas:absorptioncoefficient'
+              - 'xas:fluorescenceabsorptioncoefficient'
+              - 'xas:referenceabsorptioncoefficient'
+              - 'xas:normalizedtransmissionabsorptioncoefficient'
+              - 'xas:normalizedfluorescenceabsorptioncoefficient'
+              - 'xas:normalizedreferenceabsorptioncoefficient'
+              - 'xas:wavenumber'
+              - 'xas:exafsfunction'
+              - 'xas:filteredchimagnitude'
+              - 'xas:filteredchiphase'
+              - 'xas:filteredchireal'
+              - 'xas:filteredchiimaginary'
+              - 'xas:radialdistance'
+    description: >-
+      XAS variableMeasured items. Each item's schema:propertyID SHOULD reference one of the
+      XDI canonical variable concept URIs (XDI-CDIF-Mapping.xlsx rows 71-89); any other propertyID
+      string is also permitted (propertyID_item arm).
+allOf:
+- properties:
+    'schema:subjectOf':
+      properties:
+        'dcterms:conformsTo':
+          type: array
+          items:
+            type: object
+            required:
+            - '@id'
+            additionalProperties: false
+            properties:
+              '@id':
+                type: string
+                description: uri for specifications that this metadata record conforms to
+          minItems: 1
+          contains:
+            type: object
+            required:
+            - '@id'
+            additionalProperties: false
+            properties:
+              '@id':
+                const: 'https://w3id.org/cdif/xasCore/1.0'
+'$defs':
+  XasCoreDefinedTerm:
+    type: object
+    properties:
+      '@type':
+        type: array
+        items:
+          type: string
+        contains:
+          const: 'schema:DefinedTerm'
+        minItems: 1
+      'schema:name':
+        type: string
+      'schema:identifier':
+        type: string
+      'schema:inDefinedTermSet':
+        type: string
+        description: >-
+          need to include this to tag what the keyword is about; we're using the keywords
+          as soft-typed properties
+    required:
+    - '@type'
+    - 'schema:name'
+    - 'schema:inDefinedTermSet'
+    additionalProperties: true
+  XasCoreWasGeneratedBy:
+    allOf:
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/xasProperties/xasGeneratedBy/schema.yaml
+    - type: object
+      properties:
+        'prov:used':
+          type: array
+          items: {}
+          allOf:
+          - description: >-
+              Must contain a peer wrapper whose schema:instrument is classified as xas:source
+              and carries schema:additionalProperty entries for the NXsource type and probe
+              fields (each with a schema:value; the probe entry is also named "Probe").
+            contains:
+              type: object
+              required:
+              - 'schema:instrument'
+              properties:
+                'schema:instrument':
+                  type: array
+                  contains:
+                    type: object
+                    required:
+                    - 'schema:additionalType'
+                    - 'schema:additionalProperty'
+                    properties:
+                      'schema:additionalType':
+                        anyOf:
+                        - type: object
+                          additionalProperties: false
+                          required:
+                          - '@id'
+                          properties:
+                            '@id':
+                              const: 'xas:source'
+                        - type: array
+                          contains:
+                            type: object
+                            additionalProperties: false
+                            required:
+                            - '@id'
+                            properties:
+                              '@id':
+                                const: 'xas:source'
+                      'schema:additionalProperty':
+                        type: array
+                        minItems: 2
+                        items:
+                          '$ref': >-
+                            ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/additionalProperty/schema.yaml
+                        allOf:
+                        - contains:
+                            type: object
+                            required:
+                            - 'schema:propertyID'
+                            - 'schema:value'
+                            properties:
+                              'schema:propertyID':
+                                type: array
+                                contains:
+                                  type: object
+                                  additionalProperties: false
+                                  required:
+                                  - '@id'
+                                  properties:
+                                    '@id':
+                                      enum:
+                                      - 'nxs:base_classes/NXsource.html#nxsource-type-field'
+                                      - 'xas:xraysourcetype'
+                              'schema:value':
+                                type: string
+                        - contains:
+                            type: object
+                            required:
+                            - 'schema:name'
+                            - 'schema:propertyID'
+                            - 'schema:value'
+                            properties:
+                              'schema:propertyID':
+                                type: array
+                                contains:
+                                  type: object
+                                  additionalProperties: false
+                                  required:
+                                  - '@id'
+                                  properties:
+                                    '@id':
+                                      enum:
+                                      - 'nxs:base_classes/NXsource.html#nxsource-probe-field'
+                                      - 'xas:probe'
+                              'schema:name':
+                                const: Probe
+                              'schema:value':
+                                type: string
+          - description: >-
+              Must contain a peer wrapper whose schema:instrument is classified as xas:xraymonochromator,
+              has a schema:name, and carries schema:additionalProperty entries for xas:monochromatortype,
+              xas:dspacing (with value + unitText), and xas:reflectionplane.
+            contains:
+              type: object
+              required:
+              - 'schema:instrument'
+              properties:
+                'schema:instrument':
+                  type: array
+                  contains:
+                    type: object
+                    required:
+                    - 'schema:additionalType'
+                    - 'schema:name'
+                    - 'schema:additionalProperty'
+                    properties:
+                      'schema:additionalType':
+                        anyOf:
+                        - type: object
+                          additionalProperties: false
+                          required:
+                          - '@id'
+                          properties:
+                            '@id':
+                              const: 'xas:xraymonochromator'
+                        - type: array
+                          contains:
+                            type: object
+                            additionalProperties: false
+                            required:
+                            - '@id'
+                            properties:
+                              '@id':
+                                const: 'xas:xraymonochromator'
+                      'schema:name':
+                        type: string
+                      'schema:additionalProperty':
+                        description: >-
+                          Require crystal type, d_spacing (with unitText), and reflection
+                          plane properties.
+                        type: array
+                        minItems: 3
+                        items:
+                          '$ref': >-
+                            ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/additionalProperty/schema.yaml
+                        allOf:
+                        - contains:
+                            type: object
+                            required:
+                            - 'schema:propertyID'
+                            - 'schema:value'
+                            properties:
+                              'schema:propertyID':
+                                type: array
+                                contains:
+                                  type: object
+                                  additionalProperties: false
+                                  required:
+                                  - '@id'
+                                  properties:
+                                    '@id':
+                                      const: 'xas:monochromatortype'
+                              'schema:value':
+                                type: string
+                        - contains:
+                            type: object
+                            required:
+                            - 'schema:propertyID'
+                            - 'schema:value'
+                            - 'schema:unitText'
+                            properties:
+                              'schema:propertyID':
+                                type: array
+                                contains:
+                                  type: object
+                                  additionalProperties: false
+                                  required:
+                                  - '@id'
+                                  properties:
+                                    '@id':
+                                      const: 'xas:dspacing'
+                              'schema:value':
+                                type: string
+                              'schema:unitText':
+                                type: string
+                        - contains:
+                            type: object
+                            required:
+                            - 'schema:propertyID'
+                            - 'schema:value'
+                            properties:
+                              'schema:propertyID':
+                                type: array
+                                contains:
+                                  type: object
+                                  additionalProperties: false
+                                  required:
+                                  - '@id'
+                                  properties:
+                                    '@id':
+                                      const: 'xas:reflectionplane'
+                              'schema:value':
+                                type: string
+          description: >-
+            Array of instrument-wrapper entries used by the analysis. Under the peer prov:used
+            model each instrument (source, beamline, monochromator, monitor, ...) is its own
+            top-level wrapper differentiated by schema:instrument.schema:additionalType. An
+            x-ray source (with type and probe properties) and a monochromator (with crystal
+            type, d_spacing, and reflection plane properties) are required here; the NXinstrument-typed
+            beamline and the monochromator d_spacing schema:value are additionally required
+            by xasGeneratedBy.
+        'schema:object':
+          '$ref': >-
+            ../../../../../../../metadataBuildingBlocks/_sources/xasProperties/xasSample/schema.yaml

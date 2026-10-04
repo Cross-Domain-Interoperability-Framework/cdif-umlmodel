@@ -1,0 +1,28 @@
+xasCore: 19 exact difference(s)
+$.$defs.AdditionalProperty: only in original: {"$ref": "../../schemaorgProperties/additionalProperty/schema.yaml"}
+$.$defs.CdifProvActivity: only in original: {"$ref": "../xasGeneratedBy/schema.yaml"}
+$.$defs.DataDownload: only in original: {"$ref": "../../schemaorgProperties/dataDownload/schema.yaml"}
+$.$defs.DefinedTerm: only in original: {"$ref": "../../schemaorgProperties/definedTerm/schema.yaml"}
+$.$defs.XasCoreDefinedTerm: only in regenerated: {"type": "object", "properties": {"@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "schema:DefinedTerm"}, "minItems": 1}, "schema:name": {"type": "string"}, "schema:identi
+$.$defs.XasCoreWasGeneratedBy: only in regenerated: {"allOf": [{"$ref": "../../../../../../../metadataBuildingBlocks/_sources/xasProperties/xasGeneratedBy/schema.yaml"}, {"type": "object", "properties": {"prov:used": {"type": "array", "items": {}, "all
+$.$defs.XasSample: only in original: {"$ref": "../xasSample/schema.yaml"}
+$.allOf: only in regenerated: [{"properties": {"schema:subjectOf": {"properties": {"dcterms:conformsTo": {"type": "array", "items": {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"typ
+$.properties.prov:wasGeneratedBy.items.$ref: only in regenerated: "#/$defs/XasCoreWasGeneratedBy"
+$.properties.prov:wasGeneratedBy.items.allOf: only in original: [{"$ref": "#/$defs/CdifProvActivity"}, {"type": "object", "properties": {"prov:used": {"type": "array", "description": "Array of instrument-wrapper entries used by the analysis. Under the peer prov:us
+$.properties.schema:distribution.items.$ref:
+    original:    "#/$defs/DataDownload"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/dataDownload/schema.yaml"
+$.properties.schema:keywords.items.$ref: only in regenerated: "#/$defs/XasCoreDefinedTerm"
+$.properties.schema:keywords.items.additionalProperties: only in original: true
+$.properties.schema:keywords.items.properties: only in original: {"@type": {"type": "array", "items": {"type": "string"}, "contains": {"const": "schema:DefinedTerm"}, "minItems": 1}, "schema:name": {"type": "string"}, "schema:identifier": {"type": "string"}, "schem
+$.properties.schema:keywords.items.required: only in original: ["@type", "schema:name", "schema:inDefinedTermSet"]
+$.properties.schema:keywords.items.type: only in original: "object"
+$.properties.schema:measurementTechnique.items.$ref:
+    original:    "#/$defs/DefinedTerm"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/definedTerm/schema.yaml"
+$.properties.schema:subjectOf: only in original: {"properties": {"dcterms:conformsTo": {"type": "array", "items": {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"type": "string", "description": "uri for
+$.properties.schema:variableMeasured.items.properties.schema:propertyID.items.anyOf[0].$ref:
+    original:    "../../schemaorgProperties/additionalProperty/schema.yaml#/$defs/propertyID_item"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/additionalProperty/schema.yaml#/$defs/propertyID_item"
+
+xasCore: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

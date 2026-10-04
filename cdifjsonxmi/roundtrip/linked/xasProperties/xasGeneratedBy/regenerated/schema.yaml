@@ -1,0 +1,188 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: XAS Analysis Event activity
+description: >-
+  XAS-specific provenance activity building block. Extends cdifProvActivity with XAS analysis
+  event typing (xas:analysisevent), XAS facility location, sample object, XAS-specific instrument
+  type, and XAS additional properties (edge_energy, calibration method, instrument configuration,
+  installedOptions).
+allOf:
+- '$ref': >-
+    ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifProvActivity/schema.yaml
+- type: object
+  properties:
+    '@type':
+      type: array
+      items:
+        type: string
+    'schema:additionalType':
+      type: array
+      items:
+        '$ref': >-
+          ../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml
+      contains:
+        type: object
+        additionalProperties: false
+        required:
+        - '@id'
+        properties:
+          '@id':
+            const: 'xas:analysisevent'
+      description: >-
+        Domain type(s) for the activity; must include xas:analysisevent (an XAS analysis event).
+    'schema:startTime':
+      type: string
+      description: Date/time the XAS analysis started
+    'schema:endTime':
+      type: string
+      description: Date/time the XAS analysis finished
+    'prov:used':
+      type: array
+      items:
+        anyOf:
+        - '$ref': '#/$defs/XasGeneratedByUsed'
+        - type: string
+        - type: object
+          required:
+          - '@id'
+          additionalProperties: false
+          properties:
+            '@id':
+              type: string
+      allOf:
+      - description: >-
+          Must contain a prov:used entry whose schema:instrument is classified as an NXinstrument
+          (via schema:additionalType) and carries a schema:name (the beamline name).
+        contains:
+          type: object
+          properties:
+            'schema:instrument':
+              type: array
+              contains:
+                type: object
+                properties:
+                  'schema:additionalType':
+                    anyOf:
+                    - type: object
+                      additionalProperties: false
+                      required:
+                      - '@id'
+                      properties:
+                        '@id':
+                          enum:
+                          - 'nxs:base_classes/NXinstrument.html'
+                          - 'xas:beamline'
+                    - type: array
+                      contains:
+                        type: object
+                        additionalProperties: false
+                        required:
+                        - '@id'
+                        properties:
+                          '@id':
+                            enum:
+                            - 'nxs:base_classes/NXinstrument.html'
+                            - 'xas:beamline'
+                  'schema:name':
+                    type: string
+                required:
+                - 'schema:additionalType'
+                - 'schema:name'
+          required:
+          - 'schema:instrument'
+      - description: >-
+          Must contain a prov:used entry whose schema:instrument is classified as an xas:xraymonochromator
+          (via schema:additionalType) and has a schema:additionalProperty carrying the xas:dspacing
+          PropertyValue with a schema:value.
+        contains:
+          type: object
+          properties:
+            'schema:instrument':
+              type: array
+              contains:
+                type: object
+                properties:
+                  'schema:additionalType':
+                    anyOf:
+                    - type: object
+                      additionalProperties: false
+                      required:
+                      - '@id'
+                      properties:
+                        '@id':
+                          const: 'xas:xraymonochromator'
+                    - type: array
+                      contains:
+                        type: object
+                        additionalProperties: false
+                        required:
+                        - '@id'
+                        properties:
+                          '@id':
+                            const: 'xas:xraymonochromator'
+                  'schema:additionalProperty':
+                    type: array
+                    contains:
+                      type: object
+                      properties:
+                        'schema:propertyID':
+                          type: array
+                          contains:
+                            type: object
+                            additionalProperties: false
+                            required:
+                            - '@id'
+                            properties:
+                              '@id':
+                                const: 'xas:dspacing'
+                        'schema:value':
+                          type: string
+                      required:
+                      - 'schema:propertyID'
+                      - 'schema:value'
+                required:
+                - 'schema:additionalType'
+                - 'schema:additionalProperty'
+          required:
+          - 'schema:instrument'
+    'schema:additionalProperty':
+      type: array
+      items:
+        '$ref': >-
+          ../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/additionalProperty/schema.yaml
+      description: >-
+        Additional properties on the XAS analysis activity (base AdditionalProperty shape).
+        The activity-level propertyID enum (xas:edgeenergy, calibration method, ...) is layered
+        on in xasOptional so it applies at the profile level, not this shape.
+    'schema:location':
+      '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/xasProperties/xasFacility/schema.yaml
+    'schema:object':
+      '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/xasProperties/xasSample/schema.yaml
+      description: Sample being analyzed (per Ocean Info Hub recommendation)
+  required:
+  - 'schema:additionalType'
+'$defs':
+  XasGeneratedByUsed:
+    type: object
+    properties:
+      'schema:instrument':
+        type: array
+        items:
+          '$ref': '#/$defs/XasGeneratedByUsedInstrument'
+        minItems: 1
+    required:
+    - 'schema:instrument'
+  XasGeneratedByUsedInstrument:
+    allOf:
+    - '$ref': >-
+        ../../../../../../../metadataBuildingBlocks/_sources/xasProperties/xasInstrument/schema.yaml
+    - type: object
+      description: >-
+        As a prov:used entity, the instrument's @type includes prov:Entity (the PROV-O range
+        of prov:used) alongside schema:Thing / schema:Product.
+      allOf:
+      - properties:
+          '@type':
+            contains:
+              const: 'prov:Entity'

@@ -1,0 +1,13 @@
+xasFacility: 6 exact difference(s)
+$.$defs: only in original: {"AdditionalProperty": {"$ref": "../../schemaorgProperties/additionalProperty/schema.yaml"}}
+$.allOf[0].$ref:
+    original:    "../../schemaorgProperties/spatialExtent/schema.yaml"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/spatialExtent/schema.yaml"
+$.allOf[1].allOf: only in regenerated: [{"properties": {"schema:additionalType": {"description": "Must classify the place as an XAS facility. The value is a sealed reference ({\"@id\": ...}) per the CDIF convention for a term defined elsew
+$.allOf[1].properties.schema:additionalProperty.items.$ref:
+    original:    "#/$defs/AdditionalProperty"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/additionalProperty/schema.yaml"
+$.allOf[1].properties.schema:additionalType: only in original: {"description": "Must classify the place as an XAS facility. The value is a sealed reference ({\"@id\": ...}) per the CDIF convention for a term defined elsewhere; the core block also permits a bare s
+$.allOf[1].required: only in original: ["@type", "schema:additionalType", "schema:name"]
+
+xasFacility: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

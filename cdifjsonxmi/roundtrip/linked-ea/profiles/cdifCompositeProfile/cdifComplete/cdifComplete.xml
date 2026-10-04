@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<XMI xmi.version="1.1" xmlns:UML="omg.org/UML1.3">
+	<XMI.header>
+		<XMI.documentation>
+			<XMI.exporter>Enterprise Architect</XMI.exporter>
+			<XMI.exporterVersion>2.5</XMI.exporterVersion>
+		</XMI.documentation>
+	</XMI.header>
+	<XMI.content>
+		<UML:Model name="cdifComplete" xmi.id="MX_EAID_AAF6CE0D_0EB4_5490_A602_56D434E42658">
+			<UML:Namespace.ownedElement>
+				<UML:Class name="EARootClass" xmi.id="EAID_11111111_5487_4080_A7F4_41526CB0AA00" isRoot="true" isLeaf="false" isAbstract="false"/>
+				<UML:Package name="cdifComplete" xmi.id="EAPK_3C82C878_7B2C_5840_AE42_ACAE25BE4D75" isRoot="false" isLeaf="false" isAbstract="false" visibility="public">
+					<UML:ModelElement.taggedValue>
+						<UML:TaggedValue tag="documentation" value="https://w3id.org/cdif/bbr/metadata/profiles/cdifCompositeProfile/cdifComplete"/>
+						<UML:TaggedValue tag="isSpecification" value="false"/>
+						<UML:TaggedValue tag="ea_stype" value="Public"/>
+						<UML:TaggedValue tag="ea_eleType" value="package"/>
+						<UML:TaggedValue tag="version" value="1.0"/>
+						<UML:TaggedValue tag="ea_guid" value="{3C82C878-7B2C-5840-AE42-ACAE25BE4D75}"/>
+					</UML:ModelElement.taggedValue>
+					<UML:Namespace.ownedElement>
+						<UML:Class name="Complete" xmi.id="EAID_B9082CCE_AB44_5029_B709_76284C0D2410" visibility="public" namespace="EAPK_3C82C878_7B2C_5840_AE42_ACAE25BE4D75" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;CDIF complete profile combining core metadata with discovery properties, data description, archive distribution, and provenance extensions.&#xA;:title: &quot;CDIF complete metadata schema&quot;&#xA;:prefix: ``schema``&#xA;:contextSchema: {&quot;type&quot;: &quot;object&quot;, &quot;description&quot;: &quot;Additional JSON-LD namespace prefixes for complete profile.&quot;, &quot;properties&quot;: {&quot;geosparql&quot;: {&quot;const&quot;: &quot;http://www.opengis.net/ont/geosparql#&quot;}, &quot;dqv&quot;: {&quot;const&quot;: &quot;http://www.w3.org/ns/dqv#&quot;}, &quot;cdi&quot;: {&quot;const&quot;: &quot;http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/&quot;}}}&#xA;:constraint: {&quot;properties&quot;: {&quot;schema:subjectOf&quot;: {&quot;properties&quot;: {&quot;dcterms:conformsTo&quot;: {&quot;allOf&quot;: [{&quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;required&quot;: [&quot;@id&quot;], &quot;additionalProperties&quot;: false, &quot;properties&quot;: {&quot;@id&quot;: {&quot;const&quot;: &quot;https://w3id.org/cdif/data_description/1.1&quot;}}}}, {&quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;required&quot;: [&quot;@id&quot;], &quot;additionalProperties&quot;: false, &quot;properties&quot;: {&quot;@id&quot;: {&quot;const&quot;: &quot;https://w3id.org/cdif/manifest/1.1&quot;}}}}, {&quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;required&quot;: [&quot;@id&quot;], &quot;additionalProperties&quot;: false, &quot;properties&quot;: {&quot;@id&quot;: {&quot;const&quot;: &quot;https://w3id.org/cdif/provenance/1.1&quot;}}}}]}}}}}&#xA;:noId:&#xA;:extends:&#xA;:ownDescription: &quot;cdifComplete-specific additions. Measurement technique, spatial / temporal coverage, and quality measurement come through from cdifDiscovery via the allOf composition above; this branch only adds the multi-spec conformance declarations that mark a record as cdifComplete.&quot;"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="Class"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_3C82C878_7B2C_5840_AE42_ACAE25BE4D75"/>
+								<UML:TaggedValue tag="ea_guid" value="{B9082CCE-AB44-5029-B709-76284C0D2410}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Class>
+						<UML:Generalization subtype="EAID_B9082CCE_AB44_5029_B709_76284C0D2410" supertype="EAID_3F9EE39D_FB58_5cb6_B1EF_874D4783540E" xmi.id="EAID_69E6E721_D54E_5a31_8C58_EDDF87DE8A13" visibility="public">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="ea_type" value="Generalization"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="Complete"/>
+								<UML:TaggedValue tag="ea_targetName" value="Core"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{69E6E721-D54E-5a31-8C58-EDDF87DE8A13}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Generalization>
+						<UML:Generalization subtype="EAID_B9082CCE_AB44_5029_B709_76284C0D2410" supertype="EAID_3DED079A_58CF_5325_8945_5132655A0CE6" xmi.id="EAID_92A3072C_3415_5cbe_BEFB_88F9FF19722C" visibility="public">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="ea_type" value="Generalization"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="Complete"/>
+								<UML:TaggedValue tag="ea_targetName" value="Discovery"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{92A3072C-3415-5cbe-BEFB-88F9FF19722C}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Generalization>
+						<UML:Generalization subtype="EAID_B9082CCE_AB44_5029_B709_76284C0D2410" supertype="EAID_163A204F_7867_5686_A483_0C3C37ABF08A" xmi.id="EAID_E7A1391D_44AB_5e93_A348_5B1A6A5A908C" visibility="public">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="ea_type" value="Generalization"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="Complete"/>
+								<UML:TaggedValue tag="ea_targetName" value="DataDescription"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{E7A1391D-44AB-5e93-A348-5B1A6A5A908C}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Generalization>
+						<UML:Generalization subtype="EAID_B9082CCE_AB44_5029_B709_76284C0D2410" supertype="EAID_1230AC0F_EA60_5ddd_81A5_B8CB8673D752" xmi.id="EAID_E84612D0_E61B_5baa_99D1_2318DC47871F" visibility="public">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="ea_type" value="Generalization"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="Complete"/>
+								<UML:TaggedValue tag="ea_targetName" value="DataStructureProfile"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{E84612D0-E61B-5baa-99D1-2318DC47871F}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Generalization>
+						<UML:Generalization subtype="EAID_B9082CCE_AB44_5029_B709_76284C0D2410" supertype="EAID_E610F044_99A9_5ace_AA7A_88CBD7AD039C" xmi.id="EAID_7958252D_B993_599f_8755_E1BA3A6B0554" visibility="public">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="ea_type" value="Generalization"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="Complete"/>
+								<UML:TaggedValue tag="ea_targetName" value="Manifest"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{7958252D-B993-599f-8755-E1BA3A6B0554}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Generalization>
+						<UML:Generalization subtype="EAID_B9082CCE_AB44_5029_B709_76284C0D2410" supertype="EAID_24DA4460_4FAF_57a4_BF4D_1E70F816C773" xmi.id="EAID_021C4B18_BF9F_54f2_9800_C98E6314510C" visibility="public">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="ea_type" value="Generalization"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="Complete"/>
+								<UML:TaggedValue tag="ea_targetName" value="Provenance"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{021C4B18-BF9F-54f2-9800-C98E6314510C}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Generalization>
+					</UML:Namespace.ownedElement>
+				</UML:Package>
+			</UML:Namespace.ownedElement>
+		</UML:Model>
+	</XMI.content>
+	<XMI.extensions xmi.extender="Enterprise Architect 2.5">
+		<EAStub xmi.id="EAID_1230AC0F_EA60_5ddd_81A5_B8CB8673D752" name="DataStructureProfile" UMLType="Class"/>
+		<EAStub xmi.id="EAID_163A204F_7867_5686_A483_0C3C37ABF08A" name="DataDescription" UMLType="Class"/>
+		<EAStub xmi.id="EAID_24DA4460_4FAF_57a4_BF4D_1E70F816C773" name="Provenance" UMLType="Class"/>
+		<EAStub xmi.id="EAID_3DED079A_58CF_5325_8945_5132655A0CE6" name="Discovery" UMLType="Class"/>
+		<EAStub xmi.id="EAID_3F9EE39D_FB58_5cb6_B1EF_874D4783540E" name="Core" UMLType="Class"/>
+		<EAStub xmi.id="EAID_E610F044_99A9_5ace_AA7A_88CBD7AD039C" name="Manifest" UMLType="Class"/>
+	</XMI.extensions>
+</XMI>

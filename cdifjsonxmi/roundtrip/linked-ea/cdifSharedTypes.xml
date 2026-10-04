@@ -90,13 +90,24 @@
 						</UML:Class>
 						<UML:Class name="Dataset" xmi.id="EAID_920B79F5_6711_55c1_A420_99418ECBCB78" visibility="public" namespace="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D" isRoot="false" isLeaf="false" isAbstract="true" isActive="false">
 							<UML:ModelElement.taggedValue>
-								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Abstract base of the 4 schema:Dataset profiles in cdifDataType/cdifCatalogRecord, profiles/cdifProfile/cdifCodelist, profiles/cdifProfile/cdifConceptScheme, profiles/cdifProfile/cdifCore. Each specializes it; this holds the attributes identical in all of them.&#xA;:rdfType: ``schema:Dataset``"/>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Abstract base of the 5 schema:Dataset profiles in cdifDataType/cdifCatalogRecord, profiles/cdifProfile/cdifCodelist, profiles/cdifProfile/cdifConceptScheme, profiles/cdifProfile/cdifCore, xasProperties/xasCore. Each specializes it; this holds the attributes identical in all of them.&#xA;:rdfType: ``schema:Dataset``"/>
 								<UML:TaggedValue tag="isSpecification" value="false"/>
 								<UML:TaggedValue tag="ea_stype" value="Class"/>
 								<UML:TaggedValue tag="ea_ntype" value="0"/>
 								<UML:TaggedValue tag="version" value="1.0"/>
 								<UML:TaggedValue tag="package" value="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D"/>
 								<UML:TaggedValue tag="ea_guid" value="{920B79F5-6711-55c1-A420-99418ECBCB78}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Class>
+						<UML:Class name="DefinedTerm" xmi.id="EAID_D60B1DBE_E35B_5a55_A647_BE76B0BA055A" visibility="public" namespace="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D" isRoot="false" isLeaf="false" isAbstract="true" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;Abstract base of the 2 schema:DefinedTerm profiles in schemaorgProperties/definedTerm, xasProperties/xasCore. Each specializes it; this holds the attributes identical in all of them.&#xA;:rdfType: ``schema:DefinedTerm``"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="Class"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D"/>
+								<UML:TaggedValue tag="ea_guid" value="{D60B1DBE-E35B-5a55-A647-BE76B0BA055A}"/>
 							</UML:ModelElement.taggedValue>
 						</UML:Class>
 						<UML:Class name="EntryPoint" xmi.id="EAID_FA02B167_F1AF_5d87_B09B_EF73E2FF578C" visibility="public" namespace="EAPK_2E10CBF3_328D_5ae0_9F7F_16265F98612D" isRoot="false" isLeaf="false" isAbstract="true" isActive="false">

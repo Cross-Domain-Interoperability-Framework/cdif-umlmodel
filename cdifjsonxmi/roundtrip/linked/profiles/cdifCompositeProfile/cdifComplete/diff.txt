@@ -1,0 +1,23 @@
+cdifComplete: 8 exact difference(s)
+$.allOf[0].$ref:
+    original:    "../../../profiles/cdifProfile/cdifCore/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifCore/schema.yaml"
+$.allOf[1].$ref:
+    original:    "../../../profiles/cdifProfile/cdifDiscovery/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifDiscovery/schema.yaml"
+$.allOf[2].$ref:
+    original:    "../../../profiles/cdifProfile/cdifDataDescription/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifDataDescription/schema.yaml"
+$.allOf[3].$ref:
+    original:    "../../../profiles/cdifProfile/cdifDataStructure/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifDataStructure/schema.yaml"
+$.allOf[4].$ref:
+    original:    "../../../profiles/cdifProfile/cdifManifest/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifManifest/schema.yaml"
+$.allOf[5].$ref:
+    original:    "../../../profiles/cdifProfile/cdifProvenance/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifProvenance/schema.yaml"
+$.allOf[6].allOf: only in regenerated: [{"properties": {"schema:subjectOf": {"properties": {"dcterms:conformsTo": {"allOf": [{"contains": {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"const"
+$.allOf[6].properties.schema:subjectOf: only in original: {"properties": {"dcterms:conformsTo": {"allOf": [{"contains": {"type": "object", "required": ["@id"], "additionalProperties": false, "properties": {"@id": {"const": "https://w3id.org/cdif/data_descrip
+
+cdifComplete: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

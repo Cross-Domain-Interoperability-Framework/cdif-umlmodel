@@ -84,9 +84,22 @@ Abstract base of the 3 schema:DataDownload profiles in profiles/cdifProfile/cdif
 Definition
 ==========
 
-Abstract base of the 4 schema:Dataset profiles in cdifDataType/cdifCatalogRecord, profiles/cdifProfile/cdifCodelist, profiles/cdifProfile/cdifConceptScheme, profiles/cdifProfile/cdifCore. Each specializes it; this holds the attributes identical in all of them.
+Abstract base of the 5 schema:Dataset profiles in cdifDataType/cdifCatalogRecord, profiles/cdifProfile/cdifCodelist, profiles/cdifProfile/cdifConceptScheme, profiles/cdifProfile/cdifCore, xasProperties/xasCore. Each specializes it; this holds the attributes identical in all of them.
 :rdfType: ``schema:Dataset``</body>
           <annotatedElement xmi:idref="cdif.shared.Dataset"/>
+        </ownedComment>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="cdif.shared.DefinedTerm" xmi:uuid="d60b1dbe-e35b-5a55-a647-be76b0ba055a" isAbstract="true">
+        <name>DefinedTerm</name>
+        <ownedComment xmi:type="uml:Comment" xmi:id="cdif.shared.DefinedTerm.comment" xmi:uuid="69d31d8c-e419-5cd6-8dff-7b153fdb4aa9">
+          <body>**CDIF**
+
+Definition
+==========
+
+Abstract base of the 2 schema:DefinedTerm profiles in schemaorgProperties/definedTerm, xasProperties/xasCore. Each specializes it; this holds the attributes identical in all of them.
+:rdfType: ``schema:DefinedTerm``</body>
+          <annotatedElement xmi:idref="cdif.shared.DefinedTerm"/>
         </ownedComment>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="cdif.shared.EntryPoint" xmi:uuid="fa02b167-f1af-5d87-b09b-ef73e2ff578c" isAbstract="true">

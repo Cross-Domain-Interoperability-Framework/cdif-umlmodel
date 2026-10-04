@@ -1,0 +1,65 @@
+'$schema': 'https://json-schema.org/draft/2020-12/schema'
+title: CDIF complete metadata schema
+description: >-
+  CDIF complete profile combining core metadata with discovery properties, data description,
+  archive distribution, and provenance extensions.
+type: object
+allOf:
+- '$ref': >-
+    ../../../../../../../../metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifCore/schema.yaml
+- '$ref': >-
+    ../../../../../../../../metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifDiscovery/schema.yaml
+- '$ref': >-
+    ../../../../../../../../metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifDataDescription/schema.yaml
+- '$ref': >-
+    ../../../../../../../../metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifDataStructure/schema.yaml
+- '$ref': >-
+    ../../../../../../../../metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifManifest/schema.yaml
+- '$ref': >-
+    ../../../../../../../../metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifProvenance/schema.yaml
+- type: object
+  description: >-
+    cdifComplete-specific additions. Measurement technique, spatial / temporal coverage, and
+    quality measurement come through from cdifDiscovery via the allOf composition above; this
+    branch only adds the multi-spec conformance declarations that mark a record as cdifComplete.
+  properties:
+    '@context':
+      type: object
+      description: Additional JSON-LD namespace prefixes for complete profile.
+      properties:
+        geosparql:
+          const: 'http://www.opengis.net/ont/geosparql#'
+        dqv:
+          const: 'http://www.w3.org/ns/dqv#'
+        cdi:
+          const: 'http://ddialliance.org/Specification/DDI-CDI/1.0/RDF/'
+  allOf:
+  - properties:
+      'schema:subjectOf':
+        properties:
+          'dcterms:conformsTo':
+            allOf:
+            - contains:
+                type: object
+                required:
+                - '@id'
+                additionalProperties: false
+                properties:
+                  '@id':
+                    const: 'https://w3id.org/cdif/data_description/1.1'
+            - contains:
+                type: object
+                required:
+                - '@id'
+                additionalProperties: false
+                properties:
+                  '@id':
+                    const: 'https://w3id.org/cdif/manifest/1.1'
+            - contains:
+                type: object
+                required:
+                - '@id'
+                additionalProperties: false
+                properties:
+                  '@id':
+                    const: 'https://w3id.org/cdif/provenance/1.1'

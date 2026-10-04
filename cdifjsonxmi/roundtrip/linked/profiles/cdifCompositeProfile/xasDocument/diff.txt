@@ -1,0 +1,21 @@
+xasDocument: 6 exact difference(s)
+$.allOf[0].$ref:
+    original:    "../../../profiles/cdifProfile/cdifCore/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifCore/schema.yaml"
+$.allOf[1].$ref:
+    original:    "../../../profiles/cdifProfile/cdifDiscovery/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifDiscovery/schema.yaml"
+$.allOf[2].$ref:
+    original:    "../../../profiles/cdifProfile/cdifDataDescription/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifDataDescription/schema.yaml"
+$.allOf[3].$ref:
+    original:    "../../../profiles/cdifProfile/cdifDataStructure/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/profiles/cdifProfile/cdifDataStructure/schema.yaml"
+$.allOf[4].$ref:
+    original:    "../../../xasProperties/xasCore/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/xasProperties/xasCore/schema.yaml"
+$.allOf[5].$ref:
+    original:    "../../../xasProperties/xasOptional/schema.yaml"
+    regenerated: "../../../../../../../../metadataBuildingBlocks/_sources/xasProperties/xasOptional/schema.yaml"
+
+xasDocument: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

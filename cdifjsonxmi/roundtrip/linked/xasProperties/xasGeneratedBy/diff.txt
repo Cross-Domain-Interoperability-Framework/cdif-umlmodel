@@ -1,0 +1,30 @@
+xasGeneratedBy: 17 exact difference(s)
+$.$defs.AdditionalProperty: only in original: {"$ref": "../../schemaorgProperties/additionalProperty/schema.yaml"}
+$.$defs.Facility: only in original: {"$ref": "../xasFacility/schema.yaml"}
+$.$defs.Identifier: only in original: {"$ref": "../../schemaorgProperties/identifier/schema.yaml"}
+$.$defs.Instrument: only in original: {"allOf": [{"$ref": "../xasInstrument/schema.yaml"}, {"type": "object", "description": "As a prov:used entity, the instrument's @type includes prov:Entity (the PROV-O range of prov:used) alongside sch
+$.$defs.Sample: only in original: {"$ref": "../xasSample/schema.yaml"}
+$.$defs.XasGeneratedByUsed: only in regenerated: {"type": "object", "properties": {"schema:instrument": {"type": "array", "items": {"$ref": "#/$defs/XasGeneratedByUsedInstrument"}, "minItems": 1}}, "required": ["schema:instrument"]}
+$.$defs.XasGeneratedByUsedInstrument: only in regenerated: {"allOf": [{"$ref": "../../../../../../../metadataBuildingBlocks/_sources/xasProperties/xasInstrument/schema.yaml"}, {"type": "object", "description": "As a prov:used entity, the instrument's @type in
+$.$defs.cdifConceptOrTermOrString: only in original: {"$ref": "../../cdifDataType/cdifConceptOrTermOrString/schema.yaml"}
+$.allOf[0].$ref:
+    original:    "../../cdifDataType/cdifProvActivity/schema.yaml"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifProvActivity/schema.yaml"
+$.allOf[1].properties.prov:used.items.anyOf[0].$ref: only in regenerated: "#/$defs/XasGeneratedByUsed"
+$.allOf[1].properties.prov:used.items.anyOf[0].properties: only in original: {"schema:instrument": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/Instrument"}}}
+$.allOf[1].properties.prov:used.items.anyOf[0].required: only in original: ["schema:instrument"]
+$.allOf[1].properties.prov:used.items.anyOf[0].type: only in original: "object"
+$.allOf[1].properties.schema:additionalProperty.items.$ref:
+    original:    "#/$defs/AdditionalProperty"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/additionalProperty/schema.yaml"
+$.allOf[1].properties.schema:additionalType.items.$ref:
+    original:    "#/$defs/cdifConceptOrTermOrString"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifConceptOrTermOrString/schema.yaml"
+$.allOf[1].properties.schema:location.$ref:
+    original:    "#/$defs/Facility"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/xasProperties/xasFacility/schema.yaml"
+$.allOf[1].properties.schema:object.$ref:
+    original:    "#/$defs/Sample"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/xasProperties/xasSample/schema.yaml"
+
+xasGeneratedBy: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)

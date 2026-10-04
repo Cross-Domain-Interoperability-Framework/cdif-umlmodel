@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<XMI xmi.version="1.1" xmlns:UML="omg.org/UML1.3">
+	<XMI.header>
+		<XMI.documentation>
+			<XMI.exporter>Enterprise Architect</XMI.exporter>
+			<XMI.exporterVersion>2.5</XMI.exporterVersion>
+		</XMI.documentation>
+	</XMI.header>
+	<XMI.content>
+		<UML:Model name="xasInstrument" xmi.id="MX_EAID_34C219EF_78D2_5c1b_AF67_ACD86C75DF15">
+			<UML:Namespace.ownedElement>
+				<UML:Class name="EARootClass" xmi.id="EAID_11111111_5487_4080_A7F4_41526CB0AA00" isRoot="true" isLeaf="false" isAbstract="false"/>
+				<UML:Package name="xasInstrument" xmi.id="EAPK_6C5D2551_5EEB_561d_9C71_580F32CDE332" isRoot="false" isLeaf="false" isAbstract="false" visibility="public">
+					<UML:ModelElement.taggedValue>
+						<UML:TaggedValue tag="documentation" value="https://w3id.org/cdif/bbr/metadata/xasProperties/xasInstrument"/>
+						<UML:TaggedValue tag="isSpecification" value="false"/>
+						<UML:TaggedValue tag="ea_stype" value="Public"/>
+						<UML:TaggedValue tag="ea_eleType" value="package"/>
+						<UML:TaggedValue tag="version" value="1.0"/>
+						<UML:TaggedValue tag="ea_guid" value="{6C5D2551-5EEB-561d-9C71-580F32CDE332}"/>
+					</UML:ModelElement.taggedValue>
+					<UML:Namespace.ownedElement>
+						<UML:Class name="XasInstrument" xmi.id="EAID_1296E3DC_A33C_51b6_A3AD_D99AD2AE6A19" visibility="public" namespace="EAPK_6C5D2551_5EEB_561d_9C71_580F32CDE332" isRoot="false" isLeaf="false" isAbstract="false" isActive="false">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="documentation" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;XAS-specific instrument building block. Extends the generic instrument building block with required wd:Q3099911 (Wikidata scientific instrument) additionalType classification.&#xA;:title: &quot;XAS Instrument&quot;&#xA;:prefix: ``schema``&#xA;:noId:&#xA;:extends:&#xA;:untypedRoot:"/>
+								<UML:TaggedValue tag="isSpecification" value="false"/>
+								<UML:TaggedValue tag="ea_stype" value="Class"/>
+								<UML:TaggedValue tag="ea_ntype" value="0"/>
+								<UML:TaggedValue tag="version" value="1.0"/>
+								<UML:TaggedValue tag="package" value="EAPK_6C5D2551_5EEB_561d_9C71_580F32CDE332"/>
+								<UML:TaggedValue tag="ea_guid" value="{1296E3DC-A33C-51b6-A3AD-D99AD2AE6A19}"/>
+							</UML:ModelElement.taggedValue>
+							<UML:Classifier.feature>
+								<UML:Attribute name="additionalType" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+									<UML:Attribute.initialValue>
+										<UML:Expression/>
+									</UML:Attribute.initialValue>
+									<UML:StructuralFeature.type>
+										<UML:Classifier xmi.idref="EAID_4C904941_63B0_5e2d_A6AF_329608DC1F86"/>
+									</UML:StructuralFeature.type>
+									<UML:ModelElement.taggedValue>
+										<UML:TaggedValue tag="description" value="**CDIF**&#xA;&#xA;Definition&#xA;==========&#xA;&#xA;&#xA;:arrayKeywords: {&quot;uniqueItems&quot;: true, &quot;allOf&quot;: [{&quot;contains&quot;: {&quot;type&quot;: &quot;object&quot;, &quot;additionalProperties&quot;: false, &quot;required&quot;: [&quot;@id&quot;], &quot;properties&quot;: {&quot;@id&quot;: {&quot;const&quot;: &quot;wd:Q3099911&quot;}}}, &quot;description&quot;: &quot;wd:Q3099911 is Wikidata scientific instrument. Declare prefix wd: https://www.wikidata.org/entity/&quot;}]}"/>
+										<UML:TaggedValue tag="type" value="ConceptOrTermOrString"/>
+										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
+										<UML:TaggedValue tag="ordered" value="0"/>
+										<UML:TaggedValue tag="collection" value="true"/>
+										<UML:TaggedValue tag="position" value="0"/>
+										<UML:TaggedValue tag="lowerBound" value="1"/>
+										<UML:TaggedValue tag="upperBound" value="*"/>
+										<UML:TaggedValue tag="duplicates" value="0"/>
+										<UML:TaggedValue tag="ea_guid" value="{43A823C3-59F2-51ce-96FD-7FB3AD9AB3D9}"/>
+										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;union=0;"/>
+									</UML:ModelElement.taggedValue>
+								</UML:Attribute>
+							</UML:Classifier.feature>
+						</UML:Class>
+						<UML:Generalization subtype="EAID_1296E3DC_A33C_51b6_A3AD_D99AD2AE6A19" supertype="EAID_A8557578_9B14_5a34_A506_E5A9EB364D64" xmi.id="EAID_C99E3D3D_E873_5ad7_A73B_BC16DEF19CC6" visibility="public">
+							<UML:ModelElement.taggedValue>
+								<UML:TaggedValue tag="ea_type" value="Generalization"/>
+								<UML:TaggedValue tag="direction" value="Source -&gt; Destination"/>
+								<UML:TaggedValue tag="ea_sourceName" value="XasInstrument"/>
+								<UML:TaggedValue tag="ea_targetName" value="Instrument"/>
+								<UML:TaggedValue tag="ea_sourceType" value="Class"/>
+								<UML:TaggedValue tag="ea_targetType" value="Class"/>
+								<UML:TaggedValue tag="ea_guid" value="{C99E3D3D-E873-5ad7-A73B-BC16DEF19CC6}"/>
+							</UML:ModelElement.taggedValue>
+						</UML:Generalization>
+					</UML:Namespace.ownedElement>
+				</UML:Package>
+			</UML:Namespace.ownedElement>
+		</UML:Model>
+	</XMI.content>
+	<XMI.extensions xmi.extender="Enterprise Architect 2.5">
+		<EAStub xmi.id="EAID_4C904941_63B0_5e2d_A6AF_329608DC1F86" name="ConceptOrTermOrString" UMLType="DataType"/>
+		<EAStub xmi.id="EAID_A8557578_9B14_5a34_A506_E5A9EB364D64" name="Instrument" UMLType="Class"/>
+	</XMI.extensions>
+</XMI>

@@ -1,0 +1,25 @@
+xasOptional: 8 exact difference(s)
+$.$defs: only in original: {"InstanceVariable": {"$ref": "../../cdifDataType/cdifInstanceVariable/schema.yaml"}, "AdditionalProperty": {"$ref": "../../schemaorgProperties/additionalProperty/schema.yaml"}}
+$.properties.prov:wasGeneratedBy.items.properties.prov:used.items.then.properties.schema:instrument.contains.properties.schema:additionalProperty.items.allOf[0].$ref:
+    original:    "#/$defs/AdditionalProperty"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/additionalProperty/schema.yaml"
+$.properties.prov:wasGeneratedBy.items.properties.prov:used.items.then.properties.schema:instrument.contains.properties.schema:additionalProperty.items.allOf[1].properties.schema:propertyID.items.anyOf[0].$ref:
+    original:    "../../schemaorgProperties/additionalProperty/schema.yaml#/$defs/propertyID_item"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/additionalProperty/schema.yaml#/$defs/propertyID_item"
+$.properties.prov:wasGeneratedBy.items.properties.schema:additionalProperty.items.allOf[0].$ref:
+    original:    "#/$defs/AdditionalProperty"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/additionalProperty/schema.yaml"
+$.properties.prov:wasGeneratedBy.items.properties.schema:additionalProperty.items.allOf[1].properties.schema:propertyID.items.anyOf[0].$ref:
+    original:    "../../schemaorgProperties/additionalProperty/schema.yaml#/$defs/propertyID_item"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/additionalProperty/schema.yaml#/$defs/propertyID_item"
+$.properties.prov:wasGeneratedBy.items.properties.schema:object.properties.schema:additionalProperty.items.allOf[0].$ref:
+    original:    "#/$defs/AdditionalProperty"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/additionalProperty/schema.yaml"
+$.properties.prov:wasGeneratedBy.items.properties.schema:object.properties.schema:additionalProperty.items.allOf[1].properties.schema:propertyID.items.anyOf[0].$ref:
+    original:    "../../schemaorgProperties/additionalProperty/schema.yaml#/$defs/propertyID_item"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/schemaorgProperties/additionalProperty/schema.yaml#/$defs/propertyID_item"
+$.properties.schema:variableMeasured.items.$ref:
+    original:    "#/$defs/InstanceVariable"
+    regenerated: "../../../../../../../metadataBuildingBlocks/_sources/cdifDataType/cdifInstanceVariable/schema.yaml"
+
+xasOptional: 0 semantic difference(s) (file $refs resolved, local $defs inlined, required/anyOf placement normalized)
