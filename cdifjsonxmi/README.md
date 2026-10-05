@@ -362,7 +362,6 @@ DDI-CDI XMI and `cdifmodels.xmi` (single-class, multi-class with `--emit-uml`,
 
 ## Not handled yet
 
-- `ddiProperties` is untried; it will add inheritance.
 - cdifInstanceVariable's `allOf` `$ref` to variableMeasured (beside its own properties) is
   carried as a `:constraint:`, not as a generalization, so EA shows no link between them.
 - Each building block is its own XMI file; there's no merged model of several blocks.
