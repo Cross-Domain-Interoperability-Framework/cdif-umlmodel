@@ -1,11 +1,27 @@
 #!/usr/bin/env python3
-"""detect_conformance.py — determine which CDIF conformance classes a record
-should declare, from its actual content.
+"""detect_conformance.py — determine which conformance classes a record should
+declare, from its actual content, in two stages.
+
+**Stage 1 — CDIF modules** (``detect_cdif_conformance``): the six CDIF profile
+classes (core, discovery, data_description, data_structure, provenance,
+manifest), each an independent yes/no. This is the original engine; the old name
+``detect_conformance`` is kept as a deprecated alias.
+
+**Stage 2 — domain profiles** (``detect_domain_conformance``): profiles that
+*layer on* the CDIF modules — geochemProduct (needs the CDIF modules),
+adaProduct (needs geochemProduct), and the ~70 technique profiles (need
+adaProduct). These are NOT independent: a class's ``requires`` must already be
+declared (by stage 1 or an earlier stage-2 class), and technique profiles form
+an ``exclusiveGroup`` where the most specific (highest ``priority``) wins —
+equal priority among applicable members is a *declared tie*, reported rather
+than resolved. Stage 2 manages its own profile namespace
+(``https://w3id.org/geochem/metadata/profiles/``) and leaves the CDIF entries
+alone.
 
 A generator (ada loader, ConvertFromCroissant, DCAT, DDI, ...) builds a CDIF
-JSON-LD record, then calls detect_conformance() to set
-schema:subjectOf/dcterms:conformsTo from what the record actually contains —
-instead of hardcoding a fixed profile list (which over-declares).
+JSON-LD record, then calls these to set schema:subjectOf/dcterms:conformsTo from
+what the record actually contains — instead of hardcoding a fixed profile list
+(which over-declares).
 
 Two signals per conformance class, both evaluated on the RDF graph (no framing,
 so no normalization artifacts like dropped empty arrays):
@@ -54,6 +70,8 @@ import argparse
 import json
 import os
 import sys
+import warnings
+from dataclasses import dataclass, field
 from pathlib import Path
 
 import rdflib
@@ -73,6 +91,7 @@ PREFIX cdif: <https://w3id.org/cdif/>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dqv: <http://www.w3.org/ns/dqv#>
 """
 
 # Interim registry. Each entry mirrors what would live with the building block
@@ -92,12 +111,20 @@ CONFORMANCE_CLASSES = [
     },
     {
         "uri": "https://w3id.org/cdif/discovery/1.1",
-        # Discovery is the baseline discoverable-dataset profile: any core record
-        # is discovery-conformant (the module adds optional enrichment, no new
-        # requirements). Declared alongside core.
+        # Marked by USE of the enrichment properties cdifDiscovery introduces
+        # beyond core -- measurementTechnique, variableMeasured, spatialCoverage,
+        # temporalCoverage, dqv:hasQualityMeasurement -- not by name+identifier
+        # (which is a core marker and fires for every dataset). schema:subjectOf
+        # is also a cdifDiscovery property but is the catalog-record pointer every
+        # CDIF record carries, so it does not discriminate and is excluded.
         "presence": """ASK {
-            ?d a schema:Dataset ; schema:name ?n ; schema:identifier ?i .
+            ?d a schema:Dataset .
             FILTER NOT EXISTS { ?d schema:additionalType dcat:CatalogRecord }
+            { ?d schema:measurementTechnique ?x } UNION
+            { ?d schema:variableMeasured ?x } UNION
+            { ?d schema:spatialCoverage ?x } UNION
+            { ?d schema:temporalCoverage ?x } UNION
+            { ?d dqv:hasQualityMeasurement ?x }
         }""",
         "shacl": None,  # cdifDiscovery is a thin wrapper (no rules.shacl)
     },
@@ -266,9 +293,32 @@ class _ShapesResolver:
 
 
 def _to_graph(doc):
-    """Parse a CDIF JSON-LD dict into an rdflib Graph (expanded triples)."""
+    """Parse a CDIF JSON-LD dict into an rdflib Graph (expanded triples).
+
+    Fails LOUDLY if JSON-LD parsing is unavailable or yields nothing from a
+    non-empty document: otherwise an empty graph makes every presence ASK false
+    and detection silently reports zero conformance — indistinguishable from a
+    record that genuinely conforms to nothing."""
     g = rdflib.Graph()
-    g.parse(data=json.dumps(doc), format="json-ld")
+    try:
+        g.parse(data=json.dumps(doc), format="json-ld")
+    except Exception as e:  # missing/!registered json-ld parser, bad context, ...
+        raise RuntimeError(
+            f"rdflib could not parse the document as JSON-LD "
+            f"({type(e).__name__}: {e}). Ensure JSON-LD support is active "
+            f"(rdflib>=6 has it built in; older rdflib needs the rdflib-jsonld "
+            f"plugin). rdflib in use: {rdflib.__version__}.") from e
+    # A real CDIF record (more than a bare @context) always yields triples. An
+    # empty graph here means the parser did not run, not that the record is empty.
+    substantive = isinstance(doc, dict) and (
+        doc.get("@graph") or [k for k in doc if k != "@context"])
+    if len(g) == 0 and substantive:
+        raise RuntimeError(
+            "JSON-LD parsed to an EMPTY graph from a non-empty document, so "
+            "conformance detection would wrongly report nothing. rdflib's "
+            "JSON-LD parser is likely not active here "
+            f"(rdflib {rdflib.__version__}); verify format='json-ld' parses a "
+            "known-good CDIF record to a non-empty graph.")
     return g
 
 
@@ -298,14 +348,19 @@ def load_bb_conformance(bb_dir):
         uri, ask = d.get("conformsTo"), d.get("presence")
         if not uri or not ask:
             continue
+        # requires / exclusiveGroup / priority are the 0.2 stage-2 fields; stage 1
+        # never reads them, so carrying them through is harmless for CDIF classes.
         classes.append({"uri": uri, "presence": ask,
-                        "shacl": d.get("validityShapes")})
+                        "shacl": d.get("validityShapes"),
+                        "requires": d.get("requires", []),
+                        "exclusiveGroup": d.get("exclusiveGroup"),
+                        "priority": d.get("priority", 0)})
     return classes
 
 
-def detect_conformance(doc, bb_dir=None, do_shacl=True, verbose=False,
-                       use_bb_source=None, ref=None, cache_dir=None):
-    """Return the list of CDIF conformsTo URIs the record should declare,
+def detect_cdif_conformance(doc, bb_dir=None, do_shacl=True, verbose=False,
+                            use_bb_source=None, ref=None, cache_dir=None):
+    """Stage 1. Return the list of CDIF conformsTo URIs the record should declare,
     based on its content (presence ASK) and well-formedness (per-class SHACL).
 
     By default the rules come from the hardcoded CONFORMANCE_CLASSES registry.
@@ -369,19 +424,40 @@ def detect_conformance(doc, bb_dir=None, do_shacl=True, verbose=False,
     return declared
 
 
+def detect_conformance(*args, **kwargs):
+    """Deprecated alias for :func:`detect_cdif_conformance`.
+
+    Retained so existing callers — the format converters, ConformanceValidate.py,
+    tools/FrameAndValidate.py — keep working across the rename. Prefer
+    ``detect_cdif_conformance`` in new code. Emits a ``DeprecationWarning``
+    (silent by default in library context, per Python's warning policy)."""
+    warnings.warn(
+        "detect_conformance() is deprecated; use detect_cdif_conformance()",
+        DeprecationWarning, stacklevel=2)
+    return detect_cdif_conformance(*args, **kwargs)
+
+
 # CDIF profile URIs all live under this base. apply_conformance manages exactly
 # this space and leaves any other conformsTo entries (e.g. a domain-specific
 # profile) untouched.
 CDIF_BASE = "https://w3id.org/cdif/"
 
+# Stage-2 domain profiles (geochemProduct, adaProduct, technique profiles) live
+# under this base. detect_domain_conformance / apply_conformance manage exactly
+# this space and leave the CDIF (and any other) entries alone.
+GEOCHEM_BASE = "https://w3id.org/geochem/metadata/profiles/"
 
-def apply_conformance(doc, uris, manage_prefix=CDIF_BASE):
+
+def apply_conformance(doc, uris, manage_prefix=CDIF_BASE, append=False):
     """Set schema:subjectOf.dcterms:conformsTo to the detected URIs (in place).
 
-    Only the CDIF-managed profile space (URIs under ``manage_prefix``) is
-    replaced; any existing conformsTo entries outside that space — e.g. a
-    project/domain profile such as ``ada:profile/...`` — are preserved (appended
-    after the detected CDIF URIs)."""
+    Only the profile space under ``manage_prefix`` is replaced; any existing
+    conformsTo entries outside that space are preserved. For stage 1
+    (``manage_prefix=CDIF_BASE``) the detected CDIF URIs go first and any
+    non-CDIF (domain) claims follow. For stage 2 (``manage_prefix=GEOCHEM_BASE``,
+    ``append=True``) the preserved entries — the stage-1 CDIF URIs — stay first
+    and the detected domain URIs are appended after them, so a two-stage run
+    reads CDIF-then-domain."""
     subj = doc.get("schema:subjectOf")
     if not isinstance(subj, dict):
         return doc
@@ -392,8 +468,243 @@ def apply_conformance(doc, uris, manage_prefix=CDIF_BASE):
             ref = entry.get("@id") if isinstance(entry, dict) else entry
             if isinstance(ref, str) and not ref.startswith(manage_prefix):
                 preserved.append(entry)
-    subj["dcterms:conformsTo"] = [{"@id": u} for u in uris] + preserved
+    managed = [{"@id": u} for u in uris]
+    subj["dcterms:conformsTo"] = (preserved + managed) if append else (managed + preserved)
     return doc
+
+
+# ---------------------------------------------------------------------------
+# Stage 2 — domain profiles (geochemProduct / adaProduct / technique profiles)
+# ---------------------------------------------------------------------------
+
+@dataclass
+class DomainConformanceResult:
+    """Outcome of :func:`detect_domain_conformance`.
+
+    ``declared``  — domain URIs declared, in resolution order.
+    ``withheld``  — classes whose *presence held* but that were NOT declared,
+                    each ``{"uri", "reason", "detail"}``. reason is
+                    ``"unsatisfied requires"`` (a required conformsTo is absent)
+                    or ``"validity gate failed"`` (content SHACL raised a
+                    sh:Violation). These are failures: detect-then-validate must
+                    never silently declare less than presence says applies.
+    ``ties``      — exclusiveGroups where the top ``priority`` was shared by more
+                    than one applicable member, each ``{"group", "priority",
+                    "candidates"}``. A tie is *ambiguity*, not a failure: it is
+                    the honest answer when the content cannot pick one member
+                    (e.g. ICP-MS Mc/Q/Sf variants that componentType can't
+                    separate). Reported, never resolved by guessing."""
+    declared: list = field(default_factory=list)
+    withheld: list = field(default_factory=list)
+    ties: list = field(default_factory=list)
+
+    @property
+    def ok(self):
+        """True when nothing was withheld (requires/validity). Ties do not make a
+        run not-ok by themselves — see ``clean`` for the stricter check."""
+        return not self.withheld
+
+    @property
+    def clean(self):
+        """True when nothing was withheld AND no ties were reported."""
+        return not self.withheld and not self.ties
+
+
+def detect_domain_conformance(doc, prior_uris, bb_dir, manage_prefix=GEOCHEM_BASE,
+                              do_shacl=True, verbose=False, ref=None, cache_dir=None):
+    """Stage 2. Declare domain profiles that layer on the stage-1 CDIF modules.
+
+    ``prior_uris`` is the stage-1 result (the CDIF module URIs already declared);
+    it seeds the set a class's ``requires`` is checked against, and it grows as
+    stage-2 classes are declared, so a chain (geochemProduct → adaProduct →
+    technique) resolves to a fixpoint.
+
+    Domain rules come from ``conformance.json`` sidecars under ``bb_dir`` (a
+    *different* ``_sources`` tree — geochemBuildingBlocks, not metadataBuildingBlocks),
+    read via :func:`load_bb_conformance`, which carries the 0.2 fields
+    ``requires`` / ``exclusiveGroup`` / ``priority``. Only sidecars whose
+    ``conformsTo`` is under ``manage_prefix`` are considered.
+
+    Rules:
+
+    * **requires** — a class is eligible only when every URI in its ``requires``
+      is already declared (by stage 1 or an earlier stage-2 class).
+    * **exclusiveGroup / priority** — among eligible members of a group, the
+      single highest ``priority`` wins. Equal top priority among >1 member is a
+      *declared tie*: reported, none declared. A winner excludes its lower-priority
+      siblings (expected, not a failure).
+    * **validity** — the winner is declared only if its content SHACL
+      (``validityShapes``) raises no sh:Violation; otherwise it is withheld with a
+      reason. No silent fall-back to a lower-priority sibling.
+    * A class whose presence holds but whose ``requires`` can never be satisfied
+      is withheld with reason ``"unsatisfied requires"``.
+
+    Returns a :class:`DomainConformanceResult`."""
+    result = DomainConformanceResult()
+    bb = Path(bb_dir) if bb_dir else None
+    if bb is None or not bb.is_dir():
+        if verbose:
+            print("  stage 2: no domain _sources dir; skipped", file=sys.stderr)
+        return result
+    classes = [c for c in load_bb_conformance(bb)
+               if c["uri"].startswith(manage_prefix)]
+    if not classes:
+        if verbose:
+            print(f"  stage 2: no sidecars under {manage_prefix} in {bb}",
+                  file=sys.stderr)
+        return result
+
+    graph = _to_graph(doc)
+    resolver = None
+    if do_shacl and HAS_PYSHACL:
+        resolver = _ShapesResolver(bb_dir=bb, ref=ref, cache_dir=cache_dir,
+                                   verbose=verbose)
+
+    present = {}
+    for c in classes:
+        present[c["uri"]] = bool(graph.query(PREFIXES + c["presence"]).askAnswer)
+        if verbose:
+            short = c["uri"][len(manage_prefix):]
+            print(f"  presence {short:30} {present[c['uri']]}", file=sys.stderr)
+
+    def _valid(c):
+        """(ok, detail). ok=True when there is no content SHACL, the shapes can't
+        be resolved, or they raise no sh:Violation."""
+        if not (do_shacl and c.get("shacl") and resolver is not None):
+            return True, None
+        ttl = resolver.get(c["shacl"])
+        if not ttl:
+            return True, None
+        _conf, rg, _t = shacl_validate(graph, shacl_graph=ttl,
+                                       shacl_graph_format="turtle",
+                                       inference="rdfs", advanced=True)
+        sh = rdflib.Namespace("http://www.w3.org/ns/shacl#")
+        viol = list(rg.triples((None, sh.resultSeverity, sh.Violation)))
+        return (not viol), (f"{len(viol)} SHACL violation(s)" if viol else None)
+
+    declared_set = set(prior_uris)   # CDIF modules + domain-declared-so-far
+    decided = set()                  # uris finalized (declared / withheld / superseded)
+
+    def _group_key(c):
+        return c.get("exclusiveGroup") or ("\x00single\x00" + c["uri"])
+
+    changed = True
+    while changed:
+        changed = False
+        ready = [c for c in classes
+                 if present[c["uri"]] and c["uri"] not in decided
+                 and all(r in declared_set for r in c.get("requires", []))]
+        groups = {}
+        for c in ready:
+            groups.setdefault(_group_key(c), []).append(c)
+        for members in groups.values():
+            maxp = max(m.get("priority", 0) for m in members)
+            top = [m for m in members if m.get("priority", 0) == maxp]
+            if len(top) > 1:
+                continue  # tie among current ready — defer (a higher member may
+                          # still become ready); reported at the fixpoint if it holds
+            winner = top[0]
+            ok, detail = _valid(winner)
+            if ok:
+                declared_set.add(winner["uri"])
+                result.declared.append(winner["uri"])
+            else:
+                result.withheld.append({"uri": winner["uri"],
+                                        "reason": "validity gate failed",
+                                        "detail": detail})
+            decided.add(winner["uri"])
+            # The group is resolved: exclude the lower-priority siblings
+            # (expected exclusion, not a failure).
+            grp = winner.get("exclusiveGroup")
+            if grp:
+                for m in classes:
+                    if m.get("exclusiveGroup") == grp:
+                        decided.add(m["uri"])
+            changed = True
+
+    # Fixpoint reached. Anything whose presence holds but that is still undecided
+    # is either requires-blocked (a failure) or a genuine tie (ambiguity).
+    for c in classes:
+        u = c["uri"]
+        if u in decided or not present[u]:
+            continue
+        missing = [r for r in c.get("requires", []) if r not in declared_set]
+        if missing:
+            result.withheld.append({"uri": u, "reason": "unsatisfied requires",
+                                    "detail": "missing: " + ", ".join(missing)})
+        else:
+            grp = c.get("exclusiveGroup")
+            sibs = [m for m in classes
+                    if m.get("exclusiveGroup") == grp and grp is not None
+                    and present[m["uri"]] and m["uri"] not in decided
+                    and all(r in declared_set for r in m.get("requires", []))]
+            if sibs:
+                maxp = max(m.get("priority", 0) for m in sibs)
+                cands = sorted(m["uri"] for m in sibs
+                               if m.get("priority", 0) == maxp)
+                tie = {"group": grp, "priority": maxp, "candidates": cands}
+                if tie not in result.ties:
+                    result.ties.append(tie)
+    if verbose:
+        for w in result.withheld:
+            print(f"  WITHHELD {w['uri']} ({w['reason']}: {w['detail']})",
+                  file=sys.stderr)
+        for t in result.ties:
+            print(f"  TIE group={t['group']} priority={t['priority']} "
+                  f"candidates={t['candidates']}", file=sys.stderr)
+    return result
+
+
+# Stage-2 technique profiles classify a record by its file componentType. gBB
+# confirmed (2026-10-16): the property is this IRI (ada: => ada.astromat.org),
+# and its VALUES are plain string LITERALS like "ada:SEMImageMap" (no @type
+# coercion in the context), NOT IRIs.
+COMPONENT_TYPE_PROPERTY = "https://ada.astromat.org/metadata/componentType"
+
+
+def _sparql_str_literal(s):
+    """Render a Python str as a SPARQL double-quoted string literal."""
+    esc = (s.replace("\\", "\\\\").replace('"', '\\"')
+            .replace("\n", "\\n").replace("\r", "\\r").replace("\t", "\\t"))
+    return f'"{esc}"'
+
+
+def build_component_presence_ask(component_type_values,
+                                 property_iri=COMPONENT_TYPE_PROPERTY):
+    """Build a stage-2 technique-profile ``presence`` ASK from its DISCRIMINATING
+    componentType values, so the generator passes a list and never hand-writes
+    SPARQL. Returns the ASK string to store as the sidecar's ``presence``.
+
+    Encodes two facts gBB confirmed (2026-10-16), each a known failure mode:
+
+    * **Literal, not IRI.** componentType values are plain string literals
+      (``"ada:componentType": "ada:SEMImageMap"``) — no ``@type`` coercion in the
+      context — so the ASK matches a *literal*. Matching an IRI-valued property as
+      a literal (or the reverse) is what made 35 gBB SHACL shapes select zero
+      focus nodes (gBB PR #141); this avoids it.
+    * **Path-agnostic.** componentType has two legal homes: on a bundle's
+      ``schema:hasPart`` member, or on a monolithic single-file
+      ``schema:distribution`` itself (gBB #136). A ``hasPart``-pinned ASK would
+      silently miss the monolithic form by reporting "not present". The marker is
+      therefore "the record carries componentType in {values}" at *any* path —
+      measured to occur nowhere spurious (21,974 occurrences, all under
+      distribution/hasPart, zero elsewhere).
+
+    ``component_type_values`` is the discriminating list (from
+    ``build_tapp.TAPP_CONFIGS[<tapp>]["component_types"]``) with the generic
+    shared types (analysisLocation/report/contextPhotography/quickLook) already
+    excluded. The ASK uses a full-IRI predicate and literal values, so it needs no
+    prefixes beyond the engine's standard preamble. To break an ICP-MS family tie
+    once records carry a TAPP reference, narrow the returned ASK with a
+    ``prov:used`` clause for that reference — not covered here until the TAPP
+    reference shape exists."""
+    if not component_type_values:
+        raise ValueError("component_type_values must be a non-empty list")
+    values = " ".join(_sparql_str_literal(v) for v in component_type_values)
+    return (f"ASK {{\n"
+            f"  ?node <{property_iri}> ?ct .\n"
+            f"  VALUES ?ct {{ {values} }}\n"
+            f"}}")
 
 
 def main(argv=None):
@@ -412,6 +723,15 @@ def main(argv=None):
     p.add_argument("--from-source", action="store_true",
                    help="read conformance rules from BB conformance.json sidecars "
                         "instead of the hardcoded registry")
+    p.add_argument("--domain-bb-dir",
+                   help="run stage 2 (domain profiles): read conformance.json "
+                        "sidecars from this _sources tree (e.g. geochemBuildingBlocks)")
+    p.add_argument("--manage-prefix", default=GEOCHEM_BASE,
+                   help="stage-2 managed profile namespace "
+                        f"(default: {GEOCHEM_BASE})")
+    p.add_argument("--strict-ties", action="store_true",
+                   help="exit non-zero on a stage-2 tie too (default: only "
+                        "withheld requires/validity failures do)")
     p.add_argument("--apply", action="store_true",
                    help="write detected conformsTo into the record")
     p.add_argument("-o", "--output", help="output path (with --apply)")
@@ -419,19 +739,47 @@ def main(argv=None):
     args = p.parse_args(argv)
 
     doc = json.load(open(args.input, encoding="utf-8"))
-    uris = detect_conformance(doc, bb_dir=args.bb_dir,
-                              do_shacl=not args.no_shacl, verbose=args.verbose,
-                              use_bb_source=args.from_source or None,
-                              ref=args.bb_ref, cache_dir=args.cache_dir)
-    print("Declarable conformance classes:")
+    uris = detect_cdif_conformance(doc, bb_dir=args.bb_dir,
+                                   do_shacl=not args.no_shacl, verbose=args.verbose,
+                                   use_bb_source=args.from_source or None,
+                                   ref=args.bb_ref, cache_dir=args.cache_dir)
+    print("Declarable CDIF conformance classes (stage 1):")
     for u in uris:
         print(f"  {u}")
+
+    domain = None
+    if args.domain_bb_dir:
+        domain = detect_domain_conformance(
+            doc, uris, bb_dir=args.domain_bb_dir,
+            manage_prefix=args.manage_prefix, do_shacl=not args.no_shacl,
+            verbose=args.verbose, ref=args.bb_ref, cache_dir=args.cache_dir)
+        print("\nDeclarable domain profiles (stage 2):")
+        for u in domain.declared:
+            print(f"  {u}")
+        if domain.withheld:
+            print("\nWITHHELD (presence held but not declared):")
+            for w in domain.withheld:
+                print(f"  {w['uri']}  -- {w['reason']}: {w['detail']}")
+        if domain.ties:
+            print("\nTIES (ambiguous; no single most-specific profile):")
+            for t in domain.ties:
+                print(f"  group {t['group']} @ priority {t['priority']}: "
+                      f"{', '.join(t['candidates'])}")
+
     if args.apply:
         apply_conformance(doc, uris)
+        if domain is not None:
+            apply_conformance(doc, domain.declared,
+                              manage_prefix=args.manage_prefix, append=True)
         out = args.output or args.input
         json.dump(doc, open(out, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
         open(out, "a", encoding="utf-8").write("\n")
-        print(f"Wrote {out}")
+        print(f"\nWrote {out}")
+
+    # Exit non-zero when stage 2 withheld a class whose presence held (a real
+    # failure); ties fail only under --strict-ties.
+    if domain is not None and (domain.withheld or (args.strict_ties and domain.ties)):
+        return 1
     return 0
 
 
